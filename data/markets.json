@@ -1,6 +1,6 @@
 {
-  "updated": "Feb 19, 2026 \u00b7 11:31 PM ET",
-  "updated_iso": "2026-02-20T04:31:25.785386+00:00",
+  "updated": "Feb 19, 2026 \u00b7 11:34 PM ET",
+  "updated_iso": "2026-02-20T04:34:38.696369+00:00",
   "hero": {
     "source": "Polymarket",
     "question": "Pistons vs. Knicks",
@@ -9,27 +9,13 @@
     "prob": 100.0,
     "change_pts": 60.5,
     "direction": "up",
-    "volume": 3034033.345429,
+    "volume": 3035970.715429,
     "volume_fmt": "$3.0M",
     "volume_24h": 1340619.4090829983,
     "end_date": "Feb 20",
-    "liquidity": 588252.97145
+    "liquidity": 586389.53675
   },
   "movers": [
-    {
-      "source": "Polymarket",
-      "question": "Pacers vs. Wizards",
-      "slug": "nba-ind-was-2026-02-19",
-      "url": "https://polymarket.com/event/nba-ind-was-2026-02-19",
-      "prob": 0.1,
-      "change_pts": -57.5,
-      "direction": "down",
-      "volume": 1253956.350987,
-      "volume_fmt": "$1.3M",
-      "volume_24h": 545398.7951390006,
-      "end_date": "Feb 20",
-      "liquidity": 454744.57959
-    },
     {
       "source": "Polymarket",
       "question": "Hawks vs. 76ers",
@@ -38,11 +24,11 @@
       "prob": 100.0,
       "change_pts": 51.4,
       "direction": "up",
-      "volume": 2323005.669141,
+      "volume": 2323105.669141,
       "volume_fmt": "$2.3M",
       "volume_24h": 1330850.0110610002,
       "end_date": "Feb 20",
-      "liquidity": 360953.89908
+      "liquidity": 360913.93908
     },
     {
       "source": "Polymarket",
@@ -56,7 +42,7 @@
       "volume_fmt": "$620K",
       "volume_24h": 556441.2291959998,
       "end_date": "Feb 20",
-      "liquidity": 494516.98459
+      "liquidity": 494705.99659
     },
     {
       "source": "Polymarket",
@@ -70,7 +56,7 @@
       "volume_fmt": "$559K",
       "volume_24h": 543256.1342270002,
       "end_date": "Feb 20",
-      "liquidity": 88024.04822
+      "liquidity": 88110.43822
     },
     {
       "source": "Polymarket",
@@ -80,11 +66,11 @@
       "prob": 100.0,
       "change_pts": 37.5,
       "direction": "up",
-      "volume": 3355777.268773,
+      "volume": 3355929.658773,
       "volume_fmt": "$3.4M",
       "volume_24h": 1631748.7024000082,
       "end_date": "Feb 20",
-      "liquidity": 1108966.38763
+      "liquidity": 1109003.97202
     },
     {
       "source": "Polymarket",
@@ -94,11 +80,25 @@
       "prob": 100.0,
       "change_pts": 34.4,
       "direction": "up",
-      "volume": 1387810.30108,
+      "volume": 1389007.59108,
       "volume_fmt": "$1.4M",
       "volume_24h": 565443.2882399999,
       "end_date": "Feb 20",
-      "liquidity": 567102.19437
+      "liquidity": 565778.83466
+    },
+    {
+      "source": "Polymarket",
+      "question": "Will Google have the best AI model at the end of February 2026?",
+      "slug": "will-google-have-the-best-ai-model-at-the-end-of-february-2026",
+      "url": "https://polymarket.com/event/will-google-have-the-best-ai-model-at-the-end-of-february-2026",
+      "prob": 12.5,
+      "change_pts": -30.0,
+      "direction": "down",
+      "volume": 3073796.896912,
+      "volume_fmt": "$3.1M",
+      "volume_24h": 884906.0194620001,
+      "end_date": "Feb 28",
+      "liquidity": 135376.3038
     }
   ],
   "ticker": [
@@ -110,25 +110,11 @@
       "prob": 100.0,
       "change_pts": 60.5,
       "direction": "up",
-      "volume": 3034033.345429,
+      "volume": 3035970.715429,
       "volume_fmt": "$3.0M",
       "volume_24h": 1340619.4090829983,
       "end_date": "Feb 20",
-      "liquidity": 588252.97145
-    },
-    {
-      "source": "Polymarket",
-      "question": "Pacers vs. Wizards",
-      "slug": "nba-ind-was-2026-02-19",
-      "url": "https://polymarket.com/event/nba-ind-was-2026-02-19",
-      "prob": 0.1,
-      "change_pts": -57.5,
-      "direction": "down",
-      "volume": 1253956.350987,
-      "volume_fmt": "$1.3M",
-      "volume_24h": 545398.7951390006,
-      "end_date": "Feb 20",
-      "liquidity": 454744.57959
+      "liquidity": 586389.53675
     },
     {
       "source": "Polymarket",
@@ -138,11 +124,11 @@
       "prob": 100.0,
       "change_pts": 51.4,
       "direction": "up",
-      "volume": 2323005.669141,
+      "volume": 2323105.669141,
       "volume_fmt": "$2.3M",
       "volume_24h": 1330850.0110610002,
       "end_date": "Feb 20",
-      "liquidity": 360953.89908
+      "liquidity": 360913.93908
     },
     {
       "source": "Polymarket",
@@ -156,7 +142,7 @@
       "volume_fmt": "$620K",
       "volume_24h": 556441.2291959998,
       "end_date": "Feb 20",
-      "liquidity": 494516.98459
+      "liquidity": 494705.99659
     },
     {
       "source": "Polymarket",
@@ -170,7 +156,7 @@
       "volume_fmt": "$559K",
       "volume_24h": 543256.1342270002,
       "end_date": "Feb 20",
-      "liquidity": 88024.04822
+      "liquidity": 88110.43822
     },
     {
       "source": "Polymarket",
@@ -180,11 +166,25 @@
       "prob": 100.0,
       "change_pts": 37.5,
       "direction": "up",
-      "volume": 3355777.268773,
+      "volume": 3355929.658773,
       "volume_fmt": "$3.4M",
       "volume_24h": 1631748.7024000082,
       "end_date": "Feb 20",
-      "liquidity": 1108966.38763
+      "liquidity": 1109003.97202
+    },
+    {
+      "source": "Polymarket",
+      "question": "Raptors vs. Bulls",
+      "slug": "nba-tor-chi-2026-02-19",
+      "url": "https://polymarket.com/event/nba-tor-chi-2026-02-19",
+      "prob": 100.0,
+      "change_pts": 34.4,
+      "direction": "up",
+      "volume": 1389007.59108,
+      "volume_fmt": "$1.4M",
+      "volume_24h": 565443.2882399999,
+      "end_date": "Feb 20",
+      "liquidity": 565778.83466
     },
     {
       "source": "Polymarket",
@@ -194,11 +194,11 @@
       "prob": 3.5,
       "change_pts": -0.1,
       "direction": "neutral",
-      "volume": 89114221.054101,
+      "volume": 89116415.037433,
       "volume_fmt": "$89.1M",
       "volume_24h": 768389.4630549996,
       "end_date": "Dec 31",
-      "liquidity": 1750185.30856
+      "liquidity": 1767458.27526
     },
     {
       "source": "Polymarket",
@@ -208,11 +208,11 @@
       "prob": 0.8,
       "change_pts": 0.0,
       "direction": "neutral",
-      "volume": 58667930.774205,
+      "volume": 58672009.094205,
       "volume_fmt": "$58.7M",
       "volume_24h": 2852179.7858899976,
       "end_date": "Mar 18",
-      "liquidity": 1940369.32671
+      "liquidity": 1938984.82279
     },
     {
       "source": "Polymarket",
@@ -222,11 +222,11 @@
       "prob": 0.7,
       "change_pts": 0.1,
       "direction": "neutral",
-      "volume": 49982693.766239,
+      "volume": 49986138.542833,
       "volume_fmt": "$50.0M",
       "volume_24h": 2882483.0430590007,
       "end_date": "Mar 18",
-      "liquidity": 1043245.13535
+      "liquidity": 1038831.93957
     },
     {
       "source": "Polymarket",
@@ -236,11 +236,11 @@
       "prob": 94.2,
       "change_pts": 0.2,
       "direction": "neutral",
-      "volume": 41181142.445358,
+      "volume": 41182589.283212,
       "volume_fmt": "$41.2M",
       "volume_24h": 272224.5279680001,
       "end_date": "Dec 31",
-      "liquidity": 480032.90368
+      "liquidity": 478962.91436
     }
   ]
 }
