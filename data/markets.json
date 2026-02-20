@@ -1,19 +1,19 @@
 {
-  "updated": "Feb 20, 2026 \u00b7 4:53 PM ET",
-  "updated_iso": "2026-02-20T21:53:15.240222+00:00",
+  "updated": "Feb 20, 2026 \u00b7 6:00 PM ET",
+  "updated_iso": "2026-02-20T23:00:59.940880+00:00",
   "hero": {
     "source": "Polymarket",
     "question": "Will Athletic Club win on 2026-02-20?",
     "slug": "lal-bil-elc-2026-02-20-bil",
     "url": "https://polymarket.com/event/lal-bil-elc-2026-02-20-bil",
-    "prob": 92.5,
-    "change_pts": 35.0,
+    "prob": 100.0,
+    "change_pts": 42.4,
     "direction": "up",
-    "volume": 1682977.111262,
-    "volume_fmt": "$1.7M",
+    "volume": 2105271.593691,
+    "volume_fmt": "$2.1M",
     "volume_24h": 590665.8375960004,
     "end_date": "Feb 20",
-    "liquidity": 28993.0783
+    "liquidity": 383273.82733
   },
   "movers": [
     {
@@ -24,11 +24,11 @@
       "prob": 0.1,
       "change_pts": -71.5,
       "direction": "down",
-      "volume": 1842573.447905,
-      "volume_fmt": "$1.8M",
+      "volume": 1867746.037905,
+      "volume_fmt": "$1.9M",
       "volume_24h": 414544.96236299846,
       "end_date": "Feb 21",
-      "liquidity": 1009431.91904
+      "liquidity": 775577.1336
     },
     {
       "source": "Polymarket",
@@ -36,13 +36,13 @@
       "slug": "cs2-furia-mglz-2026-02-20-total-games-2pt5",
       "url": "https://polymarket.com/event/cs2-furia-mglz-2026-02-20-total-games-2pt5",
       "prob": 100.0,
-      "change_pts": 52.4,
+      "change_pts": 52.9,
       "direction": "up",
-      "volume": 385087.045192,
+      "volume": 385097.725192,
       "volume_fmt": "$385K",
       "volume_24h": 220205.20579000004,
       "end_date": "Feb 21",
-      "liquidity": 261592.33105
+      "liquidity": 161238.16482
     },
     {
       "source": "Polymarket",
@@ -50,27 +50,27 @@
       "slug": "dota2-og-bb4-2026-02-20",
       "url": "https://polymarket.com/event/dota2-og-bb4-2026-02-20",
       "prob": 100.0,
-      "change_pts": 50.0,
+      "change_pts": 50.4,
       "direction": "up",
       "volume": 214988.569275,
       "volume_fmt": "$215K",
       "volume_24h": 206709.20927499997,
       "end_date": "Feb 20",
-      "liquidity": 15131.91019
+      "liquidity": 12531.77638
     },
     {
       "source": "Polymarket",
       "question": "Will Hilton Grand Vacations (HGV) beat quarterly earnings?",
       "slug": "hgv-quarterly-earnings-nongaap-eps-02-26-2026-1pt16",
       "url": "https://polymarket.com/event/hgv-quarterly-earnings-nongaap-eps-02-26-2026-1pt16",
-      "prob": 44.5,
-      "change_pts": 21.0,
+      "prob": 39.5,
+      "change_pts": 16.5,
       "direction": "up",
-      "volume": 845344.914243,
+      "volume": 845498.894243,
       "volume_fmt": "$845K",
       "volume_24h": 843006.868531,
       "end_date": "Feb 26",
-      "liquidity": 974.1391
+      "liquidity": 772.977
     },
     {
       "source": "Polymarket",
@@ -78,13 +78,13 @@
       "slug": "mwoh-usa-slo-2026-02-20",
       "url": "https://polymarket.com/event/mwoh-usa-slo-2026-02-20",
       "prob": 100.0,
-      "change_pts": 12.4,
+      "change_pts": 11.5,
       "direction": "up",
-      "volume": 3042266.335208,
-      "volume_fmt": "$3.0M",
+      "volume": 3079278.135208,
+      "volume_fmt": "$3.1M",
       "volume_24h": 802772.8082880023,
       "end_date": "Feb 20",
-      "liquidity": 244509.50621
+      "liquidity": 706201.48492
     },
     {
       "source": "Polymarket",
@@ -94,11 +94,11 @@
       "prob": 56.5,
       "change_pts": -10.5,
       "direction": "down",
-      "volume": 362961.27604,
+      "volume": 363053.259645,
       "volume_fmt": "$363K",
       "volume_24h": 301069.160902,
       "end_date": "Feb 23",
-      "liquidity": 960.9035
+      "liquidity": 1026.6951
     }
   ],
   "ticker": [
@@ -110,11 +110,11 @@
       "prob": 0.1,
       "change_pts": -71.5,
       "direction": "down",
-      "volume": 1842573.447905,
-      "volume_fmt": "$1.8M",
+      "volume": 1867746.037905,
+      "volume_fmt": "$1.9M",
       "volume_24h": 414544.96236299846,
       "end_date": "Feb 21",
-      "liquidity": 1009431.91904
+      "liquidity": 775577.1336
     },
     {
       "source": "Polymarket",
@@ -122,13 +122,13 @@
       "slug": "cs2-furia-mglz-2026-02-20-total-games-2pt5",
       "url": "https://polymarket.com/event/cs2-furia-mglz-2026-02-20-total-games-2pt5",
       "prob": 100.0,
-      "change_pts": 52.4,
+      "change_pts": 52.9,
       "direction": "up",
-      "volume": 385087.045192,
+      "volume": 385097.725192,
       "volume_fmt": "$385K",
       "volume_24h": 220205.20579000004,
       "end_date": "Feb 21",
-      "liquidity": 261592.33105
+      "liquidity": 161238.16482
     },
     {
       "source": "Polymarket",
@@ -136,41 +136,41 @@
       "slug": "dota2-og-bb4-2026-02-20",
       "url": "https://polymarket.com/event/dota2-og-bb4-2026-02-20",
       "prob": 100.0,
-      "change_pts": 50.0,
+      "change_pts": 50.4,
       "direction": "up",
       "volume": 214988.569275,
       "volume_fmt": "$215K",
       "volume_24h": 206709.20927499997,
       "end_date": "Feb 20",
-      "liquidity": 15131.91019
+      "liquidity": 12531.77638
     },
     {
       "source": "Polymarket",
       "question": "Will Athletic Club win on 2026-02-20?",
       "slug": "lal-bil-elc-2026-02-20-bil",
       "url": "https://polymarket.com/event/lal-bil-elc-2026-02-20-bil",
-      "prob": 92.5,
-      "change_pts": 35.0,
+      "prob": 100.0,
+      "change_pts": 42.4,
       "direction": "up",
-      "volume": 1682977.111262,
-      "volume_fmt": "$1.7M",
+      "volume": 2105271.593691,
+      "volume_fmt": "$2.1M",
       "volume_24h": 590665.8375960004,
       "end_date": "Feb 20",
-      "liquidity": 28993.0783
+      "liquidity": 383273.82733
     },
     {
       "source": "Polymarket",
       "question": "Will Hilton Grand Vacations (HGV) beat quarterly earnings?",
       "slug": "hgv-quarterly-earnings-nongaap-eps-02-26-2026-1pt16",
       "url": "https://polymarket.com/event/hgv-quarterly-earnings-nongaap-eps-02-26-2026-1pt16",
-      "prob": 44.5,
-      "change_pts": 21.0,
+      "prob": 39.5,
+      "change_pts": 16.5,
       "direction": "up",
-      "volume": 845344.914243,
+      "volume": 845498.894243,
       "volume_fmt": "$845K",
       "volume_24h": 843006.868531,
       "end_date": "Feb 26",
-      "liquidity": 974.1391
+      "liquidity": 772.977
     },
     {
       "source": "Polymarket",
@@ -178,27 +178,27 @@
       "slug": "mwoh-usa-slo-2026-02-20",
       "url": "https://polymarket.com/event/mwoh-usa-slo-2026-02-20",
       "prob": 100.0,
-      "change_pts": 12.4,
+      "change_pts": 11.5,
       "direction": "up",
-      "volume": 3042266.335208,
-      "volume_fmt": "$3.0M",
+      "volume": 3079278.135208,
+      "volume_fmt": "$3.1M",
       "volume_24h": 802772.8082880023,
       "end_date": "Feb 20",
-      "liquidity": 244509.50621
+      "liquidity": 706201.48492
     },
     {
       "source": "Polymarket",
       "question": "Will Trump nominate Judy Shelton as the next Fed chair?",
       "slug": "will-trump-nominate-judy-shelton-as-the-next-fed-chair",
       "url": "https://polymarket.com/event/will-trump-nominate-judy-shelton-as-the-next-fed-chair",
-      "prob": 4.0,
-      "change_pts": 0.4,
+      "prob": 4.1,
+      "change_pts": 0.5,
       "direction": "neutral",
-      "volume": 91204448.16004,
-      "volume_fmt": "$91.2M",
+      "volume": 91429109.798358,
+      "volume_fmt": "$91.4M",
       "volume_24h": 2110048.1787470025,
       "end_date": "Dec 31",
-      "liquidity": 2064992.67006
+      "liquidity": 1954078.92264
     },
     {
       "source": "Polymarket",
@@ -208,11 +208,11 @@
       "prob": 0.7,
       "change_pts": -0.1,
       "direction": "neutral",
-      "volume": 59674485.497845,
+      "volume": 59676253.290129,
       "volume_fmt": "$59.7M",
       "volume_24h": 1139363.477809,
       "end_date": "Mar 18",
-      "liquidity": 2008109.65198
+      "liquidity": 2007283.8338
     },
     {
       "source": "Polymarket",
@@ -222,11 +222,11 @@
       "prob": 0.7,
       "change_pts": 0.0,
       "direction": "neutral",
-      "volume": 50398189.409328,
+      "volume": 50399629.331636,
       "volume_fmt": "$50.4M",
       "volume_24h": 1019528.1114500005,
       "end_date": "Mar 18",
-      "liquidity": 1096027.85948
+      "liquidity": 1094789.81282
     },
     {
       "source": "Polymarket",
@@ -236,11 +236,11 @@
       "prob": 94.2,
       "change_pts": 0.1,
       "direction": "neutral",
-      "volume": 41468612.848541,
+      "volume": 41473838.006077,
       "volume_fmt": "$41.5M",
       "volume_24h": 323727.88253300014,
       "end_date": "Dec 31",
-      "liquidity": 318959.07034
+      "liquidity": 314486.10921
     }
   ]
 }
