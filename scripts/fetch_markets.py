@@ -185,8 +185,8 @@ def fetch_kalshi() -> list[dict]:
             print(f"  [DEBUG] Kalshi returned {len(batch)} markets in this page")
             if batch:
                 m0 = batch[0]
-                print(f"  [DEBUG] Sample market: {m0.get('title','?')[:50]}")
-                print(f"  [DEBUG] volume={m0.get('volume')} yes_bid={m0.get('yes_bid')} yes_ask={m0.get('yes_ask')}")
+                print(f"  [DEBUG] Sample keys: {list(m0.keys())}")
+                print(f"  [DEBUG] Sample values: {m0}")
             if not batch:
                 break
                 
