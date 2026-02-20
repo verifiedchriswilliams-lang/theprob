@@ -1,0 +1,1229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Prob — What's the Probability?</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #080b0f;
+      --bg2: #0d1117;
+      --bg3: #141b24;
+      --border: #1e2a38;
+      --border-bright: #2a3d54;
+      --text: #e8edf2;
+      --text-muted: #637b94;
+      --text-dim: #3a5068;
+      --green: #00e5a0;
+      --green-dim: #00a870;
+      --red: #ff4757;
+      --amber: #f5a623;
+      --blue: #4a9eff;
+      --accent: #00e5a0;
+      --mono: 'Space Mono', monospace;
+      --serif: 'Libre Baskerville', Georgia, serif;
+      --sans: 'DM Sans', sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: 15px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── NOISE OVERLAY ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+      opacity: 0.022;
+      pointer-events: none;
+      z-index: 1000;
+    }
+
+    /* ── TICKER BAR ── */
+    .ticker-wrap {
+      background: var(--bg3);
+      border-bottom: 1px solid var(--border);
+      overflow: hidden;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+    .ticker-wrap::before, .ticker-wrap::after {
+      content: '';
+      position: absolute;
+      top: 0; bottom: 0;
+      width: 80px;
+      z-index: 2;
+    }
+    .ticker-wrap::before { left: 0; background: linear-gradient(to right, var(--bg3), transparent); }
+    .ticker-wrap::after { right: 0; background: linear-gradient(to left, var(--bg3), transparent); }
+
+    .ticker-track {
+      display: flex;
+      gap: 0;
+      white-space: nowrap;
+      animation: ticker 40s linear infinite;
+    }
+    .ticker-item {
+      font-family: var(--mono);
+      font-size: 11px;
+      padding: 0 28px;
+      color: var(--text-muted);
+      border-right: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .ticker-item .name { color: var(--text); font-weight: 700; }
+    .ticker-item .up { color: var(--green); }
+    .ticker-item .down { color: var(--red); }
+
+    @keyframes ticker {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ── NAV ── */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 48px;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      background: rgba(8,11,15,0.92);
+      backdrop-filter: blur(12px);
+      z-index: 100;
+    }
+
+    .logo {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+    }
+    .logo-mark {
+      font-family: var(--mono);
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: -1px;
+    }
+    .logo-pipe {
+      color: var(--border-bright);
+      font-size: 20px;
+    }
+    .logo-sub {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--text-muted);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    .nav-cta {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: var(--accent);
+      color: var(--bg);
+      border: none;
+      padding: 9px 20px;
+      cursor: pointer;
+      font-weight: 700;
+      transition: opacity 0.2s;
+      text-decoration: none;
+    }
+    .nav-cta:hover { opacity: 0.85; }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 80px 48px 60px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+      max-width: 1280px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: -100px;
+      right: -200px;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(0,229,160,0.04) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-eyebrow {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    .hero-headline {
+      font-family: var(--serif);
+      font-size: clamp(36px, 4vw, 56px);
+      font-weight: 700;
+      line-height: 1.1;
+      color: var(--text);
+      margin-bottom: 24px;
+      letter-spacing: -0.5px;
+    }
+    .hero-headline em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .hero-sub {
+      font-size: 17px;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 40px;
+      max-width: 460px;
+    }
+
+    .signup-form {
+      display: flex;
+      gap: 0;
+      max-width: 460px;
+    }
+    .signup-form input {
+      flex: 1;
+      background: var(--bg3);
+      border: 1px solid var(--border-bright);
+      border-right: none;
+      color: var(--text);
+      font-family: var(--mono);
+      font-size: 13px;
+      padding: 14px 18px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .signup-form input::placeholder { color: var(--text-dim); }
+    .signup-form input:focus { border-color: var(--accent); }
+    .signup-form button {
+      background: var(--accent);
+      color: var(--bg);
+      border: 1px solid var(--accent);
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 14px 24px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.2s;
+    }
+    .signup-form button:hover { background: #00c98a; }
+
+    .hero-trust {
+      margin-top: 16px;
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--text-dim);
+      letter-spacing: 0.05em;
+    }
+    .hero-trust span { color: var(--text-muted); }
+
+    /* ── HERO RIGHT: FEATURED MARKET CARD ── */
+    .hero-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      padding: 0;
+      overflow: hidden;
+    }
+    .hero-card-header {
+      padding: 16px 24px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .hero-card-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .live-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--green);
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.8); }
+    }
+
+    .hero-card-source {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--text-dim);
+    }
+
+    .hero-card-body { padding: 24px; }
+    .hero-card-question {
+      font-family: var(--serif);
+      font-size: 18px;
+      line-height: 1.4;
+      color: var(--text);
+      margin-bottom: 20px;
+    }
+
+    .prob-display {
+      display: flex;
+      align-items: flex-end;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+    .prob-number {
+      font-family: var(--mono);
+      font-size: 64px;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
+      letter-spacing: -2px;
+    }
+    .prob-pct {
+      font-family: var(--mono);
+      font-size: 24px;
+      color: var(--green-dim);
+      margin-bottom: 8px;
+    }
+    .prob-change {
+      font-family: var(--mono);
+      font-size: 13px;
+      margin-bottom: 8px;
+    }
+    .prob-change.up { color: var(--green); }
+    .prob-change.down { color: var(--red); }
+
+    .prob-bar-wrap {
+      height: 6px;
+      background: var(--bg3);
+      border-radius: 0;
+      margin-bottom: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+    .prob-bar {
+      height: 100%;
+      background: linear-gradient(to right, var(--green-dim), var(--accent));
+      transition: width 1s ease;
+      position: relative;
+    }
+    .prob-bar::after {
+      content: '';
+      position: absolute;
+      right: 0; top: 0; bottom: 0;
+      width: 20px;
+      background: linear-gradient(to right, transparent, rgba(0,229,160,0.4));
+    }
+
+    .card-meta {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .card-meta-item {
+      background: var(--bg3);
+      padding: 12px 14px;
+    }
+    .card-meta-label {
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 4px;
+    }
+    .card-meta-value {
+      font-family: var(--mono);
+      font-size: 14px;
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .hero-card-insight {
+      padding: 16px 24px;
+      border-top: 1px solid var(--border);
+      background: rgba(0,229,160,0.03);
+    }
+    .hero-card-insight p {
+      font-family: var(--serif);
+      font-size: 13px;
+      font-style: italic;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+    .hero-card-insight p strong {
+      color: var(--accent);
+      font-style: normal;
+      font-size: 11px;
+      font-family: var(--mono);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    /* ── SECTION STRUCTURE ── */
+    .section {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 60px 48px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 32px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    .section-title {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-title span {
+      font-size: 16px;
+      font-family: var(--serif);
+      text-transform: none;
+      letter-spacing: 0;
+      color: var(--text);
+    }
+    .section-meta {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--text-dim);
+    }
+
+    /* ── MOVERS GRID ── */
+    .movers-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+    }
+
+    .mover-card {
+      background: var(--bg2);
+      padding: 24px;
+      transition: background 0.2s;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+    .mover-card:hover { background: var(--bg3); }
+
+    .mover-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+    }
+    .mover-card.up::before { background: var(--green); }
+    .mover-card.down::before { background: var(--red); }
+    .mover-card.neutral::before { background: var(--amber); }
+
+    .mover-source {
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 8px;
+    }
+    .mover-question {
+      font-family: var(--serif);
+      font-size: 15px;
+      line-height: 1.4;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+
+    .mover-stats {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .mover-prob {
+      font-family: var(--mono);
+      font-size: 28px;
+      font-weight: 700;
+      line-height: 1;
+    }
+    .mover-prob.up { color: var(--green); }
+    .mover-prob.down { color: var(--red); }
+    .mover-prob.neutral { color: var(--amber); }
+
+    .mover-right { text-align: right; }
+    .mover-change {
+      font-family: var(--mono);
+      font-size: 12px;
+      margin-bottom: 4px;
+    }
+    .mover-change.up { color: var(--green); }
+    .mover-change.down { color: var(--red); }
+    .mover-vol {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--text-dim);
+    }
+
+    .mover-bar-wrap {
+      height: 3px;
+      background: var(--bg3);
+      margin-top: 16px;
+    }
+    .mover-bar {
+      height: 100%;
+    }
+    .mover-bar.up { background: var(--green); }
+    .mover-bar.down { background: var(--red); }
+    .mover-bar.neutral { background: var(--amber); }
+
+    /* ── FEATURED STORY ── */
+    .story-grid {
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 1px;
+      background: var(--border);
+    }
+
+    .story-main {
+      background: var(--bg2);
+      padding: 40px;
+    }
+    .story-category {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+    .story-headline {
+      font-family: var(--serif);
+      font-size: 28px;
+      line-height: 1.25;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+    .story-deck {
+      font-size: 16px;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+    .story-byline {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--text-dim);
+      letter-spacing: 0.1em;
+      border-top: 1px solid var(--border);
+      padding-top: 16px;
+      display: flex;
+      gap: 20px;
+    }
+    .story-byline span { color: var(--text-muted); }
+
+    .story-sidebar {
+      background: var(--bg2);
+      display: flex;
+      flex-direction: column;
+    }
+    .story-sidebar-item {
+      padding: 24px;
+      border-bottom: 1px solid var(--border);
+      flex: 1;
+      transition: background 0.2s;
+    }
+    .story-sidebar-item:hover { background: var(--bg3); cursor: pointer; }
+    .story-sidebar-item:last-child { border-bottom: none; }
+    .sidebar-num {
+      font-family: var(--mono);
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--border-bright);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .sidebar-headline {
+      font-family: var(--serif);
+      font-size: 15px;
+      line-height: 1.4;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+    .sidebar-prob {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+    .sidebar-prob strong { color: var(--accent); }
+
+    /* ── THE DAILY BRIEF ── */
+    .brief-section {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      margin: 0 48px;
+      max-width: calc(1280px - 96px);
+      margin: 0 auto;
+    }
+
+    .brief-header {
+      padding: 32px 40px;
+      border-bottom: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 40px;
+    }
+    .brief-title {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+    .brief-headline {
+      font-family: var(--serif);
+      font-size: 24px;
+      color: var(--text);
+    }
+
+    .brief-signup {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 12px;
+    }
+    .brief-signup p {
+      font-size: 13px;
+      color: var(--text-muted);
+      text-align: right;
+    }
+    .brief-form {
+      display: flex;
+      gap: 0;
+    }
+    .brief-form input {
+      background: var(--bg3);
+      border: 1px solid var(--border-bright);
+      border-right: none;
+      color: var(--text);
+      font-family: var(--mono);
+      font-size: 12px;
+      padding: 11px 16px;
+      outline: none;
+      width: 240px;
+      transition: border-color 0.2s;
+    }
+    .brief-form input:focus { border-color: var(--accent); }
+    .brief-form input::placeholder { color: var(--text-dim); }
+    .brief-form button {
+      background: var(--accent);
+      color: var(--bg);
+      border: 1px solid var(--accent);
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 11px 20px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .brief-form button:hover { background: #00c98a; }
+
+    .brief-preview {
+      padding: 32px 40px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+    }
+    .brief-item {
+      border-left: 2px solid var(--border);
+      padding-left: 20px;
+    }
+    .brief-item-num {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--text-dim);
+      margin-bottom: 8px;
+    }
+    .brief-item-text {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+    .brief-item-text strong { color: var(--text); font-weight: 600; }
+    .brief-item-text em { color: var(--accent); font-style: normal; font-family: var(--mono); font-size: 12px; }
+
+    /* ── WHY THE PROB ── */
+    .why-section {
+      padding: 80px 48px;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      margin-top: 40px;
+    }
+    .why-item {
+      background: var(--bg2);
+      padding: 40px 32px;
+    }
+    .why-icon {
+      font-family: var(--mono);
+      font-size: 32px;
+      color: var(--accent);
+      margin-bottom: 16px;
+      line-height: 1;
+    }
+    .why-title {
+      font-family: var(--serif);
+      font-size: 20px;
+      color: var(--text);
+      margin-bottom: 12px;
+    }
+    .why-body {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 48px;
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+    .footer-brand .logo-mark { font-size: 18px; }
+    .footer-brand p {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 12px;
+      line-height: 1.6;
+      max-width: 260px;
+    }
+    .footer-links h4 {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 16px;
+    }
+    .footer-links ul { list-style: none; }
+    .footer-links li { margin-bottom: 8px; }
+    .footer-links a {
+      font-size: 13px;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--accent); }
+    .footer-copy {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--text-dim);
+      grid-column: 1 / -1;
+      border-top: 1px solid var(--border);
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      height: 1px;
+      background: var(--border);
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-left { animation: fadeUp 0.6s ease both; }
+    .hero-card { animation: fadeUp 0.6s ease 0.2s both; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      nav { padding: 16px 24px; }
+      .nav-links { display: none; }
+      .hero { grid-template-columns: 1fr; gap: 40px; padding: 40px 24px; }
+      .hero::after { display: none; }
+      .section { padding: 40px 24px; }
+      .movers-grid { grid-template-columns: 1fr; }
+      .story-grid { grid-template-columns: 1fr; }
+      .brief-header { grid-template-columns: 1fr; }
+      .brief-preview { grid-template-columns: 1fr; }
+      .why-grid { grid-template-columns: 1fr; }
+      footer { grid-template-columns: 1fr; padding: 32px 24px; }
+      .brief-section { margin: 0 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TICKER (populated dynamically from data/markets.json) -->
+  <div class="ticker-wrap">
+    <div class="ticker-track" id="ticker">
+      <!-- JS inserts ticker items here -->
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <nav>
+    <div class="logo">
+      <span class="logo-mark">THE PROB</span>
+      <span class="logo-pipe">|</span>
+      <span class="logo-sub">What's the Probability?</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#">Markets</a></li>
+      <li><a href="#">Politics</a></li>
+      <li><a href="#">Finance</a></li>
+      <li><a href="#">About</a></li>
+    </ul>
+    <a href="#signup" class="nav-cta">Get the Daily Brief →</a>
+  </nav>
+
+  <!-- HERO -->
+  <section style="max-width: 1280px; margin: 0 auto;">
+    <div class="hero">
+      <div class="hero-left">
+        <div class="hero-eyebrow">Daily Prediction Markets Intelligence</div>
+        <h1 class="hero-headline">
+          The crowd just put <em>money on it.</em><br>Here's what they know.
+        </h1>
+        <p class="hero-sub">
+          Every morning, The Prob surfaces the biggest movers, most interesting bets, and sharpest crowd signals from Polymarket and Kalshi — translated from market-speak into something worth reading.
+        </p>
+        <div class="signup-form" id="signup">
+          <input type="email" placeholder="your@email.com" />
+          <button>Subscribe Free</button>
+        </div>
+        <p class="hero-trust">Free forever &nbsp;·&nbsp; <span>No spam, ever</span> &nbsp;·&nbsp; Unsubscribe anytime</p>
+      </div>
+
+      <div class="hero-card" id="hero-card">
+        <div class="hero-card-header">
+          <span class="hero-card-label"><span class="live-dot"></span> Market of the Day</span>
+          <span class="hero-card-source" id="hero-source">—</span>
+        </div>
+        <div class="hero-card-body">
+          <p class="hero-card-question" id="hero-question">Loading market data…</p>
+          <div class="prob-display">
+            <div class="prob-number" id="hero-prob">—</div>
+            <div>
+              <div class="prob-pct">%</div>
+              <div class="prob-change" id="hero-change">—</div>
+            </div>
+          </div>
+          <div class="prob-bar-wrap">
+            <div class="prob-bar" id="hero-bar" style="width: 0%"></div>
+          </div>
+          <div class="card-meta">
+            <div class="card-meta-item">
+              <div class="card-meta-label">Volume</div>
+              <div class="card-meta-value" id="hero-volume">—</div>
+            </div>
+            <div class="card-meta-item">
+              <div class="card-meta-label">Resolves</div>
+              <div class="card-meta-value" id="hero-end-date">—</div>
+            </div>
+            <div class="card-meta-item">
+              <div class="card-meta-label">24h Change</div>
+              <div class="card-meta-value" id="hero-change-meta">—</div>
+            </div>
+            <div class="card-meta-item">
+              <div class="card-meta-label">Source</div>
+              <div class="card-meta-value" id="hero-source-meta">—</div>
+            </div>
+          </div>
+        </div>
+        <div class="hero-card-insight">
+          <p><strong>The Prob's take →</strong> <span id="hero-insight">The crowd has spoken — check back soon for today's editorial take on this market.</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- TODAY'S BIGGEST MOVERS -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-title">
+        Today's Biggest Movers <span>Markets on the Move</span>
+      </div>
+      <div class="section-meta" id="updated-time">Loading…</div>
+    </div>
+    <div class="movers-grid" id="movers-grid">
+      <!-- JS inserts mover cards here -->
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- FEATURED STORY -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-title">Featured <span>The Prob's Daily Take</span></div>
+      <div class="section-meta">Feb 19, 2026</div>
+    </div>
+    <div class="story-grid">
+      <div class="story-main">
+        <div class="story-category">Deep Dive · Politics</div>
+        <h2 class="story-headline">The Ukraine ceasefire market just crossed 50% for the first time — here's what traders are betting on</h2>
+        <p class="story-deck">A single late-night tweet from a White House official moved a $9.4M market by 7 points overnight. That's not noise — that's the crowd telling you something the news cycle hasn't caught up to yet. We dug into the signal.</p>
+        <div class="story-byline">
+          <span>The Prob Editorial</span>
+          <span>Feb 19, 2026 · 8:00 AM ET</span>
+          <span style="color: var(--accent)">Read the Full Issue →</span>
+        </div>
+      </div>
+      <div class="story-sidebar">
+        <div class="story-sidebar-item">
+          <div class="sidebar-num">01</div>
+          <div class="sidebar-headline">The Fed's March meeting is priced at near-certainty — but is the crowd overconfident?</div>
+          <div class="sidebar-prob">Fed Cut March: <strong>72%</strong></div>
+        </div>
+        <div class="story-sidebar-item">
+          <div class="sidebar-num">02</div>
+          <div class="sidebar-headline">Nvidia's $4T bet: Why this market is the most fascinating crowdsourced macro call right now</div>
+          <div class="sidebar-prob">NVDA $4T: <strong>55%</strong></div>
+        </div>
+        <div class="story-sidebar-item">
+          <div class="sidebar-num">03</div>
+          <div class="sidebar-headline">Bitcoin cools — traders pull back from the $120K call after a week of optimism</div>
+          <div class="sidebar-prob">BTC $120K: <strong>34% ▼</strong></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider" style="margin-bottom: 60px;"></div>
+
+  <!-- THE DAILY BRIEF CTA -->
+  <div class="brief-section" style="max-width: 1184px; margin: 0 auto 60px;">
+    <div class="brief-header">
+      <div>
+        <div class="brief-title">The Prob · Daily Brief</div>
+        <div class="brief-headline">Every morning, the smartest markets take on the day's biggest questions. We translate it.</div>
+      </div>
+      <div class="brief-signup">
+        <p>Join readers getting the daily crowd intelligence brief.</p>
+        <div class="brief-form">
+          <input type="email" placeholder="your@email.com" />
+          <button>Get the Brief</button>
+        </div>
+      </div>
+    </div>
+    <div class="brief-preview">
+      <div class="brief-item">
+        <div class="brief-item-num">TODAY'S LEAD</div>
+        <div class="brief-item-text"><strong>The ceasefire market crossed 50%.</strong> Here's what changed overnight and why a single official's words moved $9M in bets. <em>→ FULL STORY</em></div>
+      </div>
+      <div class="brief-item">
+        <div class="brief-item-num">THE NUMBER</div>
+        <div class="brief-item-text"><strong>72%</strong> — that's the crowd's confidence in a March Fed cut after this morning's CPI print. An 8-point single-day move. <em>→ BREAKDOWN</em></div>
+      </div>
+      <div class="brief-item">
+        <div class="brief-item-num">THE FADE</div>
+        <div class="brief-item-text"><strong>Bitcoin's $120K dream is fading.</strong> Down 9 points this week. Traders who loaded up last week are quietly covering. <em>→ CHART</em></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- WHY THE PROB -->
+  <section class="why-section">
+    <div class="section-header">
+      <div class="section-title">Why The Prob <span>Prediction Markets, Explained</span></div>
+    </div>
+    <div class="why-grid">
+      <div class="why-item">
+        <div class="why-icon">⬡</div>
+        <div class="why-title">Crowd wisdom, not punditry</div>
+        <div class="why-body">Prediction markets aggregate the views of thousands of people putting real money on the line. That's not an opinion — it's a probability. We surface what the crowd knows before the headlines catch up.</div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">▲</div>
+        <div class="why-title">The movers matter most</div>
+        <div class="why-body">A market sitting at 40% for a week is background noise. A market moving 10 points overnight? That's information. We track the delta — the change — because that's where the signal lives.</div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">◈</div>
+        <div class="why-title">Built for humans, not traders</div>
+        <div class="why-body">You don't need to trade on Polymarket or Kalshi to find this useful. We translate market activity into plain language so you can think more clearly about what's actually likely to happen in the world.</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-brand">
+      <div class="logo">
+        <span class="logo-mark">THE PROB</span>
+      </div>
+      <p>Daily intelligence from the prediction markets. What's the probability? Let the crowd tell you.</p>
+    </div>
+    <div class="footer-links">
+      <h4>Navigate</h4>
+      <ul>
+        <li><a href="#">Today's Markets</a></li>
+        <li><a href="#">Politics</a></li>
+        <li><a href="#">Finance & Crypto</a></li>
+        <li><a href="#">About The Prob</a></li>
+      </ul>
+    </div>
+    <div class="footer-links">
+      <h4>Sources</h4>
+      <ul>
+        <li><a href="https://polymarket.com" target="_blank">Polymarket ↗</a></li>
+        <li><a href="https://kalshi.com" target="_blank">Kalshi ↗</a></li>
+        <li><a href="#">Newsletter Archive</a></li>
+        <li><a href="#">Advertise</a></li>
+      </ul>
+    </div>
+    <div class="footer-copy">
+      <span>© 2026 The Prob. Prediction markets intelligence.</span>
+      <span>Not financial advice. Markets data for informational purposes only.</span>
+    </div>
+  </footer>
+
+
+<script>
+// ─────────────────────────────────────────────────────────────────────────────
+// THE PROB — Live Market Data Loader
+// Reads data/markets.json (written by GitHub Actions 4x/day)
+// and populates the ticker, hero card, and movers grid.
+// ─────────────────────────────────────────────────────────────────────────────
+
+const DATA_URL = 'data/markets.json';
+
+// ── UTILITIES ────────────────────────────────────────────────────────────────
+
+function directionClass(changePts) {
+  if (changePts >  0.5) return 'up';
+  if (changePts < -0.5) return 'down';
+  return 'neutral';
+}
+
+function changeArrow(changePts) {
+  if (changePts >  0.5) return `▲ +${changePts} pts`;
+  if (changePts < -0.5) return `▼ ${changePts} pts`;
+  return `— ${Math.abs(changePts)} pts`;
+}
+
+function changeArrowShort(changePts) {
+  if (changePts >  0.5) return `▲+${changePts}`;
+  if (changePts < -0.5) return `▼${changePts}`;
+  return `—`;
+}
+
+function truncate(str, maxLen = 60) {
+  return str.length > maxLen ? str.slice(0, maxLen - 1) + '…' : str;
+}
+
+// ── TICKER ───────────────────────────────────────────────────────────────────
+
+function renderTicker(markets) {
+  const track = document.getElementById('ticker');
+  if (!track || !markets.length) return;
+
+  // Build items once, then duplicate for seamless loop
+  const makeItem = (m) => {
+    const dir = directionClass(m.change_pts);
+    const label = truncate(m.question, 40).toUpperCase();
+    const probStr = `${m.prob}% ${changeArrowShort(m.change_pts)}`;
+    return `<div class="ticker-item">
+      <span class="name">${label}</span>
+      <span class="${dir}">${probStr}</span>
+    </div>`;
+  };
+
+  const html = markets.map(makeItem).join('');
+  track.innerHTML = html + html; // duplicate for seamless CSS loop
+}
+
+// ── HERO CARD ─────────────────────────────────────────────────────────────────
+
+function renderHero(hero) {
+  if (!hero) return;
+
+  const dir = directionClass(hero.change_pts);
+
+  document.getElementById('hero-source').textContent     = hero.source.toUpperCase();
+  document.getElementById('hero-source-meta').textContent = hero.source;
+  document.getElementById('hero-question').textContent   = hero.question;
+  document.getElementById('hero-prob').textContent       = hero.prob;
+  document.getElementById('hero-volume').textContent     = hero.volume_fmt;
+  document.getElementById('hero-end-date').textContent   = hero.end_date || '—';
+
+  const changeEl = document.getElementById('hero-change');
+  changeEl.textContent  = changeArrow(hero.change_pts) + ' today';
+  changeEl.className    = `prob-change ${dir}`;
+
+  const changeMetaEl = document.getElementById('hero-change-meta');
+  changeMetaEl.textContent  = changeArrow(hero.change_pts);
+  changeMetaEl.style.color  = dir === 'up' ? 'var(--green)' : dir === 'down' ? 'var(--red)' : 'var(--amber)';
+
+  // Animate the probability bar
+  const bar = document.getElementById('hero-bar');
+  setTimeout(() => { bar.style.width = `${hero.prob}%`; }, 100);
+
+  // Make the card clickable
+  const card = document.getElementById('hero-card');
+  if (hero.url) {
+    card.style.cursor = 'pointer';
+    card.addEventListener('click', () => window.open(hero.url, '_blank'));
+  }
+}
+
+// ── MOVERS GRID ───────────────────────────────────────────────────────────────
+
+function renderMovers(movers) {
+  const grid = document.getElementById('movers-grid');
+  if (!grid || !movers.length) return;
+
+  grid.innerHTML = movers.map(m => {
+    const dir = directionClass(m.change_pts);
+    return `
+    <div class="mover-card ${dir}" onclick="window.open('${m.url}','_blank')" style="cursor:pointer">
+      <div class="mover-source">${m.source}</div>
+      <div class="mover-question">${m.question}</div>
+      <div class="mover-stats">
+        <div class="mover-prob ${dir}">${m.prob}%</div>
+        <div class="mover-right">
+          <div class="mover-change ${dir}">${changeArrow(m.change_pts)}</div>
+          <div class="mover-vol">Vol: ${m.volume_fmt}</div>
+        </div>
+      </div>
+      <div class="mover-bar-wrap">
+        <div class="mover-bar ${dir}" style="width:${m.prob}%"></div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// ── TIMESTAMP ─────────────────────────────────────────────────────────────────
+
+function renderTimestamp(updated) {
+  const el = document.getElementById('updated-time');
+  if (el && updated) el.textContent = `Updated ${updated}`;
+}
+
+// ── BOOT ─────────────────────────────────────────────────────────────────────
+
+async function loadMarkets() {
+  try {
+    // Cache-bust so GitHub Pages CDN always serves fresh data
+    const url = `${DATA_URL}?v=${Date.now()}`;
+    const res = await fetch(url);
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data = await res.json();
+
+    renderTicker(data.ticker   || []);
+    renderHero(data.hero       || null);
+    renderMovers(data.movers   || []);
+    renderTimestamp(data.updated || '');
+
+  } catch (err) {
+    // Fail gracefully — static fallback content remains visible
+    console.warn('Could not load market data:', err.message);
+    const el = document.getElementById('updated-time');
+    if (el) el.textContent = 'Live data temporarily unavailable';
+  }
+}
+
+// Run on page load
+loadMarkets();
+</script>
+
+</body>
+</html>
