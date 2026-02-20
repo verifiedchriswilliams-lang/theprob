@@ -164,7 +164,7 @@ def fetch_kalshi() -> list[dict]:
 
         while pages_fetched < 5:
             path   = "/trade-api/v2/markets"
-            params = {"limit": 100, "status": "open", "series_ticker": "KXFED,KXGDP,KXCPI,KXBTC,KXELECTION,KXCONGRESS,KXGEOPOLITICS,KXTECH,KXENERGY"}
+            params = {"limit": 100, "status": "open"}
             if cursor:
                 params["cursor"] = cursor
 
@@ -185,8 +185,7 @@ def fetch_kalshi() -> list[dict]:
             print(f"  [DEBUG] Kalshi returned {len(batch)} markets in this page")
             if batch:
                 m0 = batch[0]
-                print(f"  [DEBUG] Sample keys: {list(m0.keys())}")
-                print(f"  [DEBUG] Sample values: {m0}")
+                print(f"  [DEBUG] event tickers: {[m.get('event_ticker','')[:20] for m in batch[:20]]}")
             if not batch:
                 break
                 
