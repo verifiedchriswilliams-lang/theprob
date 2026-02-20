@@ -182,9 +182,14 @@ def fetch_kalshi() -> list[dict]:
             resp.raise_for_status()
             data  = resp.json()
             batch = data.get("markets", [])
+            print(f"  [DEBUG] Kalshi returned {len(batch)} markets in this page")
+            if batch:
+                m0 = batch[0]
+                print(f"  [DEBUG] Sample market: {m0.get('title','?')[:50]}")
+                print(f"  [DEBUG] volume={m0.get('volume')} yes_bid={m0.get('yes_bid')} yes_ask={m0.get('yes_ask')}")
             if not batch:
                 break
-
+                
             for m in batch:
                 try:
                     yes_bid = float(m.get("yes_bid", 0) or 0)
