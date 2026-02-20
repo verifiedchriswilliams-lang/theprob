@@ -164,7 +164,7 @@ def fetch_kalshi() -> list[dict]:
 
         while pages_fetched < 5:
             path   = "/trade-api/v2/markets"
-            params = {"limit": 100, "status": "open", "series_ticker": "KXPOLITICS,KXFINANCIAL,KXECONOMICS,KXWORLD,KXSCIENCE"}
+            params = {"limit": 100, "status": "open", "series_ticker": "KXFED,KXGDP,KXCPI,KXBTC,KXELECTION,KXCONGRESS,KXGEOPOLITICS,KXTECH,KXENERGY"}
             if cursor:
                 params["cursor"] = cursor
 
