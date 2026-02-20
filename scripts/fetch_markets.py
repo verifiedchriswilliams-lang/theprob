@@ -98,7 +98,7 @@ def make_kalshi_headers(method: str, path: str) -> dict:
 def fetch_polymarket() -> list[dict]:
     markets = []
     try:
-        resp = requests.get(
+       resp = requests.get(
             f"{GAMMA_BASE}/markets",
             params={
                 "active":    "true",
@@ -106,6 +106,7 @@ def fetch_polymarket() -> list[dict]:
                 "limit":     100,
                 "order":     "volume24hr",
                 "ascending": "false",
+                "tag_slug":  "trending",
             },
             timeout=15,
         )
