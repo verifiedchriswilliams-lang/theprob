@@ -122,7 +122,7 @@ def fetch_kalshi() -> list[dict]:
     markets = []
     headers = {}
     if KALSHI_API_KEY:
-        headers["Authorization"] = f"Token {KALSHI_API_KEY}"
+        headers["Authorization"] = f"Bearer {KALSHI_API_KEY}"
 
     try:
         cursor = None
