@@ -66,10 +66,11 @@ def make_kalshi_headers(method: str, path: str) -> dict:
             password=None,
         )
 
-        # Build the message to sign: timestamp + key_id + method + path
+        # Build the message to sign: timestamp + method + path
         timestamp_ms = str(int(time.time() * 1000))
-        message = f"{timestamp_ms}{KALSHI_KEY_ID}{method}{path}".encode("utf-8")
-
+        path_without_query = path.split('?')[0]
+        message = f"{timestamp_ms}{method}{path_without_query}".encode("utf-8")
+        
         # Sign with RSA-PSS SHA256
         signature = private_key.sign(
             message,
