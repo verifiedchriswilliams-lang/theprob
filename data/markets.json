@@ -1,6 +1,6 @@
 {
-  "updated": "Feb 20, 2026 \u00b7 12:12 AM ET",
-  "updated_iso": "2026-02-20T05:12:15.564394+00:00",
+  "updated": "Feb 20, 2026 \u00b7 12:22 AM ET",
+  "updated_iso": "2026-02-20T05:22:41.286047+00:00",
   "hero": {
     "source": "Polymarket",
     "question": "Pistons vs. Knicks",
@@ -9,11 +9,11 @@
     "prob": 100.0,
     "change_pts": 61.5,
     "direction": "up",
-    "volume": 3039037.315429,
+    "volume": 3039140.965429,
     "volume_fmt": "$3.0M",
     "volume_24h": 1340619.4090829983,
     "end_date": "Feb 20",
-    "liquidity": 870627.18135
+    "liquidity": 868858.43687
   },
   "movers": [
     {
@@ -22,13 +22,13 @@
       "slug": "nba-hou-cha-2026-02-19-spread-away-4pt5",
       "url": "https://polymarket.com/event/nba-hou-cha-2026-02-19-spread-away-4pt5",
       "prob": 0.1,
-      "change_pts": -50.4,
+      "change_pts": -49.5,
       "direction": "down",
-      "volume": 619969.040812,
+      "volume": 620001.210812,
       "volume_fmt": "$620K",
       "volume_24h": 556441.2291959998,
       "end_date": "Feb 20",
-      "liquidity": 493794.40408
+      "liquidity": 494374.73461
     },
     {
       "source": "Polymarket",
@@ -38,25 +38,11 @@
       "prob": 100.0,
       "change_pts": 37.5,
       "direction": "up",
-      "volume": 3356730.218773,
+      "volume": 3356800.848773,
       "volume_fmt": "$3.4M",
       "volume_24h": 1631748.7024000082,
       "end_date": "Feb 20",
-      "liquidity": 1108107.10258
-    },
-    {
-      "source": "Polymarket",
-      "question": "Celtics vs. Warriors",
-      "slug": "nba-bos-gsw-2026-02-19",
-      "url": "https://polymarket.com/event/nba-bos-gsw-2026-02-19",
-      "prob": 99.4,
-      "change_pts": 34.4,
-      "direction": "up",
-      "volume": 2597281.869197,
-      "volume_fmt": "$2.6M",
-      "volume_24h": 763559.682092,
-      "end_date": "Feb 20",
-      "liquidity": 42844.60964
+      "liquidity": 1108340.23621
     },
     {
       "source": "Polymarket",
@@ -66,11 +52,25 @@
       "prob": 100.0,
       "change_pts": 34.4,
       "direction": "up",
-      "volume": 1401374.85108,
+      "volume": 1401795.28108,
       "volume_fmt": "$1.4M",
       "volume_24h": 565443.2882399999,
       "end_date": "Feb 20",
-      "liquidity": 553472.83492
+      "liquidity": 553492.38535
+    },
+    {
+      "source": "Polymarket",
+      "question": "Celtics vs. Warriors",
+      "slug": "nba-bos-gsw-2026-02-19",
+      "url": "https://polymarket.com/event/nba-bos-gsw-2026-02-19",
+      "prob": 100.0,
+      "change_pts": 34.0,
+      "direction": "up",
+      "volume": 2727097.090385,
+      "volume_fmt": "$2.7M",
+      "volume_24h": 763559.682092,
+      "end_date": "Feb 20",
+      "liquidity": 350701.65209
     },
     {
       "source": "Polymarket",
@@ -78,27 +78,27 @@
       "slug": "will-google-have-the-best-ai-model-at-the-end-of-february-2026",
       "url": "https://polymarket.com/event/will-google-have-the-best-ai-model-at-the-end-of-february-2026",
       "prob": 13.0,
-      "change_pts": -28.5,
+      "change_pts": -32.5,
       "direction": "down",
-      "volume": 3078415.076912,
+      "volume": 3080124.392625,
       "volume_fmt": "$3.1M",
       "volume_24h": 884906.0194620001,
       "end_date": "Feb 28",
-      "liquidity": 134591.9791
+      "liquidity": 134756.1028
     },
     {
       "source": "Polymarket",
-      "question": "Suns vs. Spurs",
-      "slug": "nba-phx-sas-2026-02-19",
-      "url": "https://polymarket.com/event/nba-phx-sas-2026-02-19",
-      "prob": 0.1,
-      "change_pts": -28.4,
-      "direction": "down",
-      "volume": 2729887.15834,
-      "volume_fmt": "$2.7M",
-      "volume_24h": 1431236.7445639973,
-      "end_date": "Feb 20",
-      "liquidity": 490807.23679
+      "question": "Will Anthropic have the best AI model at the end of February 2026?",
+      "slug": "will-anthropic-have-the-best-ai-model-at-the-end-of-february-2026",
+      "url": "https://polymarket.com/event/will-anthropic-have-the-best-ai-model-at-the-end-of-february-2026",
+      "prob": 82.5,
+      "change_pts": 30.2,
+      "direction": "up",
+      "volume": 2395923.715919,
+      "volume_fmt": "$2.4M",
+      "volume_24h": 485498.76353599975,
+      "end_date": "Feb 28",
+      "liquidity": 67148.02682
     }
   ],
   "ticker": [
@@ -110,11 +110,11 @@
       "prob": 100.0,
       "change_pts": 61.5,
       "direction": "up",
-      "volume": 3039037.315429,
+      "volume": 3039140.965429,
       "volume_fmt": "$3.0M",
       "volume_24h": 1340619.4090829983,
       "end_date": "Feb 20",
-      "liquidity": 870627.18135
+      "liquidity": 868858.43687
     },
     {
       "source": "Polymarket",
@@ -122,13 +122,13 @@
       "slug": "nba-hou-cha-2026-02-19-spread-away-4pt5",
       "url": "https://polymarket.com/event/nba-hou-cha-2026-02-19-spread-away-4pt5",
       "prob": 0.1,
-      "change_pts": -50.4,
+      "change_pts": -49.5,
       "direction": "down",
-      "volume": 619969.040812,
+      "volume": 620001.210812,
       "volume_fmt": "$620K",
       "volume_24h": 556441.2291959998,
       "end_date": "Feb 20",
-      "liquidity": 493794.40408
+      "liquidity": 494374.73461
     },
     {
       "source": "Polymarket",
@@ -138,25 +138,11 @@
       "prob": 100.0,
       "change_pts": 37.5,
       "direction": "up",
-      "volume": 3356730.218773,
+      "volume": 3356800.848773,
       "volume_fmt": "$3.4M",
       "volume_24h": 1631748.7024000082,
       "end_date": "Feb 20",
-      "liquidity": 1108107.10258
-    },
-    {
-      "source": "Polymarket",
-      "question": "Celtics vs. Warriors",
-      "slug": "nba-bos-gsw-2026-02-19",
-      "url": "https://polymarket.com/event/nba-bos-gsw-2026-02-19",
-      "prob": 99.4,
-      "change_pts": 34.4,
-      "direction": "up",
-      "volume": 2597281.869197,
-      "volume_fmt": "$2.6M",
-      "volume_24h": 763559.682092,
-      "end_date": "Feb 20",
-      "liquidity": 42844.60964
+      "liquidity": 1108340.23621
     },
     {
       "source": "Polymarket",
@@ -166,11 +152,25 @@
       "prob": 100.0,
       "change_pts": 34.4,
       "direction": "up",
-      "volume": 1401374.85108,
+      "volume": 1401795.28108,
       "volume_fmt": "$1.4M",
       "volume_24h": 565443.2882399999,
       "end_date": "Feb 20",
-      "liquidity": 553472.83492
+      "liquidity": 553492.38535
+    },
+    {
+      "source": "Polymarket",
+      "question": "Celtics vs. Warriors",
+      "slug": "nba-bos-gsw-2026-02-19",
+      "url": "https://polymarket.com/event/nba-bos-gsw-2026-02-19",
+      "prob": 100.0,
+      "change_pts": 34.0,
+      "direction": "up",
+      "volume": 2727097.090385,
+      "volume_fmt": "$2.7M",
+      "volume_24h": 763559.682092,
+      "end_date": "Feb 20",
+      "liquidity": 350701.65209
     },
     {
       "source": "Polymarket",
@@ -178,27 +178,27 @@
       "slug": "will-google-have-the-best-ai-model-at-the-end-of-february-2026",
       "url": "https://polymarket.com/event/will-google-have-the-best-ai-model-at-the-end-of-february-2026",
       "prob": 13.0,
-      "change_pts": -28.5,
+      "change_pts": -32.5,
       "direction": "down",
-      "volume": 3078415.076912,
+      "volume": 3080124.392625,
       "volume_fmt": "$3.1M",
       "volume_24h": 884906.0194620001,
       "end_date": "Feb 28",
-      "liquidity": 134591.9791
+      "liquidity": 134756.1028
     },
     {
       "source": "Polymarket",
       "question": "Will Trump nominate Judy Shelton as the next Fed chair?",
       "slug": "will-trump-nominate-judy-shelton-as-the-next-fed-chair",
       "url": "https://polymarket.com/event/will-trump-nominate-judy-shelton-as-the-next-fed-chair",
-      "prob": 3.5,
+      "prob": 3.6,
       "change_pts": 0.1,
       "direction": "neutral",
-      "volume": 89138582.727403,
+      "volume": 89144510.879475,
       "volume_fmt": "$89.1M",
       "volume_24h": 768389.4630549996,
       "end_date": "Dec 31",
-      "liquidity": 1748115.00995
+      "liquidity": 1752480.06346
     },
     {
       "source": "Polymarket",
@@ -208,11 +208,11 @@
       "prob": 0.8,
       "change_pts": 0.0,
       "direction": "neutral",
-      "volume": 58840570.199062,
+      "volume": 58840580.26949,
       "volume_fmt": "$58.8M",
       "volume_24h": 2852179.7858899976,
       "end_date": "Mar 18",
-      "liquidity": 1852725.13152
+      "liquidity": 1850778.45996
     },
     {
       "source": "Polymarket",
@@ -222,25 +222,25 @@
       "prob": 0.7,
       "change_pts": 0.1,
       "direction": "neutral",
-      "volume": 50001127.74426,
+      "volume": 50001294.74426,
       "volume_fmt": "$50.0M",
       "volume_24h": 2882483.0430590007,
       "end_date": "Mar 18",
-      "liquidity": 1039698.28465
+      "liquidity": 1036969.47047
     },
     {
       "source": "Polymarket",
       "question": "Will Trump nominate Kevin Warsh as the next Fed chair?",
       "slug": "will-trump-nominate-kevin-warsh-as-the-next-fed-chair",
       "url": "https://polymarket.com/event/will-trump-nominate-kevin-warsh-as-the-next-fed-chair",
-      "prob": 94.2,
-      "change_pts": -0.1,
+      "prob": 94.1,
+      "change_pts": -0.4,
       "direction": "neutral",
-      "volume": 41184540.971616,
+      "volume": 41187390.124909,
       "volume_fmt": "$41.2M",
       "volume_24h": 272224.5279680001,
       "end_date": "Dec 31",
-      "liquidity": 479178.53117
+      "liquidity": 477009.37018
     }
   ]
 }
