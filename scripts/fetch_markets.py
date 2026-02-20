@@ -16,7 +16,7 @@ from datetime import datetime, timezone, timedelta
 # ── CONFIG ──────────────────────────────────────────────────────────────────
 KALSHI_KEY_ID    = os.environ.get("KALSHI_KEY_ID", "")
 KALSHI_PRIV_KEY  = os.environ.get("KALSHI_PRIVATE_KEY", "")
-KALSHI_BASE      = "https://trading-api.kalshi.com/trade-api/v2"
+KALSHI_BASE      = "https://api.elections.kalshi.com/trade-api/v2"
 GAMMA_BASE       = "https://gamma-api.polymarket.com"
 
 MIN_VOLUME_USD   = 50_000
