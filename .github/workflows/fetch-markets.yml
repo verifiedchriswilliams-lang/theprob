@@ -21,10 +21,11 @@ jobs:
         with:
           python-version: '3.11'
       - name: Install dependencies
-        run: pip install requests
+        run: pip install requests cryptography
       - name: Fetch market data
         env:
-          KALSHI_API_KEY: ${{ secrets.KALSHI_API_KEY }}
+          KALSHI_KEY_ID: ${{ secrets.KALSHI_KEY_ID }}
+          KALSHI_PRIVATE_KEY: ${{ secrets.KALSHI_PRIVATE_KEY }}
         run: python scripts/fetch_markets.py
       - name: Commit and push data/markets.json
         run: |
