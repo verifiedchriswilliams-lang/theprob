@@ -185,7 +185,7 @@ def fetch_kalshi() -> list[dict]:
             print(f"  [DEBUG] Kalshi returned {len(batch)} markets in this page")
             if batch:
                 m0 = batch[0]
-                print(f"  [DEBUG] event tickers: {[m.get('event_ticker','')[:20] for m in batch[:20]]}")
+                print(f"  [DEBUG] non-sports tickers: {[m.get('event_ticker','')[:30] for m in batch if not m.get('event_ticker','').startswith(('KXMVE','KXNBA','KXNFL','KXMLB','KXNHL','KXEPL','KXLALIGA'))][:10]}")
             if not batch:
                 break
                 
