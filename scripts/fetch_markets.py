@@ -256,7 +256,19 @@ def pick_hero(markets: list[dict]) -> dict | None:
 def pick_movers(markets: list[dict], exclude_slug: str = "") -> list[dict]:
     candidates = [m for m in markets if m["slug"] != exclude_slug and abs(m["change_pts"]) > 0]
     candidates.sort(key=score_market, reverse=True)
-    return candidates[:TOP_MOVERS_COUNT]
+    result = []
+    sports_count = 0
+    sports_words = ["celtics","lakers","knicks","nuggets","warriors","pistons","clippers","nba","nfl","mlb","nhl"," vs "]
+    for c in candidates:
+        is_sports = any(w in c["question"].lower() for w in sports_words)
+        if is_sports and sports_count >= 2:
+            continue
+        if is_sports:
+            sports_count += 1
+        result.append(c)
+        if len(result) >= TOP_MOVERS_COUNT:
+            break
+    return result
 
 def pick_ticker(markets: list[dict]) -> list[dict]:
     by_change = sorted(markets, key=lambda m: abs(m["change_pts"]), reverse=True)[:6]
