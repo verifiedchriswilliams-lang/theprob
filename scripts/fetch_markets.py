@@ -183,10 +183,8 @@ def fetch_kalshi() -> list[dict]:
             resp.raise_for_status()
             data  = resp.json()
             batch = data.get("markets", [])
-            print(f"  [DEBUG] Kalshi returned {len(batch)} markets in this page")
             if batch:
                 m0 = batch[0]
-                print(f"  [DEBUG] non-sports tickers: {[m.get('event_ticker','')[:30] for m in batch if not m.get('event_ticker','').startswith(('KXMVE','KXNBA','KXNFL','KXMLB','KXNHL','KXEPL','KXLALIGA'))][:10]}")
             if not batch:
                 break
                 
@@ -246,9 +244,11 @@ def score_market(m: dict) -> float:
     return (abs_change * 2.5) + (vol_score * 1.0) + (prob_interest * 0.5)
 
 def pick_hero(markets: list[dict]) -> dict | None:
-    candidates = [m for m in markets if m["volume"] >= HERO_MIN_VOLUME and abs(m["change_pts"]) >= 3]
+    sports_words = ["celtics","lakers","knicks","nuggets","warriors","pistons","clippers","nba","nfl","mlb","nhl"," vs ","raptors","bulls"]
+    non_sports = [m for m in markets if not any(w in m["question"].lower() for w in sports_words)]
+    candidates = [m for m in non_sports if m["volume"] >= HERO_MIN_VOLUME and abs(m["change_pts"]) >= 3]
     if not candidates:
-        candidates = [m for m in markets if m["volume"] >= HERO_MIN_VOLUME]
+        candidates = [m for m in non_sports if m["volume"] >= HERO_MIN_VOLUME]
     if not candidates:
         return None
     return max(candidates, key=score_market)
