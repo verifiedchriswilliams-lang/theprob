@@ -98,7 +98,7 @@ def make_kalshi_headers(method: str, path: str) -> dict:
 def fetch_polymarket() -> list[dict]:
     markets = []
     try:
-       resp = requests.get(
+        resp = requests.get(
             f"{GAMMA_BASE}/markets",
             params={
                 "active":    "true",
@@ -150,7 +150,7 @@ def fetch_polymarket() -> list[dict]:
         print(f"[WARN] Polymarket fetch failed: {e}")
 
     return markets
-
+    
 # ── KALSHI ───────────────────────────────────────────────────────────────────
 
 def fetch_kalshi() -> list[dict]:
