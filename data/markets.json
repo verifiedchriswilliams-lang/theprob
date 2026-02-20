@@ -1,6 +1,6 @@
 {
-  "updated": "Feb 19, 2026 \u00b7 11:12 PM ET",
-  "updated_iso": "2026-02-20T04:12:10.286387+00:00",
+  "updated": "Feb 19, 2026 \u00b7 11:15 PM ET",
+  "updated_iso": "2026-02-20T04:15:45.879591+00:00",
   "hero": {
     "source": "Polymarket",
     "question": "Pistons vs. Knicks",
@@ -9,11 +9,11 @@
     "prob": 100.0,
     "change_pts": 60.5,
     "direction": "up",
-    "volume": 3033548.045429,
+    "volume": 3033578.325429,
     "volume_fmt": "$3.0M",
     "volume_24h": 1340619.4090829983,
     "end_date": "Feb 20",
-    "liquidity": 588897.69608
+    "liquidity": 588877.43636
   },
   "movers": [
     {
@@ -28,7 +28,7 @@
       "volume_fmt": "$1.3M",
       "volume_24h": 545398.7951390006,
       "end_date": "Feb 20",
-      "liquidity": 168219.5814
+      "liquidity": 167849.9514
     },
     {
       "source": "Polymarket",
@@ -42,7 +42,7 @@
       "volume_fmt": "$2.3M",
       "volume_24h": 1330850.0110610002,
       "end_date": "Feb 20",
-      "liquidity": 361107.9249
+      "liquidity": 360960.0729
     },
     {
       "source": "Polymarket",
@@ -50,13 +50,13 @@
       "slug": "nba-hou-cha-2026-02-19-spread-away-4pt5",
       "url": "https://polymarket.com/event/nba-hou-cha-2026-02-19-spread-away-4pt5",
       "prob": 0.1,
-      "change_pts": -49.5,
+      "change_pts": -50.0,
       "direction": "down",
       "volume": 619559.550812,
       "volume_fmt": "$620K",
       "volume_24h": 556441.2291959998,
       "end_date": "Feb 20",
-      "liquidity": 207605.75959
+      "liquidity": 207615.74959
     },
     {
       "source": "Polymarket",
@@ -70,7 +70,7 @@
       "volume_fmt": "$559K",
       "volume_24h": 543256.1342270002,
       "end_date": "Feb 20",
-      "liquidity": 88169.60022
+      "liquidity": 88181.89022
     },
     {
       "source": "Polymarket",
@@ -80,11 +80,11 @@
       "prob": 100.0,
       "change_pts": 37.5,
       "direction": "up",
-      "volume": 3355319.828773,
+      "volume": 3355337.498773,
       "volume_fmt": "$3.4M",
       "volume_24h": 1631748.7024000082,
       "end_date": "Feb 20",
-      "liquidity": 822893.18719
+      "liquidity": 822505.90486
     },
     {
       "source": "Polymarket",
@@ -94,11 +94,11 @@
       "prob": 100.0,
       "change_pts": 34.4,
       "direction": "up",
-      "volume": 1384640.63108,
+      "volume": 1385192.36108,
       "volume_fmt": "$1.4M",
       "volume_24h": 565443.2882399999,
       "end_date": "Feb 20",
-      "liquidity": 570406.5487
+      "liquidity": 569871.35443
     }
   ],
   "ticker": [
@@ -110,11 +110,11 @@
       "prob": 100.0,
       "change_pts": 60.5,
       "direction": "up",
-      "volume": 3033548.045429,
+      "volume": 3033578.325429,
       "volume_fmt": "$3.0M",
       "volume_24h": 1340619.4090829983,
       "end_date": "Feb 20",
-      "liquidity": 588897.69608
+      "liquidity": 588877.43636
     },
     {
       "source": "Polymarket",
@@ -128,7 +128,7 @@
       "volume_fmt": "$1.3M",
       "volume_24h": 545398.7951390006,
       "end_date": "Feb 20",
-      "liquidity": 168219.5814
+      "liquidity": 167849.9514
     },
     {
       "source": "Polymarket",
@@ -142,7 +142,7 @@
       "volume_fmt": "$2.3M",
       "volume_24h": 1330850.0110610002,
       "end_date": "Feb 20",
-      "liquidity": 361107.9249
+      "liquidity": 360960.0729
     },
     {
       "source": "Polymarket",
@@ -150,13 +150,13 @@
       "slug": "nba-hou-cha-2026-02-19-spread-away-4pt5",
       "url": "https://polymarket.com/event/nba-hou-cha-2026-02-19-spread-away-4pt5",
       "prob": 0.1,
-      "change_pts": -49.5,
+      "change_pts": -50.0,
       "direction": "down",
       "volume": 619559.550812,
       "volume_fmt": "$620K",
       "volume_24h": 556441.2291959998,
       "end_date": "Feb 20",
-      "liquidity": 207605.75959
+      "liquidity": 207615.74959
     },
     {
       "source": "Polymarket",
@@ -170,7 +170,7 @@
       "volume_fmt": "$559K",
       "volume_24h": 543256.1342270002,
       "end_date": "Feb 20",
-      "liquidity": 88169.60022
+      "liquidity": 88181.89022
     },
     {
       "source": "Polymarket",
@@ -180,11 +180,11 @@
       "prob": 100.0,
       "change_pts": 37.5,
       "direction": "up",
-      "volume": 3355319.828773,
+      "volume": 3355337.498773,
       "volume_fmt": "$3.4M",
       "volume_24h": 1631748.7024000082,
       "end_date": "Feb 20",
-      "liquidity": 822893.18719
+      "liquidity": 822505.90486
     },
     {
       "source": "Polymarket",
@@ -192,13 +192,13 @@
       "slug": "will-trump-nominate-judy-shelton-as-the-next-fed-chair",
       "url": "https://polymarket.com/event/will-trump-nominate-judy-shelton-as-the-next-fed-chair",
       "prob": 3.6,
-      "change_pts": 0.0,
+      "change_pts": -0.1,
       "direction": "neutral",
-      "volume": 89097463.247523,
+      "volume": 89099147.827523,
       "volume_fmt": "$89.1M",
       "volume_24h": 768389.4630549996,
       "end_date": "Dec 31",
-      "liquidity": 1748468.64768
+      "liquidity": 1751847.63101
     },
     {
       "source": "Polymarket",
@@ -208,11 +208,11 @@
       "prob": 0.8,
       "change_pts": 0.0,
       "direction": "neutral",
-      "volume": 58646823.564205,
+      "volume": 58646956.894205,
       "volume_fmt": "$58.6M",
       "volume_24h": 2852179.7858899976,
       "end_date": "Mar 18",
-      "liquidity": 1707121.65835
+      "liquidity": 1707037.52504
     },
     {
       "source": "Polymarket",
@@ -222,25 +222,25 @@
       "prob": 0.7,
       "change_pts": 0.1,
       "direction": "neutral",
-      "volume": 49982497.851931,
+      "volume": 49982534.069097,
       "volume_fmt": "$50.0M",
       "volume_24h": 2882483.0430590007,
       "end_date": "Mar 18",
-      "liquidity": 1045410.22324
+      "liquidity": 1045535.04097
     },
     {
       "source": "Polymarket",
       "question": "Will Trump nominate Kevin Warsh as the next Fed chair?",
       "slug": "will-trump-nominate-kevin-warsh-as-the-next-fed-chair",
       "url": "https://polymarket.com/event/will-trump-nominate-kevin-warsh-as-the-next-fed-chair",
-      "prob": 94.5,
-      "change_pts": 0.1,
+      "prob": 94.2,
+      "change_pts": 0.2,
       "direction": "neutral",
-      "volume": 41179927.510735,
+      "volume": 41180122.710735,
       "volume_fmt": "$41.2M",
       "volume_24h": 272224.5279680001,
       "end_date": "Dec 31",
-      "liquidity": 490104.22923
+      "liquidity": 489877.93181
     }
   ]
 }
