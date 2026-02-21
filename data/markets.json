@@ -1,19 +1,20 @@
 {
-  "updated": "Feb 21, 2026 \u00b7 12:10 PM ET",
-  "updated_iso": "2026-02-21T17:10:45.281702+00:00",
+  "updated": "Feb 21, 2026 \u00b7 12:21 PM ET",
+  "updated_iso": "2026-02-21T17:21:00.141722+00:00",
   "hero": {
     "source": "Polymarket",
-    "question": "Will Elon Musk post 115-139 tweets from February 19 to February 21, 2026?",
-    "slug": "elon-musk-of-tweets-february-19-february-21-115-139",
-    "url": "https://polymarket.com/event/elon-musk-of-tweets-february-19-february-21-115-139",
-    "prob": 100.0,
-    "change_pts": 75.0,
-    "direction": "up",
-    "volume": 536974.105717,
-    "volume_fmt": "$537K",
-    "volume_24h": 408641.7727600002,
+    "question": "Will Chelsea FC win on 2026-02-21?",
+    "slug": "epl-che-bur-2026-02-21-che",
+    "url": "https://polymarket.com/event/epl-che-bur-2026-02-21-che",
+    "prob": 0.1,
+    "change_pts": -80.5,
+    "direction": "down",
+    "volume": 873359.243756,
+    "volume_fmt": "$873K",
+    "volume_24h": 395608.10803599964,
     "end_date": "Feb 21",
-    "liquidity": 194014.98939
+    "liquidity": 993460.54629,
+    "category": ""
   },
   "movers": [
     {
@@ -24,11 +25,12 @@
       "prob": 25.5,
       "change_pts": -75.5,
       "direction": "down",
-      "volume": 648042.864576,
+      "volume": 648161.51585,
       "volume_fmt": "$648K",
       "volume_24h": 630195.7087169999,
       "end_date": "Feb 21",
-      "liquidity": 367837.1268
+      "liquidity": 371679.8905,
+      "category": ""
     },
     {
       "source": "Polymarket",
@@ -38,11 +40,12 @@
       "prob": 100.0,
       "change_pts": 72.5,
       "direction": "up",
-      "volume": 381220.012201,
-      "volume_fmt": "$381K",
+      "volume": 384627.172201,
+      "volume_fmt": "$385K",
       "volume_24h": 329982.08244500036,
       "end_date": "Feb 21",
-      "liquidity": 540898.86701
+      "liquidity": 534843.19447,
+      "category": ""
     },
     {
       "source": "Polymarket",
@@ -50,27 +53,29 @@
       "slug": "bitcoin-above-68k-on-february-21",
       "url": "https://polymarket.com/event/bitcoin-above-68k-on-february-21",
       "prob": 100.0,
-      "change_pts": 61.2,
+      "change_pts": 71.5,
       "direction": "up",
-      "volume": 853233.853507,
-      "volume_fmt": "$853K",
+      "volume": 854151.663507,
+      "volume_fmt": "$854K",
       "volume_24h": 552463.618978,
       "end_date": "Feb 21",
-      "liquidity": 811694.20676
+      "liquidity": 728674.28877,
+      "category": ""
     },
     {
       "source": "Polymarket",
-      "question": "Will Elon Musk post 90-114 tweets from February 19 to February 21, 2026?",
-      "slug": "elon-musk-of-tweets-february-19-february-21-90-114",
-      "url": "https://polymarket.com/event/elon-musk-of-tweets-february-19-february-21-90-114",
-      "prob": 0.1,
-      "change_pts": -54.4,
-      "direction": "down",
-      "volume": 810012.700446,
-      "volume_fmt": "$810K",
-      "volume_24h": 719620.7193610001,
+      "question": "Will Elon Musk post 115-139 tweets from February 19 to February 21, 2026?",
+      "slug": "elon-musk-of-tweets-february-19-february-21-115-139",
+      "url": "https://polymarket.com/event/elon-musk-of-tweets-february-19-february-21-115-139",
+      "prob": 100.0,
+      "change_pts": 71.5,
+      "direction": "up",
+      "volume": 539354.575717,
+      "volume_fmt": "$539K",
+      "volume_24h": 408641.7727600002,
       "end_date": "Feb 21",
-      "liquidity": 282600.60834
+      "liquidity": 122763.292,
+      "category": ""
     },
     {
       "source": "Polymarket",
@@ -78,30 +83,47 @@
       "slug": "bitcoin-up-or-down-on-february-21",
       "url": "https://polymarket.com/event/bitcoin-up-or-down-on-february-21",
       "prob": 100.0,
-      "change_pts": 50.0,
+      "change_pts": 62.5,
       "direction": "up",
-      "volume": 414318.918307,
-      "volume_fmt": "$414K",
+      "volume": 414658.918307,
+      "volume_fmt": "$415K",
       "volume_24h": 358209.4677170001,
       "end_date": "Feb 21",
-      "liquidity": 792837.28481
+      "liquidity": 702079.02899,
+      "category": ""
     },
     {
       "source": "Polymarket",
-      "question": "Will Brentford FC win on 2026-02-21?",
-      "slug": "epl-bre-bri-2026-02-21-bre",
-      "url": "https://polymarket.com/event/epl-bre-bri-2026-02-21-bre",
+      "question": "Will Aston Villa FC win on 2026-02-21?",
+      "slug": "epl-ast-lee-2026-02-21-ast",
+      "url": "https://polymarket.com/event/epl-ast-lee-2026-02-21-ast",
       "prob": 0.1,
-      "change_pts": -47.4,
+      "change_pts": -52.4,
       "direction": "down",
-      "volume": 809536.081031,
-      "volume_fmt": "$810K",
-      "volume_24h": 741449.7801500009,
+      "volume": 1386668.680925,
+      "volume_fmt": "$1.4M",
+      "volume_24h": 856140.2282840016,
       "end_date": "Feb 21",
-      "liquidity": 641750.44335
+      "liquidity": 399404.91357,
+      "category": ""
     }
   ],
   "ticker": [
+    {
+      "source": "Polymarket",
+      "question": "Will Chelsea FC win on 2026-02-21?",
+      "slug": "epl-che-bur-2026-02-21-che",
+      "url": "https://polymarket.com/event/epl-che-bur-2026-02-21-che",
+      "prob": 0.1,
+      "change_pts": -80.5,
+      "direction": "down",
+      "volume": 873359.243756,
+      "volume_fmt": "$873K",
+      "volume_24h": 395608.10803599964,
+      "end_date": "Feb 21",
+      "liquidity": 993460.54629,
+      "category": ""
+    },
     {
       "source": "Polymarket",
       "question": "Men's Knockout - Slovakia vs. Finland",
@@ -110,25 +132,12 @@
       "prob": 25.5,
       "change_pts": -75.5,
       "direction": "down",
-      "volume": 648042.864576,
+      "volume": 648161.51585,
       "volume_fmt": "$648K",
       "volume_24h": 630195.7087169999,
       "end_date": "Feb 21",
-      "liquidity": 367837.1268
-    },
-    {
-      "source": "Polymarket",
-      "question": "Will Elon Musk post 115-139 tweets from February 19 to February 21, 2026?",
-      "slug": "elon-musk-of-tweets-february-19-february-21-115-139",
-      "url": "https://polymarket.com/event/elon-musk-of-tweets-february-19-february-21-115-139",
-      "prob": 100.0,
-      "change_pts": 75.0,
-      "direction": "up",
-      "volume": 536974.105717,
-      "volume_fmt": "$537K",
-      "volume_24h": 408641.7727600002,
-      "end_date": "Feb 21",
-      "liquidity": 194014.98939
+      "liquidity": 371679.8905,
+      "category": ""
     },
     {
       "source": "Polymarket",
@@ -138,11 +147,42 @@
       "prob": 100.0,
       "change_pts": 72.5,
       "direction": "up",
-      "volume": 381220.012201,
-      "volume_fmt": "$381K",
+      "volume": 384627.172201,
+      "volume_fmt": "$385K",
       "volume_24h": 329982.08244500036,
       "end_date": "Feb 21",
-      "liquidity": 540898.86701
+      "liquidity": 534843.19447,
+      "category": ""
+    },
+    {
+      "source": "Polymarket",
+      "question": "Will the price of Bitcoin be above $68,000 on February 21?",
+      "slug": "bitcoin-above-68k-on-february-21",
+      "url": "https://polymarket.com/event/bitcoin-above-68k-on-february-21",
+      "prob": 100.0,
+      "change_pts": 71.5,
+      "direction": "up",
+      "volume": 854151.663507,
+      "volume_fmt": "$854K",
+      "volume_24h": 552463.618978,
+      "end_date": "Feb 21",
+      "liquidity": 728674.28877,
+      "category": ""
+    },
+    {
+      "source": "Polymarket",
+      "question": "Will Elon Musk post 115-139 tweets from February 19 to February 21, 2026?",
+      "slug": "elon-musk-of-tweets-february-19-february-21-115-139",
+      "url": "https://polymarket.com/event/elon-musk-of-tweets-february-19-february-21-115-139",
+      "prob": 100.0,
+      "change_pts": 71.5,
+      "direction": "up",
+      "volume": 539354.575717,
+      "volume_fmt": "$539K",
+      "volume_24h": 408641.7727600002,
+      "end_date": "Feb 21",
+      "liquidity": 122763.292,
+      "category": ""
     },
     {
       "source": "Polymarket",
@@ -152,39 +192,12 @@
       "prob": 0.1,
       "change_pts": -64.5,
       "direction": "down",
-      "volume": 989775.146998,
-      "volume_fmt": "$990K",
+      "volume": 993047.906998,
+      "volume_fmt": "$993K",
       "volume_24h": 940238.4102920006,
       "end_date": "Feb 21",
-      "liquidity": 489063.91938
-    },
-    {
-      "source": "Polymarket",
-      "question": "Counter-Strike: PARIVISION vs MOUZ (BO3) - PGL Cluj-Napoca Playoffs",
-      "slug": "cs2-prv-mouz-2026-02-21",
-      "url": "https://polymarket.com/event/cs2-prv-mouz-2026-02-21",
-      "prob": 53.5,
-      "change_pts": -63.5,
-      "direction": "down",
-      "volume": 1473516.560889,
-      "volume_fmt": "$1.5M",
-      "volume_24h": 1073656.6017429987,
-      "end_date": "Feb 21",
-      "liquidity": 51449.2316
-    },
-    {
-      "source": "Polymarket",
-      "question": "Will the price of Bitcoin be above $68,000 on February 21?",
-      "slug": "bitcoin-above-68k-on-february-21",
-      "url": "https://polymarket.com/event/bitcoin-above-68k-on-february-21",
-      "prob": 100.0,
-      "change_pts": 61.2,
-      "direction": "up",
-      "volume": 853233.853507,
-      "volume_fmt": "$853K",
-      "volume_24h": 552463.618978,
-      "end_date": "Feb 21",
-      "liquidity": 811694.20676
+      "liquidity": 435804.17244,
+      "category": ""
     },
     {
       "source": "Polymarket",
@@ -192,13 +205,14 @@
       "slug": "will-trump-nominate-judy-shelton-as-the-next-fed-chair",
       "url": "https://polymarket.com/event/will-trump-nominate-judy-shelton-as-the-next-fed-chair",
       "prob": 3.5,
-      "change_pts": -0.7,
+      "change_pts": -0.6,
       "direction": "down",
-      "volume": 92142018.187758,
+      "volume": 92142451.947758,
       "volume_fmt": "$92.1M",
       "volume_24h": 1398258.4673670009,
       "end_date": "Dec 31",
-      "liquidity": 1980765.4207
+      "liquidity": 1980446.29097,
+      "category": ""
     },
     {
       "source": "Polymarket",
@@ -208,11 +222,12 @@
       "prob": 0.8,
       "change_pts": 0.1,
       "direction": "neutral",
-      "volume": 61914841.884199,
+      "volume": 61914901.884199,
       "volume_fmt": "$61.9M",
       "volume_24h": 2642066.204904009,
       "end_date": "Mar 18",
-      "liquidity": 1492111.5642
+      "liquidity": 1494765.34599,
+      "category": ""
     },
     {
       "source": "Polymarket",
@@ -222,11 +237,12 @@
       "prob": 0.5,
       "change_pts": -0.1,
       "direction": "neutral",
-      "volume": 51202687.029733,
+      "volume": 51202701.109733,
       "volume_fmt": "$51.2M",
       "volume_24h": 853362.629584,
       "end_date": "Mar 18",
-      "liquidity": 1103327.54305
+      "liquidity": 1105953.55827,
+      "category": ""
     },
     {
       "source": "Polymarket",
@@ -234,13 +250,14 @@
       "slug": "will-trump-nominate-kevin-warsh-as-the-next-fed-chair",
       "url": "https://polymarket.com/event/will-trump-nominate-kevin-warsh-as-the-next-fed-chair",
       "prob": 94.3,
-      "change_pts": 0.0,
+      "change_pts": 0.1,
       "direction": "neutral",
-      "volume": 41963488.764647,
+      "volume": 41963764.301934,
       "volume_fmt": "$42.0M",
       "volume_24h": 527800.6707710004,
       "end_date": "Dec 31",
-      "liquidity": 361093.66809
+      "liquidity": 361128.28345,
+      "category": ""
     }
   ]
 }
