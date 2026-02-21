@@ -155,75 +155,72 @@ def fetch_polymarket() -> list[dict]:
 
 def fetch_kalshi() -> list[dict]:
     markets = []
-    if not KALSHI_KEY_ID or not KALSHI_PRIV_KEY:
-        print("  [SKIP] Kalshi credentials not set")
-        return markets
+    GOOD_CATEGORIES = {"Politics", "Economics", "Finance", "Technology", "Climate and Weather", "Science", "World"}
 
     try:
         cursor = None
         pages_fetched = 0
 
-        while pages_fetched < 5:
-            path   = "/trade-api/v2/markets"
-            params = {"limit": 100, "status": "open"}
+        while pages_fetched < 10:
+            params = {
+                "limit":               100,
+                "status":              "open",
+                "with_nested_markets": "true",
+            }
             if cursor:
                 params["cursor"] = cursor
 
-            headers = make_kalshi_headers("GET", path)
-            if not headers:
-                print("  [SKIP] Kalshi signing failed")
-                break
-
             resp = requests.get(
-                f"{KALSHI_BASE}/markets",
-                headers=headers,
+                f"{KALSHI_BASE}/events",
                 params=params,
                 timeout=15,
             )
             resp.raise_for_status()
-            data  = resp.json()
-            batch = data.get("markets", [])
-            if batch:
-                m0 = batch[0]
-            if not batch:
+            data   = resp.json()
+            events = data.get("events", [])
+            if not events:
                 break
-                
-            for m in batch:
-                try:
-                    yes_bid = float(m.get("yes_bid", 0) or 0)
-                    yes_ask = float(m.get("yes_ask", 0) or 0)
-                    if yes_bid == 0 and yes_ask == 0:
-                        continue
-                    prob = round(((yes_bid + yes_ask) / 2) * 100, 1)
 
-                    volume_cents = float(m.get("volume", 0) or 0)
-                    volume_usd   = volume_cents / 100
-                    if volume_usd < MIN_VOLUME_USD:
-                        continue
-
-                    prev_bid  = float(m.get("previous_yes_bid", yes_bid) or yes_bid)
-                    prev_ask  = float(m.get("previous_yes_ask", yes_ask) or yes_ask)
-                    prev_prob = ((prev_bid + prev_ask) / 2) * 100
-                    change_pts = round(prob - prev_prob, 1)
-
-                    close_time = m.get("close_time", "") or ""
-
-                    markets.append({
-                        "source":     "Kalshi",
-                        "question":   m.get("title", ""),
-                        "slug":       m.get("ticker", ""),
-                        "url":        f"https://kalshi.com/markets/{m.get('ticker', '')}",
-                        "prob":       prob,
-                        "change_pts": change_pts,
-                        "direction":  change_direction(change_pts),
-                        "volume":     volume_usd,
-                        "volume_fmt": fmt_volume(volume_usd),
-                        "volume_24h": 0,
-                        "end_date":   fmt_date(close_time) if close_time else "",
-                        "liquidity":  volume_usd * 0.1,
-                    })
-                except (ValueError, KeyError):
+            for event in events:
+                category = event.get("category", "")
+                if category not in GOOD_CATEGORIES:
                     continue
+
+                for m in event.get("markets", []):
+                    try:
+                        yes_bid = float(m.get("yes_bid", 0) or 0)
+                        yes_ask = float(m.get("yes_ask", 0) or 0)
+                        if yes_bid == 0 and yes_ask == 0:
+                            continue
+                        prob = round(((yes_bid + yes_ask) / 2) * 100, 1)
+
+                        volume_cents = float(m.get("volume", 0) or 0)
+                        volume_usd   = volume_cents / 100
+                        if volume_usd < MIN_VOLUME_USD:
+                            continue
+
+                        prev_bid   = float(m.get("previous_yes_bid", yes_bid) or yes_bid)
+                        prev_ask   = float(m.get("previous_yes_ask", yes_ask) or yes_ask)
+                        prev_prob  = ((prev_bid + prev_ask) / 2) * 100
+                        change_pts = round(prob - prev_prob, 1)
+                        close_time = m.get("close_time", "") or ""
+
+                        markets.append({
+                            "source":     "Kalshi",
+                            "question":   event.get("title", m.get("title", "")),
+                            "slug":       m.get("ticker", ""),
+                            "url":        f"https://kalshi.com/markets/{m.get('ticker', '').lower()}",
+                            "prob":       prob,
+                            "change_pts": change_pts,
+                            "direction":  change_direction(change_pts),
+                            "volume":     volume_usd,
+                            "volume_fmt": fmt_volume(volume_usd),
+                            "volume_24h": float(m.get("volume_24h", 0) or 0) / 100,
+                            "end_date":   fmt_date(close_time) if close_time else "",
+                            "liquidity":  volume_usd * 0.1,
+                        })
+                    except (ValueError, KeyError):
+                        continue
 
             cursor = data.get("cursor")
             if not cursor:
@@ -233,6 +230,7 @@ def fetch_kalshi() -> list[dict]:
     except requests.RequestException as e:
         print(f"[WARN] Kalshi fetch failed: {e}")
 
+    print(f"  Got {len(markets)} Kalshi markets")
     return markets
 
 # ── SCORING & SELECTION ──────────────────────────────────────────────────────
