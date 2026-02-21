@@ -142,6 +142,7 @@ def fetch_polymarket() -> list[dict]:
                     "volume_24h": volume_24h,
                     "end_date":   fmt_date(end_date) if end_date else "",
                     "liquidity":  float(m.get("liquidity", 0) or 0),
+                    "category":   " ".join([t.get("label","") for t in m.get("tags", [])]).lower(),
                 })
             except (ValueError, IndexError, KeyError):
                 continue
