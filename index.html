@@ -1178,7 +1178,7 @@ function renderMovers(movers) {
     const dir = directionClass(m.change_pts);
     return `
     <div class="mover-card ${dir}" onclick="window.open('${m.url}','_blank')" style="cursor:pointer">
-      <div class="mover-source">${m.source}</div>
+      <div class="mover-source">${m.source === 'Kalshi' ? '<span style="background:#00A550;color:white;padding:2px 8px;border-radius:20px;font-size:10px;font-weight:700;letter-spacing:1px;">Kalshi</span>' : '<span style="background:#0066FF;color:white;padding:2px 8px;border-radius:20px;font-size:10px;font-weight:700;letter-spacing:1px;">Polymarket</span>'}</div>
       <div class="mover-question">${m.question}</div>
       <div class="mover-stats">
         <div class="mover-prob ${dir}">${m.prob}%</div>
