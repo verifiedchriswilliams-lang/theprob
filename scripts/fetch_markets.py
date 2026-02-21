@@ -49,29 +49,18 @@ def change_direction(change_pts: float) -> str:
 # ── KALSHI RSA SIGNING ───────────────────────────────────────────────────────
 
 def make_kalshi_headers(method: str, path: str) -> dict:
-    """
-    Build signed request headers for Kalshi API using RSA-PSS.
-    Requires: cryptography package.
-    """
     if not KALSHI_KEY_ID or not KALSHI_PRIV_KEY:
         return {}
-
     try:
         from cryptography.hazmat.primitives import hashes, serialization
         from cryptography.hazmat.primitives.asymmetric import padding
-
-        # Load the private key
         private_key = serialization.load_pem_private_key(
             KALSHI_PRIV_KEY.encode("utf-8"),
             password=None,
         )
-
-        # Build the message to sign: timestamp + method + path
         timestamp_ms = str(int(time.time() * 1000))
         path_without_query = path.split('?')[0]
         message = f"{timestamp_ms}{method}{path_without_query}".encode("utf-8")
-        
-        # Sign with RSA-PSS SHA256
         signature = private_key.sign(
             message,
             padding.PSS(
@@ -81,22 +70,23 @@ def make_kalshi_headers(method: str, path: str) -> dict:
             hashes.SHA256(),
         )
         sig_b64 = base64.b64encode(signature).decode("utf-8")
-
         return {
             "KALSHI-ACCESS-KEY":       KALSHI_KEY_ID,
             "KALSHI-ACCESS-TIMESTAMP": timestamp_ms,
             "KALSHI-ACCESS-SIGNATURE": sig_b64,
             "Content-Type":            "application/json",
         }
-
     except Exception as e:
         print(f"[WARN] Kalshi signing failed: {e}")
         return {}
 
 # ── POLYMARKET ───────────────────────────────────────────────────────────────
 
-    all_raw = []
-    for tag in ["trending", "politics", "crypto", "economics"]:
+def fetch_polymarket() -> list[dict]:
+    markets = []
+    try:
+        all_raw = []
+        for tag in ["trending", "politics", "crypto", "economics"]:
             r = requests.get(
                 f"{GAMMA_BASE}/markets",
                 params={
@@ -118,21 +108,18 @@ def make_kalshi_headers(method: str, path: str) -> dict:
                 yes_price = float(outcomes[0]) if outcomes else None
                 if yes_price is None:
                     continue
-
                 volume    = float(m.get("volume", 0) or 0)
                 volume_24h = float(m.get("volume24hr", 0) or 0)
                 if volume < MIN_VOLUME_USD:
                     continue
-
                 change_raw = float(m.get("oneDayPriceChange", 0) or 0)
                 change_pts = round(change_raw * 100, 1)
                 end_date   = m.get("endDate", "") or m.get("endDateIso", "")
-
                 markets.append({
                     "source":     "Polymarket",
                     "question":   m.get("question", ""),
                     "slug":       m.get("slug", ""),
-                    "url": f"https://polymarket.com/event/{(m.get('events') or [{}])[0].get('slug', m.get('slug', ''))}",
+                    "url":        f"https://polymarket.com/event/{(m.get('events') or [{}])[0].get('slug', m.get('slug', ''))}",
                     "prob":       round(yes_price * 100, 1),
                     "change_pts": change_pts,
                     "direction":  change_direction(change_pts),
@@ -141,27 +128,23 @@ def make_kalshi_headers(method: str, path: str) -> dict:
                     "volume_24h": volume_24h,
                     "end_date":   fmt_date(end_date) if end_date else "",
                     "liquidity":  float(m.get("liquidity", 0) or 0),
-                    "category": " ".join([t.get("label","") for t in m.get("tags", [])]).lower(),
-                    "is_sports": any(str(t.get("id")) == "1" for t in m.get("tags", [])),
+                    "category":   " ".join([t.get("label","") for t in m.get("tags", [])]).lower(),
+                    "is_sports":  any(str(t.get("id")) == "1" for t in m.get("tags", [])),
                 })
             except (ValueError, IndexError, KeyError):
                 continue
-
     except requests.RequestException as e:
         print(f"[WARN] Polymarket fetch failed: {e}")
-
     return markets
-    
+
 # ── KALSHI ───────────────────────────────────────────────────────────────────
 
 def fetch_kalshi() -> list[dict]:
     markets = []
     GOOD_CATEGORIES = {"Politics", "Economics", "Finance", "Technology", "Climate and Weather", "Science", "World"}
-
     try:
         cursor = None
         pages_fetched = 0
-
         while pages_fetched < 10:
             params = {
                 "limit":               100,
@@ -170,7 +153,6 @@ def fetch_kalshi() -> list[dict]:
             }
             if cursor:
                 params["cursor"] = cursor
-
             resp = requests.get(
                 f"{KALSHI_BASE}/events",
                 params=params,
@@ -181,12 +163,10 @@ def fetch_kalshi() -> list[dict]:
             events = data.get("events", [])
             if not events:
                 break
-
             for event in events:
                 category = event.get("category", "")
                 if category not in GOOD_CATEGORIES:
                     continue
-
                 for m in event.get("markets", []):
                     try:
                         yes_bid = float(m.get("yes_bid", 0) or 0)
@@ -194,18 +174,15 @@ def fetch_kalshi() -> list[dict]:
                         if yes_bid == 0 and yes_ask == 0:
                             continue
                         prob = round(((yes_bid + yes_ask) / 2) * 100, 1)
-
                         volume_cents = float(m.get("volume", 0) or 0)
                         volume_usd   = volume_cents / 100
                         if volume_usd < 5000:
                             continue
-
                         prev_bid   = float(m.get("previous_yes_bid", yes_bid) or yes_bid)
                         prev_ask   = float(m.get("previous_yes_ask", yes_ask) or yes_ask)
                         prev_prob  = ((prev_bid + prev_ask) / 2) * 100
                         change_pts = round(prob - prev_prob, 1)
                         close_time = m.get("close_time", "") or ""
-
                         markets.append({
                             "source":     "Kalshi",
                             "question":   event.get("title", m.get("title", "")),
@@ -222,15 +199,12 @@ def fetch_kalshi() -> list[dict]:
                         })
                     except (ValueError, KeyError):
                         continue
-
             cursor = data.get("cursor")
             if not cursor:
                 break
             pages_fetched += 1
-
     except requests.RequestException as e:
         print(f"[WARN] Kalshi fetch failed: {e}")
-
     print(f"  Got {len(markets)} Kalshi markets")
     return markets
 
@@ -243,19 +217,17 @@ def score_market(m: dict) -> float:
     return (abs_change * 2.5) + (vol_score * 1.0) + (prob_interest * 0.5)
 
 def pick_hero(markets: list[dict]) -> dict | None:
-
     def is_sports(m):
         if m["source"] == "Kalshi":
             return False
         return m.get("is_sports", False)
-    # Sports allowed as hero only if volume exceeds $5M
     candidates = [m for m in markets if m["volume"] >= HERO_MIN_VOLUME and abs(m["change_pts"]) >= 3 and (not is_sports(m) or m["volume"] >= 5_000_000)]
     if not candidates:
         candidates = [m for m in markets if m["volume"] >= HERO_MIN_VOLUME and (not is_sports(m) or m["volume"] >= 5_000_000)]
     if not candidates:
         return None
     return max(candidates, key=score_market)
-    
+
 def pick_movers(markets: list[dict], exclude_slug: str = "") -> list[dict]:
     candidates = [m for m in markets if m["slug"] != exclude_slug and abs(m["change_pts"]) > 0]
     candidates.sort(key=score_market, reverse=True)
