@@ -1138,8 +1138,11 @@ function renderHero(hero) {
 
   const dir = directionClass(hero.change_pts);
 
-  document.getElementById('hero-source').textContent     = hero.source.toUpperCase();
-  document.getElementById('hero-source-meta').textContent = hero.source;
+  const sourceBadge = hero.source === 'Kalshi' 
+    ? '<span style="background:#00A550;color:white;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700;letter-spacing:1px;">Kalshi</span>'
+    : '<span style="background:#0066FF;color:white;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700;letter-spacing:1px;">Polymarket</span>';
+  document.getElementById('hero-source').innerHTML = sourceBadge;
+  document.getElementById('hero-source-meta').innerHTML = sourceBadge;
   document.getElementById('hero-question').textContent   = hero.question;
   document.getElementById('hero-prob').textContent       = hero.prob;
   document.getElementById('hero-volume').textContent     = hero.volume_fmt;
