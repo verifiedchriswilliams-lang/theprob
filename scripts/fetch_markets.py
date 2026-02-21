@@ -242,8 +242,9 @@ def score_market(m: dict) -> float:
     return (abs_change * 2.5) + (vol_score * 1.0) + (prob_interest * 0.5)
 
 def pick_hero(markets: list[dict]) -> dict | None:
-    sports_words = ["celtics","lakers","knicks","nuggets","warriors","pistons","clippers","nba","nfl","mlb","nhl"," vs.","raptors","bulls","games total","o/u","point spread","knockout","fútbol","futbol","tennis","counter-strike","parivision","brighton","sociedad","playoff","championships"]    def is_sports(m):
-        return any(w in m["question"].lower() for w in sports_words)
+    sports_words = ["celtics","lakers","knicks","nuggets","warriors","pistons","clippers","nba","nfl","mlb","nhl"," vs.","raptors","bulls","games total","o/u","point spread","knockout","futbol","tennis","counter-strike","parivision","brighton","sociedad","playoff","championships"]
+        def is_sports(m):
+            return any(w in m["question"].lower() for w in sports_words)
     
     # Sports allowed as hero only if volume exceeds $5M
     candidates = [m for m in markets if m["volume"] >= HERO_MIN_VOLUME and abs(m["change_pts"]) >= 3 and (not is_sports(m) or m["volume"] >= 5_000_000)]
