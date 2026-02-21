@@ -1,20 +1,21 @@
 {
-  "updated": "Feb 21, 2026 \u00b7 3:51 PM ET",
-  "updated_iso": "2026-02-21T20:51:26.685298+00:00",
+  "updated": "Feb 21, 2026 \u00b7 4:27 PM ET",
+  "updated_iso": "2026-02-21T21:27:47.477986+00:00",
   "hero": {
     "source": "Polymarket",
     "question": "Men's Knockout - Slovakia vs. Finland",
     "slug": "mwoh-slo-fin-2026-02-21",
     "url": "https://polymarket.com/event/mwoh-slo-fin-2026-02-21",
-    "prob": 6.5,
+    "prob": 12.0,
     "change_pts": -75.5,
     "direction": "down",
-    "volume": 868478.916366,
-    "volume_fmt": "$868K",
+    "volume": 889182.974656,
+    "volume_fmt": "$889K",
     "volume_24h": 630195.7087169999,
     "end_date": "Feb 21",
-    "liquidity": 9541.7219,
-    "category": ""
+    "liquidity": 19863.9847,
+    "category": "",
+    "is_sports": false
   },
   "movers": [
     {
@@ -29,8 +30,9 @@
       "volume_fmt": "$378K",
       "volume_24h": 207299.76964400004,
       "end_date": "Feb 21",
-      "liquidity": 144094.07918,
-      "category": ""
+      "liquidity": 344258.61418,
+      "category": "",
+      "is_sports": false
     },
     {
       "source": "Polymarket",
@@ -40,12 +42,13 @@
       "prob": 0.1,
       "change_pts": -67.0,
       "direction": "down",
-      "volume": 298810.420804,
+      "volume": 298895.420804,
       "volume_fmt": "$299K",
       "volume_24h": 220823.327778,
       "end_date": "Feb 22",
-      "liquidity": 145854.07972,
-      "category": ""
+      "liquidity": 89562.99096,
+      "category": "",
+      "is_sports": false
     },
     {
       "source": "Polymarket",
@@ -55,12 +58,13 @@
       "prob": 0.1,
       "change_pts": -58.5,
       "direction": "down",
-      "volume": 2406461.61347,
+      "volume": 2417549.26347,
       "volume_fmt": "$2.4M",
       "volume_24h": 750488.5652439996,
       "end_date": "Feb 21",
-      "liquidity": 380647.6677,
-      "category": ""
+      "liquidity": 369530.37495,
+      "category": "",
+      "is_sports": false
     },
     {
       "source": "Polymarket",
@@ -74,38 +78,41 @@
       "volume_fmt": "$464K",
       "volume_24h": 346345.53484000004,
       "end_date": "Feb 21",
-      "liquidity": 411044.01799,
-      "category": ""
-    },
-    {
-      "source": "Polymarket",
-      "question": "Will Real Betis Balompi\u00e9 win on 2026-02-21?",
-      "slug": "lal-bet-ray-2026-02-21-bet",
-      "url": "https://polymarket.com/event/lal-bet-ray-2026-02-21",
-      "prob": 0.1,
-      "change_pts": -51.4,
-      "direction": "down",
-      "volume": 625597.675494,
-      "volume_fmt": "$626K",
-      "volume_24h": 412720.8231579999,
-      "end_date": "Feb 21",
-      "liquidity": 374319.27192,
-      "category": ""
+      "liquidity": 410994.06799,
+      "category": "",
+      "is_sports": false
     },
     {
       "source": "Polymarket",
       "question": "Will Hims & Hers Health (HIMS) beat quarterly earnings?",
       "slug": "hims-quarterly-earnings-gaap-eps-02-23-2026-0pt05",
       "url": "https://polymarket.com/event/hims-quarterly-earnings-gaap-eps-02-23-2026-0pt05",
-      "prob": 65.0,
-      "change_pts": 50.0,
+      "prob": 70.5,
+      "change_pts": 52.5,
       "direction": "up",
-      "volume": 255216.313069,
-      "volume_fmt": "$255K",
+      "volume": 256541.966401,
+      "volume_fmt": "$257K",
       "volume_24h": 246187.72274600004,
       "end_date": "Feb 23",
-      "liquidity": 2225.2182,
-      "category": ""
+      "liquidity": 2410.0278,
+      "category": "",
+      "is_sports": false
+    },
+    {
+      "source": "Polymarket",
+      "question": "LoL: Fnatic vs Team Vitality (BO3) - LEC Versus Playoffs",
+      "slug": "lol-fnc-vit-2026-02-21",
+      "url": "https://polymarket.com/event/lol-fnc-vit-2026-02-21",
+      "prob": 0.1,
+      "change_pts": -47.4,
+      "direction": "down",
+      "volume": 705447.230807,
+      "volume_fmt": "$705K",
+      "volume_24h": 203319.49561099993,
+      "end_date": "Feb 22",
+      "liquidity": 216090.71499,
+      "category": "",
+      "is_sports": false
     }
   ],
   "ticker": [
@@ -114,15 +121,16 @@
       "question": "Men's Knockout - Slovakia vs. Finland",
       "slug": "mwoh-slo-fin-2026-02-21",
       "url": "https://polymarket.com/event/mwoh-slo-fin-2026-02-21",
-      "prob": 6.5,
+      "prob": 12.0,
       "change_pts": -75.5,
       "direction": "down",
-      "volume": 868478.916366,
-      "volume_fmt": "$868K",
+      "volume": 889182.974656,
+      "volume_fmt": "$889K",
       "volume_24h": 630195.7087169999,
       "end_date": "Feb 21",
-      "liquidity": 9541.7219,
-      "category": ""
+      "liquidity": 19863.9847,
+      "category": "",
+      "is_sports": false
     },
     {
       "source": "Polymarket",
@@ -136,8 +144,9 @@
       "volume_fmt": "$378K",
       "volume_24h": 207299.76964400004,
       "end_date": "Feb 21",
-      "liquidity": 144094.07918,
-      "category": ""
+      "liquidity": 344258.61418,
+      "category": "",
+      "is_sports": false
     },
     {
       "source": "Polymarket",
@@ -147,12 +156,13 @@
       "prob": 0.1,
       "change_pts": -67.0,
       "direction": "down",
-      "volume": 298810.420804,
+      "volume": 298895.420804,
       "volume_fmt": "$299K",
       "volume_24h": 220823.327778,
       "end_date": "Feb 22",
-      "liquidity": 145854.07972,
-      "category": ""
+      "liquidity": 89562.99096,
+      "category": "",
+      "is_sports": false
     },
     {
       "source": "Polymarket",
@@ -162,12 +172,13 @@
       "prob": 0.1,
       "change_pts": -58.5,
       "direction": "down",
-      "volume": 2406461.61347,
+      "volume": 2417549.26347,
       "volume_fmt": "$2.4M",
       "volume_24h": 750488.5652439996,
       "end_date": "Feb 21",
-      "liquidity": 380647.6677,
-      "category": ""
+      "liquidity": 369530.37495,
+      "category": "",
+      "is_sports": false
     },
     {
       "source": "Polymarket",
@@ -181,38 +192,41 @@
       "volume_fmt": "$464K",
       "volume_24h": 346345.53484000004,
       "end_date": "Feb 21",
-      "liquidity": 411044.01799,
-      "category": ""
+      "liquidity": 410994.06799,
+      "category": "",
+      "is_sports": false
     },
     {
       "source": "Polymarket",
-      "question": "Will Real Betis Balompi\u00e9 win on 2026-02-21?",
-      "slug": "lal-bet-ray-2026-02-21-bet",
-      "url": "https://polymarket.com/event/lal-bet-ray-2026-02-21",
-      "prob": 0.1,
-      "change_pts": -51.4,
-      "direction": "down",
-      "volume": 625597.675494,
-      "volume_fmt": "$626K",
-      "volume_24h": 412720.8231579999,
-      "end_date": "Feb 21",
-      "liquidity": 374319.27192,
-      "category": ""
+      "question": "Will Hims & Hers Health (HIMS) beat quarterly earnings?",
+      "slug": "hims-quarterly-earnings-gaap-eps-02-23-2026-0pt05",
+      "url": "https://polymarket.com/event/hims-quarterly-earnings-gaap-eps-02-23-2026-0pt05",
+      "prob": 70.5,
+      "change_pts": 52.5,
+      "direction": "up",
+      "volume": 256541.966401,
+      "volume_fmt": "$257K",
+      "volume_24h": 246187.72274600004,
+      "end_date": "Feb 23",
+      "liquidity": 2410.0278,
+      "category": "",
+      "is_sports": false
     },
     {
       "source": "Polymarket",
       "question": "Will Trump nominate Judy Shelton as the next Fed chair?",
       "slug": "will-trump-nominate-judy-shelton-as-the-next-fed-chair",
       "url": "https://polymarket.com/event/who-will-trump-nominate-as-fed-chair",
-      "prob": 3.5,
-      "change_pts": -0.4,
+      "prob": 3.4,
+      "change_pts": -0.5,
       "direction": "neutral",
-      "volume": 92237391.654016,
-      "volume_fmt": "$92.2M",
+      "volume": 92252164.028317,
+      "volume_fmt": "$92.3M",
       "volume_24h": 1398258.4673670009,
       "end_date": "Dec 31",
-      "liquidity": 2052210.58217,
-      "category": ""
+      "liquidity": 2049664.70856,
+      "category": "",
+      "is_sports": false
     },
     {
       "source": "Polymarket",
@@ -222,12 +236,13 @@
       "prob": 0.8,
       "change_pts": 0.1,
       "direction": "neutral",
-      "volume": 62162568.129609,
+      "volume": 62162771.057323,
       "volume_fmt": "$62.2M",
       "volume_24h": 2642066.204904009,
       "end_date": "Mar 18",
-      "liquidity": 1394534.54254,
-      "category": ""
+      "liquidity": 1398484.24867,
+      "category": "",
+      "is_sports": false
     },
     {
       "source": "Polymarket",
@@ -237,12 +252,13 @@
       "prob": 0.5,
       "change_pts": -0.1,
       "direction": "neutral",
-      "volume": 51235298.265199,
+      "volume": 51235844.969931,
       "volume_fmt": "$51.2M",
       "volume_24h": 853362.629584,
       "end_date": "Mar 18",
-      "liquidity": 1233673.65628,
-      "category": ""
+      "liquidity": 1253340.82718,
+      "category": "",
+      "is_sports": false
     },
     {
       "source": "Polymarket",
@@ -250,14 +266,15 @@
       "slug": "will-trump-nominate-kevin-warsh-as-the-next-fed-chair",
       "url": "https://polymarket.com/event/who-will-trump-nominate-as-fed-chair",
       "prob": 94.5,
-      "change_pts": 0.2,
+      "change_pts": 0.3,
       "direction": "neutral",
-      "volume": 42009856.798604,
+      "volume": 42020935.284232,
       "volume_fmt": "$42.0M",
       "volume_24h": 527800.6707710004,
       "end_date": "Dec 31",
-      "liquidity": 345970.83204,
-      "category": ""
+      "liquidity": 318786.99569,
+      "category": "",
+      "is_sports": false
     }
   ]
 }
