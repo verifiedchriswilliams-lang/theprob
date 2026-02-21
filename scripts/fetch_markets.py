@@ -259,12 +259,13 @@ def pick_movers(markets: list[dict], exclude_slug: str = "") -> list[dict]:
     candidates.sort(key=score_market, reverse=True)
     result = []
     sports_count = 0
-    sports_words = ["celtics","lakers","knicks","nuggets","warriors","pistons","clippers","nba","nfl","mlb","nhl"," vs "]
+    sports_words = ["celtics","lakers","knicks","nuggets","warriors","pistons","clippers","nba","nfl","mlb","nhl"," vs.","raptors","bulls","games total","o/u","point spread","knockout","futbol","tennis","counter-strike","parivision","brighton","sociedad","playoff","championships"]
+    def is_sports(m):
+        return any(w in m["question"].lower() for w in sports_words)
     for c in candidates:
-        is_sports = any(w in c["question"].lower() for w in sports_words)
-        if is_sports and sports_count >= 2:
+        if is_sports(c) and sports_count >= 2:
             continue
-        if is_sports:
+        if is_sports(c):
             sports_count += 1
         result.append(c)
         if len(result) >= TOP_MOVERS_COUNT:
