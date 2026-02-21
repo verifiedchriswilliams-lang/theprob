@@ -142,7 +142,8 @@ def fetch_polymarket() -> list[dict]:
                     "volume_24h": volume_24h,
                     "end_date":   fmt_date(end_date) if end_date else "",
                     "liquidity":  float(m.get("liquidity", 0) or 0),
-                    "category":   " ".join([t.get("label","") for t in m.get("tags", [])]).lower(),
+                    "category": " ".join([t.get("label","") for t in m.get("tags", [])]).lower(),
+                    "is_sports": any(str(t.get("id")) == "1" for t in m.get("tags", [])),
                 })
             except (ValueError, IndexError, KeyError):
                 continue
@@ -247,7 +248,7 @@ def pick_hero(markets: list[dict]) -> dict | None:
     def is_sports(m):
         if m["source"] == "Kalshi":
             return False
-        return "sports" in m.get("category", "")
+        return m.get("is_sports", False)
     # Sports allowed as hero only if volume exceeds $5M
     candidates = [m for m in markets if m["volume"] >= HERO_MIN_VOLUME and abs(m["change_pts"]) >= 3 and (not is_sports(m) or m["volume"] >= 5_000_000)]
     if not candidates:
@@ -263,8 +264,8 @@ def pick_movers(markets: list[dict], exclude_slug: str = "") -> list[dict]:
     sports_count = 0
     def is_sports(m):
         if m["source"] == "Kalshi":
-                return False
-        return "sports" in m.get("category", "")
+            return False
+        return m.get("is_sports", False)
     for c in candidates:
         if is_sports(c) and sports_count >= 2:
             continue
