@@ -95,8 +95,8 @@ def make_kalshi_headers(method: str, path: str) -> dict:
 
 # ── POLYMARKET ───────────────────────────────────────────────────────────────
 
-all_raw = []
-        for tag in ["trending", "politics", "crypto", "economics"]:
+    all_raw = []
+    for tag in ["trending", "politics", "crypto", "economics"]:
             r = requests.get(
                 f"{GAMMA_BASE}/markets",
                 params={
@@ -111,8 +111,7 @@ all_raw = []
             )
             r.raise_for_status()
             all_raw.extend(r.json())
-        raw = {m["id"]: m for m in all_raw}.values()        resp.raise_for_status()
-
+        raw = {m["id"]: m for m in all_raw}.values()
         for m in raw:
             try:
                 outcomes  = json.loads(m.get("outcomePrices", "[]"))
