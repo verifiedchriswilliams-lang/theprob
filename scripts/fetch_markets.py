@@ -244,9 +244,10 @@ def score_market(m: dict) -> float:
 
 def pick_hero(markets: list[dict]) -> dict | None:
 
-    sports_words = ["celtics","lakers","knicks","nuggets","warriors","pistons","clippers","nba","nfl","mlb","nhl"," vs.","raptors","bulls","games total","o/u","point spread","knockout","futbol","tennis","counter-strike","brighton","sociedad","playoff","championships"]
     def is_sports(m):
-        return any(w in m["question"].lower() for w in sports_words)
+        if m["source"] == "Kalshi":
+            return False
+        return "sports" in m.get("category", "")
     # Sports allowed as hero only if volume exceeds $5M
     candidates = [m for m in markets if m["volume"] >= HERO_MIN_VOLUME and abs(m["change_pts"]) >= 3 and (not is_sports(m) or m["volume"] >= 5_000_000)]
     if not candidates:
@@ -260,9 +261,10 @@ def pick_movers(markets: list[dict], exclude_slug: str = "") -> list[dict]:
     candidates.sort(key=score_market, reverse=True)
     result = []
     sports_count = 0
-    sports_words = ["celtics","lakers","knicks","nuggets","warriors","pistons","clippers","nba","nfl","mlb","nhl"," vs.","raptors","bulls","games total","o/u","point spread","knockout","futbol","tennis","counter-strike","parivision","brighton","sociedad","playoff","championships"]
     def is_sports(m):
-        return any(w in m["question"].lower() for w in sports_words)
+        if m["source"] == "Kalshi":
+                return False
+        return "sports" in m.get("category", "")
     for c in candidates:
         if is_sports(c) and sports_count >= 2:
             continue
