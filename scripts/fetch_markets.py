@@ -95,23 +95,23 @@ def make_kalshi_headers(method: str, path: str) -> dict:
 
 # ── POLYMARKET ───────────────────────────────────────────────────────────────
 
-def fetch_polymarket() -> list[dict]:
-    markets = []
-    try:
-        resp = requests.get(
-            f"{GAMMA_BASE}/markets",
-            params={
-                "active":    "true",
-                "closed":    "false",
-                "limit":     100,
-                "order":     "volume24hr",
-                "ascending": "false",
-                "tag_slug":  "trending",
-            },
-            timeout=15,
-        )
-        resp.raise_for_status()
-        raw = resp.json()
+all_raw = []
+        for tag in ["trending", "politics", "crypto", "economics"]:
+            r = requests.get(
+                f"{GAMMA_BASE}/markets",
+                params={
+                    "active":    "true",
+                    "closed":    "false",
+                    "limit":     50,
+                    "order":     "volume24hr",
+                    "ascending": "false",
+                    "tag_slug":  tag,
+                },
+                timeout=15,
+            )
+            r.raise_for_status()
+            all_raw.extend(r.json())
+        raw = {m["id"]: m for m in all_raw}.values()        resp.raise_for_status()
 
         for m in raw:
             try:
