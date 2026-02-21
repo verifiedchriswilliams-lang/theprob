@@ -133,7 +133,7 @@ def fetch_polymarket() -> list[dict]:
                     "source":     "Polymarket",
                     "question":   m.get("question", ""),
                     "slug":       m.get("slug", ""),
-                    "url":        f"https://polymarket.com/event/{m.get('slug', '')}",
+                    "url": m.get("url", f"https://polymarket.com/event/{m.get('slug', '')}"),
                     "prob":       round(yes_price * 100, 1),
                     "change_pts": change_pts,
                     "direction":  change_direction(change_pts),
