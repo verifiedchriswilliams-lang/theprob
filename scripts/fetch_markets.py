@@ -195,7 +195,8 @@ def fetch_kalshi() -> list[dict]:
                         prob = round(((yes_bid + yes_ask) / 2) * 100, 1)
 
                         volume_cents = float(m.get("volume", 0) or 0)
-                        volume_usd   = volume_cents / 100if volume_usd < 5000:
+                        volume_usd   = volume_cents / 100
+                        if volume_usd < 5000:
                             continue
 
                         prev_bid   = float(m.get("previous_yes_bid", yes_bid) or yes_bid)
