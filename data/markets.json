@@ -1,6 +1,6 @@
 {
-  "updated": "Feb 22, 2026 \u00b7 10:07 AM ET",
-  "updated_iso": "2026-02-22T15:07:17.889198+00:00",
+  "updated": "Feb 22, 2026 \u00b7 10:08 AM ET",
+  "updated_iso": "2026-02-22T15:08:07.224254+00:00",
   "hero": {
     "source": "Kalshi",
     "question": "Who will Trump nominate as Fed Chair?",
@@ -89,20 +89,20 @@
     },
     {
       "source": "Kalshi",
-      "question": "Which bank will take SpaceX public?",
-      "slug": "KXSPACEXBANKPUBLIC-28JAN01-BOAX",
-      "url": "https://kalshi.com/markets/kxspacexbankpublic-28jan01-boax",
-      "prob": 88.5,
-      "change_pts": -8761.5,
+      "question": "Which companies will have a top-ranked AI model this year?",
+      "slug": "KXTOPAI-27-JAN01-ANTH",
+      "url": "https://kalshi.com/markets/kxtopai-27-jan01-anth",
+      "prob": 50.0,
+      "change_pts": -4950.0,
       "direction": "down",
-      "volume": 1364.28,
-      "volume_fmt": "$1K",
-      "volume_24h": 0.31,
-      "end_date": "Jan 1",
-      "liquidity": 136.428,
-      "category": "Companies",
+      "volume": 7078.83,
+      "volume_fmt": "$7K",
+      "volume_24h": 0.0,
+      "end_date": "Feb 7",
+      "liquidity": 707.883,
+      "category": "Science and Technology",
       "is_sports": false,
-      "display_category": "World"
+      "display_category": "Technology"
     },
     {
       "source": "Kalshi",
@@ -172,7 +172,7 @@
       "liquidity": 136.428,
       "category": "Companies",
       "is_sports": false,
-      "display_category": "World"
+      "display_category": "Companies"
     },
     {
       "source": "Kalshi",
@@ -189,7 +189,7 @@
       "liquidity": 103.322,
       "category": "Companies",
       "is_sports": false,
-      "display_category": "World"
+      "display_category": "Companies"
     },
     {
       "source": "Kalshi",
