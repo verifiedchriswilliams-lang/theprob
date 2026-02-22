@@ -903,16 +903,11 @@
         <p class="hero-sub">
           Every morning, The Prob surfaces the biggest movers, most interesting bets, and sharpest crowd signals from Polymarket and Kalshi — translated from market-speak into something worth reading.
         </p>
-        <div id="signup" style="max-width:460px;">
-          <iframe src="https://subscribe-forms.beehiiv.com/8ba853e2-1a26-4e53-9ac0-c2c503078011"
-            class="beehiiv-embed"
-            data-test-id="beehiiv-embed"
-            frameborder="0"
-            scrolling="no"
-            style="width:100%;max-width:460px;height:207px;margin:0;border-radius:0!important;background-color:transparent;box-shadow:0 0 #0000;">
-          </iframe>
+        <div class="signup-form" id="signup">
+          <input type="email" id="hero-email" placeholder="your@email.com" />
+          <button onclick="submitToBeehiiv('hero-email', 'hero-btn', 'hero-msg')" id="hero-btn">Send It Daily</button>
         </div>
-        <p class="hero-trust">Free forever &nbsp;·&nbsp; <span>No spam, ever</span> &nbsp;·&nbsp; Unsubscribe anytime</p>
+        <p class="hero-trust" id="hero-msg">Free forever &nbsp;·&nbsp; <span>No spam, ever</span> &nbsp;·&nbsp; Unsubscribe anytime</p>
       </div>
 
       <div class="hero-card" id="hero-card">
@@ -1023,16 +1018,12 @@
         <div class="brief-headline">Every morning, the smartest markets take on the day's biggest questions. We translate it.</div>
       </div>
       <div class="brief-signup">
-        <p>Join readers getting the daily crowd intelligence brief.</p>
-        <div style="margin-top:12px;">
-          <iframe src="https://subscribe-forms.beehiiv.com/8ba853e2-1a26-4e53-9ac0-c2c503078011"
-            class="beehiiv-embed"
-            data-test-id="beehiiv-embed"
-            frameborder="0"
-            scrolling="no"
-            style="width:100%;max-width:460px;height:207px;margin:0;border-radius:0!important;background-color:transparent;box-shadow:0 0 #0000;">
-          </iframe>
+        <p>Join readers who'd rather know the odds than guess.</p>
+        <div class="brief-form">
+          <input type="email" id="brief-email" placeholder="your@email.com" />
+          <button onclick="submitToBeehiiv('brief-email', 'brief-btn', 'brief-msg')" id="brief-btn">Get the Brief</button>
         </div>
+        <p style="font-family:var(--mono);font-size:10px;color:var(--text-dim);margin-top:8px;" id="brief-msg"></p>
       </div>
     </div>
     <div class="brief-preview">
@@ -1113,6 +1104,63 @@
 
 
 <script async src="https://subscribe-forms.beehiiv.com/embed.js"></script>
+
+<script>
+// ── BEEHIIV NATIVE SIGNUP ─────────────────────────────────────────────────────
+// Posts directly to Beehiiv's subscribe API — no iframe, full site styling.
+
+const BEEHIIV_PUB_ID = 'pub_54c1d450-a41c-41e2-b46a-6f49ac415386';
+
+async function submitToBeehiiv(emailId, btnId, msgId) {
+  const emailEl = document.getElementById(emailId);
+  const btnEl   = document.getElementById(btnId);
+  const msgEl   = document.getElementById(msgId);
+  const email   = emailEl.value.trim();
+
+  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    msgEl.textContent = 'Please enter a valid email address.';
+    msgEl.style.color = 'var(--red)';
+    return;
+  }
+
+  btnEl.textContent = 'Consulting the Oracle…';
+  btnEl.disabled    = true;
+
+  try {
+    const res = await fetch(`https://api.beehiiv.com/v2/publications/${BEEHIIV_PUB_ID}/subscriptions`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        email,
+        reactivate_existing: true,
+        send_welcome_email:  true,
+        utm_source:          'website',
+        utm_medium:          'organic',
+      }),
+    });
+
+    if (res.ok || res.status === 201) {
+      emailEl.style.display = 'none';
+      btnEl.textContent     = '✓ You\'re in. Check your inbox.';
+      btnEl.style.background = 'var(--green-dim)';
+      btnEl.style.cursor     = 'default';
+      if (msgEl) {
+        msgEl.textContent  = 'Welcome to The Prob. First issue lands tomorrow morning.';
+        msgEl.style.color  = 'var(--green)';
+      }
+    } else {
+      throw new Error(`Status ${res.status}`);
+    }
+  } catch (err) {
+    btnEl.textContent = 'Send It Daily';
+    btnEl.disabled    = false;
+    if (msgEl) {
+      msgEl.textContent = 'Something went wrong — try again in a moment.';
+      msgEl.style.color = 'var(--red)';
+    }
+  }
+}
+</script>
 
 <script>
 // ─────────────────────────────────────────────────────────────────────────────
