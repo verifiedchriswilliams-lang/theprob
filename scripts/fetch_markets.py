@@ -286,7 +286,12 @@ def pick_movers(markets: list[dict], exclude_slug: str = "") -> list[dict]:
     deduped = []
     for c in candidates:
         slug = c.get("slug", "")
-        series_key = re.sub(r'-(20[0-9][0-9]-[0-9][0-9]-[0-9][0-9]|january|february|march|april|may|june|july|august|september|october|november|december).*$', '', slug)
+        if c["source"] == "Kalshi":
+            # Kalshi: use event ticker prefix (strip market suffix after last -)
+            series_key = re.sub(r'-[A-Z0-9]+$', '', slug) or slug
+        else:
+            # Polymarket: strip date suffixes
+            series_key = re.sub(r'-(20[0-9][0-9]-[0-9][0-9]-[0-9][0-9]|january|february|march|april|may|june|july|august|september|october|november|december).*$', '', slug)
         if not series_key:
             series_key = " ".join(c["question"].lower().split()[:5])
         if series_key not in seen_series:
