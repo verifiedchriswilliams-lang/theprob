@@ -174,7 +174,7 @@ def fetch_kalshi() -> list[dict]:
                         prob = round(((yes_bid + yes_ask) / 2) * 100, 1)
                         volume_cents = float(m.get("volume", 0) or 0)
                         volume_usd   = volume_cents / 100
-                        if volume_usd < 5000:
+                        if volume_usd < 1000:
                             continue
                         prev_bid   = float(m.get("previous_yes_bid", yes_bid) or yes_bid)
                         prev_ask   = float(m.get("previous_yes_ask", yes_ask) or yes_ask)
@@ -193,9 +193,10 @@ def fetch_kalshi() -> list[dict]:
                             "volume_fmt": fmt_volume(volume_usd),
                             "volume_24h": float(m.get("volume_24h", 0) or 0) / 100,
                             "end_date":   fmt_date(close_time) if close_time else "",
-                            "liquidity":  volume_usd * 0.1,
-                            "category":   category,
-                            "is_sports":  category == "Sports",
+                            "liquidity":      volume_usd * 0.1,
+                            "category":       category,
+                            "is_sports":      category == "Sports",
+                            "display_category": category,
                         })
                     except (ValueError, KeyError):
                         continue
