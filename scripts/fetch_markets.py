@@ -115,52 +115,56 @@ def make_kalshi_headers(method: str, path: str) -> dict:
 
 # ── POLYMARKET ───────────────────────────────────────────────────────────────
 
-# Expanded tag list to capture more breaking/buzzworthy markets
-POLYMARKET_TAGS = [
-    "trending",
-    "politics",
-    "crypto",
-    "economics",
-    "science",
-    "technology",
-    "world",
-    "entertainment",
-    "climate",
-    "business",
-    "health",
-    "culture",
-]
+# How many pages of 100 to fetch globally (100 markets/page × 5 pages = 500 candidates)
+POLYMARKET_PAGES = 5
 
 def fetch_polymarket() -> list[dict]:
     markets = []
     try:
-        all_raw = []
-        for tag in POLYMARKET_TAGS:
-            try:
-                r = requests.get(
-                    f"{GAMMA_BASE}/markets",
-                    params={
-                        "active":    "true",
-                        "closed":    "false",
-                        "limit":     50,
-                        "order":     "volume24hr",  # Sort by 24h volume = hottest right now
-                        "ascending": "false",
-                        "tag_slug":  tag,
-                    },
-                    timeout=15,
-                )
-                r.raise_for_status()
-                data = r.json()
-                all_raw.extend(data)
-                print(f"    Polymarket tag '{tag}': {len(data)} markets")
-            except requests.RequestException as e:
-                print(f"    [WARN] Polymarket tag '{tag}' failed: {e}")
-                continue
+        all_raw  = []
+        seen_ids = set()
 
-        raw = list({m["id"]: m for m in all_raw}.values())
-        print(f"  Polymarket unique markets after dedup: {len(raw)}")
+        # Strategy: two passes to maximize variety
+        # Pass 1 — top by 24h volume (hottest right now): 3 pages
+        # Pass 2 — top by total volume (big established markets): 2 pages
+        fetch_configs = [
+            {"order": "volume24hr", "pages": 3},
+            {"order": "volume",     "pages": 2},
+        ]
 
-        for m in raw:
+        for cfg in fetch_configs:
+            offset = 0
+            for page in range(cfg["pages"]):
+                try:
+                    r = requests.get(
+                        f"{GAMMA_BASE}/markets",
+                        params={
+                            "active":    "true",
+                            "closed":    "false",
+                            "limit":     100,
+                            "order":     cfg["order"],
+                            "ascending": "false",
+                            "offset":    offset,
+                        },
+                        timeout=15,
+                    )
+                    r.raise_for_status()
+                    data = r.json()
+                    if not data:
+                        break
+                    new = [m for m in data if m.get("id") not in seen_ids]
+                    for m in new:
+                        seen_ids.add(m.get("id"))
+                    all_raw.extend(new)
+                    print(f"    Polymarket {cfg['order']} page {page+1}: {len(data)} fetched, {len(new)} new")
+                    offset += 100
+                except requests.RequestException as e:
+                    print(f"    [WARN] Polymarket fetch failed (page {page+1}): {e}")
+                    break
+
+        print(f"  Polymarket unique markets after dedup: {len(all_raw)}")
+
+        for m in all_raw:
             try:
                 outcomes  = json.loads(m.get("outcomePrices", "[]"))
                 yes_price = float(outcomes[0]) if outcomes else None
@@ -174,27 +178,28 @@ def fetch_polymarket() -> list[dict]:
                 change_pts = round(change_raw * 100, 1)
                 end_date   = m.get("endDate", "") or m.get("endDateIso", "")
                 markets.append({
-                    "source":     "Polymarket",
-                    "question":   m.get("question", ""),
-                    "slug":       m.get("slug", ""),
-                    "url":        f"https://polymarket.com/event/{(m.get('events') or [{}])[0].get('slug', m.get('slug', ''))}",
-                    "prob":       round(yes_price * 100, 1),
-                    "change_pts": change_pts,
-                    "direction":  change_direction(change_pts),
-                    "volume":     volume,
-                    "volume_fmt": fmt_volume(volume),
-                    "volume_24h": volume_24h,
-                    "end_date":   fmt_date(end_date) if end_date else "",
+                    "source":       "Polymarket",
+                    "question":     m.get("question", ""),
+                    "slug":         m.get("slug", ""),
+                    "url":          f"https://polymarket.com/event/{(m.get('events') or [{}])[0].get('slug', m.get('slug', ''))}",
+                    "prob":         round(yes_price * 100, 1),
+                    "change_pts":   change_pts,
+                    "direction":    change_direction(change_pts),
+                    "volume":       volume,
+                    "volume_fmt":   fmt_volume(volume),
+                    "volume_24h":   volume_24h,
+                    "end_date":     fmt_date(end_date) if end_date else "",
                     "end_date_raw": end_date,
-                    "liquidity":  float(m.get("liquidity", 0) or 0),
-                    "category":   " ".join([t.get("label","") for t in m.get("tags", [])]).lower(),
-                    "is_sports":  any(str(t.get("id")) == "1" for t in m.get("tags", [])),
-                    "tags":       [t.get("label","").lower() for t in m.get("tags", [])],
+                    "liquidity":    float(m.get("liquidity", 0) or 0),
+                    "category":     " ".join([t.get("label","") for t in m.get("tags", [])]).lower(),
+                    "is_sports":    any(str(t.get("id")) == "1" for t in m.get("tags", [])),
+                    "tags":         [t.get("label","").lower() for t in m.get("tags", [])],
                 })
             except (ValueError, IndexError, KeyError):
                 continue
     except Exception as e:
         print(f"[WARN] Polymarket fetch failed: {e}")
+    print(f"  Got {len(markets)} Polymarket markets above volume threshold")
     return markets
 
 # ── KALSHI ───────────────────────────────────────────────────────────────────
@@ -611,7 +616,6 @@ def main():
 
     print("Fetching Polymarket…")
     poly_markets = fetch_polymarket()
-    print(f"  Got {len(poly_markets)} Polymarket markets above volume threshold")
 
     print("Fetching Kalshi…")
     kalshi_markets = fetch_kalshi()
