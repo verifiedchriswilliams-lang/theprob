@@ -226,6 +226,11 @@ def fetch_polymarket() -> list[dict]:
                 })
             except (ValueError, IndexError, KeyError):
                 continue
+
+        # Ensure display_category is set on all Polymarket markets
+        for m in markets:
+            if "display_category" not in m:
+                m["display_category"] = get_category_label(m)
     except Exception as e:
         print(f"[WARN] Polymarket fetch failed: {e}")
     print(f"  Got {len(markets)} Polymarket markets above volume threshold")
@@ -722,12 +727,28 @@ def main():
         cat = get_category_label(m)
         print(f"    [{cat}] {m['question'][:55]} ({m['source']})")
 
+    # Build full market catalog for category pages
+    # Assign display_category to every market, filter junk and resolved
+    catalog = []
+    for m in all_markets:
+        if is_junk_market(m):
+            continue
+        if is_effectively_resolved(m):
+            continue
+        cat = get_category_label(m)
+        m["display_category"] = cat
+        catalog.append(m)
+
+    # Sort by score descending so category pages get the best markets first
+    catalog.sort(key=score_market, reverse=True)
+
     output = {
         "updated":     updated_str,
         "updated_iso": now_utc.isoformat(),
         "hero":        hero,
         "movers":      movers,
         "ticker":      ticker,
+        "all_markets": catalog,
     }
 
     os.makedirs("data", exist_ok=True)
