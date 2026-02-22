@@ -1109,7 +1109,7 @@
 // ── BEEHIIV NATIVE SIGNUP ─────────────────────────────────────────────────────
 // Posts to Beehiiv's public form endpoint — no CORS issues, no backend needed.
 
-const BEEHIIV_FORM_ID = '8ba853e2-1a26-4e53-9ac0-c2c503078011';
+const WORKER_URL = 'https://theprob-subscribe.verifiedchriswilliams.workers.dev';
 
 async function submitToBeehiiv(emailId, btnId, msgId) {
   const emailEl = document.getElementById(emailId);
@@ -1127,16 +1127,15 @@ async function submitToBeehiiv(emailId, btnId, msgId) {
   btnEl.disabled    = true;
 
   try {
-    const formData = new FormData();
-    formData.append('email', email);
-
-    const res = await fetch(`https://subscribe-forms.beehiiv.com/${BEEHIIV_FORM_ID}`, {
-      method: 'POST',
-      body: formData,
+    const res = await fetch(WORKER_URL, {
+      method:  'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body:    JSON.stringify({ email }),
     });
 
-    // Beehiiv returns a redirect on success — any non-5xx is a win
-    if (res.ok || res.status === 302 || res.status === 200) {
+    const data = await res.json().catch(() => ({}));
+
+    if (res.ok && data.success) {
       emailEl.style.display  = 'none';
       btnEl.textContent      = '✓ You\'re in. Check your inbox.';
       btnEl.style.background = 'var(--green-dim)';
@@ -1146,19 +1145,16 @@ async function submitToBeehiiv(emailId, btnId, msgId) {
         msgEl.style.color = 'var(--green)';
       }
     } else {
-      throw new Error(`Status ${res.status}`);
+      throw new Error(data.error || `Status ${res.status}`);
     }
   } catch (err) {
-    // CORS or network error — fall back to opening Beehiiv form in new tab
-    window.open(`https://theprobnewsletter.beehiiv.com/subscribe?email=${encodeURIComponent(email)}`, '_blank');
-    emailEl.style.display  = 'none';
-    btnEl.textContent      = '✓ Finishing in new tab…';
-    btnEl.style.background = 'var(--green-dim)';
-    btnEl.style.cursor     = 'default';
+    btnEl.textContent = 'Send It Daily';
+    btnEl.disabled    = false;
     if (msgEl) {
-      msgEl.textContent = 'Complete your signup in the tab that just opened.';
-      msgEl.style.color = 'var(--text-muted)';
+      msgEl.textContent = 'Something went wrong — try again in a moment.';
+      msgEl.style.color = 'var(--red)';
     }
+    console.error('Signup error:', err.message);
   }
 }
 </script>
