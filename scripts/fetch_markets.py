@@ -275,7 +275,7 @@ def get_category_label(m: dict) -> str:
     return "World"
 
 def pick_movers(markets: list[dict], exclude_slug: str = "") -> list[dict]:
-    candidates = [m for m in markets if m["slug"] != exclude_slug and abs(m["change_pts"]) > 0]
+    candidates = [m for m in markets if m["slug"] != exclude_slug and (abs(m["change_pts"]) > 0 or m["source"] == "Kalshi")]
     candidates.sort(key=score_market, reverse=True)
 
     # Deduplicate by series (strip date suffixes from slugs)
