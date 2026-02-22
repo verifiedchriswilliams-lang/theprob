@@ -279,8 +279,8 @@ def fetch_kalshi() -> list[dict]:
                             "slug":         m.get("ticker", ""),
                             "url":          f"https://kalshi.com/markets/{event.get('series_ticker', event.get('event_ticker', '')).lower()}",
                             "prob":         prob,
-                            "change_pts":   0.0,  # Kalshi doesn't expose 24h change via public API
-                            "direction":    "neutral",
+                            "change_pts":   round(float(m.get("last_price", prob) or prob) - float(m.get("previous_price", prob) or prob), 1),
+                            "direction":    change_direction(round(float(m.get("last_price", prob) or prob) - float(m.get("previous_price", prob) or prob), 1)),
                             "volume":       volume_usd,
                             "volume_fmt":   fmt_volume(volume_usd),
                             "volume_24h":   volume_24h_cents / 100,
