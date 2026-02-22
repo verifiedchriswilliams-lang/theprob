@@ -364,7 +364,9 @@ def main():
     os.makedirs("data", exist_ok=True)
     with open("data/markets.json", "w") as f:
         json.dump(output, f, indent=2)
-
+        
+    print(f"  Kalshi in movers: {sum(1 for m in movers if m['source'] == 'Kalshi')}")
+    print(f"  Sources: {[m['source'] for m in movers]}")
     print(f"\n✓ Wrote data/markets.json")
     print(f"  Hero:    {hero['question'][:60] if hero else 'none'}…")
     print(f"  Movers:  {len(movers)}")
