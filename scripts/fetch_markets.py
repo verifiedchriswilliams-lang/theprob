@@ -21,6 +21,7 @@ KALSHI_BASE      = "https://api.elections.kalshi.com/trade-api/v2"
 GAMMA_BASE       = "https://gamma-api.polymarket.com"
 
 MIN_VOLUME_USD   = 50_000
+KALSHI_MIN_VOL   = 10_000     # Kalshi volumes are generally lower
 TOP_MOVERS_COUNT = 6
 HERO_MIN_VOLUME  = 500_000
 
@@ -46,6 +47,17 @@ def change_direction(change_pts: float) -> str:
     elif change_pts < -0.5:
         return "down"
     return "neutral"
+
+def days_until_close(end_date_str: str) -> float | None:
+    """Return how many days until market closes. None if unparseable."""
+    try:
+        dt = datetime.fromisoformat(end_date_str.replace("Z", "+00:00"))
+        now = datetime.now(timezone.utc)
+        if dt.tzinfo is None:
+            dt = dt.replace(tzinfo=timezone.utc)
+        return (dt - now).total_seconds() / 86400
+    except Exception:
+        return None
 
 # ── KALSHI RSA SIGNING ───────────────────────────────────────────────────────
 
@@ -83,26 +95,52 @@ def make_kalshi_headers(method: str, path: str) -> dict:
 
 # ── POLYMARKET ───────────────────────────────────────────────────────────────
 
+# Expanded tag list to capture more breaking/buzzworthy markets
+POLYMARKET_TAGS = [
+    "trending",
+    "politics",
+    "crypto",
+    "economics",
+    "science",
+    "technology",
+    "world",
+    "entertainment",
+    "climate",
+    "business",
+    "health",
+    "culture",
+]
+
 def fetch_polymarket() -> list[dict]:
     markets = []
     try:
         all_raw = []
-        for tag in ["trending", "politics", "crypto", "economics"]:
-            r = requests.get(
-                f"{GAMMA_BASE}/markets",
-                params={
-                    "active":    "true",
-                    "closed":    "false",
-                    "limit":     50,
-                    "order":     "volume24hr",
-                    "ascending": "false",
-                    "tag_slug":  tag,
-                },
-                timeout=15,
-            )
-            r.raise_for_status()
-            all_raw.extend(r.json())
+        for tag in POLYMARKET_TAGS:
+            try:
+                r = requests.get(
+                    f"{GAMMA_BASE}/markets",
+                    params={
+                        "active":    "true",
+                        "closed":    "false",
+                        "limit":     50,
+                        "order":     "volume24hr",  # Sort by 24h volume = hottest right now
+                        "ascending": "false",
+                        "tag_slug":  tag,
+                    },
+                    timeout=15,
+                )
+                r.raise_for_status()
+                data = r.json()
+                all_raw.extend(data)
+                print(f"    Polymarket tag '{tag}': {len(data)} markets")
+            except requests.RequestException as e:
+                print(f"    [WARN] Polymarket tag '{tag}' failed: {e}")
+                continue
+
         raw = {m["id"]: m for m in all_raw}.values()
+        print(f"  Polymarket unique markets after dedup: {len(list(raw))}")
+        raw = {m["id"]: m for m in all_raw}.values()
+
         for m in raw:
             try:
                 outcomes  = json.loads(m.get("outcomePrices", "[]"))
@@ -128,13 +166,15 @@ def fetch_polymarket() -> list[dict]:
                     "volume_fmt": fmt_volume(volume),
                     "volume_24h": volume_24h,
                     "end_date":   fmt_date(end_date) if end_date else "",
+                    "end_date_raw": end_date,
                     "liquidity":  float(m.get("liquidity", 0) or 0),
                     "category":   " ".join([t.get("label","") for t in m.get("tags", [])]).lower(),
                     "is_sports":  any(str(t.get("id")) == "1" for t in m.get("tags", [])),
+                    "tags":       [t.get("label","").lower() for t in m.get("tags", [])],
                 })
             except (ValueError, IndexError, KeyError):
                 continue
-    except requests.RequestException as e:
+    except Exception as e:
         print(f"[WARN] Polymarket fetch failed: {e}")
     return markets
 
@@ -176,26 +216,28 @@ def fetch_kalshi() -> list[dict]:
                             continue
                         volume_cents = float(m.get("volume", 0) or 0)
                         volume_usd   = volume_cents / 100
-                        if volume_usd < 1000:
+                        if volume_usd < KALSHI_MIN_VOL:
                             continue
-                        change_pts = 0.0
+                        volume_24h_cents = float(m.get("volume_24h", 0) or 0)
                         close_time = m.get("close_time", "") or ""
                         markets.append({
-                            "source":     "Kalshi",
-                            "question":   event.get("title", m.get("title", "")),
-                            "slug":       m.get("ticker", ""),
-                            "url":        f"https://kalshi.com/markets/{event.get('series_ticker', event.get('event_ticker', '')).lower()}",
-                            "prob":       prob,
-                            "change_pts": change_pts,
-                            "direction":  change_direction(change_pts),
-                            "volume":     volume_usd,
-                            "volume_fmt": fmt_volume(volume_usd),
-                            "volume_24h": float(m.get("volume_24h", 0) or 0) / 100,
-                            "end_date":   fmt_date(close_time) if close_time else "",
-                            "liquidity":      volume_usd * 0.1,
-                            "category":       category,
-                            "is_sports":      category == "Sports",
+                            "source":       "Kalshi",
+                            "question":     event.get("title", m.get("title", "")),
+                            "slug":         m.get("ticker", ""),
+                            "url":          f"https://kalshi.com/markets/{event.get('series_ticker', event.get('event_ticker', '')).lower()}",
+                            "prob":         prob,
+                            "change_pts":   0.0,  # Kalshi doesn't expose 24h change via public API
+                            "direction":    "neutral",
+                            "volume":       volume_usd,
+                            "volume_fmt":   fmt_volume(volume_usd),
+                            "volume_24h":   volume_24h_cents / 100,
+                            "end_date":     fmt_date(close_time) if close_time else "",
+                            "end_date_raw": close_time,
+                            "liquidity":    volume_usd * 0.1,
+                            "category":     category,
+                            "is_sports":    category == "Sports",
                             "display_category": category,
+                            "tags":         [category.lower()],
                         })
                     except (ValueError, KeyError):
                         continue
@@ -208,87 +250,194 @@ def fetch_kalshi() -> list[dict]:
     print(f"  Got {len(markets)} Kalshi markets")
     return markets
 
-# ── SCORING & SELECTION ──────────────────────────────────────────────────────
+# ── SPORTS DETECTION ─────────────────────────────────────────────────────────
 
-def score_market(m: dict) -> float:
-    abs_change    = abs(m["change_pts"])
-    vol_score     = math.log10(max(m["volume"], 1)) / 10
-    prob_interest = 1 - abs(m["prob"] - 50) / 50
-    return (abs_change * 2.5) + (vol_score * 1.0) + (prob_interest * 0.5)
+# Slug prefixes that definitively identify sports markets
+SPORTS_SLUG_PREFIXES = [
+    "epl-", "nba-", "nfl-", "mlb-", "nhl-", "mwoh-", "wwoh-",
+    "uefa-", "lck-", "lol-", "cs2-", "dota-", "fifa-", "ncaa-",
+    "mls-", "pga-", "ufc-", "f1-", "wwe-", "boxing-",
+]
+
+# Keywords that identify sports questions
+SPORTS_KEYWORDS = [
+    " vs ", " vs.", " v ",
+    "nba", "nfl", "nhl", "mlb", "epl", "mls",
+    "premier league", "bundesliga", "serie a", "la liga",
+    "champions league", "europa league",
+    "stanley cup", "super bowl", "world series", "march madness",
+    "ncaa", "knockout", "bo3)", "bo5)", "lol:", "lck",
+    "esports", "valorant", "overwatch",
+    "fc win", "will win on 20",
+    # ── ADDED: Olympic / winter sports ──
+    "ice hockey", "gold medal", "olympic", "olympics",
+    "world cup", "tour de france", "wimbledon",
+    "grand slam", "formula 1", "formula one",
+    "ufc", "mma", "boxing match", "fight night",
+]
 
 def is_sports_market(m: dict) -> bool:
+    # Kalshi: trust category field
     if m["source"] == "Kalshi":
         return m.get("is_sports", False)
+    # Polymarket: trust tag ID=1
     if m.get("is_sports", False):
         return True
-    q = m["question"].lower()
+    q    = m["question"].lower()
     slug = m.get("slug", "").lower()
-    # Slug-based detection (most reliable)
-    sports_slug_prefixes = ["epl-","nba-","nfl-","mlb-","nhl-","mwoh-","wwoh-","uefa-","lck-","lol-","cs2-","dota-","fifa-","ncaa-","mls-","pga-"]
-    if any(slug.startswith(p) for p in sports_slug_prefixes):
+    # Slug prefix check (most reliable for Polymarket)
+    if any(slug.startswith(p) for p in SPORTS_SLUG_PREFIXES):
         return True
-    # Keyword-based detection
-    return any(w in q for w in [" vs "," vs."," v ","nba","nfl","nhl","mlb","epl","premier league","bundesliga","serie a","la liga","champions league","stanley cup","super bowl","world series","march madness","ncaa","knockout","bo3)","bo5)","lol:","lck","esports","valorant","overwatch","fc win","will win on 20"])
+    # Keyword check
+    return any(w in q for w in SPORTS_KEYWORDS)
+
+# ── BUZZ / INTEREST SCORING ──────────────────────────────────────────────────
+
+def score_market(m: dict) -> float:
+    """
+    Composite buzz score prioritising:
+      1. Big absolute price moves (breaking news signal)
+      2. High 24h volume (money rushing in = hot topic)
+      3. Total volume (legitimacy / market size)
+      4. Interesting probability (not near 0% or 100% = still debatable)
+      5. Closing soon (urgency)
+    """
+    abs_change  = abs(m["change_pts"])
+    volume      = m["volume"]
+    volume_24h  = m.get("volume_24h", 0) or 0
+    prob        = m["prob"]
+
+    # 1. Price-move signal (0–25+ pts)
+    move_score = abs_change * 2.5
+
+    # 2. 24h volume surge — normalised log scale (0–6 pts)
+    #    A market with $500K in last 24h is very hot
+    vol_24h_score = math.log10(max(volume_24h, 1)) / 10 * 3
+
+    # 3. Total volume legitimacy (0–2 pts)
+    vol_total_score = math.log10(max(volume, 1)) / 10
+
+    # 4. Probability interest — sweet spot 30–70% (0–1 pt)
+    prob_interest = 1 - abs(prob - 50) / 50
+
+    # 5. Urgency bonus — closing within 7 days gets up to 1.5 pts
+    urgency = 0.0
+    raw_end = m.get("end_date_raw", "")
+    if raw_end:
+        days = days_until_close(raw_end)
+        if days is not None and 0 < days <= 7:
+            urgency = 1.5 * (1 - days / 7)
+
+    # 6. Recency bonus for Polymarket — markets trending on 24h vs total
+    #    High ratio = suddenly getting lots of attention
+    recency_bonus = 0.0
+    if volume > 0 and volume_24h > 0:
+        ratio = volume_24h / volume
+        if ratio > 0.15:   # >15% of all volume in last 24h = breaking
+            recency_bonus = min(ratio * 5, 3.0)
+
+    return move_score + vol_24h_score + vol_total_score + prob_interest + urgency + recency_bonus
+
+# ── HERO SELECTION ───────────────────────────────────────────────────────────
 
 def pick_hero(markets: list[dict]) -> dict | None:
-    candidates = [m for m in markets if m["volume"] >= HERO_MIN_VOLUME and abs(m["change_pts"]) >= 3 and (not is_sports_market(m) or m["volume"] >= 5_000_000)]
-    if not candidates:
-        candidates = [m for m in markets if m["volume"] >= HERO_MIN_VOLUME and (not is_sports_market(m) or m["volume"] >= 5_000_000)]
-    if not candidates:
-        return None
-    return max(candidates, key=score_market)
+    """
+    The hero is the single most buzzworthy non-sports market.
+    Sports require a very high volume bar ($5M+) to appear here,
+    preventing niche game results from dominating the front page.
+    """
+    candidates = [
+        m for m in markets
+        if m["volume"] >= HERO_MIN_VOLUME
+        and (not is_sports_market(m) or m["volume"] >= 5_000_000)
+    ]
+    # Prefer markets with actual price movement
+    movers = [c for c in candidates if abs(c["change_pts"]) >= 2]
+    if movers:
+        return max(movers, key=score_market)
+    if candidates:
+        return max(candidates, key=score_market)
+    return None
 
-# Map Kalshi categories to our display categories
+# ── CATEGORY MAPPING ─────────────────────────────────────────────────────────
+
 KALSHI_CATEGORY_MAP = {
-    "Politics":             "Politics",
-    "Economics":            "Finance",
-    "Finance":              "Finance",
-    "Financials":           "Finance",
-    "Technology":           "Technology",
+    "Politics":               "Politics",
+    "Economics":              "Finance",
+    "Finance":                "Finance",
+    "Financials":             "Finance",
+    "Technology":             "Technology",
     "Science and Technology": "Technology",
-    "Climate and Weather":  "World",
-    "Science":              "Technology",
-    "World":                "World",
-    "Sports":               "Sports",
-    "Culture":              "Culture",
-    "Entertainment":        "Culture",
-    "Health":               "World",
+    "Climate and Weather":    "World",
+    "Science":                "Technology",
+    "World":                  "World",
+    "Sports":                 "Sports",
+    "Culture":                "Culture",
+    "Entertainment":          "Culture",
+    "Health":                 "World",
 }
 
+POLITICS_KEYWORDS = [
+    "president", "congress", "senate", "election", "vote",
+    "trump", "biden", "harris", "republican", "democrat",
+    "government", "prime minister", "minister", "parliament",
+    "tariff", "executive order", "supreme court", "impeach",
+    "fed chair", "cabinet",
+]
+FINANCE_KEYWORDS = [
+    "fed", "interest rate", "inflation", "gdp", "recession",
+    "unemployment", "treasury", "tariff", "trade", "rate cut",
+    "rate hike", "fomc", "cpi", "jobs report", "s&p",
+    "nasdaq", "dow", "ipo", "acquisition", "merger",
+]
+TECH_KEYWORDS = [
+    "ai", "artificial intelligence", "chatgpt", "gpt", "openai",
+    "spacex", "apple", "google", "microsoft", "tesla", "meta",
+    "amazon", "nvidia", "semiconductor", "chip", "tech",
+]
+
 def get_category_label(m: dict) -> str:
-    """Return a display category for a market."""
     if m["source"] == "Kalshi":
         raw = m.get("category", "World")
         return KALSHI_CATEGORY_MAP.get(raw, "World")
-    # Polymarket: infer from slug
-    slug = m.get("slug", "").lower()
     if is_sports_market(m):
         return "Sports"
-    if any(slug.startswith(p) for p in ["btc-","eth-","crypto-","bitcoin-","solana-"]):
+    slug = m.get("slug", "").lower()
+    q    = m["question"].lower()
+    if any(slug.startswith(p) for p in ["btc-","eth-","crypto-","bitcoin-","solana-","xrp-"]):
         return "Crypto"
-    if any(w in m["question"].lower() for w in ["fed","interest rate","inflation","gdp","recession","unemployment","treasury","tariff","trade"]):
-        return "Finance"
-    if any(w in m["question"].lower() for w in ["president","congress","senate","election","vote","trump","biden","republican","democrat","government","prime minister","minister"]):
+    if any(w in q for w in POLITICS_KEYWORDS):
         return "Politics"
-    if any(w in m["question"].lower() for w in ["ai","artificial intelligence","tech","spacex","apple","google","microsoft","openai","tesla"]):
+    if any(w in q for w in FINANCE_KEYWORDS):
+        return "Finance"
+    if any(w in q for w in TECH_KEYWORDS):
         return "Technology"
     return "World"
 
+# ── MOVER SELECTION ──────────────────────────────────────────────────────────
+
 def pick_movers(markets: list[dict], exclude_slug: str = "") -> list[dict]:
-    candidates = [m for m in markets if m["slug"] != exclude_slug and (abs(m["change_pts"]) > 0 or m["source"] == "Kalshi")]
+    candidates = [
+        m for m in markets
+        if m["slug"] != exclude_slug
+        # For Polymarket, require actual movement; Kalshi included regardless
+        and (abs(m["change_pts"]) > 0 or m["source"] == "Kalshi")
+    ]
     candidates.sort(key=score_market, reverse=True)
 
-    # Deduplicate by series (strip date suffixes from slugs)
+    # Deduplicate by event series
     seen_series = {}
     deduped = []
     for c in candidates:
         slug = c.get("slug", "")
         if c["source"] == "Kalshi":
-            # Kalshi: use event ticker prefix (strip market suffix after last -)
             series_key = re.sub(r'-[A-Z0-9]+$', '', slug) or slug
         else:
-            # Polymarket: strip date suffixes
-            series_key = re.sub(r'-(20[0-9][0-9]-[0-9][0-9]-[0-9][0-9]|january|february|march|april|may|june|july|august|september|october|november|december).*$', '', slug)
+            series_key = re.sub(
+                r'-(20[0-9][0-9]-[0-9][0-9]-[0-9][0-9]|january|february|march|'
+                r'april|may|june|july|august|september|october|november|december).*$',
+                '', slug
+            )
         if not series_key:
             series_key = " ".join(c["question"].lower().split()[:5])
         if series_key not in seen_series:
@@ -296,12 +445,14 @@ def pick_movers(markets: list[dict], exclude_slug: str = "") -> list[dict]:
             c["display_category"] = get_category_label(c)
             deduped.append(c)
 
-    # Slot layout: Politics, Sports, Finance, World, Tech/Science, Sports
+    # Slot layout: aim for variety across categories
+    # Two sports slots kept but they now require is_sports to fill correctly
     slot_categories = ["Politics", "Sports", "Finance", "World", "Technology", "Sports"]
     result = []
     used_slugs = set()
 
     for slot_cat in slot_categories:
+        # Try to fill slot with the highest-scoring market in that category
         for c in deduped:
             if c["slug"] in used_slugs:
                 continue
@@ -310,40 +461,49 @@ def pick_movers(markets: list[dict], exclude_slug: str = "") -> list[dict]:
                 used_slugs.add(c["slug"])
                 break
         else:
-            # Fallback: pick best unused market if slot category not available
+            # Fallback: pick the best unused market
             for c in deduped:
                 if c["slug"] not in used_slugs:
                     result.append(c)
                     used_slugs.add(c["slug"])
                     break
 
-    # Guarantee at least 2 Kalshi markets
+    # Guarantee at least 2 Kalshi markets (contractual for newsletter variety)
     kalshi_count = sum(1 for m in result if m["source"] == "Kalshi")
     if kalshi_count < 2:
         kalshi_needed = 2 - kalshi_count
         for c in deduped:
             if c["slug"] not in used_slugs and c["source"] == "Kalshi":
-                # Replace the last non-Kalshi slot
-                for i in range(len(result) - 1, -1, -1):
-                    if result[i]["source"] != "Kalshi":
-                        used_slugs.discard(result[i]["slug"])
-                        result[i] = c
-                        used_slugs.add(c["slug"])
-                        kalshi_needed -= 1
-                        break
+                # Replace the lowest-scoring non-Kalshi slot
+                non_kalshi_slots = [
+                    (i, m) for i, m in enumerate(result)
+                    if m["source"] != "Kalshi"
+                ]
+                if non_kalshi_slots:
+                    worst_idx = min(non_kalshi_slots, key=lambda x: score_market(x[1]))[0]
+                    used_slugs.discard(result[worst_idx]["slug"])
+                    result[worst_idx] = c
+                    used_slugs.add(c["slug"])
+                    kalshi_needed -= 1
             if kalshi_needed == 0:
                 break
 
     return result[:TOP_MOVERS_COUNT]
 
+# ── TICKER SELECTION ─────────────────────────────────────────────────────────
+
 def pick_ticker(markets: list[dict]) -> list[dict]:
-    by_change = sorted(markets, key=lambda m: abs(m["change_pts"]), reverse=True)[:6]
-    by_volume = sorted(markets, key=lambda m: m["volume"], reverse=True)[:6]
+    """
+    Ticker shows 10 markets sorted purely by buzz score —
+    highest movement and 24h volume surge first.
+    """
+    scored = sorted(markets, key=score_market, reverse=True)
     seen, ticker = set(), []
-    for m in by_change + by_volume:
-        if m["slug"] not in seen:
+    for m in scored:
+        slug = m.get("slug", "")
+        if slug not in seen:
             ticker.append(m)
-            seen.add(m["slug"])
+            seen.add(slug)
         if len(ticker) >= 10:
             break
     return ticker
@@ -357,23 +517,33 @@ def main():
 
     print("Fetching Polymarket…")
     poly_markets = fetch_polymarket()
-    print(f"  Got {len(poly_markets)} markets")
+    print(f"  Got {len(poly_markets)} Polymarket markets above volume threshold")
 
     print("Fetching Kalshi…")
     kalshi_markets = fetch_kalshi()
-    print(f"  Got {len(kalshi_markets)} markets")
 
     all_markets = poly_markets + kalshi_markets
-    print(f"  Total: {len(all_markets)} markets above volume threshold")
+    print(f"  Total: {len(all_markets)} markets")
 
     if not all_markets:
         print("ERROR: No markets fetched. Aborting.")
         return
 
+    # Debug: show top 10 by buzz score
+    top_by_buzz = sorted(all_markets, key=score_market, reverse=True)[:10]
+    print("\n  Top 10 by buzz score:")
+    for i, m in enumerate(top_by_buzz, 1):
+        sports_flag = " [SPORTS]" if is_sports_market(m) else ""
+        print(f"    {i}. [{m['source']}] {m['question'][:60]}{sports_flag}")
+        print(f"       prob={m['prob']}% Δ={m['change_pts']}pts vol={m['volume_fmt']} 24h={fmt_volume(m['volume_24h'])} score={score_market(m):.2f}")
+
     hero      = pick_hero(all_markets)
     hero_slug = hero["slug"] if hero else ""
     movers    = pick_movers(all_markets, exclude_slug=hero_slug)
     ticker    = pick_ticker(all_markets)
+
+    print(f"\n  Hero:   {hero['question'][:70] if hero else 'none'}")
+    print(f"  Movers: {[m['question'][:40] for m in movers]}")
 
     output = {
         "updated":     updated_str,
@@ -388,9 +558,6 @@ def main():
         json.dump(output, f, indent=2)
 
     print(f"\n✓ Wrote data/markets.json")
-    print(f"  Hero:    {hero['question'][:60] if hero else 'none'}…")
-    print(f"  Movers:  {len(movers)}")
-    print(f"  Ticker:  {len(ticker)}")
     print(f"  Updated: {updated_str}")
 
 if __name__ == "__main__":
