@@ -222,7 +222,7 @@ def is_sports_market(m: dict) -> bool:
     if m.get("is_sports", False):
         return True
     q = m["question"].lower()
-    return any(w in q for w in ["vs.","76ers","pelicans","lakers","celtics","knicks","nuggets","grizzlies","heat","kings","spurs","cavaliers","thunder","rockets","warriors","nba","nfl","epl","premier league","bundesliga","serie a","la liga","knockout","blue devils","wolverines","spread:"])
+    return any(w in q for w in ["vs.","76ers","pelicans","lakers","celtics","knicks","nuggets","grizzlies","heat","kings","spurs","cavaliers","thunder","rockets","warriors","nba","nfl","epl","premier league","bundesliga","serie a","la liga","knockout","blue devils","wolverines","spread:","lol:","lck","bo3","bo5","dota","cs2","esports","valorant","overwatch"])
 
 def pick_hero(markets: list[dict]) -> dict | None:
     candidates = [m for m in markets if m["volume"] >= HERO_MIN_VOLUME and abs(m["change_pts"]) >= 3 and (not is_sports_market(m) or m["volume"] >= 5_000_000)]
