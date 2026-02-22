@@ -220,7 +220,10 @@ def pick_hero(markets: list[dict]) -> dict | None:
     def is_sports(m):
         if m["source"] == "Kalshi":
             return False
-        return m.get("is_sports", False)
+        if m.get("is_sports", False):
+            return True
+        q = m["question"].lower()
+        return any(w in q for w in ["vs.","76ers","pelicans","lakers","celtics","knicks","nuggets","grizzlies","heat","kings","spurs","cavaliers","thunder","rockets","warriors","nba","nfl","epl","premier league","bundesliga","serie a","la liga","knockout","blue devils","wolverines","spread:"])
     candidates = [m for m in markets if m["volume"] >= HERO_MIN_VOLUME and abs(m["change_pts"]) >= 3 and (not is_sports(m) or m["volume"] >= 5_000_000)]
     if not candidates:
         candidates = [m for m in markets if m["volume"] >= HERO_MIN_VOLUME and (not is_sports(m) or m["volume"] >= 5_000_000)]
@@ -236,7 +239,10 @@ def pick_movers(markets: list[dict], exclude_slug: str = "") -> list[dict]:
     def is_sports(m):
         if m["source"] == "Kalshi":
             return False
-        return m.get("is_sports", False)
+        if m.get("is_sports", False):
+            return True
+        q = m["question"].lower()
+        return any(w in q for w in ["vs.","76ers","pelicans","lakers","celtics","knicks","nuggets","grizzlies","heat","kings","spurs","cavaliers","thunder","rockets","warriors","nba","nfl","epl","premier league","bundesliga","serie a","la liga","knockout","blue devils","wolverines","spread:"])
     for c in candidates:
         if is_sports(c) and sports_count >= 2:
             continue
