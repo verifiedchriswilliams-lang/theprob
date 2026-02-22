@@ -172,6 +172,8 @@ def fetch_kalshi() -> list[dict]:
                         if yes_bid == 0 and yes_ask == 0:
                             continue
                         prob = round(((yes_bid + yes_ask) / 2) * 100, 1)
+                        if prob > 100 or prob < 0:
+                            continue
                         volume_cents = float(m.get("volume", 0) or 0)
                         volume_usd   = volume_cents / 100
                         if volume_usd < 1000:
@@ -244,6 +246,7 @@ KALSHI_CATEGORY_MAP = {
     "Politics":             "Politics",
     "Economics":            "Finance",
     "Finance":              "Finance",
+    "Financials":           "Finance",
     "Technology":           "Technology",
     "Science and Technology": "Technology",
     "Climate and Weather":  "World",
