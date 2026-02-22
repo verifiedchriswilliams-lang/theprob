@@ -184,7 +184,7 @@ def fetch_kalshi() -> list[dict]:
                             "source":     "Kalshi",
                             "question":   event.get("title", m.get("title", "")),
                             "slug":       m.get("ticker", ""),
-                            "url":        f"https://kalshi.com/markets/{event.get('event_ticker', '').lower()}/{m.get('ticker', '').lower()}",
+                            "url":        f"https://kalshi.com/markets/{event.get('event_ticker', '').lower()}",
                             "prob":       prob,
                             "change_pts": change_pts,
                             "direction":  change_direction(change_pts),
