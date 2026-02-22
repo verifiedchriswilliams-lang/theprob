@@ -2,7 +2,7 @@
 """
 The Prob — Market Data Fetcher
 Pulls top movers from Polymarket and Kalshi, writes to data/markets.json
-Runs 4x/day via GitHub Actions.
+Runs hourly via GitHub Actions.
 """
 
 import os
@@ -108,7 +108,7 @@ def fetch_polymarket() -> list[dict]:
                 yes_price = float(outcomes[0]) if outcomes else None
                 if yes_price is None:
                     continue
-                volume    = float(m.get("volume", 0) or 0)
+                volume     = float(m.get("volume", 0) or 0)
                 volume_24h = float(m.get("volume24hr", 0) or 0)
                 if volume < MIN_VOLUME_USD:
                     continue
@@ -216,17 +216,18 @@ def score_market(m: dict) -> float:
     prob_interest = 1 - abs(m["prob"] - 50) / 50
     return (abs_change * 2.5) + (vol_score * 1.0) + (prob_interest * 0.5)
 
+def is_sports_market(m: dict) -> bool:
+    if m["source"] == "Kalshi":
+        return False
+    if m.get("is_sports", False):
+        return True
+    q = m["question"].lower()
+    return any(w in q for w in ["vs.","76ers","pelicans","lakers","celtics","knicks","nuggets","grizzlies","heat","kings","spurs","cavaliers","thunder","rockets","warriors","nba","nfl","epl","premier league","bundesliga","serie a","la liga","knockout","blue devils","wolverines","spread:"])
+
 def pick_hero(markets: list[dict]) -> dict | None:
-    def is_sports(m):
-        if m["source"] == "Kalshi":
-            return False
-        if m.get("is_sports", False):
-            return True
-        q = m["question"].lower()
-        return any(w in q for w in ["vs.","76ers","pelicans","lakers","celtics","knicks","nuggets","grizzlies","heat","kings","spurs","cavaliers","thunder","rockets","warriors","nba","nfl","epl","premier league","bundesliga","serie a","la liga","knockout","blue devils","wolverines","spread:"])
-    candidates = [m for m in markets if m["volume"] >= HERO_MIN_VOLUME and abs(m["change_pts"]) >= 3 and (not is_sports(m) or m["volume"] >= 5_000_000)]
+    candidates = [m for m in markets if m["volume"] >= HERO_MIN_VOLUME and abs(m["change_pts"]) >= 3 and (not is_sports_market(m) or m["volume"] >= 5_000_000)]
     if not candidates:
-        candidates = [m for m in markets if m["volume"] >= HERO_MIN_VOLUME and (not is_sports(m) or m["volume"] >= 5_000_000)]
+        candidates = [m for m in markets if m["volume"] >= HERO_MIN_VOLUME and (not is_sports_market(m) or m["volume"] >= 5_000_000)]
     if not candidates:
         return None
     return max(candidates, key=score_market)
@@ -237,19 +238,11 @@ def pick_movers(markets: list[dict], exclude_slug: str = "") -> list[dict]:
     result = []
     sports_count = 0
     seen_series = {}
-def is_sports(m):
-        if m["source"] == "Kalshi":
-            return False
-        if m.get("is_sports", False):
-            return True
-        q = m["question"].lower()
-        return any(w in q for w in ["vs.","76ers","pelicans","lakers","celtics","knicks","nuggets","grizzlies","heat","kings","spurs","cavaliers","thunder","rockets","warriors","nba","nfl","epl","premier league","bundesliga","serie a","la liga","knockout","blue devils","wolverines","spread:"])
-        for c in candidates:
-        if is_sports(c) and sports_count >= 2:
+    for c in candidates:
+        if is_sports_market(c) and sports_count >= 2:
             continue
-        if is_sports(c):
+        if is_sports_market(c):
             sports_count += 1
-        # Deduplicate same-topic markets (e.g. "US strikes Iran" x3)
         words = set(c["question"].lower().split())
         series_key = " ".join(sorted(list(words))[:4])
         if seen_series.get(series_key, 0) >= 1:
