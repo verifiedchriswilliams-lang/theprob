@@ -248,8 +248,12 @@ def pick_movers(markets: list[dict], exclude_slug: str = "") -> list[dict]:
             continue
         if is_sports_market(c):
             sports_count += 1
-        words = set(c["question"].lower().split())
-        series_key = " ".join(sorted(list(words))[:4])
+        # Deduplicate by event slug (strips date suffix e.g. -feb-28 from end)
+        slug = c.get("slug", "")
+        # Remove trailing date patterns like -2026-02-28 or -february-28
+        series_key = re.sub(r'-(20[0-9][0-9]-[0-9][0-9]-[0-9][0-9]|january|february|march|april|may|june|july|august|september|october|november|december).*$', '', slug)
+        if not series_key:
+            series_key = " ".join(c["question"].lower().split()[:5])
         if seen_series.get(series_key, 0) >= 1:
             continue
         seen_series[series_key] = seen_series.get(series_key, 0) + 1
