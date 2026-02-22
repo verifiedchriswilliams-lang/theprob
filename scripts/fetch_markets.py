@@ -23,7 +23,7 @@ GAMMA_BASE       = "https://gamma-api.polymarket.com"
 MIN_VOLUME_USD         = 50_000
 KALSHI_MIN_VOL         = 10_000     # Kalshi volumes are generally lower
 TOP_MOVERS_COUNT       = 6
-HERO_MIN_VOLUME        = 500_000
+HERO_MIN_VOLUME        = 1_000_000   # Hero needs at least $1M total volume — no obscure markets
 HERO_SPORTS_MIN_VOLUME = 25_000_000  # Only truly massive sports events as hero
 
 # Minimum 24h volume to be worth showing — filters MrBeast/micro view-count markets
@@ -33,12 +33,17 @@ MIN_INTERESTING_VOLUME = 100_000
 JUNK_MARKET_PATTERNS = [
     "million views",
     "million subscribers",
-    "will mrbeast",
-    "price of bitcoin be between",   # Micro price-band markets
+    "mrbeast",                        # Catches "MrBeast's", "mrbeast", etc after lowercasing
+    "price of bitcoin be between",    # Micro price-band markets
     "price of bitcoin be above",
+    "price of bitcoin be below",
     "price of eth be between",
-    "opens up or down",              # Next-day open markets (trivial)
-    "post 360", "post 380", "post 400",  # Elon tweet-count micro-markets
+    "price of eth be above",
+    "opens up or down",               # Next-day open direction markets (trivial)
+    "post 1", "post 2", "post 3",     # Catches "post 115-139", "post 360" etc (Elon tweet-count)
+    "tweets from",                    # Elon weekly tweet-count markets
+    "fdv above", "fdv below",         # Obscure token launch FDV markets
+    "one day after launch",           # Token launch micro-markets
 ]
 
 # ── HELPERS ─────────────────────────────────────────────────────────────────
