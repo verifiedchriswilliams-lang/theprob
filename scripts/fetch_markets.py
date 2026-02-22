@@ -171,7 +171,7 @@ def fetch_kalshi() -> list[dict]:
                         yes_ask = float(m.get("yes_ask", 0) or 0)
                         if yes_bid == 0 and yes_ask == 0:
                             continue
-                        prob = round(((yes_bid + yes_ask) / 2) * 100, 1)
+                        prob = round((yes_bid + yes_ask) / 2, 1)
                         if prob > 100 or prob < 0:
                             continue
                         volume_cents = float(m.get("volume", 0) or 0)
