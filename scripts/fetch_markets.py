@@ -20,11 +20,26 @@ KALSHI_PRIV_KEY  = os.environ.get("KALSHI_PRIVATE_KEY", "")
 KALSHI_BASE      = "https://api.elections.kalshi.com/trade-api/v2"
 GAMMA_BASE       = "https://gamma-api.polymarket.com"
 
-MIN_VOLUME_USD   = 50_000
-KALSHI_MIN_VOL   = 10_000     # Kalshi volumes are generally lower
-TOP_MOVERS_COUNT = 6
+MIN_VOLUME_USD         = 50_000
+KALSHI_MIN_VOL         = 10_000     # Kalshi volumes are generally lower
+TOP_MOVERS_COUNT       = 6
 HERO_MIN_VOLUME        = 500_000
-HERO_SPORTS_MIN_VOLUME = 25_000_000  # Only truly massive sports events (Super Bowl etc) as hero
+HERO_SPORTS_MIN_VOLUME = 25_000_000  # Only truly massive sports events as hero
+
+# Minimum 24h volume to be worth showing — filters MrBeast/micro view-count markets
+MIN_INTERESTING_VOLUME = 100_000
+
+# Question substrings that identify low-quality micro-markets to exclude entirely
+JUNK_MARKET_PATTERNS = [
+    "million views",
+    "million subscribers",
+    "will mrbeast",
+    "price of bitcoin be between",   # Micro price-band markets
+    "price of bitcoin be above",
+    "price of eth be between",
+    "opens up or down",              # Next-day open markets (trivial)
+    "post 360", "post 380", "post 400",  # Elon tweet-count micro-markets
+]
 
 # ── HELPERS ─────────────────────────────────────────────────────────────────
 
@@ -67,6 +82,15 @@ def is_dated_game_market(m: dict) -> bool:
     """
     q = m.get("question", "")
     return bool(re.search(r'\b(win|beat|cover|score)\b.{0,40}\b20\d\d-\d\d-\d\d\b', q, re.IGNORECASE))
+
+def is_junk_market(m: dict) -> bool:
+    """
+    Filter out low-quality micro-markets: MrBeast view counts, Bitcoin
+    price bands, next-day open direction markets, tweet-count markets, etc.
+    These resolve quickly with huge change_pts but have no newsletter value.
+    """
+    q = m.get("question", "").lower()
+    return any(pattern in q for pattern in JUNK_MARKET_PATTERNS)
 
 def days_until_close(end_date_str: str) -> float | None:
     """Return how many days until market closes. None if unparseable."""
@@ -379,6 +403,7 @@ def pick_hero(markets: list[dict]) -> dict | None:
         m for m in markets
         if m["volume"] >= HERO_MIN_VOLUME
         and not is_effectively_resolved(m)
+        and not is_junk_market(m)
         and (not is_sports_market(m) or m["volume"] >= HERO_SPORTS_MIN_VOLUME)
     ]
     # Prefer markets with actual price movement
@@ -426,6 +451,13 @@ TECH_KEYWORDS = [
     "amazon", "nvidia", "semiconductor", "chip", "tech",
 ]
 
+CRYPTO_KEYWORDS = [
+    "bitcoin", "btc", "ethereum", "eth", "solana", "sol", "crypto",
+    "token", "fdv", "market cap", "altcoin", "defi", "nft", "blockchain",
+    "coinbase", "binance", "stablecoin", "memecoin", "airdrop", "launch",
+    "on-chain", "web3", "dex", "liquidity pool",
+]
+
 def get_category_label(m: dict) -> str:
     if m["source"] == "Kalshi":
         raw = m.get("category", "World")
@@ -434,7 +466,9 @@ def get_category_label(m: dict) -> str:
         return "Sports"
     slug = m.get("slug", "").lower()
     q    = m["question"].lower()
-    if any(slug.startswith(p) for p in ["btc-","eth-","crypto-","bitcoin-","solana-","xrp-"]):
+    if any(slug.startswith(p) for p in ["btc-","eth-","crypto-","bitcoin-","solana-","xrp-","opinion-"]):
+        return "Crypto"
+    if any(w in q for w in CRYPTO_KEYWORDS):
         return "Crypto"
     if any(w in q for w in POLITICS_KEYWORDS):
         return "Politics"
@@ -451,7 +485,7 @@ def pick_movers(markets: list[dict], exclude_slug: str = "") -> list[dict]:
         m for m in markets
         if m["slug"] != exclude_slug
         and not is_effectively_resolved(m)
-        # For Polymarket, require actual movement; Kalshi included regardless
+        and not is_junk_market(m)
         and (abs(m["change_pts"]) > 0 or m["source"] == "Kalshi")
     ]
     candidates.sort(key=score_market, reverse=True)
@@ -543,17 +577,32 @@ def pick_movers(markets: list[dict], exclude_slug: str = "") -> list[dict]:
     return result[:TOP_MOVERS_COUNT]
 
 def get_series_key(m: dict) -> str:
-    """Normalize a market slug to its parent series for deduplication."""
+    """
+    Normalize a market to its parent series for deduplication.
+    Strips date suffixes, numeric suffixes, and normalizes topic-based clusters.
+    """
     slug = m.get("slug", "")
+    q    = m.get("question", "").lower()
+
     if m["source"] == "Kalshi":
         return re.sub(r'-[A-Z0-9]+$', '', slug) or slug
+
     # Strip date suffixes from Polymarket slugs
     key = re.sub(
         r'-(20[0-9][0-9]-[0-9][0-9]-[0-9][0-9]|january|february|march|'
         r'april|may|june|july|august|september|october|november|december).*$',
         '', slug
     )
-    return key or " ".join(m.get("question", "").lower().split()[:5])
+    # Strip numeric range suffixes like "-16-18-million" or "-above-68000"
+    key = re.sub(r'-(above|below|between|over|under)[-0-9a-z]*$', '', key)
+    key = re.sub(r'-[0-9]+-[0-9]+.*$', '', key)
+
+    # Topic-based clustering: markets asking same question about different entities
+    # e.g. "best AI model" — cluster by first 6 meaningful words of question
+    if not key:
+        key = " ".join(q.split()[:6])
+
+    return key
 
 # ── TICKER SELECTION ─────────────────────────────────────────────────────────
 
@@ -569,7 +618,7 @@ def pick_ticker(markets: list[dict]) -> list[dict]:
     MAX_PER_CATEGORY     = 3
 
     scored = sorted(
-        [m for m in markets if not is_effectively_resolved(m)],
+        [m for m in markets if not is_effectively_resolved(m) and not is_junk_market(m)],
         key=score_market, reverse=True
     )
 
@@ -633,10 +682,12 @@ def main():
     for i, m in enumerate(top_by_buzz, 1):
         is_sport   = is_sports_market(m)
         resolved   = is_effectively_resolved(m)
+        junk       = is_junk_market(m)
         hero_ok    = not is_sport or m["volume"] >= HERO_SPORTS_MIN_VOLUME
         flags = []
-        if is_sport:   flags.append("SPORTS")
-        if resolved:   flags.append("RESOLVED")
+        if is_sport:    flags.append("SPORTS")
+        if resolved:    flags.append("RESOLVED")
+        if junk:        flags.append("JUNK")
         if not hero_ok: flags.append("HERO-BLOCKED")
         flag_str = f" [{', '.join(flags)}]" if flags else ""
         print(f"    {i}. [{m['source']}] {m['question'][:55]}{flag_str}")
