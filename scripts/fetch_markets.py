@@ -238,30 +238,80 @@ def pick_hero(markets: list[dict]) -> dict | None:
         return None
     return max(candidates, key=score_market)
 
+def get_category_label(m: dict) -> str:
+    """Return a display category for a market."""
+    if m["source"] == "Kalshi":
+        return m.get("category", "World")
+    # Polymarket: infer from slug
+    slug = m.get("slug", "").lower()
+    if is_sports_market(m):
+        return "Sports"
+    if any(slug.startswith(p) for p in ["btc-","eth-","crypto-","bitcoin-","solana-"]):
+        return "Crypto"
+    if any(w in m["question"].lower() for w in ["fed","interest rate","inflation","gdp","recession","unemployment","treasury","tariff","trade"]):
+        return "Finance"
+    if any(w in m["question"].lower() for w in ["president","congress","senate","election","vote","trump","biden","republican","democrat","government","prime minister","minister"]):
+        return "Politics"
+    if any(w in m["question"].lower() for w in ["ai","artificial intelligence","tech","spacex","apple","google","microsoft","openai","tesla"]):
+        return "Technology"
+    return "World"
+
 def pick_movers(markets: list[dict], exclude_slug: str = "") -> list[dict]:
     candidates = [m for m in markets if m["slug"] != exclude_slug and abs(m["change_pts"]) > 0]
     candidates.sort(key=score_market, reverse=True)
-    result = []
-    sports_count = 0
+
+    # Deduplicate by series (strip date suffixes from slugs)
     seen_series = {}
+    deduped = []
     for c in candidates:
-        if is_sports_market(c) and sports_count >= 2:
-            continue
-        if is_sports_market(c):
-            sports_count += 1
-        # Deduplicate by event slug (strips date suffix e.g. -feb-28 from end)
         slug = c.get("slug", "")
-        # Remove trailing date patterns like -2026-02-28 or -february-28
         series_key = re.sub(r'-(20[0-9][0-9]-[0-9][0-9]-[0-9][0-9]|january|february|march|april|may|june|july|august|september|october|november|december).*$', '', slug)
         if not series_key:
             series_key = " ".join(c["question"].lower().split()[:5])
-        if seen_series.get(series_key, 0) >= 1:
-            continue
-        seen_series[series_key] = seen_series.get(series_key, 0) + 1
-        result.append(c)
-        if len(result) >= TOP_MOVERS_COUNT:
-            break
-    return result
+        if series_key not in seen_series:
+            seen_series[series_key] = True
+            c["display_category"] = get_category_label(c)
+            deduped.append(c)
+
+    # Slot layout: Politics, Sports, Finance, World, Tech/Science, Sports
+    slot_categories = ["Politics", "Sports", "Finance", "World", "Technology", "Sports"]
+    result = []
+    used_slugs = set()
+
+    for slot_cat in slot_categories:
+        for c in deduped:
+            if c["slug"] in used_slugs:
+                continue
+            if c["display_category"] == slot_cat:
+                result.append(c)
+                used_slugs.add(c["slug"])
+                break
+        else:
+            # Fallback: pick best unused market if slot category not available
+            for c in deduped:
+                if c["slug"] not in used_slugs:
+                    result.append(c)
+                    used_slugs.add(c["slug"])
+                    break
+
+    # Guarantee at least 2 Kalshi markets
+    kalshi_count = sum(1 for m in result if m["source"] == "Kalshi")
+    if kalshi_count < 2:
+        kalshi_needed = 2 - kalshi_count
+        for c in deduped:
+            if c["slug"] not in used_slugs and c["source"] == "Kalshi":
+                # Replace the last non-Kalshi slot
+                for i in range(len(result) - 1, -1, -1):
+                    if result[i]["source"] != "Kalshi":
+                        used_slugs.discard(result[i]["slug"])
+                        result[i] = c
+                        used_slugs.add(c["slug"])
+                        kalshi_needed -= 1
+                        break
+            if kalshi_needed == 0:
+                break
+
+    return result[:TOP_MOVERS_COUNT]
 
 def pick_ticker(markets: list[dict]) -> list[dict]:
     by_change = sorted(markets, key=lambda m: abs(m["change_pts"]), reverse=True)[:6]
