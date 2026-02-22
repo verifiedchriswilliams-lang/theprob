@@ -143,7 +143,7 @@
     }
     .logo-mark {
       font-family: var(--mono);
-      font-size: 22px;
+      font-size: 28px;
       font-weight: 700;
       color: var(--accent);
       letter-spacing: -1px;
@@ -176,6 +176,31 @@
       transition: color 0.2s;
     }
     .nav-links a:hover { color: var(--text); }
+
+    /* ── MOBILE NAV STRIP ── */
+    .mobile-nav {
+      display: none;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      background: var(--bg2);
+      border-bottom: 1px solid var(--border);
+      white-space: nowrap;
+    }
+    .mobile-nav::-webkit-scrollbar { display: none; }
+    .mobile-nav a {
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      text-decoration: none;
+      padding: 11px 18px;
+      border-right: 1px solid var(--border);
+      transition: color 0.2s;
+    }
+    .mobile-nav a:hover, .mobile-nav a.active { color: var(--accent); }
 
     .nav-cta {
       font-family: var(--mono);
@@ -854,6 +879,7 @@
     @media (max-width: 1024px) {
       nav { padding: 16px 24px; }
       .nav-links { display: none; }
+      .mobile-nav { display: block; }
       .hero { grid-template-columns: 1fr; gap: 40px; padding: 40px 24px; }
       .hero::after { display: none; }
       .section { padding: 40px 24px; }
@@ -884,14 +910,24 @@
       <span class="logo-sub">What's the Probability?</span>
     </div>
     <ul class="nav-links">
-      <li><a href="politics.html">Politics</a></li>
       <li><a href="business.html">Business</a></li>
-      <li><a href="crypto.html">Crypto</a></li>
-      <li><a href="sports.html">Sports</a></li>
       <li><a href="culture.html">Culture</a></li>
       <li><a href="news.html">News</a></li>
+      <li><a href="politics.html">Politics</a></li>
+      <li><a href="sports.html">Sports</a></li>
+      <li><a href="tech.html">Tech</a></li>
     </ul>
   </nav>
+
+  <!-- MOBILE NAV STRIP -->
+  <div class="mobile-nav">
+    <a href="business.html">Business</a>
+    <a href="culture.html">Culture</a>
+    <a href="news.html">News</a>
+    <a href="politics.html">Politics</a>
+    <a href="sports.html">Sports</a>
+    <a href="tech.html">Tech</a>
+  </div>
 
   <!-- HERO -->
   <section style="max-width: 1280px; margin: 0 auto;">
@@ -1083,12 +1119,12 @@
       <h4>Navigate</h4>
       <ul>
         <li><a href="index.html">Today's Markets</a></li>
-        <li><a href="politics.html">Politics</a></li>
         <li><a href="business.html">Business</a></li>
-        <li><a href="crypto.html">Crypto</a></li>
-        <li><a href="sports.html">Sports</a></li>
         <li><a href="culture.html">Culture</a></li>
         <li><a href="news.html">News</a></li>
+        <li><a href="politics.html">Politics</a></li>
+        <li><a href="sports.html">Sports</a></li>
+        <li><a href="tech.html">Tech</a></li>
       </ul>
     </div>
     <div class="footer-links">

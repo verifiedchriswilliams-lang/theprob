@@ -4,15 +4,15 @@
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The Prob — Culture Markets</title>
-  <meta name="description" content="Award shows, viral moments, science milestones, and the calls nobody else is making. Turns out people put real money on almost anything — and the odds are surprisingly sharp.">
-  <link rel="canonical" href="https://theprobnewsletter.com/culture.html">
+  <title>The Prob — Tech Markets</title>
+  <meta name="description" content="Crypto price targets, AI breakthroughs, regulatory calls, and the wildest crowdsourced tech forecasts on the board. Fast-moving markets for a fast-moving space.">
+  <link rel="canonical" href="https://theprobnewsletter.com/tech.html">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="The Prob — Culture Markets">
-  <meta property="og:description" content="Award shows, viral moments, science milestones, and the calls nobody else is making. Turns out people put real money on almost anything — and the odds are surprisingly sharp.">
+  <meta property="og:title" content="The Prob — Tech Markets">
+  <meta property="og:description" content="Crypto price targets, AI breakthroughs, regulatory calls, and the wildest crowdsourced tech forecasts on the board. Fast-moving markets for a fast-moving space.">
   <meta property="og:image" content="https://theprobnewsletter.com/og-image.jpg">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="The Prob — Culture Markets">
+  <meta name="twitter:title" content="The Prob — Tech Markets">
   <meta name="twitter:image" content="https://theprobnewsletter.com/og-image.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -121,26 +121,26 @@
     </div>
     <ul class="nav-links">
       <li><a href="business.html">Business</a></li>
-      <li><a href="culture.html" style="color:var(--accent);">Culture</a></li>
+      <li><a href="culture.html">Culture</a></li>
       <li><a href="news.html">News</a></li>
       <li><a href="politics.html">Politics</a></li>
       <li><a href="sports.html">Sports</a></li>
-      <li><a href="tech.html">Tech</a></li>
+      <li><a href="tech.html" style="color:var(--accent);">Tech</a></li>
     </ul>
   </nav>
   <div class="mobile-nav">
     <a href="business.html">Business</a>
-    <a href="culture.html" class="active">Culture</a>
+    <a href="culture.html">Culture</a>
     <a href="news.html">News</a>
     <a href="politics.html">Politics</a>
     <a href="sports.html">Sports</a>
-    <a href="tech.html">Tech</a>
+    <a href="tech.html" class="active">Tech</a>
   </div>
 
   <div class="page-header">
-    <div class="page-eyebrow">Culture Markets</div>
-    <h1 class="page-headline">The internet bets on everything. Here's what they're putting money on.</h1>
-    <p class="page-sub">Award shows, viral moments, science milestones, and the calls nobody else is making. Turns out people put real money on almost anything — and the odds are surprisingly sharp.</p>
+    <div class="page-eyebrow">Tech Markets</div>
+    <h1 class="page-headline">Bitcoin, AI, and everything else the internet is putting money on.</h1>
+    <p class="page-sub">Crypto price targets, AI breakthroughs, regulatory calls, and the wildest crowdsourced tech forecasts on the board. Fast-moving markets for a fast-moving space.</p>
   </div>
 
   <section class="section">
@@ -201,8 +201,8 @@
 
 <script>
 const DATA_URL    = 'data/markets.json';
-const POLY_CATS   = ['Culture', 'Entertainment', 'Health', 'Science'];
-const KALSHI_CATS = ['Culture', 'Entertainment', 'Health', 'Climate and Weather'];
+const POLY_CATS   = ['Crypto', 'Technology', 'Science'];
+const KALSHI_CATS = ['Technology', 'Science and Technology', 'Science'];
 
 function dir(c){return c>0.5?'up':c<-0.5?'down':'neutral';}
 function arrow(c){return c>0.5?`▲ +${c} pts`:c<-0.5?`▼ ${c} pts`:`— ${Math.abs(c)} pts`;}
@@ -231,7 +231,7 @@ function renderBoard(markets, elId, source, cats){
     .slice(0,10);
 
   if(!filtered.length){
-    el.innerHTML='<div class="empty-state">No culture markets right now. Check back soon.</div>';
+    el.innerHTML='<div class="empty-state">No tech markets right now. Check back soon.</div>';
     return;
   }
 
