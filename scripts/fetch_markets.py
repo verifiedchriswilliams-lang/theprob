@@ -244,7 +244,7 @@ def is_sports(m):
             return True
         q = m["question"].lower()
         return any(w in q for w in ["vs.","76ers","pelicans","lakers","celtics","knicks","nuggets","grizzlies","heat","kings","spurs","cavaliers","thunder","rockets","warriors","nba","nfl","epl","premier league","bundesliga","serie a","la liga","knockout","blue devils","wolverines","spread:"])
-    for c in candidates:
+        for c in candidates:
         if is_sports(c) and sports_count >= 2:
             continue
         if is_sports(c):
