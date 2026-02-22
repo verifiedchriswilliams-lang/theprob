@@ -307,6 +307,11 @@ def fetch_kalshi() -> list[dict]:
     except requests.RequestException as e:
         print(f"[WARN] Kalshi fetch failed: {e}")
     print(f"  Got {len(markets)} Kalshi markets")
+    # Debug: show all unique raw category values from Kalshi
+    raw_cats = sorted(set(m.get("category", "EMPTY") for m in markets))
+    print(f"  Kalshi raw categories: {raw_cats}")
+    disp_cats = sorted(set(m.get("display_category", "UNSET") for m in markets))
+    print(f"  Kalshi display_categories: {disp_cats}")
     return markets
 
 # ── SPORTS DETECTION ─────────────────────────────────────────────────────────
@@ -427,18 +432,33 @@ def pick_hero(markets: list[dict]) -> dict | None:
 # ── CATEGORY MAPPING ─────────────────────────────────────────────────────────
 
 KALSHI_CATEGORY_MAP = {
+    # Politics
     "Politics":               "Politics",
+    # Business/Finance
     "Economics":              "Finance",
     "Finance":                "Finance",
     "Financials":             "Finance",
+    "Companies":              "Finance",
+    # Tech
     "Technology":             "Technology",
     "Science and Technology": "Technology",
-    "Climate and Weather":    "World",
+    "Tech & Science":         "Technology",
+    "Tech and Science":       "Technology",
     "Science":                "Technology",
-    "World":                  "World",
+    # Crypto
+    "Crypto":                 "Crypto",
+    "Cryptocurrency":         "Crypto",
+    # Sports
     "Sports":                 "Sports",
+    # Culture
     "Culture":                "Culture",
     "Entertainment":          "Culture",
+    "Mentions":               "Culture",
+    # World/Other
+    "Climate and Weather":    "World",
+    "Climate":                "World",
+    "Weather":                "World",
+    "World":                  "World",
     "Health":                 "World",
 }
 
