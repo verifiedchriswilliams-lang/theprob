@@ -141,7 +141,6 @@ def fetch_polymarket() -> list[dict]:
 
 def fetch_kalshi() -> list[dict]:
     markets = []
-    GOOD_CATEGORIES = {"Politics", "Economics", "Finance", "Technology", "Climate and Weather", "Science", "World"}
     try:
         cursor = None
         pages_fetched = 0
@@ -165,8 +164,6 @@ def fetch_kalshi() -> list[dict]:
                 break
             for event in events:
                 category = event.get("category", "")
-                if category not in GOOD_CATEGORIES:
-                    continue
                 for m in event.get("markets", []):
                     try:
                         yes_bid = float(m.get("yes_bid", 0) or 0)
@@ -196,6 +193,8 @@ def fetch_kalshi() -> list[dict]:
                             "volume_24h": float(m.get("volume_24h", 0) or 0) / 100,
                             "end_date":   fmt_date(close_time) if close_time else "",
                             "liquidity":  volume_usd * 0.1,
+                            "category":   category,
+                            "is_sports":  category == "Sports",
                         })
                     except (ValueError, KeyError):
                         continue
@@ -218,11 +217,17 @@ def score_market(m: dict) -> float:
 
 def is_sports_market(m: dict) -> bool:
     if m["source"] == "Kalshi":
-        return False
+        return m.get("is_sports", False)
     if m.get("is_sports", False):
         return True
     q = m["question"].lower()
-    return any(w in q for w in ["vs.","76ers","pelicans","lakers","celtics","knicks","nuggets","grizzlies","heat","kings","spurs","cavaliers","thunder","rockets","warriors","nba","nfl","epl","premier league","bundesliga","serie a","la liga","knockout","blue devils","wolverines","spread:","lol:","lck","bo3","bo5","dota","cs2","esports","valorant","overwatch"])
+    slug = m.get("slug", "").lower()
+    # Slug-based detection (most reliable)
+    sports_slug_prefixes = ["epl-","nba-","nfl-","mlb-","nhl-","mwoh-","wwoh-","uefa-","lck-","lol-","cs2-","dota-","fifa-","ncaa-","mls-","pga-"]
+    if any(slug.startswith(p) for p in sports_slug_prefixes):
+        return True
+    # Keyword-based detection
+    return any(w in q for w in [" vs "," vs."," v ","nba","nfl","nhl","mlb","epl","premier league","bundesliga","serie a","la liga","champions league","stanley cup","super bowl","world series","march madness","ncaa","knockout","bo3)","bo5)","lol:","lck","esports","valorant","overwatch","fc win","will win on 20"])
 
 def pick_hero(markets: list[dict]) -> dict | None:
     candidates = [m for m in markets if m["volume"] >= HERO_MIN_VOLUME and abs(m["change_pts"]) >= 3 and (not is_sports_market(m) or m["volume"] >= 5_000_000)]
