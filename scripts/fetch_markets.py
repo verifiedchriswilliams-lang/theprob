@@ -236,7 +236,8 @@ def pick_movers(markets: list[dict], exclude_slug: str = "") -> list[dict]:
     candidates.sort(key=score_market, reverse=True)
     result = []
     sports_count = 0
-    def is_sports(m):
+    seen_series = {}
+def is_sports(m):
         if m["source"] == "Kalshi":
             return False
         if m.get("is_sports", False):
@@ -248,6 +249,12 @@ def pick_movers(markets: list[dict], exclude_slug: str = "") -> list[dict]:
             continue
         if is_sports(c):
             sports_count += 1
+        # Deduplicate same-topic markets (e.g. "US strikes Iran" x3)
+        words = set(c["question"].lower().split())
+        series_key = " ".join(sorted(list(words))[:4])
+        if seen_series.get(series_key, 0) >= 1:
+            continue
+        seen_series[series_key] = seen_series.get(series_key, 0) + 1
         result.append(c)
         if len(result) >= TOP_MOVERS_COUNT:
             break
