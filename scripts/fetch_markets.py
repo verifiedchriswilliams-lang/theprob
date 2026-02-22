@@ -21,7 +21,7 @@ KALSHI_BASE      = "https://api.elections.kalshi.com/trade-api/v2"
 GAMMA_BASE       = "https://gamma-api.polymarket.com"
 
 MIN_VOLUME_USD         = 50_000
-KALSHI_MIN_VOL         = 10_000     # Kalshi volumes are generally lower
+KALSHI_MIN_VOL         = 1_000      # Kalshi volumes are much lower than Polymarket
 TOP_MOVERS_COUNT       = 6
 HERO_MIN_VOLUME        = 1_000_000   # Hero needs at least $1M total volume — no obscure markets
 HERO_SPORTS_MIN_VOLUME = 25_000_000  # Only truly massive sports events as hero
@@ -240,77 +240,117 @@ def fetch_polymarket() -> list[dict]:
 
 def fetch_kalshi() -> list[dict]:
     markets = []
-    try:
+    seen_tickers = set()
+
+    def fetch_kalshi_page(extra_params={}):
+        """Fetch one paginated pass of Kalshi events, return all qualifying markets."""
+        results = []
         cursor = None
-        pages_fetched = 0
-        while pages_fetched < 10:
+        pages = 0
+        while pages < 15:
             params = {
                 "limit":               100,
                 "status":              "open",
                 "with_nested_markets": "true",
+                **extra_params,
             }
             if cursor:
                 params["cursor"] = cursor
-            resp = requests.get(
-                f"{KALSHI_BASE}/events",
-                params=params,
-                timeout=15,
-            )
-            resp.raise_for_status()
-            data   = resp.json()
-            events = data.get("events", [])
-            if not events:
+            try:
+                resp = requests.get(f"{KALSHI_BASE}/events", params=params, timeout=15)
+                resp.raise_for_status()
+                data   = resp.json()
+                events = data.get("events", [])
+                if not events:
+                    break
+                for event in events:
+                    category      = event.get("category", "")
+                    event_title   = event.get("title", "")
+                    series_ticker = event.get("series_ticker", event.get("event_ticker", ""))
+                    for m in event.get("markets", []):
+                        try:
+                            ticker = m.get("ticker", "")
+                            if ticker in seen_tickers:
+                                continue
+                            yes_bid = float(m.get("yes_bid", 0) or 0)
+                            yes_ask = float(m.get("yes_ask", 0) or 0)
+                            if yes_bid == 0 and yes_ask == 0:
+                                continue
+                            prob = round((yes_bid + yes_ask) / 2, 1)
+                            if prob > 100 or prob < 0:
+                                continue
+                            volume_cents = float(m.get("volume", 0) or 0)
+                            volume_usd   = volume_cents / 100
+                            if volume_usd < KALSHI_MIN_VOL:
+                                continue
+                            volume_24h_cents = float(m.get("volume_24h", 0) or 0)
+                            close_time = m.get("close_time", "") or ""
+
+                            # Build question: combine event title + market subtitle if distinct
+                            market_subtitle = m.get("subtitle", "") or m.get("title", "") or ""
+                            if market_subtitle and market_subtitle.lower() != event_title.lower():
+                                question = f"{event_title}: {market_subtitle}"
+                            else:
+                                question = event_title
+
+                            # Calculate 24h change
+                            last_price = float(m.get("last_price", 0) or 0)
+                            prev_price = float(m.get("previous_yes_price", 0) or m.get("previous_price", 0) or 0)
+                            change_pts = round(last_price - prev_price, 1) if last_price > 0 and prev_price > 0 else 0.0
+
+                            disp_cat = KALSHI_CATEGORY_MAP.get(category, category or "World")
+                            results.append({
+                                "source":           "Kalshi",
+                                "question":         question,
+                                "slug":             ticker,
+                                "url":              f"https://kalshi.com/markets/{series_ticker.lower()}",
+                                "prob":             prob,
+                                "change_pts":       change_pts,
+                                "direction":        change_direction(change_pts),
+                                "volume":           volume_usd,
+                                "volume_fmt":       fmt_volume(volume_usd),
+                                "volume_24h":       volume_24h_cents / 100,
+                                "end_date":         fmt_date(close_time) if close_time else "",
+                                "end_date_raw":     close_time,
+                                "liquidity":        volume_usd * 0.1,
+                                "category":         category,
+                                "is_sports":        category.lower() == "sports",
+                                "display_category": disp_cat,
+                                "tags":             [category.lower()],
+                            })
+                            seen_tickers.add(ticker)
+                        except (ValueError, KeyError):
+                            continue
+                cursor = data.get("cursor")
+                if not cursor:
+                    break
+                pages += 1
+                time.sleep(0.3)
+            except requests.RequestException as e:
+                print(f"[WARN] Kalshi fetch error: {e}")
                 break
-            for event in events:
-                category = event.get("category", "")
-                for m in event.get("markets", []):
-                    try:
-                        yes_bid = float(m.get("yes_bid", 0) or 0)
-                        yes_ask = float(m.get("yes_ask", 0) or 0)
-                        if yes_bid == 0 and yes_ask == 0:
-                            continue
-                        prob = round((yes_bid + yes_ask) / 2, 1)
-                        if prob > 100 or prob < 0:
-                            continue
-                        volume_cents = float(m.get("volume", 0) or 0)
-                        volume_usd   = volume_cents / 100
-                        if volume_usd < KALSHI_MIN_VOL:
-                            continue
-                        volume_24h_cents = float(m.get("volume_24h", 0) or 0)
-                        close_time = m.get("close_time", "") or ""
-                        markets.append({
-                            "source":       "Kalshi",
-                            "question":     event.get("title", m.get("title", "")),
-                            "slug":         m.get("ticker", ""),
-                            "url":          f"https://kalshi.com/markets/{event.get('series_ticker', event.get('event_ticker', '')).lower()}",
-                            "prob":         prob,
-                            "change_pts":   round(float(m.get("last_price", prob) or prob) - float(m.get("previous_price", prob) or prob), 1),
-                            "direction":    change_direction(round(float(m.get("last_price", prob) or prob) - float(m.get("previous_price", prob) or prob), 1)),
-                            "volume":       volume_usd,
-                            "volume_fmt":   fmt_volume(volume_usd),
-                            "volume_24h":   volume_24h_cents / 100,
-                            "end_date":     fmt_date(close_time) if close_time else "",
-                            "end_date_raw": close_time,
-                            "liquidity":    volume_usd * 0.1,
-                            "category":     category,
-                            "is_sports":    category == "Sports",
-                            "display_category": category,
-                            "tags":         [category.lower()],
-                        })
-                    except (ValueError, KeyError):
-                        continue
-            cursor = data.get("cursor")
-            if not cursor:
-                break
-            pages_fetched += 1
-            time.sleep(0.5)  # Avoid 429 rate limiting
-    except requests.RequestException as e:
+        return results
+
+    try:
+        # 1. General fetch (all categories, sorted by volume)
+        markets += fetch_kalshi_page()
+        print(f"  Kalshi general fetch: {len(markets)} markets")
+
+        # 2. Category-specific fetches to ensure full coverage
+        for cat in ["Sports", "Culture", "Crypto", "Technology"]:
+            before = len(markets)
+            markets += fetch_kalshi_page({"category": cat})
+            added = len(markets) - before
+            if added:
+                print(f"  Kalshi {cat} fetch: +{added} markets")
+
+    except Exception as e:
         print(f"[WARN] Kalshi fetch failed: {e}")
-    print(f"  Got {len(markets)} Kalshi markets")
-    # Debug: show all unique raw category values from Kalshi
-    raw_cats = sorted(set(m.get("category", "EMPTY") for m in markets))
-    print(f"  Kalshi raw categories: {raw_cats}")
+
+    print(f"  Got {len(markets)} Kalshi markets total")
+    raw_cats  = sorted(set(m.get("category", "EMPTY") for m in markets))
     disp_cats = sorted(set(m.get("display_category", "UNSET") for m in markets))
+    print(f"  Kalshi raw categories: {raw_cats}")
     print(f"  Kalshi display_categories: {disp_cats}")
     return markets
 
