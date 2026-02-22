@@ -584,43 +584,52 @@ def pick_movers(markets: list[dict], exclude_slug: str = "") -> list[dict]:
 def get_series_key(m: dict) -> str:
     """
     Normalize a market to its parent series for deduplication.
-    Strips date suffixes, numeric suffixes, and normalizes topic-based clusters.
+    Strips date suffixes, price targets, and numeric range suffixes
+    so variants of the same underlying question cluster together.
     """
     slug = m.get("slug", "")
-    q    = m.get("question", "").lower()
 
     if m["source"] == "Kalshi":
         return re.sub(r'-[A-Z0-9]+$', '', slug) or slug
 
-    # Strip date suffixes from Polymarket slugs
+    # Strip month/date suffixes
     key = re.sub(
         r'-(20[0-9][0-9]-[0-9][0-9]-[0-9][0-9]|january|february|march|'
         r'april|may|june|july|august|september|october|november|december).*$',
         '', slug
     )
-    # Strip numeric range suffixes like "-16-18-million" or "-above-68000"
+    # Strip direction+price suffixes: "-above-68000", "-between-300-400"
     key = re.sub(r'-(above|below|between|over|under)[-0-9a-z]*$', '', key)
+    # Strip numeric ranges: "-16-18-million", "-75000"
     key = re.sub(r'-[0-9]+-[0-9]+.*$', '', key)
+    key = re.sub(r'-[0-9]+.*$', '', key)
+    # Strip price action verbs so "bitcoin-reach", "bitcoin-dip", "bitcoin-hit" → "bitcoin"
+    key = re.sub(r'-(reach|dip|hit|drop|fall|rise|surge|crash|pump|dump)(-to|-by)?$', '', key)
 
-    # Topic-based clustering: markets asking same question about different entities
-    # e.g. "best AI model" — cluster by first 6 meaningful words of question
-    if not key:
-        key = " ".join(q.split()[:6])
-
-    return key
+    return key or " ".join(m.get("question", "").lower().split()[:5])
 
 # ── TICKER SELECTION ─────────────────────────────────────────────────────────
 
 def pick_ticker(markets: list[dict]) -> list[dict]:
     """
     Ticker: 10 markets by buzz score with:
-    - Series dedup (no duplicate Iran/Fed/etc date variants)
+    - Series dedup (no duplicate date/price variants of same event)
     - Max 3 sports
-    - Max 3 from any single non-sports category
-    - Resolved markets excluded
+    - Max 2 from any single category (max 1 for Tech to prevent AI model flood)
+    - Resolved and junk markets excluded
     """
     MAX_SPORTS_IN_TICKER = 3
-    MAX_PER_CATEGORY     = 3
+    # Per-category caps — tighter categories get capped lower
+    CATEGORY_CAPS = {
+        "Technology": 1,   # Only best AI/tech market, not a whole cluster
+        "Crypto":     2,
+        "Politics":   2,
+        "Finance":    2,
+        "World":      2,
+        "Culture":    1,
+        "Sports":     3,   # Handled separately above
+    }
+    DEFAULT_CAP = 2
 
     scored = sorted(
         [m for m in markets if not is_effectively_resolved(m) and not is_junk_market(m)],
@@ -645,7 +654,8 @@ def pick_ticker(markets: list[dict]) -> list[dict]:
 
         if is_sport and sports_count >= MAX_SPORTS_IN_TICKER:
             continue
-        if not is_sport and category_counts.get(cat, 0) >= MAX_PER_CATEGORY:
+        cat_cap = CATEGORY_CAPS.get(cat, DEFAULT_CAP)
+        if not is_sport and category_counts.get(cat, 0) >= cat_cap:
             continue
 
         ticker.append(m)
