@@ -239,10 +239,27 @@ def pick_hero(markets: list[dict]) -> dict | None:
         return None
     return max(candidates, key=score_market)
 
+# Map Kalshi categories to our display categories
+KALSHI_CATEGORY_MAP = {
+    "Politics":             "Politics",
+    "Economics":            "Finance",
+    "Finance":              "Finance",
+    "Technology":           "Technology",
+    "Science and Technology": "Technology",
+    "Climate and Weather":  "World",
+    "Science":              "Technology",
+    "World":                "World",
+    "Sports":               "Sports",
+    "Culture":              "Culture",
+    "Entertainment":        "Culture",
+    "Health":               "World",
+}
+
 def get_category_label(m: dict) -> str:
     """Return a display category for a market."""
     if m["source"] == "Kalshi":
-        return m.get("category", "World")
+        raw = m.get("category", "World")
+        return KALSHI_CATEGORY_MAP.get(raw, "World")
     # Polymarket: infer from slug
     slug = m.get("slug", "").lower()
     if is_sports_market(m):
@@ -364,9 +381,7 @@ def main():
     os.makedirs("data", exist_ok=True)
     with open("data/markets.json", "w") as f:
         json.dump(output, f, indent=2)
-        
-    print(f"  Kalshi in movers: {sum(1 for m in movers if m['source'] == 'Kalshi')}")
-    print(f"  Sources: {[m['source'] for m in movers]}")
+
     print(f"\n✓ Wrote data/markets.json")
     print(f"  Hero:    {hero['question'][:60] if hero else 'none'}…")
     print(f"  Movers:  {len(movers)}")
