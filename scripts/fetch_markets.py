@@ -23,7 +23,8 @@ GAMMA_BASE       = "https://gamma-api.polymarket.com"
 MIN_VOLUME_USD   = 50_000
 KALSHI_MIN_VOL   = 10_000     # Kalshi volumes are generally lower
 TOP_MOVERS_COUNT = 6
-HERO_MIN_VOLUME  = 500_000
+HERO_MIN_VOLUME        = 500_000
+HERO_SPORTS_MIN_VOLUME = 25_000_000  # Only truly massive sports events (Super Bowl etc) as hero
 
 # ── HELPERS ─────────────────────────────────────────────────────────────────
 
@@ -156,9 +157,8 @@ def fetch_polymarket() -> list[dict]:
                 print(f"    [WARN] Polymarket tag '{tag}' failed: {e}")
                 continue
 
-        raw = {m["id"]: m for m in all_raw}.values()
-        print(f"  Polymarket unique markets after dedup: {len(list(raw))}")
-        raw = {m["id"]: m for m in all_raw}.values()
+        raw = list({m["id"]: m for m in all_raw}.values())
+        print(f"  Polymarket unique markets after dedup: {len(raw)}")
 
         for m in raw:
             try:
@@ -374,7 +374,7 @@ def pick_hero(markets: list[dict]) -> dict | None:
         m for m in markets
         if m["volume"] >= HERO_MIN_VOLUME
         and not is_effectively_resolved(m)
-        and (not is_sports_market(m) or m["volume"] >= 5_000_000)
+        and (not is_sports_market(m) or m["volume"] >= HERO_SPORTS_MIN_VOLUME)
     ]
     # Prefer markets with actual price movement
     movers = [c for c in candidates if abs(c["change_pts"]) >= 2]
@@ -537,45 +537,61 @@ def pick_movers(markets: list[dict], exclude_slug: str = "") -> list[dict]:
 
     return result[:TOP_MOVERS_COUNT]
 
+def get_series_key(m: dict) -> str:
+    """Normalize a market slug to its parent series for deduplication."""
+    slug = m.get("slug", "")
+    if m["source"] == "Kalshi":
+        return re.sub(r'-[A-Z0-9]+$', '', slug) or slug
+    # Strip date suffixes from Polymarket slugs
+    key = re.sub(
+        r'-(20[0-9][0-9]-[0-9][0-9]-[0-9][0-9]|january|february|march|'
+        r'april|may|june|july|august|september|october|november|december).*$',
+        '', slug
+    )
+    return key or " ".join(m.get("question", "").lower().split()[:5])
+
 # ── TICKER SELECTION ─────────────────────────────────────────────────────────
 
 def pick_ticker(markets: list[dict]) -> list[dict]:
     """
-    Ticker shows 10 markets sorted by buzz score with diversity enforcement:
-    - Max 3 sports markets
-    - Max 4 from any single non-sports category
+    Ticker: 10 markets by buzz score with:
+    - Series dedup (no duplicate Iran/Fed/etc date variants)
+    - Max 3 sports
+    - Max 3 from any single non-sports category
     - Resolved markets excluded
     """
     MAX_SPORTS_IN_TICKER = 3
-    MAX_PER_CATEGORY     = 4
+    MAX_PER_CATEGORY     = 3
 
     scored = sorted(
         [m for m in markets if not is_effectively_resolved(m)],
         key=score_market, reverse=True
     )
 
-    seen_slugs     = set()
+    seen_slugs      = set()
+    seen_series     = set()
     category_counts = {}
-    sports_count   = 0
-    ticker         = []
+    sports_count    = 0
+    ticker          = []
 
     for m in scored:
-        slug = m.get("slug", "")
-        if slug in seen_slugs:
+        slug       = m.get("slug", "")
+        series_key = get_series_key(m)
+
+        if slug in seen_slugs or series_key in seen_series:
             continue
 
         is_sport = is_sports_market(m)
         cat      = get_category_label(m)
 
-        # Enforce sports cap
         if is_sport and sports_count >= MAX_SPORTS_IN_TICKER:
             continue
-        # Enforce per-category cap (non-sports)
         if not is_sport and category_counts.get(cat, 0) >= MAX_PER_CATEGORY:
             continue
 
         ticker.append(m)
         seen_slugs.add(slug)
+        seen_series.add(series_key)
         if is_sport:
             sports_count += 1
         else:
@@ -613,7 +629,7 @@ def main():
     for i, m in enumerate(top_by_buzz, 1):
         is_sport   = is_sports_market(m)
         resolved   = is_effectively_resolved(m)
-        hero_ok    = not is_sport or m["volume"] >= 5_000_000
+        hero_ok    = not is_sport or m["volume"] >= HERO_SPORTS_MIN_VOLUME
         flags = []
         if is_sport:   flags.append("SPORTS")
         if resolved:   flags.append("RESOLVED")
