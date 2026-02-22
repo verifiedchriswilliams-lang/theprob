@@ -48,6 +48,25 @@ def change_direction(change_pts: float) -> str:
         return "down"
     return "neutral"
 
+def is_effectively_resolved(m: dict) -> bool:
+    """
+    Returns True if a market has essentially settled (prob near 0 or 100).
+    These generate huge change_pts but are no longer live/interesting.
+    Also catches same-day sports results that resolved overnight.
+    """
+    prob = m.get("prob", 50)
+    if prob >= 98 or prob <= 2:
+        return True
+    return False
+
+def is_dated_game_market(m: dict) -> bool:
+    """
+    Catches 'Will X win on YYYY-MM-DD?' style markets that aren't
+    caught by slug/keyword sports detection.
+    """
+    q = m.get("question", "")
+    return bool(re.search(r'\b(win|beat|cover|score)\b.{0,40}\b20\d\d-\d\d-\d\d\b', q, re.IGNORECASE))
+
 def days_until_close(end_date_str: str) -> float | None:
     """Return how many days until market closes. None if unparseable."""
     try:
@@ -245,6 +264,7 @@ def fetch_kalshi() -> list[dict]:
             if not cursor:
                 break
             pages_fetched += 1
+            time.sleep(0.5)  # Avoid 429 rate limiting
     except requests.RequestException as e:
         print(f"[WARN] Kalshi fetch failed: {e}")
     print(f"  Got {len(markets)} Kalshi markets")
@@ -287,6 +307,9 @@ def is_sports_market(m: dict) -> bool:
     slug = m.get("slug", "").lower()
     # Slug prefix check (most reliable for Polymarket)
     if any(slug.startswith(p) for p in SPORTS_SLUG_PREFIXES):
+        return True
+    # Dated game pattern: "Will X win on 2026-02-22?" → always sports
+    if is_dated_game_market(m):
         return True
     # Keyword check
     return any(w in q for w in SPORTS_KEYWORDS)
@@ -345,10 +368,12 @@ def pick_hero(markets: list[dict]) -> dict | None:
     The hero is the single most buzzworthy non-sports market.
     Sports require a very high volume bar ($5M+) to appear here,
     preventing niche game results from dominating the front page.
+    Resolved/settled markets (prob ≥98% or ≤2%) are excluded entirely.
     """
     candidates = [
         m for m in markets
         if m["volume"] >= HERO_MIN_VOLUME
+        and not is_effectively_resolved(m)
         and (not is_sports_market(m) or m["volume"] >= 5_000_000)
     ]
     # Prefer markets with actual price movement
@@ -420,6 +445,7 @@ def pick_movers(markets: list[dict], exclude_slug: str = "") -> list[dict]:
     candidates = [
         m for m in markets
         if m["slug"] != exclude_slug
+        and not is_effectively_resolved(m)
         # For Polymarket, require actual movement; Kalshi included regardless
         and (abs(m["change_pts"]) > 0 or m["source"] == "Kalshi")
     ]
@@ -445,28 +471,49 @@ def pick_movers(markets: list[dict], exclude_slug: str = "") -> list[dict]:
             c["display_category"] = get_category_label(c)
             deduped.append(c)
 
-    # Slot layout: aim for variety across categories
-    # Two sports slots kept but they now require is_sports to fill correctly
+    # Slot layout: Politics, Sports, Finance, World, Technology, Sports
+    # Hard cap: max 2 sports in movers. Fallback slots must also respect this.
     slot_categories = ["Politics", "Sports", "Finance", "World", "Technology", "Sports"]
     result = []
     used_slugs = set()
+    sports_count = 0
+    MAX_SPORTS_IN_MOVERS = 2
 
     for slot_cat in slot_categories:
-        # Try to fill slot with the highest-scoring market in that category
+        filled = False
+        # Try to fill with the intended category
         for c in deduped:
             if c["slug"] in used_slugs:
                 continue
             if c["display_category"] == slot_cat:
+                # Enforce sports cap even for intended sports slots
+                if slot_cat == "Sports" and sports_count >= MAX_SPORTS_IN_MOVERS:
+                    break
                 result.append(c)
                 used_slugs.add(c["slug"])
+                if slot_cat == "Sports":
+                    sports_count += 1
+                filled = True
                 break
-        else:
-            # Fallback: pick the best unused market
+        if not filled:
+            # Fallback: pick best unused non-sports market (never use fallback to add sports)
             for c in deduped:
-                if c["slug"] not in used_slugs:
+                if c["slug"] not in used_slugs and c["display_category"] != "Sports":
                     result.append(c)
                     used_slugs.add(c["slug"])
+                    filled = True
                     break
+            if not filled:
+                # Last resort: any unused market, still respecting sports cap
+                for c in deduped:
+                    if c["slug"] not in used_slugs:
+                        if is_sports_market(c) and sports_count >= MAX_SPORTS_IN_MOVERS:
+                            continue
+                        result.append(c)
+                        used_slugs.add(c["slug"])
+                        if is_sports_market(c):
+                            sports_count += 1
+                        break
 
     # Guarantee at least 2 Kalshi markets (contractual for newsletter variety)
     kalshi_count = sum(1 for m in result if m["source"] == "Kalshi")
@@ -494,18 +541,49 @@ def pick_movers(markets: list[dict], exclude_slug: str = "") -> list[dict]:
 
 def pick_ticker(markets: list[dict]) -> list[dict]:
     """
-    Ticker shows 10 markets sorted purely by buzz score —
-    highest movement and 24h volume surge first.
+    Ticker shows 10 markets sorted by buzz score with diversity enforcement:
+    - Max 3 sports markets
+    - Max 4 from any single non-sports category
+    - Resolved markets excluded
     """
-    scored = sorted(markets, key=score_market, reverse=True)
-    seen, ticker = set(), []
+    MAX_SPORTS_IN_TICKER = 3
+    MAX_PER_CATEGORY     = 4
+
+    scored = sorted(
+        [m for m in markets if not is_effectively_resolved(m)],
+        key=score_market, reverse=True
+    )
+
+    seen_slugs     = set()
+    category_counts = {}
+    sports_count   = 0
+    ticker         = []
+
     for m in scored:
         slug = m.get("slug", "")
-        if slug not in seen:
-            ticker.append(m)
-            seen.add(slug)
+        if slug in seen_slugs:
+            continue
+
+        is_sport = is_sports_market(m)
+        cat      = get_category_label(m)
+
+        # Enforce sports cap
+        if is_sport and sports_count >= MAX_SPORTS_IN_TICKER:
+            continue
+        # Enforce per-category cap (non-sports)
+        if not is_sport and category_counts.get(cat, 0) >= MAX_PER_CATEGORY:
+            continue
+
+        ticker.append(m)
+        seen_slugs.add(slug)
+        if is_sport:
+            sports_count += 1
+        else:
+            category_counts[cat] = category_counts.get(cat, 0) + 1
+
         if len(ticker) >= 10:
             break
+
     return ticker
 
 # ── MAIN ─────────────────────────────────────────────────────────────────────
@@ -529,12 +607,19 @@ def main():
         print("ERROR: No markets fetched. Aborting.")
         return
 
-    # Debug: show top 10 by buzz score
-    top_by_buzz = sorted(all_markets, key=score_market, reverse=True)[:10]
-    print("\n  Top 10 by buzz score:")
+    # Debug: show top 10 by buzz score with filtering decisions
+    top_by_buzz = sorted(all_markets, key=score_market, reverse=True)[:15]
+    print("\n  Top 15 by buzz score (pre-filter):")
     for i, m in enumerate(top_by_buzz, 1):
-        sports_flag = " [SPORTS]" if is_sports_market(m) else ""
-        print(f"    {i}. [{m['source']}] {m['question'][:60]}{sports_flag}")
+        is_sport   = is_sports_market(m)
+        resolved   = is_effectively_resolved(m)
+        hero_ok    = not is_sport or m["volume"] >= 5_000_000
+        flags = []
+        if is_sport:   flags.append("SPORTS")
+        if resolved:   flags.append("RESOLVED")
+        if not hero_ok: flags.append("HERO-BLOCKED")
+        flag_str = f" [{', '.join(flags)}]" if flags else ""
+        print(f"    {i}. [{m['source']}] {m['question'][:55]}{flag_str}")
         print(f"       prob={m['prob']}% Δ={m['change_pts']}pts vol={m['volume_fmt']} 24h={fmt_volume(m['volume_24h'])} score={score_market(m):.2f}")
 
     hero      = pick_hero(all_markets)
@@ -543,7 +628,13 @@ def main():
     ticker    = pick_ticker(all_markets)
 
     print(f"\n  Hero:   {hero['question'][:70] if hero else 'none'}")
-    print(f"  Movers: {[m['question'][:40] for m in movers]}")
+    print(f"  Movers ({len(movers)}):")
+    for m in movers:
+        print(f"    [{m['display_category']}] {m['question'][:55]} ({m['source']})")
+    print(f"  Ticker ({len(ticker)}):")
+    for m in ticker:
+        cat = get_category_label(m)
+        print(f"    [{cat}] {m['question'][:55]} ({m['source']})")
 
     output = {
         "updated":     updated_str,
