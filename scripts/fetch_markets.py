@@ -178,10 +178,7 @@ def fetch_kalshi() -> list[dict]:
                         volume_usd   = volume_cents / 100
                         if volume_usd < 1000:
                             continue
-                        prev_bid   = float(m.get("previous_yes_bid", yes_bid) or yes_bid)
-                        prev_ask   = float(m.get("previous_yes_ask", yes_ask) or yes_ask)
-                        prev_prob  = ((prev_bid + prev_ask) / 2) * 100
-                        change_pts = round(prob - prev_prob, 1)
+                        change_pts = 0.0
                         close_time = m.get("close_time", "") or ""
                         markets.append({
                             "source":     "Kalshi",
