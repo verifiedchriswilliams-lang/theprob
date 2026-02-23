@@ -14,7 +14,25 @@ import re
 import requests
 from datetime import datetime, timezone, timedelta
 
-# ── CONFIG ──────────────────────────────────────────────────────────────────
+# ── HOUSE STYLE ──────────────────────────────────────────────────────────────
+# Rules for ALL generated copy on The Prob.
+# When using Claude API for editorial copy, inject HOUSE_STYLE_PROMPT as system prompt.
+#
+#   1. NO EM DASHES (—). Use a comma, colon, or new sentence instead.
+#      Em dashes are a dead giveaway for AI-generated text.
+#   2. Short sentences. Max ~20 words per sentence.
+#   3. No hedging ("perhaps", "might", "could potentially").
+#   4. Numbers as numerals ($2.8M not "two-point-eight million").
+#   5. Active voice only.
+#
+HOUSE_STYLE_PROMPT = (
+    "Write like The Hustle newsletter: direct, confident, a little cocky. "
+    "Never use em dashes. Use a comma or start a new sentence instead. "
+    "Keep sentences under 20 words. Use numerals for all numbers. "
+    "No hedging. Active voice only."
+)
+
+# ── CONFIG ───────────────────────────────────────────────────────────────────
 KALSHI_KEY_ID    = os.environ.get("KALSHI_KEY_ID", "")
 KALSHI_PRIV_KEY  = os.environ.get("KALSHI_PRIVATE_KEY", "")
 KALSHI_BASE      = "https://api.elections.kalshi.com/trade-api/v2"
@@ -876,6 +894,14 @@ def pick_ticker(markets: list[dict]) -> list[dict]:
 
 # ── HERO EDITORIAL TAKE ──────────────────────────────────────────────────────
 
+def strip_em_dashes(text: str) -> str:
+    """House style: never use em dashes. Replace with comma, colon, or period."""
+    # Replace ' — ' (spaced em dash) with a comma-space
+    text = text.replace(" \u2014 ", ", ")
+    # Replace any remaining em dashes
+    text = text.replace("\u2014", ", ")
+    return text
+
 def generate_hero_take(hero: dict) -> str:
     """
     Generate a 2-sentence Hustle-style editorial take on the hero market.
@@ -914,7 +940,7 @@ def generate_hero_take(hero: dict) -> str:
         s1 = f"The crowd has spoken: {prob}% probability, backed by {money_line} in real bets."
         s2 = f"{'A dramatic swing today' if abs(change) > 10 else 'Steady read from the market'} — prediction markets price this stuff faster than any headline."
 
-    return f"{s1} {s2}"
+    return strip_em_dashes(f"{s1} {s2}")
 
 # ── MAIN ─────────────────────────────────────────────────────────────────────
 
