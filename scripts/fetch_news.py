@@ -24,7 +24,7 @@ import requests
 # ── CONFIG ────────────────────────────────────────────────────────────────────
 
 ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY", "")
-CLAUDE_MODEL = "claude-haiku-4-5-20251001"
+CLAUDE_MODEL      = "claude-sonnet-4-20250514"
 
 MAX_ARTICLES      = 12   # Total articles in news.json (news.html shows all)
 HOMEPAGE_COUNT    = 3    # Articles surfaced on the homepage Daily Brief
@@ -41,12 +41,13 @@ SEARCH_QUERIES = [
 GNEWS_BASE = "https://news.google.com/rss/search"
 
 HOUSE_STYLE_SYSTEM = (
-    "You write for The Prob, a prediction markets newsletter inspired by The Hustle. "
-    "Your voice is direct, confident, a little cocky, and always smart. "
-    "NEVER use em dashes (—). Use a comma or start a new sentence instead. "
-    "Keep every sentence under 20 words. Use numerals for all numbers ($2M, 47%). "
-    "No hedging words like 'perhaps', 'might', or 'could potentially'. "
-    "Active voice only. No filler. Get to the point fast."
+    "You write for The Prob, a prediction markets newsletter. "
+    "Voice: sharp, confident, dry wit, slightly irreverent. Like The Hustle. "
+    "Intelligent but not academic. Opinionated but not arrogant. "
+    "NEVER use em dashes. Use a comma or start a new sentence instead. "
+    "Short sentences. Active voice. Numbers as numerals ($2M, 47%). "
+    "No hedging ('perhaps', 'might', 'could potentially'). No fluff. No filler. "
+    "Undetectable as AI. Write like a smart human who finds this genuinely interesting."
 )
 
 # ── FETCH RSS ─────────────────────────────────────────────────────────────────
