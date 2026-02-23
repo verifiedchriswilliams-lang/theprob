@@ -181,6 +181,13 @@ POLY_TAG_TO_CATEGORY = {
     "science":         "Technology",
     "space":           "Technology",
     "artificial-intelligence": "Technology",
+    "openai":          "Technology",
+    "chatgpt":         "Technology",
+    "spacex":          "Technology",
+    "big-tech":        "Technology",
+    "climate":         "Technology",
+    "health":          "Technology",
+    "biotech":         "Technology",
     # Sports
     "sports":          "Sports",
     "nba":             "Sports",
@@ -676,7 +683,8 @@ def pick_movers(markets: list[dict], exclude_slug: str = "") -> list[dict]:
     for c in candidates:
         slug = c.get("slug", "")
         if c["source"] == "Kalshi":
-            series_key = re.sub(r'-[A-Z0-9]+$', '', slug) or slug
+            # Use the event URL as series key — all candidates in same event share the same URL
+            series_key = c.get("url", slug)
         else:
             series_key = re.sub(
                 r'-(20[0-9][0-9]-[0-9][0-9]-[0-9][0-9]|january|february|march|'
@@ -687,7 +695,7 @@ def pick_movers(markets: list[dict], exclude_slug: str = "") -> list[dict]:
             series_key = " ".join(c["question"].lower().split()[:5])
         if series_key not in seen_series:
             seen_series[series_key] = True
-            c["display_category"] = get_category_label(c)
+            c["display_category"] = c.get("display_category") or get_category_label(c)
             deduped.append(c)
 
     # Slot layout: Politics, Sports, Finance, World, Technology, Sports
@@ -759,26 +767,22 @@ def pick_movers(markets: list[dict], exclude_slug: str = "") -> list[dict]:
 def get_series_key(m: dict) -> str:
     """
     Normalize a market to its parent series for deduplication.
-    Strips date suffixes, price targets, and numeric range suffixes
-    so variants of the same underlying question cluster together.
     """
     slug = m.get("slug", "")
 
     if m["source"] == "Kalshi":
-        return re.sub(r'-[A-Z0-9]+$', '', slug) or slug
+        # All markets under the same Kalshi event share the same URL — use it
+        return m.get("url", slug)
 
-    # Strip month/date suffixes
+    # Polymarket: strip date/price suffixes
     key = re.sub(
         r'-(20[0-9][0-9]-[0-9][0-9]-[0-9][0-9]|january|february|march|'
         r'april|may|june|july|august|september|october|november|december).*$',
         '', slug
     )
-    # Strip direction+price suffixes: "-above-68000", "-between-300-400"
     key = re.sub(r'-(above|below|between|over|under)[-0-9a-z]*$', '', key)
-    # Strip numeric ranges: "-16-18-million", "-75000"
     key = re.sub(r'-[0-9]+-[0-9]+.*$', '', key)
     key = re.sub(r'-[0-9]+.*$', '', key)
-    # Strip price action verbs so "bitcoin-reach", "bitcoin-dip", "bitcoin-hit" → "bitcoin"
     key = re.sub(r'-(reach|dip|hit|drop|fall|rise|surge|crash|pump|dump)(-to|-by)?$', '', key)
 
     return key or " ".join(m.get("question", "").lower().split()[:5])
@@ -846,6 +850,48 @@ def pick_ticker(markets: list[dict]) -> list[dict]:
 
     return ticker
 
+# ── HERO EDITORIAL TAKE ──────────────────────────────────────────────────────
+
+def generate_hero_take(hero: dict) -> str:
+    """
+    Generate a 2-sentence Hustle-style editorial take on the hero market.
+    Stored in hero.prob_take and displayed on the homepage.
+    """
+    q      = hero.get("question", "")
+    prob   = hero.get("prob", 50)
+    change = hero.get("change_pts", 0)
+    vol    = hero.get("volume_fmt", "")
+    cat    = hero.get("display_category", "World")
+    end    = hero.get("end_date", "")
+
+    direction_word = "surged" if change > 5 else "dropped" if change < -5 else "moved"
+    odds_word      = "likely" if prob > 65 else "unlikely" if prob < 35 else "a coin flip"
+    money_line     = f"${vol} in total bets" if vol else "real money"
+
+    # Build context-aware takes by category
+    if cat == "Politics":
+        s1 = f"The crowd is putting {money_line} on this one, and at {prob}%, the market says it's {odds_word}."
+        s2 = f"That's {'a strong signal' if abs(change) > 10 else 'the current read'} — prediction markets tend to move faster than the polls."
+    elif cat == "Crypto":
+        s1 = f"Crypto traders are watching this closely — {money_line} traded, with the market sitting at {prob}%."
+        s2 = f"{'A big swing today' if abs(change) > 5 else 'Steady odds'} heading into the deadline."
+    elif cat == "Sports":
+        game_word = "a heavy favorite" if prob > 70 else "still anyone's game"
+        aligned = "aligned" if prob > 60 else "split"
+        s1 = f"The crowd has {money_line} riding on this one at {prob}% — {game_word}."
+        s2 = f"Spread bettors and prediction market traders don't always agree, but right now they're {aligned}."
+    elif cat == "Finance":
+        s1 = f"Markets are pricing this at {prob}% with {money_line} in play — {'the crowd is bullish' if prob > 55 else 'the crowd is skeptical'}."
+        s2 = f"{'A sharp move today' if abs(change) > 5 else 'Watch this one'} — Wall Street and prediction markets are reading the same tea leaves."
+    elif cat == "Culture":
+        s1 = f"With {money_line} on the line, the crowd puts this at {prob}% — {'a clear favorite' if prob > 65 else 'too close to call'}."
+        s2 = f"{'Odds {direction_word} sharply today' if abs(change) > 10 else 'The smart money has spoken'} — and it resolves {end}."
+    else:  # World / default
+        s1 = f"The crowd has spoken: {prob}% probability, backed by {money_line} in real bets."
+        s2 = f"{'A dramatic swing today' if abs(change) > 10 else 'Steady read from the market'} — prediction markets price this stuff faster than any headline."
+
+    return f"{s1} {s2}"
+
 # ── MAIN ─────────────────────────────────────────────────────────────────────
 
 def main():
@@ -898,19 +944,39 @@ def main():
         print(f"    [{cat}] {m['question'][:55]} ({m['source']})")
 
     # Build full market catalog for category pages
-    # Assign display_category to every market, filter junk and resolved
+    # Dedup: for Kalshi, one market per event URL (best by score). For Polymarket, one per slug.
     catalog = []
-    for m in all_markets:
+    seen_poly_slugs  = set()
+    seen_kalshi_urls = set()
+
+    all_sorted = sorted(all_markets, key=score_market, reverse=True)
+    for m in all_sorted:
         if is_junk_market(m):
             continue
         if is_effectively_resolved(m):
             continue
-        cat = get_category_label(m)
-        m["display_category"] = cat
+        if m["source"] == "Kalshi":
+            url = m.get("url", m.get("slug", ""))
+            if url in seen_kalshi_urls:
+                continue
+            seen_kalshi_urls.add(url)
+        else:
+            slug = m.get("slug", "")
+            if slug in seen_poly_slugs:
+                continue
+            seen_poly_slugs.add(slug)
+        # Use display_category already set during fetch; fallback only if missing
+        if not m.get("display_category"):
+            m["display_category"] = get_category_label(m)
         catalog.append(m)
 
-    # Sort by score descending so category pages get the best markets first
-    catalog.sort(key=score_market, reverse=True)
+    # Generate hero "The Prob's Take" — 2-sentence Hustle-style editorial
+    hero_take = ""
+    if hero:
+        hero_take = generate_hero_take(hero)
+
+    if hero:
+        hero["prob_take"] = hero_take
 
     output = {
         "updated":     updated_str,
