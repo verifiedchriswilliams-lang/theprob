@@ -144,8 +144,65 @@ def make_kalshi_headers(method: str, path: str) -> dict:
 
 # ── POLYMARKET ───────────────────────────────────────────────────────────────
 
-# How many pages of 100 to fetch globally (100 markets/page × 5 pages = 500 candidates)
-POLYMARKET_PAGES = 5
+# Polymarket top-level category tag IDs (from /tags endpoint)
+# These are the tags that appear on events, not granular entity tags
+POLY_TAG_TO_CATEGORY = {
+    # Politics
+    "politics":       "Politics",
+    "elections":      "Politics",
+    "trump":          "Politics",
+    "government":     "Politics",
+    "geopolitics":    "Politics",
+    "world":          "Politics",
+    "middle-east":    "Politics",
+    "ukraine":        "Politics",
+    # Finance / Business
+    "economics":      "Finance",
+    "finance":        "Finance",
+    "business":       "Finance",
+    "economy":        "Finance",
+    "stocks":         "Finance",
+    "investing":      "Finance",
+    "investment":     "Finance",
+    "crypto":         "Crypto",
+    "cryptocurrency": "Crypto",
+    # Tech
+    "technology":     "Technology",
+    "ai":             "Technology",
+    "science":        "Technology",
+    "space":          "Technology",
+    # Sports
+    "sports":         "Sports",
+    "nba":            "Sports",
+    "nfl":            "Sports",
+    "mlb":            "Sports",
+    "nhl":            "Sports",
+    "soccer":         "Sports",
+    "tennis":         "Sports",
+    "golf":           "Sports",
+    "mma":            "Sports",
+    "esports":        "Sports",
+    # Culture
+    "entertainment":  "Culture",
+    "culture":        "Culture",
+    "pop-culture":    "Culture",
+    "celebrities":    "Culture",
+    "music":          "Culture",
+    "awards":         "Culture",
+    "movies":         "Culture",
+    "tv":             "Culture",
+    "oscars":         "Culture",
+}
+
+def poly_category_from_tags(tags: list) -> str:
+    """Map Polymarket event tags to our display_category. First match wins."""
+    for t in tags:
+        slug  = t.get("slug", "").lower()
+        label = t.get("label", "").lower()
+        cat = POLY_TAG_TO_CATEGORY.get(slug) or POLY_TAG_TO_CATEGORY.get(label)
+        if cat:
+            return cat
+    return None   # caller will fall back to keyword logic or "World"
 
 def fetch_polymarket() -> list[dict]:
     markets = []
@@ -153,9 +210,6 @@ def fetch_polymarket() -> list[dict]:
         all_raw  = []
         seen_ids = set()
 
-        # Strategy: two passes to maximize variety
-        # Pass 1 — top by 24h volume (hottest right now): 3 pages
-        # Pass 2 — top by total volume (big established markets): 2 pages
         fetch_configs = [
             {"order": "volume24hr", "pages": 3},
             {"order": "volume",     "pages": 2},
@@ -206,31 +260,48 @@ def fetch_polymarket() -> list[dict]:
                 change_raw = float(m.get("oneDayPriceChange", 0) or 0)
                 change_pts = round(change_raw * 100, 1)
                 end_date   = m.get("endDate", "") or m.get("endDateIso", "")
+
+                # Tags come from both the market and its parent event
+                market_tags = m.get("tags", []) or []
+                event_tags  = (m.get("events") or [{}])[0].get("tags", []) or []
+                all_tags    = market_tags + [t for t in event_tags if t not in market_tags]
+                tag_labels  = [t.get("label", "").lower() for t in all_tags]
+                tag_slugs   = [t.get("slug",  "").lower() for t in all_tags]
+
+                # Derive category from tags first, no keywords needed
+                display_cat = poly_category_from_tags(all_tags)
+
+                # Sports override: Polymarket tags sports with id=1 on the event
+                is_sports = any(str(t.get("id")) == "1" for t in all_tags)
+                if is_sports:
+                    display_cat = "Sports"
+
                 markets.append({
-                    "source":       "Polymarket",
-                    "question":     m.get("question", ""),
-                    "slug":         m.get("slug", ""),
-                    "url":          f"https://polymarket.com/event/{(m.get('events') or [{}])[0].get('slug', m.get('slug', ''))}",
-                    "prob":         round(yes_price * 100, 1),
-                    "change_pts":   change_pts,
-                    "direction":    change_direction(change_pts),
-                    "volume":       volume,
-                    "volume_fmt":   fmt_volume(volume),
-                    "volume_24h":   volume_24h,
-                    "end_date":     fmt_date(end_date) if end_date else "",
-                    "end_date_raw": end_date,
-                    "liquidity":    float(m.get("liquidity", 0) or 0),
-                    "category":     " ".join([t.get("label","") for t in m.get("tags", [])]).lower(),
-                    "is_sports":    any(str(t.get("id")) == "1" for t in m.get("tags", [])),
-                    "tags":         [t.get("label","").lower() for t in m.get("tags", [])],
+                    "source":           "Polymarket",
+                    "question":         m.get("question", ""),
+                    "slug":             m.get("slug", ""),
+                    "url":              f"https://polymarket.com/event/{(m.get('events') or [{}])[0].get('slug', m.get('slug', ''))}",
+                    "prob":             round(yes_price * 100, 1),
+                    "change_pts":       change_pts,
+                    "direction":        change_direction(change_pts),
+                    "volume":           volume,
+                    "volume_fmt":       fmt_volume(volume),
+                    "volume_24h":       volume_24h,
+                    "end_date":         fmt_date(end_date) if end_date else "",
+                    "end_date_raw":     end_date,
+                    "liquidity":        float(m.get("liquidity", 0) or 0),
+                    "category":         tag_labels[0] if tag_labels else "",
+                    "is_sports":        is_sports,
+                    "display_category": display_cat or "World",
+                    "tags":             tag_labels,
+                    "tag_slugs":        tag_slugs,
                 })
             except (ValueError, IndexError, KeyError):
                 continue
 
-        # Ensure display_category is set on all Polymarket markets
-        for m in markets:
-            if "display_category" not in m:
-                m["display_category"] = get_category_label(m)
+        # Debug: show what display_category values we got
+        cats = sorted(set(m["display_category"] for m in markets))
+        print(f"  Polymarket display_categories: {cats}")
     except Exception as e:
         print(f"[WARN] Polymarket fetch failed: {e}")
     print(f"  Got {len(markets)} Polymarket markets above volume threshold")
@@ -474,6 +545,7 @@ def pick_hero(markets: list[dict]) -> dict | None:
 KALSHI_CATEGORY_MAP = {
     # Politics
     "Politics":               "Politics",
+    "Elections":              "Politics",
     # Business/Finance
     "Economics":              "Finance",
     "Finance":                "Finance",
@@ -493,6 +565,7 @@ KALSHI_CATEGORY_MAP = {
     # Culture
     "Culture":                "Culture",
     "Entertainment":          "Culture",
+    "Social":                 "Culture",
     "Mentions":               "Culture",
     # World/Other
     "Climate and Weather":    "World",
@@ -507,45 +580,57 @@ POLITICS_KEYWORDS = [
     "trump", "biden", "harris", "republican", "democrat",
     "government", "prime minister", "minister", "parliament",
     "tariff", "executive order", "supreme court", "impeach",
-    "fed chair", "cabinet",
+    "fed chair", "cabinet", "orbán", "orban", "zelensky",
+    "ceasefire", "sanctions", "nato", "un security",
 ]
 FINANCE_KEYWORDS = [
-    "fed", "interest rate", "inflation", "gdp", "recession",
-    "unemployment", "treasury", "tariff", "trade", "rate cut",
-    "rate hike", "fomc", "cpi", "jobs report", "s&p",
-    "nasdaq", "dow", "ipo", "acquisition", "merger",
+    "fed ", "interest rate", "inflation", "gdp", "recession",
+    "unemployment", "treasury", "rate cut", "rate hike",
+    "fomc", "cpi", "jobs report", "s&p", "nasdaq", "dow",
+    "ipo", "acquisition", "merger", "stock price", "market cap",
+    "earnings", "revenue", "valuation", "bankrupt",
 ]
 TECH_KEYWORDS = [
-    "ai", "artificial intelligence", "chatgpt", "gpt", "openai",
-    "spacex", "apple", "google", "microsoft", "tesla", "meta",
-    "amazon", "nvidia", "semiconductor", "chip", "tech",
+    "artificial intelligence", "chatgpt", "gpt", "openai",
+    "spacex", "starship", "apple", "google", "microsoft",
+    "tesla", "meta ", "nvidia", "semiconductor", "chip",
+    "self-driving", "autonomous", "deepmind", "anthropic",
 ]
-
 CRYPTO_KEYWORDS = [
-    "bitcoin", "btc", "ethereum", "eth", "solana", "sol", "crypto",
-    "token", "fdv", "market cap", "altcoin", "defi", "nft", "blockchain",
-    "coinbase", "binance", "stablecoin", "memecoin", "airdrop", "launch",
-    "on-chain", "web3", "dex", "liquidity pool",
+    "bitcoin", "btc", "ethereum", "eth", "solana", "sol",
+    "crypto", "token", "altcoin", "defi", "nft", "blockchain",
+    "coinbase", "binance", "stablecoin", "memecoin", "web3",
+]
+CULTURE_KEYWORDS = [
+    "oscar", "academy award", "emmy", "grammy", "golden globe",
+    "bafta", "tony award", "best picture", "best actor", "best actress",
+    "best director", "best supporting", "best costume", "best score",
+    "survivor", "bachelor", "bachelorette", "reality tv",
+    "super bowl halftime", "world cup winner", "miss universe",
+    "box office", "box-office", "movie", "film", "album",
+    "chart", "billboard", "spotify", "streaming",
+    "frankenstein", "sinners", "hamnet", "wicked",
+    "nfl draft", "nba draft", "mlb draft",
+    "pope", "dalai lama", "king charles", "royal",
+    "taylor swift", "beyonce", "kanye", "drake",
+]
+WORLD_KEYWORDS = [
+    "strike", "war", "ceasefire", "military", "troops",
+    "iran", "russia", "ukraine", "china", "north korea",
+    "missile", "nuclear", "sanctions", "treaty",
 ]
 
 def get_category_label(m: dict) -> str:
+    """Fallback only — Polymarket markets should already have display_category from poly_category_from_tags."""
     if m["source"] == "Kalshi":
         raw = m.get("category", "World")
         return KALSHI_CATEGORY_MAP.get(raw, "World")
+    # Polymarket safety net
     if is_sports_market(m):
         return "Sports"
     slug = m.get("slug", "").lower()
-    q    = m["question"].lower()
-    if any(slug.startswith(p) for p in ["btc-","eth-","crypto-","bitcoin-","solana-","xrp-","opinion-"]):
+    if any(slug.startswith(p) for p in ["btc-","eth-","crypto-","bitcoin-","solana-","xrp-"]):
         return "Crypto"
-    if any(w in q for w in CRYPTO_KEYWORDS):
-        return "Crypto"
-    if any(w in q for w in POLITICS_KEYWORDS):
-        return "Politics"
-    if any(w in q for w in FINANCE_KEYWORDS):
-        return "Finance"
-    if any(w in q for w in TECH_KEYWORDS):
-        return "Technology"
     return "World"
 
 # ── MOVER SELECTION ──────────────────────────────────────────────────────────
