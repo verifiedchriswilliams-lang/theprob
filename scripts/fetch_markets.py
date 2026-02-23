@@ -148,50 +148,64 @@ def make_kalshi_headers(method: str, path: str) -> dict:
 # These are the tags that appear on events, not granular entity tags
 POLY_TAG_TO_CATEGORY = {
     # Politics
-    "politics":       "Politics",
-    "elections":      "Politics",
-    "trump":          "Politics",
-    "government":     "Politics",
-    "geopolitics":    "Politics",
-    "world":          "Politics",
-    "middle-east":    "Politics",
-    "ukraine":        "Politics",
+    "politics":        "Politics",
+    "elections":       "Politics",
+    "trump":           "Politics",
+    "government":      "Politics",
+    "geopolitics":     "Politics",
+    "world":           "Politics",
+    "middle-east":     "Politics",
+    "ukraine":         "Politics",
+    "us-politics":     "Politics",
+    "global-politics": "Politics",
     # Finance / Business
-    "economics":      "Finance",
-    "finance":        "Finance",
-    "business":       "Finance",
-    "economy":        "Finance",
-    "stocks":         "Finance",
-    "investing":      "Finance",
-    "investment":     "Finance",
-    "crypto":         "Crypto",
-    "cryptocurrency": "Crypto",
+    "economics":       "Finance",
+    "finance":         "Finance",
+    "business":        "Finance",
+    "economy":         "Finance",
+    "stocks":          "Finance",
+    "investing":       "Finance",
+    "investment":      "Finance",
+    "markets":         "Finance",
+    "companies":       "Finance",
+    # Crypto
+    "crypto":          "Crypto",
+    "cryptocurrency":  "Crypto",
+    "bitcoin":         "Crypto",
+    "ethereum":        "Crypto",
+    "defi":            "Crypto",
     # Tech
-    "technology":     "Technology",
-    "ai":             "Technology",
-    "science":        "Technology",
-    "space":          "Technology",
+    "technology":      "Technology",
+    "tech":            "Technology",
+    "ai":              "Technology",
+    "science":         "Technology",
+    "space":           "Technology",
+    "artificial-intelligence": "Technology",
     # Sports
-    "sports":         "Sports",
-    "nba":            "Sports",
-    "nfl":            "Sports",
-    "mlb":            "Sports",
-    "nhl":            "Sports",
-    "soccer":         "Sports",
-    "tennis":         "Sports",
-    "golf":           "Sports",
-    "mma":            "Sports",
-    "esports":        "Sports",
-    # Culture
-    "entertainment":  "Culture",
-    "culture":        "Culture",
-    "pop-culture":    "Culture",
-    "celebrities":    "Culture",
-    "music":          "Culture",
-    "awards":         "Culture",
-    "movies":         "Culture",
-    "tv":             "Culture",
-    "oscars":         "Culture",
+    "sports":          "Sports",
+    "nba":             "Sports",
+    "nfl":             "Sports",
+    "mlb":             "Sports",
+    "nhl":             "Sports",
+    "soccer":          "Sports",
+    "tennis":          "Sports",
+    "golf":            "Sports",
+    "mma":             "Sports",
+    "esports":         "Sports",
+    "formula-1":       "Sports",
+    # Culture — Polymarket's nav uses "pop-culture" as the slug
+    "pop-culture":     "Culture",
+    "entertainment":   "Culture",
+    "culture":         "Culture",
+    "celebrities":     "Culture",
+    "music":           "Culture",
+    "awards":          "Culture",
+    "movies":          "Culture",
+    "film":            "Culture",
+    "tv":              "Culture",
+    "television":      "Culture",
+    "oscars":          "Culture",
+    "academy-awards":  "Culture",
 }
 
 def poly_category_from_tags(tags: list) -> str:
@@ -288,6 +302,7 @@ def fetch_polymarket() -> list[dict]:
                         "is_sports":        is_sports,
                         "display_category": display_cat or "World",
                         "tags":             tag_labels,
+                        "tag_slugs":        [t.get("slug","").lower() for t in event_tags],
                     })
                 except (ValueError, IndexError, KeyError):
                     continue
@@ -303,6 +318,15 @@ def fetch_polymarket() -> list[dict]:
 
         cats = sorted(set(m["display_category"] for m in markets))
         print(f"  Polymarket display_categories: {cats}")
+        # Debug: show tag slugs that fell through to World so we can catch gaps
+        world_tags = set()
+        for m in markets:
+            if m["display_category"] == "World":
+                for slug in m.get("tag_slugs", []):
+                    if slug not in POLY_TAG_TO_CATEGORY:
+                        world_tags.add(slug)
+        if world_tags:
+            print(f"  Unmapped tags falling to World: {sorted(world_tags)[:20]}")
     except Exception as e:
         print(f"[WARN] Polymarket fetch failed: {e}")
     print(f"  Got {len(markets)} Polymarket markets above volume threshold")
