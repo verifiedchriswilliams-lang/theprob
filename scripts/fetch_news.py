@@ -136,18 +136,28 @@ def merge_and_dedup(all_articles: list[list[dict]]) -> list[dict]:
 def summarize_article(title: str, description: str) -> str:
     """
     Call Claude API to generate a 2-sentence Hustle-style summary.
-    Returns the summary string, or a fallback if API fails.
+    Works from title alone if description is empty.
     """
     if not ANTHROPIC_API_KEY:
-        return f"{description[:180]}..." if len(description) > 180 else description
+        return ""
 
-    prompt = (
-        f"Article title: {title}\n\n"
-        f"Article snippet: {description}\n\n"
-        "Write exactly 2 sentences summarizing this article for The Prob newsletter. "
-        "Sentence 1: what happened. Sentence 2: why it matters for prediction markets or bettors. "
-        "No em dashes. No quotes. No intro phrases like 'This article' or 'The piece'. Just the two sentences."
-    )
+    # Build prompt — if no description, work from title only
+    if description and len(description) > 30:
+        prompt = (
+            f"Article title: {title}\n\n"
+            f"Article snippet: {description}\n\n"
+            "Write exactly 2 sentences summarizing this article for The Prob newsletter. "
+            "Sentence 1: what happened. Sentence 2: why it matters for prediction markets or bettors. "
+            "No em dashes. No quotes. No intro phrases like 'This article' or 'The piece'. Just the two sentences."
+        )
+    else:
+        prompt = (
+            f"Article title: {title}\n\n"
+            "Based only on this headline, write exactly 2 sentences for The Prob newsletter. "
+            "Sentence 1: what the story is about (infer from the title). "
+            "Sentence 2: why it likely matters for prediction markets or bettors. "
+            "Be confident. No hedging. No em dashes. No 'This article' opener. Just the two sentences."
+        )
 
     try:
         r = requests.post(
