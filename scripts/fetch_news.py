@@ -24,7 +24,7 @@ import requests
 # ── CONFIG ────────────────────────────────────────────────────────────────────
 
 ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY", "")
-CLAUDE_MODEL = "claude-opus-4-5"
+CLAUDE_MODEL = "claude-haiku-4-5-20251001"
 
 MAX_ARTICLES      = 12   # Total articles in news.json (news.html shows all)
 HOMEPAGE_COUNT    = 3    # Articles surfaced on the homepage Daily Brief
