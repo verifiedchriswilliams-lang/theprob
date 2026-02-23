@@ -1063,19 +1063,14 @@
         <p style="font-family:var(--mono);font-size:10px;color:var(--text-dim);margin-top:8px;" id="brief-msg"></p>
       </div>
     </div>
-    <div class="brief-preview">
+    <div class="brief-preview" id="brief-news">
       <div class="brief-item">
-        <div class="brief-item-num">TODAY'S LEAD</div>
-        <div class="brief-item-text"><strong>The ceasefire market crossed 50%.</strong> Here's what changed overnight and why one official's words moved $9M in bets. <em>→ FULL STORY</em></div>
+        <div class="brief-item-num">LOADING</div>
+        <div class="brief-item-text">Fetching latest news...</div>
       </div>
-      <div class="brief-item">
-        <div class="brief-item-num">THE NUMBER</div>
-        <div class="brief-item-text"><strong>72%.</strong> That's the crowd's read on a March Fed cut after this morning's CPI print. An 8-point move in a single day. <em>→ BREAKDOWN</em></div>
-      </div>
-      <div class="brief-item">
-        <div class="brief-item-num">THE FADE</div>
-        <div class="brief-item-text"><strong>Bitcoin's $120K dream is fading.</strong> Down 9 points this week. The traders who loaded up are quietly covering. <em>→ CHART</em></div>
-      </div>
+    </div>
+    <div style="margin-top:16px;text-align:right;">
+      <a href="news.html" style="font-family:var(--mono);font-size:11px;color:var(--accent);text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;">All Prediction Market News ↗</a>
     </div>
   </div>
 
@@ -1352,8 +1347,47 @@ async function loadMarkets() {
   }
 }
 
+// ── NEWS BRIEF ────────────────────────────────────────────────────────────────
+
+const NEWS_URL = 'data/news.json';
+const BRIEF_LABELS = ['TODAY\'S LEAD', 'THE ANGLE', 'ALSO WORTH KNOWING'];
+
+async function loadNewsBrief() {
+  try {
+    const res  = await fetch(`${NEWS_URL}?v=${Date.now()}`);
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data = await res.json();
+    const articles = (data.articles || []).slice(0, data.homepage_count || 3);
+    if (!articles.length) return;
+
+    const container = document.getElementById('brief-news');
+    if (!container) return;
+
+    container.innerHTML = articles.map((a, i) => {
+      const label   = BRIEF_LABELS[i] || `#${i+1}`;
+      const summary = a.summary || a.description || '';
+      return `<div class="brief-item" onclick="window.open('${escHtml(a.url)}','_blank')" style="cursor:pointer;">
+        <div class="brief-item-num">${label}</div>
+        <div class="brief-item-text">
+          <strong>${escHtml(a.title)}</strong>
+          ${summary ? ' ' + escHtml(summary) : ''}
+          <em style="color:var(--accent);"> → ${escHtml(a.source || 'READ MORE')}</em>
+        </div>
+      </div>`;
+    }).join('');
+  } catch(err) {
+    console.warn('Could not load news brief:', err.message);
+  }
+}
+
+function escHtml(s) {
+  if (!s) return '';
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
 // Run on page load
 loadMarkets();
+loadNewsBrief();
 </script>
 
 </body>
