@@ -4,66 +4,91 @@
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The Prob — News</title>
-  <meta name="description" content="The top prediction market stories from around the internet, curated daily.">
+  <title>The Prob — Prediction Market News</title>
+  <meta name="description" content="The latest news from Polymarket, Kalshi, and the prediction markets world. Updated 4x daily.">
+  <link rel="canonical" href="https://theprobnewsletter.com/news.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="The Prob — Prediction Market News">
+  <meta property="og:description" content="The latest news from Polymarket, Kalshi, and the prediction markets world.">
+  <meta property="og:image" content="https://theprobnewsletter.com/og-image.jpg">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --bg: #080b0f; --bg2: #0d1117; --bg3: #141b24;
-      --border: #1e2a38; --border-bright: #2a3d54;
-      --text: #e8edf2; --text-muted: #637b94; --text-dim: #3a5068;
-      --green: #00e5a0; --green-dim: #00a870; --red: #ff4757;
-      --amber: #f5a623; --accent: #00e5a0;
-      --mono: 'Space Mono', monospace;
-      --serif: 'Libre Baskerville', Georgia, serif;
-      --sans: 'DM Sans', sans-serif;
-    }
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body { background: var(--bg); color: var(--text); font-family: var(--sans); font-size: 15px; line-height: 1.6; overflow-x: hidden; }
-    body::before {
-      content: ''; position: fixed; inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
-      opacity: 0.022; pointer-events: none; z-index: 1000;
-    }
-    nav { display: flex; align-items: center; justify-content: space-between; padding: 20px 48px; border-bottom: 1px solid var(--border); position: sticky; top: 0; background: rgba(8,11,15,0.92); backdrop-filter: blur(12px); z-index: 100; }
-    .logo { display: flex; align-items: baseline; gap: 12px; }
-    .logo-mark { font-family: var(--mono); font-size: 28px; font-weight: 700; color: var(--accent); letter-spacing: -1px; }
-    .logo-pipe { color: var(--border-bright); font-size: 20px; }
-    .logo-sub { font-family: var(--mono); font-size: 10px; color: var(--text-muted); letter-spacing: 0.15em; text-transform: uppercase; }
-    .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
-    .nav-links a { font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
-    .nav-links a:hover { color: var(--text); }
-    .page-header { max-width: 1280px; margin: 0 auto; padding: 60px 48px 40px; border-bottom: 1px solid var(--border); animation: fadeUp 0.5s ease both; }
-    .page-eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
-    .page-eyebrow::before { content: ''; display: block; width: 24px; height: 1px; background: var(--accent); }
-    .page-headline { font-family: var(--serif); font-size: clamp(28px, 3vw, 44px); font-weight: 700; line-height: 1.15; color: var(--text); margin-bottom: 16px; max-width: 800px; }
-    .page-sub { font-size: 16px; color: var(--text-muted); line-height: 1.7; max-width: 640px; }
-    .coming-soon {
-      max-width: 1280px; margin: 0 auto; padding: 100px 48px;
-      display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 24px;
-    }
-    .coming-soon-icon { font-family: var(--mono); font-size: 48px; color: var(--border-bright); }
-    .coming-soon-title { font-family: var(--serif); font-size: 28px; color: var(--text); }
-    .coming-soon-body { font-size: 15px; color: var(--text-muted); max-width: 480px; line-height: 1.7; }
-    .coming-soon-tag { font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); border: 1px solid var(--accent); padding: 6px 16px; }
-    footer { border-top: 1px solid var(--border); padding: 48px; max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 40px; align-items: start; }
-    .footer-brand p { font-size: 13px; color: var(--text-muted); margin-top: 12px; line-height: 1.6; max-width: 260px; }
-    .footer-links h4 { font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 16px; }
-    .footer-links ul { list-style: none; }
-    .footer-links li { margin-bottom: 8px; }
-    .footer-links a { font-size: 13px; color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
-    .footer-links a:hover { color: var(--accent); }
-    .footer-copy { font-family: var(--mono); font-size: 10px; color: var(--text-dim); grid-column: 1/-1; border-top: 1px solid var(--border); padding-top: 24px; display: flex; justify-content: space-between; }
-    @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
-    @media (max-width: 1024px) {
-      nav { padding: 16px 24px; }
-      .nav-links { display: none; }
-      .page-header { padding: 40px 24px 32px; }
-      .coming-soon { padding: 60px 24px; }
-      footer { grid-template-columns: 1fr; padding: 32px 24px; }
+    :root{--bg:#080b0f;--bg2:#0d1117;--bg3:#141b24;--border:#1e2a38;--border-bright:#2a3d54;--text:#e8edf2;--text-muted:#637b94;--text-dim:#3a5068;--green:#00e5a0;--green-dim:#00a870;--red:#ff4757;--amber:#f5a623;--blue:#4a9eff;--accent:#00e5a0;--mono:'Space Mono',monospace;--serif:'Libre Baskerville',Georgia,serif;--sans:'DM Sans',sans-serif;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:15px;line-height:1.6;overflow-x:hidden;}
+    body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");opacity:0.022;pointer-events:none;z-index:1000;}
+
+    /* NAV */
+    nav{display:flex;align-items:center;justify-content:space-between;padding:20px 48px;border-bottom:1px solid var(--border);position:sticky;top:0;background:rgba(8,11,15,0.92);backdrop-filter:blur(12px);z-index:100;}
+    .logo{display:flex;align-items:baseline;gap:12px;}
+    .logo-mark{font-family:var(--mono);font-size:28px;font-weight:700;color:var(--accent);letter-spacing:-1px;}
+    .logo-pipe{color:var(--border-bright);font-size:20px;}
+    .logo-sub{font-family:var(--mono);font-size:10px;color:var(--text-muted);letter-spacing:0.15em;text-transform:uppercase;}
+    .nav-links{display:flex;align-items:center;gap:32px;list-style:none;}
+    .nav-links a{font-family:var(--mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);text-decoration:none;transition:color 0.2s;}
+    .nav-links a:hover{color:var(--text);}
+    .mobile-nav{display:none;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;background:var(--bg2);border-bottom:1px solid var(--border);white-space:nowrap;}
+    .mobile-nav::-webkit-scrollbar{display:none;}
+    .mobile-nav a{display:inline-block;font-family:var(--mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);text-decoration:none;padding:11px 18px;border-right:1px solid var(--border);transition:color 0.2s;}
+    .mobile-nav a:hover,.mobile-nav a.active{color:var(--accent);}
+
+    /* PAGE HEADER */
+    .page-header{max-width:1280px;margin:0 auto;padding:60px 48px 40px;border-bottom:1px solid var(--border);}
+    .page-eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;display:flex;align-items:center;gap:10px;}
+    .page-eyebrow::before{content:'';display:block;width:24px;height:1px;background:var(--accent);}
+    .page-headline{font-family:var(--serif);font-size:clamp(26px,3vw,42px);font-weight:700;line-height:1.15;color:var(--text);margin-bottom:14px;max-width:700px;}
+    .page-meta{font-family:var(--mono);font-size:11px;color:var(--text-dim);margin-top:16px;}
+
+    /* NEWS GRID */
+    .news-section{max-width:1280px;margin:0 auto;padding:48px;}
+    .news-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);}
+
+    /* Individual news card */
+    .news-card{background:var(--bg2);padding:28px 28px;cursor:pointer;transition:background 0.15s;position:relative;display:flex;flex-direction:column;gap:10px;}
+    .news-card:hover{background:var(--bg3);}
+    .news-card-num{font-family:var(--mono);font-size:10px;color:var(--text-dim);font-weight:700;}
+    .news-card-title{font-family:var(--serif);font-size:17px;font-weight:700;line-height:1.3;color:var(--text);}
+    .news-card-summary{font-size:13px;color:var(--text-muted);line-height:1.65;}
+    .news-card-footer{display:flex;align-items:center;gap:12px;margin-top:4px;}
+    .news-card-source{font-family:var(--mono);font-size:10px;color:var(--text-dim);text-transform:uppercase;letter-spacing:0.08em;}
+    .news-card-date{font-family:var(--mono);font-size:10px;color:var(--text-dim);}
+    .news-card-dot{color:var(--border-bright);}
+    .news-card-read{font-family:var(--mono);font-size:10px;color:var(--accent);margin-left:auto;opacity:0;transition:opacity 0.15s;}
+    .news-card:hover .news-card-read{opacity:1;}
+
+    /* Featured top card (spans full width) */
+    .news-card.featured{grid-column:1/-1;display:grid;grid-template-columns:60px 1fr;gap:20px;align-items:start;padding:32px;}
+    .news-card.featured .news-card-num{font-size:28px;color:var(--accent);font-weight:700;line-height:1;padding-top:4px;}
+    .news-card.featured .news-card-title{font-size:22px;}
+    .news-card.featured .news-card-summary{font-size:14px;}
+
+    /* Divider */
+    .divider{height:1px;background:var(--border);max-width:1280px;margin:0 auto;}
+
+    /* Empty state */
+    .empty-state{padding:80px 20px;text-align:center;color:var(--text-muted);font-family:var(--mono);font-size:12px;grid-column:1/-1;background:var(--bg2);line-height:1.8;}
+
+    /* FOOTER */
+    footer{border-top:1px solid var(--border);padding:48px;max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr 1fr;gap:40px;align-items:start;}
+    .footer-brand .logo-mark{font-size:18px;}
+    .footer-brand p{font-size:13px;color:var(--text-muted);margin-top:12px;line-height:1.6;max-width:260px;}
+    .footer-links h4{font-family:var(--mono);font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-dim);margin-bottom:16px;}
+    .footer-links ul{list-style:none;}.footer-links li{margin-bottom:8px;}
+    .footer-links a{font-size:13px;color:var(--text-muted);text-decoration:none;transition:color 0.2s;}
+    .footer-links a:hover{color:var(--accent);}
+    .footer-copy{font-family:var(--mono);font-size:10px;color:var(--text-dim);grid-column:1/-1;border-top:1px solid var(--border);padding-top:24px;display:flex;justify-content:space-between;}
+
+    @media(max-width:1024px){
+      nav{padding:16px 24px;}.nav-links{display:none;}.mobile-nav{display:block;}
+      .page-header{padding:36px 20px 28px;}.news-section{padding:28px 20px;}
+      .news-grid{grid-template-columns:1fr;}
+      .news-card.featured{grid-template-columns:1fr;}
+      .news-card.featured .news-card-num{font-size:12px;color:var(--text-dim);padding-top:0;}
+      footer{grid-template-columns:1fr;padding:28px 20px;}
     }
   </style>
 </head>
@@ -71,52 +96,58 @@
 
   <nav>
     <div class="logo">
-      <a href="index.html" style="text-decoration:none;">
-        <span class="logo-mark">THE PROB</span>
-      </a>
+      <a href="index.html" style="text-decoration:none;"><span class="logo-mark">THE PROB</span></a>
       <span class="logo-pipe">|</span>
       <span class="logo-sub">What's the Probability?</span>
     </div>
     <ul class="nav-links">
-      <li><a href="politics.html">Politics</a></li>
       <li><a href="business.html">Business</a></li>
-      <li><a href="tech.html">Tech</a></li>
-      <li><a href="sports.html">Sports</a></li>
       <li><a href="culture.html">Culture</a></li>
       <li><a href="news.html" style="color:var(--accent);">News</a></li>
+      <li><a href="politics.html">Politics</a></li>
+      <li><a href="sports.html">Sports</a></li>
+      <li><a href="tech.html">Tech</a></li>
     </ul>
   </nav>
+  <div class="mobile-nav">
+    <a href="business.html">Business</a>
+    <a href="culture.html">Culture</a>
+    <a href="news.html" class="active">News</a>
+    <a href="politics.html">Politics</a>
+    <a href="sports.html">Sports</a>
+    <a href="tech.html">Tech</a>
+  </div>
 
   <div class="page-header">
-    <div class="page-eyebrow">News</div>
-    <h1 class="page-headline">The stories that matter. Told through the odds.</h1>
-    <p class="page-sub">Every day, the best prediction market coverage from around the internet — curated in one place. Coming soon.</p>
+    <div class="page-eyebrow">Prediction Market News</div>
+    <h1 class="page-headline">What the press is writing about the markets writing the future.</h1>
+    <p style="font-size:15px;color:var(--text-muted);line-height:1.7;max-width:600px;margin-top:12px;">The best coverage of Polymarket, Kalshi, and the prediction market world. Sourced, summarized, and updated 4 times a day.</p>
+    <div class="page-meta" id="updated-time">Loading...</div>
   </div>
 
-  <div class="coming-soon">
-    <div class="coming-soon-icon">◎</div>
-    <div class="coming-soon-tag">Coming Soon</div>
-    <div class="coming-soon-title">Daily news, filtered through the markets.</div>
-    <div class="coming-soon-body">We're building a daily digest of the 6-10 best prediction market stories from across the web. No noise. Just the pieces worth reading, ranked by what the crowd is actually moving.</div>
-  </div>
+  <section class="news-section">
+    <div class="news-grid" id="news-grid">
+      <div class="empty-state">Loading latest news...</div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
 
   <footer>
     <div class="footer-brand">
-      <div class="logo">
-        <span class="logo-mark">THE PROB</span>
-      </div>
+      <div class="logo"><span class="logo-mark">THE PROB</span></div>
       <p>Daily intelligence from the prediction markets. The crowd has already placed its bets. We tell you where.</p>
     </div>
     <div class="footer-links">
       <h4>Navigate</h4>
       <ul>
         <li><a href="index.html">Today's Markets</a></li>
-        <li><a href="politics.html">Politics</a></li>
         <li><a href="business.html">Business</a></li>
-        <li><a href="tech.html">Tech</a></li>
-        <li><a href="sports.html">Sports</a></li>
         <li><a href="culture.html">Culture</a></li>
         <li><a href="news.html">News</a></li>
+        <li><a href="politics.html">Politics</a></li>
+        <li><a href="sports.html">Sports</a></li>
+        <li><a href="tech.html">Tech</a></li>
       </ul>
     </div>
     <div class="footer-links">
@@ -129,9 +160,69 @@
     </div>
     <div class="footer-copy">
       <span>© 2026 The Prob. Prediction markets intelligence.</span>
-      <span>Not financial advice. Markets data for informational purposes only.</span>
+      <span>Not financial advice. For informational purposes only.</span>
     </div>
   </footer>
 
+<script>
+const NEWS_URL = 'data/news.json';
+
+async function loadNews() {
+  try {
+    const res  = await fetch(`${NEWS_URL}?v=${Date.now()}`);
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data = await res.json();
+
+    const el = document.getElementById('updated-time');
+    if (el && data.updated) el.textContent = `Updated ${data.updated}`;
+
+    renderGrid(data.articles || []);
+  } catch(err) {
+    console.warn('Could not load news:', err.message);
+    document.getElementById('news-grid').innerHTML =
+      '<div class="empty-state">News temporarily unavailable.<br>Check back soon.</div>';
+  }
+}
+
+function renderGrid(articles) {
+  const grid = document.getElementById('news-grid');
+  if (!articles.length) {
+    grid.innerHTML = '<div class="empty-state">No articles available yet.<br>Check back after the next refresh.</div>';
+    return;
+  }
+
+  grid.innerHTML = articles.map((a, i) => {
+    const num     = String(i + 1).padStart(2, '0');
+    const summary = a.summary || a.description || '';
+    const source  = a.source  ? `<span class="news-card-source">${a.source}</span><span class="news-card-dot">·</span>` : '';
+    const date    = a.pub_display ? `<span class="news-card-date">${a.pub_display}</span>` : '';
+
+    if (i === 0) {
+      return `<div class="news-card featured" onclick="window.open('${esc(a.url)}','_blank')">
+        <div class="news-card-num">${num}</div>
+        <div>
+          <div class="news-card-title">${esc(a.title)}</div>
+          <div class="news-card-summary" style="margin-top:10px;">${esc(summary)}</div>
+          <div class="news-card-footer" style="margin-top:12px;">${source}${date}<span class="news-card-read">Read ↗</span></div>
+        </div>
+      </div>`;
+    }
+
+    return `<div class="news-card" onclick="window.open('${esc(a.url)}','_blank')">
+      <div class="news-card-num">${num}</div>
+      <div class="news-card-title">${esc(a.title)}</div>
+      <div class="news-card-summary">${esc(summary)}</div>
+      <div class="news-card-footer">${source}${date}<span class="news-card-read">Read ↗</span></div>
+    </div>`;
+  }).join('');
+}
+
+function esc(s) {
+  if (!s) return '';
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+loadNews();
+</script>
 </body>
 </html>
