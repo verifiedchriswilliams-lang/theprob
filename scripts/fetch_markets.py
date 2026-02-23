@@ -90,12 +90,18 @@ def is_dated_game_market(m: dict) -> bool:
 
 def is_junk_market(m: dict) -> bool:
     """
-    Filter out low-quality micro-markets: MrBeast view counts, Bitcoin
-    price bands, next-day open direction markets, tweet-count markets, etc.
-    These resolve quickly with huge change_pts but have no newsletter value.
+    Filter out low-quality markets: micro-markets, internal Polymarket tags,
+    weather/temperature minutiae, tweet-count markets, etc.
     """
     q = m.get("question", "").lower()
-    return any(pattern in q for pattern in JUNK_MARKET_PATTERNS)
+    if any(pattern in q for pattern in JUNK_MARKET_PATTERNS):
+        return True
+    # Polymarket internal/operational tags signal markets not meant for display
+    JUNK_TAG_SLUGS = {"hide-from-new", "opinion", "recurring", "rewards-500-4pt5-50", "pre-market"}
+    tag_slugs = set(m.get("tag_slugs", []))
+    if tag_slugs & JUNK_TAG_SLUGS:
+        return True
+    return False
 
 def days_until_close(end_date_str: str) -> float | None:
     """Return how many days until market closes. None if unparseable."""
@@ -158,6 +164,13 @@ POLY_TAG_TO_CATEGORY = {
     "ukraine":         "Politics",
     "us-politics":     "Politics",
     "global-politics": "Politics",
+    # World / niche — fine to leave as World bucket
+    "weather":         "World",
+    "temperature":     "World",
+    "natural-disasters": "World",
+    "climate-science": "World",
+    "new-york":        "World",
+    "new-york-city":   "World",
     # Finance / Business
     "economics":       "Finance",
     "finance":         "Finance",
@@ -553,10 +566,17 @@ def score_market(m: dict) -> float:
 def pick_hero(markets: list[dict]) -> dict | None:
     """
     The hero is the single most buzzworthy non-sports market.
-    Sports require a very high volume bar ($5M+) to appear here,
-    preventing niche game results from dominating the front page.
-    Resolved/settled markets (prob ≥98% or ≤2%) are excluded entirely.
+    Priority order: Politics > Finance > World > Technology > Culture > Crypto
+    Sports require very high volume. Resolved markets excluded.
     """
+    HERO_CATEGORY_PRIORITY = {
+        "Politics":   1,
+        "Finance":    2,
+        "World":      3,
+        "Technology": 4,
+        "Culture":    5,
+        "Crypto":     6,
+    }
     candidates = [
         m for m in markets
         if m["volume"] >= HERO_MIN_VOLUME
@@ -564,13 +584,17 @@ def pick_hero(markets: list[dict]) -> dict | None:
         and not is_junk_market(m)
         and (not is_sports_market(m) or m["volume"] >= HERO_SPORTS_MIN_VOLUME)
     ]
-    # Prefer markets with actual price movement
+    # Must have real price movement to be hero
     movers = [c for c in candidates if abs(c["change_pts"]) >= 2]
-    if movers:
-        return max(movers, key=score_market)
-    if candidates:
-        return max(candidates, key=score_market)
-    return None
+    pool   = movers if movers else candidates
+    if not pool:
+        return None
+    # Sort: first by category priority, then by buzz score within each tier
+    def hero_score(m):
+        cat      = m.get("display_category", "World")
+        priority = HERO_CATEGORY_PRIORITY.get(cat, 7)
+        return (-priority, score_market(m))
+    return max(pool, key=hero_score)
 
 # ── CATEGORY MAPPING ─────────────────────────────────────────────────────────
 
@@ -940,8 +964,7 @@ def main():
         print(f"    [{m['display_category']}] {m['question'][:55]} ({m['source']})")
     print(f"  Ticker ({len(ticker)}):")
     for m in ticker:
-        cat = get_category_label(m)
-        print(f"    [{cat}] {m['question'][:55]} ({m['source']})")
+        print(f"    [{m.get('display_category', '?')}] {m['question'][:55]} ({m['source']})")
 
     # Build full market catalog for category pages
     # Dedup: for Kalshi, one market per event URL (best by score). For Polymarket, one per slug.
