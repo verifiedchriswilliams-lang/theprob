@@ -157,6 +157,8 @@ def summarize_article(title: str, description: str) -> str:
             },
             timeout=20,
         )
+        if not r.ok:
+            print(f"  [DEBUG] API status {r.status_code}: {r.text[:200]}")
         r.raise_for_status()
         data    = r.json()
         summary = data["content"][0]["text"].strip()
