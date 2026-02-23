@@ -52,6 +52,14 @@ HOUSE_STYLE_SYSTEM = (
 
 # ── FETCH RSS ─────────────────────────────────────────────────────────────────
 
+def clean_text(text: str) -> str:
+    """Decode HTML entities, strip tags, collapse whitespace."""
+    import html
+    text = html.unescape(text)               # &nbsp; → space, &amp; → &, etc.
+    text = re.sub(r"<[^>]+>", " ", text)     # strip any HTML tags
+    text = re.sub(r"\s+", " ", text).strip() # collapse whitespace
+    return text
+
 def fetch_gnews(query: str, max_results: int = 15) -> list[dict]:
     """Fetch Google News RSS for a query, return list of raw article dicts."""
     url    = f"{GNEWS_BASE}?q={quote(query)}&hl=en-US&gl=US&ceid=US:en"
@@ -64,14 +72,10 @@ def fetch_gnews(query: str, max_results: int = 15) -> list[dict]:
         if channel is None:
             return []
         for item in channel.findall("item")[:max_results]:
-            title  = item.findtext("title", "").strip()
+            title  = clean_text(item.findtext("title", ""))
             link   = item.findtext("link", "").strip()
             pub    = item.findtext("pubDate", "").strip()
-            source_el = item.find("{http://purl.org/rss/1.0/modules/content/}encoded")
-            desc   = item.findtext("description", "").strip()
-            # Clean HTML tags from description
-            desc   = re.sub(r"<[^>]+>", " ", desc).strip()
-            desc   = re.sub(r"\s+", " ", desc)
+            desc   = clean_text(item.findtext("description", ""))
 
             if not title or not link:
                 continue
@@ -79,7 +83,7 @@ def fetch_gnews(query: str, max_results: int = 15) -> list[dict]:
             # Parse publication date
             pub_iso = ""
             try:
-                dt     = datetime.strptime(pub, "%a, %d %b %Y %H:%M:%S %Z")
+                dt      = datetime.strptime(pub, "%a, %d %b %Y %H:%M:%S %Z")
                 pub_iso = dt.replace(tzinfo=timezone.utc).isoformat()
             except Exception:
                 pub_iso = datetime.now(timezone.utc).isoformat()
@@ -87,9 +91,13 @@ def fetch_gnews(query: str, max_results: int = 15) -> list[dict]:
             # Extract source name from title (Google News appends " - Source Name")
             source_name = ""
             if " - " in title:
-                parts = title.rsplit(" - ", 1)
-                title = parts[0].strip()
+                parts       = title.rsplit(" - ", 1)
+                title       = parts[0].strip()
                 source_name = parts[1].strip()
+
+            # Drop descriptions that are just the title repeated or source-only
+            if desc.lower().startswith(title.lower()[:40].lower()):
+                desc = ""
 
             articles.append({
                 "title":       title,
@@ -195,8 +203,10 @@ def main():
         with open("data/news.json") as f:
             existing = json.load(f)
             for a in existing.get("articles", []):
-                if a.get("summary") and a.get("url"):
-                    existing_summaries[a["url"]] = a["summary"]
+                summary = a.get("summary", "")
+                # Discard cached summaries that contain raw HTML entities (bad fallbacks)
+                if a.get("url") and summary and "&nbsp;" not in summary and "&amp;" not in summary:
+                    existing_summaries[a["url"]] = summary
         print(f"  Loaded {len(existing_summaries)} cached summaries")
     except FileNotFoundError:
         print("  No existing news.json — starting fresh")
