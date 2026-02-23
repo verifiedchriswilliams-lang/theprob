@@ -207,8 +207,8 @@ def poly_category_from_tags(tags: list) -> str:
 def fetch_polymarket() -> list[dict]:
     markets = []
     try:
-        all_raw  = []
-        seen_ids = set()
+        all_events = []
+        seen_ids   = set()
 
         fetch_configs = [
             {"order": "volume24hr", "pages": 3},
@@ -220,7 +220,7 @@ def fetch_polymarket() -> list[dict]:
             for page in range(cfg["pages"]):
                 try:
                     r = requests.get(
-                        f"{GAMMA_BASE}/markets",
+                        f"{GAMMA_BASE}/events",
                         params={
                             "active":    "true",
                             "closed":    "false",
@@ -235,71 +235,72 @@ def fetch_polymarket() -> list[dict]:
                     data = r.json()
                     if not data:
                         break
-                    new = [m for m in data if m.get("id") not in seen_ids]
-                    for m in new:
-                        seen_ids.add(m.get("id"))
-                    all_raw.extend(new)
+                    new = [e for e in data if e.get("id") not in seen_ids]
+                    for e in new:
+                        seen_ids.add(e.get("id"))
+                    all_events.extend(new)
                     print(f"    Polymarket {cfg['order']} page {page+1}: {len(data)} fetched, {len(new)} new")
                     offset += 100
                 except requests.RequestException as e:
                     print(f"    [WARN] Polymarket fetch failed (page {page+1}): {e}")
                     break
 
-        print(f"  Polymarket unique markets after dedup: {len(all_raw)}")
+        print(f"  Polymarket unique events after dedup: {len(all_events)}")
 
-        for m in all_raw:
-            try:
-                outcomes  = json.loads(m.get("outcomePrices", "[]"))
-                yes_price = float(outcomes[0]) if outcomes else None
-                if yes_price is None:
+        for event in all_events:
+            # Category comes from the event-level tags
+            event_tags  = event.get("tags", []) or []
+            display_cat = poly_category_from_tags(event_tags)
+            is_sports   = any(str(t.get("id")) == "1" for t in event_tags)
+            if is_sports:
+                display_cat = "Sports"
+            tag_labels = [t.get("label", "").lower() for t in event_tags]
+
+            for m in event.get("markets", []):
+                try:
+                    outcomes  = json.loads(m.get("outcomePrices", "[]"))
+                    yes_price = float(outcomes[0]) if outcomes else None
+                    if yes_price is None:
+                        continue
+                    volume     = float(m.get("volume", 0) or 0)
+                    volume_24h = float(m.get("volume24hr", 0) or 0)
+                    if volume < MIN_VOLUME_USD:
+                        continue
+                    change_raw = float(m.get("oneDayPriceChange", 0) or 0)
+                    change_pts = round(change_raw * 100, 1)
+                    end_date   = m.get("endDate", "") or m.get("endDateIso", "")
+
+                    markets.append({
+                        "source":           "Polymarket",
+                        "question":         m.get("question", ""),
+                        "slug":             m.get("slug", ""),
+                        "url":              f"https://polymarket.com/event/{event.get('slug', m.get('slug', ''))}",
+                        "prob":             round(yes_price * 100, 1),
+                        "change_pts":       change_pts,
+                        "direction":        change_direction(change_pts),
+                        "volume":           volume,
+                        "volume_fmt":       fmt_volume(volume),
+                        "volume_24h":       volume_24h,
+                        "end_date":         fmt_date(end_date) if end_date else "",
+                        "end_date_raw":     end_date,
+                        "liquidity":        float(m.get("liquidity", 0) or 0),
+                        "category":         tag_labels[0] if tag_labels else "",
+                        "is_sports":        is_sports,
+                        "display_category": display_cat or "World",
+                        "tags":             tag_labels,
+                    })
+                except (ValueError, IndexError, KeyError):
                     continue
-                volume     = float(m.get("volume", 0) or 0)
-                volume_24h = float(m.get("volume24hr", 0) or 0)
-                if volume < MIN_VOLUME_USD:
-                    continue
-                change_raw = float(m.get("oneDayPriceChange", 0) or 0)
-                change_pts = round(change_raw * 100, 1)
-                end_date   = m.get("endDate", "") or m.get("endDateIso", "")
 
-                # Tags come from both the market and its parent event
-                market_tags = m.get("tags", []) or []
-                event_tags  = (m.get("events") or [{}])[0].get("tags", []) or []
-                all_tags    = market_tags + [t for t in event_tags if t not in market_tags]
-                tag_labels  = [t.get("label", "").lower() for t in all_tags]
-                tag_slugs   = [t.get("slug",  "").lower() for t in all_tags]
+        # Deduplicate by slug
+        seen_slugs = set()
+        deduped = []
+        for m in markets:
+            if m["slug"] not in seen_slugs:
+                seen_slugs.add(m["slug"])
+                deduped.append(m)
+        markets = deduped
 
-                # Derive category from tags first, no keywords needed
-                display_cat = poly_category_from_tags(all_tags)
-
-                # Sports override: Polymarket tags sports with id=1 on the event
-                is_sports = any(str(t.get("id")) == "1" for t in all_tags)
-                if is_sports:
-                    display_cat = "Sports"
-
-                markets.append({
-                    "source":           "Polymarket",
-                    "question":         m.get("question", ""),
-                    "slug":             m.get("slug", ""),
-                    "url":              f"https://polymarket.com/event/{(m.get('events') or [{}])[0].get('slug', m.get('slug', ''))}",
-                    "prob":             round(yes_price * 100, 1),
-                    "change_pts":       change_pts,
-                    "direction":        change_direction(change_pts),
-                    "volume":           volume,
-                    "volume_fmt":       fmt_volume(volume),
-                    "volume_24h":       volume_24h,
-                    "end_date":         fmt_date(end_date) if end_date else "",
-                    "end_date_raw":     end_date,
-                    "liquidity":        float(m.get("liquidity", 0) or 0),
-                    "category":         tag_labels[0] if tag_labels else "",
-                    "is_sports":        is_sports,
-                    "display_category": display_cat or "World",
-                    "tags":             tag_labels,
-                    "tag_slugs":        tag_slugs,
-                })
-            except (ValueError, IndexError, KeyError):
-                continue
-
-        # Debug: show what display_category values we got
         cats = sorted(set(m["display_category"] for m in markets))
         print(f"  Polymarket display_categories: {cats}")
     except Exception as e:
