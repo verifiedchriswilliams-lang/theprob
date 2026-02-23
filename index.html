@@ -1288,6 +1288,12 @@ function renderHero(hero) {
     card.style.cursor = 'pointer';
     card.addEventListener('click', () => window.open(hero.url, '_blank'));
   }
+
+  // Populate The Prob's Take editorial
+  const insightEl = document.getElementById('hero-insight');
+  if (insightEl && hero.prob_take) {
+    insightEl.textContent = hero.prob_take;
+  }
 }
 
 // ── MOVERS GRID ───────────────────────────────────────────────────────────────
