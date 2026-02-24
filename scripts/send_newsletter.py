@@ -327,17 +327,18 @@ def send_to_beehiiv(subject: str, html: str) -> bool:
 
     payload = {
         "publication_id": BEEHIIV_PUB_ID,
+        "title":          subject,
         "subject_line":   subject,
         "subtitle":       subtitle,
-        "status":         "confirmed",   # send immediately
-        "send_at":        None,          # send now
+        "status":         "confirmed",
+        "send_at":        None,
         "content_blocks": [
             {
                 "type":    "raw_html",
                 "content": html,
             }
         ],
-        "audience":       "free",        # send to all free + paid subscribers
+        "audience":       "free",
         "email_enabled":  True,
         "web_enabled":    True,
     }
