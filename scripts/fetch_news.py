@@ -38,7 +38,62 @@ SEARCH_QUERIES = [
     "prediction markets news",
 ]
 
-GNEWS_BASE = "https://news.google.com/rss/search"
+GNEWS_BASE   = "https://news.google.com/rss/search"
+MAX_AGE_DAYS = 7   # Drop articles older than this
+
+# ── JUNK FILTERS ──────────────────────────────────────────────────────────────
+
+# Domains producing affiliate/promo/odds-aggregator content, not journalism
+JUNK_DOMAINS = {
+    "silive.com", "nj.com", "pennlive.com", "masslive.com", "al.com",
+    "oregonlive.com", "newyorkupstate.com", "syracuse.com",
+    "sportsbettingdime.com", "pickswise.com", "vegasinsider.com",
+    "oddschecker.com", "actionnetwork.com", "covers.com",
+    "bettingnews.com", "bookies.com", "dimers.com", "sportsnaut.com",
+    "lineups.com", "betmgm.com", "draftkings.com", "fanduel.com",
+    "bestodds.com", "oddstrader.com", "thelines.com",
+}
+
+# Title patterns signaling promo codes, odds pages, or non-editorial content
+JUNK_TITLE_PATTERNS = [
+    r"promo code",
+    r"bonus code",
+    r"\$\d+\s*(bonus|credit)",
+    r"opens up or down",
+    r"up or down.{0,30}\d+ minutes",
+    r"up or down.{0,30}\d+ hours",
+    r"predictions?\s*&\s*odds",
+    r"odds\s*&\s*predictions?",
+    r"best odds",
+    r"how many inches",
+    r"inches of (snow|rain)",
+    r"weather forecast",
+    r"temperature.{0,20}predict",
+    r"free picks",
+    r"trading odds",
+]
+
+def is_junk_article(a: dict) -> bool:
+    """Return True if article is SEO/affiliate/promo content, not real journalism."""
+    title = a.get("title", "").lower()
+    url   = a.get("url",   "").lower()
+    for domain in JUNK_DOMAINS:
+        if domain in url:
+            return True
+    for pattern in JUNK_TITLE_PATTERNS:
+        if re.search(pattern, title, re.IGNORECASE):
+            return True
+    return False
+
+def is_stale_article(a: dict) -> bool:
+    """Return True if article is older than MAX_AGE_DAYS."""
+    try:
+        pub = datetime.fromisoformat(a.get("pub_iso", ""))
+        if pub.tzinfo is None:
+            pub = pub.replace(tzinfo=timezone.utc)
+        return (datetime.now(timezone.utc) - pub).days > MAX_AGE_DAYS
+    except Exception:
+        return False
 
 HOUSE_STYLE_SYSTEM = (
     "You write for The Prob, a prediction markets newsletter. "
@@ -233,6 +288,11 @@ def main():
 
     articles = merge_and_dedup(all_batches)
     print(f"  {len(articles)} unique articles after dedup")
+
+    # Filter junk and stale articles
+    before = len(articles)
+    articles = [a for a in articles if not is_junk_article(a) and not is_stale_article(a)]
+    print(f"  {len(articles)} after junk/stale filter (removed {before - len(articles)})")
 
     # Keep top MAX_ARTICLES by recency
     articles = articles[:MAX_ARTICLES]

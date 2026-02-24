@@ -905,43 +905,177 @@ def strip_em_dashes(text: str) -> str:
     text = text.replace("\u2014", ", ")
     return text
 
-def generate_hero_take(hero: dict) -> str:
+def generate_daily_take(hero: dict, movers: list[dict]) -> dict:
     """
-    Generate a 2-sentence Hustle-style editorial take on the hero market.
-    Stored in hero.prob_take and displayed on the homepage.
+    Generate 'The Prob's Daily Take' using Claude API.
+    Returns a dict with: headline, deck, category, sidebar (list of 3 items),
+    and date. Falls back to template if API unavailable.
     """
+    ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY", "")
+
     q      = hero.get("question", "")
     prob   = hero.get("prob", 50)
     change = hero.get("change_pts", 0)
     vol    = hero.get("volume_fmt", "")
     cat    = hero.get("display_category", "World")
-    end    = hero.get("end_date", "")
+    source = hero.get("source", "")
 
-    direction_word = "surged" if change > 5 else "dropped" if change < -5 else "moved"
-    odds_word      = "likely" if prob > 65 else "unlikely" if prob < 35 else "a coin flip"
-    money_line     = f"${vol} in total bets" if vol else "real money"
+    # Build sidebar context from top movers
+    sidebar_context = ""
+    for i, m in enumerate(movers[:3], 1):
+        sidebar_context += (
+            f"{i}. {m['question']} | "
+            f"{m['prob']}% ({'+' if m['change_pts'] > 0 else ''}{m['change_pts']}pts) | "
+            f"${m['volume_fmt']} vol | {m.get('display_category','')}\n"
+        )
 
-    # Build context-aware takes by category
+    prompt = f"""You are writing today's featured editorial for The Prob, a prediction markets newsletter.
+
+Today's hero market:
+- Question: {q}
+- Current odds: {prob}%
+- 24h change: {'+' if change > 0 else ''}{change} pts
+- Total volume: ${vol}
+- Category: {cat}
+- Source: {source}
+
+Today's other notable markets:
+{sidebar_context}
+
+Write the following in The Prob's voice (sharp, confident, dry wit, no em dashes, active voice):
+
+1. HEADLINE: A punchy, specific headline for this market's story today (not just restating the question). Make it feel like a smart take, not a data readout. 10-15 words max.
+
+2. DECK: 2-3 sentences. What happened, why it moved, what it means. Hook the reader. No em dashes. No hedging.
+
+3. CATEGORY_LABEL: One short label like "Deep Dive · Politics" or "Market Watch · Crypto"
+
+4. SIDEBAR_1_HEADLINE: A sharp 1-sentence editorial angle on market 1 above (not just the question). 
+5. SIDEBAR_1_LABEL: Short label like "Fed Cut March: 72%"
+
+6. SIDEBAR_2_HEADLINE: Same for market 2.
+7. SIDEBAR_2_LABEL: Short label.
+
+8. SIDEBAR_3_HEADLINE: Same for market 3.
+9. SIDEBAR_3_LABEL: Short label.
+
+Respond in this exact format, one item per line:
+HEADLINE: ...
+DECK: ...
+CATEGORY_LABEL: ...
+SIDEBAR_1_HEADLINE: ...
+SIDEBAR_1_LABEL: ...
+SIDEBAR_2_HEADLINE: ...
+SIDEBAR_2_LABEL: ...
+SIDEBAR_3_HEADLINE: ...
+SIDEBAR_3_LABEL: ..."""
+
+    if ANTHROPIC_API_KEY:
+        try:
+            import requests as req
+            r = req.post(
+                "https://api.anthropic.com/v1/messages",
+                headers={
+                    "x-api-key":         ANTHROPIC_API_KEY,
+                    "anthropic-version": "2023-06-01",
+                    "content-type":      "application/json",
+                },
+                json={
+                    "model":      "claude-haiku-4-5-20251001",
+                    "max_tokens": 600,
+                    "system":     HOUSE_STYLE_PROMPT,
+                    "messages":   [{"role": "user", "content": prompt}],
+                },
+                timeout=25,
+            )
+            if r.ok:
+                raw = r.json()["content"][0]["text"].strip()
+                # Parse the structured response
+                parsed = {}
+                for line in raw.split("\n"):
+                    if ":" in line:
+                        key, _, val = line.partition(":")
+                        parsed[key.strip()] = strip_em_dashes(val.strip())
+
+                now_et = datetime.now(timezone.utc) + timedelta(hours=-5)
+                return {
+                    "headline":        parsed.get("HEADLINE", q),
+                    "deck":            parsed.get("DECK", ""),
+                    "category_label":  parsed.get("CATEGORY_LABEL", f"Market Watch · {cat}"),
+                    "date":            now_et.strftime("%b %-d, %Y"),
+                    "sidebar": [
+                        {
+                            "headline": parsed.get("SIDEBAR_1_HEADLINE", movers[0]["question"] if len(movers) > 0 else ""),
+                            "label":    parsed.get("SIDEBAR_1_LABEL", ""),
+                            "url":      movers[0].get("url", "") if len(movers) > 0 else "",
+                        },
+                        {
+                            "headline": parsed.get("SIDEBAR_2_HEADLINE", movers[1]["question"] if len(movers) > 1 else ""),
+                            "label":    parsed.get("SIDEBAR_2_LABEL", ""),
+                            "url":      movers[1].get("url", "") if len(movers) > 1 else "",
+                        },
+                        {
+                            "headline": parsed.get("SIDEBAR_3_HEADLINE", movers[2]["question"] if len(movers) > 2 else ""),
+                            "label":    parsed.get("SIDEBAR_3_LABEL", ""),
+                            "url":      movers[2].get("url", "") if len(movers) > 2 else "",
+                        },
+                    ],
+                }
+            else:
+                print(f"  [WARN] Daily Take API failed: {r.status_code} {r.text[:100]}")
+        except Exception as e:
+            print(f"  [WARN] Daily Take generation failed: {e}")
+
+    # Fallback: construct from raw data if API unavailable
+    now_et = datetime.now(timezone.utc) + timedelta(hours=-5)
+    direction = "up" if change > 0 else "down"
+    deck = (
+        f"The crowd has ${vol} riding on this one. "
+        f"Odds are {prob}%, {abs(change)} points {direction} today. "
+        f"Here's what the market is telling you."
+    )
+    return {
+        "headline":       q,
+        "deck":           strip_em_dashes(deck),
+        "category_label": f"Market Watch · {cat}",
+        "date":           now_et.strftime("%b %-d, %Y"),
+        "sidebar": [
+            {
+                "headline": m["question"],
+                "label":    f"{m['prob']}% {'▲' if m['change_pts'] > 0 else '▼' if m['change_pts'] < 0 else ''}",
+                "url":      m.get("url", ""),
+            }
+            for m in movers[:3]
+        ],
+    }
+
+
+def generate_hero_take(hero: dict) -> str:
+    """2-sentence take for the hero market card. Template-based for speed."""
+    q      = hero.get("question", "")
+    prob   = hero.get("prob", 50)
+    change = hero.get("change_pts", 0)
+    vol    = hero.get("volume_fmt", "")
+    cat    = hero.get("display_category", "World")
+
+    money_line = f"${vol}" if vol else "real money"
+    odds_word  = "likely" if prob > 65 else "unlikely" if prob < 35 else "a toss-up"
+
     if cat == "Politics":
-        s1 = f"The crowd is putting {money_line} on this one, and at {prob}%, the market says it's {odds_word}."
-        s2 = f"That's {'a strong signal' if abs(change) > 10 else 'the current read'} — prediction markets tend to move faster than the polls."
+        s1 = f"The crowd has {money_line} on this, and at {prob}%, they call it {odds_word}."
+        s2 = f"Prediction markets move faster than polls. {'This one moved ' + str(abs(change)) + ' points today.' if abs(change) > 5 else 'Watch this one.'}"
     elif cat == "Crypto":
-        s1 = f"Crypto traders are watching this closely — {money_line} traded, with the market sitting at {prob}%."
-        s2 = f"{'A big swing today' if abs(change) > 5 else 'Steady odds'} heading into the deadline."
-    elif cat == "Sports":
-        game_word = "a heavy favorite" if prob > 70 else "still anyone's game"
-        aligned = "aligned" if prob > 60 else "split"
-        s1 = f"The crowd has {money_line} riding on this one at {prob}% — {game_word}."
-        s2 = f"Spread bettors and prediction market traders don't always agree, but right now they're {aligned}."
+        s1 = f"Crypto traders put {money_line} on this. Current read: {prob}%."
+        s2 = f"{'Sharp move today.' if abs(change) > 5 else 'Steady.'} The deadline is coming."
     elif cat == "Finance":
-        s1 = f"Markets are pricing this at {prob}% with {money_line} in play — {'the crowd is bullish' if prob > 55 else 'the crowd is skeptical'}."
-        s2 = f"{'A sharp move today' if abs(change) > 5 else 'Watch this one'} — Wall Street and prediction markets are reading the same tea leaves."
+        s1 = f"Wall Street and prediction markets are reading the same signal. The crowd says {prob}%."
+        s2 = f"{money_line} in total bets. {'Down ' + str(abs(change)) + ' pts today.' if change < -5 else 'Up ' + str(change) + ' pts today.' if change > 5 else 'Holding steady.'}"
     elif cat == "Culture":
-        s1 = f"With {money_line} on the line, the crowd puts this at {prob}% — {'a clear favorite' if prob > 65 else 'too close to call'}."
-        s2 = f"{'Odds {direction_word} sharply today' if abs(change) > 10 else 'The smart money has spoken'} — and it resolves {end}."
-    else:  # World / default
-        s1 = f"The crowd has spoken: {prob}% probability, backed by {money_line} in real bets."
-        s2 = f"{'A dramatic swing today' if abs(change) > 10 else 'Steady read from the market'} — prediction markets price this stuff faster than any headline."
+        s1 = f"The crowd puts this at {prob}% with {money_line} on the line."
+        s2 = f"{'Too close to call.' if 40 <= prob <= 60 else 'Clear favorite emerging.'} Smart money has spoken."
+    else:
+        s1 = f"{prob}% probability, {money_line} in real bets."
+        s2 = f"{'Big swing today.' if abs(change) > 10 else 'Steady read.'} Prediction markets price this faster than any headline."
 
     return strip_em_dashes(f"{s1} {s2}")
 
@@ -1022,13 +1156,15 @@ def main():
             m["display_category"] = get_category_label(m)
         catalog.append(m)
 
-    # Generate hero "The Prob's Take" — 2-sentence Hustle-style editorial
-    hero_take = ""
+    # Generate hero "The Prob's Take" — 2-sentence card blurb
     if hero:
-        hero_take = generate_hero_take(hero)
+        hero["prob_take"] = generate_hero_take(hero)
 
-    if hero:
-        hero["prob_take"] = hero_take
+    # Generate "The Prob's Daily Take" — full editorial section
+    print("\nGenerating Daily Take (Claude API)...")
+    daily_take = generate_daily_take(hero, movers) if hero else None
+    if daily_take:
+        print(f"  Headline: {daily_take['headline'][:70]}")
 
     output = {
         "updated":     updated_str,
@@ -1036,6 +1172,7 @@ def main():
         "hero":        hero,
         "movers":      movers,
         "ticker":      ticker,
+        "daily_take":  daily_take,
         "all_markets": catalog,
     }
 
