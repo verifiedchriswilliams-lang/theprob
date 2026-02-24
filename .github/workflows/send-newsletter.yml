@@ -22,7 +22,7 @@ jobs:
 
       - name: Send newsletter
         env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-          BEEHIIV_API_KEY:   ${{ secrets.BEEHIIV_API_KEY }}
-          BEEHIIV_PUB_ID:    ${{ secrets.BEEHIIV_PUB_ID }}
+          ANTHROPIC_API_KEY:      ${{ secrets.ANTHROPIC_API_KEY }}
+          LOOPS_API_KEY:          ${{ secrets.LOOPS_API_KEY }}
+          LOOPS_TRANSACTIONAL_ID: ${{ secrets.LOOPS_TRANSACTIONAL_ID }}
         run: python scripts/send_newsletter.py
