@@ -973,7 +973,6 @@ SIDEBAR_3_LABEL: ..."""
     if ANTHROPIC_API_KEY:
         try:
             import requests as req
-            print(f"  [DEBUG] Calling Claude API for Daily Take (key present: {bool(ANTHROPIC_API_KEY)}, model: claude-haiku-4-5-20251001)")
             r = req.post(
                 "https://api.anthropic.com/v1/messages",
                 headers={
@@ -991,7 +990,6 @@ SIDEBAR_3_LABEL: ..."""
             )
             if r.ok:
                 raw = r.json()["content"][0]["text"].strip()
-                print(f"  [DEBUG] Raw Daily Take response:\n{raw[:400]}")
 
                 # Parse structured response — keys are ALL_CAPS, values follow ": "
                 # Use regex to handle colons inside values (e.g. "47%: here's why")
@@ -1008,7 +1006,6 @@ SIDEBAR_3_LABEL: ..."""
                 for m in key_pattern.finditer(raw):
                     parsed[m.group(1)] = strip_em_dashes(m.group(2).strip())
 
-                print(f"  [DEBUG] Parsed keys: {list(parsed.keys())}")
 
                 now_et = datetime.now(timezone.utc) + timedelta(hours=-5)
                 return {
@@ -1016,6 +1013,7 @@ SIDEBAR_3_LABEL: ..."""
                     "deck":            parsed.get("DECK", ""),
                     "category_label":  parsed.get("CATEGORY_LABEL", f"Market Watch · {cat}"),
                     "date":            now_et.strftime("%b %-d, %Y"),
+                    "hero_url":        hero.get("url", ""),
                     "sidebar": [
                         {
                             "headline": parsed.get("SIDEBAR_1_HEADLINE", movers[0]["question"] if len(movers) > 0 else ""),
