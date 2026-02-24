@@ -333,9 +333,12 @@ def save_newsletter(subject: str, html: str) -> bool:
         with open(archive, "w") as f:
             f.write(html)
 
-        # Save subject line to newsletter/latest-subject.txt for easy copy
+        # Save subject line and subtitle to newsletter/latest-subject.txt for easy copy
+        now_et   = datetime.now(timezone.utc) + timedelta(hours=-5)
+        subtitle = f"The crowd's read on {now_et.strftime('%B %-d')} — markets, movers, and what it means."
         with open("newsletter/latest-subject.txt", "w") as f:
-            f.write(subject)
+            f.write(f"SUBJECT: {subject}\n")
+            f.write(f"SUBTITLE: {subtitle}\n")
 
         print(f"  Saved: {OUTPUT_PATH}")
         print(f"  Archive: {archive}")
