@@ -973,6 +973,7 @@ SIDEBAR_3_LABEL: ..."""
     if ANTHROPIC_API_KEY:
         try:
             import requests as req
+            print(f"  [DEBUG] Calling Claude API for Daily Take (key present: {bool(ANTHROPIC_API_KEY)}, model: claude-haiku-4-5-20251001)")
             r = req.post(
                 "https://api.anthropic.com/v1/messages",
                 headers={
@@ -1036,7 +1037,9 @@ SIDEBAR_3_LABEL: ..."""
             else:
                 print(f"  [WARN] Daily Take API failed: {r.status_code} {r.text[:100]}")
         except Exception as e:
+            import traceback
             print(f"  [WARN] Daily Take generation failed: {e}")
+            traceback.print_exc()
 
     # Fallback: construct from raw data if API unavailable
     now_et = datetime.now(timezone.utc) + timedelta(hours=-5)
