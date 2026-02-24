@@ -242,11 +242,15 @@ def build_html(markets: dict, news: dict, subject: str) -> str:
 
         sidebar_rows = ""
         for i, item in enumerate(sidebar[:3]):
+            label_html = (
+                f'<div style="font-family:\'Courier New\',monospace;font-size:11px;color:#00e5a0;margin-top:4px;">'
+                f'{item.get("label","")}</div>'
+            ) if item.get("label") else ""
             sidebar_rows += f"""
             <tr><td style="padding:12px 0;border-bottom:1px solid #1e2a38;">
               <div style="font-family:'Courier New',monospace;font-size:10px;color:#546e85;margin-bottom:4px;">0{i+1}</div>
               <div style="font-size:13px;color:#edf2f7;line-height:1.4;">{item.get('headline','')}</div>
-              {f'<div style="font-family:\'Courier New\',monospace;font-size:11px;color:#00e5a0;margin-top:4px;">{item.get("label","")}</div>' if item.get('label') else ''}
+              {label_html}
             </td></tr>"""
 
         take_html = f"""
