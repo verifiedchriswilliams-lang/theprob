@@ -21,11 +21,10 @@ from datetime import datetime, timezone, timedelta
 
 # ── CONFIG ────────────────────────────────────────────────────────────────────
 
-LOOPS_API_KEY          = os.environ.get("LOOPS_API_KEY", "")
-LOOPS_TRANSACTIONAL_ID = os.environ.get("LOOPS_TRANSACTIONAL_ID", "")
-ANTHROPIC_API_KEY      = os.environ.get("ANTHROPIC_API_KEY", "")
-CLAUDE_MODEL           = "claude-haiku-4-5-20251001"
-SITE_URL               = "https://theprobnewsletter.com"
+ANTHROPIC_API_KEY  = os.environ.get("ANTHROPIC_API_KEY", "")
+CLAUDE_MODEL       = "claude-haiku-4-5-20251001"
+SITE_URL           = "https://theprobnewsletter.com"
+OUTPUT_PATH        = "newsletter/latest.html"
 
 HOUSE_STYLE_SYSTEM = (
     "You write for The Prob, a prediction markets newsletter. "
@@ -316,68 +315,35 @@ def build_html(markets: dict, news: dict, subject: str) -> str:
 
 # ── LOOPS API ─────────────────────────────────────────────────────────────────
 
-def get_subscriber_emails() -> list[str]:
-    """Fetch all subscribed email addresses from Loops audience."""
-    if not LOOPS_API_KEY:
-        return []
+# ── SAVE OUTPUT ───────────────────────────────────────────────────────────────
+
+def save_newsletter(subject: str, html: str) -> bool:
+    """Save newsletter HTML to newsletter/latest.html for manual Beehiiv paste."""
     try:
-        r = requests.get(
-            "https://app.loops.so/api/v1/contacts/list",
-            headers={"Authorization": f"Bearer {LOOPS_API_KEY}"},
-            timeout=20,
-        )
-        if r.ok:
-            contacts = r.json()
-            return [c["email"] for c in contacts if c.get("email") and c.get("subscribed", True)]
-        else:
-            print(f"  [WARN] Could not fetch subscribers: {r.status_code} {r.text[:100]}")
-            return []
+        os.makedirs("newsletter", exist_ok=True)
+
+        # Save latest.html (always overwrite — this is today's issue)
+        with open(OUTPUT_PATH, "w") as f:
+            f.write(html)
+
+        # Also save a dated archive copy
+        now_et    = datetime.now(timezone.utc) + timedelta(hours=-5)
+        date_slug = now_et.strftime("%Y-%m-%d")
+        archive   = f"newsletter/{date_slug}.html"
+        with open(archive, "w") as f:
+            f.write(html)
+
+        # Save subject line to newsletter/latest-subject.txt for easy copy
+        with open("newsletter/latest-subject.txt", "w") as f:
+            f.write(subject)
+
+        print(f"  Saved: {OUTPUT_PATH}")
+        print(f"  Archive: {archive}")
+        print(f"  Subject: newsletter/latest-subject.txt")
+        return True
     except Exception as e:
-        print(f"  [WARN] Subscriber fetch failed: {e}")
-        return []
-
-
-def send_to_loops(subject: str, html: str) -> bool:
-    """Send newsletter via Loops transactional email API."""
-    if not LOOPS_API_KEY or not LOOPS_TRANSACTIONAL_ID:
-        print("  [ERROR] LOOPS_API_KEY or LOOPS_TRANSACTIONAL_ID not set")
+        print(f"  [ERROR] Could not save newsletter: {e}")
         return False
-
-    emails = get_subscriber_emails()
-    if not emails:
-        print("  [WARN] No subscribers found — sending test to self")
-        emails = []
-
-    print(f"  Sending to {len(emails)} subscribers...")
-
-    success_count = 0
-    for email in emails:
-        try:
-            r = requests.post(
-                "https://app.loops.so/api/v1/transactional",
-                headers={
-                    "Authorization": f"Bearer {LOOPS_API_KEY}",
-                    "Content-Type":  "application/json",
-                },
-                json={
-                    "transactionalId": LOOPS_TRANSACTIONAL_ID,
-                    "email":           email,
-                    "dataVariables": {
-                        "subject":  subject,
-                        "htmlBody": html,
-                    },
-                },
-                timeout=20,
-            )
-            if r.ok:
-                success_count += 1
-            else:
-                print(f"  [WARN] Failed for {email}: {r.status_code} {r.text[:100]}")
-        except Exception as e:
-            print(f"  [WARN] Send failed for {email}: {e}")
-
-    print(f"  Sent: {success_count}/{len(emails)}")
-    return success_count > 0 or len(emails) == 0
 
 
 # ── MAIN ──────────────────────────────────────────────────────────────────────
@@ -410,13 +376,14 @@ def main():
     html = build_html(markets, news, subject)
     print(f"  HTML length: {len(html):,} chars")
 
-    print("\nSending via Loops...")
-    success = send_to_loops(subject, html)
+    print("\nSaving newsletter...")
+    success = save_newsletter(subject, html)
 
     if success:
-        print("\n✓ Newsletter sent successfully")
+        print("\n✓ Newsletter ready — open newsletter/latest.html in your repo")
+        print("  Paste into Beehiiv and send!")
     else:
-        print("\n✗ Newsletter send failed")
+        print("\n✗ Newsletter save failed")
 
 if __name__ == "__main__":
     main()
