@@ -1,0 +1,28 @@
+name: Send Daily Newsletter
+
+on:
+  schedule:
+    - cron: '0 12 * * *'  # 7:00 AM ET (UTC-5) = 12:00 UTC
+  workflow_dispatch:       # allow manual trigger for testing
+
+jobs:
+  send-newsletter:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Send newsletter
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          BEEHIIV_API_KEY:   ${{ secrets.BEEHIIV_API_KEY }}
+          BEEHIIV_PUB_ID:    ${{ secrets.BEEHIIV_PUB_ID }}
+        run: python scripts/send_newsletter.py
