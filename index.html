@@ -39,9 +39,9 @@
       --bg3: #141b24;
       --border: #1e2a38;
       --border-bright: #2a3d54;
-      --text: #e8edf2;
-      --text-muted: #637b94;
-      --text-dim: #3a5068;
+      --text: #edf2f7;          /* slightly brighter for better legibility */
+      --text-muted: #8ba3bc;    /* was #637b94 — boosted for WCAG AA */
+      --text-dim: #546e85;      /* was #3a5068 — boosted for labels */
       --green: #00e5a0;
       --green-dim: #00a870;
       --red: #ff4757;
@@ -1008,38 +1008,34 @@
 
   <div class="divider"></div>
 
-  <!-- FEATURED STORY -->
-  <section class="section">
+  <!-- FEATURED STORY — THE PROB'S DAILY TAKE -->
+  <section class="section" id="daily-take-section">
     <div class="section-header">
       <div class="section-title">Featured <span>The Prob's Daily Take</span></div>
-      <div class="section-meta">Feb 19, 2026</div>
+      <div class="section-meta" id="daily-take-date">—</div>
     </div>
     <div class="story-grid">
       <div class="story-main">
-        <div class="story-category">Deep Dive · Politics</div>
-        <h2 class="story-headline">The Ukraine ceasefire market just crossed 50% for the first time. Here's what traders are actually betting on.</h2>
-        <p class="story-deck">One late-night tweet from a White House official moved a $9.4M market by 7 points overnight. That's not noise. That's the crowd telling you something the news cycle hasn't figured out yet. We dug into the signal.</p>
+        <div class="story-category" id="daily-take-category">Market Watch</div>
+        <h2 class="story-headline" id="daily-take-headline">Loading today's take...</h2>
+        <p class="story-deck" id="daily-take-deck"></p>
         <div class="story-byline">
           <span>The Prob Editorial</span>
-          <span>Feb 19, 2026 · 8:00 AM ET</span>
-          <span style="color: var(--accent)">Read the Full Issue →</span>
+          <span id="daily-take-byline-date">—</span>
         </div>
       </div>
-      <div class="story-sidebar">
+      <div class="story-sidebar" id="daily-take-sidebar">
         <div class="story-sidebar-item">
           <div class="sidebar-num">01</div>
-          <div class="sidebar-headline">The Fed's March meeting is priced at near-certainty. Is the crowd getting ahead of itself?</div>
-          <div class="sidebar-prob">Fed Cut March: <strong>72%</strong></div>
+          <div class="sidebar-headline">Loading...</div>
         </div>
         <div class="story-sidebar-item">
           <div class="sidebar-num">02</div>
-          <div class="sidebar-headline">Nvidia's $4T bet: the most fascinating crowdsourced macro call on the board right now</div>
-          <div class="sidebar-prob">NVDA $4T: <strong>55%</strong></div>
+          <div class="sidebar-headline">Loading...</div>
         </div>
         <div class="story-sidebar-item">
           <div class="sidebar-num">03</div>
-          <div class="sidebar-headline">Bitcoin cools. Traders who loaded up last week are quietly backing out of the $120K call.</div>
-          <div class="sidebar-prob">BTC $120K: <strong>34% ▼</strong></div>
+          <div class="sidebar-headline">Loading...</div>
         </div>
       </div>
     </div>
@@ -1334,9 +1330,10 @@ async function loadMarkets() {
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const data = await res.json();
 
-    renderTicker(data.ticker   || []);
-    renderHero(data.hero       || null);
-    renderMovers(data.movers   || []);
+    renderTicker(data.ticker     || []);
+    renderHero(data.hero         || null);
+    renderMovers(data.movers     || []);
+    renderDailyTake(data.daily_take || null);
     renderTimestamp(data.updated || '');
 
   } catch (err) {
@@ -1383,6 +1380,35 @@ async function loadNewsBrief() {
 function escHtml(s) {
   if (!s) return '';
   return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// ── DAILY TAKE ────────────────────────────────────────────────────────────────
+
+function renderDailyTake(take) {
+  if (!take) return;
+
+  const setText = (id, val) => {
+    const el = document.getElementById(id);
+    if (el && val) el.textContent = val;
+  };
+
+  setText('daily-take-date',     take.date);
+  setText('daily-take-category', take.category_label);
+  setText('daily-take-headline', take.headline);
+  setText('daily-take-deck',     take.deck);
+  setText('daily-take-byline-date', take.date);
+
+  // Render sidebar
+  const sidebar = document.getElementById('daily-take-sidebar');
+  if (sidebar && take.sidebar && take.sidebar.length) {
+    sidebar.innerHTML = take.sidebar.map((item, i) => `
+      <div class="story-sidebar-item" ${item.url ? `onclick="window.open('${escHtml(item.url)}','_blank')" style="cursor:pointer;"` : ''}>
+        <div class="sidebar-num">0${i + 1}</div>
+        <div class="sidebar-headline">${escHtml(item.headline)}</div>
+        ${item.label ? `<div class="sidebar-prob">${escHtml(item.label)}</div>` : ''}
+      </div>
+    `).join('');
+  }
 }
 
 // Run on page load
