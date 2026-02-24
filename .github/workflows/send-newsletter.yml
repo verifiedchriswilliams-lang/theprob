@@ -1,12 +1,12 @@
-name: Send Daily Newsletter
+name: Build Daily Newsletter
 
 on:
   schedule:
-    - cron: '0 12 * * *'  # 7:00 AM ET (UTC-5) = 12:00 UTC
+    - cron: '0 11 * * *'  # 6:00 AM ET (UTC-5) = 11:00 UTC — ready before you wake up
   workflow_dispatch:       # allow manual trigger for testing
 
 jobs:
-  send-newsletter:
+  build-newsletter:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
@@ -20,9 +20,16 @@ jobs:
       - name: Install dependencies
         run: pip install requests
 
-      - name: Send newsletter
+      - name: Build newsletter
         env:
-          ANTHROPIC_API_KEY:      ${{ secrets.ANTHROPIC_API_KEY }}
-          LOOPS_API_KEY:          ${{ secrets.LOOPS_API_KEY }}
-          LOOPS_TRANSACTIONAL_ID: ${{ secrets.LOOPS_TRANSACTIONAL_ID }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: python scripts/send_newsletter.py
+
+      - name: Commit newsletter to repo
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add newsletter/
+          git diff --staged --quiet || git commit -m "chore: build daily newsletter [skip ci]"
+          git pull --rebase origin main
+          git push
