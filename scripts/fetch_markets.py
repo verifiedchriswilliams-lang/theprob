@@ -990,12 +990,24 @@ SIDEBAR_3_LABEL: ..."""
             )
             if r.ok:
                 raw = r.json()["content"][0]["text"].strip()
-                # Parse the structured response
+                print(f"  [DEBUG] Raw Daily Take response:\n{raw[:400]}")
+
+                # Parse structured response — keys are ALL_CAPS, values follow ": "
+                # Use regex to handle colons inside values (e.g. "47%: here's why")
                 parsed = {}
-                for line in raw.split("\n"):
-                    if ":" in line:
-                        key, _, val = line.partition(":")
-                        parsed[key.strip()] = strip_em_dashes(val.strip())
+                # Match lines starting with a known key
+                key_pattern = re.compile(
+                    r'^(HEADLINE|DECK|CATEGORY_LABEL|'
+                    r'SIDEBAR_1_HEADLINE|SIDEBAR_1_LABEL|'
+                    r'SIDEBAR_2_HEADLINE|SIDEBAR_2_LABEL|'
+                    r'SIDEBAR_3_HEADLINE|SIDEBAR_3_LABEL)'
+                    r':\s*(.+)$',
+                    re.MULTILINE
+                )
+                for m in key_pattern.finditer(raw):
+                    parsed[m.group(1)] = strip_em_dashes(m.group(2).strip())
+
+                print(f"  [DEBUG] Parsed keys: {list(parsed.keys())}")
 
                 now_et = datetime.now(timezone.utc) + timedelta(hours=-5)
                 return {
