@@ -1392,11 +1392,26 @@ function renderDailyTake(take) {
     if (el && val) el.textContent = val;
   };
 
-  setText('daily-take-date',     take.date);
-  setText('daily-take-category', take.category_label);
-  setText('daily-take-headline', take.headline);
-  setText('daily-take-deck',     take.deck);
+  setText('daily-take-date',       take.date);
+  setText('daily-take-category',   take.category_label);
+  setText('daily-take-headline',   take.headline);
+  setText('daily-take-deck',       take.deck);
   setText('daily-take-byline-date', take.date);
+
+  // Make the main story panel clickable — links to the hero market
+  const storyMain = document.querySelector('#daily-take-section .story-main');
+  if (storyMain && take.hero_url) {
+    storyMain.style.cursor = 'pointer';
+    storyMain.addEventListener('click', () => window.open(take.hero_url, '_blank'));
+    // Add a subtle "View market →" affordance
+    const byline = storyMain.querySelector('.story-byline');
+    if (byline) {
+      const link = document.createElement('span');
+      link.textContent = 'View Market →';
+      link.style.cssText = 'color:var(--accent);margin-left:auto;font-family:var(--mono);font-size:10px;letter-spacing:0.1em;';
+      byline.appendChild(link);
+    }
+  }
 
   // Render sidebar
   const sidebar = document.getElementById('daily-take-sidebar');

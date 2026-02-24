@@ -5,11 +5,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>The Prob — Culture Markets</title>
-  <meta name="description" content="Award shows, viral moments, science milestones, and the calls nobody else is making. Turns out people put real money on almost anything — and the odds are surprisingly sharp.">
+  <meta name="description" content="Award shows, viral moments, science milestones, and the calls nobody else is making. Real money on almost anything — and the odds are surprisingly sharp.">
   <link rel="canonical" href="https://theprobnewsletter.com/culture.html">
   <meta property="og:type" content="website">
   <meta property="og:title" content="The Prob — Culture Markets">
-  <meta property="og:description" content="Award shows, viral moments, science milestones, and the calls nobody else is making. Turns out people put real money on almost anything — and the odds are surprisingly sharp.">
+  <meta property="og:description" content="Award shows, viral moments, science milestones, and the calls nobody else is making. Real money on almost anything — and the odds are surprisingly sharp.">
   <meta property="og:image" content="https://theprobnewsletter.com/og-image.jpg">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="The Prob — Culture Markets">
@@ -18,7 +18,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
-    :root{--bg:#080b0f;--bg2:#0d1117;--bg3:#141b24;--border:#1e2a38;--border-bright:#2a3d54;--text:#e8edf2;--text-muted:#637b94;--text-dim:#3a5068;--green:#00e5a0;--green-dim:#00a870;--red:#ff4757;--amber:#f5a623;--blue:#4a9eff;--accent:#00e5a0;--mono:'Space Mono',monospace;--serif:'Libre Baskerville',Georgia,serif;--sans:'DM Sans',sans-serif;}
+    :root{--bg:#080b0f;--bg2:#0d1117;--bg3:#141b24;--border:#1e2a38;--border-bright:#2a3d54;--text:#edf2f7;--text-muted:#8ba3bc;--text-dim:#546e85;--green:#00e5a0;--green-dim:#00a870;--red:#ff4757;--amber:#f5a623;--blue:#4a9eff;--accent:#00e5a0;--mono:'Space Mono',monospace;--serif:'Libre Baskerville',Georgia,serif;--sans:'DM Sans',sans-serif;}
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
     html{scroll-behavior:smooth;}
     body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:15px;line-height:1.6;overflow-x:hidden;}
@@ -49,7 +49,6 @@
     .page-headline{font-family:var(--serif);font-size:clamp(26px,3vw,42px);font-weight:700;line-height:1.15;color:var(--text);margin-bottom:14px;max-width:800px;}
     .page-sub{font-size:15px;color:var(--text-muted);line-height:1.7;max-width:640px;}
     .section{max-width:1280px;margin:0 auto;padding:48px;}
-    .section-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;padding-bottom:14px;border-bottom:1px solid var(--border);}
     .sources-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;}
     .source-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--border);}
     .source-label{font-family:var(--mono);font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-muted);display:flex;align-items:center;gap:10px;}
@@ -119,7 +118,7 @@
   <div class="page-header">
     <div class="page-eyebrow">Culture Markets</div>
     <h1 class="page-headline">The internet bets on everything. Here's what they're putting money on.</h1>
-    <p class="page-sub">Award shows, viral moments, science milestones, and the calls nobody else is making. Turns out people put real money on almost anything — and the odds are surprisingly sharp.</p>
+    <p class="page-sub">Award shows, viral moments, science milestones, and the calls nobody else is making. Real money on almost anything — and the odds are surprisingly sharp.</p>
   </div>
 
   <section class="section">
@@ -180,8 +179,8 @@
 
 <script>
 const DATA_URL    = 'data/markets.json';
-const POLY_CATS   = ['Culture', 'Entertainment', 'Health', 'Science'];
-const KALSHI_CATS = ['Culture', 'Entertainment', 'Health', 'Climate and Weather'];
+const POLY_CATS   = ['Culture', 'Entertainment'];
+const KALSHI_CATS = ['Culture', 'Social'];
 
 function dir(c){return c>0.5?'up':c<-0.5?'down':'neutral';}
 function arrow(c){return c>0.5?`▲ +${c} pts`:c<-0.5?`▼ ${c} pts`:`— ${Math.abs(c)} pts`;}
@@ -207,7 +206,7 @@ function renderBoard(markets, elId, source, cats){
   const filtered = markets
     .filter(m => m.source === source && matchesCats(m, cats))
     .sort((a,b) => Math.abs(b.change_pts) - Math.abs(a.change_pts) || b.volume - a.volume)
-    .slice(0, 10);
+    .slice(0,10);
 
   if(!filtered.length){
     el.innerHTML = `<div class="empty-state">No culture markets available right now.<br>Check back after the next data refresh.</div>`;
@@ -236,13 +235,13 @@ async function loadMarkets(){
 
     renderTicker(data.ticker || []);
 
-    // Use all_markets if available (full catalog), fall back to curated set
+    // Use all_markets (full catalog) — fall back to curated set if not present
     let pool = data.all_markets;
     if(!pool || !pool.length){
-      const fallback = [...(data.movers||[]),...(data.ticker||[])];
-      if(data.hero) fallback.unshift(data.hero);
+      const fb = [...(data.movers||[]),...(data.ticker||[])];
+      if(data.hero) fb.unshift(data.hero);
       const seen=new Set();
-      pool = fallback.filter(m=>{if(seen.has(m.slug))return false;seen.add(m.slug);return true;});
+      pool = fb.filter(m=>{if(seen.has(m.slug))return false;seen.add(m.slug);return true;});
     }
 
     renderBoard(pool, 'poly-board',   'Polymarket', POLY_CATS);
