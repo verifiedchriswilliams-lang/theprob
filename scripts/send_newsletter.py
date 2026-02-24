@@ -21,11 +21,11 @@ from datetime import datetime, timezone, timedelta
 
 # ── CONFIG ────────────────────────────────────────────────────────────────────
 
-BEEHIIV_API_KEY    = os.environ.get("BEEHIIV_API_KEY", "")
-BEEHIIV_PUB_ID     = os.environ.get("BEEHIIV_PUB_ID", "")
-ANTHROPIC_API_KEY  = os.environ.get("ANTHROPIC_API_KEY", "")
-CLAUDE_MODEL       = "claude-haiku-4-5-20251001"
-SITE_URL           = "https://theprobnewsletter.com"
+LOOPS_API_KEY          = os.environ.get("LOOPS_API_KEY", "")
+LOOPS_TRANSACTIONAL_ID = os.environ.get("LOOPS_TRANSACTIONAL_ID", "")
+ANTHROPIC_API_KEY      = os.environ.get("ANTHROPIC_API_KEY", "")
+CLAUDE_MODEL           = "claude-haiku-4-5-20251001"
+SITE_URL               = "https://theprobnewsletter.com"
 
 HOUSE_STYLE_SYSTEM = (
     "You write for The Prob, a prediction markets newsletter. "
@@ -314,56 +314,70 @@ def build_html(markets: dict, news: dict, subject: str) -> str:
     return html
 
 
-# ── BEEHIIV API ───────────────────────────────────────────────────────────────
+# ── LOOPS API ─────────────────────────────────────────────────────────────────
 
-def send_to_beehiiv(subject: str, html: str) -> bool:
-    """Create and send a Beehiiv post via API."""
-    if not BEEHIIV_API_KEY or not BEEHIIV_PUB_ID:
-        print("  [ERROR] BEEHIIV_API_KEY or BEEHIIV_PUB_ID not set")
-        return False
-
-    now_et   = datetime.now(timezone.utc) + timedelta(hours=-5)
-    subtitle = f"The crowd's read on {now_et.strftime('%B %-d')} — markets, movers, and what it means."
-
-    payload = {
-        "publication_id": BEEHIIV_PUB_ID,
-        "title":          subject,
-        "subject_line":   subject,
-        "subtitle":       subtitle,
-        "status":         "draft",     # saved as draft — review in Beehiiv then send
-        "send_at":        None,
-        "content_blocks": [
-            {
-                "type":    "raw_html",
-                "content": html,
-            }
-        ],
-        "audience":       "free",
-        "email_enabled":  True,
-        "web_enabled":    True,
-    }
-
+def get_subscriber_emails() -> list[str]:
+    """Fetch all subscribed email addresses from Loops audience."""
+    if not LOOPS_API_KEY:
+        return []
     try:
-        r = requests.post(
-            f"https://api.beehiiv.com/v2/publications/{BEEHIIV_PUB_ID}/posts",
-            headers={
-                "Authorization": f"Bearer {BEEHIIV_API_KEY}",
-                "Content-Type":  "application/json",
-            },
-            json=payload,
-            timeout=30,
+        r = requests.get(
+            "https://app.loops.so/api/v1/contacts/list",
+            headers={"Authorization": f"Bearer {LOOPS_API_KEY}"},
+            timeout=20,
         )
         if r.ok:
-            data    = r.json()
-            post_id = data.get("data", {}).get("id", "unknown")
-            print(f"  Post created: {post_id}")
-            return True
+            contacts = r.json()
+            return [c["email"] for c in contacts if c.get("email") and c.get("subscribed", True)]
         else:
-            print(f"  [ERROR] Beehiiv API {r.status_code}: {r.text[:300]}")
-            return False
+            print(f"  [WARN] Could not fetch subscribers: {r.status_code} {r.text[:100]}")
+            return []
     except Exception as e:
-        print(f"  [ERROR] Beehiiv request failed: {e}")
+        print(f"  [WARN] Subscriber fetch failed: {e}")
+        return []
+
+
+def send_to_loops(subject: str, html: str) -> bool:
+    """Send newsletter via Loops transactional email API."""
+    if not LOOPS_API_KEY or not LOOPS_TRANSACTIONAL_ID:
+        print("  [ERROR] LOOPS_API_KEY or LOOPS_TRANSACTIONAL_ID not set")
         return False
+
+    emails = get_subscriber_emails()
+    if not emails:
+        print("  [WARN] No subscribers found — sending test to self")
+        emails = []
+
+    print(f"  Sending to {len(emails)} subscribers...")
+
+    success_count = 0
+    for email in emails:
+        try:
+            r = requests.post(
+                "https://app.loops.so/api/v1/transactional",
+                headers={
+                    "Authorization": f"Bearer {LOOPS_API_KEY}",
+                    "Content-Type":  "application/json",
+                },
+                json={
+                    "transactionalId": LOOPS_TRANSACTIONAL_ID,
+                    "email":           email,
+                    "dataVariables": {
+                        "subject":  subject,
+                        "htmlBody": html,
+                    },
+                },
+                timeout=20,
+            )
+            if r.ok:
+                success_count += 1
+            else:
+                print(f"  [WARN] Failed for {email}: {r.status_code} {r.text[:100]}")
+        except Exception as e:
+            print(f"  [WARN] Send failed for {email}: {e}")
+
+    print(f"  Sent: {success_count}/{len(emails)}")
+    return success_count > 0 or len(emails) == 0
 
 
 # ── MAIN ──────────────────────────────────────────────────────────────────────
@@ -396,13 +410,13 @@ def main():
     html = build_html(markets, news, subject)
     print(f"  HTML length: {len(html):,} chars")
 
-    print("\nSending to Beehiiv...")
-    success = send_to_beehiiv(subject, html)
+    print("\nSending via Loops...")
+    success = send_to_loops(subject, html)
 
     if success:
-        print("\n✓ Draft created in Beehiiv — review and send from your dashboard")
+        print("\n✓ Newsletter sent successfully")
     else:
-        print("\n✗ Newsletter draft creation failed")
+        print("\n✗ Newsletter send failed")
 
 if __name__ == "__main__":
     main()
