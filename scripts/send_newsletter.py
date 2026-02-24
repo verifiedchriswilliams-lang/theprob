@@ -330,7 +330,7 @@ def send_to_beehiiv(subject: str, html: str) -> bool:
         "title":          subject,
         "subject_line":   subject,
         "subtitle":       subtitle,
-        "status":         "confirmed",
+        "status":         "draft",     # saved as draft — review in Beehiiv then send
         "send_at":        None,
         "content_blocks": [
             {
@@ -400,9 +400,9 @@ def main():
     success = send_to_beehiiv(subject, html)
 
     if success:
-        print("\n✓ Newsletter sent successfully")
+        print("\n✓ Draft created in Beehiiv — review and send from your dashboard")
     else:
-        print("\n✗ Newsletter send failed")
+        print("\n✗ Newsletter draft creation failed")
 
 if __name__ == "__main__":
     main()
