@@ -897,14 +897,23 @@
     /* ── RESPONSIVE ── */
     @media (max-width: 1024px) {
       .nav-wrapper {
-        position: fixed;      /* fixed on mobile — nothing can scroll above it */
+        position: sticky;
         top: 0;
+        z-index: 1001;
+      }
+      /* When ticker has scrolled away, cover the gap above with a pseudo element */
+      .nav-wrapper.is-stuck::before {
+        content: '';
+        position: absolute;
+        bottom: 100%;
         left: 0;
         right: 0;
-        width: 100%;
+        height: 100vh;        /* covers entire viewport height above nav */
+        background: #080b0f;
+        pointer-events: none;
       }
       body {
-        padding-top: 105px;   /* nav (~61px) + mobile strip (~44px) = content starts below */
+        padding-top: 0;
       }
       nav { padding: 16px 24px; }
       .nav-links { display: none; }
@@ -1460,6 +1469,27 @@ function renderDailyTake(take) {
 // Run on page load
 loadMarkets();
 loadNewsBrief();
+
+// ── MOBILE NAV STUCK DETECTION ──
+// Adds 'is-stuck' class to nav-wrapper when ticker has scrolled out of view.
+// This ensures the nav background fully blocks content on mobile Safari.
+(function() {
+  const navWrapper = document.querySelector('.nav-wrapper');
+  const ticker     = document.querySelector('.ticker-wrap');
+  if (!navWrapper || !ticker) return;
+
+  function checkStuck() {
+    const tickerBottom = ticker.getBoundingClientRect().bottom;
+    if (tickerBottom <= 0) {
+      navWrapper.classList.add('is-stuck');
+    } else {
+      navWrapper.classList.remove('is-stuck');
+    }
+  }
+
+  window.addEventListener('scroll', checkStuck, { passive: true });
+  checkStuck(); // run on load
+})();
 </script>
 
 </body>
