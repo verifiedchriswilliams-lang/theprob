@@ -27,12 +27,15 @@ from datetime import datetime, timezone, timedelta
 #
 HOUSE_STYLE_PROMPT = (
     "You write for The Prob, a prediction markets newsletter. "
-    "Voice: sharp, confident, dry wit, slightly irreverent. Like The Hustle. "
+    "The north star: help readers make money in prediction markets. "
+    "Every piece of copy should deliver alpha, not just news. "
+    "Ask yourself: what does this price move signal, is the market right, and what would a sharp bettor do? "
+    "Voice: sharp, confident, dry wit, slightly irreverent. Like The Hustle meets a trading desk. "
     "Intelligent but not academic. Opinionated but not arrogant. "
     "NEVER use em dashes. Use a comma or start a new sentence instead. "
     "Short sentences. Active voice. Numbers as numerals ($2M, 47%). "
     "No hedging ('perhaps', 'might', 'could potentially'). No fluff. No filler. "
-    "Undetectable as AI. Write like a smart human who finds this genuinely interesting."
+    "Undetectable as AI. Write like a sharp human who has real skin in the game."
 )
 
 # ── CONFIG ───────────────────────────────────────────────────────────────────
@@ -946,6 +949,9 @@ def generate_daily_take(hero: dict, movers: list[dict]) -> dict:
 
     prompt = f"""You are writing today's featured editorial for The Prob, a prediction markets newsletter.
 
+The Prob's north star: deliver alpha. Help readers make money in prediction markets.
+Every line should answer: what moved, why it moved, is the price right, and what's the play.
+
 Today's hero market:
 - Question: {q}
 - Current odds: {prob}%
@@ -959,20 +965,20 @@ Today's other notable markets:
 
 Write the following in The Prob's voice (sharp, confident, dry wit, no em dashes, active voice):
 
-1. HEADLINE: A punchy, specific headline for this market's story today (not just restating the question). Make it feel like a smart take, not a data readout. 10-15 words max.
+1. HEADLINE: A punchy headline that signals the alpha opportunity, not just the news. 10-15 words max. Make it feel like insider information, not a press release.
 
-2. DECK: 2-3 sentences. What happened, why it moved, what it means. Hook the reader. No em dashes. No hedging.
+2. DECK: 2-3 sentences. Lead with what moved and why. Then give the sharp take: is the market right or wrong? What would a smart bettor do? No em dashes. No hedging. No filler.
 
-3. CATEGORY_LABEL: One short label like "Deep Dive · Politics" or "Market Watch · Crypto"
+3. CATEGORY_LABEL: One short label like "Deep Dive · Politics" or "Alpha Play · Finance"
 
-4. SIDEBAR_1_HEADLINE: A sharp 1-sentence editorial angle on market 1 above (not just the question).
-5. SIDEBAR_1_LABEL: Short label like "Fed Cut March: 72%"
+4. SIDEBAR_1_HEADLINE: One sharp sentence on market 1. Focus on the alpha angle: what's mispriced, what just moved, what to watch. Not a restatement of the question.
+5. SIDEBAR_1_LABEL: Short label showing current odds like "Viking Therapeutics: 40.5%"
 
-6. SIDEBAR_2_HEADLINE: Same for market 2.
-7. SIDEBAR_2_LABEL: Short label.
+6. SIDEBAR_2_HEADLINE: Same alpha-first approach for market 2.
+7. SIDEBAR_2_LABEL: Short label with current odds.
 
 8. SIDEBAR_3_HEADLINE: Same for market 3.
-9. SIDEBAR_3_LABEL: Short label.
+9. SIDEBAR_3_LABEL: Short label with current odds.
 
 Respond in this exact format, one item per line:
 HEADLINE: ...
@@ -1098,9 +1104,9 @@ def generate_hero_take(hero: dict) -> str:
                 f"Category: {cat}\n"
                 f"Source: {source}\n\n"
                 "Write exactly 2 sentences for The Prob's hero market card.\n"
-                "Sentence 1: what the market is saying right now (use the odds and movement).\n"
-                "Sentence 2: why it matters or what to watch.\n"
-                "No em dashes. No hedging. No 'This market' opener. Confident, sharp, human. Just the 2 sentences."
+                "Sentence 1: what the price move is signaling — who is buying/selling and why it moved.\n"
+                "Sentence 2: the alpha angle — is the current price right, what is mispriced, or what catalyst to watch next.\n"
+                "No em dashes. No hedging. No 'This market' opener. Write like someone with real skin in the game. Just the 2 sentences."
             )
             r = req.post(
                 "https://api.anthropic.com/v1/messages",
