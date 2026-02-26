@@ -186,7 +186,122 @@ def merge_and_dedup(all_articles: list[list[dict]]) -> list[dict]:
     return merged
 
 
-# ── CLAUDE SUMMARIZER ─────────────────────────────────────────────────────────
+# ── SOURCE PRIORITY ───────────────────────────────────────────────────────────
+# When multiple outlets cover the same story, keep the highest-ranked source.
+# Lower number = higher priority.
+SOURCE_PRIORITY = {
+    "reuters":       1,
+    "ap":            1,
+    "associated press": 1,
+    "wsj":           2,
+    "wall street journal": 2,
+    "new york times": 2,
+    "nyt":           2,
+    "washington post": 2,
+    "bloomberg":     2,
+    "bloomberg.com": 2,
+    "financial times": 2,
+    "ft":            2,
+    "the economist": 2,
+    "bbc":           3,
+    "bbc news":      3,
+    "the guardian":  3,
+    "axios":         3,
+    "politico":      3,
+    "the atlantic":  3,
+    "wired":         3,
+    "techcrunch":    4,
+    "the verge":     4,
+    "ars technica":  4,
+    "coindesk":      4,
+    "fortune":       4,
+    "business insider": 4,
+    "cnbc":          4,
+    "cnn":           4,
+    "npr":           4,
+    "usa today":     5,
+    "futurism":      5,
+    "decrypt":       5,
+}
+
+def source_rank(source: str) -> int:
+    """Return priority rank for a source name. Lower = better. Unknown = 99."""
+    return SOURCE_PRIORITY.get(source.lower().strip(), 99)
+
+
+def title_keywords(title: str) -> set:
+    """Extract meaningful keywords from a title for story clustering."""
+    # Remove common stop words and short tokens
+    STOPWORDS = {
+        "a", "an", "the", "and", "or", "but", "in", "on", "at", "to", "for",
+        "of", "with", "by", "from", "is", "are", "was", "were", "be", "been",
+        "as", "it", "its", "this", "that", "will", "has", "have", "had",
+        "not", "no", "can", "could", "would", "should", "may", "might",
+        "over", "about", "after", "before", "into", "than", "up", "out",
+        "new", "says", "say", "said", "how", "what", "when", "who", "why",
+    }
+    words = re.findall(r"[a-zA-Z]{3,}", title.lower())
+    return {w for w in words if w not in STOPWORDS}
+
+
+def cluster_by_story(articles: list[dict], min_shared: int = 3) -> list[dict]:
+    """
+    Group articles covering the same story. For each cluster, keep only the
+    highest-priority source. Returns deduplicated list sorted by date.
+
+    min_shared: minimum shared keywords to consider two articles the same story.
+    """
+    if not articles:
+        return articles
+
+    # Pre-compute keywords for each article
+    keywords = [title_keywords(a["title"]) for a in articles]
+
+    # Union-Find to group articles into story clusters
+    parent = list(range(len(articles)))
+
+    def find(x):
+        while parent[x] != x:
+            parent[x] = parent[parent[x]]
+            x = parent[x]
+        return x
+
+    def union(x, y):
+        parent[find(x)] = find(y)
+
+    for i in range(len(articles)):
+        for j in range(i + 1, len(articles)):
+            shared = keywords[i] & keywords[j]
+            if len(shared) >= min_shared:
+                union(i, j)
+
+    # Group by cluster root
+    clusters: dict[int, list[int]] = {}
+    for i in range(len(articles)):
+        root = find(i)
+        clusters.setdefault(root, []).append(i)
+
+    # From each cluster, keep the best source. Tie-break by recency.
+    result = []
+    for indices in clusters.values():
+        best = min(
+            indices,
+            key=lambda i: (
+                source_rank(articles[i].get("source", "")),
+                # Negate pub_iso so newer = lower sort value on tie
+                articles[i].get("pub_iso", "")[::-1],
+            )
+        )
+        result.append(articles[best])
+
+    # Re-sort by date descending
+    result.sort(key=lambda x: x.get("pub_iso", ""), reverse=True)
+
+    removed = len(articles) - len(result)
+    if removed:
+        print(f"  {len(result)} after story dedup (removed {removed} duplicate stories)")
+
+    return result
 
 def summarize_article(title: str, description: str) -> str:
     """
@@ -293,6 +408,9 @@ def main():
     before = len(articles)
     articles = [a for a in articles if not is_junk_article(a) and not is_stale_article(a)]
     print(f"  {len(articles)} after junk/stale filter (removed {before - len(articles)})")
+
+    # Cluster same-story articles, keep best source per story
+    articles = cluster_by_story(articles, min_shared=3)
 
     # Keep top MAX_ARTICLES by recency
     articles = articles[:MAX_ARTICLES]
