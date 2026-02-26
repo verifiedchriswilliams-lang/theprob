@@ -589,6 +589,21 @@ def score_market(m: dict) -> float:
 
     return move_score + vol_24h_score + vol_total_score + prob_interest + urgency + recency_bonus
 
+def get_series_key(m: dict) -> str:
+    slug = m.get("slug", "")
+    if m["source"] == "Kalshi":
+        return m.get("url", slug)
+    key = re.sub(
+        r'-(20[0-9][0-9]-[0-9][0-9]-[0-9][0-9]|january|february|march|'
+        r'april|may|june|july|august|september|october|november|december).*$',
+        '', slug
+    )
+    key = re.sub(r'-(above|below|between|over|under)[-0-9a-z]*$', '', key)
+    key = re.sub(r'-[0-9]+-[0-9]+.*$', '', key)
+    key = re.sub(r'-[0-9]+.*$', '', key)
+    key = re.sub(r'-(reach|dip|hit|drop|fall|rise|surge|crash|pump|dump)(-to|-by)?$', '', key)
+    return key or " ".join(m.get("question", "").lower().split()[:5])
+
 # ── HERO SELECTION ───────────────────────────────────────────────────────────
 
 # Category bonus points added to buzz score for hero selection.
@@ -613,6 +628,9 @@ def pick_hero(markets: list[dict]) -> dict | None:
       - A big move in any category can overcome the category bonus
       - Hard staleness gate: must have moved >= HERO_MIN_CHANGE_PTS in 24h
         so the same low-movement market can't win day after day
+      - Series deduplication: only the best variant of each event series
+        enters the pool (prevents "Iran by Mar 7", "Iran by Mar 15", etc.
+        from flooding the candidates and winning by repetition)
 
     Fallback: if nothing clears the staleness gate, use any mover >= 1 pt.
     Final fallback: best candidate regardless of movement.
@@ -630,13 +648,23 @@ def pick_hero(markets: list[dict]) -> dict | None:
         bonus = HERO_CATEGORY_BONUS.get(cat, 0)
         return score_market(m) + bonus
 
+    # Series dedup: for each event series, keep only the highest-scoring variant.
+    # This prevents date-ladder markets (Iran by Mar 7 / Mar 15 / Mar 31)
+    # from crowding out genuinely different markets.
+    seen_series: dict[str, dict] = {}
+    for m in base_candidates:
+        key = get_series_key(m)
+        if key not in seen_series or hero_score(m) > hero_score(seen_series[key]):
+            seen_series[key] = m
+    deduped_candidates = list(seen_series.values())
+
     # Primary pool: markets that moved meaningfully today
-    fresh_movers = [c for c in base_candidates if abs(c["change_pts"]) >= HERO_MIN_CHANGE_PTS]
+    fresh_movers = [c for c in deduped_candidates if abs(c["change_pts"]) >= HERO_MIN_CHANGE_PTS]
 
     # Fallback pool 1: anything with any movement
-    soft_movers = [c for c in base_candidates if abs(c["change_pts"]) >= 1]
+    soft_movers = [c for c in deduped_candidates if abs(c["change_pts"]) >= 1]
 
-    pool = fresh_movers or soft_movers or base_candidates
+    pool = fresh_movers or soft_movers or deduped_candidates
 
     if not pool:
         return None
@@ -644,7 +672,7 @@ def pick_hero(markets: list[dict]) -> dict | None:
     winner = max(pool, key=hero_score)
 
     # Debug output so you can see why a market won
-    print(f"\n  Hero selection pool: {len(pool)} candidates (staleness gate: {HERO_MIN_CHANGE_PTS} pts)")
+    print(f"\n  Hero selection pool: {len(pool)} unique series (staleness gate: {HERO_MIN_CHANGE_PTS} pts, deduped from {len(base_candidates)} candidates)")
     top3 = sorted(pool, key=hero_score, reverse=True)[:3]
     for i, m in enumerate(top3):
         cat   = m.get("display_category", "World")
@@ -838,21 +866,6 @@ def pick_movers(markets: list[dict], exclude_slug: str = "") -> list[dict]:
                 break
 
     return result[:TOP_MOVERS_COUNT]
-
-def get_series_key(m: dict) -> str:
-    slug = m.get("slug", "")
-    if m["source"] == "Kalshi":
-        return m.get("url", slug)
-    key = re.sub(
-        r'-(20[0-9][0-9]-[0-9][0-9]-[0-9][0-9]|january|february|march|'
-        r'april|may|june|july|august|september|october|november|december).*$',
-        '', slug
-    )
-    key = re.sub(r'-(above|below|between|over|under)[-0-9a-z]*$', '', key)
-    key = re.sub(r'-[0-9]+-[0-9]+.*$', '', key)
-    key = re.sub(r'-[0-9]+.*$', '', key)
-    key = re.sub(r'-(reach|dip|hit|drop|fall|rise|surge|crash|pump|dump)(-to|-by)?$', '', key)
-    return key or " ".join(m.get("question", "").lower().split()[:5])
 
 # ── TICKER SELECTION ─────────────────────────────────────────────────────────
 
