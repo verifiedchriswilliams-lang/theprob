@@ -223,6 +223,23 @@ function esc(s) {
 }
 
 loadNews();
+
+// ── MOBILE NAV STUCK DETECTION ──
+(function() {
+  const navWrapper = document.querySelector('.nav-wrapper');
+  const ticker     = document.querySelector('.ticker-wrap');
+  if (!navWrapper || !ticker) return;
+  function checkStuck() {
+    const tickerBottom = ticker.getBoundingClientRect().bottom;
+    if (tickerBottom <= 0) {
+      navWrapper.classList.add('is-stuck');
+    } else {
+      navWrapper.classList.remove('is-stuck');
+    }
+  }
+  window.addEventListener('scroll', checkStuck, { passive: true });
+  checkStuck();
+})();
 </script>
 </body>
 </html>

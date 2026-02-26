@@ -23,11 +23,11 @@
     html{scroll-behavior:smooth;}
     body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:15px;line-height:1.6;overflow-x:hidden;}
     body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");opacity:0.022;pointer-events:none;z-index:1000;}
-    .ticker-wrap{background:var(--bg3);border-bottom:1px solid var(--border);overflow:hidden;height:36px;display:flex;align-items:center;position:relative;}
+    .ticker-wrap{background:var(--bg3);border-bottom:1px solid var(--border);overflow:hidden;height:36px;display:flex;align-items:center;position:relative;transform:translateZ(0);-webkit-transform:translateZ(0);}
     .ticker-wrap::before,.ticker-wrap::after{content:'';position:absolute;top:0;bottom:0;width:80px;z-index:2;}
     .ticker-wrap::before{left:0;background:linear-gradient(to right,var(--bg3),transparent);}
     .ticker-wrap::after{right:0;background:linear-gradient(to left,var(--bg3),transparent);}
-    .ticker-track{display:flex;gap:0;white-space:nowrap;animation:ticker 40s linear infinite;}
+    .ticker-track{display:flex;gap:0;white-space:nowrap;animation:ticker 40s linear infinite;will-change:transform;-webkit-will-change:transform;transform:translateZ(0);-webkit-transform:translateZ(0);-webkit-animation:ticker 40s linear infinite;}
     .ticker-item{font-family:var(--mono);font-size:11px;padding:0 28px;color:var(--text-muted);border-right:1px solid var(--border);display:flex;align-items:center;gap:8px;}
     .ticker-item .name{color:var(--text);font-weight:700;} .ticker-item .up{color:var(--green);} .ticker-item .down{color:var(--red);}
     @keyframes ticker{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
@@ -80,7 +80,7 @@
     .footer-copy{font-family:var(--mono);font-size:10px;color:var(--text-dim);grid-column:1/-1;border-top:1px solid var(--border);padding-top:24px;display:flex;justify-content:space-between;}
     @keyframes fadeUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
     @media (max-width:1024px){
-      nav{padding:16px 24px;} .nav-wrapper{position:sticky;top:0;z-index:100;background:#080b0f;} .nav-links{display:none;} .mobile-nav{display:block;}
+      nav{padding:16px 24px;} .nav-wrapper{position:sticky;top:0;z-index:1001;background:#080b0f;} .nav-links{display:none;} .mobile-nav{display:block;}
       .page-header{padding:36px 20px 28px;} .section{padding:28px 20px;}
       .sources-grid{grid-template-columns:1fr;gap:28px;}
       footer{grid-template-columns:1fr;padding:28px 20px;}
@@ -260,6 +260,23 @@ async function loadMarkets(){
 }
 
 loadMarkets();
+
+// ── MOBILE NAV STUCK DETECTION ──
+(function() {
+  const navWrapper = document.querySelector('.nav-wrapper');
+  const ticker     = document.querySelector('.ticker-wrap');
+  if (!navWrapper || !ticker) return;
+  function checkStuck() {
+    const tickerBottom = ticker.getBoundingClientRect().bottom;
+    if (tickerBottom <= 0) {
+      navWrapper.classList.add('is-stuck');
+    } else {
+      navWrapper.classList.remove('is-stuck');
+    }
+  }
+  window.addEventListener('scroll', checkStuck, { passive: true });
+  checkStuck();
+})();
 </script>
 </body>
 </html>
