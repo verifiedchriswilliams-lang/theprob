@@ -590,6 +590,11 @@ def score_market(m: dict) -> float:
     return move_score + vol_24h_score + vol_total_score + prob_interest + urgency + recency_bonus
 
 def get_series_key(m: dict) -> str:
+    """
+    Normalize a market slug to its parent event series for deduplication.
+    Strips date suffixes, price ranges, and dangling prepositions so that
+    variants like "Iran by Mar 7" and "Iran by Mar 31" collapse to the same key.
+    """
     slug = m.get("slug", "")
     if m["source"] == "Kalshi":
         return m.get("url", slug)
@@ -602,7 +607,59 @@ def get_series_key(m: dict) -> str:
     key = re.sub(r'-[0-9]+-[0-9]+.*$', '', key)
     key = re.sub(r'-[0-9]+.*$', '', key)
     key = re.sub(r'-(reach|dip|hit|drop|fall|rise|surge|crash|pump|dump)(-to|-by)?$', '', key)
+    # Strip dangling prepositions left after date removal: "-by", "-in", "-before", "-after", "-on"
+    key = re.sub(r'-(by|in|before|after|on|through|within)$', '', key)
     return key or " ".join(m.get("question", "").lower().split()[:5])
+
+
+def get_topic_key(m: dict) -> str:
+    """
+    Coarser deduplication for hero selection only.
+    Strips stopwords, date/time phrases, and common question scaffolding,
+    then returns the 4 most meaningful remaining words as a topic fingerprint.
+
+    Goal: "US strikes Iran by Mar 7" and "US or Israel strike Iran by Mar 31"
+    should both produce a key containing "iran" and "strike/strikes" so they
+    collapse to one topic and only the best variant competes for hero.
+    """
+    q = m.get("question", "").lower()
+
+    # Remove date phrases and resolution windows
+    q = re.sub(
+        r'\b(by|before|after|in|on|through|within|until)\s+'
+        r'(january|february|march|april|may|june|july|august|september|october|november|december)'
+        r'[^?]*',
+        '', q
+    )
+    q = re.sub(r'\b(by|before|after|in|on)\s+20\d\d\b', '', q)
+    q = re.sub(r'\b20\d\d(-\d\d(-\d\d)?)?\b', '', q)
+    q = re.sub(r'\b(q[1-4]|fy\d+|h[12])\b', '', q)
+
+    # Strip question scaffolding and stopwords
+    stopwords = {
+        'will', 'would', 'can', 'does', 'is', 'are', 'has', 'have',
+        'did', 'was', 'were', 'the', 'a', 'an', 'or', 'and', 'to',
+        'be', 'been', 'being', 'its', 'it', 'of', 'for', 'as',
+        'at', 'by', 'from', 'with', 'that', 'this', 'not',
+    }
+
+    # Normalize verb forms
+    q = re.sub(r'\bstrikes\b', 'strike', q)
+    q = re.sub(r'\bstruck\b', 'strike', q)
+    q = re.sub(r'\bnominated\b', 'nominate', q)
+    q = re.sub(r'\bacquired\b', 'acquire', q)
+    # Normalize actor coalitions: "us or israel", "us and allies", etc. → "us"
+    # These all represent the same geopolitical actor for topic purposes
+    q = re.sub(r'\bus (or|and) israel\b', 'us', q)
+    q = re.sub(r'\bisrael (or|and) us\b', 'us', q)
+    q = re.sub(r'\bthe us\b', 'us', q)
+    q = re.sub(r'\bthe united states\b', 'us', q)
+    q = re.sub(r'\bunited states\b', 'us', q)
+
+    words = [w.strip('?,.') for w in q.split() if w.strip('?,.') not in stopwords and len(w) > 1]
+    # Sort so "iran strike" and "strike iran" produce the same key
+    key_words = sorted(words[:4])  # 4-word cap keeps fingerprint coarse enough to catch near-synonyms
+    return " ".join(key_words)
 
 # ── HERO SELECTION ───────────────────────────────────────────────────────────
 
@@ -648,15 +705,16 @@ def pick_hero(markets: list[dict]) -> dict | None:
         bonus = HERO_CATEGORY_BONUS.get(cat, 0)
         return score_market(m) + bonus
 
-    # Series dedup: for each event series, keep only the highest-scoring variant.
-    # This prevents date-ladder markets (Iran by Mar 7 / Mar 15 / Mar 31)
-    # from crowding out genuinely different markets.
-    seen_series: dict[str, dict] = {}
+    # Topic-level dedup for hero: collapse all variants of the same real-world
+    # event into a single candidate. Uses get_topic_key (coarser than series key)
+    # so that "US strikes Iran by Mar 7" AND "US or Israel strike Iran by Mar 31"
+    # both count as one "iran strike" topic. Only the best-scoring variant enters.
+    seen_topics: dict[str, dict] = {}
     for m in base_candidates:
-        key = get_series_key(m)
-        if key not in seen_series or hero_score(m) > hero_score(seen_series[key]):
-            seen_series[key] = m
-    deduped_candidates = list(seen_series.values())
+        key = get_topic_key(m)
+        if key not in seen_topics or hero_score(m) > hero_score(seen_topics[key]):
+            seen_topics[key] = m
+    deduped_candidates = list(seen_topics.values())
 
     # Primary pool: markets that moved meaningfully today
     fresh_movers = [c for c in deduped_candidates if abs(c["change_pts"]) >= HERO_MIN_CHANGE_PTS]
