@@ -23,7 +23,7 @@
     body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");opacity:0.022;pointer-events:none;z-index:1000;}
 
     /* NAV */
-    nav{display:flex;align-items:center;justify-content:space-between;padding:20px 48px;border-bottom:1px solid var(--border);position:sticky;top:0;background:rgba(8,11,15,0.92);backdrop-filter:blur(12px);z-index:100;}
+    nav{display:flex;align-items:center;justify-content:space-between;padding:20px 48px;border-bottom:1px solid var(--border);position:sticky;top:0;background:transparent;backdrop-filter:blur(12px);z-index:100;}
     .logo{display:flex;align-items:baseline;gap:12px;}
     .logo-mark{font-family:var(--mono);font-size:28px;font-weight:700;color:var(--accent);letter-spacing:-1px;}
     .logo-pipe{color:var(--border-bright);font-size:20px;}
@@ -31,7 +31,7 @@
     .nav-links{display:flex;align-items:center;gap:32px;list-style:none;}
     .nav-links a{font-family:var(--mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);text-decoration:none;transition:color 0.2s;}
     .nav-links a:hover{color:var(--text);}
-    .mobile-nav{display:none;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;background:var(--bg2);border-bottom:1px solid var(--border);white-space:nowrap;position:sticky;top:61px;z-index:99;}
+    .mobile-nav{display:none;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;background:var(--bg2);border-bottom:1px solid var(--border);white-space:nowrap;}
     .mobile-nav::-webkit-scrollbar{display:none;}
     .mobile-nav a{display:inline-block;font-family:var(--mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);text-decoration:none;padding:11px 18px;border-right:1px solid var(--border);transition:color 0.2s;}
     .mobile-nav a:hover,.mobile-nav a.active{color:var(--accent);}
@@ -94,7 +94,7 @@
 </head>
 <body>
 
-  <nav>
+  <div class="nav-wrapper"><nav>
     <div class="logo">
       <a href="index.html" style="text-decoration:none;"><span class="logo-mark">THE PROB</span></a>
       <span class="logo-pipe">|</span>

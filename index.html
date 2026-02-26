@@ -122,6 +122,14 @@
       100% { transform: translateX(-50%); }
     }
 
+    /* ── NAV WRAPPER — sticky container for nav + mobile strip ── */
+    .nav-wrapper {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: #080b0f;  /* fully opaque — no bleed-through */
+    }
+
     /* ── NAV ── */
     nav {
       display: flex;
@@ -129,11 +137,8 @@
       justify-content: space-between;
       padding: 20px 48px;
       border-bottom: 1px solid var(--border);
-      position: sticky;
-      top: 0;
-      background: rgba(8,11,15,0.92);
+      background: transparent;  /* wrapper handles background */
       backdrop-filter: blur(12px);
-      z-index: 100;
     }
 
     .logo {
@@ -186,9 +191,6 @@
       background: var(--bg2);
       border-bottom: 1px solid var(--border);
       white-space: nowrap;
-      position: sticky;
-      top: 61px;        /* height of nav bar — sticks just below it */
-      z-index: 99;
     }
     .mobile-nav::-webkit-scrollbar { display: none; }
     .mobile-nav a {
@@ -905,31 +907,33 @@
     </div>
   </div>
 
-  <!-- NAV -->
-  <nav>
-    <div class="logo">
-      <span class="logo-mark">THE PROB</span>
-      <span class="logo-pipe">|</span>
-      <span class="logo-sub">What's the Probability?</span>
-    </div>
-    <ul class="nav-links">
-      <li><a href="business.html">Business</a></li>
-      <li><a href="culture.html">Culture</a></li>
-      <li><a href="news.html">News</a></li>
-      <li><a href="politics.html">Politics</a></li>
-      <li><a href="sports.html">Sports</a></li>
-      <li><a href="tech.html">Tech</a></li>
-    </ul>
-  </nav>
+  <!-- NAV WRAPPER — sticky container holds both nav and mobile nav strip -->
+  <div class="nav-wrapper">
+    <nav>
+      <div class="logo">
+        <span class="logo-mark">THE PROB</span>
+        <span class="logo-pipe">|</span>
+        <span class="logo-sub">What's the Probability?</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="business.html">Business</a></li>
+        <li><a href="culture.html">Culture</a></li>
+        <li><a href="news.html">News</a></li>
+        <li><a href="politics.html">Politics</a></li>
+        <li><a href="sports.html">Sports</a></li>
+        <li><a href="tech.html">Tech</a></li>
+      </ul>
+    </nav>
 
-  <!-- MOBILE NAV STRIP -->
-  <div class="mobile-nav">
-    <a href="business.html">Business</a>
-    <a href="culture.html">Culture</a>
-    <a href="news.html">News</a>
-    <a href="politics.html">Politics</a>
-    <a href="sports.html">Sports</a>
-    <a href="tech.html">Tech</a>
+    <!-- MOBILE NAV STRIP -->
+    <div class="mobile-nav">
+      <a href="business.html">Business</a>
+      <a href="culture.html">Culture</a>
+      <a href="news.html">News</a>
+      <a href="politics.html">Politics</a>
+      <a href="sports.html">Sports</a>
+      <a href="tech.html">Tech</a>
+    </div>
   </div>
 
   <!-- HERO -->

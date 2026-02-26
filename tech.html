@@ -31,7 +31,7 @@
     .ticker-item{font-family:var(--mono);font-size:11px;padding:0 28px;color:var(--text-muted);border-right:1px solid var(--border);display:flex;align-items:center;gap:8px;}
     .ticker-item .name{color:var(--text);font-weight:700;} .ticker-item .up{color:var(--green);} .ticker-item .down{color:var(--red);}
     @keyframes ticker{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
-    nav{display:flex;align-items:center;justify-content:space-between;padding:20px 48px;border-bottom:1px solid var(--border);position:sticky;top:0;background:rgba(8,11,15,0.92);backdrop-filter:blur(12px);z-index:100;}
+    nav{display:flex;align-items:center;justify-content:space-between;padding:20px 48px;border-bottom:1px solid var(--border);position:sticky;top:0;background:transparent;backdrop-filter:blur(12px);z-index:100;}
     .logo{display:flex;align-items:baseline;gap:12px;}
     .logo-mark{font-family:var(--mono);font-size:28px;font-weight:700;color:var(--accent);letter-spacing:-1px;}
     .logo-pipe{color:var(--border-bright);font-size:20px;}
@@ -39,7 +39,7 @@
     .nav-links{display:flex;align-items:center;gap:32px;list-style:none;}
     .nav-links a{font-family:var(--mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);text-decoration:none;transition:color 0.2s;}
     .nav-links a:hover{color:var(--text);}
-    .mobile-nav{display:none;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;background:var(--bg2);border-bottom:1px solid var(--border);white-space:nowrap;position:sticky;top:61px;z-index:99;}
+    .mobile-nav{display:none;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;background:var(--bg2);border-bottom:1px solid var(--border);white-space:nowrap;}
     .mobile-nav::-webkit-scrollbar{display:none;}
     .mobile-nav a{display:inline-block;font-family:var(--mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);text-decoration:none;padding:11px 18px;border-right:1px solid var(--border);transition:color 0.2s;}
     .mobile-nav a:hover,.mobile-nav a.active{color:var(--accent);}
@@ -80,7 +80,7 @@
     .footer-copy{font-family:var(--mono);font-size:10px;color:var(--text-dim);grid-column:1/-1;border-top:1px solid var(--border);padding-top:24px;display:flex;justify-content:space-between;}
     @keyframes fadeUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
     @media (max-width:1024px){
-      nav{padding:16px 24px;} .nav-links{display:none;} .mobile-nav{display:block;}
+      nav{padding:16px 24px;} .nav-wrapper{position:sticky;top:0;z-index:100;background:#080b0f;} .nav-links{display:none;} .mobile-nav{display:block;}
       .page-header{padding:36px 20px 28px;} .section{padding:28px 20px;}
       .sources-grid{grid-template-columns:1fr;gap:28px;}
       footer{grid-template-columns:1fr;padding:28px 20px;}
@@ -91,7 +91,7 @@
 
   <div class="ticker-wrap"><div class="ticker-track" id="ticker"></div></div>
 
-  <nav>
+  <div class="nav-wrapper"><nav>
     <div class="logo">
       <a href="index.html" style="text-decoration:none;"><span class="logo-mark">THE PROB</span></a>
       <span class="logo-pipe">|</span>
