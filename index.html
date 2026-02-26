@@ -86,6 +86,9 @@
       display: flex;
       align-items: center;
       position: relative;
+      /* Force own compositing layer — prevents Safari animation conflicts */
+      transform: translateZ(0);
+      -webkit-transform: translateZ(0);
     }
     .ticker-wrap::before, .ticker-wrap::after {
       content: '';
@@ -102,6 +105,13 @@
       gap: 0;
       white-space: nowrap;
       animation: ticker 40s linear infinite;
+      /* Safari GPU acceleration fixes */
+      will-change: transform;
+      -webkit-will-change: transform;
+      transform: translateZ(0);
+      -webkit-transform: translateZ(0);
+      /* Prevent Safari from pausing animation when tab is backgrounded */
+      -webkit-animation: ticker 40s linear infinite;
     }
     .ticker-item {
       font-family: var(--mono);
@@ -117,17 +127,21 @@
     .ticker-item .up { color: var(--green); }
     .ticker-item .down { color: var(--red); }
 
+    @-webkit-keyframes ticker {
+      0% { -webkit-transform: translateX(0) translateZ(0); transform: translateX(0) translateZ(0); }
+      100% { -webkit-transform: translateX(-50%) translateZ(0); transform: translateX(-50%) translateZ(0); }
+    }
     @keyframes ticker {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
+      0% { transform: translateX(0) translateZ(0); }
+      100% { transform: translateX(-50%) translateZ(0); }
     }
 
     /* ── NAV WRAPPER — sticky container for nav + mobile strip ── */
     .nav-wrapper {
       position: sticky;
       top: 0;
-      z-index: 100;
-      background: #080b0f;  /* fully opaque — no bleed-through */
+      z-index: 1001;      /* above noise overlay (z-index 1000) */
+      background: #080b0f;
     }
 
     /* ── NAV ── */
@@ -882,6 +896,16 @@
 
     /* ── RESPONSIVE ── */
     @media (max-width: 1024px) {
+      .nav-wrapper {
+        position: fixed;      /* fixed on mobile — nothing can scroll above it */
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+      }
+      body {
+        padding-top: 105px;   /* nav (~61px) + mobile strip (~44px) = content starts below */
+      }
       nav { padding: 16px 24px; }
       .nav-links { display: none; }
       .mobile-nav { display: block; }
