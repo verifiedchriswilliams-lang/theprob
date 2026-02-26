@@ -140,8 +140,10 @@
     .nav-wrapper {
       position: sticky;
       top: 0;
-      z-index: 1001;      /* above noise overlay (z-index 1000) */
-      background: #080b0f;
+      z-index: 1001;
+      background: rgba(8,11,15,0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
     }
 
     /* ── NAV ── */
@@ -901,16 +903,9 @@
         top: 0;
         z-index: 1001;
       }
-      /* When ticker has scrolled away, cover the gap above with a pseudo element */
-      .nav-wrapper.is-stuck::before {
-        content: '';
-        position: absolute;
-        bottom: 100%;
-        left: 0;
-        right: 0;
-        height: 100vh;        /* covers entire viewport height above nav */
-        background: #080b0f;
-        pointer-events: none;
+      /* When ticker has scrolled away, go nearly opaque to block content bleed */
+      .nav-wrapper.is-stuck {
+        background: rgba(8,11,15,0.97) !important;
       }
       body {
         padding-top: 0;
