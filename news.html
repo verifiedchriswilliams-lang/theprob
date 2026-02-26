@@ -112,7 +112,7 @@
     /* NEWS GRID */
     .news-section{max-width:1280px;margin:0 auto;padding:48px;}
     .news-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);}
-    .news-card:last-child:nth-child(odd){grid-column:1/-1;}
+    .news-card:last-child:nth-child(even){grid-column:1/-1;}
 
     /* Individual news card */
     .news-card{background:var(--bg2);padding:28px 28px;cursor:pointer;transition:background 0.15s;position:relative;display:flex;flex-direction:column;gap:10px;}
@@ -300,6 +300,27 @@ function esc(s) {
 }
 
 loadNews();
+
+// ── TICKER ────────────────────────────────────────────────────────────────────
+async function loadMarkets() {
+  try {
+    const res  = await fetch(`data/markets.json?v=${Date.now()}`);
+    if (!res.ok) return;
+    const data = await res.json();
+    const markets = data.ticker || [];
+    if (!markets.length) return;
+    const track = document.getElementById('ticker');
+    if (!track) return;
+    function trunc(s, n=40){ return s.length>n ? s.slice(0,n-1)+'…' : s; }
+    function arrowS(c){ return c>0.5?`▲+${c}`:c<-0.5?`▼${c}`:`—`; }
+    function dir(c){ return c>0.5?'up':c<-0.5?'down':'neutral'; }
+    const html = markets.map(m =>
+      `<div class="ticker-item"><span class="name">${trunc(m.question,40).toUpperCase()}</span><span class="${dir(m.change_pts)}">${m.prob}% ${arrowS(m.change_pts)}</span></div>`
+    ).join('');
+    track.innerHTML = html + html;
+  } catch(e) { /* fail silently — ticker is non-critical */ }
+}
+loadMarkets();
 
 
 
