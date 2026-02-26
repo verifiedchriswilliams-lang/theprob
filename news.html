@@ -302,23 +302,22 @@ function esc(s) {
 loadNews();
 
 // ── TICKER ────────────────────────────────────────────────────────────────────
-async function loadMarkets() {
-  try {
-    const res  = await fetch(`data/markets.json?v=${Date.now()}`);
-    if (!res.ok) return;
-    const data = await res.json();
-    const markets = data.ticker || [];
-    if (!markets.length) return;
-    const track = document.getElementById('ticker');
-    if (!track) return;
-    function trunc(s, n=40){ return s.length>n ? s.slice(0,n-1)+'…' : s; }
-    function arrowS(c){ return c>0.5?`▲+${c}`:c<-0.5?`▼${c}`:`—`; }
-    function dir(c){ return c>0.5?'up':c<-0.5?'down':'neutral'; }
-    const html = markets.map(m =>
-      `<div class="ticker-item"><span class="name">${trunc(m.question,40).toUpperCase()}</span><span class="${dir(m.change_pts)}">${m.prob}% ${arrowS(m.change_pts)}</span></div>`
-    ).join('');
-    track.innerHTML = html + html;
-  } catch(e) { /* fail silently — ticker is non-critical */ }
+function dir(c){return c>0.5?'up':c<-0.5?'down':'neutral';}
+function arrowS(c){return c>0.5?`▲+${c}`:c<-0.5?`▼${c}`:`—`;}
+function trunc(s,n=55){return s.length>n?s.slice(0,n-1)+'…':s;}
+function renderTicker(markets){
+  const track=document.getElementById('ticker');
+  if(!track||!markets.length)return;
+  const html=markets.map(m=>`<div class="ticker-item"><span class="name">${trunc(m.question,40).toUpperCase()}</span><span class="${dir(m.change_pts)}">${m.prob}% ${arrowS(m.change_pts)}</span></div>`).join('');
+  track.innerHTML=html+html;
+}
+async function loadMarkets(){
+  try{
+    const res=await fetch(`data/markets.json?v=${Date.now()}`);
+    if(!res.ok)return;
+    const data=await res.json();
+    renderTicker(data.ticker||[]);
+  }catch(e){}
 }
 loadMarkets();
 
