@@ -50,6 +50,10 @@ HERO_SPORTS_MIN_VOLUME = 25_000_000  # Only truly massive sports events as hero
 # Minimum 24h volume to be worth showing — filters MrBeast/micro view-count markets
 MIN_INTERESTING_VOLUME = 100_000
 
+# Hero staleness gate: market must have moved at least this many points in 24h
+# to be eligible as hero. Prevents the same stale market from winning every day.
+HERO_MIN_CHANGE_PTS = 3.0
+
 # Question substrings that identify low-quality micro-markets to exclude entirely
 JUNK_MARKET_PATTERNS = [
     "million views",
@@ -584,38 +588,68 @@ def score_market(m: dict) -> float:
 
 # ── HERO SELECTION ───────────────────────────────────────────────────────────
 
+# Category bonus points added to buzz score for hero selection.
+# Politics gets the biggest bonus but a large move in any category can still win.
+# This replaces the old hard lexicographic sort (Politics always beat Finance, etc.)
+# which caused the same stale Politics market to win day after day.
+HERO_CATEGORY_BONUS = {
+    "Politics":   18,   # ~equivalent to a 7-pt price move advantage
+    "Finance":    12,
+    "World":       8,
+    "Technology":  5,
+    "Culture":     3,
+    "Crypto":      0,
+}
+
 def pick_hero(markets: list[dict]) -> dict | None:
     """
     The hero is the single most buzzworthy non-sports market.
-    Priority order: Politics > Finance > World > Technology > Culture > Crypto
-    Sports require very high volume. Resolved markets excluded.
+
+    Scoring = buzz_score + category_bonus
+      - Politics gets +18 pts, Finance +12, down to Crypto +0
+      - A big move in any category can overcome the category bonus
+      - Hard staleness gate: must have moved >= HERO_MIN_CHANGE_PTS in 24h
+        so the same low-movement market can't win day after day
+
+    Fallback: if nothing clears the staleness gate, use any mover >= 1 pt.
+    Final fallback: best candidate regardless of movement.
     """
-    HERO_CATEGORY_PRIORITY = {
-        "Politics":   1,
-        "Finance":    2,
-        "World":      3,
-        "Technology": 4,
-        "Culture":    5,
-        "Crypto":     6,
-    }
-    candidates = [
+    base_candidates = [
         m for m in markets
         if m["volume"] >= HERO_MIN_VOLUME
         and not is_effectively_resolved(m)
         and not is_junk_market(m)
         and (not is_sports_market(m) or m["volume"] >= HERO_SPORTS_MIN_VOLUME)
     ]
-    # Must have real price movement to be hero
-    movers = [c for c in candidates if abs(c["change_pts"]) >= 2]
-    pool   = movers if movers else candidates
+
+    def hero_score(m: dict) -> float:
+        cat   = m.get("display_category", "World")
+        bonus = HERO_CATEGORY_BONUS.get(cat, 0)
+        return score_market(m) + bonus
+
+    # Primary pool: markets that moved meaningfully today
+    fresh_movers = [c for c in base_candidates if abs(c["change_pts"]) >= HERO_MIN_CHANGE_PTS]
+
+    # Fallback pool 1: anything with any movement
+    soft_movers = [c for c in base_candidates if abs(c["change_pts"]) >= 1]
+
+    pool = fresh_movers or soft_movers or base_candidates
+
     if not pool:
         return None
-    # Sort: first by category priority, then by buzz score within each tier
-    def hero_score(m):
-        cat      = m.get("display_category", "World")
-        priority = HERO_CATEGORY_PRIORITY.get(cat, 7)
-        return (-priority, score_market(m))
-    return max(pool, key=hero_score)
+
+    winner = max(pool, key=hero_score)
+
+    # Debug output so you can see why a market won
+    print(f"\n  Hero selection pool: {len(pool)} candidates (staleness gate: {HERO_MIN_CHANGE_PTS} pts)")
+    top3 = sorted(pool, key=hero_score, reverse=True)[:3]
+    for i, m in enumerate(top3):
+        cat   = m.get("display_category", "World")
+        bonus = HERO_CATEGORY_BONUS.get(cat, 0)
+        print(f"    {'* ' if i == 0 else '  '}{m['question'][:60]}")
+        print(f"       buzz={score_market(m):.1f} + cat_bonus={bonus} = total={hero_score(m):.1f} | Δ={m['change_pts']}pts")
+
+    return winner
 
 # ── CATEGORY MAPPING ─────────────────────────────────────────────────────────
 
@@ -728,7 +762,6 @@ def pick_movers(markets: list[dict], exclude_slug: str = "") -> list[dict]:
     for c in candidates:
         slug = c.get("slug", "")
         if c["source"] == "Kalshi":
-            # Use the event URL as series key — all candidates in same event share the same URL
             series_key = c.get("url", slug)
         else:
             series_key = re.sub(
@@ -744,7 +777,6 @@ def pick_movers(markets: list[dict], exclude_slug: str = "") -> list[dict]:
             deduped.append(c)
 
     # Slot layout: Politics, Sports, Finance, World, Technology, Sports
-    # Hard cap: max 2 sports in movers. Fallback slots must also respect this.
     slot_categories = ["Politics", "Sports", "Finance", "World", "Technology", "Sports"]
     result = []
     used_slugs = set()
@@ -753,12 +785,10 @@ def pick_movers(markets: list[dict], exclude_slug: str = "") -> list[dict]:
 
     for slot_cat in slot_categories:
         filled = False
-        # Try to fill with the intended category
         for c in deduped:
             if c["slug"] in used_slugs:
                 continue
             if c["display_category"] == slot_cat:
-                # Enforce sports cap even for intended sports slots
                 if slot_cat == "Sports" and sports_count >= MAX_SPORTS_IN_MOVERS:
                     break
                 result.append(c)
@@ -768,7 +798,6 @@ def pick_movers(markets: list[dict], exclude_slug: str = "") -> list[dict]:
                 filled = True
                 break
         if not filled:
-            # Fallback: pick best unused non-sports market (never use fallback to add sports)
             for c in deduped:
                 if c["slug"] not in used_slugs and c["display_category"] != "Sports":
                     result.append(c)
@@ -776,7 +805,6 @@ def pick_movers(markets: list[dict], exclude_slug: str = "") -> list[dict]:
                     filled = True
                     break
             if not filled:
-                # Last resort: any unused market, still respecting sports cap
                 for c in deduped:
                     if c["slug"] not in used_slugs:
                         if is_sports_market(c) and sports_count >= MAX_SPORTS_IN_MOVERS:
@@ -787,13 +815,12 @@ def pick_movers(markets: list[dict], exclude_slug: str = "") -> list[dict]:
                             sports_count += 1
                         break
 
-    # Guarantee at least 2 Kalshi markets (contractual for newsletter variety)
+    # Guarantee at least 2 Kalshi markets
     kalshi_count = sum(1 for m in result if m["source"] == "Kalshi")
     if kalshi_count < 2:
         kalshi_needed = 2 - kalshi_count
         for c in deduped:
             if c["slug"] not in used_slugs and c["source"] == "Kalshi":
-                # Replace the lowest-scoring non-Kalshi slot
                 non_kalshi_slots = [
                     (i, m) for i, m in enumerate(result)
                     if m["source"] != "Kalshi"
@@ -810,16 +837,9 @@ def pick_movers(markets: list[dict], exclude_slug: str = "") -> list[dict]:
     return result[:TOP_MOVERS_COUNT]
 
 def get_series_key(m: dict) -> str:
-    """
-    Normalize a market to its parent series for deduplication.
-    """
     slug = m.get("slug", "")
-
     if m["source"] == "Kalshi":
-        # All markets under the same Kalshi event share the same URL — use it
         return m.get("url", slug)
-
-    # Polymarket: strip date/price suffixes
     key = re.sub(
         r'-(20[0-9][0-9]-[0-9][0-9]-[0-9][0-9]|january|february|march|'
         r'april|may|june|july|august|september|october|november|december).*$',
@@ -829,7 +849,6 @@ def get_series_key(m: dict) -> str:
     key = re.sub(r'-[0-9]+-[0-9]+.*$', '', key)
     key = re.sub(r'-[0-9]+.*$', '', key)
     key = re.sub(r'-(reach|dip|hit|drop|fall|rise|surge|crash|pump|dump)(-to|-by)?$', '', key)
-
     return key or " ".join(m.get("question", "").lower().split()[:5])
 
 # ── TICKER SELECTION ─────────────────────────────────────────────────────────
@@ -843,15 +862,14 @@ def pick_ticker(markets: list[dict]) -> list[dict]:
     - Resolved and junk markets excluded
     """
     MAX_SPORTS_IN_TICKER = 3
-    # Per-category caps — tighter categories get capped lower
     CATEGORY_CAPS = {
-        "Technology": 1,   # Only best AI/tech market, not a whole cluster
+        "Technology": 1,
         "Crypto":     2,
         "Politics":   2,
         "Finance":    2,
         "World":      2,
         "Culture":    1,
-        "Sports":     3,   # Handled separately above
+        "Sports":     3,
     }
     DEFAULT_CAP = 2
 
@@ -899,17 +917,15 @@ def pick_ticker(markets: list[dict]) -> list[dict]:
 
 def strip_em_dashes(text: str) -> str:
     """House style: never use em dashes. Replace with comma, colon, or period."""
-    # Replace ' — ' (spaced em dash) with a comma-space
     text = text.replace(" \u2014 ", ", ")
-    # Replace any remaining em dashes
     text = text.replace("\u2014", ", ")
     return text
 
 def generate_daily_take(hero: dict, movers: list[dict]) -> dict:
     """
     Generate 'The Prob's Daily Take' using Claude API.
-    Returns a dict with: headline, deck, category, sidebar (list of 3 items),
-    and date. Falls back to template if API unavailable.
+    Returns a dict with: headline, deck, category_label, sidebar (list of 3 items), date.
+    Falls back to template if API unavailable.
     """
     ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY", "")
 
@@ -920,7 +936,6 @@ def generate_daily_take(hero: dict, movers: list[dict]) -> dict:
     cat    = hero.get("display_category", "World")
     source = hero.get("source", "")
 
-    # Build sidebar context from top movers
     sidebar_context = ""
     for i, m in enumerate(movers[:3], 1):
         sidebar_context += (
@@ -950,7 +965,7 @@ Write the following in The Prob's voice (sharp, confident, dry wit, no em dashes
 
 3. CATEGORY_LABEL: One short label like "Deep Dive · Politics" or "Market Watch · Crypto"
 
-4. SIDEBAR_1_HEADLINE: A sharp 1-sentence editorial angle on market 1 above (not just the question). 
+4. SIDEBAR_1_HEADLINE: A sharp 1-sentence editorial angle on market 1 above (not just the question).
 5. SIDEBAR_1_LABEL: Short label like "Fed Cut March: 72%"
 
 6. SIDEBAR_2_HEADLINE: Same for market 2.
@@ -990,11 +1005,7 @@ SIDEBAR_3_LABEL: ..."""
             )
             if r.ok:
                 raw = r.json()["content"][0]["text"].strip()
-
-                # Parse structured response — keys are ALL_CAPS, values follow ": "
-                # Use regex to handle colons inside values (e.g. "47%: here's why")
                 parsed = {}
-                # Match lines starting with a known key
                 key_pattern = re.compile(
                     r'^(HEADLINE|DECK|CATEGORY_LABEL|'
                     r'SIDEBAR_1_HEADLINE|SIDEBAR_1_LABEL|'
@@ -1005,7 +1016,6 @@ SIDEBAR_3_LABEL: ..."""
                 )
                 for m in key_pattern.finditer(raw):
                     parsed[m.group(1)] = strip_em_dashes(m.group(2).strip())
-
 
                 now_et = datetime.now(timezone.utc) + timedelta(hours=-5)
                 return {
@@ -1039,7 +1049,7 @@ SIDEBAR_3_LABEL: ..."""
             print(f"  [WARN] Daily Take generation failed: {e}")
             traceback.print_exc()
 
-    # Fallback: construct from raw data if API unavailable
+    # Fallback
     now_et = datetime.now(timezone.utc) + timedelta(hours=-5)
     direction = "up" if change > 0 else "down"
     deck = (
@@ -1143,7 +1153,7 @@ def main():
         print("ERROR: No markets fetched. Aborting.")
         return
 
-    # Debug: show top 10 by buzz score with filtering decisions
+    # Debug: show top 15 by buzz score with filtering decisions
     top_by_buzz = sorted(all_markets, key=score_market, reverse=True)[:15]
     print("\n  Top 15 by buzz score (pre-filter):")
     for i, m in enumerate(top_by_buzz, 1):
@@ -1151,11 +1161,13 @@ def main():
         resolved   = is_effectively_resolved(m)
         junk       = is_junk_market(m)
         hero_ok    = not is_sport or m["volume"] >= HERO_SPORTS_MIN_VOLUME
+        stale      = abs(m["change_pts"]) < HERO_MIN_CHANGE_PTS
         flags = []
         if is_sport:    flags.append("SPORTS")
         if resolved:    flags.append("RESOLVED")
         if junk:        flags.append("JUNK")
         if not hero_ok: flags.append("HERO-BLOCKED")
+        if stale:       flags.append("STALE")
         flag_str = f" [{', '.join(flags)}]" if flags else ""
         print(f"    {i}. [{m['source']}] {m['question'][:55]}{flag_str}")
         print(f"       prob={m['prob']}% Δ={m['change_pts']}pts vol={m['volume_fmt']} 24h={fmt_volume(m['volume_24h'])} score={score_market(m):.2f}")
@@ -1174,7 +1186,6 @@ def main():
         print(f"    [{m.get('display_category', '?')}] {m['question'][:55]} ({m['source']})")
 
     # Build full market catalog for category pages
-    # Dedup: for Kalshi, one market per event URL (best by score). For Polymarket, one per slug.
     catalog = []
     seen_poly_slugs  = set()
     seen_kalshi_urls = set()
@@ -1195,16 +1206,15 @@ def main():
             if slug in seen_poly_slugs:
                 continue
             seen_poly_slugs.add(slug)
-        # Use display_category already set during fetch; fallback only if missing
         if not m.get("display_category"):
             m["display_category"] = get_category_label(m)
         catalog.append(m)
 
-    # Generate hero "The Prob's Take" — 2-sentence card blurb
+    # Generate hero "The Prob's Take"
     if hero:
         hero["prob_take"] = generate_hero_take(hero)
 
-    # Generate "The Prob's Daily Take" — full editorial section
+    # Generate "The Prob's Daily Take"
     print("\nGenerating Daily Take (Claude API)...")
     daily_take = generate_daily_take(hero, movers) if hero else None
     if daily_take:
