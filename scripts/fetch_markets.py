@@ -1064,32 +1064,63 @@ SIDEBAR_3_LABEL: ..."""
 
 
 def generate_hero_take(hero: dict) -> str:
-    """2-sentence take for the hero market card. Template-based for speed."""
+    """
+    Generate a 2-sentence Hustle-style take on the hero market via Claude API.
+    Falls back to a clean template if API is unavailable.
+    """
+    ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY", "")
+
     q      = hero.get("question", "")
     prob   = hero.get("prob", 50)
     change = hero.get("change_pts", 0)
     vol    = hero.get("volume_fmt", "")
     cat    = hero.get("display_category", "World")
+    source = hero.get("source", "")
 
+    if ANTHROPIC_API_KEY:
+        try:
+            import requests as req
+            prompt = (
+                f"Market: {q}\n"
+                f"Odds: {prob}%\n"
+                f"24h change: {'+' if change > 0 else ''}{change} points\n"
+                f"Volume: ${vol}\n"
+                f"Category: {cat}\n"
+                f"Source: {source}\n\n"
+                "Write exactly 2 sentences for The Prob's hero market card.\n"
+                "Sentence 1: what the market is saying right now (use the odds and movement).\n"
+                "Sentence 2: why it matters or what to watch.\n"
+                "No em dashes. No hedging. No 'This market' opener. Confident, sharp, human. Just the 2 sentences."
+            )
+            r = req.post(
+                "https://api.anthropic.com/v1/messages",
+                headers={
+                    "x-api-key":         ANTHROPIC_API_KEY,
+                    "anthropic-version": "2023-06-01",
+                    "content-type":      "application/json",
+                },
+                json={
+                    "model":      "claude-haiku-4-5-20251001",
+                    "max_tokens": 120,
+                    "system":     HOUSE_STYLE_PROMPT,
+                    "messages":   [{"role": "user", "content": prompt}],
+                },
+                timeout=15,
+            )
+            if r.ok:
+                text = r.json()["content"][0]["text"].strip()
+                return strip_em_dashes(text)
+            else:
+                print(f"  [WARN] Hero take API failed: {r.status_code}")
+        except Exception as e:
+            print(f"  [WARN] Hero take generation failed: {e}")
+
+    # Fallback template
     money_line = f"${vol}" if vol else "real money"
     odds_word  = "likely" if prob > 65 else "unlikely" if prob < 35 else "a toss-up"
-
-    if cat == "Politics":
-        s1 = f"The crowd has {money_line} on this, and at {prob}%, they call it {odds_word}."
-        s2 = f"Prediction markets move faster than polls. {'This one moved ' + str(abs(change)) + ' points today.' if abs(change) > 5 else 'Watch this one.'}"
-    elif cat == "Crypto":
-        s1 = f"Crypto traders put {money_line} on this. Current read: {prob}%."
-        s2 = f"{'Sharp move today.' if abs(change) > 5 else 'Steady.'} The deadline is coming."
-    elif cat == "Finance":
-        s1 = f"Wall Street and prediction markets are reading the same signal. The crowd says {prob}%."
-        s2 = f"{money_line} in total bets. {'Down ' + str(abs(change)) + ' pts today.' if change < -5 else 'Up ' + str(change) + ' pts today.' if change > 5 else 'Holding steady.'}"
-    elif cat == "Culture":
-        s1 = f"The crowd puts this at {prob}% with {money_line} on the line."
-        s2 = f"{'Too close to call.' if 40 <= prob <= 60 else 'Clear favorite emerging.'} Smart money has spoken."
-    else:
-        s1 = f"{prob}% probability, {money_line} in real bets."
-        s2 = f"{'Big swing today.' if abs(change) > 10 else 'Steady read.'} Prediction markets price this faster than any headline."
-
+    direction  = f"up {change} pts" if change > 5 else f"down {abs(change)} pts" if change < -5 else "steady"
+    s1 = f"The crowd has {money_line} on this at {prob}%, calling it {odds_word}."
+    s2 = f"Odds are {direction} today. Worth watching."
     return strip_em_dashes(f"{s1} {s2}")
 
 # ── MAIN ─────────────────────────────────────────────────────────────────────
