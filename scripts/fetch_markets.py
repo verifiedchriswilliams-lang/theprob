@@ -47,7 +47,7 @@ GAMMA_BASE       = "https://gamma-api.polymarket.com"
 MIN_VOLUME_USD         = 50_000
 KALSHI_MIN_VOL         = 1_000      # Kalshi volumes are much lower than Polymarket
 TOP_MOVERS_COUNT       = 6
-HERO_MIN_VOLUME        = 1_000_000   # Hero needs at least $1M total volume — no obscure markets
+HERO_MIN_VOLUME        = 250_000     # Lowered from $1M — don't block explosive movers on low total volume
 HERO_SPORTS_MIN_VOLUME = 25_000_000  # Only truly massive sports events as hero
 
 # Minimum 24h volume to be worth showing — filters MrBeast/micro view-count markets
@@ -56,6 +56,11 @@ MIN_INTERESTING_VOLUME = 100_000
 # Hero staleness gate: market must have moved at least this many points in 24h
 # to be eligible as hero. Prevents the same stale market from winning every day.
 HERO_MIN_CHANGE_PTS = 3.0
+
+# Hero repeat penalty: if yesterday's hero topic wins again today, subtract this
+# from its score. Forces genuine variety — same topic can still win if it's the
+# only real mover, but gets pushed aside when anything else is competitive.
+HERO_REPEAT_PENALTY = 15.0
 
 # Question substrings that identify low-quality micro-markets to exclude entirely
 JUNK_MARKET_PATTERNS = [
@@ -676,18 +681,19 @@ HERO_CATEGORY_BONUS = {
     "Crypto":      0,
 }
 
-def pick_hero(markets: list[dict]) -> dict | None:
+def pick_hero(markets: list[dict], yesterday_topic: str = "") -> dict | None:
     """
     The hero is the single most buzzworthy non-sports market.
 
-    Scoring = buzz_score + category_bonus
+    Scoring = buzz_score + category_bonus - repeat_penalty
       - Politics gets +18 pts, Finance +12, down to Crypto +0
       - A big move in any category can overcome the category bonus
       - Hard staleness gate: must have moved >= HERO_MIN_CHANGE_PTS in 24h
         so the same low-movement market can't win day after day
-      - Series deduplication: only the best variant of each event series
-        enters the pool (prevents "Iran by Mar 7", "Iran by Mar 15", etc.
-        from flooding the candidates and winning by repetition)
+      - Series deduplication: only the highest-move variant of each topic
+        enters the pool (prevents date-ladder markets flooding candidates)
+      - Repeat penalty: yesterday's hero topic gets -HERO_REPEAT_PENALTY pts
+        so the same story doesn't lead 4 days in a row
 
     Fallback: if nothing clears the staleness gate, use any mover >= 1 pt.
     Final fallback: best candidate regardless of movement.
@@ -701,19 +707,33 @@ def pick_hero(markets: list[dict]) -> dict | None:
     ]
 
     def hero_score(m: dict) -> float:
-        cat   = m.get("display_category", "World")
-        bonus = HERO_CATEGORY_BONUS.get(cat, 0)
-        return score_market(m) + bonus
+        cat      = m.get("display_category", "World")
+        bonus    = HERO_CATEGORY_BONUS.get(cat, 0)
+        base     = score_market(m) + bonus
+        # Penalise if this topic was yesterday's hero
+        if yesterday_topic and get_topic_key(m) == yesterday_topic:
+            base -= HERO_REPEAT_PENALTY
+        return base
 
     # Topic-level dedup for hero: collapse all variants of the same real-world
     # event into a single candidate. Uses get_topic_key (coarser than series key)
     # so that "US strikes Iran by Mar 7" AND "US or Israel strike Iran by Mar 31"
-    # both count as one "iran strike" topic. Only the best-scoring variant enters.
+    # both count as one "iran strike" topic.
+    # IMPORTANT: pick the highest-buzz variant (not highest total volume) so that
+    # a -69pt mover beats a stale +1pt variant of the same topic.
     seen_topics: dict[str, dict] = {}
     for m in base_candidates:
         key = get_topic_key(m)
-        if key not in seen_topics or hero_score(m) > hero_score(seen_topics[key]):
+        existing = seen_topics.get(key)
+        if existing is None:
             seen_topics[key] = m
+        else:
+            # Prefer the variant with the bigger absolute price move today.
+            # Tiebreak on hero_score (which includes volume + category bonus).
+            if abs(m["change_pts"]) > abs(existing["change_pts"]):
+                seen_topics[key] = m
+            elif abs(m["change_pts"]) == abs(existing["change_pts"]) and hero_score(m) > hero_score(existing):
+                seen_topics[key] = m
     deduped_candidates = list(seen_topics.values())
 
     # Primary pool: markets that moved meaningfully today
@@ -730,13 +750,17 @@ def pick_hero(markets: list[dict]) -> dict | None:
     winner = max(pool, key=hero_score)
 
     # Debug output so you can see why a market won
-    print(f"\n  Hero selection pool: {len(pool)} unique series (staleness gate: {HERO_MIN_CHANGE_PTS} pts, deduped from {len(base_candidates)} candidates)")
+    print(f"\n  Hero selection pool: {len(pool)} unique topics (staleness gate: {HERO_MIN_CHANGE_PTS} pts, deduped from {len(base_candidates)} candidates)")
+    if yesterday_topic:
+        print(f"  Repeat penalty ({HERO_REPEAT_PENALTY} pts) applied to: '{yesterday_topic}'")
     top3 = sorted(pool, key=hero_score, reverse=True)[:3]
     for i, m in enumerate(top3):
-        cat   = m.get("display_category", "World")
-        bonus = HERO_CATEGORY_BONUS.get(cat, 0)
+        cat      = m.get("display_category", "World")
+        bonus    = HERO_CATEGORY_BONUS.get(cat, 0)
+        penalty  = HERO_REPEAT_PENALTY if yesterday_topic and get_topic_key(m) == yesterday_topic else 0
+        penalty_str = f" - repeat_penalty={penalty}" if penalty else ""
         print(f"    {'* ' if i == 0 else '  '}{m['question'][:60]}")
-        print(f"       buzz={score_market(m):.1f} + cat_bonus={bonus} = total={hero_score(m):.1f} | Δ={m['change_pts']}pts")
+        print(f"       buzz={score_market(m):.1f} + cat={bonus}{penalty_str} = total={hero_score(m):.1f} | Δ={m['change_pts']}pts vol={m['volume_fmt']}")
 
     return winner
 
@@ -1249,7 +1273,20 @@ def main():
         print(f"    {i}. [{m['source']}] {m['question'][:55]}{flag_str}")
         print(f"       prob={m['prob']}% Δ={m['change_pts']}pts vol={m['volume_fmt']} 24h={fmt_volume(m['volume_24h'])} score={score_market(m):.2f}")
 
-    hero      = pick_hero(all_markets)
+    # Load yesterday's hero topic for repeat-penalty logic
+    yesterday_topic = ""
+    try:
+        with open("data/markets.json") as f:
+            prev = json.load(f)
+        prev_hero = prev.get("hero") or {}
+        prev_question = prev_hero.get("question", "")
+        if prev_question:
+            yesterday_topic = get_topic_key({"question": prev_question, "source": "Polymarket"})
+            print(f"  Yesterday's hero topic key: '{yesterday_topic}'")
+    except Exception:
+        pass  # First run or missing file — no penalty applied
+
+    hero      = pick_hero(all_markets, yesterday_topic=yesterday_topic)
     hero_slug = hero["slug"] if hero else ""
     movers    = pick_movers(all_markets, exclude_slug=hero_slug)
     ticker    = pick_ticker(all_markets)
