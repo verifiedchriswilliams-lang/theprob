@@ -28,12 +28,15 @@ OUTPUT_PATH        = "newsletter/latest.html"
 
 HOUSE_STYLE_SYSTEM = (
     "You write for The Prob, a prediction markets newsletter. "
-    "Voice: sharp, confident, dry wit, slightly irreverent. Like The Hustle. "
+    "The north star: help readers make money in prediction markets. "
+    "Every piece of copy should deliver alpha, not just news. "
+    "Ask yourself: what does this price move signal, is the market right, and what would a sharp bettor do? "
+    "Voice: sharp, confident, dry wit, slightly irreverent. Like The Hustle meets a trading desk. "
     "Intelligent but not academic. Opinionated but not arrogant. "
     "NEVER use em dashes. Use a comma or start a new sentence instead. "
     "Short sentences. Active voice. Numbers as numerals ($2M, 47%). "
     "No hedging. No fluff. No filler. "
-    "Undetectable as AI. Write like a smart human who finds this genuinely interesting."
+    "Undetectable as AI. Write like a sharp human who has real skin in the game."
 )
 
 # ── LOAD DATA ─────────────────────────────────────────────────────────────────
@@ -104,9 +107,9 @@ def color_prob(prob: float) -> str:
     return "#f5a623"                    # amber
 
 def arrow(change: float) -> str:
-    if change > 0:  return "▲"
-    if change < 0:  return "▼"
-    return "–"
+    if change > 0:  return "&#9650;"
+    if change < 0:  return "&#9660;"
+    return "&ndash;"
 
 def change_color(change: float) -> str:
     if change > 0:  return "#00e5a0"
@@ -123,24 +126,26 @@ def build_html(markets: dict, news: dict, subject: str) -> str:
     now_et     = datetime.now(timezone.utc) + timedelta(hours=-5)
     date_str   = now_et.strftime("%B %-d, %Y")
 
-    # ── STYLES (inline for email client compatibility) ──
+    # ── STYLES ──
+    # NOTE: All heading styles use <div> NOT <h1>/<h2>/<h3>
+    # Beehiiv overrides heading tag colors with its own theme — divs are immune.
     S = {
         "body":        "margin:0;padding:0;background:#080b0f;font-family:'DM Sans',Arial,sans-serif;",
         "wrap":        "max-width:600px;margin:0 auto;background:#080b0f;",
         "header":      "background:#080b0f;padding:28px 32px 20px;border-bottom:1px solid #1e2a38;",
-        "logo":        "font-family:'Courier New',monospace;font-size:22px;font-weight:700;color:#00e5a0;letter-spacing:-0.5px;text-decoration:none;",
-        "date_line":   "font-family:'Courier New',monospace;font-size:10px;color:#546e85;letter-spacing:0.15em;text-transform:uppercase;margin-top:6px;",
+        "logo":        "font-family:'Courier New',monospace;font-size:22px;font-weight:700;color:#00e5a0 !important;letter-spacing:-0.5px;text-decoration:none;",
+        "date_line":   "font-family:'Courier New',monospace;font-size:10px;color:#546e85 !important;letter-spacing:0.15em;text-transform:uppercase;margin-top:6px;",
         "section":     "padding:28px 32px;border-bottom:1px solid #1e2a38;",
-        "eyebrow":     "font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#00e5a0;margin-bottom:12px;",
-        "h1":          "font-family:Georgia,serif;font-size:26px;font-weight:700;line-height:1.2;color:#edf2f7;margin:0 0 14px;",
-        "h2":          "font-family:Georgia,serif;font-size:20px;font-weight:700;line-height:1.25;color:#edf2f7;margin:0 0 10px;",
-        "h3":          "font-family:Georgia,serif;font-size:16px;font-weight:700;color:#edf2f7;margin:0 0 6px;",
-        "body_text":   "font-size:15px;color:#8ba3bc;line-height:1.65;margin:0 0 16px;",
-        "small_text":  "font-family:'Courier New',monospace;font-size:10px;color:#546e85;letter-spacing:0.08em;",
-        "cta_btn":     "display:inline-block;background:#00e5a0;color:#080b0f;font-family:'Courier New',monospace;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:12px 28px;text-decoration:none;",
-        "divider":     "height:1px;background:#1e2a38;margin:0;border:none;",
+        "eyebrow":     "font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#00e5a0 !important;margin-bottom:12px;",
+        # KEY FIX: h1/h2/h3 styles are named but applied to <div> tags, not heading tags
+        "h1":          "font-family:Georgia,serif;font-size:26px;font-weight:700;line-height:1.2;color:#edf2f7 !important;margin:0 0 14px;",
+        "h2":          "font-family:Georgia,serif;font-size:20px;font-weight:700;line-height:1.25;color:#edf2f7 !important;margin:0 0 10px;",
+        "h3":          "font-family:Georgia,serif;font-size:16px;font-weight:700;color:#edf2f7 !important;margin:0 0 6px;",
+        "body_text":   "font-size:15px;color:#8ba3bc !important;line-height:1.65;margin:0 0 16px;",
+        "small_text":  "font-family:'Courier New',monospace;font-size:10px;color:#546e85 !important;letter-spacing:0.08em;",
+        "cta_btn":     "display:inline-block;background:#00e5a0;color:#080b0f !important;font-family:'Courier New',monospace;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:12px 28px;text-decoration:none;",
         "footer":      "padding:24px 32px;text-align:center;",
-        "footer_text": "font-family:'Courier New',monospace;font-size:10px;color:#546e85;line-height:1.8;",
+        "footer_text": "font-family:'Courier New',monospace;font-size:10px;color:#546e85 !important;line-height:1.8;",
     }
 
     # ── HERO SECTION ──
@@ -154,25 +159,27 @@ def build_html(markets: dict, news: dict, subject: str) -> str:
     hero_end     = hero.get("end_date", "")
     prob_color   = color_prob(hero_prob)
 
+    # FIX: Use <div> not <h1> — Beehiiv can't override div color
+    # FIX: Use {hero_vol} directly — fmt_volume already includes $, no extra $ needed
     hero_html = f"""
     <tr><td style="{S['section']}">
       <div style="{S['eyebrow']}">Market of the Day &middot; {hero_source}</div>
-      <h1 style="{S['h1']}"><a href="{hero_url}" style="color:#edf2f7;text-decoration:none;">{hero_q}</a></h1>
+      <div style="{S['h1']}"><a href="{hero_url}" style="color:#edf2f7 !important;text-decoration:none;">{hero_q}</a></div>
       <table width="100%" cellpadding="0" cellspacing="0" style="margin:16px 0;">
         <tr>
           <td style="width:40%;vertical-align:top;">
-            <div style="font-family:'Courier New',monospace;font-size:48px;font-weight:700;color:{prob_color};line-height:1;">{hero_prob}<span style="font-size:24px;">%</span></div>
-            <div style="font-family:'Courier New',monospace;font-size:12px;color:{change_color(hero_change)};margin-top:4px;">{arrow(hero_change)} {'+' if hero_change > 0 else ''}{hero_change} pts today</div>
+            <div style="font-family:'Courier New',monospace;font-size:48px;font-weight:700;color:{prob_color} !important;line-height:1;">{hero_prob}<span style="font-size:24px;">%</span></div>
+            <div style="font-family:'Courier New',monospace;font-size:12px;color:{change_color(hero_change)} !important;margin-top:4px;">{arrow(hero_change)} {'+' if hero_change > 0 else ''}{hero_change} pts today</div>
           </td>
           <td style="width:60%;vertical-align:top;padding-left:20px;">
             <div style="{S['small_text']}">VOLUME</div>
-            <div style="font-family:'Courier New',monospace;font-size:14px;color:#edf2f7;margin-bottom:8px;">${hero_vol}</div>
+            <div style="font-family:'Courier New',monospace;font-size:14px;color:#edf2f7 !important;margin-bottom:8px;">{hero_vol}</div>
             <div style="{S['small_text']}">RESOLVES</div>
-            <div style="font-family:'Courier New',monospace;font-size:14px;color:#edf2f7;">{hero_end or 'TBD'}</div>
+            <div style="font-family:'Courier New',monospace;font-size:14px;color:#edf2f7 !important;">{hero_end or 'TBD'}</div>
           </td>
         </tr>
       </table>
-      {f'<p style="{S["body_text"]};font-style:italic;border-left:3px solid #00e5a0;padding-left:14px;color:#8ba3bc;">{hero_take}</p>' if hero_take else ''}
+      {f'<p style="{S["body_text"]};font-style:italic;border-left:3px solid #00e5a0;padding-left:14px;">{hero_take}</p>' if hero_take else ''}
       <a href="{hero_url}" style="{S['cta_btn']}">View Market &rarr;</a>
     </td></tr>"""
 
@@ -184,14 +191,14 @@ def build_html(markets: dict, news: dict, subject: str) -> str:
         c  = m.get("change_pts", 0)
         movers_rows += f"""
         <tr style="background:{bg};">
-          <td style="padding:12px 16px;font-size:13px;color:#edf2f7;font-family:'Courier New',monospace;width:24px;color:#546e85;">{str(i+1).zfill(2)}</td>
+          <td style="padding:12px 16px;font-family:'Courier New',monospace;font-size:13px;width:24px;color:#546e85 !important;">{str(i+1).zfill(2)}</td>
           <td style="padding:12px 8px;">
-            <a href="{m.get('url', SITE_URL)}" style="font-size:13px;color:#edf2f7;text-decoration:none;line-height:1.4;">{m.get('question','')}</a>
-            <div style="font-family:'Courier New',monospace;font-size:10px;color:#546e85;margin-top:3px;">{m.get('display_category','').upper()} &middot; {m.get('source','')}</div>
+            <a href="{m.get('url', SITE_URL)}" style="font-size:13px;color:#edf2f7 !important;text-decoration:none;line-height:1.4;">{m.get('question','')}</a>
+            <div style="font-family:'Courier New',monospace;font-size:10px;color:#546e85 !important;margin-top:3px;">{m.get('display_category','').upper()} &middot; {m.get('source','')}</div>
           </td>
           <td style="padding:12px 16px;text-align:right;white-space:nowrap;vertical-align:top;">
-            <div style="font-family:'Courier New',monospace;font-size:16px;font-weight:700;color:{color_prob(p)};">{p}%</div>
-            <div style="font-family:'Courier New',monospace;font-size:11px;color:{change_color(c)};">{arrow(c)} {abs(c)} pts</div>
+            <div style="font-family:'Courier New',monospace;font-size:16px;font-weight:700;color:{color_prob(p)} !important;">{p}%</div>
+            <div style="font-family:'Courier New',monospace;font-size:11px;color:{change_color(c)} !important;">{arrow(c)} {abs(c)} pts</div>
           </td>
         </tr>"""
 
@@ -204,6 +211,7 @@ def build_html(markets: dict, news: dict, subject: str) -> str:
     </td></tr>"""
 
     # ── NEWS SECTION ──
+    # FIX: <div> not <h3> for news headlines
     news_items = ""
     for i, a in enumerate(articles):
         num      = str(i + 1).zfill(2)
@@ -214,9 +222,9 @@ def build_html(markets: dict, news: dict, subject: str) -> str:
         url      = a.get("url", SITE_URL)
         news_items += f"""
         <tr><td style="padding:16px 0;border-bottom:1px solid #1e2a38;">
-          <div style="font-family:'Courier New',monospace;font-size:10px;color:#546e85;margin-bottom:6px;">{num} &nbsp; {source.upper()} &middot; {pub_date}</div>
-          <h3 style="{S['h3']}"><a href="{url}" style="color:#edf2f7;text-decoration:none;">{title}</a></h3>
-          {f'<p style="font-size:13px;color:#8ba3bc;line-height:1.6;margin:6px 0 0;">{summary}</p>' if summary else ''}
+          <div style="font-family:'Courier New',monospace;font-size:10px;color:#546e85 !important;margin-bottom:6px;">{num} &nbsp; {source.upper()} &middot; {pub_date}</div>
+          <div style="{S['h3']}"><a href="{url}" style="color:#edf2f7 !important;text-decoration:none;">{title}</a></div>
+          {f'<p style="font-size:13px;color:#8ba3bc !important;line-height:1.6;margin:6px 0 0;">{summary}</p>' if summary else ''}
         </td></tr>"""
 
     news_html = f"""
@@ -226,11 +234,12 @@ def build_html(markets: dict, news: dict, subject: str) -> str:
         {news_items}
       </table>
       <div style="margin-top:16px;">
-        <a href="{SITE_URL}/news.html" style="font-family:'Courier New',monospace;font-size:11px;color:#00e5a0;text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;">All Prediction Market News &rarr;</a>
+        <a href="{SITE_URL}/news.html" style="font-family:'Courier New',monospace;font-size:11px;color:#00e5a0 !important;text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;">All Prediction Market News &rarr;</a>
       </div>
     </td></tr>"""
 
     # ── DAILY TAKE SECTION ──
+    # FIX: <div> not <h2> for take headline
     take_html = ""
     if daily_take:
         take_headline = daily_take.get("headline", "")
@@ -242,20 +251,20 @@ def build_html(markets: dict, news: dict, subject: str) -> str:
         sidebar_rows = ""
         for i, item in enumerate(sidebar[:3]):
             label_html = (
-                f'<div style="font-family:\'Courier New\',monospace;font-size:11px;color:#00e5a0;margin-top:4px;">'
+                f'<div style="font-family:\'Courier New\',monospace;font-size:11px;color:#00e5a0 !important;margin-top:4px;">'
                 f'{item.get("label","")}</div>'
             ) if item.get("label") else ""
             sidebar_rows += f"""
             <tr><td style="padding:12px 0;border-bottom:1px solid #1e2a38;">
-              <div style="font-family:'Courier New',monospace;font-size:10px;color:#546e85;margin-bottom:4px;">0{i+1}</div>
-              <div style="font-size:13px;color:#edf2f7;line-height:1.4;">{item.get('headline','')}</div>
+              <div style="font-family:'Courier New',monospace;font-size:10px;color:#546e85 !important;margin-bottom:4px;">0{i+1}</div>
+              <div style="font-size:13px;color:#edf2f7 !important;line-height:1.4;">{item.get('headline','')}</div>
               {label_html}
             </td></tr>"""
 
         take_html = f"""
     <tr><td style="{S['section']}">
       <div style="{S['eyebrow']}">The Prob's Daily Take &middot; {take_cat}</div>
-      <h2 style="{S['h2']}"><a href="{take_url}" style="color:#edf2f7;text-decoration:none;">{take_headline}</a></h2>
+      <div style="{S['h2']}"><a href="{take_url}" style="color:#edf2f7 !important;text-decoration:none;">{take_headline}</a></div>
       <p style="{S['body_text']}">{take_deck}</p>
       {f'<table width="100%" cellpadding="0" cellspacing="0">{sidebar_rows}</table>' if sidebar_rows else ''}
     </td></tr>"""
@@ -263,9 +272,9 @@ def build_html(markets: dict, news: dict, subject: str) -> str:
     # ── CTA SECTION ──
     cta_html = f"""
     <tr><td style="padding:32px;text-align:center;background:#0d1117;">
-      <div style="font-family:'Courier New',monospace;font-size:11px;color:#546e85;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:12px;">The full board is live</div>
+      <div style="font-family:'Courier New',monospace;font-size:11px;color:#546e85 !important;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:12px;">The full board is live</div>
       <a href="{SITE_URL}" style="{S['cta_btn']}">See All Markets &rarr;</a>
-      <div style="font-family:'Courier New',monospace;font-size:10px;color:#546e85;margin-top:16px;">Updated {updated}</div>
+      <div style="font-family:'Courier New',monospace;font-size:10px;color:#546e85 !important;margin-top:16px;">Updated {updated}</div>
     </td></tr>"""
 
     # ── FOOTER ──
@@ -273,9 +282,9 @@ def build_html(markets: dict, news: dict, subject: str) -> str:
     <tr><td style="{S['footer']}">
       <p style="{S['footer_text']}">
         The Prob &middot; Prediction Markets Intelligence<br>
-        <a href="{SITE_URL}" style="color:#546e85;">{SITE_URL}</a><br><br>
+        <a href="{SITE_URL}" style="color:#546e85 !important;">{SITE_URL}</a><br><br>
         Not financial advice. For informational purposes only.<br>
-        <a href="{{{{unsubscribe_url}}}}" style="color:#546e85;">Unsubscribe</a>
+        <a href="{{{{unsubscribe_url}}}}" style="color:#546e85 !important;">Unsubscribe</a>
       </p>
     </td></tr>"""
 
@@ -313,8 +322,6 @@ def build_html(markets: dict, news: dict, subject: str) -> str:
     return html
 
 
-# ── LOOPS API ─────────────────────────────────────────────────────────────────
-
 # ── SAVE OUTPUT ───────────────────────────────────────────────────────────────
 
 def save_newsletter(subject: str, html: str) -> bool:
@@ -322,19 +329,15 @@ def save_newsletter(subject: str, html: str) -> bool:
     try:
         os.makedirs("newsletter", exist_ok=True)
 
-        # Save latest.html (always overwrite — this is today's issue)
         with open(OUTPUT_PATH, "w") as f:
             f.write(html)
 
-        # Also save a dated archive copy
         now_et    = datetime.now(timezone.utc) + timedelta(hours=-5)
         date_slug = now_et.strftime("%Y-%m-%d")
         archive   = f"newsletter/{date_slug}.html"
         with open(archive, "w") as f:
             f.write(html)
 
-        # Save subject line and subtitle to newsletter/latest-subject.txt for easy copy
-        now_et   = datetime.now(timezone.utc) + timedelta(hours=-5)
         subtitle = f"The crowd's read on {now_et.strftime('%B %-d')} — markets, movers, and what it means."
         with open("newsletter/latest-subject.txt", "w") as f:
             f.write(f"SUBJECT: {subject}\n")
