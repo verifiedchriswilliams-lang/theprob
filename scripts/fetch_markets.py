@@ -1487,14 +1487,19 @@ def main():
         if prev_question:
             yesterday_topic = get_topic_key({"question": prev_question, "source": "Polymarket"})
             print(f"  Yesterday's hero topic key: '{yesterday_topic}'")
-        # Kalshi price snapshot: build ticker -> prob from yesterday's all_markets
-        for m in prev.get("all_markets", []):
-            if m.get("source") == "Kalshi":
-                kalshi_prev_probs[m["slug"]] = m["prob"]
-        if kalshi_prev_probs:
-            print(f"  Loaded {len(kalshi_prev_probs)} Kalshi prices from yesterday for delta calc")
+        # Kalshi price snapshot: load from dedicated file (covers all 427 markets,
+        # not just the ~110 that make it into all_markets catalog)
+        pass  # loaded separately below
     except Exception:
         pass  # First run or missing file
+
+    # Load dedicated Kalshi price snapshot (all markets, not just catalog subset)
+    try:
+        with open("data/kalshi_snapshot.json") as f:
+            kalshi_prev_probs = json.load(f)
+        print(f"  Loaded {len(kalshi_prev_probs)} Kalshi prices from snapshot for delta calc")
+    except Exception:
+        pass  # First run — snapshot doesn't exist yet
 
     # Apply yesterday's prices to compute real Kalshi change_pts
     # (Kalshi API returns previous_price=0 — unusable — so we use our own snapshot)
@@ -1576,6 +1581,13 @@ def main():
     os.makedirs("data", exist_ok=True)
     with open("data/markets.json", "w") as f:
         json.dump(output, f, indent=2)
+
+    # Save full Kalshi price snapshot for tomorrow's delta calculation
+    # Must save ALL fetched markets (427), not just the catalog subset
+    kalshi_snapshot = {m["slug"]: m["prob"] for m in kalshi_markets}
+    with open("data/kalshi_snapshot.json", "w") as f:
+        json.dump(kalshi_snapshot, f)
+    print(f"  Saved {len(kalshi_snapshot)} Kalshi prices to kalshi_snapshot.json")
 
     print(f"\n✓ Wrote data/markets.json")
     print(f"  Updated: {updated_str}")
