@@ -575,19 +575,42 @@ def fetch_kalshi() -> list[dict]:
                                 question = event_title
 
                             # Calculate 24h change.
-                            # Kalshi returns last_price and previous_yes_price on a 0-1 decimal
-                            # scale (0.68 = 68 cents), but prob is already on 0-100 scale.
-                            # Must multiply by 100 to get points. Also handle rare cases where
-                            # the API returns values already in cents (>1.0).
-                            last_price = float(m.get("last_price", 0) or 0)
-                            prev_price = float(m.get("previous_yes_price", 0) or m.get("previous_price", 0) or 0)
-                            if last_price > 0 and prev_price > 0:
-                                if last_price <= 1.0:   # decimal scale — convert to points
-                                    last_price *= 100
-                                    prev_price *= 100
-                                change_pts = round(last_price - prev_price, 1)
+                            # Kalshi API field names/scales vary by endpoint version.
+                            # Try explicit change fields first, then last vs previous price.
+                            # yes_bid/yes_ask are already 0-100 scale (that is why prob works).
+                            change_pts = 0.0
+                            raw_change = (
+                                m.get("price_change_24h") or
+                                m.get("yes_price_change_24h") or
+                                m.get("one_day_price_change") or
+                                None
+                            )
+                            if raw_change is not None:
+                                raw_change = float(raw_change)
+                                # Normalise: Kalshi sometimes returns decimal (0.05 = 5 pts)
+                                if abs(raw_change) <= 1.0 and raw_change != 0:
+                                    raw_change *= 100
+                                change_pts = round(raw_change, 1)
                             else:
-                                change_pts = 0.0
+                                last_price = float(m.get("last_price", 0) or 0)
+                                prev_price = float(
+                                    m.get("previous_yes_price", 0) or
+                                    m.get("previous_price", 0) or
+                                    m.get("yes_price_24h_ago", 0) or 0
+                                )
+                                if last_price > 0 and prev_price > 0:
+                                    if last_price <= 1.0:
+                                        last_price *= 100
+                                        prev_price *= 100
+                                    change_pts = round(last_price - prev_price, 1)
+                                else:
+                                    # Log available price fields on first few markets so we
+                                    # can identify the correct field name from the API response
+                                    price_fields = {k: v for k, v in m.items()
+                                                   if any(x in k.lower() for x in
+                                                   ["price", "change", "prev", "prior", "yesterday", "ago"])}
+                                    if price_fields and pages == 0 and len(results) < 3:
+                                        print(f"    [DEBUG Kalshi price fields] {ticker}: {price_fields}")
 
                             disp_cat = KALSHI_CATEGORY_MAP.get(category, category or "World")
                             results.append({
@@ -865,32 +888,15 @@ def get_topic_key(m: dict) -> str:
 
 # ── HERO SELECTION ───────────────────────────────────────────────────────────
 
-# Category bonus points added to buzz score for hero selection.
-# Politics gets the biggest bonus but a large move in any category can still win.
-# This replaces the old hard lexicographic sort (Politics always beat Finance, etc.)
-# which caused the same stale Politics market to win day after day.
-HERO_CATEGORY_BONUS = {
-    "Politics":   18,   # ~equivalent to a 7-pt price move advantage
-    "Finance":    12,
-    "World":       8,
-    "Technology":  5,
-    "Culture":     3,
-    "Crypto":      0,
-}
-
 def pick_hero(markets: list[dict], yesterday_topic: str = "") -> dict | None:
     """
     The hero is the single most buzzworthy non-sports market.
 
-    Scoring = buzz_score + category_bonus - repeat_penalty
-      - Politics gets +18 pts, Finance +12, down to Crypto +0
-      - A big move in any category can overcome the category bonus
+    Scoring = buzz_score - repeat_penalty
+      - Pure market signal: no category bonus — biggest mover wins
       - Hard staleness gate: must have moved >= HERO_MIN_CHANGE_PTS in 24h
-        so the same low-movement market can't win day after day
-      - Series deduplication: only the highest-move variant of each topic
-        enters the pool (prevents date-ladder markets flooding candidates)
+      - Series deduplication: only highest-move variant of each topic enters
       - Repeat penalty: yesterday's hero topic gets -HERO_REPEAT_PENALTY pts
-        so the same story doesn't lead 4 days in a row
 
     Fallback: if nothing clears the staleness gate, use any mover >= 1 pt.
     Final fallback: best candidate regardless of movement.
@@ -905,9 +911,7 @@ def pick_hero(markets: list[dict], yesterday_topic: str = "") -> dict | None:
     ]
 
     def hero_score(m: dict) -> float:
-        cat      = m.get("display_category", "World")
-        bonus    = HERO_CATEGORY_BONUS.get(cat, 0)
-        base     = score_market(m) + bonus
+        base = score_market(m)
         # Penalise if this topic was yesterday's hero
         if yesterday_topic and get_topic_key(m) == yesterday_topic:
             base -= HERO_REPEAT_PENALTY
@@ -927,7 +931,7 @@ def pick_hero(markets: list[dict], yesterday_topic: str = "") -> dict | None:
             seen_topics[key] = m
         else:
             # Prefer the variant with the bigger absolute price move today.
-            # Tiebreak on hero_score (which includes volume + category bonus).
+            # Tiebreak on hero_score (buzz score minus any repeat penalty).
             if abs(m["change_pts"]) > abs(existing["change_pts"]):
                 seen_topics[key] = m
             elif abs(m["change_pts"]) == abs(existing["change_pts"]) and hero_score(m) > hero_score(existing):
@@ -953,12 +957,10 @@ def pick_hero(markets: list[dict], yesterday_topic: str = "") -> dict | None:
         print(f"  Repeat penalty ({HERO_REPEAT_PENALTY} pts) applied to: '{yesterday_topic}'")
     top3 = sorted(pool, key=hero_score, reverse=True)[:3]
     for i, m in enumerate(top3):
-        cat      = m.get("display_category", "World")
-        bonus    = HERO_CATEGORY_BONUS.get(cat, 0)
         penalty  = HERO_REPEAT_PENALTY if yesterday_topic and get_topic_key(m) == yesterday_topic else 0
-        penalty_str = f" - repeat_penalty={penalty}" if penalty else ""
+        penalty_str = f" - repeat={penalty}" if penalty else ""
         print(f"    {'* ' if i == 0 else '  '}{m['question'][:60]}")
-        print(f"       buzz={score_market(m):.1f} + cat={bonus}{penalty_str} = total={hero_score(m):.1f} | Δ={m['change_pts']}pts vol={m['volume_fmt']}")
+        print(f"       buzz={score_market(m):.1f}{penalty_str} = total={hero_score(m):.1f} | Δ={m['change_pts']}pts vol={m['volume_fmt']}")
 
     return winner
 
