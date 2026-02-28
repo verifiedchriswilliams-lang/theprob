@@ -574,10 +574,20 @@ def fetch_kalshi() -> list[dict]:
                             else:
                                 question = event_title
 
-                            # Calculate 24h change
+                            # Calculate 24h change.
+                            # Kalshi returns last_price and previous_yes_price on a 0-1 decimal
+                            # scale (0.68 = 68 cents), but prob is already on 0-100 scale.
+                            # Must multiply by 100 to get points. Also handle rare cases where
+                            # the API returns values already in cents (>1.0).
                             last_price = float(m.get("last_price", 0) or 0)
                             prev_price = float(m.get("previous_yes_price", 0) or m.get("previous_price", 0) or 0)
-                            change_pts = round(last_price - prev_price, 1) if last_price > 0 and prev_price > 0 else 0.0
+                            if last_price > 0 and prev_price > 0:
+                                if last_price <= 1.0:   # decimal scale — convert to points
+                                    last_price *= 100
+                                    prev_price *= 100
+                                change_pts = round(last_price - prev_price, 1)
+                            else:
+                                change_pts = 0.0
 
                             disp_cat = KALSHI_CATEGORY_MAP.get(category, category or "World")
                             results.append({
