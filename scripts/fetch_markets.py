@@ -333,8 +333,20 @@ def fetch_polymarket() -> list[dict]:
                     volume_24h = float(m.get("volume24hr", 0) or 0)
                     if volume < MIN_VOLUME_USD:
                         continue
+                    # FIX: oneDayPriceChange is unreliable — can be the NO token delta.
+                    # Validate: implied previous price must be in [0.01, 0.99].
+                    # If not, the field is reporting the wrong token — discard it.
                     change_raw = float(m.get("oneDayPriceChange", 0) or 0)
-                    change_pts = round(change_raw * 100, 1)
+                    implied_prev = yes_price - change_raw
+                    if 0.01 <= implied_prev <= 0.99:
+                        change_pts = round(change_raw * 100, 1)
+                    else:
+                        # Wrong token — try flipping the sign (NO token change → YES change)
+                        implied_prev_flipped = yes_price + change_raw
+                        if 0.01 <= implied_prev_flipped <= 0.99:
+                            change_pts = round(-change_raw * 100, 1)
+                        else:
+                            change_pts = 0.0  # Can't determine direction safely
                     end_date   = m.get("endDate", "") or m.get("endDateIso", "")
 
                     markets.append({
@@ -382,6 +394,78 @@ def fetch_polymarket() -> list[dict]:
             print(f"  Unmapped tags falling to World: {sorted(world_tags)[:20]}")
     except Exception as e:
         print(f"[WARN] Polymarket fetch failed: {e}")
+    # ── Date-ladder consolidation ──────────────────────────────────────────
+    # Some Polymarket events are date-ladder series: the same question with
+    # multiple resolution dates ("US strikes Iran by Feb 28", "by Mar 1", etc.)
+    # Each contract has a different probability (cumulative curve) and its own
+    # oneDayPriceChange. Comparing change_pts ACROSS contracts is meaningless.
+    #
+    # Fix: detect date-ladder series by event slug, then keep only ONE contract
+    # per series — the one with the highest 24h volume (most active right now).
+    # That contract's change_pts reflects its own price history, not a cross-
+    # contract comparison.
+    #
+    # Detection: multiple markets share the same event slug AND their questions
+    # differ only by a date suffix (e.g., "by February 28" vs "by March 1").
+
+    DATE_SUFFIX_RE = re.compile(
+        r'\b(by|before|on|after)\s+'
+        r'(january|february|march|april|may|june|july|august|'
+        r'september|october|november|december)\s+\d{1,2}(?:,\s*\d{4})?'
+        r'|\b(by|before)\s+\d{1,2}/\d{1,2}(?:/\d{2,4})?'
+        r'|\b20\d\d-\d\d-\d\d\b',
+        re.IGNORECASE
+    )
+
+    def event_slug_from_url(url: str) -> str:
+        """Extract the event slug from a Polymarket URL."""
+        # https://polymarket.com/event/us-strikes-iran-by → us-strikes-iran-by
+        parts = url.rstrip("/").split("/")
+        return parts[-1] if parts else url
+
+    def strip_date_from_question(q: str) -> str:
+        """Remove date suffixes to get the base topic for grouping."""
+        return DATE_SUFFIX_RE.sub("", q).strip(" ,?").lower()
+
+    # Group markets by (event_slug, base_question) to find date-ladders
+    from collections import defaultdict
+    event_groups: dict[str, list[dict]] = defaultdict(list)
+    non_ladder: list[dict] = []
+
+    for m in markets:
+        event_slug = event_slug_from_url(m.get("url", ""))
+        base_q     = strip_date_from_question(m.get("question", ""))
+        group_key  = f"{event_slug}||{base_q}"
+        event_groups[group_key].append(m)
+
+    consolidated = []
+    ladder_count = 0
+    for group_key, group in event_groups.items():
+        if len(group) == 1:
+            # Single market — no ladder, keep as-is
+            consolidated.append(group[0])
+        else:
+            # Multiple contracts in same event with similar base question.
+            # Verify they're actually a date-ladder (questions differ by date only).
+            base_questions = set(strip_date_from_question(m["question"]) for m in group)
+            if len(base_questions) == 1:
+                # True date-ladder: pick the contract with highest 24h volume.
+                # That's the one the market is most actively pricing right now.
+                best = max(group, key=lambda m: m.get("volume_24h", 0))
+                # Recalculate change_pts for this contract only (already done
+                # per-contract in fetch loop, so best["change_pts"] is valid).
+                consolidated.append(best)
+                ladder_count += 1
+                if ladder_count <= 5:  # debug first 5 ladders found
+                    print(f"  Date-ladder: '{best['question'][:50]}' chosen from {len(group)} contracts (24h vol: {fmt_volume(best['volume_24h'])})")
+            else:
+                # Same event slug but different topics — keep all
+                consolidated.extend(group)
+
+    if ladder_count:
+        print(f"  Consolidated {ladder_count} date-ladder series ({len(markets)} → {len(consolidated)} markets)")
+    markets = consolidated
+
     print(f"  Got {len(markets)} Polymarket markets above volume threshold")
     return markets
 
