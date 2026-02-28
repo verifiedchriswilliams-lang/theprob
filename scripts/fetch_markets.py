@@ -1473,18 +1473,47 @@ def main():
         print(f"    {i}. [{m['source']}] {m['question'][:55]}{flag_str}")
         print(f"       prob={m['prob']}% Δ={m['change_pts']}pts vol={m['volume_fmt']} 24h={fmt_volume(m['volume_24h'])} score={score_market(m):.2f}")
 
-    # Load yesterday's hero topic for repeat-penalty logic
-    yesterday_topic = ""
+    # Load yesterday's data for:
+    #   1. Repeat-penalty hero topic key
+    #   2. Kalshi price snapshot (API doesn't return previous_price reliably)
+    yesterday_topic   = ""
+    kalshi_prev_probs = {}   # ticker -> prob from last run
     try:
         with open("data/markets.json") as f:
             prev = json.load(f)
-        prev_hero = prev.get("hero") or {}
+        # Hero repeat penalty
+        prev_hero     = prev.get("hero") or {}
         prev_question = prev_hero.get("question", "")
         if prev_question:
             yesterday_topic = get_topic_key({"question": prev_question, "source": "Polymarket"})
             print(f"  Yesterday's hero topic key: '{yesterday_topic}'")
+        # Kalshi price snapshot: build ticker -> prob from yesterday's all_markets
+        for m in prev.get("all_markets", []):
+            if m.get("source") == "Kalshi":
+                kalshi_prev_probs[m["slug"]] = m["prob"]
+        if kalshi_prev_probs:
+            print(f"  Loaded {len(kalshi_prev_probs)} Kalshi prices from yesterday for delta calc")
     except Exception:
-        pass  # First run or missing file — no penalty applied
+        pass  # First run or missing file
+
+    # Apply yesterday's prices to compute real Kalshi change_pts
+    # (Kalshi API returns previous_price=0 — unusable — so we use our own snapshot)
+    kalshi_fixed = 0
+    for m in kalshi_markets:
+        prev_prob = kalshi_prev_probs.get(m["slug"])
+        if prev_prob is not None:
+            real_change = round(m["prob"] - prev_prob, 1)
+            m["change_pts"] = real_change
+            m["direction"]  = change_direction(real_change)
+            kalshi_fixed += 1
+    if kalshi_fixed:
+        print(f"  Fixed change_pts for {kalshi_fixed} Kalshi markets using stored prices")
+    elif kalshi_prev_probs:
+        print(f"  [WARN] Kalshi snapshot loaded but no tickers matched current markets")
+
+    # Rebuild all_markets with corrected Kalshi data
+    all_markets = poly_markets + kalshi_markets
+
 
     hero      = pick_hero(all_markets, yesterday_topic=yesterday_topic)
     hero_slug = hero["slug"] if hero else ""
