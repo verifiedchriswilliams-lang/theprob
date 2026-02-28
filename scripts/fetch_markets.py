@@ -1498,8 +1498,10 @@ def main():
         with open("data/kalshi_snapshot.json") as f:
             kalshi_prev_probs = json.load(f)
         print(f"  Loaded {len(kalshi_prev_probs)} Kalshi prices from snapshot for delta calc")
-    except Exception:
-        pass  # First run — snapshot doesn't exist yet
+    except FileNotFoundError:
+        print("  [INFO] No Kalshi snapshot yet — will create on this run")
+    except Exception as e:
+        print(f"  [WARN] Kalshi snapshot load failed: {e}")
 
     # Apply yesterday's prices to compute real Kalshi change_pts
     # (Kalshi API returns previous_price=0 — unusable — so we use our own snapshot)
