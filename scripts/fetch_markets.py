@@ -466,6 +466,54 @@ def fetch_polymarket() -> list[dict]:
         print(f"  Consolidated {ladder_count} date-ladder series ({len(markets)} → {len(consolidated)} markets)")
     markets = consolidated
 
+    # ── Range-bucket consolidation ──────────────────────────────────────────
+    # Some events are range/categorical markets: same question with different
+    # outcome buckets ("<120 seats", "120-134 seats", "180+ seats").
+    # For movers/ticker: keep only the highest-probability bucket as the
+    # representative — that's the crowd's best guess for the actual outcome.
+    # (Hero exclusion is handled separately in pick_hero via is_range_bucket_market)
+    #
+    # Detection: same event slug, questions share a common prefix before the bucket.
+
+    def strip_bucket_from_question(q: str) -> str:
+        """Strip range/bucket suffix to get parent event topic."""
+        # Remove after "::" (Kalshi-style bucket separator)
+        q = re.sub(r'::.+$', '', q)
+        # Remove trailing range patterns
+        q = RANGE_BUCKET_RE.sub('', q)
+        return q.strip(" :?,").lower()
+
+    bucket_groups: dict[str, list[dict]] = defaultdict(list)
+    for m in markets:
+        if is_range_bucket_market(m):
+            event_slug = event_slug_from_url(m.get("url", ""))
+            base_q     = strip_bucket_from_question(m.get("question", ""))
+            group_key  = f"bucket||{event_slug}||{base_q}"
+            bucket_groups[group_key].append(m)
+        # non-bucket markets added below
+
+    bucket_consolidated = []
+    non_bucket = [m for m in markets if not is_range_bucket_market(m)]
+    bucket_series_count = 0
+
+    for group_key, group in bucket_groups.items():
+        if len(group) == 1:
+            bucket_consolidated.append(group[0])
+        else:
+            # Pick the highest-probability bucket — that's what the crowd thinks
+            # is the most likely outcome range. Use it to represent the event.
+            best = max(group, key=lambda m: m.get("prob", 0))
+            # Tag it so downstream display knows it's a range market
+            best["is_range_bucket"] = True
+            best["bucket_count"]    = len(group)
+            bucket_consolidated.append(best)
+            bucket_series_count += 1
+
+    if bucket_series_count:
+        before = len(markets)
+        markets = non_bucket + bucket_consolidated
+        print(f"  Consolidated {bucket_series_count} range-bucket series ({before} → {len(markets)} markets)")
+    
     print(f"  Got {len(markets)} Polymarket markets above volume threshold")
     return markets
 
@@ -612,6 +660,61 @@ SPORTS_KEYWORDS = [
     "grand slam", "formula 1", "formula one",
     "ufc", "mma", "boxing match", "fight night",
 ]
+
+# Regex to detect range-bucket questions: numeric ranges like "<120", "120-134", "180+"
+# Also catches price bands like "$60K-$80K", "between 3% and 5%", "above $100"
+RANGE_BUCKET_RE = re.compile(
+    r'(?:'
+    r'\d[\d,]*\s*[-–]\s*\d[\d,]*'          # "120-134", "60,000-80,000"
+    r'|\d[\d,]*\s*\+'                        # "180+"
+    r'|<\s*\d[\d,]*'                         # "<120"
+    r'|>\s*\d[\d,]*'                         # ">180"
+    r'|between\s+\d'                         # "between 3%..."
+    r'|above\s+\$?\d'                        # "above $100"
+    r'|below\s+\$?\d'                        # "below $50"
+    r'|at\s+least\s+\$?\d'                      # "at least 5..." or "at least $100K"
+    r'|at\s+most\s+\$?\d'                       # "at most 3..."
+    r'|more\s+than\s+\$?\d'                     # "more than 10..."
+    r'|fewer\s+than\s+\$?\d'                    # "fewer than 120..."
+    r'|less\s+than\s+\$?\d'                     # "less than 50..."
+    r'|past\s+\d'                            # "Past 10AM..." (Kalshi shutdown length)
+    r')',
+    re.IGNORECASE
+)
+
+def is_range_bucket_market(m: dict) -> bool:
+    """
+    Returns True if this market is one bucket in a range/categorical series.
+    Examples:
+      - "Will the People's Party win fewer than 120 seats?"
+      - "# of seats won by PPLE: 120-134"
+      - "How low will Bitcoin get: below $40K"
+      - "How long will the shutdown last?: :: Past 10AM 4/5"
+    These are meaningful in movers/ticker but misleading as hero because
+    no single bucket represents the full story.
+    """
+    q = m.get("question", "")
+
+    # Fast path: "::" is always a bucket separator (Kalshi range markets)
+    if "::" in q:
+        return True
+
+    if not RANGE_BUCKET_RE.search(q):
+        return False
+
+    # Has a range pattern — now confirm it's a bucket not a normal question.
+    # Key signal: the range/quantity pattern is the *resolution condition*,
+    # not just a reference. Check if it appears after ":" or near end of question.
+    after_colon = q.split(":")[-1] if ":" in q else q
+    if RANGE_BUCKET_RE.search(after_colon):
+        return True
+
+    # Short questions dominated by the range condition
+    clean = q.strip("?. ")
+    if len(clean) < 60 and RANGE_BUCKET_RE.search(clean):
+        return True
+
+    return False
 
 def is_sports_market(m: dict) -> bool:
     # Kalshi: trust category field
@@ -787,6 +890,7 @@ def pick_hero(markets: list[dict], yesterday_topic: str = "") -> dict | None:
         if m["volume"] >= HERO_MIN_VOLUME
         and not is_effectively_resolved(m)
         and not is_junk_market(m)
+        and not is_range_bucket_market(m)   # range buckets are misleading as hero
         and (not is_sports_market(m) or m["volume"] >= HERO_SPORTS_MIN_VOLUME)
     ]
 
