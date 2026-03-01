@@ -1558,7 +1558,42 @@ def main():
             seen_poly_slugs.add(slug)
         if not m.get("display_category"):
             m["display_category"] = get_category_label(m)
+
+        # ── Trading signal classification ────────────────────────────────────
+        # Surfaces actionable markets for traders on category pages.
+        # Priority: knife_edge > momentum > volume_spike > active > stale
+        prob      = m.get("prob", 50)
+        change    = abs(m.get("change_pts", 0))
+        vol       = m.get("volume", 0)
+        vol_24h   = m.get("volume_24h", 0)
+        vol_ratio = vol_24h / vol if vol > 0 else 0
+
+        if 40 <= prob <= 60 and vol >= 50_000:
+            trading_signal = "knife_edge"    # max uncertainty + liquid = most tradeable
+        elif change >= 5:
+            trading_signal = "momentum"      # big move today — momentum play
+        elif vol_ratio >= 0.20 and vol_24h >= 10_000:
+            trading_signal = "volume_spike"  # heavy recent activity — something is happening
+        elif vol < 25_000 and change < 2:
+            trading_signal = "stale"         # low vol, no move — not actionable
+        else:
+            trading_signal = "active"
+
+        m["trading_signal"] = trading_signal
+
+        # ── Category trading rank ─────────────────────────────────────────────
+        # Sort score for category pages, optimized for traders.
+        # Weights recent activity heavily vs buzz score (which uses total volume).
+        move_score    = change * 3
+        activity_score = (math.log10(vol_24h + 1) * 2) if vol_24h > 0 else 0
+        ke_bonus      = 8 if trading_signal == "knife_edge" else 0
+        stale_penalty = -20 if trading_signal == "stale" else 0
+        m["cat_rank"] = round(move_score + activity_score + ke_bonus + stale_penalty, 2)
+
         catalog.append(m)
+
+    # Sort catalog by cat_rank so frontend gets trading-optimized order by default
+    catalog.sort(key=lambda m: m.get("cat_rank", 0), reverse=True)
 
     # Generate hero "The Prob's Take"
     if hero:
