@@ -604,13 +604,7 @@ def fetch_kalshi() -> list[dict]:
                                         prev_price *= 100
                                     change_pts = round(last_price - prev_price, 1)
                                 else:
-                                    # Log available price fields on first few markets so we
-                                    # can identify the correct field name from the API response
-                                    price_fields = {k: v for k, v in m.items()
-                                                   if any(x in k.lower() for x in
-                                                   ["price", "change", "prev", "prior", "yesterday", "ago"])}
-                                    if price_fields and pages == 0 and len(results) < 3:
-                                        print(f"    [DEBUG Kalshi price fields] {ticker}: {price_fields}")
+                                    pass  # Snapshot system handles delta — no fallback needed
 
                             disp_cat = KALSHI_CATEGORY_MAP.get(category, category or "World")
                             results.append({
@@ -888,7 +882,7 @@ def get_topic_key(m: dict) -> str:
 
 # ── HERO SELECTION ───────────────────────────────────────────────────────────
 
-def pick_hero(markets: list[dict], yesterday_topic: str = "") -> dict | None:
+def pick_hero(markets: list[dict], recent_topics: list[str] | None = None) -> dict | None:
     """
     The hero is the single most buzzworthy non-sports market.
 
@@ -896,11 +890,13 @@ def pick_hero(markets: list[dict], yesterday_topic: str = "") -> dict | None:
       - Pure market signal: no category bonus — biggest mover wins
       - Hard staleness gate: must have moved >= HERO_MIN_CHANGE_PTS in 24h
       - Series deduplication: only highest-move variant of each topic enters
-      - Repeat penalty: yesterday's hero topic gets -HERO_REPEAT_PENALTY pts
+      - Rolling 3-day repeat penalty: any topic that won in the last 3 days
+        gets -HERO_REPEAT_PENALTY pts, preventing the same story dominating all week
 
     Fallback: if nothing clears the staleness gate, use any mover >= 1 pt.
     Final fallback: best candidate regardless of movement.
     """
+    recent_topics = recent_topics or []
     base_candidates = [
         m for m in markets
         if m["volume"] >= HERO_MIN_VOLUME
@@ -912,8 +908,8 @@ def pick_hero(markets: list[dict], yesterday_topic: str = "") -> dict | None:
 
     def hero_score(m: dict) -> float:
         base = score_market(m)
-        # Penalise if this topic was yesterday's hero
-        if yesterday_topic and get_topic_key(m) == yesterday_topic:
+        # Penalise if this topic won hero in the last 3 days
+        if recent_topics and get_topic_key(m) in recent_topics:
             base -= HERO_REPEAT_PENALTY
         return base
 
@@ -953,11 +949,11 @@ def pick_hero(markets: list[dict], yesterday_topic: str = "") -> dict | None:
 
     # Debug output so you can see why a market won
     print(f"\n  Hero selection pool: {len(pool)} unique topics (staleness gate: {HERO_MIN_CHANGE_PTS} pts, deduped from {len(base_candidates)} candidates)")
-    if yesterday_topic:
-        print(f"  Repeat penalty ({HERO_REPEAT_PENALTY} pts) applied to: '{yesterday_topic}'")
+    if recent_topics:
+        print(f"  Repeat penalty ({HERO_REPEAT_PENALTY} pts) applied to: {recent_topics}")
     top3 = sorted(pool, key=hero_score, reverse=True)[:3]
     for i, m in enumerate(top3):
-        penalty  = HERO_REPEAT_PENALTY if yesterday_topic and get_topic_key(m) == yesterday_topic else 0
+        penalty  = HERO_REPEAT_PENALTY if recent_topics and get_topic_key(m) in recent_topics else 0
         penalty_str = f" - repeat={penalty}" if penalty else ""
         print(f"    {'* ' if i == 0 else '  '}{m['question'][:60]}")
         print(f"       buzz={score_market(m):.1f}{penalty_str} = total={hero_score(m):.1f} | Δ={m['change_pts']}pts vol={m['volume_fmt']}")
@@ -1473,23 +1469,31 @@ def main():
         print(f"    {i}. [{m['source']}] {m['question'][:55]}{flag_str}")
         print(f"       prob={m['prob']}% Δ={m['change_pts']}pts vol={m['volume_fmt']} 24h={fmt_volume(m['volume_24h'])} score={score_market(m):.2f}")
 
-    # Load yesterday's data for:
-    #   1. Repeat-penalty hero topic key
+    # Load recent data for:
+    #   1. Rolling 3-day hero repeat-penalty (prevents same topic dominating all week)
     #   2. Kalshi price snapshot (API doesn't return previous_price reliably)
-    yesterday_topic   = ""
-    kalshi_prev_probs = {}   # ticker -> prob from last run
+    recent_hero_topics = []   # up to last 3 hero topic keys
+    kalshi_prev_probs  = {}   # ticker -> prob from last run
     try:
         with open("data/markets.json") as f:
             prev = json.load(f)
-        # Hero repeat penalty
+        # Collect hero topic history (today's markets.json has yesterday's hero)
+        def _topic(q):
+            return get_topic_key({"question": q, "source": "Polymarket"}) if q else ""
         prev_hero     = prev.get("hero") or {}
         prev_question = prev_hero.get("question", "")
         if prev_question:
-            yesterday_topic = get_topic_key({"question": prev_question, "source": "Polymarket"})
-            print(f"  Yesterday's hero topic key: '{yesterday_topic}'")
-        # Kalshi price snapshot: load from dedicated file (covers all 427 markets,
-        # not just the ~110 that make it into all_markets catalog)
-        pass  # loaded separately below
+            recent_hero_topics.append(_topic(prev_question))
+        # Load prior days from hero_history list if present
+        for q in prev.get("hero_history", []):
+            t = _topic(q)
+            if t and t not in recent_hero_topics:
+                recent_hero_topics.append(t)
+                if len(recent_hero_topics) >= 3:
+                    break
+        if recent_hero_topics:
+            print(f"  Rolling hero block ({len(recent_hero_topics)} days): {recent_hero_topics}")
+        pass  # Kalshi snapshot loaded separately below
     except Exception:
         pass  # First run or missing file
 
@@ -1522,7 +1526,7 @@ def main():
     all_markets = poly_markets + kalshi_markets
 
 
-    hero      = pick_hero(all_markets, yesterday_topic=yesterday_topic)
+    hero      = pick_hero(all_markets, recent_topics=recent_hero_topics)
     hero_slug = hero["slug"] if hero else ""
     movers    = pick_movers(all_markets, exclude_slug=hero_slug)
     ticker    = pick_ticker(all_markets)
@@ -1605,14 +1609,27 @@ def main():
     if daily_take:
         print(f"  Headline: {daily_take['headline'][:70]}")
 
+    # Build rolling hero history (keep last 3 questions for repeat-penalty)
+    hero_question = hero.get("question", "") if hero else ""
+    hero_history  = [hero_question] if hero_question else []
+    for q in recent_hero_topics[:2]:   # keep up to 2 prior days
+        # Reverse-lookup question from topic key isn't easy; store keys directly
+        pass
+    # Simpler: store the actual topic keys (already computed)
+    hero_history_keys = ([get_topic_key({"question": hero_question, "source": ""})]
+                         if hero_question else [])
+    hero_history_keys += [t for t in recent_hero_topics if t not in hero_history_keys]
+    hero_history_keys  = hero_history_keys[:3]   # cap at 3 days
+
     output = {
-        "updated":     updated_str,
-        "updated_iso": now_utc.isoformat(),
-        "hero":        hero,
-        "movers":      movers,
-        "ticker":      ticker,
-        "daily_take":  daily_take,
-        "all_markets": catalog,
+        "updated":      updated_str,
+        "updated_iso":  now_utc.isoformat(),
+        "hero":         hero,
+        "hero_history": hero_history_keys,
+        "movers":       movers,
+        "ticker":       ticker,
+        "daily_take":   daily_take,
+        "all_markets":  catalog,
     }
 
     os.makedirs("data", exist_ok=True)
