@@ -1,8 +1,44 @@
 {
-  "updated": "Mar 2, 2026 \u00b7 2:25 PM ET",
-  "updated_iso": "2026-03-02T19:25:17.429423+00:00",
+  "updated": "Mar 2, 2026 \u00b7 6:54 PM ET",
+  "updated_iso": "2026-03-02T23:54:17.131619+00:00",
   "homepage_count": 3,
   "articles": [
+    {
+      "title": "New coalition calls for state crackdowns on prediction markets",
+      "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxQU2lKaXpEbDByMEUteWhNcURWWkZQY3lXNDlEdzlNSHFIdlhTcVd2RkpEUHE2UUh5RTRsU0RHVTBEdXVzOEJXaEVCNHFSNXc0X0oxTGhjU2EwbnBMZlktaEs0YnA3Zy1RTXBaNUdBalRyOF9fR2hHUDR3YXlwc21ZMmhYTFh4cnN5aGpvc1NwU1BtNXhCNmhZeWx6Si1rX3dsZEFTaUd6b1o1bXN1MUHSAbMBQVVfeXFMT1lqVEpvbWNsYi1RdDUyX2I4ZnYxQmxXUWRTOHVPV2o3azNOcjNKNWVlUUhMNlJRclpybUMtYWhEdjZNVGF6S0c2UUhIeXVyUTFqLURQaW5BbmNlQnI4anZhSUpvY0Q1YV9CUVdSa1NxMlBqNFNITjJLMExwbkNDSnZwcGdJSGw5RTlxV0tnRktuUTFXYTFQbUlnekdRbF9UdjhDam5ZMTFnOUxDNV9kSDhERVU?oc=5",
+      "source": "The Hill",
+      "pub_iso": "2026-03-02T22:32:00+00:00",
+      "description": "",
+      "summary": "A new coalition is pushing state governments to crack down on prediction markets through regulatory action or outright bans. This signals a coordinated effort that could fragment the US prediction market landscape, forcing platforms to navigate a patchwork of state-by-state restrictions similar to what sports betting faced before widespread legalization.",
+      "pub_display": "Mar 2"
+    },
+    {
+      "title": "Kalshi, Polymarket Combine for $17.9B February Volume as Polymarket Closes Gap",
+      "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxPSDRYSE43RlFfMklkdElGX1VoTDJzOWNwQmVLZ19mNTlyaGxyU3pNZnFaM245dGx1WFZodl9tVXp4amw4dlpFclh3YTJET0RIUTBwYU5iejlDN1pTTHhKZlNoa09ZN19RX2I2VGh0aDg0bmJIRHNUQVBlVWJ2anRHeHVDUzNFQm9PZDdWOUpVd0lEWWNaMzVYakRMVnFvVDlRaXVWU1V3?oc=5",
+      "source": "DeFi Rate",
+      "pub_iso": "2026-03-02T21:02:50+00:00",
+      "description": "",
+      "summary": "Kalshi and Polymarket posted a combined $17.9 billion in trading volume for February, with Polymarket apparently narrowing the gap between the two platforms. The massive volume surge signals prediction markets are hitting mainstream adoption levels that will force regulators and traditional finance to take notice.",
+      "pub_display": "Mar 2"
+    },
+    {
+      "title": "DraftKings CEO on launch of new 'super app,' prediction markets and more",
+      "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxPSjlPZnF0LXBmMFNacG9yUmxNSmYzbmRicFdaSmRGd3RCS0NNb24ySHN3b2NHd3h5SHRweE9jam5WSHdnQWhxM0c2a0xZX2VBQXpmUGNXc0hEWkV3aUVFTWpFYjBsSmhLdmxuazkycVJ5aHNWVXBFTWx0TmJZc3hMZWJVS3Fhb2pUVWNPR0ZBQlhXYWdfbFZLM2k3LUpoN1JQYTBJcFM5ejEyMjMxd1VrZUR3?oc=5",
+      "source": "CNBC",
+      "pub_iso": "2026-03-02T20:41:46+00:00",
+      "description": "",
+      "summary": "DraftKings CEO Jason Robins discussed the company's expansion into a \"super app\" that consolidates sports betting, daily fantasy, and potentially prediction markets under one platform. The move signals DraftKings is betting big on diversification beyond traditional sports wagering, which could bring prediction markets to millions of mainstream users if they pull the trigger.",
+      "pub_display": "Mar 2"
+    },
+    {
+      "title": "AP to provide Kalshi its gold standard elections data ahead of primaries",
+      "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE0yNl94X01BbWl0aFpSOTh4MmZ4d3Fzb1dQYkM2cDBzcC1MTnRNVTNPS1lyMFM5ZVFuSmRCOE5iU2pZNDNGNE5sWUhaRzdHeDh3ZzNSMTc0QjA4S09NLWFfS0RuS2ZDNnZVY1JN?oc=5",
+      "source": "Kalshi",
+      "pub_iso": "2026-03-02T20:27:48+00:00",
+      "description": "",
+      "summary": "The Associated Press will supply Kalshi with its election data for upcoming primary races, giving the prediction market access to the news organization's authoritative vote tallies and race calls. This partnership legitimizes Kalshi's election betting markets by tying payouts to the most trusted source in election reporting, which should boost trader confidence and potentially attract institutional money.",
+      "pub_display": "Mar 2"
+    },
     {
       "title": "Underdog Cuts Jobs While Pivoting to Prediction Markets",
       "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxQMWtDdEZ6MXd4V3Blb19Say1adGkxWDFCNEQ5S0RPdXZ2Y3h4eHRfTEtmSVpqaGxPd0VPZElRcjAtTmt1SjZLdWxoakFQVlBoX2c0VnVpMUh5b0ZEZ21rQW9KYTVSd01zM1FRdUY5NEpGQjhqVUZOVWZ4NC12bVp5Q085bw?oc=5",
@@ -13,30 +49,21 @@
       "pub_display": "Mar 2"
     },
     {
-      "title": "Polymarket user wins $200,000 betting on date of Israeli attack of Iran",
-      "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxOYm8xS1MtN1pTcXR4WFRLMHlJd2JIMzI5NGNxWjJDUDVZQzV1MGVIRXlqTlFSTk5EUlpTQzlkTVZPajVKaV85cFJRUG1jYUVIaDg1Qi1UdVFrUWd6dlV4aVpYb2RFejlNWUNfR3Jmd1BsT3dsbjVFVzlzXzFzTVc5TjFSdk92QQ?oc=5",
-      "source": "Yahoo",
-      "pub_iso": "2026-03-02T18:19:13+00:00",
-      "description": "",
-      "summary": "A Polymarket trader correctly predicted the timing of Israel's retaliatory strike on Iran and walked away with $200,000. The win demonstrates how geopolitical prediction markets can reward those who successfully navigate the intersection of military intelligence, diplomatic signals, and timing speculation.",
-      "pub_display": "Mar 2"
-    },
-    {
-      "title": "Kalshi points to \u2018death carveout\u2019 in Khamenei market as punters revolt",
-      "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxPQWJvUk90bTgzSDdrRjNkdVN5YVU3TEJMZ1lTZU96QWNVZ3VFN2dTTVlkZkNTeGhQcXBsTE5XcGdDMVMzT1ZleEZBSGxHbXpZbTAydEZZMGtOZ1B0aGpxR3J6bUJERUl6MDFpajFmTGl3MWRyMF9MSEJMdWtra01CVVptQk1Fbmp2QmtOaWtOV2ZidFhJaFJB?oc=5",
-      "source": "dlnews.com",
-      "pub_iso": "2026-03-02T17:48:46+00:00",
-      "description": "",
-      "summary": "Kalshi traders are pushing back against the platform's handling of its Khamenei succession market, with the company pointing to fine print that excludes death-related outcomes from payouts. The revolt highlights how murky contract terms can blow up in prediction markets' faces, especially when big political events don't fit neatly into preset categories.",
-      "pub_display": "Mar 2"
-    },
-    {
       "title": "Kalshi licenses election data from the AP",
       "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFB5cmRNNTU4NGduSWdNbVY0Y1BrZ1JNQ3Izd1RmekJEU3lxU3lHeDZBMU5oQmZ6X3kybnpOdDdWXzFQMUNrSVdlMGpmeTFmSTRTVF96LXBnUl9GWWtOSWtJVTcwdHFrZTBU?oc=5",
       "source": "Axios",
-      "pub_iso": "2026-03-02T17:30:51+00:00",
+      "pub_iso": "2026-03-02T17:31:07+00:00",
       "description": "",
       "summary": "Kalshi has struck a deal with the Associated Press to use their election data, likely for settling election betting markets on their platform. This gives Kalshi access to AP's gold standard election calls, which should speed up market resolution and boost credibility with bettors who want fast, authoritative settlements.",
+      "pub_display": "Mar 2"
+    },
+    {
+      "title": "Polymarket user wins big on Israeli-US Iran strike bet",
+      "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE4yajN3UHNtQjhBeFFKc19Hc3ZIeGtFQUxHRjZQSFdmUDR3SDBfZVE2MjYyQ0g0UnVTMWhHMElZTWd3UW5OSEhyc1p6TlFxNWxabUEzS2UzRmhSTElT?oc=5",
+      "source": "The Jerusalem Post",
+      "pub_iso": "2026-03-02T16:19:13+00:00",
+      "description": "",
+      "summary": "A Polymarket trader scored a major win betting on whether Israel or the US would strike Iran, likely capitalizing on recent Middle East tensions. The big payout shows how geopolitical prediction markets can deliver massive returns for traders willing to bet on volatile international events.",
       "pub_display": "Mar 2"
     },
     {
@@ -46,24 +73,6 @@
       "pub_iso": "2026-03-02T15:20:45+00:00",
       "description": "",
       "summary": "Prediction markets are signaling that Democrat James Talarico and Republican Angela Paxton will face off in a key Texas Senate race, suggesting these two have emerged as the clear frontrunners. This matchup matters because Texas races often see wild swings in betting odds as demographic shifts collide with traditional red-state assumptions, creating profit opportunities for sharp bettors who can read the state's evolving political landscape.",
-      "pub_display": "Mar 2"
-    },
-    {
-      "title": "Indian Gaming Association Condemns CFTC Over Prediction Markets, Warns of Threat to Tribal Sovereignty",
-      "url": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxQLTlfakt1bkhYRk50Yk5jVTJoY3VhNUh5T2lzMFhLUk1tdk5QSFRWODhjNDlGWFhqVHpIM0U0M0RRaWRTNGpEbnRkVmp0TjNuYTV1QmNTQnppQ3pyY1ZWYVYzZkZUWFMwRmVRUmpFWWY3eG5neFBQbFROd3dpek81V25YcW54MlBfcUNyS01KNkR0MVo4ZGhsTW8yLVFmOFhBeHJFTGlpcElNQXRxaGJfVGx6Z3hQWHJPQXJPT0VGcl92UzB3RXVHdk85ZW1sbmI1M2xIYldOQWJkUQ?oc=5",
-      "source": "Native News Online",
-      "pub_iso": "2026-03-02T12:17:38+00:00",
-      "description": "",
-      "summary": "The Indian Gaming Association is pushing back against the CFTC's expanded oversight of prediction markets, arguing it threatens tribal nations' sovereign right to regulate gaming on their lands. This could fracture the regulatory landscape if tribes decide to launch their own prediction markets under tribal gaming laws, creating a patchwork of jurisdictions that traders would need to navigate.",
-      "pub_display": "Mar 2"
-    },
-    {
-      "title": "There's Lots Of Noise About Prediction Markets In Congress. But Will Anything Happen?",
-      "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE9LNEUzREZ5U1J0YWk1SHV3WVAxVWM4TjVOcGdQNmJuV3psLVMtQWpkdmp2MTMzWUdlSEptVE16a1Jtc0lYcEtrRE9BU2x5dUpzN2ItQVBvekFMNGJjNXkwQWpFallFRVlweEtwZWtuS0o0Sm9BSXcwcVdrRQ?oc=5",
-      "source": "Event Horizon | Dustin Gouker",
-      "pub_iso": "2026-03-02T12:02:22+00:00",
-      "description": "",
-      "summary": "Congress is making noise about regulating prediction markets, but the actual legislative prospects remain murky. Any real action could reshape how Americans bet on politics and current events, making this more than just political theater for the industry.",
       "pub_display": "Mar 2"
     },
     {
@@ -85,15 +94,6 @@
       "pub_display": "Mar 2"
     },
     {
-      "title": "NBA star's partnership with a prediction market raises new questions for a troubled sports betting landscape",
-      "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNdGE5RlhEcWp3Mm9vdWw4OWo3NVNCakNWUnlDeTA4RzNUa3NueUpoM3BqY0tRcFdtMnZRSnBUNGFkeXJCNEo0M3p5bVZMM2NRajlJbldrZWVZbkg4T193UjdGeXZlNzhlUk5pWkp1UHRLQnpXYVJvbDE2VVJ5MndGRXNYQW4?oc=5",
-      "source": "Fortune",
-      "pub_iso": "2026-03-01T21:02:00+00:00",
-      "description": "",
-      "summary": "An NBA player has partnered with a prediction market platform, adding another layer of complexity to sports betting's already messy regulatory and ethical landscape. The move signals prediction markets are aggressively courting mainstream sports figures, but it also hands regulators and leagues fresh ammunition to crack down on an industry they're already eyeing suspiciously.",
-      "pub_display": "Mar 1"
-    },
-    {
       "title": "Polymarket defends its decision to allow betting on war as \u2018invaluable\u2019",
       "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxOTUY2cFF1OGkwZ2pCN3BLWGljQTRtR3JuQWd2Y0treG5POU5MMmNWMm05S3lXd2NmV1RZRXIwVjFUbmF5aVBGYUl5SGF6U3V4UTJIY0p2dnFlaG1oWktxU0kzQjBLLU9UbHpZZGtmTHZqT2NQaHBkR2R3N002SllDQg?oc=5",
       "source": "The Verge",
@@ -103,13 +103,13 @@
       "pub_display": "Feb 28"
     },
     {
-      "title": "MrBeast video editor fined over insider trading",
-      "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE9IcHhZdVZOVFp6bWJGVmxyWnMwNEw3LS1fMC16QkZJR0VfdGE2V25sVEp1WDFPWDJMc2JyTm1tZTRCRmdpVEFzSTBON1RCa1pubzRXY0VNNTZoUQ?oc=5",
-      "source": "BBC",
-      "pub_iso": "2026-02-25T20:01:22+00:00",
+      "title": "Supreme Court Could Decide Future of Sports Prediction Markets",
+      "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxNVGROc0ZEQUtLOEk1RzJRcHdfbThfMm9GR25GQ3hfQTZUSHZlb3l5Ykt2cEpDblNDLWpNRGpDcDFna0RPZlNYMTE5Sy04a3ozNGJ4OEs3dVY4ajRNNVI5SW5IR2pIMDYyUFQyME9Eei1nd2tJRHZ4dzA3LWttNzA4VnU1VmhhemtpSmtNTThMdnJtVnhFT2lNUkJ3?oc=5",
+      "source": "Sportico.com",
+      "pub_iso": "2026-02-26T13:00:05+00:00",
       "description": "",
-      "summary": "A video editor working for MrBeast got slapped with fines for trading on inside information about upcoming content or business moves. This shows how prediction markets around YouTuber announcements and creator economy bets are getting serious enough that regulators are now watching for information leaks from production teams.",
-      "pub_display": "Feb 25"
+      "summary": "The Supreme Court is weighing a case that could reshape how sports prediction markets operate in the US. If they rule broadly on market regulation or state versus federal jurisdiction, it could either unleash a wave of new betting platforms or slam the door shut on the industry's growth.",
+      "pub_display": "Feb 26"
     }
   ]
 }
