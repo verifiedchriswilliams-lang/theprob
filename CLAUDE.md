@@ -2,277 +2,174 @@
 
 > Read this at the start of every session. Update the TODO section before ending each session.
 
----
-
 ## What Is The Prob
 
-**URL:** https://theprobnewsletter.com  
-**Repo:** https://github.com/verifiedchriswilliams-lang/theprob  
-**Stack:** Static HTML/JS site hosted on GitHub Pages + Python data pipeline + Beehiiv newsletter  
-**Mission:** Help prediction market traders make money by surfacing the most actionable market moves across Polymarket and Kalshi.
-
----
+URL: https://theprobnewsletter.com
+Repo: https://github.com/verifiedchriswilliams-lang/theprob
+Stack: Static HTML/JS site hosted on GitHub Pages + Python data pipeline + Beehiiv newsletter
+Mission: Help prediction market traders make money by surfacing the most actionable market moves across Polymarket and Kalshi.
 
 ## Repo Structure
 
-```
 theprob/
-├── index.html              # Home page
-├── business.html           # Finance/Business category page
-├── sports.html             # Sports category page
-├── tech.html               # Technology category page
-├── culture.html            # Culture category page
-├── politics.html           # Politics category page
-├── news.html               # News page
-├── VOICE.md                # Editorial voice guide for AI-generated copy
-├── CLAUDE.md               # This file
-├── data/
-│   ├── markets.json        # PRIMARY data file — rebuilt every hour by GitHub Actions
-│   └── kalshi_snapshot.json # Kalshi price snapshot for delta calculation (committed hourly)
-├── scripts/
-│   ├── fetch_markets.py    # Main data pipeline (Polymarket + Kalshi fetch, hero/mover selection)
-│   └── send_newsletter.py  # Beehiiv newsletter generation and send
-├── newsletter/             # Newsletter templates and assets
-└── .github/workflows/
-    └── fetch-markets.yml   # Hourly GitHub Actions workflow
-```
-
----
+  index.html              # Home page
+  business.html           # Finance/Business category page
+  sports.html             # Sports category page
+  tech.html               # Technology category page
+  culture.html            # Culture category page
+  politics.html           # Politics category page
+  news.html               # News page
+  theprob_og_1200x630.jpg # OG social sharing image (1200x630px) - NEW
+  sitemap.xml             # XML sitemap submitted to Google Search Console - NEW
+  robots.txt              # Allows all crawlers, references sitemap - NEW
+  VOICE.md                # Editorial voice guide
+  CLAUDE.md               # This file
+  data/
+    markets.json          # PRIMARY data file - rebuilt every hour by GitHub Actions
+    kalshi_snapshot.json  # Kalshi price snapshot for delta calculation
+  scripts/
+    fetch_markets.py      # Main data pipeline
+    send_newsletter.py    # Beehiiv newsletter generation and send
+  .github/workflows/
+    fetch-markets.yml     # Hourly GitHub Actions workflow
 
 ## Data Pipeline — fetch_markets.py
 
-### How It Works
-Runs hourly via GitHub Actions. Fetches ~2000+ markets from Polymarket and Kalshi, filters/scores/selects hero + movers + ticker, writes `data/markets.json`.
+Runs hourly via GitHub Actions. Fetches ~2000+ markets, filters/scores/selects hero + movers + ticker, writes markets.json.
 
-### Key Constants (top of file)
-- `HERO_MIN_VOLUME = 250_000` — minimum $ total volume for hero eligibility
-- `HERO_SPORTS_MIN_VOLUME = 25_000_000` — sports markets need massive volume to be hero
-- `HERO_MIN_CHANGE_PTS = 3.0` — must have moved 3pts in 24h to enter hero pool
-- `HERO_REPEAT_PENALTY = 15` — pts deducted from hero score for recently-won topics
-- `KALSHI_MIN_VOL = 1_000` — minimum $ volume for Kalshi markets
+Key Constants:
+- HERO_MIN_VOLUME = 250_000
+- HERO_SPORTS_MIN_VOLUME = 25_000_000
+- HERO_MIN_CHANGE_PTS = 3.0
+- HERO_REPEAT_PENALTY = 15
+- KALSHI_MIN_VOL = 1_000
 
-### Data Flow
-1. Fetch Polymarket (3 pages by 24h volume + 2 pages by total volume)
+Data Flow:
+1. Fetch Polymarket (3 pages 24h volume + 2 pages total volume)
 2. Deduplicate by event slug
-3. **Date-ladder consolidation** — collapses "US strikes Iran by Feb 27/Mar 1/Mar 8" into single best contract
-4. **Range-bucket consolidation** — collapses "PPLE seats: <120 / 120-134 / 135+" into highest-probability bucket
-5. Fetch Kalshi (general + Technology category)
-6. Load `kalshi_snapshot.json` → compute real `change_pts` for all 442 Kalshi markets (API returns `previous_price: 0`)
-7. Rebuild `all_markets` with corrected Kalshi deltas
-8. Load `markets.json` → extract rolling 3-day hero history for repeat penalty
+3. Date-ladder consolidation
+4. Range-bucket consolidation
+5. Fetch Kalshi
+6. Load kalshi_snapshot.json, compute real change_pts
+7. Rebuild all_markets with corrected Kalshi deltas
+8. Load markets.json, extract rolling 3-day hero history
 9. Pick hero, movers (6), ticker (10)
-10. Enrich catalog with `trading_signal` and `cat_rank` fields
+10. Enrich catalog with trading_signal and cat_rank
 11. Generate hero take + daily take via Claude API
-12. Write `markets.json` + `kalshi_snapshot.json`
+12. Write markets.json + kalshi_snapshot.json
 
-### markets.json Structure
-```json
-{
-  "updated": "Mar 1, 2026 · 4:43 PM ET",
-  "updated_iso": "2026-03-01T...",
-  "hero": { ...market object... },
-  "hero_history": ["topic_key_1", "topic_key_2", "topic_key_3"],
-  "movers": [...6 market objects...],
-  "ticker": [...10 market objects...],
-  "daily_take": { "headline": "...", "body": "...", "take": "..." },
-  "all_markets": [...full catalog sorted by cat_rank...]
-}
-```
+Market Object Fields:
+  source, question, slug, url, prob, change_pts, direction,
+  volume, volume_fmt, volume_24h, end_date, display_category,
+  trading_signal, cat_rank
 
-### Market Object Fields
-```json
-{
-  "source": "Polymarket" | "Kalshi",
-  "question": "Will X happen?",
-  "slug": "market-slug",
-  "url": "https://...",
-  "prob": 68.5,
-  "change_pts": -10.0,
-  "direction": "down" | "up" | "flat",
-  "volume": 462000,
-  "volume_fmt": "$462K",
-  "volume_24h": 80000,
-  "end_date": "Mar 15",
-  "display_category": "Finance",
-  "trading_signal": "knife_edge" | "momentum" | "volume_spike" | "active" | "stale",
-  "cat_rank": 43.3
-}
-```
+Trading Signals:
+- knife_edge: prob 40-60% AND volume >= $50K
+- momentum: moved +-5pts+ today
+- volume_spike: 24h vol >= 20% of total AND >= $10K
+- active: moving but below thresholds
+- stale: volume < $25K AND move < 2pts
 
-### Trading Signals (for category page filtering)
-- `knife_edge` — prob 40-60% AND volume ≥ $50K (maximum uncertainty, liquid = most tradeable)
-- `momentum` — moved ±5pts+ today (get in or fade)
-- `volume_spike` — 24h volume ≥ 20% of total AND ≥ $10K (something is happening)
-- `active` — moving but below above thresholds
-- `stale` — volume < $25K AND move < 2pts (hide from traders)
-
-### cat_rank Formula
-```
-cat_rank = (abs(change_pts) × 3) + (log10(volume_24h+1) × 2) + ke_bonus - stale_penalty
-ke_bonus = +8 if knife_edge, stale_penalty = +20 if stale
-```
-
----
+cat_rank = (abs(change_pts)*3) + (log10(volume_24h+1)*2) + ke_bonus - stale_penalty
 
 ## Hero Selection Algorithm
 
-### Eligibility Gates (must pass all)
-1. Total volume ≥ $250K
-2. Not resolved (prob not ≥98% or ≤2%)
-3. Not junk market (MrBeast bets, micro crypto price bands, tweet counts)
-4. Not a range-bucket market (no single bucket tells the full story)
-5. Sports markets: volume ≥ $25M (only truly massive events)
+Eligibility Gates (must pass all):
+1. Total volume >= $250K
+2. Not resolved (prob not >=98% or <=2%)
+3. Not junk market
+4. Not a range-bucket market
+5. Sports: volume >= $25M
 
-### Scoring
-```
-hero_score = buzz_score - repeat_penalty
-```
-**No category bonus** (removed — was causing Politics markets to dominate unfairly)
+Scoring: hero_score = buzz_score - repeat_penalty (no category bonus)
 
-### Buzz Score Components
-| Component | Formula |
-|-----------|---------|
-| Price move | `abs(change_pts) × 2.5` |
-| 24h volume | `log10(volume_24h) / 10 × 3` |
-| Total volume | `log10(volume) / 10` |
-| Prob interest | `1 - abs(prob-50)/50` (sweet spot: 30-70%) |
-| Urgency | up to 1.5pts if closes within 7 days |
-| Recency | up to 3pts if 24h vol > 15% of total |
+Buzz Score: price move, 24h volume, total volume, prob interest, urgency, recency
 
-### Repeat Penalty
-- Rolling **3-day** block: topics that won hero in last 3 days get **-15pts**
-- Stored in `hero_history` array in `markets.json`
+Repeat Penalty: Rolling 3-day block, -15pts, stored in hero_history
 
-### Deduplication
-- Date-ladder: "US strikes Iran by Mar 7" + "by Mar 14" → pick highest 24h volume contract
-- Topic-level: coarse fingerprint via `get_topic_key()` — "iran strike" matches all Iran military variants
-- Picks variant with largest absolute price move
+## Known Issues
 
----
+Fixed:
+- Date-ladder corruption
+- Range-bucket hero confusion
+- Polymarket impossible delta validation
+- Kalshi zeros (snapshot system)
+- Category bonus removed
+- Rolling 3-day hero block
+- Kalshi debug logging silenced
+- Trading signals + cat_rank added
+- Mobile email optimization (26 improvements)
+- SEO overhaul complete (Mar 1, 2026)
 
-## Known Issues & Fixes Applied
+Remaining:
+- EXPIRED MARKETS IN FEED: resolved/past-end-date markets appearing (e.g. "Trump named in Epstein files by Feb 28?" showed post-resolution). Fix: filter by end_date in fetch_markets.py. DO THIS FIRST NEXT SESSION.
+- Kalshi :: separator markets still in movers/ticker (should be filtered like hero)
+- Category pages need trading_signal filter, cat_rank sort, toggle buttons
+- Topic key fingerprint cosmetic issue (low priority)
 
-### Fixed This Week
-- ✅ **Date-ladder corruption** — multiple expiry contracts for same event collapsed to hottest contract. Prevented -65pt impossible changes.
-- ✅ **Range-bucket hero confusion** — "PPLE win fewer than 120 seats" appearing as hero. Now excluded from hero, consolidated in movers.
-- ✅ **Polymarket change_pts validation** — impossible deltas (implied previous price outside 0-1%) set to 0.
-- ✅ **Kalshi zeros** — `previous_price` field returns 0 from API. Fixed via `kalshi_snapshot.json` storing all 442 prices each run, computing delta on next run.
-- ✅ **Category bonus removed** — Politics +18, Finance +12 etc. was overriding market signal. Now pure buzz score.
-- ✅ **Rolling 3-day hero block** — was 1-day only, causing DHS/Bitcoin to ping-pong. Now 3-day window.
-- ✅ **Kalshi debug logging silenced** — `[DEBUG Kalshi price fields]` no longer prints.
-- ✅ **Trading signals + cat_rank** — all catalog markets now have `trading_signal` and `cat_rank` for frontend filtering/sorting.
-- ✅ **Mobile email optimization** — 26 improvements to newsletter HTML (16px min text, 44px tap targets, dark mode lock, Outlook MSO conditionals, etc.)
+## SEO Implementation (Completed Mar 1, 2026)
 
-### Known Remaining Issues
-- **Kalshi range-bucket markets** still appear in movers/ticker (e.g., `How long will shutdown last?: :: Past 10AM`). The `::` separator markets should be filtered from movers/ticker, not just hero.
-- **Category pages need frontend updates** to use `trading_signal` filter and `cat_rank` sort, plus three toggle buttons (Biggest Movers / Most Active / Knife Edge).
-- **The Prob topic key fingerprint** for yesterday_topic sometimes includes parentheses from ticker symbols, e.g., `'(pple) party people's win'`. Low priority cosmetic issue.
+All 7 HTML pages updated and deployed with:
+- Keyword-rich title tags (60-70 chars, includes "Polymarket & Kalshi")
+- Meta descriptions (150-160 chars)
+- Meta keywords (8-10 per page)
+- Canonical URLs
+- Full Open Graph tags (including og:image:width/height)
+- Twitter Card tags
+- JSON-LD structured data (WebSite on index, WebPage on category pages)
 
----
+New files in repo root:
+- sitemap.xml (all 7 pages, hourly changefreq, priority weighted)
+- robots.txt
+- theprob_og_1200x630.jpg
+
+Google Search Console: verified + sitemap submitted Mar 1, 2026.
+Expect indexing within 1-2 days, ranking signals in 2-8 weeks.
+
+Target keywords by page:
+- Index: prediction markets, Polymarket, Kalshi, prediction market odds
+- Business: business prediction markets, Polymarket finance, Fed prediction market
+- Culture: culture prediction markets, Oscars prediction market
+- News: Polymarket news, Kalshi news, prediction markets newsletter
+- Politics: political prediction markets, election prediction market
+- Sports: sports prediction markets, NFL/NBA prediction market
+- Tech: crypto prediction markets, Bitcoin/AI prediction market
 
 ## GitHub Actions Workflow
 
-**File:** `.github/workflows/fetch-markets.yml`  
-**Schedule:** Every hour (`0 * * * *`)  
-**Secrets required:** `KALSHI_KEY_ID`, `KALSHI_PRIVATE_KEY`, `ANTHROPIC_API_KEY`
+File: .github/workflows/fetch-markets.yml
+Schedule: Every hour
+Secrets: KALSHI_KEY_ID, KALSHI_PRIVATE_KEY, ANTHROPIC_API_KEY
+Critical: Both markets.json AND kalshi_snapshot.json must be committed each run.
 
-### Critical: Files Committed Each Run
-```yaml
-git add data/markets.json data/kalshi_snapshot.json
-```
-Both files must be committed or the Kalshi snapshot system breaks.
+## Newsletter Pipeline
 
----
-
-## Newsletter Pipeline — send_newsletter.py
-
-**Platform:** Beehiiv  
-**Target send time:** 7AM ET daily  
-**Current status:** Semi-manual — script generates HTML, requires manual copy/paste into Beehiiv
-
-### Newsletter Sections
-1. **Hero** — main story with prob, change, volume, take
-2. **Movers** — 6-market grid with category color chips
-3. **Ticker** — 10-market table
-4. **Daily Take** — Claude-generated 2-paragraph editorial
-
-### Key Functions
-- `estimate_read_time()` — shows "3 min read" in header
-- `truncate_summary()` — caps news summaries at 2 sentences
-- `category_chip()` — colored pills (red=Politics, green=Finance, purple=Sports, etc.)
-- `generate_hero_take()` — Claude API call for hero market analysis
-
-### Beehiiv HTML Quirks
-- Use `<div>` not semantic tags (`<h1>`, `<h2>`) — Beehiiv overrides heading styles
-- All colors need `!important` — Beehiiv's CSS has higher specificity
-- Arrow characters as HTML entities: `&#9650;` / `&#9660;` (Outlook safe)
-- No double dollar signs in volume formatting
-
-### Automation Goal (In Progress)
-Reduce manual intervention to near-zero. Current blocker: Beehiiv API for programmatic post creation needs to be wired up. See Beehiiv API docs for `/publications/{id}/posts` endpoint.
-
----
-
-## SEO Strategy (TODO — Next Session)
-
-**Target keywords:**
-- Polymarket news, Polymarket newsletter
-- Kalshi news, Kalshi newsletter  
-- Prediction markets news, prediction markets newsletter
-- Prediction markets today, prediction market odds
-- Political prediction markets, sports prediction markets
-- Business prediction markets, tech prediction markets
-
-**Pages needing SEO work:** All HTML files (index, business, sports, tech, culture, politics, news)
-
-**Items needed:**
-- Unique `<title>` tags per page with keywords
-- `<meta name="description">` per page
-- Open Graph tags for social sharing
-- Structured data (JSON-LD) for news/article schema
-- Canonical URLs
-- Sitemap.xml
-- robots.txt
-
----
+Platform: Beehiiv | Target: 7AM ET daily | Status: Semi-manual
+Sections: Hero, Movers (6), Ticker (10), Daily Take
+Beehiiv quirks: use div not h1/h2, all colors need !important, HTML arrow entities, no double dollar signs.
+Automation goal: wire up Beehiiv API /publications/{id}/posts endpoint.
 
 ## Editorial Voice
 
-See `VOICE.md` in repo root. Key principles:
-- Sharp, confident, trader-focused
-- Lead with the number and what it means
-- "The crowd is telling you something" framing
-- No hedging, no "could potentially maybe"
-- Treat readers as sophisticated adults who trade for alpha
-
----
+See VOICE.md. Sharp, confident, trader-focused. Lead with the number. "The crowd is telling you something." No hedging.
 
 ## Session Handoff — TODO
 
-*(Update this section at the end of each session)*
-
 ### Pending Next Session
-1. **SEO optimization** — Add meta tags, titles, OG tags, JSON-LD schema to all HTML pages targeting prediction market keywords
-2. **Beehiiv automation** — Wire up Beehiiv API to reduce/eliminate manual newsletter send steps
-3. **Category page frontend** — Implement `trading_signal` filter (hide `stale`), `cat_rank` sort, and three toggle buttons (Biggest Movers / Most Active / Knife Edge) using new fields already in `markets.json`
-4. **Kalshi range-bucket movers filter** — Markets with `::` in question (e.g., `How long will shutdown last?: :: Past 10AM`) should be excluded from movers/ticker, same as they're excluded from hero
-5. **Rolling hero block** — working but only has 1 day of history right now. Will naturally accumulate over next 2-3 days of hourly runs. Monitor to confirm DHS/Bitcoin ping-pong stops.
+1. FIX EXPIRED MARKET FILTER FIRST — check end_date field in data/markets.json then filter in fetch_markets.py
+2. Beehiiv automation — wire up API to eliminate manual send steps
+3. Category page frontend — trading_signal filter, cat_rank sort, 3 toggle buttons (Biggest Movers / Most Active / Knife Edge)
+4. Kalshi :: separator filter — exclude from movers/ticker (currently only excluded from hero)
+5. Monitor rolling hero block — confirm ping-pong resolved
 
-### Recently Completed (This Session — Mar 1, 2026)
-- Date-ladder consolidation
-- Range-bucket hero exclusion
-- Polymarket impossible delta validation  
-- Category bonus removed
-- Kalshi zeros fixed (snapshot system)
-- Trading signals + cat_rank added to catalog
-- Rolling 3-day hero block
-- Kalshi debug logging silenced
+### Recently Completed (Mar 1, 2026)
+- Full SEO overhaul — all 7 HTML pages
+- sitemap.xml + robots.txt deployed
+- Google Search Console verified + sitemap submitted
+- OG social image live (theprob_og_1200x630.jpg)
 
----
+## How to Start a New Session
 
-## How to Start a New Claude Session Efficiently
-
-1. Share this file: "Read CLAUDE.md in my repo before we start"
-2. Or paste the TODO section above
-3. Optionally reference prior transcript: `/mnt/transcripts/[filename]`
-4. Key files to share if making changes: `scripts/fetch_markets.py`, `scripts/send_newsletter.py`
+1. Share this file or paste the TODO section
+2. Key files for changes: scripts/fetch_markets.py, scripts/send_newsletter.py
+3. Prior transcripts: /mnt/transcripts/[filename]
