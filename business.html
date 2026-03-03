@@ -161,6 +161,11 @@
     .footer-links a:hover{color:var(--accent);}
     .footer-copy{font-family:var(--mono);font-size:10px;color:var(--text-dim);grid-column:1/-1;border-top:1px solid var(--border);padding-top:24px;display:flex;justify-content:space-between;}
     @keyframes fadeUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+    /* ── FILTER TOGGLES ── */
+    .filter-bar{display:flex;gap:8px;margin-bottom:28px;flex-wrap:wrap;}
+    .filter-btn{font-family:var(--mono);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;padding:8px 18px;border:1px solid var(--border);border-radius:2px;background:transparent;color:var(--text-muted);cursor:pointer;transition:all 0.15s;}
+    .filter-btn:hover{border-color:var(--border-bright);color:var(--text);}
+    .filter-btn.active{border-color:var(--accent);color:var(--accent);background:rgba(0,229,160,0.07);}
     @media (max-width:1024px){
             /* When ticker scrolls away, go nearly opaque */
       .nav-wrapper.is-stuck {
@@ -213,6 +218,11 @@
   </div>
 
   <section class="section">
+    <div class="filter-bar">
+      <button class="filter-btn active" data-mode="movers">&#9889; Biggest Movers</button>
+      <button class="filter-btn" data-mode="active">&#128293; Most Active</button>
+      <button class="filter-btn" data-mode="knife">&#9878; Knife Edge</button>
+    </div>
     <div class="sources-grid">
       <div class="source-col">
         <div class="source-header">
@@ -273,42 +283,59 @@ const DATA_URL    = 'data/markets.json';
 const POLY_CATS   = ['Finance'];
 const KALSHI_CATS = ['Finance'];
 
+let currentMode = 'movers';
+let poolData    = [];
+
 function dir(c){return c>0.5?'up':c<-0.5?'down':'neutral';}
-function arrow(c){return c>0.5?`▲ +${c} pts`:c<-0.5?`▼ ${c} pts`:`— ${Math.abs(c)} pts`;}
-function arrowS(c){return c>0.5?`▲+${c}`:c<-0.5?`▼${c}`:`—`;}
-function trunc(s,n=55){return s.length>n?s.slice(0,n-1)+'…':s;}
+function arrow(c){return c>0.5?`&#9650; +${c} pts`:c<-0.5?`&#9660; ${c} pts`:`&#8212; ${Math.abs(c)} pts`;}
+function arrowS(c){return c>0.5?`&#9650;+${c}`:c<-0.5?`&#9660;${c}`:`&#8212;`;}
+function trunc(s,n=55){return s.length>n?s.slice(0,n-1)+'&#8230;':s;}
 
 function matchesCats(m, cats){
   const cat = (m.display_category || m.category || '').trim();
   return cats.some(c => c.toLowerCase() === cat.toLowerCase());
 }
 
-function renderTicker(markets){
-  const track=document.getElementById('ticker');
-  if(!track||!markets.length)return;
-  const html=markets.map(m=>`<div class="ticker-item"><span class="name">${trunc(m.question,40).toUpperCase()}</span><span class="${dir(m.change_pts)}">${m.prob}% ${arrowS(m.change_pts)}</span></div>`).join('');
-  track.innerHTML=html+html;
+function signalBadge(signal){
+  const map = {
+    knife_edge:   ['Knife Edge','#f5a623'],
+    momentum:     ['Momentum',  '#4a9eff'],
+    volume_spike: ['Vol Spike', '#a78bfa'],
+    active:       ['Active',    '#546e85'],
+  };
+  const s = map[signal]; if(!s) return '';
+  return `<span style="font-family:var(--mono);font-size:9px;letter-spacing:0.05em;text-transform:uppercase;padding:2px 7px;border-radius:2px;border:1px solid ${s[1]}44;color:${s[1]};margin-top:4px;display:inline-block;">${s[0]}</span>`;
 }
 
-function renderBoard(markets, elId, source, cats){
-  const el=document.getElementById(elId);
-  if(!el)return;
-
-  const filtered = markets
+function getFiltered(markets, source, cats, mode){
+  let list = markets
     .filter(m => m.source === source && matchesCats(m, cats))
-    .sort((a,b) => Math.abs(b.change_pts) - Math.abs(a.change_pts) || b.volume - a.volume)
-    .slice(0,10);
-
-  if(!filtered.length){
-    el.innerHTML = `<div class="empty-state">No business markets available right now.<br>Check back after the next data refresh.</div>`;
-    return;
+    .filter(m => (m.trading_signal || '') !== 'stale');
+  if(mode === 'knife'){
+    list = list.filter(m => m.trading_signal === 'knife_edge');
+    list.sort((a,b) => (b.volume||0) - (a.volume||0));
+  } else if(mode === 'active'){
+    list.sort((a,b) => (b.volume_24h||0) - (a.volume_24h||0));
+  } else {
+    list.sort((a,b) => (b.cat_rank||0) - (a.cat_rank||0));
   }
+  return list.slice(0,10);
+}
 
+function renderBoard(markets, elId, source, cats, mode){
+  const el = document.getElementById(elId); if(!el) return;
+  const filtered = getFiltered(markets, source, cats, mode);
+  if(!filtered.length){
+    const msg = mode==='knife'
+      ? 'No knife-edge markets in this category right now.'
+      : 'No markets available right now.<br>Check back after the next data refresh.';
+    el.innerHTML = `<div class="empty-state">${msg}</div>`; return;
+  }
   el.innerHTML = filtered.map((m,i) => {
     const d = dir(m.change_pts);
     return `<div class="lb-row ${d}" onclick="window.open('${m.url}','_blank')">
       <div class="lb-rank">${String(i+1).padStart(2,'0')}</div>
-      <div class="lb-question">${m.question}</div>
+      <div class="lb-question">${m.question}${signalBadge(m.trading_signal)}</div>
       <div class="lb-right">
         <div class="lb-prob ${d}">${m.prob}%</div>
         <div class="lb-change ${d}">${arrow(m.change_pts)}</div>
@@ -318,15 +345,24 @@ function renderBoard(markets, elId, source, cats){
   }).join('');
 }
 
+function refreshBoards(){
+  renderBoard(poolData, 'poly-board',   'Polymarket', POLY_CATS,   currentMode);
+  renderBoard(poolData, 'kalshi-board', 'Kalshi',     KALSHI_CATS, currentMode);
+}
+
+function renderTicker(markets){
+  const track=document.getElementById('ticker');
+  if(!track||!markets.length)return;
+  const html=markets.map(m=>`<div class="ticker-item"><span class="name">${trunc(m.question,40).toUpperCase()}</span><span class="${dir(m.change_pts)}">${m.prob}% ${arrowS(m.change_pts)}</span></div>`).join('');
+  track.innerHTML=html+html;
+}
+
 async function loadMarkets(){
   try{
     const res  = await fetch(`${DATA_URL}?v=${Date.now()}`);
     if(!res.ok) throw new Error(`HTTP ${res.status}`);
     const data = await res.json();
-
     renderTicker(data.ticker || []);
-
-    // Use all_markets (full catalog) — fall back to curated set if not present
     let pool = data.all_markets;
     if(!pool || !pool.length){
       const fb = [...(data.movers||[]),...(data.ticker||[])];
@@ -334,13 +370,10 @@ async function loadMarkets(){
       const seen=new Set();
       pool = fb.filter(m=>{if(seen.has(m.slug))return false;seen.add(m.slug);return true;});
     }
-
-    renderBoard(pool, 'poly-board',   'Polymarket', POLY_CATS);
-    renderBoard(pool, 'kalshi-board', 'Kalshi',     KALSHI_CATS);
-
+    poolData = pool;
+    refreshBoards();
     const el = document.getElementById('updated-time');
     if(el && data.updated) el.textContent = `Updated ${data.updated}`;
-
   }catch(err){
     console.warn('Could not load market data:', err.message);
     ['poly-board','kalshi-board'].forEach(id=>{
@@ -349,6 +382,15 @@ async function loadMarkets(){
     });
   }
 }
+
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentMode = btn.dataset.mode;
+    refreshBoards();
+  });
+});
 
 loadMarkets();
 
