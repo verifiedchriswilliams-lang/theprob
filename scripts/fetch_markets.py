@@ -107,11 +107,27 @@ def is_effectively_resolved(m: dict) -> bool:
     Returns True if a market has essentially settled (prob near 0 or 100).
     These generate huge change_pts but are no longer live/interesting.
     Also catches same-day sports results that resolved overnight.
+    Threshold: 95/5 (not 98/2) — markets at 95%+ or 5%- have no alpha left.
     """
     prob = m.get("prob", 50)
-    if prob >= 98 or prob <= 2:
+    if prob >= 95 or prob <= 5:
         return True
     return False
+
+
+def is_past_close(m: dict) -> bool:
+    """
+    Returns True if a market's close date has already passed.
+    Catches expired markets like 'Will X happen by Feb 28?' on March 3rd.
+    Uses end_date_raw (ISO format) for reliable parsing.
+    """
+    raw = m.get("end_date_raw", "")
+    if not raw:
+        return False
+    days = days_until_close(raw)
+    if days is None:
+        return False
+    return days < 0
 
 def is_dated_game_market(m: dict) -> bool:
     """
@@ -901,6 +917,7 @@ def pick_hero(markets: list[dict], recent_topics: list[str] | None = None) -> di
         m for m in markets
         if m["volume"] >= HERO_MIN_VOLUME
         and not is_effectively_resolved(m)
+        and not is_past_close(m)
         and not is_junk_market(m)
         and not is_range_bucket_market(m)   # range buckets are misleading as hero
         and (not is_sports_market(m) or m["volume"] >= HERO_SPORTS_MIN_VOLUME)
@@ -1060,6 +1077,7 @@ def pick_movers(markets: list[dict], exclude_slug: str = "") -> list[dict]:
         m for m in markets
         if m["slug"] != exclude_slug
         and not is_effectively_resolved(m)
+        and not is_past_close(m)
         and not is_junk_market(m)
         and (abs(m["change_pts"]) > 0 or m["source"] == "Kalshi")
     ]
@@ -1168,7 +1186,7 @@ def pick_ticker(markets: list[dict]) -> list[dict]:
     DEFAULT_CAP = 2
 
     scored = sorted(
-        [m for m in markets if not is_effectively_resolved(m) and not is_junk_market(m)],
+        [m for m in markets if not is_effectively_resolved(m) and not is_past_close(m) and not is_junk_market(m)],
         key=score_market, reverse=True
     )
 
