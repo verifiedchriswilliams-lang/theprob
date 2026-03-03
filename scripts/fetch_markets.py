@@ -1079,6 +1079,7 @@ def pick_movers(markets: list[dict], exclude_slug: str = "") -> list[dict]:
         and not is_effectively_resolved(m)
         and not is_past_close(m)
         and not is_junk_market(m)
+        and not is_range_bucket_market(m)   # exclude :: separator markets (e.g. Kalshi shutdown length buckets)
         and (abs(m["change_pts"]) > 0 or m["source"] == "Kalshi")
     ]
     candidates.sort(key=score_market, reverse=True)
@@ -1186,7 +1187,7 @@ def pick_ticker(markets: list[dict]) -> list[dict]:
     DEFAULT_CAP = 2
 
     scored = sorted(
-        [m for m in markets if not is_effectively_resolved(m) and not is_past_close(m) and not is_junk_market(m)],
+        [m for m in markets if not is_effectively_resolved(m) and not is_past_close(m) and not is_junk_market(m) and not is_range_bucket_market(m)],
         key=score_market, reverse=True
     )
 
@@ -1567,6 +1568,8 @@ def main():
         if is_junk_market(m):
             continue
         if is_effectively_resolved(m):
+            continue
+        if is_past_close(m):
             continue
         if m["source"] == "Kalshi":
             url = m.get("url", m.get("slug", ""))
