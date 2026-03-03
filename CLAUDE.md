@@ -76,10 +76,11 @@ cat_rank = (abs(change_pts)*3) + (log10(volume_24h+1)*2) + ke_bonus - stale_pena
 
 Eligibility Gates (must pass all):
 1. Total volume >= $250K
-2. Not resolved (prob not >=98% or <=2%)
-3. Not junk market
-4. Not a range-bucket market
-5. Sports: volume >= $25M
+2. Not resolved (prob not >=95% or <=5%)
+3. Not past close date (end_date_raw < today)
+4. Not junk market
+5. Not a range-bucket market
+6. Sports: volume >= $25M
 
 Scoring: hero_score = buzz_score - repeat_penalty (no category bonus)
 
@@ -100,12 +101,13 @@ Fixed:
 - Trading signals + cat_rank added
 - Mobile email optimization (26 improvements)
 - SEO overhaul complete (Mar 1, 2026)
+- Expired/near-resolved markets in feed — is_effectively_resolved() tightened to 95/5, is_past_close() added (Mar 3, 2026)
+- Kalshi :: separator markets in movers/ticker — is_range_bucket_market() added to pick_movers() + pick_ticker() (Mar 3, 2026)
+- Category page frontend — 3 toggle buttons, cat_rank sort, stale filter, signal badges (Mar 3, 2026)
 
 Remaining:
-- EXPIRED MARKETS IN FEED: resolved/past-end-date markets appearing (e.g. "Trump named in Epstein files by Feb 28?" showed post-resolution). Fix: filter by end_date in fetch_markets.py. DO THIS FIRST NEXT SESSION.
-- Kalshi :: separator markets still in movers/ticker (should be filtered like hero)
-- Category pages need trading_signal filter, cat_rank sort, toggle buttons
 - Topic key fingerprint cosmetic issue (low priority)
+- Monitor rolling hero block — confirm ping-pong stays resolved
 
 ## SEO Implementation (Completed Mar 1, 2026)
 
@@ -156,11 +158,17 @@ See VOICE.md. Sharp, confident, trader-focused. Lead with the number. "The crowd
 ## Session Handoff — TODO
 
 ### Pending Next Session
-1. FIX EXPIRED MARKET FILTER FIRST — check end_date field in data/markets.json then filter in fetch_markets.py
-2. Beehiiv automation — wire up API to eliminate manual send steps
-3. Category page frontend — trading_signal filter, cat_rank sort, 3 toggle buttons (Biggest Movers / Most Active / Knife Edge)
-4. Kalshi :: separator filter — exclude from movers/ticker (currently only excluded from hero)
-5. Monitor rolling hero block — confirm ping-pong resolved
+1. Beehiiv automation — wire up API /publications/{id}/posts endpoint to eliminate manual copy/paste send
+2. Monitor rolling hero block — passive, just confirm no ping-pong after a few days
+3. Topic key fingerprint cosmetic issue — low priority
+
+### Recently Completed (Mar 3, 2026)
+- Expired market filter — is_effectively_resolved() tightened to 95/5, is_past_close() added using end_date_raw, applied to hero/movers/ticker/catalog
+- Kalshi :: separator filter — is_range_bucket_market() now applied in pick_movers() + pick_ticker() (was hero-only)
+- Category page frontend — all 5 pages (politics, business, culture, sports, tech) updated with:
+  - 3 toggle buttons: ⚡ Biggest Movers (cat_rank) | 🔥 Most Active (volume_24h) | ⚖ Knife Edge (knife_edge signal only)
+  - Stale markets always hidden
+  - Signal badges on each market card
 
 ### Recently Completed (Mar 1, 2026)
 - Full SEO overhaul — all 7 HTML pages
@@ -173,3 +181,11 @@ See VOICE.md. Sharp, confident, trader-focused. Lead with the number. "The crowd
 1. Share this file or paste the TODO section
 2. Key files for changes: scripts/fetch_markets.py, scripts/send_newsletter.py
 3. Prior transcripts: /mnt/transcripts/[filename]
+
+## Git Push Workflow
+
+GitHub Desktop doesn't reliably detect terminal commits. Always push via Mac Terminal:
+```
+cd ~/theprob
+git pull --rebase && git push
+```
