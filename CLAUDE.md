@@ -176,6 +176,70 @@ See VOICE.md. Sharp, confident, trader-focused. Lead with the number. "The crowd
 - Google Search Console verified + sitemap submitted
 - OG social image live (theprob_og_1200x630.jpg)
 
+## Product Roadmap
+
+Items carried forward from brainstorm sessions. Prioritized by impact vs. effort.
+
+### P0 — Next Session
+- **Beehiiv automation** — POST /publications/{id}/posts endpoint. Key question: does the API support immediate send or schedule-only? Either way, GitHub Action should write the email HTML and POST it at 6:50am ET. Falls back to commit for manual send if send isn't supported.
+
+### P1 — High Value, Low Effort
+- **The Prob Score** — proprietary ranking badge on every market card. Draft formula: `(|change_pts|*2) + (volume_rank*1.5) + (1/days_to_resolution capped)`. Compute in fetch_markets.py, store as `prob_score` field in markets.json, display as badge on cards. No new infrastructure needed.
+- **Yesterday's Biggest Movers** — save `data/markets_yesterday.json` before overwriting each run, diff vs today, surface top swings in a "Yesterday's Biggest Swings" section on index.html. ~1-2 hours.
+- **Probability Velocity** — store a mid-run snapshot (`prob_2h_ago`, `change_pts_2h`) to surface "fastest movers RIGHT NOW" separate from daily change. A market that moved 4pts in 2 hours is a very different signal than one that moved 4pts over 24 hours. Requires storing one intra-day snapshot per run alongside kalshi_snapshot. New site section: "Something's Brewing."
+- **The Spread (Poly vs Kalshi Divergence)** — match markets across sources by title similarity, flag pairs where |poly_prob - kalshi_prob| > 8pts. Direct arbitrage signal — the single most actionable feature for active traders. Surface as dedicated "The Spread" section on index.html and in the daily email. Headline frame: "The crowd disagrees with itself — here's where."
+- **"Act On This" framing** — every top mover should have a one-line trading implication, not just a description. Claude-generated hero take already does this; extend to top 3 movers in the email. Prompt orientation: "What would need to happen for this to resolve YES, and what is the market getting wrong right now?"
+- **Site footer contact email** — add `contact@theprobnewsletter.com` to the footer-copy row on all 7 HTML pages (between copyright and disclaimer). Confirm actual address first.
+
+### P1.5 — The Prob Portfolio (flagship differentiator)
+This is the feature that turns The Prob from a data aggregator into a **track record**. Frame: "The Prob puts its money where its mouth is."
+
+**Concept:** Every time a market is selected as the daily hero, The Prob automatically logs a $100 hypothetical trade (YES or NO, based on Claude's directional take) in `data/portfolio.json`. When the market resolves, the position closes and P&L is calculated. The running portfolio — starting balance $1,000 — updates live on the site and appears in every email header.
+
+**Why it works:**
+- A trader seeing "+31% YTD (vs. S&P +11%)" subscribes immediately
+- Creates genuine accountability — bad picks hurt the number visibly
+- Compounding over months becomes the single most compelling proof of value
+- "You would have made $47 if you'd followed our last 5 picks" is the most powerful FOMO line in prediction markets
+
+**Implementation (all static, no backend needed):**
+- `data/portfolio.json` — ledger of all trades: market_id, question, url, entry_prob, direction (YES/NO), amount ($100), entry_date, status (open/closed), exit_prob, pnl
+- In fetch_markets.py: when hero is selected, append new open trade to portfolio.json
+- On each run: check open trades against current prob; if market is resolved (prob >= 95 or <= 5 and past end_date), close the position and calculate P&L
+- P&L formula: if bought YES at entry_prob p and resolved YES → pnl = $100 * (1/p - 1). If resolved NO → pnl = -$100. Vice versa for NO positions.
+- New page: `portfolio.html` — full trade ledger, running balance chart, win rate, avg return per trade, YTD vs S&P benchmark
+- Index.html widget: current balance, YTD return %, last 3 closed trades
+- Email header line: "The Prob Portfolio: $X,XXX (+XX% YTD)"
+
+**Direction logic:** Use Claude's hero take sentiment. If the take is bullish (expects YES), log YES. If bearish, log NO. If neutral/uncertain, skip the trade that day (log as "no play").
+
+### P2 — Medium Effort, High Value
+- **Market Narratives (Claude-generated)** — for top 5 markets, call Claude API with: "In 2 sentences, explain the story behind this prediction market to a smart non-trader." Save as `narrative` field in markets.json. Display inline or as expandable text on cards. ANTHROPIC_API_KEY already in GitHub secrets.
+- **Daily email GitHub Action** — cron 6:50am ET. Run generate_email.py: pull from markets.json, render HTML template, write to `email/draft_YYYY-MM-DD.html`. If Beehiiv API supports send → POST directly. If not → commit draft for one-click manual send.
+- **email.html polish** — improve text contrast (WCAG AA), remove redundant footer (Beehiiv adds its own), inline all CSS (email clients strip `<style>` blocks), test dark mode rendering.
+
+### P3 — Bigger Features
+- **Market Search** — client-side fuzzy search using Fuse.js (~10kb). New search.html or modal on index. Already pulling 2,500+ markets into markets.json. ~3-4 hours, no backend needed.
+- **RSS feed** — generate `feed.xml` daily alongside email draft. Contains: headline, deck, top 3 markets, top 3 news items. Canonical URL back to theprobnewsletter.com. Enables Substack auto-import, Feedly, Apple News, Google News.
+- **Substack cross-posting** — once RSS feed exists, configure Substack Settings → Import to auto-pull feed. Zero daily effort after setup. Each post creates a backlink to theprobnewsletter.com.
+- **Twitter/X thread automation** — daily 4-tweet thread at 7:05am via GitHub Action. Requires Twitter Developer App + API keys in secrets. Thread format: (1) top 3 markets with odds, (2) biggest mover + why it matters, (3) Poly vs Kalshi spread if one exists, (4) subscribe link with portfolio YTD return.
+
+### P4 — Later
+- **Personal Watchlist** — localStorage-based, no backend. Star any market, persists across sessions. ~2 hours once other features stable.
+- **"What's Your Take?" Daily Poll** — yes/no vote on hero market. Store results in Cloudflare Workers KV. Show live % agreement with crowd. ~3-4 hours including backend.
+- **"Alert Me" emails** — threshold-based alerts requiring subscription + storage. Most complex feature — defer.
+
+### SEO Content Track (ongoing)
+Technical SEO done (Mar 1). Content SEO is the real moat:
+- `/what-is-prediction-market.html` — targets "what is a prediction market" (high volume, informational)
+- `/polymarket-vs-kalshi.html` — comparison page (high commercial intent)
+- `/how-prediction-markets-work.html` — educational, links to live market data
+- Each page: 600-800 words, one keyword cluster, links back to live data
+- Link building: submit to newsletter directories (Paved, Who Sponsors Stuff), post in r/predictionmarkets and Manifold Discord
+- Monitor Google Search Console weekly for impression share on target keywords
+
+---
+
 ## How to Start a New Session
 
 1. Share this file or paste the TODO section
