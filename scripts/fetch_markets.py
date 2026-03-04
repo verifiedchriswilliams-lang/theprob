@@ -57,10 +57,11 @@ MIN_INTERESTING_VOLUME = 100_000
 # to be eligible as hero. Prevents the same stale market from winning every day.
 HERO_MIN_CHANGE_PTS = 3.0
 
-# Hero repeat penalty: if yesterday's hero topic wins again today, subtract this
-# from its score. Forces genuine variety — same topic can still win if it's the
-# only real mover, but gets pushed aside when anything else is competitive.
-HERO_REPEAT_PENALTY = 15.0
+# Hero repeat penalty: applied per day a topic has appeared in hero_history.
+# Cumulative scaling forces genuine variety — a topic that won yesterday takes
+# a -40pt hit; one that won 2 days ago takes -70pts (effectively a hard block).
+# Flat penalties (old: -15) were too weak vs move_score which can reach 50+ pts.
+HERO_REPEAT_PENALTY_PER_DAY = [40.0, 70.0, 90.0]  # [1 day ago, 2 days ago, 3 days ago]
 
 # Question substrings that identify low-quality micro-markets to exclude entirely
 JUNK_MARKET_PATTERNS = [
@@ -793,8 +794,10 @@ def score_market(m: dict) -> float:
     volume_24h  = m.get("volume_24h", 0) or 0
     prob        = m["prob"]
 
-    # 1. Price-move signal (0–25+ pts)
-    move_score = abs_change * 2.5
+    # 1. Price-move signal — capped at 20pts so one monster move can't create
+    #    an insurmountable lead that blocks variety for days.
+    #    A 22pt move and a 35pt move are both "breaking news" — cap equalises them.
+    move_score = min(abs_change * 2.5, 20.0)
 
     # 2. 24h volume surge — normalised log scale (0–6 pts)
     #    A market with $500K in last 24h is very hot
@@ -925,9 +928,15 @@ def pick_hero(markets: list[dict], recent_topics: list[str] | None = None) -> di
 
     def hero_score(m: dict) -> float:
         base = score_market(m)
-        # Penalise if this topic won hero in the last 3 days
-        if recent_topics and get_topic_key(m) in recent_topics:
-            base -= HERO_REPEAT_PENALTY
+        # Cumulative repeat penalty: scales by how recently the topic won.
+        # recent_topics is ordered [yesterday, 2 days ago, 3 days ago].
+        if recent_topics:
+            key = get_topic_key(m)
+            for i, topic in enumerate(recent_topics):
+                if key == topic:
+                    penalty = HERO_REPEAT_PENALTY_PER_DAY[min(i, len(HERO_REPEAT_PENALTY_PER_DAY) - 1)]
+                    base -= penalty
+                    break
         return base
 
     # Topic-level dedup for hero: collapse all variants of the same real-world
@@ -967,10 +976,16 @@ def pick_hero(markets: list[dict], recent_topics: list[str] | None = None) -> di
     # Debug output so you can see why a market won
     print(f"\n  Hero selection pool: {len(pool)} unique topics (staleness gate: {HERO_MIN_CHANGE_PTS} pts, deduped from {len(base_candidates)} candidates)")
     if recent_topics:
-        print(f"  Repeat penalty ({HERO_REPEAT_PENALTY} pts) applied to: {recent_topics}")
+        print(f"  Repeat penalty (cumulative: {HERO_REPEAT_PENALTY_PER_DAY}) applied to: {recent_topics}")
     top3 = sorted(pool, key=hero_score, reverse=True)[:3]
     for i, m in enumerate(top3):
-        penalty  = HERO_REPEAT_PENALTY if recent_topics and get_topic_key(m) in recent_topics else 0
+        penalty = 0
+        if recent_topics:
+            key = get_topic_key(m)
+            for j, topic in enumerate(recent_topics):
+                if key == topic:
+                    penalty = HERO_REPEAT_PENALTY_PER_DAY[min(j, len(HERO_REPEAT_PENALTY_PER_DAY) - 1)]
+                    break
         penalty_str = f" - repeat={penalty}" if penalty else ""
         print(f"    {'* ' if i == 0 else '  '}{m['question'][:60]}")
         print(f"       buzz={score_market(m):.1f}{penalty_str} = total={hero_score(m):.1f} | Δ={m['change_pts']}pts vol={m['volume_fmt']}")
