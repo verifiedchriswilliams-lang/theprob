@@ -584,12 +584,6 @@ def post_to_beehiiv(subject: str, html: str) -> bool:
         print("  [INFO] BEEHIIV_API_KEY or BEEHIIV_PUB_ID not set — skipping API post")
         return False
 
-    # Schedule 10 minutes from now so the workflow (6:50am ET) sends at 7:00am ET.
-    # NOTE: After DST (Mar 8 2026), update workflow cron from '50 11 * * *' → '50 10 * * *'
-    now_utc      = datetime.now(timezone.utc)
-    send_at_utc  = now_utc + timedelta(minutes=10)
-    scheduled_at = send_at_utc.strftime("%Y-%m-%dT%H:%M:%SZ")
-
     url = f"https://api.beehiiv.com/v2/publications/{BEEHIIV_PUB_ID}/posts"
     try:
         r = requests.post(
@@ -601,15 +595,14 @@ def post_to_beehiiv(subject: str, html: str) -> bool:
             json={
                 "title":          subject,
                 "body_content":   html,
-                "status":         "confirmed",
-                "scheduled_at":   scheduled_at,
+                "status":         "draft",
             },
             timeout=30,
         )
         r.raise_for_status()
         data    = r.json()
         post_id = data.get("data", {}).get("id", "unknown")
-        print(f"  ✓ Beehiiv post created — id={post_id}, scheduled={scheduled_at}")
+        print(f"  ✓ Beehiiv draft created — id={post_id} — open Beehiiv and click Send")
         return True
     except requests.exceptions.HTTPError as e:
         print(f"  [ERROR] Beehiiv API HTTP error: {e}")
@@ -661,7 +654,7 @@ def main():
     posted = post_to_beehiiv(subject, html_no_ftr)
 
     if success and posted:
-        print("\n✓ Newsletter saved and scheduled via Beehiiv API — sends at 7:00am ET")
+        print("\n✓ Newsletter draft created in Beehiiv — open dashboard and click Send")
     elif success:
         print("\n✓ Newsletter saved to newsletter/latest.html")
         print("  Beehiiv API not configured — paste manually to send")
