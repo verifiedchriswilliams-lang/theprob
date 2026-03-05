@@ -1,8 +1,35 @@
 {
-  "updated": "Mar 5, 2026 \u00b7 1:07 AM ET",
-  "updated_iso": "2026-03-05T06:07:48.486659+00:00",
+  "updated": "Mar 5, 2026 \u00b7 7:00 AM ET",
+  "updated_iso": "2026-03-05T12:00:31.467183+00:00",
   "homepage_count": 3,
   "articles": [
+    {
+      "title": "Trump regulator splits GOP with prediction market fight",
+      "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxNQkQ2NjhSMWJabVVidHV6ZkoxQ2t0X3BmOFd5TE5UX0F0SzN4NnVMblhRLWoyUUpQclpVVjFMS3FWY0JadTNreEUxQWVOd3BKcXNRbGoyemxDTHNIRmp3dHRPR2RxRDNsT1lGUnFuYkl0VkhFRzdYYzhac1BDODg4N2wtdTZsLWU5SHN1REZBRk9vZGNhMW43SVZMMjVUTXVvZXA4QdIBqgFBVV95cUxQTnJENVdFNVVsRDl0bFdHWWJmVHFYQVV5LXByQ3J3QmNfaFp6WTBabVhqVTRGbUpWRERZeUlhTnU0Sm9DbHd0V3RTNnFIV21MVGc5QUlLUVBfZFNyTG5DMjRhTGc3WUJBM1VRZHpFeWplcm51eWVTdUhrVTJ4ZDBYY0hkOFVlZzlkQWgxcEFmejJ3SEtxSTgzbnYzcml4b01aQlpCRzBiNl95Zw?oc=5",
+      "source": "The Hill",
+      "pub_iso": "2026-03-05T11:00:00+00:00",
+      "description": "",
+      "summary": "A Trump-appointed regulator is causing internal Republican conflict over how to handle prediction market regulation. The GOP split signals uncertainty about whether prediction markets will face stricter oversight or get the deregulatory treatment that could supercharge the industry.",
+      "pub_display": "Mar 5"
+    },
+    {
+      "title": "How Prediction Markets Are Created",
+      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE1RUVJfaWdfNEI3NXg1d1laZUVnZjNIQ0FGTzBwdTRDT2Zqa1B4a0JPaE5SaUpWaDdlejh0S3BEUDNudmprbjFwQ3NxMDRUWmhtNHFuOVYyZWtWNlBJY05QbkJEdmpEVnhBdGhvekkxaDJCdw?oc=5",
+      "source": "iGamingToday.com",
+      "pub_iso": "2026-03-05T10:04:21+00:00",
+      "description": "",
+      "summary": "Prediction markets don't just appear out of thin air,someone has to decide what questions to ask, set the rules, and bootstrap initial liquidity to get traders interested. The creation process determines which events get the spotlight and betting volume, making market makers the quiet gatekeepers of what the crowd gets to predict.",
+      "pub_display": "Mar 5"
+    },
+    {
+      "title": "Prediction Markets Are All the Rage, but This AI Stock Is a Much Better Investment",
+      "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxQbFdac0NzaWtYT1l6OGdFU19CMXNLeDdMazlhT3dWRHExRkdneWxSNExIazZPMjVCNHhWaFV4MnlxT1RCQWswUTVVa1dZa0tYd01IVnBIM2kyWkV6ZVNEOEdyUG9iSnFLWlJ2a2FLZ2YyMDUyYUFWUmZJWGdqQ0syd0NuT0dtMWFkWm1FTk9DN2JYLTVRNnF3RA?oc=5",
+      "source": "The Motley Fool",
+      "pub_iso": "2026-03-05T08:19:00+00:00",
+      "description": "",
+      "summary": "Some finance writer thinks buying AI stocks beats betting on prediction markets right now. The take matters because it shows mainstream media still doesn't grasp that prediction markets aren't just another asset class to trade against - they're information discovery engines that could actually help pick better AI investments.",
+      "pub_display": "Mar 5"
+    },
     {
       "title": "Bettors wagered $54 million on Khamenei\u2019s death. Now they\u2019re not getting paid.",
       "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOZFd1SmQ4YUk2M1UtR1RuSHlpYXVTcnpLR3JrSEs5NDJ2WFBUdmJScVpZRUMtbnZISDg3V0xtSkxYMGhXcGpNNl9YTUFILUhXLTR5dGh1TTZsT2xwZE1qZGZIdklORkktNnUyMGtXRFE2cTRkS0FPbldFdnBPNV9nWVE1U3lZNmRMSnpuOEFn?oc=5",
@@ -31,30 +58,12 @@
       "pub_display": "Mar 4"
     },
     {
-      "title": "White House to review new CFTC prediction market measures",
-      "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxPbUxJbFVlUDFFaTYzMEZ3VloxRTB1WDhZRDA1VENCRmJ5S095cHpBQzMwaEZZMy1TS3ZWaWVIWmQ0ZWM1eUxBSHJRM0lDandKSTFXbGZkaVBrTkVKa2pfejEwcTl1a0NsM0lYR002Tk9ZTjlJMGEzd1RUYmxiR0Fnamo4alo?oc=5",
-      "source": "crypto.news",
-      "pub_iso": "2026-03-04T20:00:00+00:00",
-      "description": "",
-      "summary": "The CFTC is rolling out new regulatory measures for prediction markets, and the White House plans to review them before implementation. This could either unlock broader betting opportunities if the review goes favorably, or create more bureaucratic hurdles that slow down market approvals and innovation.",
-      "pub_display": "Mar 4"
-    },
-    {
       "title": "Jake Paul's Betr Brings Polymarket To One Million Sports Bettors",
       "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxOSHVnWnVLaENtWEY1WTN2dzgzaFV2SkwwWmMzWlVuaDczazhnUUxTTmVMQjVMV3VEdkgwSnJuVjRZS25telozblJuUmI5SnlvT1lQNWMwczY5UVJpUzdza1RhSnBUOHkwNjBTQmV5bmIxdlVBeWhnVi1JdkJLY3NjZzFnS285MVZOMS0zYjRnRmJvQmFyRVFqV19GYzhSRjdoM05ocEZFWUxjTFFfX2dQRnptRFJnVm8?oc=5",
       "source": "Forbes",
       "pub_iso": "2026-03-04T17:04:38+00:00",
       "description": "",
       "summary": "Jake Paul's sports betting platform Betr is partnering with Polymarket to expose its one million users to prediction markets beyond traditional sports wagers. This marks the biggest mainstream crossover yet for crypto prediction markets, potentially bringing serious liquidity and legitimacy to political and event betting that has mostly lived in DeFi corners.",
-      "pub_display": "Mar 4"
-    },
-    {
-      "title": "Betting on Bezels: Kalshi Opens Watch Futures Markets",
-      "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPeHJRcVlkVjdLcVBwWkx4RmRzUmNTbk8tRTVwTi1HR0tjMzBoWHJXeTNGQ1czNzloZmpoVkE0dEU3SEZRamFhVVBIMDRzUGJVa2JtQkYyQjlxdkl1NVZuQ3FGdGc1aHYxZExGMTdsQ2ZBMHlDdkdkLU93R0ttcnNoVEwweDYwc241?oc=5",
-      "source": "Casino.org",
-      "pub_iso": "2026-03-04T16:57:51+00:00",
-      "description": "",
-      "summary": "Kalshi launched futures markets for luxury watch prices, letting traders bet on whether Rolex Daytonas and Patek Philippes will appreciate or tank over time. This marks prediction markets expanding beyond politics and economics into collectibles, where information asymmetry and passionate collectors create perfect conditions for mispriced odds.",
       "pub_display": "Mar 4"
     },
     {
@@ -76,39 +85,30 @@
       "pub_display": "Mar 4"
     },
     {
-      "title": "DraftKings Is Using Its Sports-Betting Playbook to Win Prediction Markets Race",
-      "url": "https://news.google.com/rss/articles/CBMixANBVV95cUxPTWRpRjM1YkJ4aHBpVkljSV9ubjBfazNRdlV0cGVqNlZ5TFBDQzQ1cW1JS3pacmUyNkJCdE1uSXpoNXBtT1lCWkVUakhzMHNoZHhsaUMxZzg2TFBQMk5DRkVhaU5La2pmY3p3VElWQU14NVlKenVwazhIcnY3VDJzNFVKbWxZdm9Rdy11Snc5QzRZQTJCZGlrQnJzNDMtTTNJeU0taG5weWNOaWRka2xpQ2FDYzkzTW1LWUdibTJpY1A0aWlEQnk1WFR5ZzJwOFdqWmhPd0xuaDJMWDRtR2dZNVVzeVQzVkVhZGdOQXFkcVNVQlFWblgzTkE4TXVMOHZ3Q1doRVlGUWVZdTd2N2VvMm1KRGZyU2FETVF3M0l6LVpSQVd2emk2TnowdF94TldRZWlEMFltU19UQVFrT2tQQ1JpSFVxVWlwb1QtVDBvVF9sam1UMzNxcFM1S1lXNXZFM1UwM2ZqdWJXajQ4VFpHcEZGR3QwQl9UWEVNcEFaVmNqeE9UTGVvRnA2SVlRemR3Y1ljOVpjSWhQWTZQLTlqWEwwVWRLNXVLTWc3UmxLQkhPM3ZwazRQWDBjcFdlVGJkMXNZTA?oc=5",
-      "source": "WSJ",
-      "pub_iso": "2026-03-04T01:39:00+00:00",
+      "title": "Polymarket and Kalshi\u2019s Iran War Wagers Are Ghoulish \u2014 and Troubling",
+      "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxOaHBzS0dlbTJBOVJGSDhWWGdhSmNSQnNrVEdqNFhYWXhndmZLbkZoSmdrX2hHdzJtWGxGSWtSMVF6eVN4bW92X1FZaU5USC1GN1FPbVQyRjN3bmNIYmRVZTRKbkoyWDJtY2RWRmFmMDZZeFJwenk3MjRGTzMxS0I1MVRFR05mX2IxX0VoZFRZUE9IdER3V0NoOTJRc1E2MnBKUjhGZXg3YXpRanFMVUlJdUZPNGFDZ1R5enR4Mw?oc=5",
+      "source": "Bloomberg.com",
+      "pub_iso": "2026-03-04T04:00:00+00:00",
       "description": "",
-      "summary": "DraftKings is leveraging its proven sports betting infrastructure and user acquisition tactics to dominate the emerging prediction markets space. The move signals that mainstream gambling platforms see political and event betting as the next big revenue driver, which means more liquidity and legitimacy for prediction markets overall.",
+      "summary": "Prediction markets are catching heat for letting users bet on whether Iran and Israel will go to war, with critics calling the markets ghoulish profiteering on human suffering. The backlash signals growing regulatory and public relations pressure that could force platforms to pull geopolitical conflict bets, shrinking the tradeable universe just as these markets gain mainstream attention.",
       "pub_display": "Mar 4"
     },
     {
-      "title": "How Anonymous Bettors Cashed In on the Iran Strike, Just Hours Before It Happened",
-      "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxPYWpOU0VOaFFISXI1U0dQc1FkTDNaR3lUb3dqUjc4bDkxMnBlYmhWN2U3ZFIyWXMxelJnSDJOQWJyc2JPSzRlVXN6cmk4ZWUxMnVNWWFaS0pGT1o5bnJLb0R1NllYX2RDbW4wcE5Ia1l0aWk5MXh5MWVfQzFYZHRLZ3ZERDA?oc=5",
-      "source": "The New York Times",
-      "pub_iso": "2026-03-03T19:14:35+00:00",
+      "title": "DraftKings Is Using Its Sports-Betting Playbook to Win Prediction Markets Race",
+      "url": "https://news.google.com/rss/articles/CBMixANBVV95cUxQSWxkTFVjZ1Zic0hGUFIzOUdjRlQtTWJwRXZxMXIwZFJTdWExYTdHUzRUUW1UX0hWaXVhQ2RtemdBU01KVklVU19jcE9KRDdMTUxfWmVUVU11TTd5TXphU3lLNFVIOFJLTVBfVlVBNW9TYXpoNEVJUVZKZmRmY2lmOUFZZGpzWjg5OXAzQ3FzcXktXzRTWWE1OE9jem5jaFhJVW9wVXVyQmNTNlREVS0xTE42UW1yWUNab09lMzJGNk8wZXhvTE1KVDkxM0M5ME9iczBlWE1zd1J2aG9tZkdReURrcGtfNF8yWkxJUmtiYTVZa09OXy0wZUJvSFZXRk14LTduaWNJZy1vcEF5NXFEZTE1MGtpNlFhUUR0c1dDYkc0WlI2V3ZwazBYUXE0ZjF5b09BQ0pKdGxqb1hhWlpZUFZGU3BRMkg2d3ZfOHJ0QmZYTEJSa1NmYkMtZ1FvZ012LXZ4bVFBMUM4UzdEbDZ1c05wQ2J0TnpuU085blhKUi1Ra1BPazAxUjZqSjRfNzZ2Q3pBYV9pMklPS2ZyV0Y3RjZhMno3YnFBMVdhQ2V0SVJFcEU1LUR0RkRELUtEN1lRYkoxNw?oc=5",
+      "source": "WSJ",
+      "pub_iso": "2026-03-04T01:39:00+00:00",
       "description": "",
-      "summary": "Anonymous traders made massive bets on Middle East escalation just hours before Iran launched its missile strike on Israel, suggesting someone had advance intelligence of the attack. The timing raises serious questions about information leakage in geopolitical prediction markets and whether insiders are using classified intel to game these platforms.",
-      "pub_display": "Mar 3"
+      "summary": "DraftKings is leveraging its user acquisition tactics, marketing muscle, and sports betting infrastructure to dominate the emerging prediction markets space. The move signals that mainstream gambling platforms see real money in political and event betting, which could bring massive liquidity and legitimacy to prediction markets while potentially crushing smaller pure-play competitors.",
+      "pub_display": "Mar 4"
     },
     {
-      "title": "A Darkly Modern Guide to Betting on War",
-      "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxPZkstcUttd0hYb2d5MUhaRWo3dnFYSmlhbko2Z25veTB2cXczREFRMDJhNml6OWhiVk9QTkFDR2pkVFdQa2ZPSW1nSmhCSGtpVWpCTllyaEo5MWpwZW5sQUtaOUNYSjVSa2I1VWlmTFA5VkZ6eUgzS2loc253d2JzZXZoTHY1aGFhVXA0NlB5Nm9tQWQya0pzaEV0UmNYWW9ra0VUWUVTREp5UWJWSW0wZ3JHUGxJcFp0V1JV?oc=5",
-      "source": "Bloomberg.com",
-      "pub_iso": "2026-03-03T17:45:34+00:00",
+      "title": "Rep. Crenshaw odds: Will Trump\u2019s snub spark an upset in TX-02?",
+      "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPOEpWS1FkVXpYamZia3VrTnMxMTBmLUU3a1hHVGJMMGo1TzlXcmdMOGItNFIxOGI5SnlHUzRfbTdOS2dYekVtdzE5U3ByWE5jaUV4N0lpRnlJeGxiTE5fTGFPdTBWUlAyYTF2ZjhjVmZkZ3FrSm9QM3NFMDZGeHFqR1czajBpYmJE?oc=5",
+      "source": "Kalshi",
+      "pub_iso": "2026-03-03T21:59:49+00:00",
       "description": "",
-      "summary": "War betting markets have exploded in popularity as geopolitical tensions rise, with traders now placing wagers on everything from ceasefire dates to territorial gains. These markets often provide more accurate intelligence than government agencies, making them valuable tools for risk assessment even as they raise uncomfortable ethical questions about profiting from human suffering.",
-      "pub_display": "Mar 3"
-    },
-    {
-      "title": "US derivatives regulator to advance prediction markets rule soon",
-      "url": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxOYmhUMXEydEtSanVIUEMzbUNhb2pNYlpWM3BzbVJoeHJXaV9QdzJCODQtV2FUcXpwOXJFM0lCdmwyZk9nMFZHUFZxS2xfQ0JENER3SW4xcHBYYWp1bk5IZ01ndHpVMHpRZ0c5UFdsTXJ1SUZlc0hqYnBhR0ZWYXI3akVtYi1zMzF2RldYUnZzT19kV1N4Sk14bEpHZG85bXZFUmNhUDUySHRid3BsX2ZNRzI5MEZneUdKR3YxSDl5Ym1qaUw0QmV2VGJFdloycVpxSmNjLW90NnNTWnhxWG15VVNTaEowLVR3?oc=5",
-      "source": "Reuters",
-      "pub_iso": "2026-03-03T14:36:38+00:00",
-      "description": "",
-      "summary": "The CFTC is preparing to finalize regulations that will govern how prediction markets operate in the US. This could either legitimize the industry by providing clear rules or kill innovation with heavy-handed restrictions that favor existing players like Kalshi over upstart competitors.",
+      "summary": "Trump apparently snubbed Rep. Dan Crenshaw in Texas's 2nd district, and now bettors are wondering if this creates an opening for a primary challenger to knock off the Navy SEAL-turned-congressman. The drama matters because Crenshaw was once seen as a lock for reelection, but Trump's cold shoulder could shift the odds and create value for anyone willing to bet against the incumbent.",
       "pub_display": "Mar 3"
     }
   ]
