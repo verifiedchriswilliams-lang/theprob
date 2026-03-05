@@ -39,6 +39,10 @@ CLAUDE_MODEL       = "claude-haiku-4-5-20251001"
 SITE_URL           = "https://theprobnewsletter.com"
 OUTPUT_PATH        = "newsletter/latest.html"
 
+# Beehiiv API — set via GitHub secrets BEEHIIV_API_KEY and BEEHIIV_PUB_ID
+BEEHIIV_API_KEY = os.environ.get("BEEHIIV_API_KEY", "")
+BEEHIIV_PUB_ID  = os.environ.get("BEEHIIV_PUB_ID", "")
+
 HOUSE_STYLE_SYSTEM = (
     "You write for The Prob, a prediction markets newsletter. "
     "The north star: help readers make money in prediction markets. "
@@ -255,7 +259,7 @@ def build_head_styles() -> str:
 
 # ── HTML BUILDER ──────────────────────────────────────────────────────────────
 
-def build_html(markets: dict, news: dict, subject: str) -> str:
+def build_html(markets: dict, news: dict, subject: str, with_footer: bool = True) -> str:
     hero       = markets.get("hero", {})
     movers     = markets.get("movers", [])[:5]
     daily_take = markets.get("daily_take", {})
@@ -485,6 +489,13 @@ def build_html(markets: dict, news: dict, subject: str) -> str:
   </td></tr>"""
 
     # ── ASSEMBLE ──
+    # with_footer=False when posting via Beehiiv API — they inject their own
+    # CAN-SPAM/GDPR footer, so we omit ours to avoid a duplicate footer.
+    inner_sections = "\n".join([
+        header_html, hero_html, movers_html, news_html, take_html, cta_html,
+        footer_html if with_footer else "",
+    ])
+
     html = f"""<!DOCTYPE html>
 <html lang="en" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 <head>
@@ -516,13 +527,7 @@ def build_html(markets: dict, news: dict, subject: str) -> str:
   <table class="email-wrap" width="600" cellpadding="0" cellspacing="0"
          style="max-width:600px;width:100%;margin:0 auto;background:#080b0f !important;">
 
-    {header_html}
-    {hero_html}
-    {movers_html}
-    {news_html}
-    {take_html}
-    {cta_html}
-    {footer_html}
+    {inner_sections}
 
   </table>
 
@@ -565,6 +570,59 @@ def save_newsletter(subject: str, html: str) -> bool:
         print(f"  [ERROR] Could not save newsletter: {e}")
         return False
 
+# ── BEEHIIV API ──────────────────────────────────────────────────────────────
+
+def post_to_beehiiv(subject: str, html: str) -> bool:
+    """
+    POST the newsletter to Beehiiv via the Send API, scheduled 10 minutes
+    from now. Workflow runs at 6:50am ET → email sends at 7:00am ET.
+
+    Requires env vars: BEEHIIV_API_KEY, BEEHIIV_PUB_ID
+    API ref: https://developers.beehiiv.com/api-reference/posts/create
+    """
+    if not BEEHIIV_API_KEY or not BEEHIIV_PUB_ID:
+        print("  [INFO] BEEHIIV_API_KEY or BEEHIIV_PUB_ID not set — skipping API post")
+        return False
+
+    # Schedule 10 minutes from now so the workflow (6:50am ET) sends at 7:00am ET.
+    # NOTE: After DST (Mar 8 2026), update workflow cron from '50 11 * * *' → '50 10 * * *'
+    now_utc      = datetime.now(timezone.utc)
+    send_at_utc  = now_utc + timedelta(minutes=10)
+    scheduled_at = send_at_utc.strftime("%Y-%m-%dT%H:%M:%SZ")
+
+    url = f"https://api.beehiiv.com/v2/publications/{BEEHIIV_PUB_ID}/posts"
+    try:
+        r = requests.post(
+            url,
+            headers={
+                "Authorization":  f"Bearer {BEEHIIV_API_KEY}",
+                "Content-Type":   "application/json",
+            },
+            json={
+                "title":          subject,
+                "body_content":   html,
+                "status":         "confirmed",
+                "scheduled_at":   scheduled_at,
+            },
+            timeout=30,
+        )
+        r.raise_for_status()
+        data    = r.json()
+        post_id = data.get("data", {}).get("id", "unknown")
+        print(f"  ✓ Beehiiv post created — id={post_id}, scheduled={scheduled_at}")
+        return True
+    except requests.exceptions.HTTPError as e:
+        print(f"  [ERROR] Beehiiv API HTTP error: {e}")
+        try:
+            print(f"  Response: {e.response.text[:500]}")
+        except Exception:
+            pass
+        return False
+    except Exception as e:
+        print(f"  [ERROR] Beehiiv API call failed: {e}")
+        return False
+
+
 # ── MAIN ─────────────────────────────────────────────────────────────────────
 
 def main():
@@ -592,15 +650,21 @@ def main():
     print(f"  Subject: {subject}")
 
     print("\nBuilding newsletter HTML...")
-    html = build_html(markets, news, subject)
-    print(f"  HTML:    {len(html):,} chars")
+    html_full   = build_html(markets, news, subject, with_footer=True)
+    html_no_ftr = build_html(markets, news, subject, with_footer=False)
+    print(f"  HTML:    {len(html_full):,} chars")
 
     print("\nSaving newsletter...")
-    success = save_newsletter(subject, html)
+    success = save_newsletter(subject, html_full)
 
-    if success:
-        print("\n✓ Newsletter ready — open newsletter/latest.html")
-        print("  Paste into Beehiiv and send!")
+    print("\nPosting to Beehiiv...")
+    posted = post_to_beehiiv(subject, html_no_ftr)
+
+    if success and posted:
+        print("\n✓ Newsletter saved and scheduled via Beehiiv API — sends at 7:00am ET")
+    elif success:
+        print("\n✓ Newsletter saved to newsletter/latest.html")
+        print("  Beehiiv API not configured — paste manually to send")
     else:
         print("\n✗ Save failed")
 
