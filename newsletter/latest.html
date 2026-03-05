@@ -1,338 +1,92 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="x-apple-disable-message-reformatting">
-<meta name="color-scheme" content="dark">
-<meta name="supported-color-schemes" content="dark">
-<!--[if !mso]><!-->
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<!--<![endif]-->
-<!--[if mso]>
-<xml><o:OfficeDocumentSettings><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml>
-<![endif]-->
-<title>Ubisoft M&A odds tank 10pts: what the market knows</title>
-
-<style type="text/css">
-  /* ── Reset ── */
-  body, table, td, a { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
-  table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
-  img { -ms-interpolation-mode: bicubic; border: 0; outline: none; text-decoration: none; }
-
-  /* ── Dark mode: lock our palette ── */
-  @media (prefers-color-scheme: dark) {
-    body, .email-body { background-color: #080b0f !important; }
-    .email-wrap { background-color: #080b0f !important; }
-    .section-bg { background-color: #080b0f !important; }
-    .alt-bg { background-color: #0d1117 !important; }
-    /* Prevent Apple Mail from inverting our intentional dark design */
-    [data-ogsc] .email-body { background-color: #080b0f !important; }
-  }
-
-  /* ── Mobile: max 600px screens ── */
-  @media only screen and (max-width: 620px) {
-    .email-wrap    { width: 100% !important; max-width: 100% !important; }
-    .section-pad   { padding: 20px 16px !important; }
-    .header-pad    { padding: 20px 16px 16px !important; }
-    .footer-pad    { padding: 20px 16px !important; }
-
-    /* Typography scale-up */
-    .hero-title    { font-size: 22px !important; line-height: 1.35 !important; }
-    .hero-prob     { font-size: 56px !important; }
-    .hero-change   { font-size: 14px !important; }
-    .body-text     { font-size: 16px !important; line-height: 1.8 !important; }
-    .news-title    { font-size: 18px !important; }
-    .take-headline { font-size: 20px !important; line-height: 1.3 !important; }
-    .mover-q       { font-size: 15px !important; }
-    .mover-prob    { font-size: 18px !important; }
-    .eyebrow       { font-size: 11px !important; }
-    .logo-text     { font-size: 24px !important; }
-    .footer-text   { font-size: 12px !important; line-height: 2 !important; }
-    .read-time     { font-size: 11px !important; }
-
-    /* Stack hero stats vertically on mobile */
-    .hero-stats-left  { display: block !important; width: 100% !important; padding-bottom: 12px !important; }
-    .hero-stats-right { display: block !important; width: 100% !important; padding-left: 0 !important; }
-    .hero-stats-table { display: block !important; width: 100% !important; }
-    .hero-stats-row   { display: block !important; width: 100% !important; }
-
-    /* Bigger tap targets */
-    .cta-btn {
-      display: block !important;
-      text-align: center !important;
-      padding: 16px 24px !important;
-      font-size: 14px !important;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Prob &mdash; Newsletter Preview</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: #080b0f; font-family: 'Courier New', monospace; }
+    #preview-bar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 9999;
+      background: #0d1117; border-bottom: 2px solid #1e2a38;
+      padding: 10px 20px; display: flex; align-items: center;
+      justify-content: space-between; gap: 12px;
     }
-    .cta-small {
-      font-size: 13px !important;
-      padding: 10px 0 !important;
-      display: inline-block !important;
+    #subject-line {
+      font-size: 12px; color: #8ba3bc; flex: 1; overflow: hidden;
+      text-overflow: ellipsis; white-space: nowrap;
     }
-
-    /* Movers: more row padding */
-    .mover-row td  { padding-top: 14px !important; padding-bottom: 14px !important; }
-    .mover-num     { display: none !important; }
-
-    /* Hide movers 4 and 5 on mobile — show 3 + "see all" link */
-    .mover-hide-mobile { display: none !important; }
-
-    /* Section divider accent */
-    .section-accent { height: 3px !important; }
-  }
-
-  /* ── Tap highlight remove ── */
-  a { -webkit-tap-highlight-color: transparent; }
-
-  /* ── Link color lock ── */
-  a[x-apple-data-detectors] {
-    color: inherit !important;
-    text-decoration: none !important;
-  }
-</style>
+    #subject-label {
+      color: #546e85; margin-right: 8px; font-size: 10px;
+      text-transform: uppercase; letter-spacing: 0.15em;
+    }
+    #copy-btn {
+      background: #00e5a0; color: #080b0f; border: none; padding: 9px 18px;
+      font-family: 'Courier New', monospace; font-size: 12px; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer;
+      white-space: nowrap; flex-shrink: 0; transition: opacity 0.15s;
+    }
+    #copy-btn:hover { opacity: 0.85; }
+    #copy-btn:disabled { opacity: 0.6; cursor: default; }
+    #copy-feedback {
+      font-size: 11px; color: #00e5a0; white-space: nowrap;
+      opacity: 0; transition: opacity 0.3s;
+    }
+    #note {
+      font-size: 10px; color: #546e85; white-space: nowrap; flex-shrink: 0;
+    }
+    #email-frame {
+      display: block; width: 100%; border: none;
+      margin-top: 46px; height: calc(100vh - 46px);
+    }
+  </style>
 </head>
-<body class="email-body" style="margin:0;padding:0;background:#080b0f !important;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;">
-
-<!-- Outlook wrapper -->
-<!--[if mso]>
-<table width="100%" cellpadding="0" cellspacing="0" bgcolor="#080b0f"><tr><td align="center">
-<![endif]-->
-
-<table width="100%" cellpadding="0" cellspacing="0" style="background:#080b0f !important;min-width:320px;">
-<tr><td align="center" style="padding:0;">
-
-  <!-- Main container: fluid on mobile, max 600px on desktop -->
-  <table class="email-wrap" width="600" cellpadding="0" cellspacing="0"
-         style="max-width:600px;width:100%;margin:0 auto;background:#080b0f !important;">
-
-    
-  <tr><td class="header-pad" style="background:#080b0f !important;padding:28px 32px 20px;border-bottom:2px solid #1e2a38;">
-    <!--[if mso]><table width="100%"><tr><td><![endif]-->
-    <a href="https://theprobnewsletter.com" class="logo-text" title="The Prob — Prediction Markets Intelligence"
-       style="font-family:'Courier New',monospace;font-size:22px;font-weight:700;color:#00e5a0 !important;letter-spacing:-0.5px;text-decoration:none;display:block;margin-bottom:8px;">THE PROB</a>
-    <table width="100%" cellpadding="0" cellspacing="0">
-      <tr>
-        <td style="vertical-align:middle;">
-          <div class="read-time" style="font-family:'Courier New',monospace;font-size:10px;color:#546e85 !important;letter-spacing:0.15em;text-transform:uppercase;">March 5, 2026 &middot; Prediction Markets Intelligence</div>
-        </td>
-        <td style="vertical-align:middle;text-align:right;">
-          <div class="read-time" style="font-family:'Courier New',monospace;font-size:10px;color:#546e85 !important;letter-spacing:0.1em;text-transform:uppercase;">6 min read</div>
-        </td>
-      </tr>
-    </table>
-    <!--[if mso]></td></tr></table><![endif]-->
-  </td></tr>
-
-  <tr><td class="section-pad" style="padding:28px 32px;border-bottom:1px solid #1e2a38;">
-    <div class="eyebrow" style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#00e5a0 !important;margin-bottom:14px;">
-      Market of the Day &middot; Polymarket
+<body>
+  <div id="preview-bar">
+    <div id="subject-line">
+      <span id="subject-label">Subject</span>Ubisoft M&amp;A Odds Tank 10pts: What the Market Knows
     </div>
-    <div class="hero-title" style="font-family:Georgia,serif;font-size:26px;font-weight:700;line-height:1.3;color:#edf2f7 !important;margin:0 0 20px;">
-      <a href="https://polymarket.com/event/which-companies-will-be-acquired-before-2027" title="Will Ubisoft be acquired before 2027?" style="color:#edf2f7 !important;text-decoration:none;">Will Ubisoft be acquired before 2027?</a>
-    </div>
-
-    <!--[if mso]><table width="100%"><tr><td width="40%" valign="top"><![endif]-->
-    <table class="hero-stats-table" width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 20px;">
-      <tr class="hero-stats-row">
-        <td class="hero-stats-left" width="40%" style="vertical-align:top;padding-bottom:0;">
-          <div class="hero-prob" style="font-family:'Courier New',monospace;font-size:56px;font-weight:700;color:#f5a623 !important;line-height:1;">41.0<span style="font-size:26px;color:#f5a623 !important;">%</span></div>
-          <div class="hero-change" style="font-family:'Courier New',monospace;font-size:13px;color:#ff4757 !important;margin-top:6px;font-weight:700;">&#9660; -10.0 pts today</div>
-        </td>
-        <!--[if mso]></td><td width="60%" valign="top" style="padding-left:20px;"><![endif]-->
-        <td class="hero-stats-right" width="60%" style="vertical-align:top;padding-left:20px;">
-          <div style="font-family:'Courier New',monospace;font-size:10px;color:#546e85 !important;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:3px;">VOLUME</div>
-          <div style="font-family:'Courier New',monospace;font-size:16px;color:#edf2f7 !important;font-weight:700;margin-bottom:12px;">$528K</div>
-          <div style="font-family:'Courier New',monospace;font-size:10px;color:#546e85 !important;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:3px;">RESOLVES</div>
-          <div style="font-family:'Courier New',monospace;font-size:16px;color:#edf2f7 !important;font-weight:700;">Dec 31</div>
-        </td>
-      </tr>
-    </table>
-    <!--[if mso]></td></tr></table><![endif]-->
-
-    <p class="body-text" style="font-size:15px;color:#d0dde8 !important;line-height:1.75;margin:0 0 20px;font-style:italic;border-left:3px solid #00e5a0;padding-left:16px;">Ubisoft's acquisition odds cratered 10 points in 24 hours, suggesting either a negative earnings report spooked takeover hopes or major acquirers (Microsoft, Sony, Embracer) publicly walked away. At 41%, the market's overpricing strategic optionality, activist investors now control the board, forcing asset sales or spinoffs that make a full buyout less attractive than two years ago.</p>
-
-    <!--[if mso]><table><tr><td><![endif]-->
-    <a href="https://polymarket.com/event/which-companies-will-be-acquired-before-2027" class="cta-btn" title="View this market on Polymarket"
-       style="display:inline-block;background:#00e5a0;color:#080b0f !important;font-family:'Courier New',monospace;font-size:13px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:14px 32px;text-decoration:none;min-height:44px;line-height:1.2;">
-      View Market &#8594;
-    </a>
-    <!--[if mso]></td></tr></table><![endif]-->
-  </td></tr>
-
-  <tr><td class="section-pad" style="padding:28px 32px;border-bottom:1px solid #1e2a38;">
-    <div class="eyebrow" style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#00e5a0 !important;margin-bottom:14px;">Today's Movers</div>
-    <table width="100%" cellpadding="0" cellspacing="0" style="border:1px solid #1e2a38;border-radius:2px;">
-      
-        <tr class="mover-row" style="background:#0d1117;">
-          <td class="mover-num" style="padding:12px 14px;font-family:'Courier New',monospace;font-size:11px;width:28px;color:#546e85 !important;vertical-align:top;">01</td>
-          <td style="padding:12px 10px 12px 14px;vertical-align:top;">
-            <a href="https://polymarket.com/event/switzerlands-march-referendum-what-will-pass" class="mover-q" title="Will the SBC initiative be approved in Switzerland’s 8 March 2026 popular vote?"
-               style="font-size:14px;color:#edf2f7 !important;text-decoration:none;line-height:1.45;display:block;margin-bottom:6px;">Will the SBC initiative be approved in Switzerland’s 8 March 2026 popular vote?</a>
-            <div><span style="display:inline-block;background:#ff475722;color:#ff4757 !important;border:1px solid #ff475755;font-family:'Courier New',monospace;font-size:9px;font-weight:700;letter-spacing:0.08em;padding:2px 6px;text-transform:uppercase;border-radius:2px;margin-right:6px;">Politics</span><span style="font-family:'Courier New',monospace;font-size:10px;color:#546e85 !important;">Polymarket</span></div>
-          </td>
-          <td style="padding:12px 14px 12px 8px;text-align:right;white-space:nowrap;vertical-align:top;min-width:72px;">
-            <div class="mover-prob" style="font-family:'Courier New',monospace;font-size:17px;font-weight:700;color:#ff4757 !important;">8.8%</div>
-            <div style="font-family:'Courier New',monospace;font-size:11px;color:#ff4757 !important;margin-top:3px;">&#9660; 15.5 pts</div>
-          </td>
-        </tr>
-        <tr class="mover-row" style="background:#080b0f;">
-          <td class="mover-num" style="padding:12px 14px;font-family:'Courier New',monospace;font-size:11px;width:28px;color:#546e85 !important;vertical-align:top;">02</td>
-          <td style="padding:12px 10px 12px 14px;vertical-align:top;">
-            <a href="https://polymarket.com/event/2026-icc-t20-mens-world-cup-winner" class="mover-q" title="Will India win the 2026 ICC Men’s T20 World Cup?"
-               style="font-size:14px;color:#edf2f7 !important;text-decoration:none;line-height:1.45;display:block;margin-bottom:6px;">Will India win the 2026 ICC Men’s T20 World Cup?</a>
-            <div><span style="display:inline-block;background:#a78bfa22;color:#a78bfa !important;border:1px solid #a78bfa55;font-family:'Courier New',monospace;font-size:9px;font-weight:700;letter-spacing:0.08em;padding:2px 6px;text-transform:uppercase;border-radius:2px;margin-right:6px;">Sports</span><span style="font-family:'Courier New',monospace;font-size:10px;color:#546e85 !important;">Polymarket</span></div>
-          </td>
-          <td style="padding:12px 14px 12px 8px;text-align:right;white-space:nowrap;vertical-align:top;min-width:72px;">
-            <div class="mover-prob" style="font-family:'Courier New',monospace;font-size:17px;font-weight:700;color:#f5a623 !important;">47.0%</div>
-            <div style="font-family:'Courier New',monospace;font-size:11px;color:#00e5a0 !important;margin-top:3px;">&#9650; 9.0 pts</div>
-          </td>
-        </tr>
-        <tr class="mover-row" style="background:#0d1117;">
-          <td class="mover-num" style="padding:12px 14px;font-family:'Courier New',monospace;font-size:11px;width:28px;color:#546e85 !important;vertical-align:top;">03</td>
-          <td style="padding:12px 10px 12px 14px;vertical-align:top;">
-            <a href="https://polymarket.com/event/ipos-before-2027" class="mover-q" title="Anduril IPO before 2027?"
-               style="font-size:14px;color:#edf2f7 !important;text-decoration:none;line-height:1.45;display:block;margin-bottom:6px;">Anduril IPO before 2027?</a>
-            <div><span style="display:inline-block;background:#00e5a022;color:#00e5a0 !important;border:1px solid #00e5a055;font-family:'Courier New',monospace;font-size:9px;font-weight:700;letter-spacing:0.08em;padding:2px 6px;text-transform:uppercase;border-radius:2px;margin-right:6px;">Finance</span><span style="font-family:'Courier New',monospace;font-size:10px;color:#546e85 !important;">Polymarket</span></div>
-          </td>
-          <td style="padding:12px 14px 12px 8px;text-align:right;white-space:nowrap;vertical-align:top;min-width:72px;">
-            <div class="mover-prob" style="font-family:'Courier New',monospace;font-size:17px;font-weight:700;color:#ff4757 !important;">27.0%</div>
-            <div style="font-family:'Courier New',monospace;font-size:11px;color:#ff4757 !important;margin-top:3px;">&#9660; 22.0 pts</div>
-          </td>
-        </tr>
-        <tr class="mover-hide-mobile" style="background:#080b0f;">
-          <td class="mover-num" style="padding:12px 14px;font-family:'Courier New',monospace;font-size:11px;width:28px;color:#546e85 !important;vertical-align:top;">04</td>
-          <td style="padding:12px 10px 12px 14px;vertical-align:top;">
-            <a href="https://kalshi.com/markets/kxcabout" class="mover-q" title="Who will leave Trump's Cabinet next?: Will Kristi Noem be the first person to leave the Trump Cabinet?"
-               style="font-size:14px;color:#edf2f7 !important;text-decoration:none;line-height:1.45;display:block;margin-bottom:6px;">Who will leave Trump's Cabinet next?: Will Kristi Noem be the first person to leave the Trump Cabinet?</a>
-            <div><span style="display:inline-block;background:#ff475722;color:#ff4757 !important;border:1px solid #ff475755;font-family:'Courier New',monospace;font-size:9px;font-weight:700;letter-spacing:0.08em;padding:2px 6px;text-transform:uppercase;border-radius:2px;margin-right:6px;">Politics</span><span style="font-family:'Courier New',monospace;font-size:10px;color:#546e85 !important;">Kalshi</span></div>
-          </td>
-          <td style="padding:12px 14px 12px 8px;text-align:right;white-space:nowrap;vertical-align:top;min-width:72px;">
-            <div class="mover-prob" style="font-family:'Courier New',monospace;font-size:17px;font-weight:700;color:#f5a623 !important;">36.0%</div>
-            <div style="font-family:'Courier New',monospace;font-size:11px;color:#00e5a0 !important;margin-top:3px;">&#9650; 13.0 pts</div>
-          </td>
-        </tr>
-        <tr class="mover-hide-mobile" style="background:#0d1117;">
-          <td class="mover-num" style="padding:12px 14px;font-family:'Courier New',monospace;font-size:11px;width:28px;color:#546e85 !important;vertical-align:top;">05</td>
-          <td style="padding:12px 10px 12px 14px;vertical-align:top;">
-            <a href="https://polymarket.com/event/deepseek-v4-released-by-march-31" class="mover-q" title="DeepSeek V4 released by March 15?"
-               style="font-size:14px;color:#edf2f7 !important;text-decoration:none;line-height:1.45;display:block;margin-bottom:6px;">DeepSeek V4 released by March 15?</a>
-            <div><span style="display:inline-block;background:#4ecdc422;color:#4ecdc4 !important;border:1px solid #4ecdc455;font-family:'Courier New',monospace;font-size:9px;font-weight:700;letter-spacing:0.08em;padding:2px 6px;text-transform:uppercase;border-radius:2px;margin-right:6px;">Technology</span><span style="font-family:'Courier New',monospace;font-size:10px;color:#546e85 !important;">Polymarket</span></div>
-          </td>
-          <td style="padding:12px 14px 12px 8px;text-align:right;white-space:nowrap;vertical-align:top;min-width:72px;">
-            <div class="mover-prob" style="font-family:'Courier New',monospace;font-size:17px;font-weight:700;color:#f5a623 !important;">48.0%</div>
-            <div style="font-family:'Courier New',monospace;font-size:11px;color:#00e5a0 !important;margin-top:3px;">&#9650; 15.5 pts</div>
-          </td>
-        </tr>
-    </table>
-    <div style="margin-top:14px;">
-      <a href="https://theprobnewsletter.com" class="cta-small" title="See all markets on The Prob"
-         style="font-family:'Courier New',monospace;font-size:11px;color:#00e5a0 !important;text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;">
-        See all 5 movers &#8594;
-      </a>
-    </div>
-  </td></tr>
-
-  <tr><td class="section-pad" style="padding:28px 32px;border-bottom:1px solid #1e2a38;">
-    <div class="eyebrow" style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#00e5a0 !important;margin-bottom:14px;">What People Are Writing About</div>
-    <table width="100%" cellpadding="0" cellspacing="0">
-      
-        <tr><td style="padding:16px 0;border-bottom:1px solid #1e2a38;">
-          <div style="font-family:'Courier New',monospace;font-size:10px;color:#546e85 !important;margin-bottom:8px;letter-spacing:0.08em;">01 &nbsp; THE HILL &middot; Mar 5</div>
-          <div class="news-title" style="font-family:Georgia,serif;font-size:17px;font-weight:700;color:#edf2f7 !important;margin:0 0 8px;line-height:1.35;">
-            <a href="https://news.google.com/rss/articles/CBMipAFBVV95cUxNQkQ2NjhSMWJabVVidHV6ZkoxQ2t0X3BmOFd5TE5UX0F0SzN4NnVMblhRLWoyUUpQclpVVjFMS3FWY0JadTNreEUxQWVOd3BKcXNRbGoyemxDTHNIRmp3dHRPR2RxRDNsT1lGUnFuYkl0VkhFRzdYYzhac1BDODg4N2wtdTZsLWU5SHN1REZBRk9vZGNhMW43SVZMMjVUTXVvZXA4QdIBqgFBVV95cUxQTnJENVdFNVVsRDl0bFdHWWJmVHFYQVV5LXByQ3J3QmNfaFp6WTBabVhqVTRGbUpWRERZeUlhTnU0Sm9DbHd0V3RTNnFIV21MVGc5QUlLUVBfZFNyTG5DMjRhTGc3WUJBM1VRZHpFeWplcm51eWVTdUhrVTJ4ZDBYY0hkOFVlZzlkQWgxcEFmejJ3SEtxSTgzbnYzcml4b01aQlpCRzBiNl95Zw?oc=5" title="Trump regulator splits GOP with prediction market fight" style="color:#edf2f7 !important;text-decoration:none;">Trump regulator splits GOP with prediction market fight</a>
-          </div>
-          <p class="body-text" style="font-size:14px;color:#d0dde8 !important;line-height:1.7;margin:0;">A Trump-appointed regulator is causing internal Republican conflict over how to handle prediction market regulation. The GOP split signals uncertainty about whether prediction markets will face stricter oversight or get the deregulatory treatment that could supercharge the industry.</p>
-        </td></tr>
-        <tr><td style="padding:16px 0;border-bottom:1px solid #1e2a38;">
-          <div style="font-family:'Courier New',monospace;font-size:10px;color:#546e85 !important;margin-bottom:8px;letter-spacing:0.08em;">02 &nbsp; IGAMINGTODAY.COM &middot; Mar 5</div>
-          <div class="news-title" style="font-family:Georgia,serif;font-size:17px;font-weight:700;color:#edf2f7 !important;margin:0 0 8px;line-height:1.35;">
-            <a href="https://news.google.com/rss/articles/CBMickFVX3lxTE1RUVJfaWdfNEI3NXg1d1laZUVnZjNIQ0FGTzBwdTRDT2Zqa1B4a0JPaE5SaUpWaDdlejh0S3BEUDNudmprbjFwQ3NxMDRUWmhtNHFuOVYyZWtWNlBJY05QbkJEdmpEVnhBdGhvekkxaDJCdw?oc=5" title="How Prediction Markets Are Created" style="color:#edf2f7 !important;text-decoration:none;">How Prediction Markets Are Created</a>
-          </div>
-          <p class="body-text" style="font-size:14px;color:#d0dde8 !important;line-height:1.7;margin:0;">Prediction markets don't just appear out of thin air,someone has to decide what questions to ask, set the rules, and bootstrap initial liquidity to get traders interested. The creation process determines which events get the spotlight and betting volume, making market makers the quiet gatekeepers of what the crowd gets to predict.</p>
-        </td></tr>
-        <tr><td style="padding:16px 0;">
-          <div style="font-family:'Courier New',monospace;font-size:10px;color:#546e85 !important;margin-bottom:8px;letter-spacing:0.08em;">03 &nbsp; THE MOTLEY FOOL &middot; Mar 5</div>
-          <div class="news-title" style="font-family:Georgia,serif;font-size:17px;font-weight:700;color:#edf2f7 !important;margin:0 0 8px;line-height:1.35;">
-            <a href="https://news.google.com/rss/articles/CBMimAFBVV95cUxQbFdac0NzaWtYT1l6OGdFU19CMXNLeDdMazlhT3dWRHExRkdneWxSNExIazZPMjVCNHhWaFV4MnlxT1RCQWswUTVVa1dZa0tYd01IVnBIM2kyWkV6ZVNEOEdyUG9iSnFLWlJ2a2FLZ2YyMDUyYUFWUmZJWGdqQ0syd0NuT0dtMWFkWm1FTk9DN2JYLTVRNnF3RA?oc=5" title="Prediction Markets Are All the Rage, but This AI Stock Is a Much Better Investment" style="color:#edf2f7 !important;text-decoration:none;">Prediction Markets Are All the Rage, but This AI Stock Is a Much Better Investment</a>
-          </div>
-          <p class="body-text" style="font-size:14px;color:#d0dde8 !important;line-height:1.7;margin:0;">Some finance writer thinks buying AI stocks beats betting on prediction markets right now. The take matters because it shows mainstream media still doesn't grasp that prediction markets aren't just another asset class to trade against - they're information discovery engines that could actually help pick better AI investments.</p>
-        </td></tr>
-    </table>
-    <div style="margin-top:16px;">
-      <a href="https://theprobnewsletter.com/news.html" class="cta-small" title="All prediction market news"
-         style="font-family:'Courier New',monospace;font-size:11px;color:#00e5a0 !important;text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;">
-        All Prediction Market News &#8594;
-      </a>
-    </div>
-  </td></tr>
-
-  <tr><td class="section-pad" style="padding:28px 32px;border-bottom:1px solid #1e2a38;background:#0a0e14 !important;">
-    <div class="eyebrow" style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#00e5a0 !important;margin-bottom:14px;">The Prob's Daily Take &middot; Alpha Play · Technology</div>
-    <div class="take-headline" style="font-family:Georgia,serif;font-size:22px;font-weight:700;line-height:1.3;color:#edf2f7 !important;margin:0 0 14px;">
-      <a href="https://polymarket.com/event/which-companies-will-be-acquired-before-2027" style="color:#edf2f7 !important;text-decoration:none;">Ubisoft Acquisition Odds Crater 10 Points, Market Smells Weakness</a>
-    </div>
-    <p class="body-text" style="font-size:15px;color:#d0dde8 !important;line-height:1.8;margin:0 0 20px;">Ubisoft's takeover probability tanked from 51% to 41% in 24 hours on zero news, suggesting panic selling or inside information flowing to sharp money. The drop is too violent for a pure sentiment shift. Either a buyer quietly walked or Ubisoft signaled it's not for sale. At 41%, you're getting paid to wait for acquisition noise, but the momentum suggests this trade is heading lower before it rebounds.</p>
-    <table width="100%" cellpadding="0" cellspacing="0" style="border-top:1px solid #1e2a38;margin-bottom:20px;">
-            <tr><td style="padding:14px 0;border-bottom:1px solid #1e2a38;">
-              <div style="font-family:'Courier New',monospace;font-size:10px;color:#546e85 !important;margin-bottom:5px;letter-spacing:0.08em;">01</div>
-              <div style="font-size:14px;color:#edf2f7 !important;line-height:1.5;">
-                <a href="https://polymarket.com/event/switzerlands-march-referendum-what-will-pass" style="color:#edf2f7 !important;text-decoration:none;">Swiss voters are pricing out SBC like it's radioactive; 15-point dump in a day signals coordinated betting or leaked polling data showing it's dead on arrival.</a>
-              </div>
-              <div style="font-family:'Courier New',monospace;font-size:12px;color:#00e5a0 !important;margin-top:5px;font-weight:700;">Swiss SBC Initiative: 8.8%</div>
-            </td></tr>
-            <tr><td style="padding:14px 0;border-bottom:1px solid #1e2a38;">
-              <div style="font-family:'Courier New',monospace;font-size:10px;color:#546e85 !important;margin-bottom:5px;letter-spacing:0.08em;">02</div>
-              <div style="font-size:14px;color:#edf2f7 !important;line-height:1.5;">
-                <a href="https://polymarket.com/event/2026-icc-t20-mens-world-cup-winner" style="color:#edf2f7 !important;text-decoration:none;">India's T20 World Cup odds popped 9 points as the market reprices them as legitimate contenders, but 47% still underweights their recent form and home advantage in a shortened tournament.</a>
-              </div>
-              <div style="font-family:'Courier New',monospace;font-size:12px;color:#00e5a0 !important;margin-top:5px;font-weight:700;">India T20 World Cup 2026: 47.0%</div>
-            </td></tr>
-            <tr><td style="padding:14px 0;">
-              <div style="font-family:'Courier New',monospace;font-size:10px;color:#546e85 !important;margin-bottom:5px;letter-spacing:0.08em;">03</div>
-              <div style="font-size:14px;color:#edf2f7 !important;line-height:1.5;">
-                <a href="https://polymarket.com/event/ipos-before-2027" style="color:#edf2f7 !important;text-decoration:none;">Anduril's IPO odds collapsed 22 points in one session, signaling either a funding deal closed or the market reassessed their path to public markets as less certain than previously priced.</a>
-              </div>
-              <div style="font-family:'Courier New',monospace;font-size:12px;color:#00e5a0 !important;margin-top:5px;font-weight:700;">Anduril IPO Before 2027: 27.0%</div>
-            </td></tr></table>
-    <a href="https://twitter.com/intent/tweet?text=Today%20on%20The%20Prob%3A%20Ubisoft%20Acquisition%20Odds%20Crater%2010%20Points%2C%20Market%20Smells%20Weakness&url=https://theprobnewsletter.com" title="Share this take on Twitter/X"
-       style="font-family:'Courier New',monospace;font-size:11px;color:#00e5a0 !important;text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;">
-      Share This Take &#8594;
-    </a>
-  </td></tr>
-
-  <tr><td style="padding:36px 32px;text-align:center;background:#0d1117 !important;">
-    <div style="font-family:'Courier New',monospace;font-size:11px;color:#546e85 !important;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:16px;">The full board is live</div>
-    <!--[if mso]><table align="center"><tr><td><![endif]-->
-    <a href="https://theprobnewsletter.com" class="cta-btn" title="See all markets on The Prob"
-       style="display:inline-block;background:#00e5a0;color:#080b0f !important;font-family:'Courier New',monospace;font-size:13px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:16px 40px;text-decoration:none;min-height:44px;line-height:1.2;">
-      See All Markets &#8594;
-    </a>
-    <!--[if mso]></td></tr></table><![endif]-->
-    <div style="font-family:'Courier New',monospace;font-size:10px;color:#546e85 !important;margin-top:16px;">Updated Mar 5, 2026 · 7:00 AM ET</div>
-  </td></tr>
-
-  <tr><td class="footer-pad" style="padding:28px 32px;text-align:center;border-top:1px solid #1e2a38;">
-    <p class="footer-text" style="font-family:'Courier New',monospace;font-size:11px;color:#8ba3bc !important;line-height:2;margin:0 0 16px;">
-      Got a take? Hit reply. We read every one.
-    </p>
-    <p class="footer-text" style="font-family:'Courier New',monospace;font-size:10px;color:#546e85 !important;line-height:2;margin:0;">
-      The Prob &middot; Prediction Markets Intelligence<br>
-      <a href="https://theprobnewsletter.com" title="The Prob Newsletter" style="color:#546e85 !important;text-decoration:none;">https://theprobnewsletter.com</a><br><br>
-      Not financial advice. For informational purposes only.<br>
-      <a href="{{unsubscribe_url}}" title="Unsubscribe from The Prob" style="color:#8ba3bc !important;">Unsubscribe</a>
-      &nbsp;&middot;&nbsp;
-      <a href="https://theprobnewsletter.com" title="View online" style="color:#8ba3bc !important;">View online</a>
-    </p>
-  </td></tr>
-
-  </table>
-
-</td></tr>
-</table>
-
-<!--[if mso]>
-</td></tr></table>
-<![endif]-->
-
+    <span id="copy-feedback">Copied to clipboard!</span>
+    <span id="note">no-footer version &rarr; paste into Beehiiv</span>
+    <button id="copy-btn" onclick="copyHTML()">Copy Email HTML</button>
+  </div>
+  <iframe id="email-frame" src="latest-email.html" title="Newsletter Preview"
+          onload="resizeFrame(this)"></iframe>
+  <script>
+    function resizeFrame(f) {
+      try { f.style.height = f.contentDocument.body.scrollHeight + 'px'; }
+      catch(e) {}
+    }
+    function copyHTML() {
+      var btn = document.getElementById('copy-btn');
+      var fb  = document.getElementById('copy-feedback');
+      btn.disabled = true;
+      btn.textContent = 'Fetching...';
+      fetch('latest-copy.html?t=' + Date.now())
+        .then(function(r) {
+          if (!r.ok) throw new Error('HTTP ' + r.status);
+          return r.text();
+        })
+        .then(function(text) {
+          return navigator.clipboard.writeText(text);
+        })
+        .then(function() {
+          btn.textContent = 'Copied!';
+          btn.disabled = false;
+          fb.style.opacity = '1';
+          setTimeout(function() {
+            btn.textContent = 'Copy Email HTML';
+            fb.style.opacity = '0';
+          }, 3000);
+        })
+        .catch(function(err) {
+          btn.textContent = 'Error — retry';
+          btn.disabled = false;
+          console.error('Copy failed:', err);
+          setTimeout(function() { btn.textContent = 'Copy Email HTML'; }, 3000);
+        });
+    }
+  </script>
 </body>
 </html>
