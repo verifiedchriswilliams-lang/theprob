@@ -67,6 +67,23 @@ CATEGORY_COLORS = {
     "World":      "#60a5fa",
 }
 
+# ── FROM THE BUILDER ──────────────────────────────────────────────────────────
+# Update each session: what we shipped yesterday, what's coming next.
+# Keep it trader-facing — no implementation jargon.
+
+FROM_THE_BUILDER = {
+    "built_yesterday": (
+        "Improved the Market of the Day algorithm. The pick now rotates faster "
+        "and high-volume markets get more weight even when prices are stable "
+        "so the board doesn't get stuck on yesterday's news."
+    ),
+    "coming_next": (
+        "Building The Spread, a feature that surfaces where Polymarket and Kalshi "
+        "disagree on the same market. When two crowds price the same event differently, "
+        "one of them is wrong. We'll show you which."
+    ),
+}
+
 # ── LOAD DATA ─────────────────────────────────────────────────────────────────
 
 def load_json(path: str) -> dict:
@@ -127,6 +144,30 @@ def category_chip(cat: str) -> str:
         f'text-transform:uppercase;border-radius:2px;margin-right:6px;">'
         f'{cat}</span>'
     )
+
+def build_builder_section() -> str:
+    """Personal 'From Chris' section — what we built yesterday + what's coming next."""
+    built   = FROM_THE_BUILDER.get("built_yesterday", "")
+    coming  = FROM_THE_BUILDER.get("coming_next", "")
+    if not built and not coming:
+        return ""
+    built_block = (
+        f'<p class="body-text" style="font-size:15px;color:#d0dde8 !important;line-height:1.8;margin:0 0 12px;">'
+        f'<span style="color:#edf2f7 !important;font-weight:700;">Yesterday:</span> {built}'
+        f'</p>'
+    ) if built else ""
+    coming_block = (
+        f'<p class="body-text" style="font-size:15px;color:#d0dde8 !important;line-height:1.8;margin:0 0 20px;">'
+        f'<span style="color:#edf2f7 !important;font-weight:700;">Next:</span> {coming}'
+        f'</p>'
+    ) if coming else ""
+    return f"""
+  <tr><td class="section-pad" style="padding:28px 32px;border-bottom:1px solid #1e2a38;background:#0a0e14 !important;">
+    <div class="eyebrow" style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#f5a623 !important;margin-bottom:14px;">From Chris</div>
+    {built_block}
+    {coming_block}
+    <div style="font-family:'Courier New',monospace;font-size:12px;color:#8ba3bc !important;border-top:1px solid #1e2a38;padding-top:14px;">&mdash; Chris</div>
+  </td></tr>"""
 
 def truncate_summary(text: str, max_sentences: int = 2) -> str:
     """Cap news summaries at 2 sentences for mobile readability."""
@@ -227,8 +268,8 @@ def build_head_styles() -> str:
     .cta-btn {
       display: block !important;
       text-align: center !important;
-      padding: 16px 24px !important;
-      font-size: 14px !important;
+      padding: 12px 20px !important;
+      font-size: 13px !important;
     }
     .cta-small {
       font-size: 13px !important;
@@ -290,10 +331,10 @@ def build_html(markets: dict, news: dict, subject: str, with_footer: bool = True
     <table width="100%" cellpadding="0" cellspacing="0">
       <tr>
         <td style="vertical-align:middle;">
-          <div class="read-time" style="font-family:'Courier New',monospace;font-size:10px;color:#546e85 !important;letter-spacing:0.15em;text-transform:uppercase;">{date_str} &middot; Prediction Markets Intelligence</div>
+          <div class="read-time" style="font-family:'Courier New',monospace;font-size:10px;color:#8ba3bc !important;letter-spacing:0.15em;text-transform:uppercase;">{date_str} &middot; Prediction Markets Intelligence</div>
         </td>
         <td style="vertical-align:middle;text-align:right;">
-          <div class="read-time" style="font-family:'Courier New',monospace;font-size:10px;color:#546e85 !important;letter-spacing:0.1em;text-transform:uppercase;">{read_time}</div>
+          <div class="read-time" style="font-family:'Courier New',monospace;font-size:10px;color:#8ba3bc !important;letter-spacing:0.1em;text-transform:uppercase;">{read_time}</div>
         </td>
       </tr>
     </table>
@@ -320,9 +361,9 @@ def build_html(markets: dict, news: dict, subject: str, with_footer: bool = True
         </td>
         <!--[if mso]></td><td width="60%" valign="top" style="padding-left:20px;"><![endif]-->
         <td class="hero-stats-right" width="60%" style="vertical-align:top;padding-left:20px;">
-          <div style="font-family:'Courier New',monospace;font-size:10px;color:#546e85 !important;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:3px;">VOLUME</div>
+          <div style="font-family:'Courier New',monospace;font-size:10px;color:#8ba3bc !important;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:3px;">VOLUME</div>
           <div style="font-family:'Courier New',monospace;font-size:16px;color:#edf2f7 !important;font-weight:700;margin-bottom:12px;">{hero_vol}</div>
-          <div style="font-family:'Courier New',monospace;font-size:10px;color:#546e85 !important;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:3px;">RESOLVES</div>
+          <div style="font-family:'Courier New',monospace;font-size:10px;color:#8ba3bc !important;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:3px;">RESOLVES</div>
           <div style="font-family:'Courier New',monospace;font-size:16px;color:#edf2f7 !important;font-weight:700;">{hero_end or 'TBD'}</div>
         </td>
       </tr>
@@ -333,7 +374,7 @@ def build_html(markets: dict, news: dict, subject: str, with_footer: bool = True
 
     <!--[if mso]><table><tr><td><![endif]-->
     <a href="{hero_url}" class="cta-btn" title="View this market on {hero_source}"
-       style="display:inline-block;background:#00e5a0;color:#080b0f !important;font-family:'Courier New',monospace;font-size:13px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:14px 32px;text-decoration:none;min-height:44px;line-height:1.2;">
+       style="display:inline-block;background:#00e5a0;color:#080b0f !important;font-family:'Courier New',monospace;font-size:13px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:10px 22px;text-decoration:none;line-height:1.4;">
       View Market &#8594;
     </a>
     <!--[if mso]></td></tr></table><![endif]-->
@@ -352,11 +393,11 @@ def build_html(markets: dict, news: dict, subject: str, with_footer: bool = True
 
         movers_rows += f"""
         <tr{hide_cls} style="background:{bg};">
-          <td class="mover-num" style="padding:12px 14px;font-family:'Courier New',monospace;font-size:11px;width:28px;color:#546e85 !important;vertical-align:top;">{str(i+1).zfill(2)}</td>
+          <td class="mover-num" style="padding:12px 14px;font-family:'Courier New',monospace;font-size:11px;width:28px;color:#8ba3bc !important;vertical-align:top;">{str(i+1).zfill(2)}</td>
           <td style="padding:12px 10px 12px 14px;vertical-align:top;">
             <a href="{m.get('url', SITE_URL)}" class="mover-q" title="{m.get('question','')}"
                style="font-size:14px;color:#edf2f7 !important;text-decoration:none;line-height:1.45;display:block;margin-bottom:6px;">{m.get('question','')}</a>
-            <div>{chip}<span style="font-family:'Courier New',monospace;font-size:10px;color:#546e85 !important;">{m.get('source','')}</span></div>
+            <div>{chip}<span style="font-family:'Courier New',monospace;font-size:10px;color:#8ba3bc !important;">{m.get('source','')}</span></div>
           </td>
           <td style="padding:12px 14px 12px 8px;text-align:right;white-space:nowrap;vertical-align:top;min-width:72px;">
             <div class="mover-prob" style="font-family:'Courier New',monospace;font-size:17px;font-weight:700;color:{color_prob(p)} !important;">{p}%</div>
@@ -392,7 +433,7 @@ def build_html(markets: dict, news: dict, subject: str, with_footer: bool = True
 
         news_items += f"""
         <tr><td style="padding:16px 0;{border}">
-          <div style="font-family:'Courier New',monospace;font-size:10px;color:#546e85 !important;margin-bottom:8px;letter-spacing:0.08em;">{num} &nbsp; {source.upper()} &middot; {pub_date}</div>
+          <div style="font-family:'Courier New',monospace;font-size:10px;color:#8ba3bc !important;margin-bottom:8px;letter-spacing:0.08em;">{num} &nbsp; {source.upper()} &middot; {pub_date}</div>
           <div class="news-title" style="font-family:Georgia,serif;font-size:17px;font-weight:700;color:#edf2f7 !important;margin:0 0 8px;line-height:1.35;">
             <a href="{url}" title="{title}" style="color:#edf2f7 !important;text-decoration:none;">{title}</a>
           </div>
@@ -433,7 +474,7 @@ def build_html(markets: dict, news: dict, subject: str, with_footer: bool = True
             border    = "border-bottom:1px solid #1e2a38;" if i < 2 else ""
             sidebar_rows += f"""
             <tr><td style="padding:14px 0;{border}">
-              <div style="font-family:'Courier New',monospace;font-size:10px;color:#546e85 !important;margin-bottom:5px;letter-spacing:0.08em;">0{i+1}</div>
+              <div style="font-family:'Courier New',monospace;font-size:10px;color:#8ba3bc !important;margin-bottom:5px;letter-spacing:0.08em;">0{i+1}</div>
               <div style="font-size:14px;color:#edf2f7 !important;line-height:1.5;">
                 <a href="{item_url}" style="color:#edf2f7 !important;text-decoration:none;">{item.get('headline','')}</a>
               </div>
@@ -461,14 +502,14 @@ def build_html(markets: dict, news: dict, subject: str, with_footer: bool = True
     # ── CTA ──
     cta_html = f"""
   <tr><td style="padding:36px 32px;text-align:center;background:#0d1117 !important;">
-    <div style="font-family:'Courier New',monospace;font-size:11px;color:#546e85 !important;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:16px;">The full board is live</div>
+    <div style="font-family:'Courier New',monospace;font-size:11px;color:#8ba3bc !important;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:16px;">The full board is live</div>
     <!--[if mso]><table align="center"><tr><td><![endif]-->
     <a href="{SITE_URL}" class="cta-btn" title="See all markets on The Prob"
-       style="display:inline-block;background:#00e5a0;color:#080b0f !important;font-family:'Courier New',monospace;font-size:13px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:16px 40px;text-decoration:none;min-height:44px;line-height:1.2;">
+       style="display:inline-block;background:#00e5a0;color:#080b0f !important;font-family:'Courier New',monospace;font-size:13px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:10px 22px;text-decoration:none;line-height:1.4;">
       See All Markets &#8594;
     </a>
     <!--[if mso]></td></tr></table><![endif]-->
-    <div style="font-family:'Courier New',monospace;font-size:10px;color:#546e85 !important;margin-top:16px;">Updated {updated}</div>
+    <div style="font-family:'Courier New',monospace;font-size:10px;color:#8ba3bc !important;margin-top:16px;">Updated {updated}</div>
   </td></tr>"""
 
     # ── FOOTER ──
@@ -478,9 +519,9 @@ def build_html(markets: dict, news: dict, subject: str, with_footer: bool = True
     <p class="footer-text" style="font-family:'Courier New',monospace;font-size:11px;color:#8ba3bc !important;line-height:2;margin:0 0 16px;">
       Got a take? Hit reply. We read every one.
     </p>
-    <p class="footer-text" style="font-family:'Courier New',monospace;font-size:10px;color:#546e85 !important;line-height:2;margin:0;">
+    <p class="footer-text" style="font-family:'Courier New',monospace;font-size:10px;color:#8ba3bc !important;line-height:2;margin:0;">
       The Prob &middot; Prediction Markets Intelligence<br>
-      <a href="{SITE_URL}" title="The Prob Newsletter" style="color:#546e85 !important;text-decoration:none;">{SITE_URL}</a><br><br>
+      <a href="{SITE_URL}" title="The Prob Newsletter" style="color:#8ba3bc !important;text-decoration:none;">{SITE_URL}</a><br><br>
       Not financial advice. For informational purposes only.<br>
       <a href="{{{{unsubscribe_url}}}}" title="Unsubscribe from The Prob" style="color:#8ba3bc !important;">Unsubscribe</a>
       &nbsp;&middot;&nbsp;
@@ -491,8 +532,10 @@ def build_html(markets: dict, news: dict, subject: str, with_footer: bool = True
     # ── ASSEMBLE ──
     # with_footer=False when posting via Beehiiv API — they inject their own
     # CAN-SPAM/GDPR footer, so we omit ours to avoid a duplicate footer.
+    builder_html = build_builder_section()
     inner_sections = "\n".join([
-        header_html, hero_html, movers_html, news_html, take_html, cta_html,
+        header_html, hero_html, movers_html, news_html, take_html,
+        builder_html, cta_html,
         footer_html if with_footer else "",
     ])
 
@@ -545,24 +588,151 @@ def build_html(markets: dict, news: dict, subject: str, with_footer: bool = True
 
 # ── SAVE ─────────────────────────────────────────────────────────────────────
 
-def save_newsletter(subject: str, html: str) -> bool:
+def build_preview_page(subject: str) -> str:
+    """
+    Wrapper HTML page for newsletter/latest.html.
+    Shows the email in an iframe + a floating 'Copy Email HTML' button.
+    Clicking Copy fetches latest-copy.html (no-footer version) and puts it
+    on the clipboard, ready to paste directly into Beehiiv.
+    Morning workflow: open URL → click Copy → paste into Beehiiv → Send.
+    """
+    subj_escaped = (subject
+        .replace("&", "&amp;").replace("<", "&lt;")
+        .replace(">", "&gt;").replace('"', "&quot;"))
+    return f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Prob &mdash; Newsletter Preview</title>
+  <style>
+    * {{ box-sizing: border-box; margin: 0; padding: 0; }}
+    body {{ background: #080b0f; font-family: 'Courier New', monospace; }}
+    #preview-bar {{
+      position: fixed; top: 0; left: 0; right: 0; z-index: 9999;
+      background: #0d1117; border-bottom: 2px solid #1e2a38;
+      padding: 10px 20px; display: flex; align-items: center;
+      justify-content: space-between; gap: 12px;
+    }}
+    #subject-line {{
+      font-size: 12px; color: #8ba3bc; flex: 1; overflow: hidden;
+      text-overflow: ellipsis; white-space: nowrap;
+    }}
+    #subject-label {{
+      color: #546e85; margin-right: 8px; font-size: 10px;
+      text-transform: uppercase; letter-spacing: 0.15em;
+    }}
+    #copy-btn {{
+      background: #00e5a0; color: #080b0f; border: none; padding: 9px 18px;
+      font-family: 'Courier New', monospace; font-size: 12px; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer;
+      white-space: nowrap; flex-shrink: 0; transition: opacity 0.15s;
+    }}
+    #copy-btn:hover {{ opacity: 0.85; }}
+    #copy-btn:disabled {{ opacity: 0.6; cursor: default; }}
+    #copy-feedback {{
+      font-size: 11px; color: #00e5a0; white-space: nowrap;
+      opacity: 0; transition: opacity 0.3s;
+    }}
+    #note {{
+      font-size: 10px; color: #546e85; white-space: nowrap; flex-shrink: 0;
+    }}
+    #email-frame {{
+      display: block; width: 100%; border: none;
+      margin-top: 46px; height: calc(100vh - 46px);
+    }}
+  </style>
+</head>
+<body>
+  <div id="preview-bar">
+    <div id="subject-line">
+      <span id="subject-label">Subject</span>{subj_escaped}
+    </div>
+    <span id="copy-feedback">Copied to clipboard!</span>
+    <span id="note">no-footer version &rarr; paste into Beehiiv</span>
+    <button id="copy-btn" onclick="copyHTML()">Copy Email HTML</button>
+  </div>
+  <iframe id="email-frame" src="latest-email.html" title="Newsletter Preview"
+          onload="resizeFrame(this)"></iframe>
+  <script>
+    function resizeFrame(f) {{
+      try {{ f.style.height = f.contentDocument.body.scrollHeight + 'px'; }}
+      catch(e) {{}}
+    }}
+    function copyHTML() {{
+      var btn = document.getElementById('copy-btn');
+      var fb  = document.getElementById('copy-feedback');
+      btn.disabled = true;
+      btn.textContent = 'Fetching...';
+      fetch('latest-copy.html?t=' + Date.now())
+        .then(function(r) {{
+          if (!r.ok) throw new Error('HTTP ' + r.status);
+          return r.text();
+        }})
+        .then(function(text) {{
+          return navigator.clipboard.writeText(text);
+        }})
+        .then(function() {{
+          btn.textContent = 'Copied!';
+          btn.disabled = false;
+          fb.style.opacity = '1';
+          setTimeout(function() {{
+            btn.textContent = 'Copy Email HTML';
+            fb.style.opacity = '0';
+          }}, 3000);
+        }})
+        .catch(function(err) {{
+          btn.textContent = 'Error — retry';
+          btn.disabled = false;
+          console.error('Copy failed:', err);
+          setTimeout(function() {{ btn.textContent = 'Copy Email HTML'; }}, 3000);
+        }});
+    }}
+  </script>
+</body>
+</html>"""
+
+
+def save_newsletter(subject: str, html_full: str, html_no_ftr: str) -> bool:
+    """
+    Saves three newsletter files:
+      latest.html       — preview wrapper page with Copy HTML button
+      latest-email.html — full email HTML (with footer), shown in iframe preview
+      latest-copy.html  — email HTML WITHOUT footer (paste this into Beehiiv)
+      YYYY-MM-DD.html   — date-stamped archive (full)
+      latest-subject.txt — subject + subtitle for reference
+    """
     try:
         os.makedirs("newsletter", exist_ok=True)
-        with open(OUTPUT_PATH, "w") as f:
-            f.write(html)
 
+        # Preview wrapper page (what you open in the browser)
+        with open("newsletter/latest.html", "w") as f:
+            f.write(build_preview_page(subject))
+
+        # Full email (with footer) — shown in the iframe preview
+        with open("newsletter/latest-email.html", "w") as f:
+            f.write(html_full)
+
+        # No-footer email — this is what Copy HTML puts on your clipboard
+        with open("newsletter/latest-copy.html", "w") as f:
+            f.write(html_no_ftr)
+
+        # Date archive
         now_et    = datetime.now(timezone.utc) + timedelta(hours=-5)
         date_slug = now_et.strftime("%Y-%m-%d")
         archive   = f"newsletter/{date_slug}.html"
         with open(archive, "w") as f:
-            f.write(html)
+            f.write(html_full)
 
+        # Subject file
         subtitle = f"The crowd's read on {now_et.strftime('%B %-d')} — markets, movers, and what it means."
         with open("newsletter/latest-subject.txt", "w") as f:
             f.write(f"SUBJECT: {subject}\n")
             f.write(f"SUBTITLE: {subtitle}\n")
 
-        print(f"  Saved:   {OUTPUT_PATH}")
+        print(f"  Preview: newsletter/latest.html")
+        print(f"  Email:   newsletter/latest-email.html")
+        print(f"  Copy:    newsletter/latest-copy.html  (no-footer — paste into Beehiiv)")
         print(f"  Archive: {archive}")
         print(f"  Subject: newsletter/latest-subject.txt")
         return True
@@ -648,7 +818,7 @@ def main():
     print(f"  HTML:    {len(html_full):,} chars")
 
     print("\nSaving newsletter...")
-    success = save_newsletter(subject, html_full)
+    success = save_newsletter(subject, html_full, html_no_ftr)
 
     print("\nPosting to Beehiiv...")
     posted = post_to_beehiiv(subject, html_no_ftr)
