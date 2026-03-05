@@ -1,9 +1,10 @@
-name: Build Daily Newsletter
+name: Build and Send Daily Newsletter
 
 on:
   schedule:
-    - cron: '0 11 * * *'  # 6:00 AM ET (UTC-5) = 11:00 UTC — ready before you wake up
-  workflow_dispatch:       # allow manual trigger for testing
+    - cron: '50 11 * * *'  # 6:50 AM EST (UTC-5) = 11:50 UTC → schedules Beehiiv send at 7:00 AM ET
+    # NOTE: After DST starts (Mar 8 2026), change to '50 10 * * *' (6:50 AM EDT = 10:50 UTC)
+  workflow_dispatch:        # allow manual trigger for testing
 
 jobs:
   build-newsletter:
@@ -20,9 +21,11 @@ jobs:
       - name: Install dependencies
         run: pip install requests
 
-      - name: Build newsletter
+      - name: Build and send newsletter
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          BEEHIIV_API_KEY:   ${{ secrets.BEEHIIV_API_KEY }}
+          BEEHIIV_PUB_ID:    ${{ secrets.BEEHIIV_PUB_ID }}
         run: python scripts/send_newsletter.py
 
       - name: Commit newsletter to repo
