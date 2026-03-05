@@ -57,6 +57,13 @@ MIN_INTERESTING_VOLUME = 100_000
 # to be eligible as hero. Prevents the same stale market from winning every day.
 HERO_MIN_CHANGE_PTS = 3.0
 
+# Volume-qualified staleness override: if a market has this much 24h volume,
+# it only needs HERO_VOLUME_MIN_CHANGE to qualify as hero. Captures markets
+# like Iran/Hormuz ($1.8M 24h) where money is clearly rushing in even if the
+# price is holding steady — that IS a buzzy market worth featuring.
+HERO_VOLUME_GATE       = 500_000  # $500K 24h volume qualifies for relaxed gate
+HERO_VOLUME_MIN_CHANGE = 1.0      # only needs 1pt move if high-volume
+
 # Hero repeat penalty: applied per day a topic has appeared in hero_history.
 # Cumulative scaling forces genuine variety — a topic that won yesterday takes
 # a -40pt hit; one that won 2 days ago takes -70pts (effectively a hard block).
@@ -960,8 +967,14 @@ def pick_hero(markets: list[dict], recent_topics: list[str] | None = None) -> di
                 seen_topics[key] = m
     deduped_candidates = list(seen_topics.values())
 
-    # Primary pool: markets that moved meaningfully today
-    fresh_movers = [c for c in deduped_candidates if abs(c["change_pts"]) >= HERO_MIN_CHANGE_PTS]
+    # Primary pool: markets that moved meaningfully today,
+    # OR high-volume markets where money is clearly flowing even without a big price move.
+    # e.g. Iran/Hormuz with $1.8M 24h vol at 1pt move is more buzzy than a $50K market at 4pts.
+    fresh_movers = [
+        c for c in deduped_candidates
+        if abs(c["change_pts"]) >= HERO_MIN_CHANGE_PTS
+        or (c.get("volume_24h", 0) >= HERO_VOLUME_GATE and abs(c["change_pts"]) >= HERO_VOLUME_MIN_CHANGE)
+    ]
 
     # Fallback pool 1: anything with any movement
     soft_movers = [c for c in deduped_candidates if abs(c["change_pts"]) >= 1]
@@ -974,7 +987,7 @@ def pick_hero(markets: list[dict], recent_topics: list[str] | None = None) -> di
     winner = max(pool, key=hero_score)
 
     # Debug output so you can see why a market won
-    print(f"\n  Hero selection pool: {len(pool)} unique topics (staleness gate: {HERO_MIN_CHANGE_PTS} pts, deduped from {len(base_candidates)} candidates)")
+    print(f"\n  Hero selection pool: {len(pool)} unique topics (staleness gate: {HERO_MIN_CHANGE_PTS}pts or {HERO_VOLUME_MIN_CHANGE}pt+${HERO_VOLUME_GATE//1000}K 24h vol, deduped from {len(base_candidates)} candidates)")
     if recent_topics:
         print(f"  Repeat penalty (cumulative: {HERO_REPEAT_PENALTY_PER_DAY}) applied to: {recent_topics}")
     top3 = sorted(pool, key=hero_score, reverse=True)[:3]
