@@ -1,8 +1,62 @@
 {
-  "updated": "Mar 5, 2026 \u00b7 7:00 AM ET",
-  "updated_iso": "2026-03-05T12:00:31.467183+00:00",
+  "updated": "Mar 5, 2026 \u00b7 2:58 PM ET",
+  "updated_iso": "2026-03-05T19:58:27.058002+00:00",
   "homepage_count": 3,
   "articles": [
+    {
+      "title": "MrBeast fires video editor who allegedly made $4,000 with \"near perfect\" success on Kalshi",
+      "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxQLU5SNWFwU3hmRzloandxME12elNKc0wyeFBvWGk4dTBad1RMczZkT2JtRFo2Y0VBT0U5dGUtenpjdExyRXE0NGxOUGxxS1gyNUVlNTJRODBkX1NaeS0wVE9EZ2QyQjBCd1Z1cEo2R09YSWZHTnJLNUJlMVpnOTRyS3pVR0E0R0dD?oc=5",
+      "source": "Fortune",
+      "pub_iso": "2026-03-05T19:50:00+00:00",
+      "description": "",
+      "summary": "MrBeast fired a video editor after discovering they made $4,000 betting on Kalshi with what sources called \"near perfect\" success rates. The incident highlights how employees with inside knowledge of content creation timelines and decisions can exploit prediction markets, potentially forcing platforms to tighten insider trading policies.",
+      "pub_display": "Mar 5"
+    },
+    {
+      "title": "Understanding prediction markets with Louis Pellegrino and Charles Farrell",
+      "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxQX0NacmtDeHlmZ2FrN2dVdk43X3JFR2FxTGk3X2NBYzBjVll1X054NFBsV0FhbkdfZnNJczNqNkljci13YUNiVGRxeGJ4c0ZaTGw2RFFwRVdHcWw0cWF4SHFpZ3NkY0dqYnY4YzFTcDZ5cnAyaWQ3VDk2MGNVZU51bkxmSXZQWkxmUXN3aDNsRDBaa1BVVkVpTjFxQ25zOVBzU2dmc1NFVWhsYlRzWFpHdEFJaFVGdTYyWjN5Y1BZR3ctX3hzZGt0U0Rn?oc=5",
+      "source": "Dentons",
+      "pub_iso": "2026-03-05T16:44:31+00:00",
+      "description": "",
+      "summary": "Louis Pellegrino and Charles Farrell break down how prediction markets actually work, from basic mechanics to advanced trading strategies. Smart money follows the insights of experienced traders who've learned to spot inefficiencies and capitalize on crowd psychology in these markets.",
+      "pub_display": "Mar 5"
+    },
+    {
+      "title": "Stocktwits Announces 2026 Cashtag Awards Presented by Polymarket, Hosted at the New York Stock Exchange",
+      "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxQNmc0bmpmdlo5cTJQS09YVkUzY1dfLWtlM3lnbUF0bDlFcDRSdzllMlM0Rm1DV3FnRjFUV0FCUHQ5VUxYY0NJSl9KTEhFWHFTUk1fQUZPU0ZlWVpMU0Y4X2wzbW5GRjBGTjNsSmxRTDV6ZHNaaGRxUTVwZjhIX0tmWmduSF94eC1ZYlE2WE0tdkNFbGc?oc=5",
+      "source": "Yahoo Finance Singapore",
+      "pub_iso": "2026-03-05T15:17:00+00:00",
+      "description": "",
+      "summary": "Stocktwits is partnering with Polymarket to host the 2026 Cashtag Awards at the NYSE, marking another step in prediction markets' march toward mainstream finance. The collaboration signals that traditional financial institutions are warming up to prediction markets as legitimate tools for price discovery and market sentiment analysis.",
+      "pub_display": "Mar 5"
+    },
+    {
+      "title": "Prediction Markets: The Gamble Disguised as News",
+      "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxPRmFmUUEyNjZ5bldPVTQ4d0tDX2hOWU54NFVDLXhSQncwdG1CUTBRcmFyb3pLSlA2UHpNcUxyemxTM1MyTWdjZ2tkTFl4ZFYtelh0Zm9zSHE5MjZ5aDdGenN2Z0FzRWhPUjFjdjBuSzAxajFhNnh4aDQ0ZktUVEpKbUVEUm1LNW8?oc=5",
+      "source": "The Tech Buzz",
+      "pub_iso": "2026-03-05T15:13:00+00:00",
+      "description": "",
+      "summary": "Mainstream media is attacking prediction markets as glorified gambling dressed up with fancy economic theory. The criticism threatens regulatory acceptance just as platforms like Polymarket and Kalshi are gaining serious traction with institutional money.",
+      "pub_display": "Mar 5"
+    },
+    {
+      "title": "Polymarket Gets Major Prediction Completely Wrong After Loudly Boasting About It",
+      "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE5LbC1fYkt5S19BYmJ5UlRROThmS1UzU01MRWJnak1iQ3hBSmc4WGZfemNEV3JaN2RfRHhZam5UUXJjOElWYU9RbWNsUWdEWC1GU0IwSGhrajhZQ1dsaVdUSE1XWGVzWmVRakZJSmdB?oc=5",
+      "source": "Futurism",
+      "pub_iso": "2026-03-05T15:00:14+00:00",
+      "description": "",
+      "summary": "Polymarket hyped up their forecasting accuracy on a high-profile event, then completely whiffed when the actual outcome rolled around. The embarrassing miss undermines the platform's credibility pitch just as mainstream adoption hangs on whether prediction markets can actually deliver better forecasts than traditional polling and punditry.",
+      "pub_display": "Mar 5"
+    },
+    {
+      "title": "Prediction markets are playing a dangerous game",
+      "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxOZGNWdnkzekVvNmh2UDBmQTNUV0JBWHFXdXlsTUE2RmM2cUlIMG82MUVobkZldlBvek5VUFRPNms5Yi00RkdPZ2RPTTZOUVJZWVNVLU9kWTI2dzVFQnZxS0Zzb3lPYTltWE8yVVlaU0FBWUlJZTlIdFQ2Q0FRbGUwWHFLbkpESEJxTHBTS3dEME1qRGtRcFpLZHJCS19BcTFfWEhVUEtubkVJLTZJaFJV?oc=5",
+      "source": "The Verge",
+      "pub_iso": "2026-03-05T15:00:00+00:00",
+      "description": "",
+      "summary": "Prediction markets are facing mounting regulatory pressure as lawmakers worry about their influence on elections and potential for manipulation. If regulators crack down hard, we could see major platforms shut down or forced overseas, leaving US bettors with fewer options and less liquidity.",
+      "pub_display": "Mar 5"
+    },
     {
       "title": "Trump regulator splits GOP with prediction market fight",
       "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxNQkQ2NjhSMWJabVVidHV6ZkoxQ2t0X3BmOFd5TE5UX0F0SzN4NnVMblhRLWoyUUpQclpVVjFMS3FWY0JadTNreEUxQWVOd3BKcXNRbGoyemxDTHNIRmp3dHRPR2RxRDNsT1lGUnFuYkl0VkhFRzdYYzhac1BDODg4N2wtdTZsLWU5SHN1REZBRk9vZGNhMW43SVZMMjVUTXVvZXA4QdIBqgFBVV95cUxQTnJENVdFNVVsRDl0bFdHWWJmVHFYQVV5LXByQ3J3QmNfaFp6WTBabVhqVTRGbUpWRERZeUlhTnU0Sm9DbHd0V3RTNnFIV21MVGc5QUlLUVBfZFNyTG5DMjRhTGc3WUJBM1VRZHpFeWplcm51eWVTdUhrVTJ4ZDBYY0hkOFVlZzlkQWgxcEFmejJ3SEtxSTgzbnYzcml4b01aQlpCRzBiNl95Zw?oc=5",
@@ -10,15 +64,6 @@
       "pub_iso": "2026-03-05T11:00:00+00:00",
       "description": "",
       "summary": "A Trump-appointed regulator is causing internal Republican conflict over how to handle prediction market regulation. The GOP split signals uncertainty about whether prediction markets will face stricter oversight or get the deregulatory treatment that could supercharge the industry.",
-      "pub_display": "Mar 5"
-    },
-    {
-      "title": "How Prediction Markets Are Created",
-      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE1RUVJfaWdfNEI3NXg1d1laZUVnZjNIQ0FGTzBwdTRDT2Zqa1B4a0JPaE5SaUpWaDdlejh0S3BEUDNudmprbjFwQ3NxMDRUWmhtNHFuOVYyZWtWNlBJY05QbkJEdmpEVnhBdGhvekkxaDJCdw?oc=5",
-      "source": "iGamingToday.com",
-      "pub_iso": "2026-03-05T10:04:21+00:00",
-      "description": "",
-      "summary": "Prediction markets don't just appear out of thin air,someone has to decide what questions to ask, set the rules, and bootstrap initial liquidity to get traders interested. The creation process determines which events get the spotlight and betting volume, making market makers the quiet gatekeepers of what the crowd gets to predict.",
       "pub_display": "Mar 5"
     },
     {
@@ -31,30 +76,12 @@
       "pub_display": "Mar 5"
     },
     {
-      "title": "Bettors wagered $54 million on Khamenei\u2019s death. Now they\u2019re not getting paid.",
-      "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOZFd1SmQ4YUk2M1UtR1RuSHlpYXVTcnpLR3JrSEs5NDJ2WFBUdmJScVpZRUMtbnZISDg3V0xtSkxYMGhXcGpNNl9YTUFILUhXLTR5dGh1TTZsT2xwZE1qZGZIdklORkktNnUyMGtXRFE2cTRkS0FPbldFdnBPNV9nWVE1U3lZNmRMSnpuOEFn?oc=5",
-      "source": "The Washington Post",
-      "pub_iso": "2026-03-04T22:13:40+00:00",
-      "description": "",
-      "summary": "Prediction market bettors placed $54 million in wagers on Iran's Supreme Leader Ali Khamenei dying, but the platforms are now refusing to pay out winnings. This highlights how geopolitical death markets create massive payout disputes when platforms decide the resolution criteria weren't clearly met or the event verification becomes too complicated.",
-      "pub_display": "Mar 4"
-    },
-    {
       "title": "Wall Street Regulators Advance Crypto, Prediction Market Plans",
       "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxON2lLNzFJYWZNZlJqVVl4SXZ2Y3RRQWRfeGNDRm05Xzg4ZUxOZ1FMTW5qSjNKWFdPRDJxXzRib2hmdDdPUWVtZmExM1ZURGQ5eXQzZGt1d0NVYVo1R2c4UDJmZ2o4VEN3Y0xJaUE5ZVh2blJaQzNyY1I2b1hTN2JYYThEMTBwRW1Rek41OC0wQWJGMTJndFU2RDdfa1NyLVJYV1FJNTNvUDdHSjVaME5sS2Vn?oc=5",
-      "source": "Bloomberg.com",
+      "source": "Bloomberg",
       "pub_iso": "2026-03-04T21:31:50+00:00",
       "description": "",
       "summary": "Wall Street regulators are pushing forward new frameworks that would bring both cryptocurrency and prediction markets under clearer federal oversight. This signals Washington is finally ready to legitimize prediction markets as a real financial product, which could unlock institutional money and mainstream adoption for platforms that have operated in regulatory gray zones.",
-      "pub_display": "Mar 4"
-    },
-    {
-      "title": "Life After Congress: A prediction market duo",
-      "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxOa25KblhaYUpnMkdEUERBR2Zuc1ZWVEphV2VGRnhudUY4eDAxdFNBQzJ0REJDd1NXQnlXVFQwQ3lUcEZrcFdtOEhvemMybHVsRzVhdlZGM1BVZERCdG5VR1U1NDB6VjBZMW1saHBHRU1FREI3OHQ5ZDM0a3VXZGoyV1JfMVhWUHpyN1ZwX1dZOFI?oc=5",
-      "source": "Roll Call",
-      "pub_iso": "2026-03-04T21:26:21+00:00",
-      "description": "",
-      "summary": "Two former members of Congress are launching their own prediction market platform, betting their political insider knowledge translates to better forecasting products. Their DC connections could give them an edge in attracting high-profile political bets and navigating the regulatory maze that's killed other platforms.",
       "pub_display": "Mar 4"
     },
     {
@@ -67,15 +94,6 @@
       "pub_display": "Mar 4"
     },
     {
-      "title": "Prediction Markets Are Eroding Our Civic Soul",
-      "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTFAyM2dTSkVMek5WZmZsLWxPVGhZdmFPSU1LQ1Y1RndIdkpDSjRJbWRpNTZsQnA3RzJVQzZ4SFlyUkVWbHRKODdKT0RaWU50Z1QxTzZ5MWRUZE0zcmxYbFhEdC1ScjN1YjlRazAyZWs2eEVjS01KbVJJMk5BOXRWMG8?oc=5",
-      "source": "The New Republic",
-      "pub_iso": "2026-03-04T11:00:00+00:00",
-      "description": "",
-      "summary": "Someone's arguing that prediction markets are turning civic engagement into a cold, transactional betting game that strips away the moral and emotional investment democracy requires. If this critique gains traction, it could fuel regulatory crackdowns or public backlash that limits where and how political betting operates.",
-      "pub_display": "Mar 4"
-    },
-    {
       "title": "How Is Kalshi Not Gambling?",
       "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE55WE00UWpDQUpDWDVDR3gtUWtVb3h1YjNHRm40cHJ6M0xMM0ZpVVdiTUNGY0hwVEtJRmM2cFVXR1JtdGNpWHREcm5RM00wcEx4S3Z1dnpuVnd4M2c2ZjBPYk1CX1h3ZDZCUXJfSWQtSWw?oc=5",
       "source": "WIRED",
@@ -85,31 +103,13 @@
       "pub_display": "Mar 4"
     },
     {
-      "title": "Polymarket and Kalshi\u2019s Iran War Wagers Are Ghoulish \u2014 and Troubling",
-      "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxOaHBzS0dlbTJBOVJGSDhWWGdhSmNSQnNrVEdqNFhYWXhndmZLbkZoSmdrX2hHdzJtWGxGSWtSMVF6eVN4bW92X1FZaU5USC1GN1FPbVQyRjN3bmNIYmRVZTRKbkoyWDJtY2RWRmFmMDZZeFJwenk3MjRGTzMxS0I1MVRFR05mX2IxX0VoZFRZUE9IdER3V0NoOTJRc1E2MnBKUjhGZXg3YXpRanFMVUlJdUZPNGFDZ1R5enR4Mw?oc=5",
-      "source": "Bloomberg.com",
-      "pub_iso": "2026-03-04T04:00:00+00:00",
+      "title": "Polymarket removes nuclear detonation market after backlash",
+      "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNbUI4N1ZUd08tLUJRVnl0amZmN21uNmQyOUl4aXFqa2tCTGpqcF9XQVZwdVdvenV5QXhVNER3Smk1VzZVOFFZVDgwd0cyTjkzWjNkN0xHX1dLbFM4TTJMU1JIZmRzQjFaR01acVRpQlhsYXBGeXM5bGs3ZEJLb1dOcGNyYUZIMTA?oc=5",
+      "source": "The Block",
+      "pub_iso": "2026-03-04T09:46:23+00:00",
       "description": "",
-      "summary": "Prediction markets are catching heat for letting users bet on whether Iran and Israel will go to war, with critics calling the markets ghoulish profiteering on human suffering. The backlash signals growing regulatory and public relations pressure that could force platforms to pull geopolitical conflict bets, shrinking the tradeable universe just as these markets gain mainstream attention.",
+      "summary": "Polymarket pulled its controversial market betting on whether a nuclear weapon would detonate by year-end after facing intense criticism from users and media outlets. The removal highlights how prediction markets still struggle to balance their \"bet on anything\" ethos with public relations disasters that could trigger regulatory crackdowns.",
       "pub_display": "Mar 4"
-    },
-    {
-      "title": "DraftKings Is Using Its Sports-Betting Playbook to Win Prediction Markets Race",
-      "url": "https://news.google.com/rss/articles/CBMixANBVV95cUxQSWxkTFVjZ1Zic0hGUFIzOUdjRlQtTWJwRXZxMXIwZFJTdWExYTdHUzRUUW1UX0hWaXVhQ2RtemdBU01KVklVU19jcE9KRDdMTUxfWmVUVU11TTd5TXphU3lLNFVIOFJLTVBfVlVBNW9TYXpoNEVJUVZKZmRmY2lmOUFZZGpzWjg5OXAzQ3FzcXktXzRTWWE1OE9jem5jaFhJVW9wVXVyQmNTNlREVS0xTE42UW1yWUNab09lMzJGNk8wZXhvTE1KVDkxM0M5ME9iczBlWE1zd1J2aG9tZkdReURrcGtfNF8yWkxJUmtiYTVZa09OXy0wZUJvSFZXRk14LTduaWNJZy1vcEF5NXFEZTE1MGtpNlFhUUR0c1dDYkc0WlI2V3ZwazBYUXE0ZjF5b09BQ0pKdGxqb1hhWlpZUFZGU3BRMkg2d3ZfOHJ0QmZYTEJSa1NmYkMtZ1FvZ012LXZ4bVFBMUM4UzdEbDZ1c05wQ2J0TnpuU085blhKUi1Ra1BPazAxUjZqSjRfNzZ2Q3pBYV9pMklPS2ZyV0Y3RjZhMno3YnFBMVdhQ2V0SVJFcEU1LUR0RkRELUtEN1lRYkoxNw?oc=5",
-      "source": "WSJ",
-      "pub_iso": "2026-03-04T01:39:00+00:00",
-      "description": "",
-      "summary": "DraftKings is leveraging its user acquisition tactics, marketing muscle, and sports betting infrastructure to dominate the emerging prediction markets space. The move signals that mainstream gambling platforms see real money in political and event betting, which could bring massive liquidity and legitimacy to prediction markets while potentially crushing smaller pure-play competitors.",
-      "pub_display": "Mar 4"
-    },
-    {
-      "title": "Rep. Crenshaw odds: Will Trump\u2019s snub spark an upset in TX-02?",
-      "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPOEpWS1FkVXpYamZia3VrTnMxMTBmLUU3a1hHVGJMMGo1TzlXcmdMOGItNFIxOGI5SnlHUzRfbTdOS2dYekVtdzE5U3ByWE5jaUV4N0lpRnlJeGxiTE5fTGFPdTBWUlAyYTF2ZjhjVmZkZ3FrSm9QM3NFMDZGeHFqR1czajBpYmJE?oc=5",
-      "source": "Kalshi",
-      "pub_iso": "2026-03-03T21:59:49+00:00",
-      "description": "",
-      "summary": "Trump apparently snubbed Rep. Dan Crenshaw in Texas's 2nd district, and now bettors are wondering if this creates an opening for a primary challenger to knock off the Navy SEAL-turned-congressman. The drama matters because Crenshaw was once seen as a lock for reelection, but Trump's cold shoulder could shift the odds and create value for anyone willing to bet against the incumbent.",
-      "pub_display": "Mar 3"
     }
   ]
 }
