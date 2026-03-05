@@ -158,9 +158,17 @@ See VOICE.md. Sharp, confident, trader-focused. Lead with the number. "The crowd
 ## Session Handoff — TODO
 
 ### Pending Next Session
-1. Beehiiv automation — wire up API /publications/{id}/posts endpoint to eliminate manual copy/paste send
-2. Monitor rolling hero block — passive, just confirm no ping-pong after a few days
-3. Topic key fingerprint cosmetic issue — low priority
+1. Beehiiv workaround — add "Copy HTML" button to newsletter/latest.html so morning workflow is: open URL → click Copy → paste into Beehiiv → Send (30 seconds). Beehiiv full automation requires Enterprise plan ($$$) — not worth it yet.
+2. DST cron update — after Mar 8, 2026 change send-newsletter.yml cron from '50 11 * * *' → '50 10 * * *' (6:50am EDT = 10:50 UTC)
+3. The Spread (Poly vs Kalshi divergence) — highest trader value feature not yet built
+4. The Prob Portfolio tracker — flagship differentiator, full spec in roadmap below
+5. Monitor rolling hero block — passive, confirm no ping-pong
+
+### Recently Completed (Mar 4-5, 2026)
+- Hero repeat penalty now cumulative: -40pts (1 day ago), -70pts (2 days ago), -90pts (3 days ago). Old flat -15pt penalty was too weak vs move_score.
+- move_score capped at 20pts — prevents one monster move from dominating for days
+- Volume-qualified staleness gate — markets with $500K+ 24h volume need only 1pt move to qualify for hero (captures high-volume/stable-price markets like Iran/Hormuz)
+- Beehiiv automation attempted — POST /publications/{id}/posts endpoint requires Enterprise plan. Even draft creation is blocked. Code is in place (post_to_beehiiv() in send_newsletter.py, workflow updated with BEEHIIV_API_KEY + BEEHIIV_PUB_ID secrets) and gracefully falls back to manual if API fails. Workaround: Copy HTML button on newsletter preview page (next session).
 
 ### Recently Completed (Mar 3, 2026)
 - Expired market filter — is_effectively_resolved() tightened to 95/5, is_past_close() added using end_date_raw, applied to hero/movers/ticker/catalog
@@ -181,7 +189,7 @@ See VOICE.md. Sharp, confident, trader-focused. Lead with the number. "The crowd
 Items carried forward from brainstorm sessions. Prioritized by impact vs. effort.
 
 ### P0 — Next Session
-- **Beehiiv automation** — POST /publications/{id}/posts endpoint. Key question: does the API support immediate send or schedule-only? Either way, GitHub Action should write the email HTML and POST it at 6:50am ET. Falls back to commit for manual send if send isn't supported.
+- **Beehiiv "Copy HTML" button** — Beehiiv API /posts endpoint requires Enterprise plan (confirmed Mar 4). Full automation blocked. Workaround: add a floating "Copy HTML to Clipboard" button to `newsletter/latest.html` (served at theprobnewsletter.com/newsletter/latest.html). Morning workflow becomes: open URL → click Copy → paste into Beehiiv → Send. ~30 minutes to build.
 
 ### P1 — High Value, Low Effort
 - **The Prob Score** — proprietary ranking badge on every market card. Draft formula: `(|change_pts|*2) + (volume_rank*1.5) + (1/days_to_resolution capped)`. Compute in fetch_markets.py, store as `prob_score` field in markets.json, display as badge on cards. No new infrastructure needed.
