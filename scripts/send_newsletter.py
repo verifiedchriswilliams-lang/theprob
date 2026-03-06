@@ -73,14 +73,14 @@ CATEGORY_COLORS = {
 
 FROM_THE_BUILDER = {
     "built_yesterday": (
-        "Improved the Market of the Day algorithm. The pick now rotates faster "
-        "and high-volume markets get more weight even when prices are stable "
-        "so the board doesn't get stuck on yesterday's news."
+        "Launched The Prob Portfolio. Every Market of the Day pick now logs a $100 "
+        "hypothetical trade. When markets resolve, the P&L closes automatically. "
+        "The running balance is live on the site and in every email header."
     ),
     "coming_next": (
-        "Building The Spread, a feature that surfaces where Polymarket and Kalshi "
-        "disagree on the same market. When two crowds price the same event differently, "
-        "one of them is wrong. We'll show you which."
+        "Building The Spread: a feature that flags where Polymarket and Kalshi "
+        "price the same event differently. When two crowds disagree by 8+ points, "
+        "one of them is wrong. We'll show you which one and by how much."
     ),
 }
 

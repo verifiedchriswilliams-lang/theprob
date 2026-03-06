@@ -170,8 +170,7 @@ See VOICE.md. Sharp, confident, trader-focused. Lead with the number. "The crowd
 1. The Spread (Poly vs Kalshi divergence) — highest trader value feature not yet built
 2. Monitor rolling hero block — passive, confirm no ping-pong
 3. Update FROM_THE_BUILDER dict in send_newsletter.py each session (reader-facing copy, not technical jargon)
-4. Add portfolio.html to sitemap.xml
-5. Monitor portfolio — confirm first trade logs correctly on next GitHub Actions run
+4. Monitor portfolio — confirm first trade logs correctly on next GitHub Actions run
 
 ### Recently Completed (Mar 6, 2026) — Session 2
 - The Prob Portfolio tracker launched:
