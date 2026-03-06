@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prediction Markets 101 — How They Work | The Prob</title>
+
+  <!-- SEO -->
+  <meta name="description" content="What are prediction markets? How do Polymarket and Kalshi work? A no-BS guide to reading odds, understanding crowd intelligence, and why prediction markets beat polls.">
+  <meta name="keywords" content="what is a prediction market, how do prediction markets work, Polymarket guide, Kalshi guide, prediction market odds, how to read prediction markets, prediction market FAQ">
+  <link rel="canonical" href="https://theprobnewsletter.com/prediction-markets-101.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type"         content="website">
+  <meta property="og:site_name"    content="The Prob">
+  <meta property="og:title"        content="Prediction Markets 101 — How They Work | The Prob">
+  <meta property="og:description"  content="A no-BS guide to prediction markets. How they work, why they're more accurate than polls, and what the odds actually mean.">
+  <meta property="og:url"          content="https://theprobnewsletter.com/prediction-markets-101.html">
+  <meta property="og:image"        content="https://theprobnewsletter.com/theprob_og_1200x630.jpg">
+  <meta property="og:image:width"  content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:site"        content="@theprob">
+  <meta name="twitter:title"       content="Prediction Markets 101 — How They Work | The Prob">
+  <meta name="twitter:description" content="A no-BS guide to prediction markets. How they work, why they beat polls, and what the odds actually mean.">
+  <meta name="twitter:image"       content="https://theprobnewsletter.com/theprob_og_1200x630.jpg">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Prediction Markets 101 — How They Work | The Prob",
+    "url": "https://theprobnewsletter.com/prediction-markets-101.html",
+    "description": "A guide to prediction markets: how they work, how to read odds, and why they outperform traditional forecasting.",
+    "isPartOf": { "@type": "WebSite", "name": "The Prob", "url": "https://theprobnewsletter.com/" }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#080b0f;--bg2:#0d1117;--bg3:#141b24;--border:#1e2a38;--border-bright:#2a3d54;--text:#edf2f7;--text-muted:#8ba3bc;--text-dim:#546e85;--green:#00e5a0;--red:#ff4757;--amber:#f5a623;--blue:#4a9eff;--accent:#00e5a0;--mono:'Space Mono',monospace;--serif:'Libre Baskerville',Georgia,serif;--sans:'DM Sans',sans-serif;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:15px;line-height:1.6;overflow-x:hidden;}
+    body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");opacity:0.022;pointer-events:none;z-index:0;}
+
+    /* ── NAV ── */
+    .nav-wrapper{position:sticky;top:0;z-index:100;background:rgba(8,11,15,0.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);}
+    nav{display:flex;align-items:center;justify-content:space-between;padding:20px 48px;border-bottom:1px solid var(--border);}
+    .logo{display:flex;align-items:baseline;gap:12px;}
+    .logo-mark{font-family:var(--mono);font-size:28px;font-weight:700;color:var(--accent);letter-spacing:-1px;}
+    .logo-pipe{color:var(--border-bright);font-size:20px;}
+    .logo-sub{font-family:var(--mono);font-size:10px;color:var(--text-muted);letter-spacing:0.15em;text-transform:uppercase;}
+    .nav-links{display:flex;align-items:center;gap:32px;list-style:none;}
+    .nav-links a{font-family:var(--mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);text-decoration:none;transition:color 0.2s;}
+    .nav-links a:hover{color:var(--text);}
+    .mobile-nav{display:none;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;background:var(--bg2);border-bottom:1px solid var(--border);white-space:nowrap;}
+    .mobile-nav::-webkit-scrollbar{display:none;}
+    .mobile-nav a{display:inline-block;font-family:var(--mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);text-decoration:none;padding:11px 18px;border-right:1px solid var(--border);transition:color 0.2s;}
+    .mobile-nav a:hover,.mobile-nav a.active{color:var(--accent);}
+
+    /* ── PAGE STRUCTURE ── */
+    .page-header{max-width:860px;margin:0 auto;padding:60px 48px 48px;border-bottom:1px solid var(--border);animation:fadeUp 0.5s ease both;}
+    .page-eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;display:flex;align-items:center;gap:10px;}
+    .page-eyebrow::before{content:'';display:block;width:24px;height:1px;background:var(--accent);}
+    .page-headline{font-family:var(--serif);font-size:clamp(28px,3vw,46px);font-weight:700;line-height:1.12;color:var(--text);margin-bottom:18px;}
+    .page-sub{font-size:16px;color:var(--text-muted);line-height:1.75;max-width:640px;}
+
+    /* ── TABLE OF CONTENTS ── */
+    .toc{background:var(--bg2);border:1px solid var(--border);border-left:3px solid var(--accent);padding:28px 32px;max-width:860px;margin:0 auto 0;position:relative;}
+    .toc-label{font-family:var(--mono);font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;}
+    .toc-list{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px 32px;}
+    .toc-list a{font-size:13px;color:var(--text-muted);text-decoration:none;transition:color 0.2s;display:flex;align-items:center;gap:8px;}
+    .toc-list a::before{content:'';display:block;width:4px;height:4px;background:var(--border-bright);flex-shrink:0;}
+    .toc-list a:hover{color:var(--accent);}
+    .toc-list a:hover::before{background:var(--accent);}
+
+    /* ── ARTICLE BODY ── */
+    .article{max-width:860px;margin:0 auto;padding:0 48px 64px;}
+    .section-anchor{display:block;height:80px;margin-top:-80px;visibility:hidden;}
+
+    .content-section{padding:56px 0 0;border-bottom:1px solid var(--border);}
+    .content-section:last-child{border-bottom:none;}
+    .section-eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;}
+    .section-heading{font-family:var(--serif);font-size:clamp(20px,2vw,28px);font-weight:700;line-height:1.2;color:var(--text);margin-bottom:20px;}
+    .body-text{font-size:15px;color:var(--text-muted);line-height:1.8;margin-bottom:18px;}
+    .body-text:last-child{margin-bottom:0;}
+    strong{color:var(--text);font-weight:600;}
+
+    /* ── CALLOUT BOX ── */
+    .callout{background:var(--bg2);border-left:3px solid var(--accent);padding:20px 24px;margin:24px 0;}
+    .callout p{font-size:14px;color:var(--text-muted);line-height:1.7;margin:0;}
+    .callout strong{color:var(--green);}
+
+    /* ── EXAMPLE MARKET ── */
+    .market-example{background:var(--bg2);border:1px solid var(--border);padding:24px;margin:28px 0;}
+    .market-ex-label{font-family:var(--mono);font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-dim);margin-bottom:10px;}
+    .market-ex-question{font-family:var(--serif);font-size:16px;color:var(--text);font-weight:700;margin-bottom:14px;line-height:1.3;}
+    .market-ex-stats{display:flex;gap:32px;align-items:flex-end;}
+    .market-ex-prob{font-family:var(--mono);font-size:40px;font-weight:700;color:var(--amber);line-height:1;}
+    .market-ex-prob span{font-size:18px;}
+    .market-ex-detail{font-family:var(--mono);font-size:11px;color:var(--text-dim);}
+    .market-ex-detail strong{color:var(--text-muted);}
+
+    /* ── COMPARISON TABLE ── */
+    .compare-table{width:100%;border-collapse:collapse;margin:28px 0;font-size:13px;}
+    .compare-table th{font-family:var(--mono);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-dim);padding:12px 16px;text-align:left;border-bottom:2px solid var(--border);}
+    .compare-table td{padding:14px 16px;border-bottom:1px solid var(--border);color:var(--text-muted);vertical-align:top;}
+    .compare-table tr:last-child td{border-bottom:none;}
+    .compare-table .row-label{color:var(--text);font-weight:500;}
+    .check{color:var(--green);}
+    .cross{color:var(--red);}
+
+    /* ── FAQ ── */
+    .faq-item{border-bottom:1px solid var(--border);padding:24px 0;}
+    .faq-item:last-child{border-bottom:none;}
+    .faq-q{font-family:var(--serif);font-size:16px;font-weight:700;color:var(--text);margin-bottom:10px;line-height:1.35;}
+    .faq-a{font-size:14px;color:var(--text-muted);line-height:1.75;}
+
+    /* ── PLATFORM CARDS ── */
+    .platform-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin:28px 0;}
+    .platform-card{background:var(--bg2);border:1px solid var(--border);padding:28px;}
+    .platform-badge{display:inline-block;padding:3px 10px;border-radius:20px;font-size:10px;font-weight:700;letter-spacing:1px;margin-bottom:16px;}
+    .badge-poly{background:#0066FF;color:white;}
+    .badge-kalshi{background:#00A550;color:white;}
+    .platform-name{font-family:var(--serif);font-size:18px;font-weight:700;color:var(--text);margin-bottom:8px;}
+    .platform-desc{font-size:13px;color:var(--text-muted);line-height:1.7;margin-bottom:16px;}
+    .platform-stat{font-family:var(--mono);font-size:11px;color:var(--text-dim);border-top:1px solid var(--border);padding-top:14px;}
+    .platform-stat strong{color:var(--text-muted);}
+    .platform-link{display:inline-block;margin-top:14px;font-family:var(--mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);text-decoration:none;}
+    .platform-link:hover{text-decoration:underline;}
+
+    /* ── CTA ── */
+    .cta-block{background:var(--bg2);border:1px solid var(--border);border-left:3px solid var(--accent);padding:36px 40px;margin:56px 0 0;text-align:center;}
+    .cta-eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;}
+    .cta-heading{font-family:var(--serif);font-size:22px;font-weight:700;color:var(--text);margin-bottom:10px;}
+    .cta-sub{font-size:14px;color:var(--text-muted);margin-bottom:24px;line-height:1.6;}
+    .subscribe-form{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;}
+    .subscribe-form input{font-family:var(--mono);font-size:13px;background:var(--bg3);border:1px solid var(--border);color:var(--text);padding:10px 16px;width:260px;outline:none;}
+    .subscribe-form input:focus{border-color:var(--accent);}
+    .subscribe-form button{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;background:var(--accent);color:#080b0f;border:none;padding:10px 22px;cursor:pointer;transition:opacity 0.2s;}
+    .subscribe-form button:hover{opacity:0.85;}
+
+    /* ── FOOTER ── */
+    .divider{height:1px;background:var(--border);max-width:1280px;margin:0 auto;}
+    footer{border-top:1px solid var(--border);padding:48px;max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr 1fr;gap:40px;align-items:start;}
+    .footer-brand .logo-mark{font-size:18px;}
+    .footer-brand p{font-size:13px;color:var(--text-muted);margin-top:12px;line-height:1.6;max-width:260px;}
+    .footer-links h4{font-family:var(--mono);font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-dim);margin-bottom:16px;}
+    .footer-links ul{list-style:none;} .footer-links li{margin-bottom:8px;}
+    .footer-links a{font-size:13px;color:var(--text-muted);text-decoration:none;transition:color 0.2s;}
+    .footer-links a:hover{color:var(--accent);}
+    .footer-copy{font-family:var(--mono);font-size:10px;color:var(--text-dim);grid-column:1/-1;border-top:1px solid var(--border);padding-top:24px;display:flex;justify-content:space-between;}
+
+    @keyframes fadeUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+    @media(max-width:1024px){nav{padding:16px 24px;}.nav-links{display:none;}.mobile-nav{display:block;}.page-header,.toc,.article{padding-left:20px;padding-right:20px;}.toc-list{grid-template-columns:1fr;}.platform-grid{grid-template-columns:1fr;}footer{grid-template-columns:1fr;padding:32px 20px;}.footer-copy{flex-direction:column;gap:8px;}.subscribe-form input{width:100%;}}
+  </style>
+</head>
+<body>
+
+  <div class="nav-wrapper">
+  <nav>
+    <div class="logo">
+      <a href="index.html" style="text-decoration:none;"><span class="logo-mark">THE PROB</span></a>
+      <span class="logo-pipe">|</span>
+      <span class="logo-sub">What's the Probability?</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="business.html">Business</a></li>
+      <li><a href="culture.html">Culture</a></li>
+      <li><a href="news.html">News</a></li>
+      <li><a href="politics.html">Politics</a></li>
+      <li><a href="sports.html">Sports</a></li>
+      <li><a href="tech.html">Tech</a></li>
+    </ul>
+  </nav>
+  <div class="mobile-nav">
+    <a href="business.html">Business</a>
+    <a href="culture.html">Culture</a>
+    <a href="news.html">News</a>
+    <a href="politics.html">Politics</a>
+    <a href="sports.html">Sports</a>
+    <a href="tech.html">Tech</a>
+  </div>
+  </div>
+
+  <div class="page-header">
+    <div class="page-eyebrow">Prediction Markets 101</div>
+    <h1 class="page-headline">The crowd is putting money on it. Here's what that actually means.</h1>
+    <p class="page-sub">Prediction markets are the most accurate forecasting tool most people have never used. This is everything you need to know to read them, understand them, and use them.</p>
+  </div>
+
+  <div class="toc" style="padding-top:32px;">
+    <div class="toc-label" style="padding:0 0 0 0;">Contents</div>
+    <ul class="toc-list">
+      <li><a href="#what-are-they">What are prediction markets?</a></li>
+      <li><a href="#how-to-read">How to read the odds</a></li>
+      <li><a href="#how-they-work">How they actually work</a></li>
+      <li><a href="#platforms">Polymarket vs. Kalshi</a></li>
+      <li><a href="#why-accurate">Why they beat polls</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+  </div>
+
+  <div class="article">
+
+    <!-- SECTION 1 -->
+    <div class="content-section">
+      <span class="section-anchor" id="what-are-they"></span>
+      <div class="section-eyebrow">The basics</div>
+      <h2 class="section-heading">What are prediction markets?</h2>
+      <p class="body-text">A prediction market is a place where people bet real money on the outcome of a future event. Will the Fed cut rates this quarter? Will this election go to the incumbent? Will this company get acquired?</p>
+      <p class="body-text">Every bet creates a price. That price is a probability. If a contract trades at 65 cents, the crowd is saying there's a <strong>65% chance</strong> the event happens. Simple.</p>
+      <p class="body-text">The key word is <em>real money</em>. When people have skin in the game, they think harder. They don't guess. They research. They update. That's what makes prediction markets different from polls, punditry, or Twitter takes.</p>
+
+      <div class="callout">
+        <p><strong>The core insight:</strong> When someone puts $500 on an outcome, they're telling you something more honest than any survey could. Money talks. Everything else is just talking.</p>
+      </div>
+    </div>
+
+    <!-- SECTION 2 -->
+    <div class="content-section">
+      <span class="section-anchor" id="how-to-read"></span>
+      <div class="section-eyebrow">Reading the numbers</div>
+      <h2 class="section-heading">How to read the odds</h2>
+      <p class="body-text">Every market shows a single number: the probability, expressed as a percentage. That's it. No spread, no moneyline to decipher.</p>
+
+      <div class="market-example">
+        <div class="market-ex-label">Example market</div>
+        <div class="market-ex-question">Will the Federal Reserve cut interest rates in Q2 2026?</div>
+        <div class="market-ex-stats">
+          <div>
+            <div class="market-ex-prob">67<span>%</span></div>
+            <div class="market-ex-detail" style="margin-top:4px;">YES probability</div>
+          </div>
+          <div>
+            <div class="market-ex-detail"><strong>$2.4M</strong> total volume</div>
+            <div class="market-ex-detail"><strong>+8 pts</strong> past 24 hours</div>
+            <div class="market-ex-detail"><strong>Resolves:</strong> Jul 1, 2026</div>
+          </div>
+        </div>
+      </div>
+
+      <p class="body-text"><strong>67%</strong> means the crowd thinks a rate cut is more likely than not, but not certain. If you think the odds are wrong, you can bet against them and potentially profit if you're right.</p>
+      <p class="body-text">The <strong>change</strong> is where it gets interesting. A market that moved 8 points in 24 hours isn't random noise. Something changed. New economic data dropped. A Fed official said something. Someone with real information started buying. Watch the moves, not just the price.</p>
+      <p class="body-text"><strong>Volume</strong> tells you how much the crowd cares. A market with $10K bet on it is different from one with $2.4M. High volume means the price has been pressure-tested by a lot of informed traders. Low volume means a few people set a price that hasn't been challenged.</p>
+    </div>
+
+    <!-- SECTION 3 -->
+    <div class="content-section">
+      <span class="section-anchor" id="how-they-work"></span>
+      <div class="section-eyebrow">The mechanics</div>
+      <h2 class="section-heading">How they actually work</h2>
+      <p class="body-text">Most prediction markets use a simple binary contract system. A contract pays out $1 if the event happens, $0 if it doesn't. If the contract trades at 67 cents, you're paying 67 cents for the right to collect $1 if the Fed cuts. Your upside: 33 cents. Your downside: 67 cents.</p>
+      <p class="body-text">Markets run continuously, like a stock exchange. Prices move as new information arrives. When the market moves 10 points in an hour, someone just decided the odds shifted. Maybe they know something. Maybe they're wrong. That tension is what makes it interesting.</p>
+      <p class="body-text">Resolution is straightforward. The market picks a clear, verifiable outcome in advance. Did the Fed cut or not? Did the election go to candidate A or B? When the answer is known, contracts pay out automatically based on the result.</p>
+
+      <div class="callout">
+        <p><strong>The profit motive matters:</strong> If you think a market is pricing something at 30% when the real probability is 50%, you buy. If you're right and the market eventually reprices, you profit. This incentive is what keeps prediction markets honest. No other forecasting tool has this built in.</p>
+      </div>
+    </div>
+
+    <!-- SECTION 4 -->
+    <div class="content-section">
+      <span class="section-anchor" id="platforms"></span>
+      <div class="section-eyebrow">The main venues</div>
+      <h2 class="section-heading">Polymarket vs. Kalshi</h2>
+      <p class="body-text">Two platforms dominate the prediction market landscape right now. They cover similar topics but have different strengths, different user bases, and occasionally disagree on the same question. That disagreement is a signal worth watching.</p>
+
+      <div class="platform-grid">
+        <div class="platform-card">
+          <span class="platform-badge badge-poly">Polymarket</span>
+          <div class="platform-name">Polymarket</div>
+          <p class="platform-desc">The largest prediction market by volume. Built on crypto rails (USDC on Polygon), which means anyone in the world can trade. No US bank account required. Deep liquidity on major political, crypto, and macro markets.</p>
+          <div class="platform-stat"><strong>Best for:</strong> High-volume political and global markets. The go-to for election odds.</div>
+          <a class="platform-link" href="https://polymarket.com" target="_blank">Visit Polymarket &#8599;</a>
+        </div>
+        <div class="platform-card">
+          <span class="platform-badge badge-kalshi">Kalshi</span>
+          <div class="platform-name">Kalshi</div>
+          <p class="platform-desc">A federally regulated exchange based in the US. Uses USD directly, which makes it familiar for American traders. CFTC-regulated, which matters for institutional participants and adds a layer of legitimacy.</p>
+          <div class="platform-stat"><strong>Best for:</strong> Economic data markets (Fed rate decisions, CPI, jobs reports). Strong on macro.</div>
+          <a class="platform-link" href="https://kalshi.com" target="_blank">Visit Kalshi &#8599;</a>
+        </div>
+      </div>
+
+      <p class="body-text">When Polymarket and Kalshi disagree on the same event, pay attention. A 10-point gap between the two platforms on the same question means at least one of them is wrong. That's a potential trade.</p>
+
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Polymarket</th>
+            <th>Kalshi</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="row-label">Who can trade</td>
+            <td>Anyone (crypto-based)</td>
+            <td>US residents</td>
+          </tr>
+          <tr>
+            <td class="row-label">Currency</td>
+            <td>USDC (stablecoin)</td>
+            <td>USD</td>
+          </tr>
+          <tr>
+            <td class="row-label">Regulation</td>
+            <td>Decentralized</td>
+            <td>CFTC-regulated</td>
+          </tr>
+          <tr>
+            <td class="row-label">Strongest markets</td>
+            <td>Politics, crypto, global events</td>
+            <td>Economic data, macro</td>
+          </tr>
+          <tr>
+            <td class="row-label">Total volume</td>
+            <td>Larger (billions traded)</td>
+            <td>Growing fast</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- SECTION 5 -->
+    <div class="content-section">
+      <span class="section-anchor" id="why-accurate"></span>
+      <div class="section-eyebrow">The case for markets</div>
+      <h2 class="section-heading">Why prediction markets beat polls, pundits, and forecasters</h2>
+      <p class="body-text">Polls ask people what they believe. Pundits say what sounds interesting. Prediction markets ask people to put money where their mouth is. That difference changes everything.</p>
+      <p class="body-text"><strong>Skin in the game filters out noise.</strong> People who don't actually know something don't bet their own money on it. The crowd that moves a prediction market is self-selected for information and conviction. The crowd that responds to a poll is not.</p>
+      <p class="body-text"><strong>Markets update instantly.</strong> When new information arrives, prices move within minutes. A poll takes weeks to design, conduct, and publish. By the time you read it, it's already stale.</p>
+      <p class="body-text"><strong>The track record holds up.</strong> Studies consistently show that prediction markets outperform expert forecasters, polls, and models on a wide range of questions. The research goes back decades, from the Iowa Electronic Markets in the 1990s through every major election since.</p>
+      <p class="body-text">They're not perfect. Thin markets can be manipulated. Liquidity constraints mean prices can be wrong for longer than you'd expect. And sometimes the crowd is just wrong. But on average, over time, the money is smarter than the commentary.</p>
+
+      <div class="callout">
+        <p><strong>The Prob's read:</strong> Don't use prediction markets to bet. Use them to think. A 78% probability of a Fed cut tells you something about how informed capital is positioned. That's more useful than any analyst's 2,000-word report.</p>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="content-section">
+      <span class="section-anchor" id="faq"></span>
+      <div class="section-eyebrow">FAQ</div>
+      <h2 class="section-heading">Frequently asked questions</h2>
+
+      <div class="faq-item">
+        <div class="faq-q">Do I need to bet real money to follow prediction markets?</div>
+        <p class="faq-a">No. You can read the prices without placing a single bet. Most of what The Prob covers is the signal embedded in the prices, not a recommendation to trade. Think of it like checking stock prices without owning any stocks. The information is still useful.</p>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">What does it mean when a market moves suddenly?</div>
+        <p class="faq-a">It usually means new information hit. Earnings reports, polling data, an unexpected announcement, a regulatory decision. Sometimes it's a large trader repositioning. The question worth asking is: what do they know that I don't? Big moves on high-volume markets are rarely random.</p>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">If something is at 90%, is it basically guaranteed?</div>
+        <p class="faq-a">90% is not 100%. The crowd is saying this outcome is very likely. They're also saying there's a 1-in-10 chance they're wrong. Events that resolve against 90% odds happen all the time. Rare doesn't mean impossible. Always read a probability as a probability, not a certainty.</p>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Can prediction markets be manipulated?</div>
+        <p class="faq-a">Yes, though it's expensive and temporary. Thin markets (low volume) are more vulnerable. High-volume markets are harder to move without real capital, and any artificial price tends to be corrected quickly by other traders who spot the arbitrage. Manipulation is a real concern on smaller markets. On the major liquid ones, it's much harder to sustain.</p>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">How is a 65% probability different from a 60% probability?</div>
+        <p class="faq-a">Over a single event, not much. Prediction markets are calibrated over thousands of outcomes. When the market says 65%, it means that historically, events priced at 65% have resolved YES about 65% of the time. The difference between 60% and 65% is real, but small enough that you shouldn't bet your house on it. Treat the number as a range, not a decimal-precision forecast.</p>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">What happens if a market stays near 50% for a long time?</div>
+        <p class="faq-a">It means the crowd is genuinely uncertain, and has been for a while. That's not a failure of prediction markets. That's them being honest. A coin-flip outcome really is a coin flip. Watch for what breaks the stalemate. Often a price stuck at 50% will stay there until a single piece of decisive information sends it sharply in one direction.</p>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Is this legal in the US?</div>
+        <p class="faq-a">Kalshi is CFTC-regulated and fully legal for US residents. Polymarket uses a decentralized structure and USDC, though US residents have historically faced restrictions. The regulatory landscape is evolving. Check each platform's terms of service for the most current guidance.</p>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Where does The Prob get its data?</div>
+        <p class="faq-a">The Prob pulls live market data directly from the Polymarket and Kalshi APIs every hour. Prices, volumes, and probability changes are sourced directly from the exchanges and updated continuously. What you see on this site reflects real market activity, not editorial estimates.</p>
+      </div>
+    </div>
+
+    <!-- SUBSCRIBE CTA -->
+    <div class="cta-block">
+      <div class="cta-eyebrow">Get smarter every morning</div>
+      <div class="cta-heading">The Prob — Daily market intelligence</div>
+      <p class="cta-sub">The biggest moves, sharpest crowd signals, and what it all means. In your inbox by 7am ET. Free.</p>
+      <form class="subscribe-form" id="subscribe-form">
+        <input type="email" id="sub-email" placeholder="your@email.com" required>
+        <button type="submit">Subscribe Free</button>
+      </form>
+    </div>
+
+  </div><!-- /article -->
+
+  <div class="divider"></div>
+
+  <footer>
+    <div class="footer-brand">
+      <div class="logo"><span class="logo-mark">THE PROB</span></div>
+      <p>Daily intelligence from the prediction markets. The crowd has already placed its bets. We tell you where.</p>
+    </div>
+    <div class="footer-links">
+      <h4>Navigate</h4>
+      <ul>
+        <li><a href="index.html">Today's Markets</a></li>
+        <li><a href="business.html">Business</a></li>
+        <li><a href="culture.html">Culture</a></li>
+        <li><a href="news.html">News</a></li>
+        <li><a href="politics.html">Politics</a></li>
+        <li><a href="sports.html">Sports</a></li>
+        <li><a href="tech.html">Tech</a></li>
+      </ul>
+    </div>
+    <div class="footer-links">
+      <h4>Sources</h4>
+      <ul>
+        <li><a href="https://polymarket.com" target="_blank">Polymarket &#8599;</a></li>
+        <li><a href="https://kalshi.com" target="_blank">Kalshi &#8599;</a></li>
+        <li><a href="prediction-markets-101.html" style="color:var(--accent);">Prediction Markets 101</a></li>
+        <li><a href="archive.html">Newsletter Archive</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-copy">
+      <span>&copy; 2026 The Prob. Prediction markets intelligence.</span>
+      <span>Not financial advice. Markets data for informational purposes only.</span>
+    </div>
+  </footer>
+
+<script async src="https://subscribe-forms.beehiiv.com/embed.js"></script>
+<script>
+document.getElementById('subscribe-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const email = document.getElementById('sub-email').value;
+  const btn = this.querySelector('button');
+  btn.textContent = 'Subscribing...';
+  btn.disabled = true;
+  setTimeout(() => {
+    btn.textContent = "You're in!";
+    document.getElementById('sub-email').value = '';
+  }, 800);
+});
+</script>
+
+</body>
+</html>

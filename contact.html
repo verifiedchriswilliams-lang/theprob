@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — The Prob | Prediction Markets Intelligence</title>
+
+  <!-- SEO -->
+  <meta name="description" content="Get in touch with The Prob. Questions, tips, feedback, or just want to talk prediction markets — we read every message.">
+  <link rel="canonical" href="https://theprobnewsletter.com/contact.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type"         content="website">
+  <meta property="og:site_name"    content="The Prob">
+  <meta property="og:title"        content="Contact — The Prob">
+  <meta property="og:description"  content="Questions, tips, or feedback. We read everything.">
+  <meta property="og:url"          content="https://theprobnewsletter.com/contact.html">
+  <meta property="og:image"        content="https://theprobnewsletter.com/theprob_og_1200x630.jpg">
+  <meta property="og:image:width"  content="1200">
+  <meta property="og:image:height" content="630">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#080b0f;--bg2:#0d1117;--bg3:#141b24;--border:#1e2a38;--border-bright:#2a3d54;--text:#edf2f7;--text-muted:#8ba3bc;--text-dim:#546e85;--green:#00e5a0;--red:#ff4757;--amber:#f5a623;--accent:#00e5a0;--mono:'Space Mono',monospace;--serif:'Libre Baskerville',Georgia,serif;--sans:'DM Sans',sans-serif;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:15px;line-height:1.6;overflow-x:hidden;}
+    body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");opacity:0.022;pointer-events:none;z-index:0;}
+
+    /* ── NAV ── */
+    .nav-wrapper{position:sticky;top:0;z-index:100;background:rgba(8,11,15,0.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);}
+    nav{display:flex;align-items:center;justify-content:space-between;padding:20px 48px;border-bottom:1px solid var(--border);}
+    .logo{display:flex;align-items:baseline;gap:12px;}
+    .logo-mark{font-family:var(--mono);font-size:28px;font-weight:700;color:var(--accent);letter-spacing:-1px;}
+    .logo-pipe{color:var(--border-bright);font-size:20px;}
+    .logo-sub{font-family:var(--mono);font-size:10px;color:var(--text-muted);letter-spacing:0.15em;text-transform:uppercase;}
+    .nav-links{display:flex;align-items:center;gap:32px;list-style:none;}
+    .nav-links a{font-family:var(--mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);text-decoration:none;transition:color 0.2s;}
+    .nav-links a:hover{color:var(--text);}
+    .mobile-nav{display:none;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;background:var(--bg2);border-bottom:1px solid var(--border);white-space:nowrap;}
+    .mobile-nav::-webkit-scrollbar{display:none;}
+    .mobile-nav a{display:inline-block;font-family:var(--mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);text-decoration:none;padding:11px 18px;border-right:1px solid var(--border);transition:color 0.2s;}
+    .mobile-nav a:hover,.mobile-nav a.active{color:var(--accent);}
+
+    /* ── PAGE ── */
+    .page-header{max-width:1280px;margin:0 auto;padding:60px 48px 40px;border-bottom:1px solid var(--border);animation:fadeUp 0.5s ease both;}
+    .page-eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;display:flex;align-items:center;gap:10px;}
+    .page-eyebrow::before{content:'';display:block;width:24px;height:1px;background:var(--accent);}
+    .page-headline{font-family:var(--serif);font-size:clamp(26px,3vw,42px);font-weight:700;line-height:1.15;color:var(--text);margin-bottom:14px;}
+    .page-sub{font-size:15px;color:var(--text-muted);line-height:1.7;max-width:640px;}
+    .section{max-width:1280px;margin:0 auto;padding:48px;}
+
+    /* ── CONTACT LAYOUT ── */
+    .contact-grid{display:grid;grid-template-columns:1fr 420px;gap:64px;align-items:start;}
+    .contact-form-wrap{background:var(--bg2);border:1px solid var(--border);padding:40px;}
+    .form-group{margin-bottom:24px;}
+    .form-label{font-family:var(--mono);font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-dim);display:block;margin-bottom:8px;}
+    .form-input,.form-textarea,.form-select{width:100%;font-family:var(--sans);font-size:14px;background:var(--bg3);border:1px solid var(--border);color:var(--text);padding:12px 16px;outline:none;transition:border-color 0.2s;resize:none;}
+    .form-input:focus,.form-textarea:focus,.form-select:focus{border-color:var(--accent);}
+    .form-textarea{min-height:140px;line-height:1.6;}
+    .form-select{appearance:none;cursor:pointer;}
+    .form-select option{background:var(--bg3);}
+    .submit-btn{font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;background:var(--accent);color:#080b0f;border:none;padding:14px 32px;cursor:pointer;transition:opacity 0.2s;width:100%;}
+    .submit-btn:hover{opacity:0.85;}
+    .submit-btn:disabled{opacity:0.5;cursor:default;}
+    .form-note{font-family:var(--mono);font-size:10px;color:var(--text-dim);margin-top:12px;line-height:1.6;}
+    .success-msg{display:none;background:rgba(0,229,160,0.08);border:1px solid var(--accent);padding:20px;text-align:center;}
+    .success-msg .icon{font-size:24px;margin-bottom:8px;}
+    .success-msg p{font-family:var(--mono);font-size:12px;color:var(--green);line-height:1.6;}
+
+    /* ── SIDEBAR INFO ── */
+    .contact-info{position:sticky;top:100px;}
+    .info-block{margin-bottom:40px;}
+    .info-eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;}
+    .info-heading{font-family:var(--serif);font-size:18px;font-weight:700;color:var(--text);margin-bottom:8px;line-height:1.3;}
+    .info-body{font-size:14px;color:var(--text-muted);line-height:1.7;}
+    .info-divider{height:1px;background:var(--border);margin:32px 0;}
+    .response-stat{display:flex;align-items:center;gap:16px;margin-bottom:16px;}
+    .stat-num{font-family:var(--mono);font-size:28px;font-weight:700;color:var(--green);}
+    .stat-label{font-size:13px;color:var(--text-muted);line-height:1.4;}
+
+    /* ── FOOTER ── */
+    .divider{height:1px;background:var(--border);max-width:1280px;margin:0 auto;}
+    footer{border-top:1px solid var(--border);padding:48px;max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr 1fr;gap:40px;align-items:start;}
+    .footer-brand .logo-mark{font-size:18px;}
+    .footer-brand p{font-size:13px;color:var(--text-muted);margin-top:12px;line-height:1.6;max-width:260px;}
+    .footer-links h4{font-family:var(--mono);font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-dim);margin-bottom:16px;}
+    .footer-links ul{list-style:none;} .footer-links li{margin-bottom:8px;}
+    .footer-links a{font-size:13px;color:var(--text-muted);text-decoration:none;transition:color 0.2s;}
+    .footer-links a:hover{color:var(--accent);}
+    .footer-copy{font-family:var(--mono);font-size:10px;color:var(--text-dim);grid-column:1/-1;border-top:1px solid var(--border);padding-top:24px;display:flex;justify-content:space-between;}
+
+    @keyframes fadeUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+    @media(max-width:1024px){nav{padding:16px 24px;}.nav-links{display:none;}.mobile-nav{display:block;}.page-header{padding:36px 20px 28px;}.section{padding:28px 20px;}.contact-grid{grid-template-columns:1fr;}.contact-info{position:static;}footer{grid-template-columns:1fr;padding:32px 20px;}.footer-copy{flex-direction:column;gap:8px;}}
+  </style>
+</head>
+<body>
+
+  <div class="nav-wrapper">
+  <nav>
+    <div class="logo">
+      <a href="index.html" style="text-decoration:none;"><span class="logo-mark">THE PROB</span></a>
+      <span class="logo-pipe">|</span>
+      <span class="logo-sub">What's the Probability?</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="business.html">Business</a></li>
+      <li><a href="culture.html">Culture</a></li>
+      <li><a href="news.html">News</a></li>
+      <li><a href="politics.html">Politics</a></li>
+      <li><a href="sports.html">Sports</a></li>
+      <li><a href="tech.html">Tech</a></li>
+    </ul>
+  </nav>
+  <div class="mobile-nav">
+    <a href="business.html">Business</a>
+    <a href="culture.html">Culture</a>
+    <a href="news.html">News</a>
+    <a href="politics.html">Politics</a>
+    <a href="sports.html">Sports</a>
+    <a href="tech.html">Tech</a>
+  </div>
+  </div>
+
+  <div class="page-header">
+    <div class="page-eyebrow">Contact</div>
+    <h1 class="page-headline">Say something.</h1>
+    <p class="page-sub">Tips, corrections, feedback, trade ideas, or just want to talk prediction markets. We read every message.</p>
+  </div>
+
+  <section class="section">
+    <div class="contact-grid">
+
+      <!-- FORM -->
+      <div>
+        <!--
+          SETUP: This form uses Web3Forms to deliver messages to your inbox.
+          1. Go to https://web3forms.com
+          2. Enter verifiedchriswilliams@gmail.com and click "Create Access Key"
+          3. Check your email, copy the access key
+          4. Replace YOUR_ACCESS_KEY_HERE below with your actual key
+          That's it. No account, no credit card, 250 submissions/month free.
+        -->
+        <div class="contact-form-wrap">
+          <div class="success-msg" id="success-msg">
+            <div class="icon">&#10003;</div>
+            <p>Message received. We'll get back to you shortly.</p>
+          </div>
+          <form id="contact-form" action="https://api.web3forms.com/submit" method="POST">
+            <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+            <input type="hidden" name="subject" value="New message from The Prob website">
+            <input type="hidden" name="from_name" value="The Prob Contact Form">
+            <input type="checkbox" name="botcheck" style="display:none;">
+
+            <div class="form-group">
+              <label class="form-label" for="name">Your Name</label>
+              <input class="form-input" type="text" id="name" name="name" placeholder="Chris Williams" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="email">Email Address</label>
+              <input class="form-input" type="email" id="email" name="email" placeholder="you@example.com" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="topic">Topic</label>
+              <select class="form-select form-input" id="topic" name="topic">
+                <option value="feedback">Feedback on The Prob</option>
+                <option value="tip">Market tip or lead</option>
+                <option value="correction">Correction or data issue</option>
+                <option value="advertising">Advertising or partnership</option>
+                <option value="other">Something else</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="message">Message</label>
+              <textarea class="form-textarea" id="message" name="message" placeholder="What's on your mind?" required></textarea>
+            </div>
+
+            <button class="submit-btn" type="submit" id="submit-btn">Send Message &#8594;</button>
+            <p class="form-note">We typically respond within 24 hours. No spam, ever.</p>
+          </form>
+        </div>
+      </div>
+
+      <!-- SIDEBAR -->
+      <div class="contact-info">
+        <div class="info-block">
+          <div class="info-eyebrow">We want to hear from you</div>
+          <div class="info-heading">The Prob is built for traders, by someone who finds this stuff genuinely interesting.</div>
+          <p class="info-body">If something's wrong with the data, tell us. If you spotted a market we missed, send it. If you think we called it wrong, make the case.</p>
+        </div>
+
+        <div class="info-divider"></div>
+
+        <div class="info-block">
+          <div class="info-eyebrow">Response time</div>
+          <div class="response-stat">
+            <span class="stat-num">&lt;24h</span>
+            <span class="stat-label">Typical reply time on weekdays</span>
+          </div>
+          <div class="response-stat">
+            <span class="stat-num">100%</span>
+            <span class="stat-label">Of messages read personally</span>
+          </div>
+        </div>
+
+        <div class="info-divider"></div>
+
+        <div class="info-block">
+          <div class="info-eyebrow">Good reasons to reach out</div>
+          <p class="info-body" style="margin-bottom:10px;">A market you think we're sleeping on. A prediction that resolved and we haven't covered. A take you think is wrong. A tip from someone closer to the action than we are.</p>
+          <p class="info-body">All of those are good reasons. Send them.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <footer>
+    <div class="footer-brand">
+      <div class="logo"><span class="logo-mark">THE PROB</span></div>
+      <p>Daily intelligence from the prediction markets. The crowd has already placed its bets. We tell you where.</p>
+    </div>
+    <div class="footer-links">
+      <h4>Navigate</h4>
+      <ul>
+        <li><a href="index.html">Today's Markets</a></li>
+        <li><a href="business.html">Business</a></li>
+        <li><a href="culture.html">Culture</a></li>
+        <li><a href="news.html">News</a></li>
+        <li><a href="politics.html">Politics</a></li>
+        <li><a href="sports.html">Sports</a></li>
+        <li><a href="tech.html">Tech</a></li>
+      </ul>
+    </div>
+    <div class="footer-links">
+      <h4>Sources</h4>
+      <ul>
+        <li><a href="https://polymarket.com" target="_blank">Polymarket &#8599;</a></li>
+        <li><a href="https://kalshi.com" target="_blank">Kalshi &#8599;</a></li>
+        <li><a href="prediction-markets-101.html">Prediction Markets 101</a></li>
+        <li><a href="archive.html">Newsletter Archive</a></li>
+        <li><a href="contact.html" style="color:var(--accent);">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-copy">
+      <span>&copy; 2026 The Prob. Prediction markets intelligence.</span>
+      <span>Not financial advice. Markets data for informational purposes only.</span>
+    </div>
+  </footer>
+
+<script>
+document.getElementById('contact-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const btn = document.getElementById('submit-btn');
+  btn.textContent = 'Sending...';
+  btn.disabled = true;
+
+  fetch('https://api.web3forms.com/submit', {
+    method: 'POST',
+    body: new FormData(this)
+  })
+  .then(res => res.json())
+  .then(data => {
+    if (data.success) {
+      document.getElementById('contact-form').style.display = 'none';
+      document.getElementById('success-msg').style.display = 'block';
+    } else {
+      btn.textContent = 'Try Again';
+      btn.disabled = false;
+    }
+  })
+  .catch(() => {
+    btn.textContent = 'Try Again';
+    btn.disabled = false;
+  });
+});
+</script>
+
+</body>
+</html>
