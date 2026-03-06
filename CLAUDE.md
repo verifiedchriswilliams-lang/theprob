@@ -104,6 +104,8 @@ Fixed:
 - Expired/near-resolved markets in feed — is_effectively_resolved() tightened to 95/5, is_past_close() added (Mar 3, 2026)
 - Kalshi :: separator markets in movers/ticker — is_range_bucket_market() added to pick_movers() + pick_ticker() (Mar 3, 2026)
 - Category page frontend — 3 toggle buttons, cat_rank sort, stale filter, signal badges (Mar 3, 2026)
+- Newsletter design overhaul — contrast (#546e85→#8ba3bc), button sizing, footer deduplication, "From Chris" section (Mar 5, 2026)
+- Beehiiv Copy HTML workflow — newsletter/latest.html preview page with Copy button, latest-copy.html (no-footer) for paste-to-Beehiiv (Mar 5, 2026)
 
 Remaining:
 - Topic key fingerprint cosmetic issue (low priority)
@@ -158,11 +160,24 @@ See VOICE.md. Sharp, confident, trader-focused. Lead with the number. "The crowd
 ## Session Handoff — TODO
 
 ### Pending Next Session
-1. Beehiiv workaround — add "Copy HTML" button to newsletter/latest.html so morning workflow is: open URL → click Copy → paste into Beehiiv → Send (30 seconds). Beehiiv full automation requires Enterprise plan ($$$) — not worth it yet.
-2. DST cron update — after Mar 8, 2026 change send-newsletter.yml cron from '50 11 * * *' → '50 10 * * *' (6:50am EDT = 10:50 UTC)
-3. The Spread (Poly vs Kalshi divergence) — highest trader value feature not yet built
-4. The Prob Portfolio tracker — flagship differentiator, full spec in roadmap below
-5. Monitor rolling hero block — passive, confirm no ping-pong
+1. DST cron update — after Mar 8, 2026 change send-newsletter.yml cron from '50 11 * * *' → '50 10 * * *' (6:50am EDT = 10:50 UTC)
+2. The Spread (Poly vs Kalshi divergence) — highest trader value feature not yet built
+3. The Prob Portfolio tracker — flagship differentiator, full spec in roadmap below
+4. Monitor rolling hero block — passive, confirm no ping-pong
+5. Update FROM_THE_BUILDER dict in send_newsletter.py each session (reader-facing copy, not technical jargon)
+
+### Recently Completed (Mar 5, 2026)
+- Newsletter design overhaul:
+  - Contrast fix — all secondary text bumped from #546e85 → #8ba3bc, passes WCAG AA across all sections
+  - CTA button right-sized — padding reduced (16px 40px → 14px 28px), no longer oversized/distorted
+  - Footer duplication eliminated — Copy HTML button delivers html_no_ftr (Beehiiv adds its own footer); preview page shows html_full for accurate email preview
+  - "From Chris" personal section added to every email — amber eyebrow, Yesterday/Next copy, signed signature. Updates via FROM_THE_BUILDER dict in send_newsletter.py.
+- Beehiiv Copy HTML workflow built:
+  - newsletter/latest.html → now a preview wrapper page with floating "Copy Email HTML" button
+  - newsletter/latest-email.html → full email HTML (iframe source for preview)
+  - newsletter/latest-copy.html → no-footer email HTML (what gets copied to clipboard)
+  - JS uses fetch() → navigator.clipboard.writeText() with graceful error state
+  - Morning workflow: open theprobnewsletter.com/newsletter/latest.html → click "Copy Email HTML" → paste into Beehiiv → Send (30 seconds)
 
 ### Recently Completed (Mar 4-5, 2026)
 - Hero repeat penalty now cumulative: -40pts (1 day ago), -70pts (2 days ago), -90pts (3 days ago). Old flat -15pt penalty was too weak vs move_score.
@@ -189,7 +204,7 @@ See VOICE.md. Sharp, confident, trader-focused. Lead with the number. "The crowd
 Items carried forward from brainstorm sessions. Prioritized by impact vs. effort.
 
 ### P0 — Next Session
-- **Beehiiv "Copy HTML" button** — Beehiiv API /posts endpoint requires Enterprise plan (confirmed Mar 4). Full automation blocked. Workaround: add a floating "Copy HTML to Clipboard" button to `newsletter/latest.html` (served at theprobnewsletter.com/newsletter/latest.html). Morning workflow becomes: open URL → click Copy → paste into Beehiiv → Send. ~30 minutes to build.
+- **DST cron update** — Change send-newsletter.yml cron from `'50 11 * * *'` → `'50 10 * * *'` after Mar 8, 2026 DST change. (EDT = UTC-4, so 6:50am EDT = 10:50 UTC)
 
 ### P1 — High Value, Low Effort
 - **The Prob Score** — proprietary ranking badge on every market card. Draft formula: `(|change_pts|*2) + (volume_rank*1.5) + (1/days_to_resolution capped)`. Compute in fetch_markets.py, store as `prob_score` field in markets.json, display as badge on cards. No new infrastructure needed.
