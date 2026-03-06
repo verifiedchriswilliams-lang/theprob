@@ -19,9 +19,12 @@ theprob/
   culture.html            # Culture category page
   politics.html           # Politics category page
   news.html               # News page
-  theprob_og_1200x630.jpg # OG social sharing image (1200x630px) - NEW
-  sitemap.xml             # XML sitemap submitted to Google Search Console - NEW
-  robots.txt              # Allows all crawlers, references sitemap - NEW
+  archive.html            # Newsletter archive page - NEW (Mar 6, 2026)
+  contact.html            # Contact form page (Web3Forms → verifiedchriswilliams@gmail.com) - NEW (Mar 6, 2026)
+  prediction-markets-101.html  # Educational guide, SEO content page - NEW (Mar 6, 2026)
+  theprob_og_1200x630.jpg # OG social sharing image (1200x630px)
+  sitemap.xml             # XML sitemap submitted to Google Search Console
+  robots.txt              # Allows all crawlers, references sitemap
   VOICE.md                # Editorial voice guide
   CLAUDE.md               # This file
   data/
@@ -106,6 +109,8 @@ Fixed:
 - Category page frontend — 3 toggle buttons, cat_rank sort, stale filter, signal badges (Mar 3, 2026)
 - Newsletter design overhaul — contrast (#546e85→#8ba3bc), button sizing, footer deduplication, "From Chris" section (Mar 5, 2026)
 - Beehiiv Copy HTML workflow — newsletter/latest.html preview page with Copy button, latest-copy.html (no-footer) for paste-to-Beehiiv (Mar 5, 2026)
+- New site pages — archive.html, contact.html (Web3Forms), prediction-markets-101.html (Mar 6, 2026)
+- Footer updated on all 7 existing pages — new order: Polymarket, Kalshi, Prediction Markets 101, Newsletter Archive, Contact (Mar 6, 2026)
 
 Remaining:
 - Topic key fingerprint cosmetic issue (low priority)
@@ -165,6 +170,15 @@ See VOICE.md. Sharp, confident, trader-focused. Lead with the number. "The crowd
 3. The Prob Portfolio tracker — flagship differentiator, full spec in roadmap below
 4. Monitor rolling hero block — passive, confirm no ping-pong
 5. Update FROM_THE_BUILDER dict in send_newsletter.py each session (reader-facing copy, not technical jargon)
+6. Update sitemap.xml to include archive.html, contact.html, prediction-markets-101.html (3 new pages missing from sitemap)
+
+### Recently Completed (Mar 6, 2026)
+- New site pages launched:
+  - archive.html — newsletter archive, month-grouped, links to newsletter/YYYY-MM-DD.html files
+  - contact.html — contact form via Web3Forms (free tier, 250/month), delivers to verifiedchriswilliams@gmail.com. Access key set in GitHub editor.
+  - prediction-markets-101.html — educational guide: what are prediction markets, how to read odds, Poly vs Kalshi comparison table, FAQ. Written in brand voice. Targets "what is a prediction market" keyword cluster.
+- Footer updated on all 7 existing HTML pages — new Sources link order: Polymarket, Kalshi, Prediction Markets 101, Newsletter Archive, Contact
+- Git push workflow issue resolved — root cause: GitHub Actions pushes data files every hour; local commits get rejected with "fetch first". Fix: `git stash --include-untracked && git pull --rebase && git push && git stash pop`. If rebase creates conflicts in newsletter/latest*.html files, resolve with `git checkout --theirs <file> && git add <file>`.
 
 ### Recently Completed (Mar 5, 2026)
 - Newsletter design overhaul:
@@ -253,7 +267,7 @@ This is the feature that turns The Prob from a data aggregator into a **track re
 - **"Alert Me" emails** — threshold-based alerts requiring subscription + storage. Most complex feature — defer.
 
 ### SEO Content Track (ongoing)
-Technical SEO done (Mar 1). Content SEO is the real moat:
+Technical SEO done (Mar 1). sitemap.xml needs update to include 3 new pages (archive, contact, prediction-markets-101) — low priority since contact/archive aren't keyword targets, but prediction-markets-101.html should be added. Content SEO is the real moat:
 - `/what-is-prediction-market.html` — targets "what is a prediction market" (high volume, informational)
 - `/polymarket-vs-kalshi.html` — comparison page (high commercial intent)
 - `/how-prediction-markets-work.html` — educational, links to live market data
@@ -271,8 +285,26 @@ Technical SEO done (Mar 1). Content SEO is the real moat:
 
 ## Git Push Workflow
 
-GitHub Desktop doesn't reliably detect terminal commits. Always push via Mac Terminal:
+GitHub Desktop doesn't reliably detect terminal commits. Always push via Mac Terminal.
+
+Standard push (no uncommitted local changes):
 ```
 cd ~/theprob
 git pull --rebase && git push
+```
+
+If you have unstaged/untracked local changes (send_newsletter.py edits, newsletter files, etc.):
+```
+git stash --include-untracked
+git pull --rebase
+git push
+git stash pop
+```
+
+If rebase creates merge conflicts in newsletter/latest*.html or latest-subject.txt (GitHub Actions overwrites these each hour):
+```
+git checkout --theirs newsletter/latest-subject.txt newsletter/latest.html
+git add newsletter/latest-subject.txt newsletter/latest.html
+git commit -m "resolve merge conflicts in newsletter latest files"
+git push
 ```
