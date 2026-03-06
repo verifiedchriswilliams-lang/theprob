@@ -168,9 +168,16 @@ See VOICE.md. Sharp, confident, trader-focused. Lead with the number. "The crowd
 
 ### Pending Next Session
 1. The Spread (Poly vs Kalshi divergence) — highest trader value feature not yet built
-2. Monitor rolling hero block — passive, confirm no ping-pong
-3. Update FROM_THE_BUILDER dict in send_newsletter.py each session (reader-facing copy, not technical jargon)
-4. Monitor portfolio — confirm first trade logs correctly on next GitHub Actions run
+2. Monitor portfolio — confirm first trade logged correctly on first GitHub Actions run after Mar 6 2026
+3. Monitor rolling hero block — passive, confirm no ping-pong
+4. Update FROM_THE_BUILDER dict in send_newsletter.py each session (reader-facing copy, not technical jargon)
+
+### Recently Completed (Mar 6, 2026) — Session 3
+- Paper Portfolio naming — replaced "Hypothetical Track Record" with "Paper Portfolio" (eyebrow on portfolio.html) and "The Running Score" (index.html widget subheading). "Hypothetical" framing was underselling the concept.
+- FROM_THE_BUILDER updated — "built_yesterday": Portfolio tracker launched; "coming_next": The Spread
+- sitemap.xml — added portfolio.html (priority 0.7, daily changefreq)
+- Git push workflow fully documented in CLAUDE.md — stash, pull --rebase, push, stash pop. Conflict resolution for newsletter/latest*.html files documented.
+- PAT workflow scope added — push to .github/workflows/ files requires 'workflow' scope on GitHub Personal Access Token
 
 ### Recently Completed (Mar 6, 2026) — Session 2
 - The Prob Portfolio tracker launched:
@@ -278,7 +285,7 @@ This is the feature that turns The Prob from a data aggregator into a **track re
 - **"Alert Me" emails** — threshold-based alerts requiring subscription + storage. Most complex feature — defer.
 
 ### SEO Content Track (ongoing)
-Technical SEO done (Mar 1). sitemap.xml needs update to include 3 new pages (archive, contact, prediction-markets-101) — low priority since contact/archive aren't keyword targets, but prediction-markets-101.html should be added. Content SEO is the real moat:
+Technical SEO done (Mar 1). sitemap.xml fully updated as of Mar 6 — all 10 pages included (index, 5 category, news, prediction-markets-101, archive, contact, portfolio). Content SEO is the real moat:
 - `/what-is-prediction-market.html` — targets "what is a prediction market" (high volume, informational)
 - `/polymarket-vs-kalshi.html` — comparison page (high commercial intent)
 - `/how-prediction-markets-work.html` — educational, links to live market data
