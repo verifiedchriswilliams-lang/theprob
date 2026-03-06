@@ -2,8 +2,8 @@ name: Build and Send Daily Newsletter
 
 on:
   schedule:
-    - cron: '50 11 * * *'  # 6:50 AM EST (UTC-5) = 11:50 UTC → schedules Beehiiv send at 7:00 AM ET
-    # NOTE: After DST starts (Mar 8 2026), change to '50 10 * * *' (6:50 AM EDT = 10:50 UTC)
+    - cron: '50 10 * * *'  # 6:50 AM EDT (UTC-4) = 10:50 UTC → schedules Beehiiv send at 7:00 AM ET
+    # DST updated Mar 6 2026 — was '50 11 * * *' (EST/UTC-5), now '50 10 * * *' (EDT/UTC-4)
   workflow_dispatch:        # allow manual trigger for testing
 
 jobs:
