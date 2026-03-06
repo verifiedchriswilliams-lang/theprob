@@ -5,8 +5,24 @@
   "ytd_return_pct": 0.0,
   "win_count": 0,
   "loss_count": 0,
-  "open_count": 0,
+  "open_count": 1,
   "start_date": "2026-03-06",
   "last_updated": "2026-03-06",
-  "trades": []
+  "trades": [
+    {
+      "trade_id": "2bb1f47e",
+      "market_id": "will-bitcoin-dip-to-45000-by-december-31-2026-674-923-755-971-998-525-926-245-316-517-544-589-965-923-986-841-815-224",
+      "question": "Will Bitcoin dip to $45,000 by December 31, 2026?",
+      "url": "https://polymarket.com/event/what-price-will-bitcoin-hit-before-2027",
+      "source": "Polymarket",
+      "entry_prob": 47.5,
+      "direction": "YES",
+      "amount": 100.0,
+      "entry_date": "2026-03-06",
+      "status": "open",
+      "exit_prob": null,
+      "exit_date": null,
+      "pnl": null
+    }
+  ]
 }
