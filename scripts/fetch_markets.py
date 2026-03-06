@@ -11,6 +11,7 @@ import math
 import base64
 import time
 import re
+import uuid
 import requests
 from datetime import datetime, timezone, timedelta
 
@@ -1417,9 +1418,11 @@ SIDEBAR_3_LABEL: ..."""
     }
 
 
-def generate_hero_take(hero: dict) -> str:
+def generate_hero_take(hero: dict) -> dict:
     """
-    Generate a 2-sentence Hustle-style take on the hero market via Claude API.
+    Generate a 2-sentence Hustle-style take on the hero market via Claude API,
+    plus a trade direction signal (YES / NO / NO_PLAY) for The Prob Portfolio.
+    Returns {"take": str, "direction": "YES"|"NO"|"NO_PLAY"}.
     Falls back to a clean template if API is unavailable.
     """
     ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY", "")
@@ -1444,7 +1447,12 @@ def generate_hero_take(hero: dict) -> str:
                 "Write exactly 2 sentences for The Prob's hero market card.\n"
                 "Sentence 1: what the price move is signaling — who is buying/selling and why it moved.\n"
                 "Sentence 2: the alpha angle — is the current price right, what is mispriced, or what catalyst to watch next.\n"
-                "No em dashes. No hedging. No 'This market' opener. Write like someone with real skin in the game. Just the 2 sentences."
+                "No em dashes. No hedging. No 'This market' opener. Write like someone with real skin in the game.\n\n"
+                "Then on a new line write exactly one of:\n"
+                "DIRECTION: YES   (if you'd bet this resolves YES at current price)\n"
+                "DIRECTION: NO    (if you'd bet this resolves NO at current price)\n"
+                "DIRECTION: NO_PLAY  (if price is fair or signal is unclear)\n"
+                "Just the 2 sentences then the DIRECTION line. Nothing else."
             )
             r = req.post(
                 "https://api.anthropic.com/v1/messages",
@@ -1455,27 +1463,160 @@ def generate_hero_take(hero: dict) -> str:
                 },
                 json={
                     "model":      "claude-haiku-4-5-20251001",
-                    "max_tokens": 120,
+                    "max_tokens": 150,
                     "system":     HOUSE_STYLE_PROMPT,
                     "messages":   [{"role": "user", "content": prompt}],
                 },
                 timeout=15,
             )
             if r.ok:
-                text = r.json()["content"][0]["text"].strip()
-                return strip_em_dashes(text)
+                raw = r.json()["content"][0]["text"].strip()
+                # Parse direction tag
+                direction = "NO_PLAY"
+                take_text = raw
+                if "DIRECTION:" in raw:
+                    parts = raw.split("DIRECTION:")
+                    take_text = parts[0].strip()
+                    dir_part  = parts[1].strip().upper()
+                    if dir_part.startswith("NO_PLAY"):
+                        direction = "NO_PLAY"
+                    elif dir_part.startswith("NO"):
+                        direction = "NO"
+                    elif dir_part.startswith("YES"):
+                        direction = "YES"
+                return {"take": strip_em_dashes(take_text), "direction": direction}
             else:
                 print(f"  [WARN] Hero take API failed: {r.status_code}")
         except Exception as e:
             print(f"  [WARN] Hero take generation failed: {e}")
 
     # Fallback template
-    money_line = f"${vol}" if vol else "real money"
-    odds_word  = "likely" if prob > 65 else "unlikely" if prob < 35 else "a toss-up"
-    direction  = f"up {change} pts" if change > 5 else f"down {abs(change)} pts" if change < -5 else "steady"
+    money_line    = f"${vol}" if vol else "real money"
+    odds_word     = "likely" if prob > 65 else "unlikely" if prob < 35 else "a toss-up"
+    dir_word      = f"up {change} pts" if change > 5 else f"down {abs(change)} pts" if change < -5 else "steady"
     s1 = f"The crowd has {money_line} on this at {prob}%, calling it {odds_word}."
-    s2 = f"Odds are {direction} today. Worth watching."
-    return strip_em_dashes(f"{s1} {s2}")
+    s2 = f"Odds are {dir_word} today. Worth watching."
+    return {"take": strip_em_dashes(f"{s1} {s2}"), "direction": "NO_PLAY"}
+
+# ── PORTFOLIO ────────────────────────────────────────────────────────────────
+
+PORTFOLIO_FILE          = "data/portfolio.json"
+PORTFOLIO_START_BALANCE = 1000.0
+TRADE_AMOUNT            = 100.0
+
+def load_portfolio() -> dict:
+    if os.path.exists(PORTFOLIO_FILE):
+        with open(PORTFOLIO_FILE) as f:
+            return json.load(f)
+    return {
+        "starting_balance": PORTFOLIO_START_BALANCE,
+        "current_balance":  PORTFOLIO_START_BALANCE,
+        "total_pnl":        0.0,
+        "ytd_return_pct":   0.0,
+        "win_count":        0,
+        "loss_count":       0,
+        "open_count":       0,
+        "start_date":       "2026-03-06",
+        "last_updated":     "2026-03-06",
+        "trades":           [],
+    }
+
+def save_portfolio(portfolio: dict) -> None:
+    with open(PORTFOLIO_FILE, "w") as f:
+        json.dump(portfolio, f, indent=2)
+
+def update_portfolio(portfolio: dict, hero: dict, hero_direction: str,
+                     all_markets: list, today_str: str) -> dict:
+    """
+    1. Close any open trades that have resolved (prob >= 95 or <= 5).
+    2. Open a new $100 trade on today's hero if direction is not NO_PLAY.
+    Returns updated portfolio dict.
+    """
+    market_prob_lookup = {}
+    for m in all_markets:
+        key = m.get("slug") or m.get("url", "")
+        if key:
+            market_prob_lookup[key] = m.get("prob", None)
+
+    # ── 1. Check open trades for resolution ──────────────────────────────────
+    for trade in portfolio["trades"]:
+        if trade["status"] != "open":
+            continue
+        mid          = trade.get("market_id", "")
+        current_prob = market_prob_lookup.get(mid)
+        if current_prob is None:
+            continue   # market not in feed this run
+
+        resolved = False
+        win      = False
+        if current_prob >= 95:
+            resolved = True
+            win      = (trade["direction"] == "YES")
+        elif current_prob <= 5:
+            resolved = True
+            win      = (trade["direction"] == "NO")
+
+        if resolved:
+            ep  = trade["entry_prob"] / 100.0
+            ep  = max(min(ep, 0.99), 0.01)   # clamp to avoid div-by-zero
+            if win:
+                if trade["direction"] == "YES":
+                    pnl = round(TRADE_AMOUNT * (1 - ep) / ep, 2)
+                else:
+                    pnl = round(TRADE_AMOUNT * ep / (1 - ep), 2)
+            else:
+                pnl = -TRADE_AMOUNT
+
+            trade["status"]    = "closed"
+            trade["exit_prob"] = current_prob
+            trade["exit_date"] = today_str
+            trade["pnl"]       = pnl
+
+            if win:
+                portfolio["win_count"] += 1
+            else:
+                portfolio["loss_count"] += 1
+            portfolio["current_balance"] = round(portfolio["current_balance"] + pnl, 2)
+            portfolio["total_pnl"]       = round(portfolio["total_pnl"] + pnl, 2)
+            print(f"  Portfolio: CLOSED '{trade['question'][:45]}' "
+                  f"{'WIN' if win else 'LOSS'} ${pnl:+.2f} "
+                  f"(bal: ${portfolio['current_balance']:.2f})")
+
+    # ── 2. Open new trade for today's hero ───────────────────────────────────
+    if hero and hero_direction != "NO_PLAY":
+        hero_id      = hero.get("slug") or hero.get("url", "")
+        already_open = any(
+            t["market_id"] == hero_id and t["status"] == "open"
+            for t in portfolio["trades"]
+        )
+        if not already_open:
+            trade = {
+                "trade_id":   str(uuid.uuid4())[:8],
+                "market_id":  hero_id,
+                "question":   hero.get("question", ""),
+                "url":        hero.get("url", ""),
+                "source":     hero.get("source", ""),
+                "entry_prob": hero.get("prob", 50),
+                "direction":  hero_direction,
+                "amount":     TRADE_AMOUNT,
+                "entry_date": today_str,
+                "status":     "open",
+                "exit_prob":  None,
+                "exit_date":  None,
+                "pnl":        None,
+            }
+            portfolio["trades"].append(trade)
+            print(f"  Portfolio: NEW TRADE '{hero['question'][:45]}' "
+                  f"{hero_direction} @ {hero.get('prob')}%")
+
+    # ── 3. Refresh summary stats ──────────────────────────────────────────────
+    portfolio["open_count"]     = sum(1 for t in portfolio["trades"] if t["status"] == "open")
+    portfolio["last_updated"]   = today_str
+    portfolio["ytd_return_pct"] = round(
+        (portfolio["current_balance"] - portfolio["starting_balance"])
+        / portfolio["starting_balance"] * 100, 1
+    )
+    return portfolio
 
 # ── MAIN ─────────────────────────────────────────────────────────────────────
 
@@ -1648,9 +1789,24 @@ def main():
     # Sort catalog by cat_rank so frontend gets trading-optimized order by default
     catalog.sort(key=lambda m: m.get("cat_rank", 0), reverse=True)
 
-    # Generate hero "The Prob's Take"
+    # Generate hero "The Prob's Take" + trade direction
+    hero_direction = "NO_PLAY"
     if hero:
-        hero["prob_take"] = generate_hero_take(hero)
+        take_result        = generate_hero_take(hero)
+        hero["prob_take"]  = take_result["take"]
+        hero_direction     = take_result["direction"]
+        print(f"  Hero direction: {hero_direction}")
+
+    # Update portfolio (close resolved, open new trade)
+    print("\nUpdating Portfolio...")
+    today_str = now_utc.strftime("%Y-%m-%d")
+    portfolio = load_portfolio()
+    portfolio = update_portfolio(portfolio, hero, hero_direction, all_markets, today_str)
+    save_portfolio(portfolio)
+    print(f"  Balance: ${portfolio['current_balance']:.2f} "
+          f"({portfolio['ytd_return_pct']:+.1f}% YTD) | "
+          f"W{portfolio['win_count']}/L{portfolio['loss_count']} | "
+          f"{portfolio['open_count']} open")
 
     # Generate "The Prob's Daily Take"
     print("\nGenerating Daily Take (Claude API)...")
@@ -1670,6 +1826,18 @@ def main():
     hero_history_keys += [t for t in recent_hero_topics if t not in hero_history_keys]
     hero_history_keys  = hero_history_keys[:3]   # cap at 3 days
 
+    # Portfolio summary for frontend (recent 5 trades newest-first)
+    recent_trades = [t for t in reversed(portfolio["trades"])][:5]
+    portfolio_summary = {
+        "current_balance":  portfolio["current_balance"],
+        "starting_balance": portfolio["starting_balance"],
+        "ytd_return_pct":   portfolio["ytd_return_pct"],
+        "win_count":        portfolio["win_count"],
+        "loss_count":       portfolio["loss_count"],
+        "open_count":       portfolio["open_count"],
+        "recent_trades":    recent_trades,
+    }
+
     output = {
         "updated":      updated_str,
         "updated_iso":  now_utc.isoformat(),
@@ -1679,6 +1847,7 @@ def main():
         "ticker":       ticker,
         "daily_take":   daily_take,
         "all_markets":  catalog,
+        "portfolio":    portfolio_summary,
     }
 
     os.makedirs("data", exist_ok=True)

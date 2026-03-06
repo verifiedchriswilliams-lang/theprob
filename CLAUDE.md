@@ -22,6 +22,7 @@ theprob/
   archive.html            # Newsletter archive page - NEW (Mar 6, 2026)
   contact.html            # Contact form page (Web3Forms → verifiedchriswilliams@gmail.com) - NEW (Mar 6, 2026)
   prediction-markets-101.html  # Educational guide, SEO content page - NEW (Mar 6, 2026)
+  portfolio.html              # The Prob Portfolio tracker page - NEW (Mar 6, 2026)
   theprob_og_1200x630.jpg # OG social sharing image (1200x630px)
   sitemap.xml             # XML sitemap submitted to Google Search Console
   robots.txt              # Allows all crawlers, references sitemap
@@ -111,6 +112,7 @@ Fixed:
 - Beehiiv Copy HTML workflow — newsletter/latest.html preview page with Copy button, latest-copy.html (no-footer) for paste-to-Beehiiv (Mar 5, 2026)
 - New site pages — archive.html, contact.html (Web3Forms), prediction-markets-101.html (Mar 6, 2026)
 - Footer updated on all 7 existing pages — new order: Polymarket, Kalshi, Prediction Markets 101, Newsletter Archive, Contact (Mar 6, 2026)
+- The Prob Portfolio — data/portfolio.json, portfolio.html, widget on index.html, email header line, fetch_markets.py logic (Mar 6, 2026)
 
 Remaining:
 - Topic key fingerprint cosmetic issue (low priority)
@@ -165,14 +167,24 @@ See VOICE.md. Sharp, confident, trader-focused. Lead with the number. "The crowd
 ## Session Handoff — TODO
 
 ### Pending Next Session
-1. DST cron update — after Mar 8, 2026 change send-newsletter.yml cron from '50 11 * * *' → '50 10 * * *' (6:50am EDT = 10:50 UTC)
-2. The Spread (Poly vs Kalshi divergence) — highest trader value feature not yet built
-3. The Prob Portfolio tracker — flagship differentiator, full spec in roadmap below
-4. Monitor rolling hero block — passive, confirm no ping-pong
-5. Update FROM_THE_BUILDER dict in send_newsletter.py each session (reader-facing copy, not technical jargon)
-6. Update sitemap.xml to include archive.html, contact.html, prediction-markets-101.html (3 new pages missing from sitemap)
+1. The Spread (Poly vs Kalshi divergence) — highest trader value feature not yet built
+2. Monitor rolling hero block — passive, confirm no ping-pong
+3. Update FROM_THE_BUILDER dict in send_newsletter.py each session (reader-facing copy, not technical jargon)
+4. Add portfolio.html to sitemap.xml
+5. Monitor portfolio — confirm first trade logs correctly on next GitHub Actions run
 
-### Recently Completed (Mar 6, 2026)
+### Recently Completed (Mar 6, 2026) — Session 2
+- The Prob Portfolio tracker launched:
+  - data/portfolio.json — ledger file, starts at $1,000, $100/trade
+  - fetch_markets.py — generate_hero_take() now returns {"take", "direction"} dict; update_portfolio() closes resolved trades + opens new ones each hourly run; portfolio summary written to markets.json
+  - portfolio.html — full page with stats (balance, YTD, W/L record, open positions), trade ledger table, "How It Works" section
+  - index.html — portfolio widget between hero and movers sections, loads from markets.json
+  - send_newsletter.py — portfolio line added to email header (balance, YTD%, W/L, link to portfolio.html)
+  - fetch-markets.yml — now commits data/portfolio.json alongside markets.json each run
+- DST cron updated — send-newsletter.yml changed from '50 11 * * *' to '50 10 * * *' (EDT)
+- sitemap.xml — added prediction-markets-101.html (0.8), archive.html (0.5), contact.html (0.3)
+
+### Recently Completed (Mar 6, 2026) — Session 1
 - New site pages launched:
   - archive.html — newsletter archive, month-grouped, links to newsletter/YYYY-MM-DD.html files
   - contact.html — contact form via Web3Forms (free tier, 250/month), delivers to verifiedchriswilliams@gmail.com. Access key set in GitHub editor.

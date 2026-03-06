@@ -1043,6 +1043,37 @@
 
   <div class="divider"></div>
 
+  <!-- PORTFOLIO WIDGET -->
+  <section class="section" id="portfolio-widget" style="padding-top:32px;padding-bottom:32px;">
+    <div class="section-header" style="margin-bottom:16px;">
+      <div class="section-title">The Prob Portfolio <span>Hypothetical Track Record</span></div>
+      <a href="portfolio.html" style="font-family:'Courier New',monospace;font-size:11px;letter-spacing:0.1em;color:var(--text-muted);text-transform:uppercase;">Full Ledger &#8599;</a>
+    </div>
+    <div id="portfolio-bar" style="display:flex;gap:16px;flex-wrap:wrap;align-items:stretch;">
+      <div style="background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:20px 24px;min-width:160px;flex:1;">
+        <div style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-muted);margin-bottom:6px;">Balance</div>
+        <div id="pw-balance" style="font-family:'Courier New',monospace;font-size:26px;font-weight:700;color:var(--green);">$1,000</div>
+        <div style="font-size:11px;color:var(--text-muted);margin-top:4px;">Started $1,000 &middot; Mar 6 2026</div>
+      </div>
+      <div style="background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:20px 24px;min-width:120px;flex:1;">
+        <div style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-muted);margin-bottom:6px;">YTD Return</div>
+        <div id="pw-ytd" style="font-family:'Courier New',monospace;font-size:26px;font-weight:700;color:var(--green);">+0.0%</div>
+        <div style="font-size:11px;color:var(--text-muted);margin-top:4px;">Hypothetical</div>
+      </div>
+      <div style="background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:20px 24px;min-width:120px;flex:1;">
+        <div style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-muted);margin-bottom:6px;">Record</div>
+        <div id="pw-record" style="font-family:'Courier New',monospace;font-size:26px;font-weight:700;color:var(--amber);">0&ndash;0</div>
+        <div id="pw-winrate" style="font-size:11px;color:var(--text-muted);margin-top:4px;">Win rate &mdash;</div>
+      </div>
+      <div style="background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:20px 24px;flex:2;min-width:200px;">
+        <div style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-muted);margin-bottom:10px;">Latest Trade</div>
+        <div id="pw-latest" style="font-size:14px;color:var(--text-muted);">No trades logged yet. First pick coming tomorrow.</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
   <!-- TODAY'S BIGGEST MOVERS -->
   <section class="section">
     <div class="section-header">
@@ -1373,6 +1404,51 @@ function renderTimestamp(updated) {
 
 // ── BOOT ─────────────────────────────────────────────────────────────────────
 
+// ── PORTFOLIO WIDGET ──────────────────────────────────────────────────────────
+
+function renderPortfolioWidget(p) {
+  if (!p) return;
+  const bal    = p.current_balance ?? 1000;
+  const ytd    = p.ytd_return_pct  ?? 0;
+  const wins   = p.win_count       ?? 0;
+  const losses = p.loss_count      ?? 0;
+  const total  = wins + losses;
+  const winRate = total > 0 ? Math.round(wins / total * 100) : null;
+  const trades = p.recent_trades   || [];
+
+  const balEl = document.getElementById('pw-balance');
+  if (balEl) {
+    balEl.textContent = '$' + bal.toLocaleString('en-US', {minimumFractionDigits:2,maximumFractionDigits:2});
+    balEl.style.color = bal >= 1000 ? 'var(--green)' : 'var(--red)';
+  }
+  const ytdEl = document.getElementById('pw-ytd');
+  if (ytdEl) {
+    ytdEl.textContent = (ytd >= 0 ? '+' : '') + ytd.toFixed(1) + '%';
+    ytdEl.style.color = ytd >= 0 ? 'var(--green)' : 'var(--red)';
+  }
+  const recEl = document.getElementById('pw-record');
+  if (recEl) recEl.textContent = wins + '\u2013' + losses;
+  const wrEl = document.getElementById('pw-winrate');
+  if (wrEl) wrEl.textContent = winRate !== null ? 'Win rate: ' + winRate + '%' : 'Win rate \u2014';
+
+  const latestEl = document.getElementById('pw-latest');
+  if (latestEl && trades.length > 0) {
+    const t = trades[0];
+    const isClosed = t.status === 'closed';
+    const pnlStr = isClosed
+      ? ' &rarr; <strong style="color:' + (t.pnl >= 0 ? 'var(--green)' : 'var(--red)') + '">'
+        + (t.pnl >= 0 ? '+$' : '-$') + Math.abs(t.pnl).toFixed(2) + '</strong>'
+      : ' &rarr; <span style="color:var(--amber)">Open</span>';
+    const dirColor = t.direction === 'YES' ? 'var(--green)' : 'var(--red)';
+    latestEl.innerHTML =
+      '<span style="font-family:\'Courier New\',monospace;font-size:11px;color:var(--text-muted)">' + t.entry_date + '</span> &nbsp;'
+      + '<strong style="color:' + dirColor + '">' + t.direction + '</strong> '
+      + '<a href="' + (t.url || '#') + '" target="_blank" style="color:var(--text)">'
+      + t.question.slice(0, 65) + (t.question.length > 65 ? '\u2026' : '') + '</a>'
+      + ' @ ' + t.entry_prob + '%' + pnlStr;
+  }
+}
+
 async function loadMarkets() {
   try {
     // Cache-bust so GitHub Pages CDN always serves fresh data
@@ -1386,6 +1462,7 @@ async function loadMarkets() {
     renderMovers(data.movers     || []);
     renderDailyTake(data.daily_take || null);
     renderTimestamp(data.updated || '');
+    renderPortfolioWidget(data.portfolio || null);
 
   } catch (err) {
     // Fail gracefully — static fallback content remains visible

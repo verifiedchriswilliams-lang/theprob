@@ -322,6 +322,26 @@ def build_html(markets: dict, news: dict, subject: str, with_footer: bool = True
     hero_end    = hero.get("end_date", "")
     prob_color  = color_prob(hero_prob)
 
+    # ── Portfolio line for header ──
+    portfolio    = markets.get("portfolio", {})
+    port_bal     = portfolio.get("current_balance", 1000.0)
+    port_ytd     = portfolio.get("ytd_return_pct", 0.0)
+    port_wins    = portfolio.get("win_count", 0)
+    port_losses  = portfolio.get("loss_count", 0)
+    ytd_sign     = "+" if port_ytd >= 0 else ""
+    ytd_color    = "#00e5a0" if port_ytd >= 0 else "#ff4d6d"
+    port_line    = (
+        f"Portfolio: <strong style='color:{ytd_color} !important'>"
+        f"${port_bal:,.2f} ({ytd_sign}{port_ytd:.1f}% YTD)</strong>"
+        f" &nbsp;&middot;&nbsp; W{port_wins}/L{port_losses}"
+        f" &nbsp;&middot;&nbsp; <a href='{SITE_URL}/portfolio.html' "
+        f"style='color:#8ba3bc !important;text-decoration:none;'>Track record &#8599;</a>"
+    ) if (port_wins + port_losses) > 0 else (
+        f"Portfolio: <span style='color:#8ba3bc !important'>Starting Mar 6 &middot; $100/trade</span>"
+        f" &nbsp;&middot;&nbsp; <a href='{SITE_URL}/portfolio.html' "
+        f"style='color:#8ba3bc !important;text-decoration:none;'>See how it works &#8599;</a>"
+    )
+
     # ── HEADER ──
     header_html = f"""
   <tr><td class="header-pad" style="background:#080b0f !important;padding:28px 32px 20px;border-bottom:2px solid #1e2a38;">
@@ -338,6 +358,7 @@ def build_html(markets: dict, news: dict, subject: str, with_footer: bool = True
         </td>
       </tr>
     </table>
+    <div style="font-family:'Courier New',monospace;font-size:10px;color:#8ba3bc !important;letter-spacing:0.08em;margin-top:8px;padding-top:8px;border-top:1px solid #1e2a38;">{port_line}</div>
     <!--[if mso]></td></tr></table><![endif]-->
   </td></tr>"""
 
