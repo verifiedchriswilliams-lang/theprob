@@ -5,8 +5,24 @@
   "ytd_return_pct": 0.0,
   "win_count": 0,
   "loss_count": 0,
-  "open_count": 0,
+  "open_count": 1,
   "start_date": "2026-03-07",
   "last_updated": "2026-03-07",
-  "trades": []
+  "trades": [
+    {
+      "trade_id": "677743f6",
+      "market_id": "will-ubisoft-be-acquired-before-2027-175",
+      "question": "Will Ubisoft be acquired before 2027?",
+      "url": "https://polymarket.com/event/which-companies-will-be-acquired-before-2027",
+      "source": "Polymarket",
+      "entry_prob": 18.0,
+      "direction": "YES",
+      "amount": 100.0,
+      "entry_date": "2026-03-07",
+      "status": "open",
+      "exit_prob": null,
+      "exit_date": null,
+      "pnl": null
+    }
+  ]
 }
