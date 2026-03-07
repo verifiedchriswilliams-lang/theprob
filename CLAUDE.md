@@ -183,6 +183,7 @@ See VOICE.md. Sharp, confident, trader-focused. Lead with the number. "The crowd
 - The Prob Portfolio tracker launched:
   - data/portfolio.json — ledger file, starts at $1,000, $100/trade
   - fetch_markets.py — generate_hero_take() now returns {"take", "direction"} dict; update_portfolio() closes resolved trades + opens new ones each hourly run; portfolio summary written to markets.json
+  - Trade gate: prob must be >= 65% (trade YES) or <= 35% (trade NO). Anything in the 35-65% coin-flip zone is forced to NO_PLAY regardless of Claude's call.
   - portfolio.html — full page with stats (balance, YTD, W/L record, open positions), trade ledger table, "How It Works" section
   - index.html — portfolio widget between hero and movers sections, loads from markets.json
   - send_newsletter.py — portfolio line added to email header (balance, YTD%, W/L, link to portfolio.html)

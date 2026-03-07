@@ -1795,7 +1795,13 @@ def main():
         take_result        = generate_hero_take(hero)
         hero["prob_take"]  = take_result["take"]
         hero_direction     = take_result["direction"]
-        print(f"  Hero direction: {hero_direction}")
+        # Probability gate: never trade coin flips (35-65% zone)
+        hero_prob_val = hero.get("prob", 50)
+        if not (hero_prob_val >= 65 or hero_prob_val <= 35):
+            hero_direction = "NO_PLAY"
+            print(f"  Hero direction: NO_PLAY (prob {hero_prob_val}% in coin-flip zone, skipping)")
+        else:
+            print(f"  Hero direction: {hero_direction} (prob {hero_prob_val}%)")
 
     # Update portfolio (close resolved, open new trade)
     print("\nUpdating Portfolio...")
