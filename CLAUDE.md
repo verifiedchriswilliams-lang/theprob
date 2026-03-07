@@ -168,9 +168,15 @@ See VOICE.md. Sharp, confident, trader-focused. Lead with the number. "The crowd
 
 ### Pending Next Session
 1. The Spread (Poly vs Kalshi divergence) — highest trader value feature not yet built
-2. Monitor portfolio — confirm first trade logged correctly on first GitHub Actions run after Mar 6 2026
+2. Monitor portfolio — confirm first CLEAN trade logged correctly (65/35 gate active, start date Mar 7 2026)
 3. Monitor rolling hero block — passive, confirm no ping-pong
 4. Update FROM_THE_BUILDER dict in send_newsletter.py each session (reader-facing copy, not technical jargon)
+
+### Recently Completed (Mar 7, 2026)
+- 65/35 probability gate added to portfolio trade logic — no coin flips (35-65% zone forces NO_PLAY regardless of Claude's call)
+- Portfolio reset to clean slate — wiped 5 bad trades logged before gate was in place (all were in coin-flip zone or had wrong direction). New start date Mar 7, 2026, balance $1,000.
+- portfolio.html copy updated — subtitle, "How It Works" cards now explain the 65/35 conviction rule explicitly
+- index.html widget start date updated to Mar 7, 2026
 
 ### Recently Completed (Mar 6, 2026) — Session 3
 - Paper Portfolio naming — replaced "Hypothetical Track Record" with "Paper Portfolio" (eyebrow on portfolio.html) and "The Running Score" (index.html widget subheading). "Hypothetical" framing was underselling the concept.
@@ -183,7 +189,7 @@ See VOICE.md. Sharp, confident, trader-focused. Lead with the number. "The crowd
 - The Prob Portfolio tracker launched:
   - data/portfolio.json — ledger file, starts at $1,000, $100/trade
   - fetch_markets.py — generate_hero_take() now returns {"take", "direction"} dict; update_portfolio() closes resolved trades + opens new ones each hourly run; portfolio summary written to markets.json
-  - Trade gate: prob must be >= 65% (trade YES) or <= 35% (trade NO). Anything in the 35-65% coin-flip zone is forced to NO_PLAY regardless of Claude's call.
+  - Trade gate: prob must be >= 65% (trade YES) or <= 35% (trade NO). Anything in the 35-65% coin-flip zone is forced to NO_PLAY regardless of Claude's call. Claude still picks direction within those bounds and can also return NO_PLAY on qualifying markets if signal is unclear.
   - portfolio.html — full page with stats (balance, YTD, W/L record, open positions), trade ledger table, "How It Works" section
   - index.html — portfolio widget between hero and movers sections, loads from markets.json
   - send_newsletter.py — portfolio line added to email header (balance, YTD%, W/L, link to portfolio.html)
