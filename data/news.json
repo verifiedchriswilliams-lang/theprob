@@ -1,8 +1,26 @@
 {
-  "updated": "Mar 7, 2026 \u00b7 12:45 PM ET",
-  "updated_iso": "2026-03-07T17:45:20.185885+00:00",
+  "updated": "Mar 7, 2026 \u00b7 6:45 PM ET",
+  "updated_iso": "2026-03-07T23:45:59.990640+00:00",
   "homepage_count": 3,
   "articles": [
+    {
+      "title": "The Multibillion-dollar shift turning prediction markets into a professional hedging tool",
+      "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxQemJKNjJQRTRtb1Z4YW9zRU9XdU5PaU94bmNHRWZ5U2lJaTExTXFWRGVXY2otRHpyWHc5YkUyV2NSQjNld1NSMFhXNU8zSTRMVE53bVlQOVdVeXhqMm9hUzA0RWZRcEUwbnNoU05RSHg4VWktYWZWMXhOSlVRWm1xbkhXVmM1M1hRM3NKMTRZdWFOei10cHlMa0FMMWxNTktfa3ZnVmdTVXlIUGtsUG5PdzNvWFI2cTFEMjBXTFFzVWNyNUxiZlRxMDZxeGs4UQ?oc=5",
+      "source": "CoinDesk",
+      "pub_iso": "2026-03-07T19:06:51+00:00",
+      "description": "",
+      "summary": "Institutional money is flooding into prediction markets, transforming them from retail betting venues into sophisticated financial instruments for managing political and economic risk. This professionalization brings deeper liquidity and tighter spreads, but it also means amateur traders face increasingly sharp competition from well-capitalized hedge funds and proprietary trading firms.",
+      "pub_display": "Mar 7"
+    },
+    {
+      "title": "Insider Trading Is Going to Get People Killed",
+      "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxQWjlTZ0NDS2lOTnV2V0l6YnJhdWF3MEV4TDU0T1NOOFJkRHJlRmtSQ1hBc0dfT0dGa0E4VERlYXFKQ3RXUUdrbWNfSlVSOTJ6ZFVhTGNBY0F4ZkJPR3R5Y0s3d3I1OXdyMlZfZGhJa3BvZUFUcGVLYlBlWER3RnhsYjJLdTloRlJaWHVHMmhISkc1NGhoR0twMlBqcnFtVVZHeFhpV3BPWFA?oc=5",
+      "source": "The Atlantic",
+      "pub_iso": "2026-03-07T18:34:06+00:00",
+      "description": "",
+      "summary": "Stock traders are increasingly using non-public information from defense contractors and government sources to bet on geopolitical events, turning classified intel into market alpha. When prediction markets start pricing in military strikes or diplomatic moves before they happen, governments will crack down hard on both the traders and the platforms that enable them.",
+      "pub_display": "Mar 7"
+    },
     {
       "title": "Opinion: The immorality of betting on war",
       "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNYUQtdVloVnFMaDFFWkdYb0pTcU56WnkydHVERi1DOEUybjkydmlUbmRtdEY5aVNuYUVZWHEyZEJ1UEgycmhvNzlTMEhDaFVwc0h3VVdjXzJUWE5OSkRtbWEwRUdRbGlNamFvSWdMSGxNYldJSlpSQ2FaMWptRUlqX3JoNWNUVDRFYVdmUXl3?oc=5",
@@ -10,15 +28,6 @@
       "pub_iso": "2026-03-07T13:00:00+00:00",
       "description": "",
       "summary": "Someone's arguing that placing bets on military conflicts crosses an ethical line that prediction markets shouldn't touch. The debate matters because war-related markets consistently draw massive volume and liquidity, making them too profitable for most platforms to ignore despite the moral handwringing.",
-      "pub_display": "Mar 7"
-    },
-    {
-      "title": "Kalshi vs. Polymarket: Full Comparison and Key Differences",
-      "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE9aLV9GR2NCRFRuM1o4THdoRlFXSUZEczROV3gtU1BVZVdQRmZvUUtwb25zUGlTemp6RklDSGVsS214QmtmdmhsangwNll4cWo3RXA2LTgyd2hYUW5YdEJZUG9ZQS1Rdl9fYzdBa3ZR?oc=5",
-      "source": "DeFi Rate",
-      "pub_iso": "2026-03-07T11:22:16+00:00",
-      "description": "",
-      "summary": "Kalshi and Polymarket are the two heavyweight prediction market platforms battling for dominance, each with distinct regulatory approaches, user bases, and betting mechanics. The winner of this platform war will likely determine whether prediction markets go mainstream through traditional regulated channels or crypto-native decentralized routes.",
       "pub_display": "Mar 7"
     },
     {
@@ -32,29 +41,20 @@
     },
     {
       "title": "Exclusive | Kalshi and Polymarket Are Each Eyeing Roughly $20 Billion Valuations",
-      "url": "https://news.google.com/rss/articles/CBMirANBVV95cUxQRzA4dlVVak1ncjNyX2dURkR1WDFEYldQVExkS1U3OUZOM0prMDBDekR3Y2lCNUp4UkpXOTFLUmJSd0JpVXNGZko2TWxYM21ESDRhWllkeGxDbE9OcS1ST3pSdEdlQUVCT2t6c3Y1QmNkYmstYnktU1AyZ3VpZkVseEFPeG96Z05oTmEwemg2Mzl5Q0UyRmxUMm9lUURhYW4zYXZSVlNnY3lPYk9OMzZXNkZmVWw4RG15TUhaR1NKY3VvUFU3eDNVRnhLc0JtQ2QzVENYVFZNdDBHS2JRVFF0dVRKVkxiTS1ab3JLckc2MlVNT2tvREVFY0plazRwYi1WR2d4bWxFc2tGXzMtZGcteGJCLVVGUjFSS3NNY3JSZXJuUUVTbTQ1VG5udnZlUW4zWlJqT0h3UkxpNUtNemJlakp0M0Z1OFE4VHJFNHZLWEloUUdWSlBDZmV5aS15Tjd6RThPLTNLMkhQOHBJdVE0bV9QaWNSTFM0YS1Qc1lXNE1NamhuSWVpUXd2Ti1aQzZPbWttSHJ3djJWSVBzbHc3RXh1M0dGM1VLaE9JbQ?oc=5",
+      "url": "https://news.google.com/rss/articles/CBMirANBVV95cUxPb1hZOXRzNElwRWIydUpwWnhiY3ItcGhzaUppa1MtcVZTRm5vRWR5V3RZWWd3UE9DRVg5em4yMEtKdl9DOGgyWU1zVi1vSkJ4eWNhT0xHQkJkVnJNN0tiakdWTFg2STU1aGI4MEFpMngySXQ5dUh3T0U0dVd0STJjZTViZXlya1lvRkk1eS1CTjRUNHVFSDZPMWJ4SmN3eHpqZi1PcVNqcDdfZkJEVU1Yc0s2RVkzOVFJbTVZS0FieTJNenBCUXZvY2syd203RXZSQ0ZYSmVZSzZEM1ZZR3gwanZwWHpRaXgyS1Z1Q2ExVnhKV21NYUtwOVc4VnhGTklZOXNvcVBJV09hNm1jTVQ4NmtmMkZVZWZDQ2ZNT0daTjlLX2M2NFM5eFVyQ0RyWEJCcDdZQnVJazYwdlpVbHdrYWN5WHFOdE9wMkZDaVByeFowTF9hUmtkblVLNGcwbjhIV1gyYUgycFc2SGVIREhaRGVvOXgxMWRJMy1qTDVaRXoxckVoQ1dDYVlxaXVJMDBNMnRRcVg3Y0pNR3pSU21FaUZjZlRiTHpmem1Neg?oc=5",
       "source": "WSJ",
       "pub_iso": "2026-03-07T07:33:00+00:00",
       "description": "",
-      "summary": "Kalshi and Polymarket are both targeting valuations around $20 billion as they compete for dominance in the prediction markets space. These sky-high valuations signal that Wall Street finally sees prediction markets as a legitimate asset class worth serious money, not just a niche betting curiosity.",
+      "summary": "Kalshi and Polymarket are both seeking valuations around $20 billion as they chase institutional money and mainstream adoption. These sky-high numbers signal that prediction markets have officially graduated from niche curiosity to serious Wall Street business, which means more liquidity and legitimacy for everyone betting on everything from elections to interest rates.",
       "pub_display": "Mar 7"
     },
     {
-      "title": "Popular prediction markets take heat from lawmakers",
-      "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxQS1VOdElOeE9BUnNWdjZoVE1CUXhSSkJiMHEyRTdMcDdCWkozbHFxbGFjRWw3aWdXRF9EYkFiR1k1N1FJMFpabGptY2lVZ1BGb3dvXzFySFV2RWk4cDVweEt0U29IX2d3N0xVLVNpZ0U1REo0UGhxd1BKNVBUM3M2RElCTTVtcmwtbDl2VTVIMWQyOWU5SFpB?oc=5",
-      "source": "Spectrum News",
-      "pub_iso": "2026-03-06T22:00:00+00:00",
+      "title": "The wildest frat party on campus? Prediction markets",
+      "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE5vd0RscjB0aXFJSlNrRmw2V2ZCQmxpaGRWVFR0YmYyU0gzbXFBREx5Z0tpOWhid183cUVTYmFySndvTWpRRVBmTTYxSlFPWFU4TzNTWi1WRlhiS0dfc2xzZw?oc=5",
+      "source": "MSN",
+      "pub_iso": "2026-03-06T22:37:59+00:00",
       "description": "",
-      "summary": "Lawmakers are scrutinizing popular prediction markets, likely over concerns about gambling regulations, election betting, or market manipulation. The regulatory pressure could force platforms to restrict certain markets or face operational hurdles that dampen the prediction market boom.",
-      "pub_display": "Mar 6"
-    },
-    {
-      "title": "Kalshi sued over ouster of Iran leader prediction market",
-      "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxQQ2tMMjA0dHhPSVIzSUVKSHRUUjNGU1lxUHpFeE9SS3RNSm1lUUFLVXJYcEFkbmRRSlJnWWpmSFJKZE9FRDhGQWZJUzduNlc1OGlDZDJiYUlmc2NiNkJXZzU2NGQwWEZyeTIxNEl2aUtmZHoyVEhpTGxCRW03bjJOS1FLVlI1c0hhZWE5Y3lGT29TdGtyaENDWEM5MlZvRElGUVJBRG5QeUNtTlk?oc=5",
-      "source": "Reuters",
-      "pub_iso": "2026-03-06T18:13:49+00:00",
-      "description": "",
-      "summary": "Kalshi faces legal action after removing a prediction market on Iran's leadership, likely related to content moderation or regulatory pressure. The lawsuit could set important precedent for when platforms can pull politically sensitive markets and what recourse traders have when positions vanish.",
+      "summary": "College students are turning prediction markets into the new party game, trading on everything from dorm drama to campus elections with the same energy they once reserved for beer pong tournaments. This matters because Gen Z's gambling-adjacent entertainment could either legitimize prediction markets as mainstream or turn them into another TikTok fad that regulators crush.",
       "pub_display": "Mar 6"
     },
     {
@@ -67,12 +67,12 @@
       "pub_display": "Mar 6"
     },
     {
-      "title": "2 young billionaires are behind the prediction market boom. They hate each other",
-      "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxOTlBPNURGTjBqODJPS0lZOThwbElXRmlWV2ttWFdheE1OZ3VNREozTV84ZFZQR21SR0k2RmNULTJXTmtHeG40LVltX05XM3ZzaU1wb21EckNabVduLWtxTndKdzlQUUhrc1M1WnRxSDdEVUpyQ2VwS2xLMUU0OXFvVk1B?oc=5",
-      "source": "NPR",
-      "pub_iso": "2026-03-06T10:00:00+00:00",
+      "title": "The prediction market backlash has arrived",
+      "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE5DQ3FBR0hIa1VDckxqMS03bjhQS3VkYmJxVlJial9MR0QyR3poTnhLUlFrWFViZEg1MDZIZ1BabjR2eVIxZENxNjVaajN0X3lNM2Jr?oc=5",
+      "source": "qz.com",
+      "pub_iso": "2026-03-06T10:10:23+00:00",
       "description": "",
-      "summary": "The CEOs of America's two biggest prediction market platforms are publicly feuding, turning what should be a growing industry into a personal grudge match. This executive drama matters because when the heads of Kalshi and Polymarket are busy throwing punches instead of building better products, it gives traditional betting companies and regulators more ammunition to dismiss prediction markets as immature toys rather than serious financial instruments.",
+      "summary": "Critics are finally pushing back hard against prediction markets after years of hype and mainstream adoption. The timing couldn't be worse for platforms trying to go legit, as regulatory scrutiny and public skepticism could kill the momentum that's been building since 2020.",
       "pub_display": "Mar 6"
     },
     {
@@ -94,21 +94,21 @@
       "pub_display": "Mar 6"
     },
     {
+      "title": "\u2018Is This Insider Information?\u2019 The Prediction Market Bets Driving a Campus Frenzy",
+      "url": "https://news.google.com/rss/articles/CBMi_gJBVV95cUxOYWktYXRTWEhuZ0RlSGJGUlkwTDVCOVV2YjIyXy1FRV9hVHZtbnZHUHpRYk02S2w1ZEp0TGlpUmptWGJadEdiRHE0UDU0ZlpUX2Q0TElVT2tlMExZNWhWOVg2Q21RYVpYMDRCMU1YbDY1b0djbGh6aURJN2txVG9EQ2dhazIzOWVVWXE5MkljMFAxU0pjaFFMUXV6eW5FM1RzYlBxNDR2NFJBN082MUdtUUJGdVBici1jRVlabWp2SWd5Z3FGLWs3TDNHQTFBLWpfZ1JLLVNVQWkwU2FvU2U3bjN2N3UzNTZOd3I4WE9xZUtVZXVkY0dDNVk1NFJfQ0JFVWVFUldpdEgySkRNTTAyY09uenROMU5MdjhNREV5VkdsYklxWm81U1YzSDRaakV6anBFeEFFdWVRdUZLSnUxWlV1X0JwaTBYLTF4OHZkY3d4eERNYzl1cXllc2d4YXpJbUtJLXJuTlJfTWVXcFBTamd3ZVFTY2l5TWdDaUxR?oc=5",
+      "source": "WSJ",
+      "pub_iso": "2026-03-06T02:00:00+00:00",
+      "description": "",
+      "summary": "College students are placing bets on prediction markets using information that might cross the line into insider territory, sparking debates about fairness and market integrity on campuses nationwide. This could force platforms to implement stricter verification rules and reshape how academic communities interact with prediction markets, especially around university-specific events where students have privileged access.",
+      "pub_display": "Mar 6"
+    },
+    {
       "title": "A Technology for a Low-Trust Society",
       "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQWk1PNUVVbU5CYzg3SWQtcUZVdEE0cUZPY0lBazZuR0NJSmYtekRoSzFjXzhFblpNYU1KNWRDdnQzYWh5T0N3WGdCVi1USmZXNW1KbXJHUWJ2X0ItS1BaS211VlBhaGIxX2JJbGRVbWlJWEtFb0RpTFlULVNMQzBIN3BlcFJpVjFVdUp6Zkh3?oc=5",
       "source": "The Atlantic",
       "pub_iso": "2026-03-05T20:06:10+00:00",
       "description": "",
       "summary": "Prediction markets are emerging as the go-to solution for extracting truth from populations that no longer trust traditional institutions or each other. When nobody believes the polls, the pundits, or the official statistics, betting markets become the most reliable signal of what's actually happening in the world.",
-      "pub_display": "Mar 5"
-    },
-    {
-      "title": "MrBeast\u2019s company fired a video editor after Kalshi accused the employee of insider trading",
-      "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxNcDUzU3JBc0hqblk1NTBaUmJyUHYwNllUd3hzX2VLd19KUktvNzlIZjhjZWIyaEN3RVJZRW9PSTNYRjNNWVFOd3R1dnNGSUQ5X1pwOE5WLTRfZXJNeU41Y3dmTFR1UDZ3dHRiSEpZcVJCQWpRYlZsUjlpazlzYm96Q1BaU0xiejVqajlrRmxlUkszS1pj?oc=5",
-      "source": "AP News",
-      "pub_iso": "2026-03-05T19:15:00+00:00",
-      "description": "",
-      "summary": "MrBeast's company terminated a video editor following allegations from prediction market Kalshi that the employee engaged in insider trading. The incident highlights how betting platforms are actively monitoring for suspicious activity, even tracking employees at major content creators who might have advance knowledge of viral outcomes.",
       "pub_display": "Mar 5"
     }
   ]
