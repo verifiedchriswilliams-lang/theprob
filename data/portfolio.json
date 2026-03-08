@@ -5,9 +5,9 @@
   "ytd_return_pct": 0.0,
   "win_count": 0,
   "loss_count": 0,
-  "open_count": 1,
+  "open_count": 2,
   "start_date": "2026-03-07",
-  "last_updated": "2026-03-07",
+  "last_updated": "2026-03-08",
   "trades": [
     {
       "trade_id": "677743f6",
@@ -19,6 +19,21 @@
       "direction": "YES",
       "amount": 100.0,
       "entry_date": "2026-03-07",
+      "status": "open",
+      "exit_prob": null,
+      "exit_date": null,
+      "pnl": null
+    },
+    {
+      "trade_id": "b842a729",
+      "market_id": "deepseek-v4-released-by-march-15-678",
+      "question": "DeepSeek V4 released by March 15?",
+      "url": "https://polymarket.com/event/deepseek-v4-released-by-march-31",
+      "source": "Polymarket",
+      "entry_prob": 17.0,
+      "direction": "YES",
+      "amount": 100.0,
+      "entry_date": "2026-03-08",
       "status": "open",
       "exit_prob": null,
       "exit_date": null,
