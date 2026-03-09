@@ -393,6 +393,7 @@ def fetch_polymarket() -> list[dict]:
                         "display_category": display_cat or "World",
                         "tags":             tag_labels,
                         "tag_slugs":        [t.get("slug","").lower() for t in event_tags],
+                        "featured":         bool(event.get("featured", False)),
                     })
                 except (ValueError, IndexError, KeyError):
                     continue
@@ -632,6 +633,8 @@ def fetch_kalshi() -> list[dict]:
                                     pass  # Snapshot system handles delta — no fallback needed
 
                             disp_cat = KALSHI_CATEGORY_MAP.get(category, category or "World")
+                            spread = round(yes_ask - yes_bid, 2)
+                            open_interest_cents = float(m.get("open_interest", 0) or 0)
                             results.append({
                                 "source":           "Kalshi",
                                 "question":         question,
@@ -650,6 +653,8 @@ def fetch_kalshi() -> list[dict]:
                                 "is_sports":        category.lower() == "sports",
                                 "display_category": disp_cat,
                                 "tags":             [category.lower()],
+                                "spread":           spread,
+                                "open_interest":    open_interest_cents / 100,
                             })
                             seen_tickers.add(ticker)
                         except (ValueError, KeyError):
@@ -794,30 +799,61 @@ def score_market(m: dict) -> float:
       1. Big absolute price moves (breaking news signal)
       2. High 24h volume (money rushing in = hot topic)
       3. Total volume (legitimacy / market size)
-      4. Interesting probability (not near 0% or 100% = still debatable)
+      4. Conviction probability (crowd has picked a side = more actionable)
       5. Closing soon (urgency)
+      6. Recency surge (24h vol spike vs total)
+      7. Trade eligibility bonus (aligns hero with paper portfolio gate)
+      8. Platform curation signal — Polymarket featured flag (+2pts)
+      9. Kalshi bid-ask spread signal — tight spread = liquid market (+0–1pt)
+
+    Upgrade notes (Mar 7 2026):
+      - move_score cap raised 20→30pts: better discrimination between 6pt moves (noise)
+        and 25pt moves (breaking news). Old cap made them near-identical.
+      - vol_24h_score weight doubled (×3→×6): money rushing in is the best real-time
+        relevance signal. Was underweighted vs move_score.
+      - prob_interest reshaped: OLD formula rewarded 50% (coin flips). NEW formula
+        rewards conviction — markets at 70%+ or 30%- score highest because the crowd
+        has picked a side and the story is clearer. Inverted V shape → U shape.
+      - trade_bonus: +1.5pt if market qualifies for paper portfolio (prob ≥65 or ≤35).
+        Directly aligns hero selection with the 65/35 trade gate so the hero is
+        more likely to also generate a paper trade.
+
+    Upgrade notes (Mar 8 2026):
+      - featured_bonus: +2pts if Polymarket has flagged the event as featured. Their
+        editorial team curates this — it's a strong signal the market is timely/relevant.
+      - spread_signal: Kalshi bid-ask spread (yes_ask - yes_bid) is a direct liquidity
+        measure. A 2pt spread means the market is actively traded; a 20pt spread means
+        thin order book. Score: max(0, 1 - spread/10) gives 1pt at 0 spread, 0pt at 10+.
+        Only applies to Kalshi markets (Polymarket uses AMM, no spread concept).
     """
     abs_change  = abs(m["change_pts"])
     volume      = m["volume"]
     volume_24h  = m.get("volume_24h", 0) or 0
     prob        = m["prob"]
 
-    # 1. Price-move signal — capped at 20pts so one monster move can't create
-    #    an insurmountable lead that blocks variety for days.
-    #    A 22pt move and a 35pt move are both "breaking news" — cap equalises them.
-    move_score = min(abs_change * 2.5, 20.0)
+    # 1. Price-move signal — capped at 30pts (raised from 20).
+    #    Gives meaningful separation between a 5pt grind and a 25pt breaking move.
+    move_score = min(abs_change * 2.5, 30.0)
 
-    # 2. 24h volume surge — normalised log scale (0–6 pts)
-    #    A market with $500K in last 24h is very hot
-    vol_24h_score = math.log10(max(volume_24h, 1)) / 10 * 3
+    # 2. 24h volume surge — doubled weight (0–6 pts, was 0–3 pts).
+    #    A market with $500K rushing in today is very hot — this was underweighted.
+    vol_24h_score = math.log10(max(volume_24h, 1)) / 10 * 6
 
     # 3. Total volume legitimacy (0–2 pts)
     vol_total_score = math.log10(max(volume, 1)) / 10
 
-    # 4. Probability interest — sweet spot 30–70% (0–1 pt)
-    prob_interest = 1 - abs(prob - 50) / 50
+    # 4. Conviction probability — U-shape rewards markets where crowd has picked a side.
+    #    OLD: 1 - abs(prob-50)/50  → peaked at 50% (coin flip), penalised 70%+ markets
+    #    NEW: (abs(prob-50)/50)^0.6 → peaks at 0%/100%, rewards 65%+ and 35%- markets
+    #    Scaled 0–1pt. Markets at 70% score ~0.74; markets at 50% score 0.
+    prob_interest = (abs(prob - 50) / 50) ** 0.6
 
-    # 5. Urgency bonus — closing within 7 days gets up to 1.5 pts
+    # 5. Trade eligibility bonus — aligns hero selection with paper portfolio gate.
+    #    Markets qualifying for a trade (≥65% or ≤35%) get a direct boost so the
+    #    hero pick and the portfolio pick stay in sync.
+    trade_bonus = 1.5 if (prob >= 65 or prob <= 35) else 0.0
+
+    # 6. Urgency bonus — closing within 7 days gets up to 1.5 pts
     urgency = 0.0
     raw_end = m.get("end_date_raw", "")
     if raw_end:
@@ -825,15 +861,29 @@ def score_market(m: dict) -> float:
         if days is not None and 0 < days <= 7:
             urgency = 1.5 * (1 - days / 7)
 
-    # 6. Recency bonus for Polymarket — markets trending on 24h vs total
-    #    High ratio = suddenly getting lots of attention
+    # 7. Recency bonus — 24h/total vol ratio spike signals breaking story
     recency_bonus = 0.0
     if volume > 0 and volume_24h > 0:
         ratio = volume_24h / volume
         if ratio > 0.15:   # >15% of all volume in last 24h = breaking
             recency_bonus = min(ratio * 5, 3.0)
 
-    return move_score + vol_24h_score + vol_total_score + prob_interest + urgency + recency_bonus
+    # 8. Polymarket featured flag — their editorial team curated this market as
+    #    timely/relevant. Treat it as a +2pt curation signal. Polymarket-only.
+    featured_bonus = 2.0 if m.get("featured") else 0.0
+
+    # 9. Kalshi bid-ask spread signal — tight spread means active order book.
+    #    Formula: max(0, 1 - spread/10) → 1pt at 0 spread, 0pt at 10+ spread.
+    #    Kalshi-only (Polymarket uses AMM, spread not applicable).
+    spread_signal = 0.0
+    if m.get("source") == "Kalshi":
+        spread = m.get("spread")
+        if spread is not None:
+            spread_signal = max(0.0, 1.0 - spread / 10.0)
+
+    return (move_score + vol_24h_score + vol_total_score + prob_interest
+            + trade_bonus + urgency + recency_bonus
+            + featured_bonus + spread_signal)
 
 def get_series_key(m: dict) -> str:
     """

@@ -172,11 +172,23 @@ See VOICE.md. Sharp, confident, trader-focused. Lead with the number. "The crowd
 3. Monitor rolling hero block — passive, confirm no ping-pong
 4. Update FROM_THE_BUILDER dict in send_newsletter.py each session (reader-facing copy, not technical jargon)
 
+### Recently Completed (Mar 8, 2026)
+- Platform curation signals added to score_market() (2 new signals in fetch_markets.py):
+  - Polymarket featured flag: fetch_polymarket() now captures `event.get("featured")` → stored as `"featured": bool` on each market dict. score_market() adds +2.0pts for featured markets. Polymarket's editorial team curates this — strong signal for timeliness.
+  - Kalshi bid-ask spread: fetch_kalshi() now captures `yes_ask - yes_bid` → stored as `"spread"` field. score_market() adds up to +1.0pt for tight spreads: `max(0, 1 - spread/10)`. Tight spread = liquid, actively traded market. AMM-only so Kalshi-specific.
+  - Kalshi open_interest: fetch_kalshi() now captures `m.get("open_interest", 0) / 100` → stored as `"open_interest"` field. Not yet used in scoring but available for future features (e.g., The Spread cross-platform comparison, volume_vs_OI ratio signal).
+- score_market() docstring updated with Mar 8 upgrade notes
+
 ### Recently Completed (Mar 7, 2026)
 - 65/35 probability gate added to portfolio trade logic — no coin flips (35-65% zone forces NO_PLAY regardless of Claude's call)
 - Portfolio reset to clean slate — wiped 5 bad trades logged before gate was in place (all were in coin-flip zone or had wrong direction). New start date Mar 7, 2026, balance $1,000.
 - portfolio.html copy updated — subtitle, "How It Works" cards now explain the 65/35 conviction rule explicitly
 - index.html widget start date updated to Mar 7, 2026
+- score_market() hero scoring upgraded (4 changes):
+  - move_score cap raised 20→30pts: better discrimination between noise moves and breaking news
+  - vol_24h_score weight doubled (×3→×6): 24h volume is the best real-time relevance signal
+  - prob_interest reshaped: OLD formula peaked at 50% (rewarded coin flips). NEW U-shape rewards conviction markets at 65%+ or 35%- where crowd has picked a side
+  - trade_bonus added: +1.5pts if market qualifies for paper portfolio (prob ≥65 or ≤35), aligning hero selection with portfolio gate
 
 ### Recently Completed (Mar 6, 2026) — Session 3
 - Paper Portfolio naming — replaced "Hypothetical Track Record" with "Paper Portfolio" (eyebrow on portfolio.html) and "The Running Score" (index.html widget subheading). "Hypothetical" framing was underselling the concept.
