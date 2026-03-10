@@ -172,11 +172,15 @@ See VOICE.md. Sharp, confident, trader-focused. Lead with the number. "The crowd
 3. Monitor rolling hero block — passive, confirm no ping-pong
 4. Update FROM_THE_BUILDER dict in send_newsletter.py each session (reader-facing copy, not technical jargon)
 
+### Recently Completed (Mar 10, 2026)
+- Hero repeat block extended 3→7 days: Ubisoft appeared as hero 4/6 days — the 3-day penalty was expiring too quickly and letting the same stale topic cycle back in. Days 1-3 keep existing penalties [40, 70, 90pts]. Days 4-7 get -100pts (near-absolute block). hero_history stored in markets.json now capped at 7 keys instead of 3.
+- featured_bonus raised +2→+6pts: At +2pts the Polymarket editorial curation signal couldn't overcome a 10pt daily move from a non-featured market. At +6pts, a featured market with a modest 4pt move now scores competitively against a non-featured market with a 6pt move, better reflecting what is actually trending and newsworthy.
+
 ### Recently Completed (Mar 8, 2026)
 - Platform curation signals added to score_market() (2 new signals in fetch_markets.py):
-  - Polymarket featured flag: fetch_polymarket() now captures `event.get("featured")` → stored as `"featured": bool` on each market dict. score_market() adds +2.0pts for featured markets. Polymarket's editorial team curates this — strong signal for timeliness.
-  - Kalshi bid-ask spread: fetch_kalshi() now captures `yes_ask - yes_bid` → stored as `"spread"` field. score_market() adds up to +1.0pt for tight spreads: `max(0, 1 - spread/10)`. Tight spread = liquid, actively traded market. AMM-only so Kalshi-specific.
-  - Kalshi open_interest: fetch_kalshi() now captures `m.get("open_interest", 0) / 100` → stored as `"open_interest"` field. Not yet used in scoring but available for future features (e.g., The Spread cross-platform comparison, volume_vs_OI ratio signal).
+  - Polymarket featured flag: fetch_polymarket() now captures `event.get("featured")` → stored as `"featured": bool` on each market dict. score_market() adds +6.0pts for featured markets (raised from +2 on Mar 10). Polymarket's editorial team curates this — strong signal for timeliness.
+  - Kalshi bid-ask spread: fetch_kalshi() now captures `yes_ask - yes_bid` → stored as `"spread"` field. score_market() adds up to +1.0pt for tight spreads: `max(0, 1 - spread/10)`. Tight spread = liquid, actively traded market. Kalshi-specific.
+  - Kalshi open_interest: fetch_kalshi() now captures `m.get("open_interest", 0) / 100` → stored as `"open_interest"` field. Not yet used in scoring but available for future features (e.g., The Spread, volume_vs_OI ratio signal).
 - score_market() docstring updated with Mar 8 upgrade notes
 
 ### Recently Completed (Mar 7, 2026)

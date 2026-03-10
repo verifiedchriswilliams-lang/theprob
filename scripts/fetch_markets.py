@@ -68,8 +68,10 @@ HERO_VOLUME_MIN_CHANGE = 1.0      # only needs 1pt move if high-volume
 # Hero repeat penalty: applied per day a topic has appeared in hero_history.
 # Cumulative scaling forces genuine variety — a topic that won yesterday takes
 # a -40pt hit; one that won 2 days ago takes -70pts (effectively a hard block).
-# Flat penalties (old: -15) were too weak vs move_score which can reach 50+ pts.
-HERO_REPEAT_PENALTY_PER_DAY = [40.0, 70.0, 90.0]  # [1 day ago, 2 days ago, 3 days ago]
+# Extended to 7-day window (was 3) after Ubisoft appeared 4/6 days: the 3-day
+# penalty expired too quickly, letting the same stale topic cycle back in.
+# After day 3 the penalty is 100pts — a near-absolute block for the rest of the week.
+HERO_REPEAT_PENALTY_PER_DAY = [40.0, 70.0, 90.0, 100.0, 100.0, 100.0, 100.0]  # 7-day block
 
 # Question substrings that identify low-quality micro-markets to exclude entirely
 JUNK_MARKET_PATTERNS = [
@@ -819,12 +821,19 @@ def score_market(m: dict) -> float:
         more likely to also generate a paper trade.
 
     Upgrade notes (Mar 8 2026):
-      - featured_bonus: +2pts if Polymarket has flagged the event as featured. Their
+      - featured_bonus: +6pts if Polymarket has flagged the event as featured (raised
+        from +2 on Mar 10 — at +2 it couldn't compete with a 10pt move_score). Their
         editorial team curates this — it's a strong signal the market is timely/relevant.
       - spread_signal: Kalshi bid-ask spread (yes_ask - yes_bid) is a direct liquidity
         measure. A 2pt spread means the market is actively traded; a 20pt spread means
         thin order book. Score: max(0, 1 - spread/10) gives 1pt at 0 spread, 0pt at 10+.
         Only applies to Kalshi markets (Polymarket uses AMM, no spread concept).
+
+    Upgrade notes (Mar 10 2026):
+      - 7-day repeat block: hero_history extended from 3 to 7 days. After Ubisoft
+        appeared as hero 4/6 days, it was clear 3 days wasn't enough — once the
+        penalty expired the same topic cycled right back in. Days 4-7 get -100pts,
+        a near-absolute block for the rest of the week.
     """
     abs_change  = abs(m["change_pts"])
     volume      = m["volume"]
@@ -869,8 +878,11 @@ def score_market(m: dict) -> float:
             recency_bonus = min(ratio * 5, 3.0)
 
     # 8. Polymarket featured flag — their editorial team curated this market as
-    #    timely/relevant. Treat it as a +2pt curation signal. Polymarket-only.
-    featured_bonus = 2.0 if m.get("featured") else 0.0
+    #    timely/relevant. Raised from +2 to +6pts (Mar 10): at +2 it couldn't
+    #    overcome a 10pt move_score advantage from a stale trending market.
+    #    At +6 a featured market with a 4pt move (score ~16+6=22) can reliably
+    #    beat a non-featured market with a 6pt move (score ~15 no bonus).
+    featured_bonus = 6.0 if m.get("featured") else 0.0
 
     # 9. Kalshi bid-ask spread signal — tight spread means active order book.
     #    Formula: max(0, 1 - spread/10) → 1pt at 0 spread, 0pt at 10+ spread.
@@ -1708,9 +1720,9 @@ def main():
         print(f"       prob={m['prob']}% Δ={m['change_pts']}pts vol={m['volume_fmt']} 24h={fmt_volume(m['volume_24h'])} score={score_market(m):.2f}")
 
     # Load recent data for:
-    #   1. Rolling 3-day hero repeat-penalty (prevents same topic dominating all week)
+    #   1. Rolling 7-day hero repeat-penalty (prevents same topic dominating all week)
     #   2. Kalshi price snapshot (API doesn't return previous_price reliably)
-    recent_hero_topics = []   # up to last 3 hero topic keys
+    recent_hero_topics = []   # up to last 7 hero topic keys
     kalshi_prev_probs  = {}   # ticker -> prob from last run
     try:
         with open("data/markets.json") as f:
@@ -1727,7 +1739,7 @@ def main():
             t = _topic(q)
             if t and t not in recent_hero_topics:
                 recent_hero_topics.append(t)
-                if len(recent_hero_topics) >= 3:
+                if len(recent_hero_topics) >= 7:
                     break
         if recent_hero_topics:
             print(f"  Rolling hero block ({len(recent_hero_topics)} days): {recent_hero_topics}")
@@ -1870,17 +1882,13 @@ def main():
     if daily_take:
         print(f"  Headline: {daily_take['headline'][:70]}")
 
-    # Build rolling hero history (keep last 3 questions for repeat-penalty)
+    # Build rolling hero history (keep last 7 days for repeat-penalty)
     hero_question = hero.get("question", "") if hero else ""
-    hero_history  = [hero_question] if hero_question else []
-    for q in recent_hero_topics[:2]:   # keep up to 2 prior days
-        # Reverse-lookup question from topic key isn't easy; store keys directly
-        pass
-    # Simpler: store the actual topic keys (already computed)
+    # Store the actual topic keys (already computed)
     hero_history_keys = ([get_topic_key({"question": hero_question, "source": ""})]
                          if hero_question else [])
     hero_history_keys += [t for t in recent_hero_topics if t not in hero_history_keys]
-    hero_history_keys  = hero_history_keys[:3]   # cap at 3 days
+    hero_history_keys  = hero_history_keys[:7]   # cap at 7 days
 
     # Portfolio summary for frontend (recent 5 trades newest-first)
     recent_trades = [t for t in reversed(portfolio["trades"])][:5]
