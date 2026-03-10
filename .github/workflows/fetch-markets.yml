@@ -18,7 +18,7 @@ jobs:
         with:
           python-version: '3.11'
       - name: Install dependencies
-        run: pip install requests cryptography
+        run: pip install requests cryptography pytrends
       - name: Fetch market data
         env:
           KALSHI_KEY_ID: ${{ secrets.KALSHI_KEY_ID }}

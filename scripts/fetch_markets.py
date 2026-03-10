@@ -845,19 +845,17 @@ def extract_trend_keywords(topic: str) -> frozenset:
 
 def fetch_trending_topics() -> list[str]:
     """
-    Fetch trending topics from two free sources and return merged list of topic titles.
+    Fetch trending topics from two sources and return merged list of topic titles.
 
-    Source 1 — Wikipedia top articles (yesterday): best for geopolitics, sports, hard news.
-      URL: https://wikimedia.org/api/rest_v1/metrics/pageviews/top/en.wikipedia.org/all-access/YYYY/MM/DD
-      Returns top 1000 articles by pageview. We use top 75, skipping meta/admin pages.
+    Source 1 — Wikipedia top articles (yesterday): steady signal for geopolitics,
+      sports, hard news. Top 75 articles by pageview via Wikimedia REST API.
 
-    Source 2 — Google Trends daily RSS (US): best for pop culture and fast-breaking stories.
-      URL: https://trends.google.com/trends/trendingsearches/daily/rss?geo=US
-      Returns ~20 trending search queries with approximate traffic counts.
+    Source 2 — Google Trends realtime (last 4 hours, US): fast-breaking signal for
+      pop culture, viral events, and sudden news. Uses pytrends realtime_trending_searches().
+      Equivalent to: https://trends.google.com/trending?geo=US&hours=4
 
     Both sources fail independently — pipeline continues with whatever is available.
     """
-    import xml.etree.ElementTree as ET
     topics: list[str] = []
 
     # ── Source 1: Wikipedia trending articles ────────────────────────────────
@@ -883,11 +881,21 @@ def fetch_trending_topics() -> list[str]:
     except Exception as e:
         print(f"  [WARN] Wikipedia trending fetch failed: {e}")
 
-    # ── Source 2: Google Trends daily RSS ────────────────────────────────────
-    # NOTE: Google deprecated all public Trends RSS/Atom endpoints in 2025.
-    # Both /trends/trendingsearches/daily/rss and /trends/hottrends/atom/feed
-    # return 404. Wikipedia alone is the active trending signal for now.
-    # If Google re-enables a public endpoint, add it here.
+    # ── Source 2: Google Trends realtime (last 4 hours, US) ──────────────────
+    # Uses pytrends to query the same API the trends.google.com/trending?hours=4
+    # page uses internally. Returns top ~20 realtime trending searches in the US.
+    try:
+        from pytrends.request import TrendReq
+        pytrends = TrendReq(hl='en-US', tz=300, timeout=(10, 25))
+        df = pytrends.realtime_trending_searches(pn='US')
+        if df is not None and not df.empty and 'title' in df.columns:
+            gtrends = [t for t in df['title'].tolist() if t and isinstance(t, str)][:25]
+            topics.extend(gtrends)
+            print(f"  Trending: Google Trends {len(gtrends)} realtime searches (4h US)")
+        else:
+            print("  [WARN] Google Trends realtime returned empty response")
+    except Exception as e:
+        print(f"  [WARN] Google Trends realtime fetch failed: {e}")
 
     return topics
 
