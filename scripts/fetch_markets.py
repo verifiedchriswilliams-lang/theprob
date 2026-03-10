@@ -860,23 +860,33 @@ def fetch_trending_topics() -> list[str]:
         print(f"  [WARN] Wikipedia trending fetch failed: {e}")
 
     # ── Source 2: Google Trends daily RSS ────────────────────────────────────
-    try:
-        r = requests.get(
-            "https://trends.google.com/trends/trendingsearches/daily/rss?geo=US",
-            timeout=10,
-            headers={"User-Agent": "Mozilla/5.0 (compatible; TheProbNewsletter/1.0)"},
-        )
-        r.raise_for_status()
-        root   = ET.fromstring(r.content)
-        gtrends = [
-            item.find("title").text
-            for item in root.findall(".//item")
-            if item.find("title") is not None and item.find("title").text
-        ]
-        topics.extend(gtrends)
-        print(f"  Trending: Google Trends {len(gtrends)} searches (daily US)")
-    except Exception as e:
-        print(f"  [WARN] Google Trends fetch failed: {e}")
+    # Try two URL formats — Google has changed this endpoint over time.
+    GTRENDS_URLS = [
+        "https://trends.google.com/trends/trendingsearches/daily/rss?hl=en-US&geo=US",
+        "https://trends.google.com/trends/hottrends/atom/feed?pn=p1",
+    ]
+    for gtrends_url in GTRENDS_URLS:
+        try:
+            r = requests.get(
+                gtrends_url,
+                timeout=10,
+                headers={"User-Agent": "Mozilla/5.0 (compatible; TheProbNewsletter/1.0)"},
+            )
+            r.raise_for_status()
+            root   = ET.fromstring(r.content)
+            gtrends = [
+                item.find("title").text
+                for item in root.findall(".//item")
+                if item.find("title") is not None and item.find("title").text
+            ]
+            if gtrends:
+                topics.extend(gtrends)
+                print(f"  Trending: Google Trends {len(gtrends)} searches (daily US) via {gtrends_url.split('?')[0]}")
+                break
+        except Exception as e:
+            print(f"  [WARN] Google Trends fetch failed ({gtrends_url.split('?')[0]}): {e}")
+    else:
+        print("  [WARN] All Google Trends URLs failed — skipping")
 
     return topics
 
@@ -890,11 +900,24 @@ def compute_trends_bonus(m: dict, trend_kw_sets: list[frozenset]) -> float:
     non-trending market, but not enough to override a genuinely buzzy mover.
     A market with zero price action won't beat a market that moved 10pts today —
     but among markets with comparable buzz, trending ones surface first.
+
+    Matching threshold (Mar 10 fix):
+      Single-keyword trend topics (e.g. "Beyoncé") → require 1 match.
+      Multi-keyword trend topics (e.g. "Iran nuclear deal") → require 2+ matches.
+    This prevents generic words like "election" or "united" from matching ~60%
+    of all markets and defeating the purpose of the signal.
     """
     if not trend_kw_sets:
         return 0.0
     q_words = frozenset(re.sub(r'[^\w\s]', ' ', m.get("question", "").lower()).split())
-    bonus = sum(2.0 for kw_set in trend_kw_sets if kw_set and kw_set & q_words)
+    bonus = 0.0
+    for kw_set in trend_kw_sets:
+        if not kw_set:
+            continue
+        intersection = kw_set & q_words
+        min_required = 2 if len(kw_set) >= 2 else 1
+        if len(intersection) >= min_required:
+            bonus += 2.0
     return min(bonus, 4.0)
 
 
@@ -1369,6 +1392,25 @@ def pick_movers(markets: list[dict], exclude_slug: str = "") -> list[dict]:
                         if is_sports_market(c):
                             sports_count += 1
                         break
+
+    # Fill remaining slots beyond the 6-slot layout up to TOP_MOVERS_COUNT.
+    # The slot layout only covers 6 categories; extra slots get the next best
+    # markets by score regardless of category (sports cap still applies).
+    while len(result) < TOP_MOVERS_COUNT:
+        filled = False
+        for c in deduped:
+            if c["slug"] in used_slugs:
+                continue
+            if is_sports_market(c) and sports_count >= MAX_SPORTS_IN_MOVERS:
+                continue
+            result.append(c)
+            used_slugs.add(c["slug"])
+            if is_sports_market(c):
+                sports_count += 1
+            filled = True
+            break
+        if not filled:
+            break  # No more eligible markets
 
     # Guarantee at least 2 Kalshi markets
     kalshi_count = sum(1 for m in result if m["source"] == "Kalshi")
