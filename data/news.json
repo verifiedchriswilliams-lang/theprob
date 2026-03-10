@@ -1,24 +1,96 @@
 {
-  "updated": "Mar 10, 2026 \u00b7 6:59 AM ET",
-  "updated_iso": "2026-03-10T11:59:25.608942+00:00",
+  "updated": "Mar 10, 2026 \u00b7 2:26 PM ET",
+  "updated_iso": "2026-03-10T19:26:11.063293+00:00",
   "homepage_count": 3,
   "articles": [
+    {
+      "title": "Is Kalshi vs Polymarket the next OpenAI vs Anthropic? What to know about the newest big tech rivalry",
+      "url": "https://news.google.com/rss/articles/CBMi7wFBVV95cUxPakZqWDBId0xwNkQ5S2lFWjBpNXR4WUxuQUJjUFBGTlBueGpUdHFCZ1R3ZFdsNVJvZ0FHczU0TFdJdURVWENRb2tzR2FhMTZxeFZFTnlLN3dlLU1XdlN0Y0JZbGZSWVFxT1RyWnAtWVdnTHhsNDI0ZGhaNWdkWXQwdWhscnpQT2VBVzhKX0FfY25tcjUzTm9nSktYc1FpcmUyMVBfTW5Va1JLY3Q5ZGJwMGhDLVk3Mzk0WGplV1FQc09yaHRhRkVtQnJCTTBwdTBVaWtBdjRQUmJPSi1uc29xdmVJcGxmN2o3Z09RMm5JYw?oc=5",
+      "source": "Fast Company",
+      "pub_iso": "2026-03-10T18:40:24+00:00",
+      "description": "",
+      "summary": "Two US-based prediction market platforms are squaring off in what could become tech's next major corporate rivalry, with Kalshi and Polymarket competing for dominance in the rapidly growing political betting space. The winner will likely shape how Americans bet on elections and news events for years to come, potentially determining whether prediction markets become mainstream or remain niche.",
+      "pub_display": "Mar 10"
+    },
+    {
+      "title": "The NFL Doesn\u2019t Want You Trading This. Polymarket Is Doing It Anyway.",
+      "url": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxNQzJacWtFbzVCbm9vcXpibXcyaW80QWM5WklnVWZVTW5MaXdjWm1iaTNJMzVRVHFVeXB1UnFtQU1CTjE4ZmdVOGNXTnZmV3o5MTdzTVRrSUZFbXpuQ1hFVkRHcmltRTBJNVFLYnlpMHFETS10Q3Z3TVFVYjZ3a2ZLNDlJMk04ZmxtbE9NSmhacUVoZU1veVl3c3NFVFZGQkdUWGhGTkxvMHgzR09ueXhwUVRiUFBnTEE3Q0IwVTJMMHdYUTFVR2FYMnBZay0zV1pk?oc=5",
+      "source": "Sports Illustrated",
+      "pub_iso": "2026-03-10T18:16:57+00:00",
+      "description": "",
+      "summary": "The NFL is trying to block certain types of betting markets, but Polymarket is offering them regardless of league objections. This sets up a crucial test of whether traditional sports leagues can control prediction market innovation or if decentralized platforms will simply route around their restrictions.",
+      "pub_display": "Mar 10"
+    },
+    {
+      "title": "Top US exchange executives call for clearer rules as prediction markets grow",
+      "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxPLW80UUZVbDhhLW5TbENGOUFZQy1aR25YY1dxaHl5NVlEcFBXeDE0dDduM2NmMEFxWHBsSmJkN3JyVUd1VG53X2VsejhabHNWc3NYeVczbFB2Q0ozNzBzN1lHTEljQ1VwSnhZWTJ4SUlxZmcyUWZtRTFvajFlZE0zRGNQQjlqZUV5a3ZFOGJKOHdXVC1WcDhXekZYLXU4MlJLMFEzNWZqRk5RUW9PYWlKYW1vczk?oc=5",
+      "source": "Reuters",
+      "pub_iso": "2026-03-10T17:38:01+00:00",
+      "description": "",
+      "summary": "Major US exchange executives are pushing regulators for clearer guidelines as prediction markets gain mainstream traction. The regulatory clarity could unlock institutional money and legitimize betting on everything from elections to economic indicators, potentially creating a massive new asset class.",
+      "pub_display": "Mar 10"
+    },
+    {
+      "title": "Polymarket Calls In Palantir to Be the Adult in the Room",
+      "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxPZWtrZDdCeXlJUWxPQWxJMG9oZV9xNVRqMGQwY2xBU3QzWloxWGxlOVVEczJodV8zXzJHSm9uNlllMDhFRWFDeVhvalJOQWdkMUF2alhmbll6bFF6Y2NOeHFiR2NNMGN0SEhJNVVVT18zOGgtWUZzSU16NU5CUTk5Qi1SR2lRdVZPenc?oc=5",
+      "source": "Yahoo Finance",
+      "pub_iso": "2026-03-10T16:25:46+00:00",
+      "description": "",
+      "summary": "Polymarket hired Palantir, the data analytics company known for working with governments and intelligence agencies, presumably to handle compliance, risk management, or data oversight as the platform faces regulatory scrutiny. This signals Polymarket is getting serious about institutional-grade operations, which could legitimize prediction markets in the eyes of regulators but might also mean stricter user verification and betting limits.",
+      "pub_display": "Mar 10"
+    },
+    {
+      "title": "Prediction Market Polymarket Taps Palantir To Monitor Sports Action",
+      "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxOWTVWRDlYOXdocUR6LS1KdEhsS05QenJfOUFRaTZyZkZvNU1lRTBQVjZlb1JvUGpLUzUyMU91bTBLaExjS0xLTXF3Mzc4MnVjX3ItUGl6N2w5Y180emZZSjdRZ2tWc090OHJ5cE4xVlB1bWh3VlpFWWNiREV4azZmVnBPOE0xY1hwdGw4eVk5MTRLTkZfbm1ibUdvdlpuVE5vYWc?oc=5",
+      "source": "Investor's Business Daily",
+      "pub_iso": "2026-03-10T15:28:00+00:00",
+      "description": "",
+      "summary": "Polymarket has partnered with Palantir to use the data analytics giant's monitoring systems for tracking sports betting activity on its platform. The move signals Polymarket's push to legitimize prediction markets by borrowing surveillance tech from traditional finance, potentially attracting institutional players who demand sophisticated risk management.",
+      "pub_display": "Mar 10"
+    },
+    {
+      "title": "Kalshi Partners With XP to Launch Prediction Markets in Brazil",
+      "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxNQ2VxU0V5Q3o1c2tzQTVidElqQzcyckJXaFdSdGY2c0Qzc3BtSEZiV3psRlByaEd2MDkzVW1LWGVEX281NHdoT01WSUNTUXVNbmk3WGV4STJYRExNcjhwMW9JRnc2RTZLWVJvRWpaNXV6ck1NM05iaGFBTjQtSlpsSEg1a3d5cV9VX2pSUnNfQURrUQ?oc=5",
+      "source": "Bitcoin.com News",
+      "pub_iso": "2026-03-10T14:45:30+00:00",
+      "description": "",
+      "summary": "Kalshi is teaming up with Brazilian fintech XP to bring prediction markets to Latin America's largest economy. Brazil's massive population and growing appetite for financial innovation could create the biggest new prediction market outside the US, especially if regulations stay friendly.",
+      "pub_display": "Mar 10"
+    },
+    {
+      "title": "Why the Future of Sports Prediction Markets Hangs in the Balance",
+      "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxQaV9iY28xUGN6clloeHp4NDJacnhPOWl1aTBDbXdEV213VzFqRU1ETERCOGMyTWZDUnVsbGZtRE9tWmVFcTZ0RjVzZVpyLUN1T3pJR0xLay1kOXNKbkRPS3d6cE02Ry1kSVYzWUVWc3M0cUplZ2x6RG9pcU5vQmt6ZmxLTXRYT0x5bUZWTTExLXJDUUxuU2tyOUUxMA?oc=5",
+      "source": "Front Office Sports",
+      "pub_iso": "2026-03-10T14:39:38+00:00",
+      "description": "",
+      "summary": "Sports prediction markets face a critical regulatory crossroads that could determine whether they thrive or get strangled in red tape over the next few years. The outcome will shape whether bettors get access to liquid, efficient markets or remain stuck with traditional sportsbooks that offer worse odds and limited betting options.",
+      "pub_display": "Mar 10"
+    },
+    {
+      "title": "Inflation outlook: Prediction markets see rising odds of a hotter CPI print",
+      "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxNNjU3S3oxUm4zbmh6N2VxbWtwLUlWVXhPcGJpWVd0d292a3FoanFITGZsZ19OUGVJcm5yYjE2alRYMDM0Z2JEVUNhNW5aRTdqVC1lZDN5a2VwTFk3bW9jbVhKeHNka1dLY2FFcmJwT0ZDQ2JJSVBvS2VLNTB5WXpRLUdUdVMtX29EVkVCb1hIakhQZ0VpT0xaSGp4MFRsN3U2SVhjTDBmWTltdnJHYnIzSUl3?oc=5",
+      "source": "Seeking Alpha",
+      "pub_iso": "2026-03-10T13:21:32+00:00",
+      "description": "",
+      "summary": "Prediction markets are pricing in higher chances that the next Consumer Price Index report will come in above expectations, signaling traders expect inflation to run hotter than the Fed wants. If CPI does spike, it kills hopes for aggressive rate cuts and sends shockwaves through markets betting on everything from Treasury yields to recession timing.",
+      "pub_display": "Mar 10"
+    },
+    {
+      "title": "Elon Musk's SpaceX Will Announce Its IPO Before This Date? Here's What The Prediction Market Says",
+      "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxNQ05UZ0otUmkzMHRWOS1rVlhwZVo1VTVqOU1KVnFVRjNNZHFwUjFURk1YeWtLUUllU0xwbGQwNVFUN3M5dUE1eGo3TjBiaE84R1ZDY0NEbXVRNi1IOTlGQzYwbmozNUhJNWRWLTRvV3BPbWxMbXdUd2wzYWZCVFFKTWR3?oc=5",
+      "source": "Yahoo Finance",
+      "pub_iso": "2026-03-10T12:01:08+00:00",
+      "description": "",
+      "summary": "SpaceX IPO timing is drawing heavy betting action on prediction markets, with traders wagering on whether Musk will announce the public offering by a specific date. The smart money knows SpaceX's IPO timing affects not just aerospace stocks but Tesla's valuation, given Musk's cross-company leverage games.",
+      "pub_display": "Mar 10"
+    },
     {
       "title": "This 29\u2011Year\u2011Old Founder Took On a Federal Regulator to Scale Her Company\u2014and Built an $11 Billion Giant",
       "url": "https://news.google.com/rss/articles/CBMi8gFBVV95cUxNa08wSW4yNnpTZjNpTGppdm90dkxzb1JwOXBWd1JUclpUeUFsdHBzc0VpTW11YUkzZ0o4Wkg3V2dkNWhJdVJ0ZnBuX05CdU9tTXZqYzItbm5vSlRYOElQbS1BSlFva2lNR1IzS0FScmVIR0VYdlFhT3Z3bVNvNldJQ1dFQzhFRzR1dllKYVQ1NUY5ZWhwMThDa2xvaE5WaU5SYVFPZnB2Y2xrS2xSakNfSjlLajVwUl9LWUladFh3a2V0YkotWEw5VEowTkZQZGVqR0tDM044ZnRDM1k4SUJ0dHp3WGlreWlDUkN1Q2dhQmRxdw?oc=5",
       "source": "inc.com",
-      "pub_iso": "2026-03-10T11:14:26+00:00",
+      "pub_iso": "2026-03-10T11:17:19+00:00",
       "description": "",
       "summary": "A 29-year-old founder battled federal regulators to grow her startup into an $11 billion company, proving that regulatory friction doesn't always kill ambitious businesses. Her playbook for navigating compliance while scaling fast offers a template that prediction market platforms desperately need as they face their own regulatory gauntlet.",
-      "pub_display": "Mar 10"
-    },
-    {
-      "title": "Polymarket Taps Palantir, TWG AI to Police Growing Sports Bets",
-      "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxNYTRHUGhyQXIwUmNVTTByc3FuRXpVZ0JtTEhSeEotb0ZybWxaMi1TRTdsS3VsaHRMVGJsQi1mNUZUU2gxLXh2M09hX3dHNHg5cTgyQUg3Q3V1ZEdfS1ZHa3VabUpKdUM4N3ctTHB4clpXQlhXSkpEUXg3TlBERF9GQWhjT21IWG1TWDg3RmoyX0U2STh4QjR6dURJR1ZYVE1HUXJzMUx5MW5BdE9jZGU0cHVR?oc=5",
-      "source": "Bloomberg",
-      "pub_iso": "2026-03-10T11:00:33+00:00",
-      "description": "",
-      "summary": "Polymarket hired Palantir and TWG AI to monitor and regulate its expanding sports betting operations. The move signals that even decentralized prediction markets need serious surveillance tech to handle regulatory scrutiny and prevent manipulation as they scale into traditional gambling territory.",
       "pub_display": "Mar 10"
     },
     {
@@ -31,85 +103,13 @@
       "pub_display": "Mar 9"
     },
     {
-      "title": "How prediction markets are spawning an entire trading industry",
-      "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxNd2J4cXhucGdya1ZHelF2aFpyakg1aTBhd0h6bG9CcWVwWHFrSXVnVXlNVTdkRHVCODczdEtvOGJvdFVZLVFJZUZWS1hpWXhoOUpMMVAyQ0VDbjRXNmVMaWN2T1h6c0RFSDBmd1NFUEx6eHdLWHBmTWs3emdpOElQRGVxTEszb3JCTTdLLXh0TWt2bjhkVGxfZ2cxa3BYRGZyTjRKZkE0WmhBSnlXRnc?oc=5",
-      "source": "NBC News",
-      "pub_iso": "2026-03-09T17:01:37+00:00",
+      "title": "Kalshi, Polymarket Take on Stock Options With S&P 500 Bets",
+      "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxNZGd2UkxrYmdtMHJqTGlDX1ltWEk3S2hHTVBCeEpJeEZ1SDBYNEVKaW42UldqUzhQeDVfc1pyUVZSN1J2bUpfUXNQX3RuS1FTdng0X1k5VTZDSlppdEJ2RkhDM2J4YWxGa3FvX2h5MW5VU1dzME9yUVNjV0kxLXdINkJmdXFFWjc1X1JLdFpJeVdPSERZS3BCSktsdnM3QnJlTllCbmlUb3RLY190?oc=5",
+      "source": "Bloomberg.com",
+      "pub_iso": "2026-03-09T14:39:59+00:00",
       "description": "",
-      "summary": "Prediction markets have evolved beyond simple betting platforms into a full-fledged trading ecosystem complete with professional traders, sophisticated analytics tools, and institutional-grade infrastructure. This professionalization means sharper odds, deeper liquidity, and better price discovery, but it also raises the bar for casual bettors who now face Wall Street-caliber competition.",
+      "summary": "Kalshi and Polymarket are launching S&P 500 prediction markets that compete directly with traditional stock options trading. This marks a major escalation in prediction markets' battle to capture mainstream financial betting, potentially pulling traders away from expensive options toward simpler binary bets.",
       "pub_display": "Mar 9"
-    },
-    {
-      "title": "PolyGun Acquires Polymarket Analytics in a Landmark Deal for the Prediction Market Industry",
-      "url": "https://news.google.com/rss/articles/CBMi5AFBVV95cUxObFpOdXBwNnF2cWlxczc5ZHpTdGI1VGIycHd4aldHblg1NXB4NlRnenc3NGxHdVVuOHBiN2ZndWI2YzFjdG5Ea2t2Q3pydDZOcXF0Rk9CdWI4N3gxVkNOVEZkX2JPakpUUmpxcHMwVGFuNXBoVkFkUGxVWkpHSkFVclh1UGhSVnJocWxkZVduTE1JRnk1eGFoaDBhbEhYYTZaU2xkYzVNeEJBNlF4bFR6N3hyUDhoeFRhRk12LUdGMVhpbFRNVF9LV1hVYUtPM0hscmMyZklOUG1YTHV2NXlHOE5nR0Y?oc=5",
-      "source": "markets.businessinsider.com",
-      "pub_iso": "2026-03-09T15:25:25+00:00",
-      "description": "",
-      "summary": "PolyGun just bought Polymarket Analytics in what's being called a major deal for the prediction markets space. The acquisition signals serious consolidation in the industry and could give PolyGun significantly better data tools to compete with the big players.",
-      "pub_display": "Mar 9"
-    },
-    {
-      "title": "Recession odds jump on Kalshi after oil tops $100",
-      "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE4tUXBjN1B4Z2pPSUw5M1g1RnIzZGFiUE91eFBlak1ueVJOVmNUbG1PYzJUN09EaGNEbC1MbXdLZS03RU9ZU1NLTmY1VWZnTS1aSUlrcjhsdGNFSmJkemJ4bEVYVXZpZk9JaTNSVERsTdIBdEFVX3lxTFBXakllUWwtem9rYktUaXNpMlc4azRtRnBiNWxzcEJjRk9JZmM3dFhEbUFhUWtPZ0Z3RTBnYnlCZkJNYml3MEtTNHJzMEl6STdnaEpTeC1RMVZqT0hjVmU1S3RVdE01TnhTdkRhNEtkdWt2LUs1?oc=5",
-      "source": "CNBC",
-      "pub_iso": "2026-03-09T13:59:54+00:00",
-      "description": "",
-      "summary": "Oil prices cracked $100 per barrel, sending recession odds soaring on Kalshi as traders bet that energy shocks will tank the economy. Smart money is already positioning for Fed policy pivots and defensive plays, making energy-linked recession markets the new barometer for macro sentiment.",
-      "pub_display": "Mar 9"
-    },
-    {
-      "title": "Event prediction markets like Kalshi and Polymarket are buzzing in America: Should India allow them too?",
-      "url": "https://news.google.com/rss/articles/CBMi4wFBVV95cUxNZHkyY2Jhakh2VTJnVDYtUGNwM1hDNUNSc3RxYndDNlZaV0VJZ0xtUW5Uc1MxTE9oMXZWR20zNDk4Ui1md3podDlSemY1MmI1TGtaMUI0QU9MV1F5TG1wLUZGb0F6TGpmczY1UV9USXc4OHJNNThFbk1Ocm5KdjN0VGpTeHdpRUpjcVYzbWEzblRtY3BiNFQ3b3dSNzhkVEFDZ3VwWjZta0lCTmN2b3FwQWo4VmtnVmFxWmhxWFhDSGQtTU4ySTNDMzFWLWJneDlZVEhuTmVNUVExcHd5eUdRMmFmWdIB6AFBVV95cUxObXhFc2x4Q29FRXdNa21jMzZYdVJ5anJKc3ZvSFVuSVdiRVRrTzdLdjJ0Zl9NemtjaVZmR0RKSXRXUjd4Zkl2MXJRXzd5Qk1DUHZnVXUybjU4LUlaT3gxa24tU3REYWFLOHZTczJ3MUVFbWZfRnU4NDhKNVJfY2tBQk5PdnFHc2Y2S1pROENLSlhzdjltaVQ2U2hkb2lNNmthMVdBSDVkU2lsRmF5cWRMNnJISERlRUMwN0d4SXhtMERDczhxWWJJQWdSYzFYR1B2b29qcm5TZ2xXQmh5Q1ZMaGdqRHFKMmVy?oc=5",
-      "source": "Mint",
-      "pub_iso": "2026-03-09T10:30:46+00:00",
-      "description": "",
-      "summary": "India is considering whether to legalize event prediction markets as platforms like Kalshi and Polymarket gain mainstream traction in America. If India opens the floodgates, it would create a massive new market for prediction platforms and could spark similar regulatory shifts across other major economies.",
-      "pub_display": "Mar 9"
-    },
-    {
-      "title": "How to Prevent Insider Trading on Trump\u2019s Wars",
-      "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxQYW5lTkw0bDA2OHc1OGNOSFRjekU2bkRpbXJYNEZxcHEzVkNTSWxyck9LZFBKMHZiUTVBWE5LcVZWU1k2NS00cnNsaUx5d1Y0a0RwVEk4WFV3ODQxaGk2eHJ2VTNtWFZzblZ3ZDdON3RIYlR6c0JIaHlUVnBfRHMtbXJwSmlMVjdBcG5qMTFVWkhZS1UtLTJDVE95WQ?oc=5",
-      "source": "The New Yorker",
-      "pub_iso": "2026-03-09T10:00:00+00:00",
-      "description": "",
-      "summary": "Trump's potential return to office raises serious concerns about government officials using advance knowledge of military actions to profit from defense stocks and related markets. Prediction markets betting on geopolitical events could face massive manipulation if insiders know about planned strikes, troop deployments, or diplomatic moves before they become public.",
-      "pub_display": "Mar 9"
-    },
-    {
-      "title": "Kalshi Teams Up With Brazil\u2019s XP for First International Push",
-      "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxPRGpEaXZnelR4OUFuNFZLUURsbFl0dUczWUNvdkhHek5WQ0M4SHl2blpvbFVES3Ffb2dJUUoyY1pyaUtaSnkxcDRaODJORTZwRlRsUkZvNzlqSmFkR3dUUVIxbXlrNHB1aE5tRDBRbG5sVURjY0V0Q1o0VTJCZklHanRqNm5WWHBrM1FhdWYyVmE0U0c4QW1OUXJDdk9VV3UyVDlGSFA5d2h0bXg5UmkzT3J3?oc=5",
-      "source": "Bloomberg",
-      "pub_iso": "2026-03-09T04:00:00+00:00",
-      "description": "",
-      "summary": "Kalshi is partnering with Brazilian financial giant XP to expand prediction markets internationally for the first time. This marks a huge step toward global adoption of regulated event betting, potentially opening up massive new liquidity pools and trading opportunities beyond US markets.",
-      "pub_display": "Mar 9"
-    },
-    {
-      "title": "Trump is the GOAT in GOP endorsements. Prediction markets say how he\u2019ll decide Texas",
-      "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxQOVF5X0NuY01XSE8tdGxKNlp4QWtLQ2pTcXdwLXlzeG16TVBmUTVjaWg5RzNlTEJlX1dSVVM5SlJFQTZReUNYNUlLcVlBakx2MlBaeV9iV0tYc2ZNN1JuQXhHT3hqYWRlTDQtV282RUVvaThBUDg1b0dDeklfRXlKLWdmQm55MkhqWUJCUnAxZUlFVWpjVEZrLW44RHZwWVI1RWxwUTJnZWJubE1UWFZrdjhfcmFIWjQ?oc=5",
-      "source": "the-independent.com",
-      "pub_iso": "2026-03-09T01:41:00+00:00",
-      "description": "",
-      "summary": "Trump's endorsement track record in Republican primaries has been nearly flawless, and prediction markets are now pricing how he'll weigh in on upcoming Texas races. His picks move serious money since GOP voters follow his lead with religious devotion, making his endorsement timing and choices pure gold for political bettors.",
-      "pub_display": "Mar 9"
-    },
-    {
-      "title": "Prediction Markets Are Booming, but I'd Rather Bet on These 3 AI Stocks",
-      "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxQRXhVdVc1alpiRS15Y3ByUjh6c3hEbWxMaG1LUnhEcm1vWklzNTI1SU9VdnhEMDl3a0tPTDZQSDlIdUFFemtDaDB2M050Zlg3dTl3eVpRRW84cDlFbFpXMy1BV1lQREpaTnJpMl91bWpVdFRnM2RrNGpmVkplVFduR0NRWU1mQmpWYm1BR3pGcWw?oc=5",
-      "source": "The Motley Fool",
-      "pub_iso": "2026-03-09T00:15:00+00:00",
-      "description": "",
-      "summary": "Someone's arguing that AI stocks offer better returns than the prediction market boom everyone's talking about. Smart money might be right, since AI companies with actual revenue streams could outperform platforms that just facilitate betting on future events.",
-      "pub_display": "Mar 9"
-    },
-    {
-      "title": "The CEOs of Polymarket and Kalshi Are Locked in a Bitter Feud",
-      "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE9leFFGblNxYUFMbUtfcXYtWlp2b2txRHl4ZnREd0YtMUhzc2FqTjF4aV9NQWl3Q0tPRG1wU2dMcTNoSUFpZWRoWEVCbTBJR0F3MEE0SVRYbkFNX3h5MmRNekxHeldwYUFlNmpuOGM2ODZBSFQxMXdhak13?oc=5",
-      "source": "Futurism",
-      "pub_iso": "2026-03-08T17:30:00+00:00",
-      "description": "",
-      "summary": "The two biggest prediction market platforms in the US are trading barbs as their CEOs engage in an increasingly public war of words over market share and regulatory positioning. This drama matters because when the industry's top dogs are busy fighting each other instead of focusing on product development and user acquisition, it creates openings for smaller competitors and potentially slows mainstream adoption of prediction markets.",
-      "pub_display": "Mar 8"
     }
   ]
 }
