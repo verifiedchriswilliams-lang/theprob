@@ -793,6 +793,111 @@ def is_sports_market(m: dict) -> bool:
     # Keyword check
     return any(w in q for w in SPORTS_KEYWORDS)
 
+# ── TRENDING TOPICS ──────────────────────────────────────────────────────────
+
+# Words too common/generic to be useful for trend matching
+TRENDS_STOPWORDS = {
+    'the', 'a', 'an', 'of', 'in', 'on', 'at', 'by', 'for', 'to', 'and', 'or',
+    'is', 'are', 'was', 'were', 'be', 'been', 'being', 'have', 'has', 'had',
+    'do', 'does', 'did', 'will', 'would', 'could', 'should', 'may', 'might',
+    'this', 'that', 'these', 'those', 'with', 'from', 'as', 'into', 'about',
+    'what', 'who', 'when', 'where', 'why', 'how', 'which', 'they', 'their',
+    'after', 'before', 'during', 'over', 'under', 'between', 'up', 'down',
+    'out', 'off', 'no', 'not', 'but', 'so', 'if', 'then', 'than', 'more',
+    'most', 'also', 'just', 'only', 'even', 'back', 'new', 'now', 'year',
+    'time', 'day', 'week', 'month', 'game', 'team', 'show', 'next', 'last',
+    'open', 'make', 'take', 'gets', 'goes', 'says', 'says', 'said', 'says',
+    'news', 'dies', 'born', 'wins', 'lost', 'win', 'lose', 'gets', 'here',
+}
+
+def extract_trend_keywords(topic: str) -> frozenset:
+    """
+    Extract meaningful keywords from a trending topic title.
+    Filters stopwords and short tokens so 'Iran nuclear deal' → {'iran', 'nuclear', 'deal'}.
+    """
+    words = re.sub(r'[^\w\s]', ' ', topic.lower()).split()
+    return frozenset(w for w in words if len(w) >= 4 and w not in TRENDS_STOPWORDS)
+
+
+def fetch_trending_topics() -> list[str]:
+    """
+    Fetch trending topics from two free sources and return merged list of topic titles.
+
+    Source 1 — Wikipedia top articles (yesterday): best for geopolitics, sports, hard news.
+      URL: https://wikimedia.org/api/rest_v1/metrics/pageviews/top/en.wikipedia.org/all-access/YYYY/MM/DD
+      Returns top 1000 articles by pageview. We use top 75, skipping meta/admin pages.
+
+    Source 2 — Google Trends daily RSS (US): best for pop culture and fast-breaking stories.
+      URL: https://trends.google.com/trends/trendingsearches/daily/rss?geo=US
+      Returns ~20 trending search queries with approximate traffic counts.
+
+    Both sources fail independently — pipeline continues with whatever is available.
+    """
+    import xml.etree.ElementTree as ET
+    topics: list[str] = []
+
+    # ── Source 1: Wikipedia trending articles ────────────────────────────────
+    try:
+        yesterday = (datetime.now(timezone.utc) - timedelta(days=1))
+        wiki_url  = (
+            f"https://wikimedia.org/api/rest_v1/metrics/pageviews/top/"
+            f"en.wikipedia.org/all-access/"
+            f"{yesterday.year}/{yesterday.month:02d}/{yesterday.day:02d}"
+        )
+        r = requests.get(wiki_url, timeout=10,
+                         headers={"User-Agent": "TheProbNewsletter/1.0 (theprobnewsletter.com)"})
+        r.raise_for_status()
+        articles = r.json().get("items", [{}])[0].get("articles", [])
+        skip = {"Main_Page", "Special:", "Wikipedia:", "File:", "Portal:", "Help:", "Template:"}
+        wiki_topics = [
+            a["article"].replace("_", " ")
+            for a in articles[:100]
+            if not any(s in a.get("article", "") for s in skip)
+        ][:75]
+        topics.extend(wiki_topics)
+        print(f"  Trending: Wikipedia {len(wiki_topics)} articles (top by pageviews yesterday)")
+    except Exception as e:
+        print(f"  [WARN] Wikipedia trending fetch failed: {e}")
+
+    # ── Source 2: Google Trends daily RSS ────────────────────────────────────
+    try:
+        r = requests.get(
+            "https://trends.google.com/trends/trendingsearches/daily/rss?geo=US",
+            timeout=10,
+            headers={"User-Agent": "Mozilla/5.0 (compatible; TheProbNewsletter/1.0)"},
+        )
+        r.raise_for_status()
+        root   = ET.fromstring(r.content)
+        gtrends = [
+            item.find("title").text
+            for item in root.findall(".//item")
+            if item.find("title") is not None and item.find("title").text
+        ]
+        topics.extend(gtrends)
+        print(f"  Trending: Google Trends {len(gtrends)} searches (daily US)")
+    except Exception as e:
+        print(f"  [WARN] Google Trends fetch failed: {e}")
+
+    return topics
+
+
+def compute_trends_bonus(m: dict, trend_kw_sets: list[frozenset]) -> float:
+    """
+    Score how well this market question overlaps with today's trending topics.
+    Each matching trend contributes +2pts; total capped at +4pts.
+
+    Design intent: strong enough to lift a relevant market over a similarly-scored
+    non-trending market, but not enough to override a genuinely buzzy mover.
+    A market with zero price action won't beat a market that moved 10pts today —
+    but among markets with comparable buzz, trending ones surface first.
+    """
+    if not trend_kw_sets:
+        return 0.0
+    q_words = frozenset(re.sub(r'[^\w\s]', ' ', m.get("question", "").lower()).split())
+    bonus = sum(2.0 for kw_set in trend_kw_sets if kw_set and kw_set & q_words)
+    return min(bonus, 4.0)
+
+
 # ── BUZZ / INTEREST SCORING ──────────────────────────────────────────────────
 
 def score_market(m: dict) -> float:
@@ -805,8 +910,9 @@ def score_market(m: dict) -> float:
       5. Closing soon (urgency)
       6. Recency surge (24h vol spike vs total)
       7. Trade eligibility bonus (aligns hero with paper portfolio gate)
-      8. Platform curation signal — Polymarket featured flag (+2pts)
+      8. Platform curation signal — Polymarket featured flag (+6pts)
       9. Kalshi bid-ask spread signal — tight spread = liquid market (+0–1pt)
+     10. Trending topic match — Wikipedia + Google Trends overlap (+2pt/match, cap +4pt)
 
     Upgrade notes (Mar 7 2026):
       - move_score cap raised 20→30pts: better discrimination between 6pt moves (noise)
@@ -893,9 +999,14 @@ def score_market(m: dict) -> float:
         if spread is not None:
             spread_signal = max(0.0, 1.0 - spread / 10.0)
 
+    # 10. Trending topic match — pre-computed in main() via compute_trends_bonus().
+    #     +2pts per matching trending topic (Wikipedia + Google Trends), capped at +4pts.
+    #     Lifts markets that are both financially active AND what people are searching for.
+    trends_bonus = m.get("trends_bonus", 0.0)
+
     return (move_score + vol_24h_score + vol_total_score + prob_interest
             + trade_bonus + urgency + recency_bonus
-            + featured_bonus + spread_signal)
+            + featured_bonus + spread_signal + trends_bonus)
 
 def get_series_key(m: dict) -> str:
     """
@@ -1812,6 +1923,23 @@ def main():
     # Rebuild all_markets with corrected Kalshi data
     all_markets = poly_markets + kalshi_markets
 
+    # Fetch trending topics and inject trends_bonus into every market dict.
+    # Must happen BEFORE pick_hero/pick_movers so scoring reflects trends.
+    print("\nFetching trending topics...")
+    trending_topics = fetch_trending_topics()
+    trend_kw_sets   = [kws for t in trending_topics if (kws := extract_trend_keywords(t))]
+    for m in all_markets:
+        m["trends_bonus"] = compute_trends_bonus(m, trend_kw_sets)
+    trend_matches = sorted(
+        [(m["question"][:65], m["trends_bonus"]) for m in all_markets if m.get("trends_bonus", 0) > 0],
+        key=lambda x: -x[1]
+    )
+    if trend_matches:
+        print(f"  Trends bonus: {len(trend_matches)} markets matched. Top hits:")
+        for q, b in trend_matches[:8]:
+            print(f"    +{b:.0f}pt: {q}")
+    else:
+        print("  Trends bonus: no market matches (both sources may have failed)")
 
     hero      = pick_hero(all_markets, recent_topics=recent_hero_topics, recent_categories=recent_hero_categories)
     hero_slug = hero["slug"] if hero else ""
@@ -1945,16 +2073,17 @@ def main():
     }
 
     output = {
-        "updated":      updated_str,
-        "updated_iso":  now_utc.isoformat(),
+        "updated":               updated_str,
+        "updated_iso":           now_utc.isoformat(),
         "hero":                  hero,
         "hero_history":          hero_history_keys,
         "hero_category_history": hero_cat_history,
+        "trending_topics":       trending_topics[:30],   # top 30 for debug/newsletter use
         "movers":                movers,
-        "ticker":       ticker,
-        "daily_take":   daily_take,
-        "all_markets":  catalog,
-        "portfolio":    portfolio_summary,
+        "ticker":                ticker,
+        "daily_take":            daily_take,
+        "all_markets":           catalog,
+        "portfolio":             portfolio_summary,
     }
 
     os.makedirs("data", exist_ok=True)
