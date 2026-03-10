@@ -175,6 +175,9 @@ See VOICE.md. Sharp, confident, trader-focused. Lead with the number. "The crowd
 ### Recently Completed (Mar 10, 2026)
 - Hero repeat block extended 3→7 days: Ubisoft appeared as hero 4/6 days — the 3-day penalty was expiring too quickly and letting the same stale topic cycle back in. Days 1-3 keep existing penalties [40, 70, 90pts]. Days 4-7 get -100pts (near-absolute block). hero_history stored in markets.json now capped at 7 keys instead of 3.
 - featured_bonus raised +2→+6pts: At +2pts the Polymarket editorial curation signal couldn't overcome a 10pt daily move from a non-featured market. At +6pts, a featured market with a modest 4pt move now scores competitively against a non-featured market with a 6pt move, better reflecting what is actually trending and newsworthy.
+- get_topic_key() price stripping: Bitcoin variants ("dip to $45K", "reach $120K", "above $80K") all produced different topic keys because dollar amounts survived as distinct tokens. Fix: strip $-amounts and bare numbers before tokenizing, and normalize price-direction verbs (dip/reach/hit/surge/above/below → "price") so all Bitcoin price questions collapse to "bitcoin price" and the 7-day block fires correctly.
+- Category diversity penalty added to hero_score(): -10pts if same display_category won yesterday, -5pts if it won 2 days ago. Soft nudge — a big enough move can still overcome it, but prevents Crypto or any single category from dominating back-to-back days via different-but-thematically-identical markets. hero_category_history (last 3 days) stored in markets.json.
+- Movers expanded 6→9: more markets on home page per run.
 
 ### Recently Completed (Mar 8, 2026)
 - Platform curation signals added to score_market() (2 new signals in fetch_markets.py):

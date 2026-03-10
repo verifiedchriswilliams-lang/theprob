@@ -47,7 +47,7 @@ GAMMA_BASE       = "https://gamma-api.polymarket.com"
 
 MIN_VOLUME_USD         = 50_000
 KALSHI_MIN_VOL         = 1_000      # Kalshi volumes are much lower than Polymarket
-TOP_MOVERS_COUNT       = 6
+TOP_MOVERS_COUNT       = 9
 HERO_MIN_VOLUME        = 250_000     # Lowered from $1M — don't block explosive movers on low total volume
 HERO_SPORTS_MIN_VOLUME = 25_000_000  # Only truly massive sports events as hero
 
@@ -951,6 +951,18 @@ def get_topic_key(m: dict) -> str:
         'at', 'by', 'from', 'with', 'that', 'this', 'not',
     }
 
+    # Strip price targets and numeric thresholds BEFORE tokenizing.
+    # Without this, "Bitcoin dip to $45,000" and "Bitcoin reach $120,000" produce
+    # different keys because the dollar amounts survive as distinct tokens.
+    # Goal: all "Bitcoin price direction" questions collapse to the same fingerprint.
+    q = re.sub(r'\$[\d,]+(?:\.\d+)?[KkMmBb]?', '', q)   # $45,000 / $2.5M / $80K
+    q = re.sub(r'\b[\d,]+(?:\.\d+)?[KkMmBb]?\b', '', q) # bare numbers / 45000 / 1.5m
+
+    # Normalize price-direction verbs → "price" so "dip to", "reach", "hit", "surge past" all merge
+    q = re.sub(r'\b(dip|dips|reach|reaches|hit|hits|drop|drops|fall|falls|rise|rises|'
+               r'surge|surges|crash|crashes|pump|pumps|dump|dumps|above|below|exceed|'
+               r'exceeds|cross|crosses|touch|touches)\b', 'price', q)
+
     # Normalize verb forms
     q = re.sub(r'\bstrikes\b', 'strike', q)
     q = re.sub(r'\bstruck\b', 'strike', q)
@@ -964,28 +976,32 @@ def get_topic_key(m: dict) -> str:
     q = re.sub(r'\bthe united states\b', 'us', q)
     q = re.sub(r'\bunited states\b', 'us', q)
 
-    words = [w.strip('?,.') for w in q.split() if w.strip('?,.') not in stopwords and len(w) > 1]
+    words = [w.strip('?,.()') for w in q.split() if w.strip('?,.()') not in stopwords and len(w) > 1]
     # Sort so "iran strike" and "strike iran" produce the same key
     key_words = sorted(words[:4])  # 4-word cap keeps fingerprint coarse enough to catch near-synonyms
     return " ".join(key_words)
 
 # ── HERO SELECTION ───────────────────────────────────────────────────────────
 
-def pick_hero(markets: list[dict], recent_topics: list[str] | None = None) -> dict | None:
+def pick_hero(markets: list[dict], recent_topics: list[str] | None = None,
+              recent_categories: list[str] | None = None) -> dict | None:
     """
     The hero is the single most buzzworthy non-sports market.
 
-    Scoring = buzz_score - repeat_penalty
+    Scoring = buzz_score - repeat_penalty - category_penalty
       - Pure market signal: no category bonus — biggest mover wins
       - Hard staleness gate: must have moved >= HERO_MIN_CHANGE_PTS in 24h
       - Series deduplication: only highest-move variant of each topic enters
-      - Rolling 3-day repeat penalty: any topic that won in the last 3 days
-        gets -HERO_REPEAT_PENALTY pts, preventing the same story dominating all week
+      - Rolling 7-day repeat penalty: any topic that won in the last 7 days
+        gets escalating penalty [40,70,90,100,100,100,100pts]
+      - Category diversity penalty: -10pts if same display_category won yesterday,
+        -5pts if it won 2 days ago. Soft nudge toward editorial variety.
 
     Fallback: if nothing clears the staleness gate, use any mover >= 1 pt.
     Final fallback: best candidate regardless of movement.
     """
-    recent_topics = recent_topics or []
+    recent_topics     = recent_topics or []
+    recent_categories = recent_categories or []
     base_candidates = [
         m for m in markets
         if m["volume"] >= HERO_MIN_VOLUME
@@ -999,7 +1015,7 @@ def pick_hero(markets: list[dict], recent_topics: list[str] | None = None) -> di
     def hero_score(m: dict) -> float:
         base = score_market(m)
         # Cumulative repeat penalty: scales by how recently the topic won.
-        # recent_topics is ordered [yesterday, 2 days ago, 3 days ago].
+        # recent_topics is ordered [yesterday, 2 days ago, ...up to 7 days ago].
         if recent_topics:
             key = get_topic_key(m)
             for i, topic in enumerate(recent_topics):
@@ -1007,6 +1023,15 @@ def pick_hero(markets: list[dict], recent_topics: list[str] | None = None) -> di
                     penalty = HERO_REPEAT_PENALTY_PER_DAY[min(i, len(HERO_REPEAT_PENALTY_PER_DAY) - 1)]
                     base -= penalty
                     break
+        # Category diversity penalty: soft nudge toward editorial variety.
+        # -10pts if same category won yesterday, -5pts if it won 2 days ago.
+        # Not a hard block — a big enough move can still overcome this.
+        if recent_categories:
+            cat = m.get("display_category", "")
+            if cat and cat == recent_categories[0]:
+                base -= 10.0
+            elif cat and len(recent_categories) > 1 and cat == recent_categories[1]:
+                base -= 5.0
         return base
 
     # Topic-level dedup for hero: collapse all variants of the same real-world
@@ -1722,8 +1747,9 @@ def main():
     # Load recent data for:
     #   1. Rolling 7-day hero repeat-penalty (prevents same topic dominating all week)
     #   2. Kalshi price snapshot (API doesn't return previous_price reliably)
-    recent_hero_topics = []   # up to last 7 hero topic keys
-    kalshi_prev_probs  = {}   # ticker -> prob from last run
+    recent_hero_topics     = []   # up to last 7 hero topic keys
+    recent_hero_categories = []   # up to last 3 hero display_categories (for soft diversity penalty)
+    kalshi_prev_probs      = {}   # ticker -> prob from last run
     try:
         with open("data/markets.json") as f:
             prev = json.load(f)
@@ -1732,8 +1758,11 @@ def main():
             return get_topic_key({"question": q, "source": "Polymarket"}) if q else ""
         prev_hero     = prev.get("hero") or {}
         prev_question = prev_hero.get("question", "")
+        prev_cat      = prev_hero.get("display_category", "")
         if prev_question:
             recent_hero_topics.append(_topic(prev_question))
+        if prev_cat:
+            recent_hero_categories.append(prev_cat)
         # Load prior days from hero_history list if present
         for q in prev.get("hero_history", []):
             t = _topic(q)
@@ -1741,8 +1770,16 @@ def main():
                 recent_hero_topics.append(t)
                 if len(recent_hero_topics) >= 7:
                     break
+        # Load prior day categories for diversity penalty (last 3 days is enough)
+        for cat in prev.get("hero_category_history", []):
+            if cat and cat not in recent_hero_categories:
+                recent_hero_categories.append(cat)
+                if len(recent_hero_categories) >= 3:
+                    break
         if recent_hero_topics:
             print(f"  Rolling hero block ({len(recent_hero_topics)} days): {recent_hero_topics}")
+        if recent_hero_categories:
+            print(f"  Recent hero categories: {recent_hero_categories}")
         pass  # Kalshi snapshot loaded separately below
     except Exception:
         pass  # First run or missing file
@@ -1776,7 +1813,7 @@ def main():
     all_markets = poly_markets + kalshi_markets
 
 
-    hero      = pick_hero(all_markets, recent_topics=recent_hero_topics)
+    hero      = pick_hero(all_markets, recent_topics=recent_hero_topics, recent_categories=recent_hero_categories)
     hero_slug = hero["slug"] if hero else ""
     movers    = pick_movers(all_markets, exclude_slug=hero_slug)
     ticker    = pick_ticker(all_markets)
@@ -1884,11 +1921,16 @@ def main():
 
     # Build rolling hero history (keep last 7 days for repeat-penalty)
     hero_question = hero.get("question", "") if hero else ""
+    hero_cat      = hero.get("display_category", "") if hero else ""
     # Store the actual topic keys (already computed)
     hero_history_keys = ([get_topic_key({"question": hero_question, "source": ""})]
                          if hero_question else [])
     hero_history_keys += [t for t in recent_hero_topics if t not in hero_history_keys]
     hero_history_keys  = hero_history_keys[:7]   # cap at 7 days
+    # Store category history (last 3 days for diversity penalty)
+    hero_cat_history = ([hero_cat] if hero_cat else [])
+    hero_cat_history += [c for c in recent_hero_categories if c not in hero_cat_history]
+    hero_cat_history  = hero_cat_history[:3]
 
     # Portfolio summary for frontend (recent 5 trades newest-first)
     recent_trades = [t for t in reversed(portfolio["trades"])][:5]
@@ -1905,9 +1947,10 @@ def main():
     output = {
         "updated":      updated_str,
         "updated_iso":  now_utc.isoformat(),
-        "hero":         hero,
-        "hero_history": hero_history_keys,
-        "movers":       movers,
+        "hero":                  hero,
+        "hero_history":          hero_history_keys,
+        "hero_category_history": hero_cat_history,
+        "movers":                movers,
         "ticker":       ticker,
         "daily_take":   daily_take,
         "all_markets":  catalog,
