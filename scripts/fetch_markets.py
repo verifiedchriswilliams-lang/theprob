@@ -881,21 +881,44 @@ def fetch_trending_topics() -> list[str]:
     except Exception as e:
         print(f"  [WARN] Wikipedia trending fetch failed: {e}")
 
-    # ── Source 2: Google Trends realtime (last 4 hours, US) ──────────────────
-    # Uses pytrends to query the same API the trends.google.com/trending?hours=4
-    # page uses internally. Returns top ~20 realtime trending searches in the US.
+    # ── Source 2: Google Trends (US) via pytrends ────────────────────────────
+    # Try realtime endpoint (4h window) first; fall back to daily trending
+    # if realtime returns 404 (Google rate-limits this endpoint aggressively).
+    # Browser User-Agent reduces chance of being blocked.
     try:
         from pytrends.request import TrendReq
-        pytrends = TrendReq(hl='en-US', tz=300, timeout=(10, 25))
-        df = pytrends.realtime_trending_searches(pn='US')
-        if df is not None and not df.empty and 'title' in df.columns:
-            gtrends = [t for t in df['title'].tolist() if t and isinstance(t, str)][:25]
+        _ua = ('Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) '
+               'AppleWebKit/537.36 (KHTML, like Gecko) '
+               'Chrome/122.0.0.0 Safari/537.36')
+        pt = TrendReq(hl='en-US', tz=300, timeout=(10, 25),
+                      requests_args={'headers': {'User-Agent': _ua}})
+
+        gtrends: list[str] = []
+        label = ""
+
+        # Attempt 1: realtime (last 4 hours)
+        try:
+            df = pt.realtime_trending_searches(pn='US')
+            if df is not None and not df.empty and 'title' in df.columns:
+                gtrends = [t for t in df['title'].tolist() if t and isinstance(t, str)][:25]
+                label = "realtime 4h"
+        except Exception:
+            pass  # fall through to daily
+
+        # Attempt 2: daily trending (if realtime failed or returned nothing)
+        if not gtrends:
+            df = pt.trending_searches(pn='united_states')
+            if df is not None and not df.empty:
+                gtrends = [t for t in df[0].tolist() if t and isinstance(t, str)][:25]
+                label = "daily"
+
+        if gtrends:
             topics.extend(gtrends)
-            print(f"  Trending: Google Trends {len(gtrends)} realtime searches (4h US)")
+            print(f"  Trending: Google Trends {len(gtrends)} searches ({label} US)")
         else:
-            print("  [WARN] Google Trends realtime returned empty response")
+            print("  [WARN] Google Trends returned empty response (both endpoints)")
     except Exception as e:
-        print(f"  [WARN] Google Trends realtime fetch failed: {e}")
+        print(f"  [WARN] Google Trends fetch failed: {e}")
 
     return topics
 
