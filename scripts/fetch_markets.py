@@ -49,6 +49,9 @@ MIN_VOLUME_USD         = 50_000
 KALSHI_MIN_VOL         = 1_000      # Kalshi volumes are much lower than Polymarket
 TOP_MOVERS_COUNT       = 9
 HERO_MIN_VOLUME        = 250_000     # Lowered from $1M — don't block explosive movers on low total volume
+HERO_MIN_24H_VOLUME    = 2_500       # Must have at least $2.5K trading activity TODAY to be hero-eligible.
+                                     # Blocks markets that had a big move weeks ago but are now dead
+                                     # (e.g. Anduril IPO: $286K total, $20 today — not a live story).
 HERO_SPORTS_MIN_VOLUME = 25_000_000  # Only truly massive sports events as hero
 
 # Minimum 24h volume to be worth showing — filters MrBeast/micro view-count markets
@@ -795,8 +798,12 @@ def is_sports_market(m: dict) -> bool:
 
 # ── TRENDING TOPICS ──────────────────────────────────────────────────────────
 
-# Words too common/generic to be useful for trend matching
+# Words too common/generic to be useful for trend matching.
+# Key principle: only specific proper nouns and meaningful topic words should survive.
+# Any word that appears in a wide variety of market questions must be blocked here
+# or it creates spurious matches (e.g. "world" alone matches all World Cup markets).
 TRENDS_STOPWORDS = {
+    # Core function words
     'the', 'a', 'an', 'of', 'in', 'on', 'at', 'by', 'for', 'to', 'and', 'or',
     'is', 'are', 'was', 'were', 'be', 'been', 'being', 'have', 'has', 'had',
     'do', 'does', 'did', 'will', 'would', 'could', 'should', 'may', 'might',
@@ -806,8 +813,25 @@ TRENDS_STOPWORDS = {
     'out', 'off', 'no', 'not', 'but', 'so', 'if', 'then', 'than', 'more',
     'most', 'also', 'just', 'only', 'even', 'back', 'new', 'now', 'year',
     'time', 'day', 'week', 'month', 'game', 'team', 'show', 'next', 'last',
-    'open', 'make', 'take', 'gets', 'goes', 'says', 'says', 'said', 'says',
-    'news', 'dies', 'born', 'wins', 'lost', 'win', 'lose', 'gets', 'here',
+    'open', 'make', 'take', 'gets', 'goes', 'says', 'said', 'news',
+    'dies', 'born', 'wins', 'lost', 'win', 'lose', 'here',
+    # Year tokens — never discriminate between markets (all markets have years)
+    '2024', '2025', '2026', '2027', '2028', '2029', '2030',
+    # Over-broad geographic/scope words — appear in huge swaths of market questions
+    'world', 'global', 'united', 'states', 'american', 'national',
+    # Common action/state words that survive the 4-char filter but aren't specific
+    'some', 'both', 'each', 'much', 'many', 'very', 'good', 'well', 'like',
+    'long', 'high', 'life', 'work', 'part', 'same', 'them', 'film', 'race',
+    'lead', 'vote', 'come', 'came', 'went', 'gave', 'used', 'give', 'look',
+    'call', 'hold', 'head', 'play', 'beat', 'sign', 'deal', 'bill', 'plan',
+    'read', 'puts', 'sets', 'gets', 'runs', 'used', 'pass', 'past', 'left',
+    'meet', 'keep', 'send', 'stop', 'move', 'stay', 'loss', 'gain', 'area',
+    'form', 'home', 'hand', 'side', 'face', 'turn', 'live', 'role', 'case',
+    'rate', 'rise', 'fall', 'drop', 'step', 'test', 'true', 'list', 'rank',
+    'said', 'says', 'best', 'rest', 'less', 'able', 'line', 'city', 'town',
+    'days', 'they', 'them', 'from', 'with', 'that', 'this', 'been', 'have',
+    'help', 'need', 'want', 'know', 'feel', 'seem', 'went', 'meet', 'left',
+    'hold', 'late', 'huge', 'real', 'full', 'free', 'page', 'site', 'name',
 }
 
 def extract_trend_keywords(topic: str) -> frozenset:
@@ -860,33 +884,10 @@ def fetch_trending_topics() -> list[str]:
         print(f"  [WARN] Wikipedia trending fetch failed: {e}")
 
     # ── Source 2: Google Trends daily RSS ────────────────────────────────────
-    # Try two URL formats — Google has changed this endpoint over time.
-    GTRENDS_URLS = [
-        "https://trends.google.com/trends/trendingsearches/daily/rss?hl=en-US&geo=US",
-        "https://trends.google.com/trends/hottrends/atom/feed?pn=p1",
-    ]
-    for gtrends_url in GTRENDS_URLS:
-        try:
-            r = requests.get(
-                gtrends_url,
-                timeout=10,
-                headers={"User-Agent": "Mozilla/5.0 (compatible; TheProbNewsletter/1.0)"},
-            )
-            r.raise_for_status()
-            root   = ET.fromstring(r.content)
-            gtrends = [
-                item.find("title").text
-                for item in root.findall(".//item")
-                if item.find("title") is not None and item.find("title").text
-            ]
-            if gtrends:
-                topics.extend(gtrends)
-                print(f"  Trending: Google Trends {len(gtrends)} searches (daily US) via {gtrends_url.split('?')[0]}")
-                break
-        except Exception as e:
-            print(f"  [WARN] Google Trends fetch failed ({gtrends_url.split('?')[0]}): {e}")
-    else:
-        print("  [WARN] All Google Trends URLs failed — skipping")
+    # NOTE: Google deprecated all public Trends RSS/Atom endpoints in 2025.
+    # Both /trends/trendingsearches/daily/rss and /trends/hottrends/atom/feed
+    # return 404. Wikipedia alone is the active trending signal for now.
+    # If Google re-enables a public endpoint, add it here.
 
     return topics
 
@@ -1139,6 +1140,7 @@ def pick_hero(markets: list[dict], recent_topics: list[str] | None = None,
     base_candidates = [
         m for m in markets
         if m["volume"] >= HERO_MIN_VOLUME
+        and m.get("volume_24h", 0) >= HERO_MIN_24H_VOLUME  # must be actively trading TODAY
         and not is_effectively_resolved(m)
         and not is_past_close(m)
         and not is_junk_market(m)
