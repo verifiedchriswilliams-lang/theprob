@@ -882,43 +882,22 @@ def fetch_trending_topics() -> list[str]:
         print(f"  [WARN] Wikipedia trending fetch failed: {e}")
 
     # ── Source 2: Google Trends (US) via pytrends ────────────────────────────
-    # Try realtime endpoint (4h window) first; fall back to daily trending
-    # if realtime returns 404 (Google rate-limits this endpoint aggressively).
-    # Browser User-Agent reduces chance of being blocked.
+    # NOTE (Mar 10 2026): Google has deprecated all programmatic Trends endpoints.
+    # Both realtime and daily APIs return 404 even with browser User-Agent.
+    # Keeping this block so it auto-recovers if Google re-enables the API.
+    # Wikipedia alone carries the trending signal in the meantime.
     try:
         from pytrends.request import TrendReq
-        _ua = ('Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) '
-               'AppleWebKit/537.36 (KHTML, like Gecko) '
-               'Chrome/122.0.0.0 Safari/537.36')
-        pt = TrendReq(hl='en-US', tz=300, timeout=(10, 25),
-                      requests_args={'headers': {'User-Agent': _ua}})
-
-        gtrends: list[str] = []
-        label = ""
-
-        # Attempt 1: realtime (last 4 hours)
-        try:
-            df = pt.realtime_trending_searches(pn='US')
-            if df is not None and not df.empty and 'title' in df.columns:
-                gtrends = [t for t in df['title'].tolist() if t and isinstance(t, str)][:25]
-                label = "realtime 4h"
-        except Exception:
-            pass  # fall through to daily
-
-        # Attempt 2: daily trending (if realtime failed or returned nothing)
-        if not gtrends:
-            df = pt.trending_searches(pn='united_states')
-            if df is not None and not df.empty:
-                gtrends = [t for t in df[0].tolist() if t and isinstance(t, str)][:25]
-                label = "daily"
-
-        if gtrends:
+        pt = TrendReq(hl='en-US', tz=300, timeout=(10, 25))
+        df = pt.trending_searches(pn='united_states')
+        if df is not None and not df.empty:
+            gtrends = [t for t in df[0].tolist() if t and isinstance(t, str)][:25]
             topics.extend(gtrends)
-            print(f"  Trending: Google Trends {len(gtrends)} searches ({label} US)")
+            print(f"  Trending: Google Trends {len(gtrends)} daily searches (US)")
         else:
-            print("  [WARN] Google Trends returned empty response (both endpoints)")
-    except Exception as e:
-        print(f"  [WARN] Google Trends fetch failed: {e}")
+            print("  [info] Google Trends: no data returned")
+    except Exception:
+        pass  # silently skip — Wikipedia alone is sufficient
 
     return topics
 
@@ -933,18 +912,31 @@ def compute_trends_bonus(m: dict, trend_kw_sets: list[frozenset]) -> float:
     A market with zero price action won't beat a market that moved 10pts today —
     but among markets with comparable buzz, trending ones surface first.
 
-    Matching threshold (Mar 10 fix):
+    Matching threshold:
       Single-keyword trend topics (e.g. "Beyoncé") → require 1 match.
       Multi-keyword trend topics (e.g. "Iran nuclear deal") → require 2+ matches.
     This prevents generic words like "election" or "united" from matching ~60%
     of all markets and defeating the purpose of the signal.
+
+    Sports cross-context filter (Mar 10 fix):
+      Single-keyword trends are almost always geopolitical or cultural proper nouns
+      (country names, celebrity names) trending for non-sports reasons.
+      Applying them to Sports markets creates false positives — e.g. "Iran" trending
+      because of the US conflict boosting "Will Iran win the FIFA World Cup?".
+      Fix: single-keyword trends do NOT boost Sports category markets.
+      Multi-keyword trends (e.g. "Super Bowl", "Oilers Avalanche") still do.
     """
     if not trend_kw_sets:
         return 0.0
+    is_sports = m.get("display_category") == "Sports"
     q_words = frozenset(re.sub(r'[^\w\s]', ' ', m.get("question", "").lower()).split())
     bonus = 0.0
     for kw_set in trend_kw_sets:
         if not kw_set:
+            continue
+        # Single-keyword trends don't cross into Sports — geopolitical/cultural
+        # proper nouns trending for news reasons shouldn't boost sports markets.
+        if len(kw_set) == 1 and is_sports:
             continue
         intersection = kw_set & q_words
         min_required = 2 if len(kw_set) >= 2 else 1

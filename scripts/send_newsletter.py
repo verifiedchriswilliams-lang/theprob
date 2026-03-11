@@ -73,9 +73,13 @@ CATEGORY_COLORS = {
 
 FROM_THE_BUILDER = {
     "built_yesterday": (
-        "Launched The Prob Portfolio. Every Market of the Day pick now logs a $100 "
-        "hypothetical trade. When markets resolve, the P&L closes automatically. "
-        "The running balance is live on the site and in every email header."
+        "The Market of the Day engine got a significant upgrade this week. "
+        "It now cross-references every market against what's actually trending in the news, "
+        "using Wikipedia's top stories from the previous day. Markets that are both moving "
+        "and matching what people are reading about rise to the top. "
+        "We also tightened the repeat filter, so the same story can't dominate for more than "
+        "a week, and added category rotation so you get variety across politics, finance, "
+        "tech, and world markets day to day."
     ),
     "coming_next": (
         "Building The Spread: a feature that flags where Polymarket and Kalshi "

@@ -168,9 +168,18 @@ See VOICE.md. Sharp, confident, trader-focused. Lead with the number. "The crowd
 
 ### Pending Next Session
 1. The Spread (Poly vs Kalshi divergence) — highest trader value feature not yet built
-2. Monitor portfolio — confirm first CLEAN trade logged correctly (65/35 gate active, start date Mar 7 2026)
-3. Monitor rolling hero block — passive, confirm no ping-pong
+2. Polymarket "breaking" tab signal — Option A (API flag) confirmed NOT available (`breaking` field not in event objects). Need Option B: add a fetch pass using `order=change24h` or equivalent. Check Network tab on polymarket.com/breaking to find exact API parameter.
+3. Monitor portfolio — Viking Therapeutics NO @ 34.0% is the first clean trade under the new gate. Watch for resolution.
 4. Update FROM_THE_BUILDER dict in send_newsletter.py each session (reader-facing copy, not technical jargon)
+
+### Recently Completed (Mar 11, 2026)
+- Trends matching precision fixes: expanded TRENDS_STOPWORDS with year tokens (2024-2030), 'world', and ~40 common 4-letter words that were passing the length filter but producing false positives. Matches dropped from 1,379 → ~180 (from 63% of all markets to ~8%).
+- Sports cross-context filter: single-keyword trending topics (bare country/person names) no longer boost Sports category markets. Fixes false positive where "Iran" trending for geopolitical reasons was boosting "Will Iran win the FIFA World Cup?"
+- Google Trends cleanup: both RSS endpoints (daily + realtime) confirmed dead — Google deprecated all public programmatic access. Replaced noisy retry loop with silent fallback. pytrends kept in code to auto-recover if Google re-enables. Wikipedia alone carries the trending signal.
+- Hero 24h volume gate: added HERO_MIN_24H_VOLUME = 2_500. Markets with < $2.5K traded today are no longer hero-eligible, even with big historical moves. Fixed Anduril ($286K total, $20 today) winning hero incorrectly.
+- Movers 6→9 bug fixed: slot_categories list only had 6 slots, so TOP_MOVERS_COUNT=9 was being ignored. Added post-slot fill loop that pulls next best markets until count reaches TOP_MOVERS_COUNT.
+- FROM_THE_BUILDER updated in send_newsletter.py — was stuck on Mar 6 "launched portfolio" copy. Now reflects trending signal and hero scoring upgrades.
+- Polymarket "breaking" tab investigated — Option A (API field) not available; `breaking` not a field on event objects. Option B needed (separate fetch with change-ordering).
 
 ### Recently Completed (Mar 10, 2026)
 - Hero repeat block extended 3→7 days: Ubisoft appeared as hero 4/6 days — the 3-day penalty was expiring too quickly and letting the same stale topic cycle back in. Days 1-3 keep existing penalties [40, 70, 90pts]. Days 4-7 get -100pts (near-absolute block). hero_history stored in markets.json now capped at 7 keys instead of 3.
