@@ -1,22 +1,58 @@
 {
-  "updated": "Mar 12, 2026 \u00b7 7:05 AM ET",
-  "updated_iso": "2026-03-12T12:05:45.064154+00:00",
+  "updated": "Mar 12, 2026 \u00b7 2:31 PM ET",
+  "updated_iso": "2026-03-12T19:31:22.879395+00:00",
   "homepage_count": 3,
   "articles": [
     {
-      "title": "Tribal gaming officials sound alarm over prediction markets, threat to Indian gaming",
-      "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTFBHMHFmMzlkMkZjSHZuaXVHbldlY1p5M2ZuWGRzYmstd1pLR25oaVJPN08xOU1tLUFzTEwwZzJTcGhRUmVzVEdaSDJsVjczZl9ETE1fVmhtN0xzM05DNUc1OThMV0h1LWZPdWhSaDBn?oc=5",
-      "source": "KOSU",
-      "pub_iso": "2026-03-12T09:55:00+00:00",
+      "title": "U.S. commodity regulator kicks off rulemaking for prediction markets",
+      "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNRGllNVJXRzJaWVZZWTd0ek93ZUlySWxaZDRIUlBKU3lrSzhhSG1VNVFmQkpVZUNLNEN3dE0weTRDQTRmWjVWbXNQcDZ6Z3NLX0I0RWZyaTNfdTZMQWtacXZlYkpodEhPSTVLd21KZVd5a00zdXdjVm0wWjdLWmNvWjZpQzg0bVREaDhQZ2JmYk1YQUxJR0Y4ZFVCVV91ZGxnTDgtNVpodDRJZkZnZnp0NXByRHhaS0E?oc=5",
+      "source": "NBC News",
+      "pub_iso": "2026-03-12T19:28:47+00:00",
       "description": "",
-      "summary": "Tribal gaming leaders are raising concerns that prediction markets could cut into their casino revenues and undermine their monopoly on certain forms of gambling. If tribes start lobbying against prediction markets or pushing for regulatory restrictions, it could create new legal hurdles for the industry's expansion in key states.",
+      "summary": "The CFTC is starting formal rulemaking to regulate prediction markets, signaling a shift from ad-hoc enforcement to structured oversight. This could legitimize the industry and attract institutional money, but it also means stricter compliance requirements and potentially higher barriers to entry for new platforms.",
+      "pub_display": "Mar 12"
+    },
+    {
+      "title": "CFTC Aims to Clear Path for Prediction Market Boom",
+      "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxOQmdZSlJSR2VrREhWWl9fNmVOUUhqSmV6LVlZazBpRmZzZ2czOFJsOG9fVC01U25SUzhXbmd3NnRIS3FQZGtMWm5DMXFRNGpaUG5zc003U1hlZmpPbVpGTGJMSHVYcTRiUFBleHMxaUxoYzFUZ1h6b3pzLXR1NDh2MWI3T2lGQ1JXbDA2ZHMxUExiQkxwTjkxVTJnNA?oc=5",
+      "source": "PYMNTS.com",
+      "pub_iso": "2026-03-12T17:58:04+00:00",
+      "description": "",
+      "summary": "The CFTC is reportedly working to streamline regulations that have kept prediction markets locked out of mainstream US finance. If successful, this could unleash billions in betting capital that's currently sitting on the sidelines, waiting for clearer rules around political and economic forecasting markets.",
+      "pub_display": "Mar 12"
+    },
+    {
+      "title": "Who Will Win Best Actor at the 2026 Oscars?",
+      "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE9PT0lQNnlYR3FnbG0xb19OTlkxeGotR2F3SzV5dGE1U1FTeFBDWXJRQlRBS0x6UVRqYzBXSE5PUVlxMFNGNnFTTkJzajEtdWNWZGtaeEhQbjg5TjhB?oc=5",
+      "source": "Kalshi",
+      "pub_iso": "2026-03-12T17:37:30+00:00",
+      "description": "",
+      "summary": "The 2026 Best Actor Oscar race is already heating up despite being over a year away, with early frontrunners emerging from anticipated film releases and festival buzz. Smart money is watching which A-listers have prestige projects dropping in late 2025, since Oscar betting markets often reward early positioning on actors with the right combination of career narrative and awards-season timing.",
+      "pub_display": "Mar 12"
+    },
+    {
+      "title": "CFTC Offers First Guidance on Manipulation in Prediction Markets",
+      "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxPS3dZS2dGZXk0bjJtUkdxMTg1Nnd0VFRnaGlmT3N2UHpEUExhSUhSRFF4cHRUX0FWM1pUN0xrQzJ5Q3Q1cVZsTHBzOGZMdXdlR2NscmNRRkpSUmNsZ0VGVFg4QnVxTnVXTEFUcGNtQkk2SGc2NDJfZXFWYWxadHdmNmpFeVhhTElMX3hsSmN4X2RCYWJyTXltamhhX1U0V25hUmdJMUZOR2hrbXV6Y3ZPcXJKWHdTdw?oc=5",
+      "source": "Bloomberg",
+      "pub_iso": "2026-03-12T17:32:29+00:00",
+      "description": "",
+      "summary": "The CFTC just released its first official guidance on what constitutes market manipulation in prediction markets, setting clearer boundaries for traders and platforms. This regulatory clarity should boost institutional confidence and potentially open the door for bigger players to enter the space without fear of accidentally crossing undefined lines.",
+      "pub_display": "Mar 12"
+    },
+    {
+      "title": "Prediction markets need more oversight, clearer rules, CME's Duffy says",
+      "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxQdEZBa2ZJVXlBWHkwcUtvQjdtMXlfWWhXWnNGSktQdDJ3N2tSSlBQMWdQdW40RnEtMFZCcWI4LVlMRExaVUpBWndmSGUzaTNmN21fMFREUGNkXzRNWWFhbFpRM1VOS1hNaDZpM1VsOGJ2SVkzSllsa3MyUUhYOHRyUEh2ZUpDcmtJVjgwa25XLWpaSmQ4WWMybm5JVTlwUE9RQ1hpUTEtRExCMXI3emxubHZPU3o1Z240WmhIMU5R?oc=5",
+      "source": "Reuters",
+      "pub_iso": "2026-03-12T16:43:26+00:00",
+      "description": "",
+      "summary": "CME Group's CEO Terry Duffy told regulators that prediction markets need stronger oversight and clearer regulatory frameworks to operate properly. His comments signal that major exchanges want regulatory certainty before diving deeper into political betting, which could either legitimize the space or strangle it with compliance costs.",
       "pub_display": "Mar 12"
     },
     {
       "title": "Watch out, prediction markets. The 'super apps' are coming.",
       "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNV2JBZlMzRzktSWRoRHFpamc5ZDJ0VElOTjdNRVI4cF94WVhKSE9FN3NkQW1WN3BDMnVPcUVfR1dmVW1ITFdpRU9yamJESE9pbnc1enVSQk8yUWxyYXppSlZ5VVRmZV9RVFFONUFrVUozRUlDcVdvNHdJaTJQQzNLMl9LbE5TeG8?oc=5",
       "source": "Business Insider",
-      "pub_iso": "2026-03-12T09:43:57+00:00",
+      "pub_iso": "2026-03-12T10:37:00+00:00",
       "description": "",
       "summary": "Major tech platforms are preparing to integrate prediction markets into their existing ecosystems, threatening standalone betting sites with their massive user bases and seamless payment systems. When apps with hundreds of millions of users add betting features, they'll make current prediction market platforms look like corner bookies competing against Vegas casinos.",
       "pub_display": "Mar 12"
@@ -32,11 +68,11 @@
     },
     {
       "title": "Utah\u2019s anti-gambling tradition meets Kalshi and Polymarket in a new legal fight",
-      "url": "https://news.google.com/rss/articles/CBMihwJBVV95cUxNQzI5dVhuWlM0MUlZN1dHdFJwa1RDZk82TTcyRy1yeVprODlUNV84QUIxb0ZfN2FkV0FqRlhmWV9yYWozNVd5SXRTLU9zeHl2ckFyTFI1aEFkUHNlZGFZY1FRd0JRU1piMFIzWl85dDNyTkk3amRRM05ZUHJ4djJyNlBueG1mVG0zZVM4N0NQck1lUk9zNnN2T0p2eHpHSTBEdUtYc1FZb193cjlWdjU0aHphY1BNbkx3TFhhZ09JcWpCcnpCTUdWTkEzb09BdzAtdHkxRXFwMlhMQ0hkRGpWSTNtNkFFQ2xtTWNJSHIwR0xLd0thQXdEQ3ljcHhSNlM4QzI0TVg4RQ?oc=5",
-      "source": "10tv.com",
-      "pub_iso": "2026-03-12T04:05:00+00:00",
+      "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNOWk2emtacHN6VjJvQ2U4a2hCd2IycjYyNXJSbTNMUmRVZXUzeFR2VW54T195cEFVRkE5cUdpQ1o3X3Nld05qODdDYjR4alp3YmFIcW9wdW02MHY4dnZGbnBzN2tpUFFEaUc3c3ZHVTFVVVNOVkp6dE5yNXJickdLTHNJN01OWWZZNGVHNUlZb1BFdjVJUmRGTkQ2TmZjOC1PY3hHMUdub2Y5c2NjZmJr?oc=5",
+      "source": "AP News",
+      "pub_iso": "2026-03-12T05:48:00+00:00",
       "description": "",
-      "summary": "Utah's attorney general is challenging prediction markets like Kalshi and Polymarket, arguing they violate the state's constitutional ban on gambling. This could set a precedent for how other conservative states regulate prediction markets, potentially forcing platforms to block users from entire regions.",
+      "summary": "Utah's strict anti-gambling laws are colliding with prediction markets like Kalshi and Polymarket in what appears to be a new legal challenge. This fight could set precedent for how states with zero-tolerance gambling policies treat prediction markets, potentially creating a patchwork of access that mirrors sports betting's messy state-by-state rollout.",
       "pub_display": "Mar 12"
     },
     {
@@ -49,42 +85,6 @@
       "pub_display": "Mar 11"
     },
     {
-      "title": "Tesla Loses Director Behind Robotaxi Backend: What Do Prediction Markets Say?",
-      "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxQWnA0WlBUVUpVM1VCS3lvRUprcmtzWVdlMVFyWUJablR5NVZIMURMM1liYTdlbm1DQ21LX1RrczRoMVE0UmRkcG1GWURRSzRRR0stb2V3MU4zMERQeU5tN200NXNmMVlRUUNiTEZnX05RVGxpbEpyX180aHU0d0YzYnIyUF9fR2w3Rmc?oc=5",
-      "source": "Yahoo Finance",
-      "pub_iso": "2026-03-11T22:31:03+00:00",
-      "description": "",
-      "summary": "Tesla's director responsible for the robotaxi backend infrastructure has departed the company, creating another leadership gap in their autonomous vehicle division. Prediction markets tracking Tesla's robotaxi timeline and Full Self-Driving milestones will probably see increased volatility as investors reassess whether the company can hit its ambitious 2024-2025 deployment targets without key technical leadership.",
-      "pub_display": "Mar 11"
-    },
-    {
-      "title": "Betting markets have a new favorite for the 2028 presidential election",
-      "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxPa1h5WnZVR3BvTUNXdTFuN3FCbjRUNW1jWDMtaFA2Uk9PNXNFY3JyMjFiUjFQUEpGak9fdXlnVU9mNVY5bmp2TlVmVE1Mam1lREVLSmFjdDhsRFVPUmZhcGo4MjUyTWp0Yy1FZVJBT3E4OEpLUW04MUJKS1hIc2VuWmJPcUhHYVloNnl3UklTTjdWRkdLTkhpWDBSMlVwOF9sOHFGb3VobTNTVkpBb0pMVHh5cw?oc=5",
-      "source": "The Independent",
-      "pub_iso": "2026-03-11T21:53:00+00:00",
-      "description": "",
-      "summary": "Prediction markets are already pricing in a new frontrunner for the 2028 presidential race, signaling early money is flowing toward candidates four years out from the election. This shift reveals how quickly betting markets pivot after major political events, offering bettors a chance to lock in odds before the field gets crowded and prices tighten.",
-      "pub_display": "Mar 11"
-    },
-    {
-      "title": "Kalshi Still Needs Sports, Even as Courts Close In",
-      "url": "https://news.google.com/rss/articles/CBMihANBVV95cUxOT0ZvZHN4M28zM011UE94N1lRdDJnZGR1elNSTFFjSEpGaWN2a1VyR3c1Vl9ST1pCaUxuTGlaZGhtTFJEalB2LUEwRE56MUpEaHhpQmNRZFNrS3BkY2dCMmtWdUtwWnFpeEZEV2NNM196SGo3T1c0YUp1d05JMGRLSUtMNXBHUTRyOG1QemtIQ1VXYUY0NE5qWXJrQmlSTnlUTlpOeXMzaFJDTm4tRUxnWXJOdFQzZ01IVFVIT1VzUU1NcXlRa210bWNKY0FVVWdoOE40dVZSN1pGUnlxNzNvcmx1UlMzN000eXJudHR1eHNNYkZubmZzbkM3T0FzTElXVG9NaXZOQmdHNktzNHRYV2N3dmVBbU9OUldoWGV5RDRtSUhTNEdzNW44c1BpcDluQl9qNVhINUE1Z3l2ZzZXalVET19zYmljNHdNaVc1T0VEYlh1TGFwMFFfcG52U1JaQkQ3MlNBa253QXZFcEIxek8wc0s0bV9VdmJRTERoNDhUenl2?oc=5",
-      "source": "Barron's",
-      "pub_iso": "2026-03-11T20:02:00+00:00",
-      "description": "",
-      "summary": "Kalshi faces mounting legal pressure but remains dependent on sports betting revenue to sustain its business model. The outcome will determine whether prediction markets can survive as regulated alternatives to traditional sportsbooks or get squeezed out by compliance costs and restricted betting categories.",
-      "pub_display": "Mar 11"
-    },
-    {
-      "title": "Sen. Blumenthal proposes bill establishing guardrails for prediction markets",
-      "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxQN3VYOC1iYkhyQi1EUF9lam1hWi03X1pCTkgtQlRTeDN5MDkwZ1dnb2h4Rm1VeE1ILXQxUGhQMzR5Nk9NQ29CbnA0dnYxbWJQUTByVmV6NmtQWk1kdDZNYWdESDl0MjhQTmZscmRPVU03dDZndm1UQmhhSVFzdXdZTFFyZzZkbHc?oc=5",
-      "source": "CT Mirror",
-      "pub_iso": "2026-03-11T17:03:21+00:00",
-      "description": "",
-      "summary": "Sen. Richard Blumenthal is pushing legislation to regulate prediction markets with new federal oversight and restrictions. The bill threatens to kneecap the industry's recent growth by potentially limiting what Americans can bet on and how much they can wager.",
-      "pub_display": "Mar 11"
-    },
-    {
       "title": "Are Prediction Markets Actually Good for Journalism?",
       "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxPUDNqX1l1bEctZ1AwT05Udkt2aUFzWmRhak9qSGNXSUQzRi1hdTNZVDJubHhhUzUxcEZ6Q19jOE54RmdYU0NUQnJ4SDZrUl9HUFpPOER0NW9tUWstejdieV9ETGw4ZXhZNzFHSTJ6UUk1SzZfVHdLdFVVaW5QS2x4dk44TGp2MVVlTTdPRm9mLWxyU0xZRkRvck1OSEQ0YW1YNGhYUUdOVVRPQXNBLTdRR09Sbk5FMTk0bDFkVzNn?oc=5",
       "source": "Columbia Journalism Review",
@@ -94,21 +94,21 @@
       "pub_display": "Mar 11"
     },
     {
+      "title": "The Biggest Bet in Tech Isn't on Polymarket. It's This AI Stock.",
+      "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNNnRINlpYcll6Z21od0todjdnVFJtbmJMaFpsZXJfS2lXMGpDVTRqUUFYMlZhdXZvU3lGZUFWYUszWlBZS2lkOEdQRGh0dUJhLUotdXJPUVIzQzJMYUlGRHNPUVNrSWIwVEIxUE9SeG9lWGJRU3FPYnlmbUFrdkVGVVFpRlU?oc=5",
+      "source": "Yahoo Finance",
+      "pub_iso": "2026-03-11T10:25:00+00:00",
+      "description": "",
+      "summary": "AI stocks are pulling massive institutional bets that dwarf even the wildest Polymarket wagers, with one particular company attracting unprecedented capital flows. When traditional finance starts throwing around billions on AI plays, it creates ripple effects that smart prediction market traders can spot and profit from before the retail crowd catches on.",
+      "pub_display": "Mar 11"
+    },
+    {
       "title": "Koch Q&A on KY Fixed-Odds Bill: Predictive Markets 'Absolutely Cannibalizing' Other Gambling",
       "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxNN0xnck1jV3BmTVJKVFZiUnpYZDlmT1FkRlRjNlA3emQ2azVXNEVRZFU4S1dSTkdoYWJtZjlqemZRWGhfMjhzR0NoS1VTdEVBRnd5eUFpRDg5Tko1Rnhja1ZFS01KSUJYVFhBd3E1QTRtcEJVSjVvb2NpdTNzOUtTajhQSjJJVDFVWHNZbHNGRFZjVkNydUVzWVZhNm9ja1BLSFhPWmVNTDI4YjExYU9vRmh0eDZVM2NLd2d2LXk5TDhUQzFWUUE?oc=5",
       "source": "Thoroughbred Daily News",
       "pub_iso": "2026-03-10T23:16:00+00:00",
       "description": "",
       "summary": "A Koch Industries executive told Kentucky lawmakers that prediction markets are eating into traditional gambling revenues as the state considers legalizing fixed-odds sports betting. The admission signals that prediction markets have grown large enough to threaten established gambling interests, which could either accelerate regulatory crackdowns or legitimize the space as serious competition.",
-      "pub_display": "Mar 10"
-    },
-    {
-      "title": "Will the SAVE Act Pass? See Latest Odds from Prediction Markets",
-      "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxOcmw3NWlDSEwtOU45ZHZwVWY0SEkyVkVFTENHRWltRWowdmxSTlZfY09iSHpoSVlkaGJXbmJpV3A3dG1Yc0UxbkE5SDdiVno5QkQ3ZFl4Z21JQmNvZFBNbzl4UnF5MGZTT01HaTBPMTdmbnlhdTlWSFdQaWpsV2RRdU5PaDlLa3hmTjM0SXdWcGlGX1JuWURLNVQyM0pXUW55T0dmcDM0RThndw?oc=5",
-      "source": "Federal News Network",
-      "pub_iso": "2026-03-10T18:49:04+00:00",
-      "description": "",
-      "summary": "Prediction markets are pricing the odds that Congress will pass the SAVE Act, legislation requiring proof of citizenship to vote in federal elections. The bill's fate hinges on Republican unity and Democratic resistance, making it a pure partisan play that bettors can trade on partisan sentiment and legislative momentum.",
       "pub_display": "Mar 10"
     }
   ]
