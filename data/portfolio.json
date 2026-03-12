@@ -5,8 +5,27 @@
   "ytd_return_pct": 0.0,
   "win_count": 0,
   "loss_count": 0,
-  "open_count": 0,
+  "open_count": 1,
   "start_date": "2026-03-11",
-  "last_updated": "2026-03-11",
-  "trades": []
+  "last_updated": "2026-03-12",
+  "trades": [
+    {
+      "trade_id": "ca0812d4",
+      "market_id": "will-one-battle-after-another-win-best-cinematography-at-the-98th-academy-awards",
+      "question": "Will One Battle After Another win Best Cinematography at the 98th Academy Awards?",
+      "url": "https://polymarket.com/event/oscars-2026-best-cinematography-winner",
+      "source": "Polymarket",
+      "display_category": "Culture",
+      "entry_prob": 74.5,
+      "direction": "YES",
+      "amount": 100.0,
+      "entry_date": "2026-03-12",
+      "end_date_raw": "2026-03-15T00:00:00Z",
+      "end_date": "Mar 15",
+      "status": "open",
+      "exit_prob": null,
+      "exit_date": null,
+      "pnl": null
+    }
+  ]
 }
