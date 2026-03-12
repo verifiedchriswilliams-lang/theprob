@@ -342,7 +342,7 @@ def build_html(markets: dict, news: dict, subject: str, with_footer: bool = True
         f" &nbsp;&middot;&nbsp; <a href='{SITE_URL}/portfolio.html' "
         f"style='color:#8ba3bc !important;text-decoration:none;'>Track record &#8599;</a>"
     ) if (port_wins + port_losses) > 0 else (
-        f"Portfolio: <span style='color:#8ba3bc !important'>Starting Mar 6 &middot; $100/trade</span>"
+        f"Portfolio: <span style='color:#8ba3bc !important'>Starting Mar 11 &middot; $100/trade</span>"
         f" &nbsp;&middot;&nbsp; <a href='{SITE_URL}/portfolio.html' "
         f"style='color:#8ba3bc !important;text-decoration:none;'>See how it works &#8599;</a>"
     )
