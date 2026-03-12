@@ -174,7 +174,13 @@ See VOICE.md. Sharp, confident, trader-focused. Lead with the number. "The crowd
 1. The Spread (Poly vs Kalshi divergence) — highest trader value feature not yet built
 2. Polymarket "breaking" tab signal — Option A (API flag) confirmed NOT available. Need Option B: inspect Network tab on polymarket.com/breaking to find exact Gamma API ordering parameter, add separate fetch pass.
 3. Monitor Test 1 results — review Apr 10, 2026. Key question: does following crowd conviction (65/35 gate) have any edge, or do we need to fade them?
-4. Update FROM_THE_BUILDER dict in send_newsletter.py each session (reader-facing copy, not technical jargon)
+4. Update data/builder_notes.json each session — edit built_recently + coming_next directly in that file. No longer in send_newsletter.py.
+
+### Recently Completed (Mar 11, 2026) — Session 3
+- Dynamic newsletter subtitle: generate_subtitle() added to send_newsletter.py. Claude writes a unique inbox preview each day based on the actual hero market, top 3 movers, and daily take. Falls back to static copy if Claude call fails.
+- "Recently:" label fixed — was "Yesterday:" which was misleading when notes were a few days old.
+- FROM_THE_BUILDER moved out of send_newsletter.py into data/builder_notes.json. Newsletter reads it fresh each run. Pipeline prints [WARN] if notes are > 7 days stale. Edit the JSON file each session, not the Python.
+- builder_notes.json updated with current session copy: portfolio experiment launch + trade/hero decoupling as built_recently; The Spread as coming_next.
 
 ### Recently Completed (Mar 11, 2026) — Session 2
 - Paper portfolio reframed as live public experiment on portfolio.html:
