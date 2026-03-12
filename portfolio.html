@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Prob Paper Portfolio — Prediction Market Track Record | Polymarket & Kalshi</title>
-  <meta name="description" content="The Prob's live prediction market portfolio. $100 per trade on our hero market picks. Track our running P&L, win rate, and YTD return vs the market.">
+  <title>The Prob Live Experiment — Building a Prediction Market Trading System in Public</title>
+  <meta name="description" content="We're building a systematic prediction market trading system in public. Every rule, every trade, every result — logged in real time. Test 1 started Mar 11, 2026.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://theprobnewsletter.com/portfolio.html">
-  <meta property="og:title" content="The Prob Paper Portfolio — Live Prediction Market Track Record">
-  <meta property="og:description" content="$100 paper trade on every high-conviction pick. We only play when the crowd has picked a side. Watch the running P&L on Polymarket and Kalshi calls.">
+  <meta property="og:title" content="The Prob Live Experiment — Prediction Market Trading System, Built in Public">
+  <meta property="og:description" content="We're building a systematic trading system for prediction markets and logging every trade in real time. Watch us figure it out.">
   <meta property="og:url" content="https://theprobnewsletter.com/portfolio.html">
   <meta property="og:type" content="website">
   <style>
@@ -111,6 +111,7 @@
       .page-title { font-size: 26px; }
       .trade-table th:nth-child(4),
       .trade-table td:nth-child(4) { display: none; }
+      .experiment-grid { grid-template-columns: 1fr !important; }
     }
   </style>
 </head>
@@ -132,9 +133,9 @@
 
 <!-- HERO -->
 <div class="page-hero">
-  <div class="page-eyebrow">The Prob &middot; Paper Portfolio</div>
-  <h1 class="page-title">The Prob puts its money where its mouth is.</h1>
-  <p class="page-subtitle">$100 paper trade on every high-conviction Market of the Day pick. We only play when the crowd has picked a side. If we call it, we log it. Here's the running score.</p>
+  <div class="page-eyebrow">Live Experiment &middot; Test 1 &middot; Started Mar 11, 2026</div>
+  <h1 class="page-title">We're building a prediction market trading system in public.</h1>
+  <p class="page-subtitle">Every rule, every trade, every result — logged the moment it happens. No retroactive edits. No cherry-picking. You're watching us figure this out in real time.</p>
 
   <div class="stats-grid" id="stats-grid">
     <div class="stat-card">
@@ -160,9 +161,56 @@
   </div>
 </div>
 
+<!-- EXPERIMENT CONTEXT -->
+<div class="section">
+  <div class="section-title">What We're Testing</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:32px;">
+    <div style="background:var(--bg2);border:1px solid var(--border);border-left:3px solid var(--amber);border-radius:8px;padding:24px;">
+      <div style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--amber);margin-bottom:10px;">Test 1 &middot; Mar 11 – Apr 10, 2026</div>
+      <div style="font-weight:600;margin-bottom:10px;">Current ruleset</div>
+      <ul style="font-size:14px;color:var(--text-muted);line-height:2;list-style:none;padding:0;">
+        <li>&#9656; Only trade markets resolving within 14 days</li>
+        <li>&#9656; Buy YES when crowd says &ge;65% probability</li>
+        <li>&#9656; Buy NO when crowd says &le;35% probability</li>
+        <li>&#9656; $100 flat per trade, no sizing</li>
+        <li>&#9656; One trade logged per day max</li>
+      </ul>
+    </div>
+    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:24px;">
+      <div style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-muted);margin-bottom:10px;">The Question</div>
+      <div style="font-weight:600;margin-bottom:10px;">Does following the crowd's conviction make money?</div>
+      <p style="font-size:14px;color:var(--text-muted);line-height:1.7;">Test 1 is the baseline. We buy with the crowd when they're convicted. After 30 days we'll know if that has any edge — or if we need to flip the script and fade them instead. Either result is useful.</p>
+      <div style="margin-top:16px;font-family:'Courier New',monospace;font-size:11px;color:var(--text-muted);">
+        Results reviewed: <span style="color:var(--text);">Apr 10, 2026</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- EXPERIMENT LOG -->
+<div class="section">
+  <div class="section-title">Experiment Log</div>
+  <div style="border:1px solid var(--border);border-radius:8px;overflow:hidden;">
+    <div style="padding:16px 20px;border-bottom:1px solid var(--border);display:flex;gap:16px;align-items:baseline;">
+      <div style="font-family:'Courier New',monospace;font-size:11px;color:var(--text-muted);white-space:nowrap;">Mar 11, 2026</div>
+      <div>
+        <div style="font-size:14px;font-weight:600;margin-bottom:4px;">Test 1 begins. System goes live.</div>
+        <div style="font-size:13px;color:var(--text-muted);">Portfolio reset to $1,000. Decoupled "Market of the Day" (editorial) from "The Prob Trade" (portfolio). Trade picker now selects only short-duration markets resolving within 14 days. 65/35 conviction gate. Flat $100/trade sizing.</div>
+      </div>
+    </div>
+    <div style="padding:16px 20px;background:var(--bg3);display:flex;gap:16px;align-items:baseline;">
+      <div style="font-family:'Courier New',monospace;font-size:11px;color:var(--text-muted);white-space:nowrap;">Apr 10, 2026</div>
+      <div>
+        <div style="font-size:14px;font-weight:600;margin-bottom:4px;color:var(--text-muted);">Test 1 results reviewed &mdash; Test 2 rules TBD</div>
+        <div style="font-size:13px;color:var(--text-muted);">Check back here to see what the data says and how the rules change.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- TRADE LEDGER -->
 <div class="section">
-  <div class="section-title">Full Trade Ledger</div>
+  <div class="section-title">Full Trade Ledger &mdash; Test 1</div>
   <div id="trade-container">
     <div class="empty-state">
       <div class="big">📋</div>
@@ -173,29 +221,29 @@
 
 <!-- HOW IT WORKS -->
 <div class="section">
-  <div class="section-title">How The Prob Portfolio Works</div>
+  <div class="section-title">How This Works</div>
   <div class="how-grid">
     <div class="how-card">
       <div class="how-num">01</div>
-      <div class="how-title">We only trade when the crowd has conviction.</div>
-      <div class="how-body">We skip coin flips. A trade only logs when the market is priced at 65% or higher (we buy YES) or 35% or lower (we buy NO). No maybes, no middle ground.</div>
+      <div class="how-title">30-day test periods. Rules can change.</div>
+      <div class="how-body">Each test runs for 30 days with a fixed ruleset. After 30 days we review the results, publish the findings here, and update the rules for the next test. The system gets smarter over time — and you can see exactly how.</div>
     </div>
     <div class="how-card">
       <div class="how-num">02</div>
-      <div class="how-title">$100 paper trade on every qualifying pick.</div>
-      <div class="how-body">We log a $100 position at the current market price. We don't cherry-pick winners after the fact. Every call is logged at the time of the pick, before the outcome is known.</div>
+      <div class="how-title">No retroactive edits. Ever.</div>
+      <div class="how-body">Every trade is logged at the moment it's picked — before the outcome is known. The system runs on autopilot via GitHub Actions. We don't touch the ledger manually. Win or lose, it stays in the record.</div>
     </div>
     <div class="how-card">
       <div class="how-num">03</div>
       <div class="how-title">P&amp;L closes when the market resolves.</div>
-      <div class="how-body">When a market resolves YES or NO (above 95% or below 5%), the trade closes automatically. Wins scale with the odds — a bold call at 70% pays less than a contrarian call at 30%. Losses are capped at $100.</div>
+      <div class="how-body">When a market resolves YES or NO, the trade closes automatically. Wins scale with the odds — a bold call at 70% pays less than a contrarian call at 30%. Losses are capped at $100. The goal: find systematic edge, not luck.</div>
     </div>
   </div>
 </div>
 
 <!-- DISCLAIMER -->
 <div class="disclaimer">
-  <p>All trades are hypothetical and for informational purposes only. This is not financial advice. Prediction markets carry risk of total loss. Past performance does not guarantee future results. The Prob Portfolio is a demonstration of our analytical framework, not an invitation to copy trades.</p>
+  <p>All trades are paper (hypothetical) and for informational purposes only. This is not financial advice and is not an invitation to copy trades. Prediction markets carry risk of total loss. We're publishing this experiment to be transparent about how the system works and to hold ourselves accountable to a verifiable track record. The rules are documented above. The ledger is unedited.</p>
 </div>
 
 <!-- FOOTER -->
