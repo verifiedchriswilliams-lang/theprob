@@ -113,10 +113,14 @@ Fixed:
 - New site pages — archive.html, contact.html (Web3Forms), prediction-markets-101.html (Mar 6, 2026)
 - Footer updated on all 7 existing pages — new order: Polymarket, Kalshi, Prediction Markets 101, Newsletter Archive, Contact (Mar 6, 2026)
 - The Prob Portfolio — data/portfolio.json, portfolio.html, widget on index.html, email header line, fetch_markets.py logic (Mar 6, 2026)
+- Portfolio decoupled: pick_trade() selects short-duration (≤14 days) markets separately from hero (Mar 11, 2026)
+- Portfolio reframed as live public experiment with 30-day test periods and experiment log (Mar 11, 2026)
+- Newsletter trade_html wired into inner_sections in send_newsletter.py (Mar 11, 2026)
 
 Remaining:
 - Topic key fingerprint cosmetic issue (low priority)
 - Monitor rolling hero block — confirm ping-pong stays resolved
+- Test 1 review: Apr 10, 2026
 
 ## SEO Implementation (Completed Mar 1, 2026)
 
@@ -168,11 +172,23 @@ See VOICE.md. Sharp, confident, trader-focused. Lead with the number. "The crowd
 
 ### Pending Next Session
 1. The Spread (Poly vs Kalshi divergence) — highest trader value feature not yet built
-2. Polymarket "breaking" tab signal — Option A (API flag) confirmed NOT available (`breaking` field not in event objects). Need Option B: add a fetch pass using `order=change24h` or equivalent. Check Network tab on polymarket.com/breaking to find exact API parameter.
-3. Monitor portfolio — Viking Therapeutics NO @ 34.0% is the first clean trade under the new gate. Watch for resolution.
+2. Polymarket "breaking" tab signal — Option A (API flag) confirmed NOT available. Need Option B: inspect Network tab on polymarket.com/breaking to find exact Gamma API ordering parameter, add separate fetch pass.
+3. Monitor Test 1 results — review Apr 10, 2026. Key question: does following crowd conviction (65/35 gate) have any edge, or do we need to fade them?
 4. Update FROM_THE_BUILDER dict in send_newsletter.py each session (reader-facing copy, not technical jargon)
 
-### Recently Completed (Mar 11, 2026)
+### Recently Completed (Mar 11, 2026) — Session 2
+- Paper portfolio reframed as live public experiment on portfolio.html:
+  - Title/hero: "We're building a prediction market trading system in public"
+  - "What We're Testing" section: current ruleset + question being tested
+  - "Experiment Log" section: dated changelog, Test 1 Mar 11–Apr 10 pre-populated
+  - "How It Works" updated: 30-day test periods, no retroactive edits framing
+  - Disclaimer updated to reflect transparency/accountability framing
+- Portfolio reset to clean slate: $1,000 / 0 trades / start date Mar 11, 2026. Wiped old long-duration trades that had no resolution visibility.
+- Test 1 defined: Mar 11–Apr 10, 2026. Rules: 65/35 gate, ≤14-day trade duration, $100 flat sizing, one trade/day max. Question: does following crowd conviction make money?
+- Strategy discussion: current 65/35 system follows crowd with no inherent edge. Longshot bias (crowds overprice low-probability events) is the documented edge to explore in future tests. The Spread remains the highest-value feature.
+- Start date references updated Mar 7 → Mar 11 in portfolio.html, index.html, send_newsletter.py.
+
+### Recently Completed (Mar 11, 2026) — Session 1
 - Trends matching precision fixes: expanded TRENDS_STOPWORDS with year tokens (2024-2030), 'world', and ~40 common 4-letter words that were passing the length filter but producing false positives. Matches dropped from 1,379 → ~180 (from 63% of all markets to ~8%).
 - Sports cross-context filter: single-keyword trending topics (bare country/person names) no longer boost Sports category markets. Fixes false positive where "Iran" trending for geopolitical reasons was boosting "Will Iran win the FIFA World Cup?"
 - Google Trends cleanup: both RSS endpoints (daily + realtime) confirmed dead — Google deprecated all public programmatic access. Replaced noisy retry loop with silent fallback. pytrends kept in code to auto-recover if Google re-enables. Wikipedia alone carries the trending signal.
@@ -180,6 +196,8 @@ See VOICE.md. Sharp, confident, trader-focused. Lead with the number. "The crowd
 - Movers 6→9 bug fixed: slot_categories list only had 6 slots, so TOP_MOVERS_COUNT=9 was being ignored. Added post-slot fill loop that pulls next best markets until count reaches TOP_MOVERS_COUNT.
 - FROM_THE_BUILDER updated in send_newsletter.py — was stuck on Mar 6 "launched portfolio" copy. Now reflects trending signal and hero scoring upgrades.
 - Polymarket "breaking" tab investigated — Option A (API field) not available; `breaking` not a field on event objects. Option B needed (separate fetch with change-ordering).
+- Decoupled Market of the Day from The Prob Trade: pick_trade() new function selects markets resolving ≤14 days (TRADE_MAX_DAYS=14), separate from hero. update_portfolio() now takes trade_market not hero. markets.json includes "trade" key alongside "hero".
+- send_newsletter.py: trade_html block wired into inner_sections (was defined but not assembled — the missing piece). Newsletter now shows "Today's Trade" section between hero and movers.
 
 ### Recently Completed (Mar 10, 2026)
 - Hero repeat block extended 3→7 days: Ubisoft appeared as hero 4/6 days — the 3-day penalty was expiring too quickly and letting the same stale topic cycle back in. Days 1-3 keep existing penalties [40, 70, 90pts]. Days 4-7 get -100pts (near-absolute block). hero_history stored in markets.json now capped at 7 keys instead of 3.
@@ -271,9 +289,6 @@ See VOICE.md. Sharp, confident, trader-focused. Lead with the number. "The crowd
 
 Items carried forward from brainstorm sessions. Prioritized by impact vs. effort.
 
-### P0 — Next Session
-- **DST cron update** — Change send-newsletter.yml cron from `'50 11 * * *'` → `'50 10 * * *'` after Mar 8, 2026 DST change. (EDT = UTC-4, so 6:50am EDT = 10:50 UTC)
-
 ### P1 — High Value, Low Effort
 - **The Prob Score** — proprietary ranking badge on every market card. Draft formula: `(|change_pts|*2) + (volume_rank*1.5) + (1/days_to_resolution capped)`. Compute in fetch_markets.py, store as `prob_score` field in markets.json, display as badge on cards. No new infrastructure needed.
 - **Yesterday's Biggest Movers** — save `data/markets_yesterday.json` before overwriting each run, diff vs today, surface top swings in a "Yesterday's Biggest Swings" section on index.html. ~1-2 hours.
@@ -282,27 +297,25 @@ Items carried forward from brainstorm sessions. Prioritized by impact vs. effort
 - **"Act On This" framing** — every top mover should have a one-line trading implication, not just a description. Claude-generated hero take already does this; extend to top 3 movers in the email. Prompt orientation: "What would need to happen for this to resolve YES, and what is the market getting wrong right now?"
 - **Site footer contact email** — add `contact@theprobnewsletter.com` to the footer-copy row on all 7 HTML pages (between copyright and disclaimer). Confirm actual address first.
 
-### P1.5 — The Prob Portfolio (flagship differentiator)
-This is the feature that turns The Prob from a data aggregator into a **track record**. Frame: "The Prob puts its money where its mouth is."
+### P1.5 — The Prob Portfolio (LIVE — Test 1 running)
+**Status:** Live as of Mar 11, 2026. Test 1 runs Mar 11–Apr 10, 2026.
 
-**Concept:** Every time a market is selected as the daily hero, The Prob automatically logs a $100 hypothetical trade (YES or NO, based on Claude's directional take) in `data/portfolio.json`. When the market resolves, the position closes and P&L is calculated. The running portfolio — starting balance $1,000 — updates live on the site and appears in every email header.
+**Current architecture:**
+- `data/portfolio.json` — full trade ledger, $1,000 starting balance, $100/trade
+- `pick_trade()` in fetch_markets.py — selects markets resolving ≤14 days (TRADE_MAX_DAYS=14), separate from hero pick
+- Trade gate: prob ≥65% → YES, prob ≤35% → NO, everything else → NO_PLAY
+- `portfolio.html` — live experiment page with ruleset, experiment log, full ledger
+- Index.html widget: current balance, YTD%, W/L record
+- Newsletter header: portfolio line on every email
+- Email: "Today's Trade" section between hero and movers
 
-**Why it works:**
-- A trader seeing "+31% YTD (vs. S&P +11%)" subscribes immediately
-- Creates genuine accountability — bad picks hurt the number visibly
-- Compounding over months becomes the single most compelling proof of value
-- "You would have made $47 if you'd followed our last 5 picks" is the most powerful FOMO line in prediction markets
+**Test 1 question:** Does following crowd conviction (65/35 gate) generate any edge over 30 days?
 
-**Implementation (all static, no backend needed):**
-- `data/portfolio.json` — ledger of all trades: market_id, question, url, entry_prob, direction (YES/NO), amount ($100), entry_date, status (open/closed), exit_prob, pnl
-- In fetch_markets.py: when hero is selected, append new open trade to portfolio.json
-- On each run: check open trades against current prob; if market is resolved (prob >= 95 or <= 5 and past end_date), close the position and calculate P&L
-- P&L formula: if bought YES at entry_prob p and resolved YES → pnl = $100 * (1/p - 1). If resolved NO → pnl = -$100. Vice versa for NO positions.
-- New page: `portfolio.html` — full trade ledger, running balance chart, win rate, avg return per trade, YTD vs S&P benchmark
-- Index.html widget: current balance, YTD return %, last 3 closed trades
-- Email header line: "The Prob Portfolio: $X,XXX (+XX% YTD)"
-
-**Direction logic:** Use Claude's hero take sentiment. If the take is bullish (expects YES), log YES. If bearish, log NO. If neutral/uncertain, skip the trade that day (log as "no play").
+**Next evolution (Test 2, starting ~Apr 10):**
+- Option A: flip direction on low-end — always fade longshots (bet NO when prob ≤35%), exploit longshot bias
+- Option B: add The Spread as primary signal — trade the Poly/Kalshi cross-market disagreement
+- Option C: raise gate to 70/30 for stricter conviction filter
+- Decision based on Test 1 win rate vs. implied probability
 
 ### P2 — Medium Effort, High Value
 - **Market Narratives (Claude-generated)** — for top 5 markets, call Claude API with: "In 2 sentences, explain the story behind this prediction market to a smart non-trader." Save as `narrative` field in markets.json. Display inline or as expandable text on cards. ANTHROPIC_API_KEY already in GitHub secrets.
@@ -362,3 +375,13 @@ git add newsletter/latest-subject.txt newsletter/latest.html
 git commit -m "resolve merge conflicts in newsletter latest files"
 git push
 ```
+
+If rebase creates a merge conflict in data/portfolio.json (GitHub Actions writes this every hour):
+```
+git checkout --theirs data/portfolio.json
+git add data/portfolio.json
+GIT_EDITOR=true git rebase --continue
+git push
+```
+
+Note: `GIT_EDITOR=true` skips the vim commit message editor entirely — critical when Chris is running the rebase interactively. Always use it for `git rebase --continue` to avoid the vim trap.
