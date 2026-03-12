@@ -1,8 +1,35 @@
 {
-  "updated": "Mar 12, 2026 \u00b7 2:31 PM ET",
-  "updated_iso": "2026-03-12T19:31:22.879395+00:00",
+  "updated": "Mar 12, 2026 \u00b7 6:54 PM ET",
+  "updated_iso": "2026-03-12T23:54:17.532898+00:00",
   "homepage_count": 3,
   "articles": [
+    {
+      "title": "Future is unpredictable for prediction markets as courts add to confusion",
+      "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTE9acExVR2oyNmlROGlwSFA3R2Q4RXZ3Z093c29IdTVsa0laaUxyYjgzNFQza0VNbHdlMkpCanptS2R1cDlCUVlwaUgyTHpsRXZ3Y21ucjhaSDBLWnN4Q2ZJdTZYWHk4clhrNURTNEZNb1dKdS1NZGh1M0tPa3U?oc=5",
+      "source": "ESPN",
+      "pub_iso": "2026-03-12T22:52:49+00:00",
+      "description": "",
+      "summary": "Courts are issuing conflicting rulings on prediction market regulations, creating legal uncertainty across jurisdictions. The patchwork of decisions makes it harder for platforms to operate confidently and could scare off institutional money that prediction markets desperately need to grow.",
+      "pub_display": "Mar 12"
+    },
+    {
+      "title": "Kalshi \u2018Death Bet\u2019 Lawsuit Sparks Push To Ban Assassination Markets",
+      "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxPN2xHVzhFby1YOHdIWURsSkE4R3g2NXBGbUlOUFljc2ttU1lEaERqWC1CT2hfX0FLeVBVeFVFbmVjRHAycnpaZVQxN0lyRXpjZEpWcTlyanpQT1RIN0pHb25MeWFLaUdsMmx3bWFKMWhpQndvSWtWV2JwQ0NDaHB6ZGFJYWNEenRFRmdGR04tZWt0MGpkRGF2djBXdkE0VHVnOVE2czRucjY4b2w3VkpOQWg1Y0JiMWFh?oc=5",
+      "source": "Forbes",
+      "pub_iso": "2026-03-12T21:27:06+00:00",
+      "description": "",
+      "summary": "Kalshi is facing legal action over markets that allegedly allow betting on political assassinations, triggering broader calls to prohibit such \"death markets\" entirely. The lawsuit could force regulators to draw clearer lines around what prediction markets can legally offer, potentially reshaping the industry's boundaries before it fully matures.",
+      "pub_display": "Mar 12"
+    },
+    {
+      "title": "CFTC Offers First Guidance on Manipulation in Prediction Markets",
+      "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxPS3dZS2dGZXk0bjJtUkdxMTg1Nnd0VFRnaGlmT3N2UHpEUExhSUhSRFF4cHRUX0FWM1pUN0xrQzJ5Q3Q1cVZsTHBzOGZMdXdlR2NscmNRRkpSUmNsZ0VGVFg4QnVxTnVXTEFUcGNtQkk2SGc2NDJfZXFWYWxadHdmNmpFeVhhTElMX3hsSmN4X2RCYWJyTXltamhhX1U0V25hUmdJMUZOR2hrbXV6Y3ZPcXJKWHdTdw?oc=5",
+      "source": "Bloomberg.com",
+      "pub_iso": "2026-03-12T20:44:27+00:00",
+      "description": "",
+      "summary": "The CFTC just released its first official guidance on what constitutes market manipulation in prediction markets, setting clearer boundaries for traders and platforms. This regulatory clarity should boost institutional confidence and potentially open the door for bigger players to enter the space without fear of accidentally crossing undefined lines.",
+      "pub_display": "Mar 12"
+    },
     {
       "title": "U.S. commodity regulator kicks off rulemaking for prediction markets",
       "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNRGllNVJXRzJaWVZZWTd0ek93ZUlySWxaZDRIUlBKU3lrSzhhSG1VNVFmQkpVZUNLNEN3dE0weTRDQTRmWjVWbXNQcDZ6Z3NLX0I0RWZyaTNfdTZMQWtacXZlYkpodEhPSTVLd21KZVd5a00zdXdjVm0wWjdLWmNvWjZpQzg0bVREaDhQZ2JmYk1YQUxJR0Y4ZFVCVV91ZGxnTDgtNVpodDRJZkZnZnp0NXByRHhaS0E?oc=5",
@@ -13,30 +40,21 @@
       "pub_display": "Mar 12"
     },
     {
-      "title": "CFTC Aims to Clear Path for Prediction Market Boom",
-      "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxOQmdZSlJSR2VrREhWWl9fNmVOUUhqSmV6LVlZazBpRmZzZ2czOFJsOG9fVC01U25SUzhXbmd3NnRIS3FQZGtMWm5DMXFRNGpaUG5zc003U1hlZmpPbVpGTGJMSHVYcTRiUFBleHMxaUxoYzFUZ1h6b3pzLXR1NDh2MWI3T2lGQ1JXbDA2ZHMxUExiQkxwTjkxVTJnNA?oc=5",
-      "source": "PYMNTS.com",
-      "pub_iso": "2026-03-12T17:58:04+00:00",
+      "title": "Prediction markets are a national security threat",
+      "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE5MRmFSa2szU1ZzaDNzV2hRbGlKUmF4YnVTbWt6dlhaeU9XdzlXOUxVX0xzbzhUYVBGV3lXYjBFNU1kZDY4S0puWlVVZ284Skh4YVk0UDc1SzJqbUpFZXRoUW5LWVI0VFNG?oc=5",
+      "source": "Responsible Statecraft",
+      "pub_iso": "2026-03-12T18:21:06+00:00",
       "description": "",
-      "summary": "The CFTC is reportedly working to streamline regulations that have kept prediction markets locked out of mainstream US finance. If successful, this could unleash billions in betting capital that's currently sitting on the sidelines, waiting for clearer rules around political and economic forecasting markets.",
+      "summary": "Critics are arguing that prediction markets could be weaponized by foreign actors to manipulate public opinion, spread disinformation, or gather intelligence on sensitive topics. The regulatory crackdown this could trigger would make the CFTC's current restrictions look like a gentle suggestion, potentially killing the nascent U.S. prediction market boom before it really gets started.",
       "pub_display": "Mar 12"
     },
     {
       "title": "Who Will Win Best Actor at the 2026 Oscars?",
       "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE9PT0lQNnlYR3FnbG0xb19OTlkxeGotR2F3SzV5dGE1U1FTeFBDWXJRQlRBS0x6UVRqYzBXSE5PUVlxMFNGNnFTTkJzajEtdWNWZGtaeEhQbjg5TjhB?oc=5",
       "source": "Kalshi",
-      "pub_iso": "2026-03-12T17:37:30+00:00",
+      "pub_iso": "2026-03-12T17:45:19+00:00",
       "description": "",
       "summary": "The 2026 Best Actor Oscar race is already heating up despite being over a year away, with early frontrunners emerging from anticipated film releases and festival buzz. Smart money is watching which A-listers have prestige projects dropping in late 2025, since Oscar betting markets often reward early positioning on actors with the right combination of career narrative and awards-season timing.",
-      "pub_display": "Mar 12"
-    },
-    {
-      "title": "CFTC Offers First Guidance on Manipulation in Prediction Markets",
-      "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxPS3dZS2dGZXk0bjJtUkdxMTg1Nnd0VFRnaGlmT3N2UHpEUExhSUhSRFF4cHRUX0FWM1pUN0xrQzJ5Q3Q1cVZsTHBzOGZMdXdlR2NscmNRRkpSUmNsZ0VGVFg4QnVxTnVXTEFUcGNtQkk2SGc2NDJfZXFWYWxadHdmNmpFeVhhTElMX3hsSmN4X2RCYWJyTXltamhhX1U0V25hUmdJMUZOR2hrbXV6Y3ZPcXJKWHdTdw?oc=5",
-      "source": "Bloomberg",
-      "pub_iso": "2026-03-12T17:32:29+00:00",
-      "description": "",
-      "summary": "The CFTC just released its first official guidance on what constitutes market manipulation in prediction markets, setting clearer boundaries for traders and platforms. This regulatory clarity should boost institutional confidence and potentially open the door for bigger players to enter the space without fear of accidentally crossing undefined lines.",
       "pub_display": "Mar 12"
     },
     {
@@ -55,6 +73,15 @@
       "pub_iso": "2026-03-12T10:37:00+00:00",
       "description": "",
       "summary": "Major tech platforms are preparing to integrate prediction markets into their existing ecosystems, threatening standalone betting sites with their massive user bases and seamless payment systems. When apps with hundreds of millions of users add betting features, they'll make current prediction market platforms look like corner bookies competing against Vegas casinos.",
+      "pub_display": "Mar 12"
+    },
+    {
+      "title": "A think tank says crypto is a major problem at the heart of prediction markets",
+      "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxOREhEVXg2Y2tZZTRhUjdURldiZzVETzJ1Y3lNN0VpZU5rLVU5NE1aZW5WTjNTSDBKb3ctR2g4VklqYXlDblhQcVU2bmlfUzJHT3lVY0tLalpSbnZOZzkxR1h4ajcwbUpxWWhWMVFaMXdpazFsd3ktenBmcEJvcjh4T1Uyb18xM3lfcDN4WGZaVlVwdlBlOHJONk9uNkx1ZFgwckdvdmFtTGRHLVRPYm5qV3JB?oc=5",
+      "source": "Business Insider",
+      "pub_iso": "2026-03-12T10:30:00+00:00",
+      "description": "",
+      "summary": "A think tank claims crypto integration poses serious risks to prediction market operations and integrity. If regulators buy this argument, it could trigger stricter oversight that limits trading options and forces platforms to abandon their most liquid markets.",
       "pub_display": "Mar 12"
     },
     {
@@ -78,38 +105,11 @@
     {
       "title": "Prime Brokers Race to Give Wall Street Access to Event Bets",
       "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxQMGl0NXZ0eXU1R1JPQ2NYRE9tXzNJVzUyM3g5cWFOeWhNSmwzNFRQY3JNV3RPdUUxWW9jSjR6MkNYZktKazB0bjkyYUdmT0kzREEzdE9oZDlSNmRQbE9faG45bHAzeTh6VlJUVlNial9ydEgwQTlWTWhoRWtuR1FlUXhockdVSE5Kei00Q3BNdXZEemljNlpzY000QkthZW5KTDJpVU9CUzdCeDRMUmQw?oc=5",
-      "source": "Bloomberg",
+      "source": "Bloomberg.com",
       "pub_iso": "2026-03-11T23:04:31+00:00",
       "description": "",
       "summary": "Prime brokers are scrambling to offer their Wall Street clients access to prediction markets and event-driven betting platforms. This institutional rush validates prediction markets as a legitimate asset class and could pump serious liquidity into political, economic, and cultural event betting.",
       "pub_display": "Mar 11"
-    },
-    {
-      "title": "Are Prediction Markets Actually Good for Journalism?",
-      "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxPUDNqX1l1bEctZ1AwT05Udkt2aUFzWmRhak9qSGNXSUQzRi1hdTNZVDJubHhhUzUxcEZ6Q19jOE54RmdYU0NUQnJ4SDZrUl9HUFpPOER0NW9tUWstejdieV9ETGw4ZXhZNzFHSTJ6UUk1SzZfVHdLdFVVaW5QS2x4dk44TGp2MVVlTTdPRm9mLWxyU0xZRkRvck1OSEQ0YW1YNGhYUUdOVVRPQXNBLTdRR09Sbk5FMTk0bDFkVzNn?oc=5",
-      "source": "Columbia Journalism Review",
-      "pub_iso": "2026-03-11T11:03:51+00:00",
-      "description": "",
-      "summary": "Journalists and media critics are debating whether prediction markets help or hurt news reporting, as betting platforms increasingly influence how stories get covered and what gets attention. The outcome could determine whether newsrooms embrace prediction markets as reporting tools or dismiss them as gambling distractions that skew editorial priorities toward whatever drives the most action.",
-      "pub_display": "Mar 11"
-    },
-    {
-      "title": "The Biggest Bet in Tech Isn't on Polymarket. It's This AI Stock.",
-      "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNNnRINlpYcll6Z21od0todjdnVFJtbmJMaFpsZXJfS2lXMGpDVTRqUUFYMlZhdXZvU3lGZUFWYUszWlBZS2lkOEdQRGh0dUJhLUotdXJPUVIzQzJMYUlGRHNPUVNrSWIwVEIxUE9SeG9lWGJRU3FPYnlmbUFrdkVGVVFpRlU?oc=5",
-      "source": "Yahoo Finance",
-      "pub_iso": "2026-03-11T10:25:00+00:00",
-      "description": "",
-      "summary": "AI stocks are pulling massive institutional bets that dwarf even the wildest Polymarket wagers, with one particular company attracting unprecedented capital flows. When traditional finance starts throwing around billions on AI plays, it creates ripple effects that smart prediction market traders can spot and profit from before the retail crowd catches on.",
-      "pub_display": "Mar 11"
-    },
-    {
-      "title": "Koch Q&A on KY Fixed-Odds Bill: Predictive Markets 'Absolutely Cannibalizing' Other Gambling",
-      "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxNN0xnck1jV3BmTVJKVFZiUnpYZDlmT1FkRlRjNlA3emQ2azVXNEVRZFU4S1dSTkdoYWJtZjlqemZRWGhfMjhzR0NoS1VTdEVBRnd5eUFpRDg5Tko1Rnhja1ZFS01KSUJYVFhBd3E1QTRtcEJVSjVvb2NpdTNzOUtTajhQSjJJVDFVWHNZbHNGRFZjVkNydUVzWVZhNm9ja1BLSFhPWmVNTDI4YjExYU9vRmh0eDZVM2NLd2d2LXk5TDhUQzFWUUE?oc=5",
-      "source": "Thoroughbred Daily News",
-      "pub_iso": "2026-03-10T23:16:00+00:00",
-      "description": "",
-      "summary": "A Koch Industries executive told Kentucky lawmakers that prediction markets are eating into traditional gambling revenues as the state considers legalizing fixed-odds sports betting. The admission signals that prediction markets have grown large enough to threaten established gambling interests, which could either accelerate regulatory crackdowns or legitimize the space as serious competition.",
-      "pub_display": "Mar 10"
     }
   ]
 }
