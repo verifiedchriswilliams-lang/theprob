@@ -194,6 +194,31 @@ def estimate_read_time(markets: dict, news: dict) -> str:
     minutes = max(2, round(word_count / 200))
     return f"{minutes} min read"
 
+def generate_subtitle(hero: dict, movers: list, daily_take: dict) -> str:
+    q      = hero.get("question", "")
+    prob   = hero.get("prob", 50)
+    change = hero.get("change_pts", 0)
+    top_movers = ", ".join(m.get("question", "")[:50] for m in movers[:3])
+    take_headline = daily_take.get("headline", "") if daily_take else ""
+    now_et = datetime.now(timezone.utc) + timedelta(hours=-5)
+    date_str = now_et.strftime("%B %-d")
+    prompt = (
+        f"Today's top market: {q} — currently at {prob}%, moved {'+' if change > 0 else ''}{change}pts today\n"
+        f"Other movers: {top_movers}\n"
+        f"Today's take: {take_headline}\n\n"
+        f"Write ONE short email preview/subtitle for The Prob newsletter dated {date_str}. "
+        "This is the preview text shown under the subject line in an inbox. "
+        "Max 80 characters. Make it feel like something is actually happening today — "
+        "specific, punchy, tied to the actual markets. "
+        "No em dashes. No quotes. Don't repeat the subject line. "
+        "Just the preview text, nothing else."
+    )
+    subtitle = claude(prompt, max_tokens=80)
+    if not subtitle:
+        subtitle = f"The crowd's read on {date_str} — markets, movers, and what it means."
+    return subtitle
+
+
 def generate_subject(hero: dict, daily_take: dict) -> str:
     q      = hero.get("question", "")
     prob   = hero.get("prob", 50)
@@ -765,7 +790,7 @@ def build_preview_page(subject: str) -> str:
 </html>"""
 
 
-def save_newsletter(subject: str, html_full: str, html_no_ftr: str) -> bool:
+def save_newsletter(subject: str, html_full: str, html_no_ftr: str, subtitle: str = "") -> bool:
     """
     Saves three newsletter files:
       latest.html       — preview wrapper page with Copy HTML button
@@ -797,7 +822,6 @@ def save_newsletter(subject: str, html_full: str, html_no_ftr: str) -> bool:
             f.write(html_full)
 
         # Subject file
-        subtitle = f"The crowd's read on {now_et.strftime('%B %-d')} — markets, movers, and what it means."
         with open("newsletter/latest-subject.txt", "w") as f:
             f.write(f"SUBJECT: {subject}\n")
             f.write(f"SUBTITLE: {subtitle}\n")
@@ -880,9 +904,11 @@ def main():
     print(f"  Movers:  {len(markets.get('movers', []))}")
     print(f"  News:    {len(news.get('articles', []))}")
 
-    print("\nGenerating subject line...")
-    subject = generate_subject(hero, daily_take)
-    print(f"  Subject: {subject}")
+    print("\nGenerating subject line and subtitle...")
+    subject  = generate_subject(hero, daily_take)
+    subtitle = generate_subtitle(hero, markets.get("movers", []), daily_take)
+    print(f"  Subject:  {subject}")
+    print(f"  Subtitle: {subtitle}")
 
     print("\nBuilding newsletter HTML...")
     html_full   = build_html(markets, news, subject, with_footer=True)
@@ -890,7 +916,7 @@ def main():
     print(f"  HTML:    {len(html_full):,} chars")
 
     print("\nSaving newsletter...")
-    success = save_newsletter(subject, html_full, html_no_ftr)
+    success = save_newsletter(subject, html_full, html_no_ftr, subtitle)
 
     print("\nPosting to Beehiiv...")
     posted = post_to_beehiiv(subject, html_no_ftr)
