@@ -306,6 +306,7 @@ def build_head_styles() -> str:
 
 def build_html(markets: dict, news: dict, subject: str, with_footer: bool = True) -> str:
     hero       = markets.get("hero", {})
+    trade      = markets.get("trade") or {}   # today's short-duration portfolio pick
     movers     = markets.get("movers", [])[:5]
     daily_take = markets.get("daily_take", {})
     articles   = news.get("articles", [])[:3]
@@ -403,6 +404,52 @@ def build_html(markets: dict, news: dict, subject: str, with_footer: bool = True
       View Market &#8594;
     </a>
     <!--[if mso]></td></tr></table><![endif]-->
+  </td></tr>"""
+
+    # ── TODAY'S TRADE SECTION ──
+    trade_html = ""
+    if trade:
+        t_prob    = trade.get("prob", 50)
+        t_dir     = "YES" if t_prob >= 65 else "NO"
+        t_q       = trade.get("question", "")
+        t_end     = trade.get("end_date", "")
+        t_url     = trade.get("url", SITE_URL)
+        t_source  = trade.get("source", "")
+        t_change  = trade.get("change_pts", 0)
+        t_color   = color_prob(t_prob)
+        t_dir_color = "#00e5a0" if t_dir == "YES" else "#ff4d6d"
+        change_arrow = "&#9650;" if t_change > 0 else ("&#9660;" if t_change < 0 else "")
+        change_color = "#00e5a0" if t_change > 0 else ("#ff4d6d" if t_change < 0 else "#8ba3bc")
+        trade_html = f"""
+  <tr><td class="section-pad" style="background:#080b0f !important;padding:28px 32px 8px;">
+    <div style="font-family:'Courier New',monospace;font-size:10px;color:#f59e0b !important;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:12px;">&#9654; Today&#39;s Trade</div>
+    <table width="100%" cellpadding="0" cellspacing="0" style="border:1px solid #1e2a38;border-radius:8px;overflow:hidden;">
+      <tr>
+        <td style="background:#0d1117 !important;padding:20px 24px;vertical-align:top;">
+          <div style="font-family:'Courier New',monospace;font-size:10px;color:#8ba3bc !important;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:8px;">{t_source} &middot; Closes {t_end}</div>
+          <a href="{t_url}" style="font-size:16px;font-weight:600;color:#d0dde8 !important;text-decoration:none;line-height:1.4;display:block;margin-bottom:16px;">{t_q}</a>
+          <table cellpadding="0" cellspacing="0">
+            <tr>
+              <td style="padding-right:24px;">
+                <div style="font-family:'Courier New',monospace;font-size:11px;color:#8ba3bc !important;letter-spacing:0.1em;text-transform:uppercase;">Probability</div>
+                <div style="font-family:'Courier New',monospace;font-size:28px;font-weight:700;color:{t_color} !important;">{t_prob}%</div>
+              </td>
+              <td style="padding-right:24px;">
+                <div style="font-family:'Courier New',monospace;font-size:11px;color:#8ba3bc !important;letter-spacing:0.1em;text-transform:uppercase;">24h Move</div>
+                <div style="font-family:'Courier New',monospace;font-size:18px;font-weight:700;color:{change_color} !important;">{change_arrow} {abs(t_change):.1f}pts</div>
+              </td>
+              <td>
+                <div style="font-family:'Courier New',monospace;font-size:11px;color:#8ba3bc !important;letter-spacing:0.1em;text-transform:uppercase;">The Prob plays</div>
+                <div style="font-family:'Courier New',monospace;font-size:28px;font-weight:700;color:{t_dir_color} !important;">{t_dir}</div>
+              </td>
+            </tr>
+          </table>
+          <div style="margin-top:16px;font-family:'Courier New',monospace;font-size:10px;color:#8ba3bc !important;">
+            $100 paper trade &middot; tracked at <a href="{SITE_URL}/portfolio.html" style="color:#8ba3bc !important;text-decoration:underline;">theprobnewsletter.com/portfolio</a>
+          </div>
+        </td>
+      </tr>
+    </table>
   </td></tr>"""
 
     # ── MOVERS SECTION ──
@@ -559,7 +606,7 @@ def build_html(markets: dict, news: dict, subject: str, with_footer: bool = True
     # CAN-SPAM/GDPR footer, so we omit ours to avoid a duplicate footer.
     builder_html = build_builder_section()
     inner_sections = "\n".join([
-        header_html, hero_html, movers_html, news_html, take_html,
+        header_html, hero_html, trade_html, movers_html, news_html, take_html,
         builder_html, cta_html,
         footer_html if with_footer else "",
     ])

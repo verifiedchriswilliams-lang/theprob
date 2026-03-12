@@ -218,7 +218,7 @@
       const res  = await fetch(MARKETS_URL + '?t=' + Date.now());
       const data = await res.json();
       const p    = data.portfolio || {};
-      const trades = p.recent_trades || [];
+      const trades = p.trades || p.recent_trades || [];  // full ledger
 
       // Stats
       const bal     = p.current_balance ?? 1000;
@@ -248,10 +248,11 @@
       table.innerHTML = `
         <thead>
           <tr>
-            <th>Date</th>
+            <th>Entered</th>
             <th>Market</th>
-            <th>Direction</th>
+            <th>Side</th>
             <th>Entry %</th>
+            <th>Resolves</th>
             <th>Exit %</th>
             <th>P&amp;L</th>
             <th>Status</th>
@@ -262,25 +263,36 @@
       const tbody = table.querySelector('tbody');
 
       trades.forEach(t => {
-        const isClosed = t.status === 'closed';
-        const isWin    = isClosed && t.pnl > 0;
-        const pnlText  = isClosed
+        const isClosed    = t.status === 'closed';
+        const isWin       = isClosed && t.pnl > 0;
+        const pnlText     = isClosed
           ? (t.pnl >= 0 ? '+$' : '-$') + Math.abs(t.pnl).toFixed(2)
           : '\u2014';
-        const pnlClass = isClosed ? (t.pnl >= 0 ? 'pos' : 'neg') : 'pending';
+        const pnlClass    = isClosed ? (t.pnl >= 0 ? 'pos' : 'neg') : 'pending';
         const statusLabel = isClosed ? (isWin ? 'WIN' : 'LOSS') : 'OPEN';
         const statusClass = isClosed ? (isWin ? 'win' : 'loss') : 'open';
+
+        // Format end date for display
+        let resolvesText = '\u2014';
+        if (t.end_date) {
+          resolvesText = t.end_date;
+        } else if (t.end_date_raw) {
+          try {
+            resolvesText = new Date(t.end_date_raw).toLocaleDateString('en-US', {month:'short', day:'numeric', year:'numeric'});
+          } catch(e) { resolvesText = '\u2014'; }
+        }
 
         const tr = document.createElement('tr');
         if (!isClosed) tr.className = 'open';
         tr.innerHTML = `
           <td style="font-family:'Courier New',monospace;font-size:12px;color:var(--text-muted)">${t.entry_date}</td>
           <td>
-            <a class="market-link" href="${t.url || '#'}" target="_blank">${truncate(t.question, 70)}</a>
-            <div class="market-source">${t.source}</div>
+            <a class="market-link" href="${t.url || '#'}" target="_blank">${truncate(t.question, 65)}</a>
+            <div class="market-source">${t.source}${t.display_category ? ' · ' + t.display_category : ''}</div>
           </td>
-          <td><span class="direction-badge ${t.direction.toLowerCase()}">${t.direction}</span></td>
+          <td><span class="direction-badge ${(t.direction||'').toLowerCase()}">${t.direction}</span></td>
           <td style="font-family:'Courier New',monospace;font-size:13px;">${t.entry_prob}%</td>
+          <td style="font-family:'Courier New',monospace;font-size:12px;color:var(--text-muted)">${resolvesText}</td>
           <td style="font-family:'Courier New',monospace;font-size:13px;color:var(--text-muted)">${t.exit_prob != null ? t.exit_prob + '%' : '\u2014'}</td>
           <td><span class="pnl-value ${pnlClass}">${pnlText}</span></td>
           <td><span class="status-badge ${statusClass}">${statusLabel}</span></td>`;
@@ -289,13 +301,6 @@
 
       document.getElementById('trade-container').innerHTML = '';
       document.getElementById('trade-container').appendChild(table);
-
-      if (data.portfolio && data.portfolio.recent_trades && data.portfolio.recent_trades.length === 5) {
-        const note = document.createElement('p');
-        note.style.cssText = 'font-size:12px;color:var(--text-muted);margin-top:16px;text-align:center;';
-        note.textContent = 'Showing 5 most recent trades. Full ledger in data/portfolio.json.';
-        document.getElementById('trade-container').appendChild(note);
-      }
 
     } catch(e) {
       console.error('Portfolio load error:', e);

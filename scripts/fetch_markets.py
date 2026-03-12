@@ -1768,6 +1768,83 @@ def generate_hero_take(hero: dict) -> dict:
 PORTFOLIO_FILE          = "data/portfolio.json"
 PORTFOLIO_START_BALANCE = 1000.0
 TRADE_AMOUNT            = 100.0
+TRADE_MAX_DAYS          = 14    # Portfolio trades must resolve within this many days.
+                                 # Keeps the feedback loop tight — wins/losses confirmed
+                                 # within 2 weeks, not months. Hero is editorial (any
+                                 # duration); trade is separate and always short-term.
+
+def pick_trade(markets: list[dict], exclude_slugs: set | None = None) -> dict | None:
+    """
+    Select the best short-duration market for today's portfolio trade.
+
+    Completely decoupled from hero selection:
+      - Hero = editorial interest (any duration, most buzzworthy story)
+      - Trade = fast feedback (must resolve within TRADE_MAX_DAYS)
+
+    Gates (must pass all):
+      1. end_date_raw exists and is within TRADE_MAX_DAYS from today
+      2. prob >= 65% (YES) or <= 35% (NO) — no coin flips
+      3. Not resolved, junk, or range-bucket
+      4. Not excluded (e.g. already the hero)
+      5. Sports only allowed at championship/tournament volume (same as hero gate)
+         — blocks game-level props (Oilers vs Avalanche, player O/U rebounds)
+
+    Scoring: conviction × 24h activity × price movement.
+    Conviction is the dominant factor — the further the crowd has moved from 50%,
+    the cleaner the trade signal.
+    """
+    today   = datetime.now(timezone.utc).date()
+    cutoff  = today + timedelta(days=TRADE_MAX_DAYS)
+    exclude = exclude_slugs or set()
+
+    candidates = []
+    for m in markets:
+        end_raw = m.get("end_date_raw")
+        if not end_raw:
+            continue
+        try:
+            end_date = datetime.fromisoformat(str(end_raw).replace("Z", "+00:00")).date()
+        except (ValueError, AttributeError):
+            continue
+        if end_date < today or end_date > cutoff:
+            continue
+
+        prob = m.get("prob", 50)
+        if not (prob >= 65 or prob <= 35):
+            continue
+
+        if is_effectively_resolved(m):
+            continue
+        if is_junk_market(m):
+            continue
+        if is_range_bucket_market(m):
+            continue
+        if (m.get("slug") or m.get("url", "")) in exclude:
+            continue
+        # Block game-level sports props — only allow major championship markets
+        if is_sports_market(m) and m.get("volume", 0) < HERO_SPORTS_MIN_VOLUME:
+            continue
+
+        candidates.append(m)
+
+    if not candidates:
+        return None
+
+    def trade_score(m: dict) -> float:
+        prob       = m.get("prob", 50)
+        conviction = abs(prob - 50) / 50          # 0→1; higher = crowd picked a side
+        activity   = math.log10(m.get("volume_24h", 1) + 1)
+        movement   = abs(m.get("change_pts", 0)) * 0.5
+        return conviction * 3 + activity + movement
+
+    winner = max(candidates, key=trade_score)
+    days_left = (datetime.fromisoformat(
+        str(winner.get("end_date_raw", "")).replace("Z", "+00:00")
+    ).date() - today).days
+    print(f"  Trade pick: '{winner['question'][:55]}' "
+          f"prob={winner['prob']}% | resolves in {days_left}d")
+    return winner
+
 
 def load_portfolio() -> dict:
     if os.path.exists(PORTFOLIO_FILE):
@@ -1790,11 +1867,12 @@ def save_portfolio(portfolio: dict) -> None:
     with open(PORTFOLIO_FILE, "w") as f:
         json.dump(portfolio, f, indent=2)
 
-def update_portfolio(portfolio: dict, hero: dict, hero_direction: str,
+def update_portfolio(portfolio: dict, trade_market: dict | None, trade_direction: str,
                      all_markets: list, today_str: str) -> dict:
     """
     1. Close any open trades that have resolved (prob >= 95 or <= 5).
-    2. Open a new $100 trade on today's hero if direction is not NO_PLAY.
+    2. Open a new $100 trade on today's trade_market if direction is not NO_PLAY.
+       trade_market is picked by pick_trade() — short-duration, decoupled from hero.
     Returns updated portfolio dict.
     """
     market_prob_lookup = {}
@@ -1847,32 +1925,36 @@ def update_portfolio(portfolio: dict, hero: dict, hero_direction: str,
                   f"{'WIN' if win else 'LOSS'} ${pnl:+.2f} "
                   f"(bal: ${portfolio['current_balance']:.2f})")
 
-    # ── 2. Open new trade for today's hero ───────────────────────────────────
-    if hero and hero_direction != "NO_PLAY":
-        hero_id      = hero.get("slug") or hero.get("url", "")
+    # ── 2. Open new trade on today's short-duration pick ─────────────────────
+    if trade_market and trade_direction != "NO_PLAY":
+        trade_id     = trade_market.get("slug") or trade_market.get("url", "")
         already_open = any(
-            t["market_id"] == hero_id and t["status"] == "open"
+            t["market_id"] == trade_id and t["status"] == "open"
             for t in portfolio["trades"]
         )
         if not already_open:
             trade = {
-                "trade_id":   str(uuid.uuid4())[:8],
-                "market_id":  hero_id,
-                "question":   hero.get("question", ""),
-                "url":        hero.get("url", ""),
-                "source":     hero.get("source", ""),
-                "entry_prob": hero.get("prob", 50),
-                "direction":  hero_direction,
-                "amount":     TRADE_AMOUNT,
-                "entry_date": today_str,
-                "status":     "open",
-                "exit_prob":  None,
-                "exit_date":  None,
-                "pnl":        None,
+                "trade_id":     str(uuid.uuid4())[:8],
+                "market_id":    trade_id,
+                "question":     trade_market.get("question", ""),
+                "url":          trade_market.get("url", ""),
+                "source":       trade_market.get("source", ""),
+                "display_category": trade_market.get("display_category", ""),
+                "entry_prob":   trade_market.get("prob", 50),
+                "direction":    trade_direction,
+                "amount":       TRADE_AMOUNT,
+                "entry_date":   today_str,
+                "end_date_raw": trade_market.get("end_date_raw", ""),
+                "end_date":     trade_market.get("end_date", ""),
+                "status":       "open",
+                "exit_prob":    None,
+                "exit_date":    None,
+                "pnl":          None,
             }
             portfolio["trades"].append(trade)
-            print(f"  Portfolio: NEW TRADE '{hero['question'][:45]}' "
-                  f"{hero_direction} @ {hero.get('prob')}%")
+            print(f"  Portfolio: NEW TRADE '{trade_market['question'][:45]}' "
+                  f"{trade_direction} @ {trade_market.get('prob')}% "
+                  f"| closes {trade_market.get('end_date', '?')}")
 
     # ── 3. Refresh summary stats ──────────────────────────────────────────────
     portfolio["open_count"]     = sum(1 for t in portfolio["trades"] if t["status"] == "open")
@@ -2083,25 +2165,39 @@ def main():
     # Sort catalog by cat_rank so frontend gets trading-optimized order by default
     catalog.sort(key=lambda m: m.get("cat_rank", 0), reverse=True)
 
-    # Generate hero "The Prob's Take" + trade direction
-    hero_direction = "NO_PLAY"
+    # Generate hero "The Prob's Take" (editorial — direction still shown in newsletter
+    # but no longer drives the portfolio trade)
     if hero:
-        take_result        = generate_hero_take(hero)
-        hero["prob_take"]  = take_result["take"]
-        hero_direction     = take_result["direction"]
-        # Probability gate: never trade coin flips (35-65% zone)
-        hero_prob_val = hero.get("prob", 50)
+        take_result       = generate_hero_take(hero)
+        hero["prob_take"] = take_result["take"]
+        hero_direction    = take_result["direction"]
+        hero_prob_val     = hero.get("prob", 50)
         if not (hero_prob_val >= 65 or hero_prob_val <= 35):
             hero_direction = "NO_PLAY"
-            print(f"  Hero direction: NO_PLAY (prob {hero_prob_val}% in coin-flip zone, skipping)")
+            print(f"  Hero direction: NO_PLAY (prob {hero_prob_val}% in coin-flip zone)")
         else:
             print(f"  Hero direction: {hero_direction} (prob {hero_prob_val}%)")
+    else:
+        hero_direction = "NO_PLAY"
 
-    # Update portfolio (close resolved, open new trade)
+    # Pick today's portfolio trade — short-duration (≤14 days), decoupled from hero.
+    # This is what actually gets logged to the paper portfolio.
+    print("\nPicking trade...")
+    hero_id      = hero.get("slug") or hero.get("url", "") if hero else ""
+    trade_market = pick_trade(all_markets, exclude_slugs={hero_id} if hero_id else set())
+    if trade_market:
+        trade_prob = trade_market.get("prob", 50)
+        trade_direction = "YES" if trade_prob >= 65 else "NO"
+        print(f"  Trade direction: {trade_direction} (prob {trade_prob}%)")
+    else:
+        trade_direction = "NO_PLAY"
+        print("  Trade: NO_PLAY — no qualifying short-duration market today")
+
+    # Update portfolio (close resolved, open new trade on trade_market not hero)
     print("\nUpdating Portfolio...")
     today_str = now_utc.strftime("%Y-%m-%d")
     portfolio = load_portfolio()
-    portfolio = update_portfolio(portfolio, hero, hero_direction, all_markets, today_str)
+    portfolio = update_portfolio(portfolio, trade_market, trade_direction, all_markets, today_str)
     save_portfolio(portfolio)
     print(f"  Balance: ${portfolio['current_balance']:.2f} "
           f"({portfolio['ytd_return_pct']:+.1f}% YTD) | "
@@ -2127,8 +2223,8 @@ def main():
     hero_cat_history += [c for c in recent_hero_categories if c not in hero_cat_history]
     hero_cat_history  = hero_cat_history[:3]
 
-    # Portfolio summary for frontend (recent 5 trades newest-first)
-    recent_trades = [t for t in reversed(portfolio["trades"])][:5]
+    # Portfolio summary for frontend — all trades newest-first
+    all_trades_display = list(reversed(portfolio["trades"]))
     portfolio_summary = {
         "current_balance":  portfolio["current_balance"],
         "starting_balance": portfolio["starting_balance"],
@@ -2136,16 +2232,17 @@ def main():
         "win_count":        portfolio["win_count"],
         "loss_count":       portfolio["loss_count"],
         "open_count":       portfolio["open_count"],
-        "recent_trades":    recent_trades,
+        "trades":           all_trades_display,   # full ledger for portfolio.html
     }
 
     output = {
         "updated":               updated_str,
         "updated_iso":           now_utc.isoformat(),
         "hero":                  hero,
+        "trade":                 trade_market,   # today's portfolio trade (short-duration, ≤14 days)
         "hero_history":          hero_history_keys,
         "hero_category_history": hero_cat_history,
-        "trending_topics":       trending_topics[:30],   # top 30 for debug/newsletter use
+        "trending_topics":       trending_topics[:30],
         "movers":                movers,
         "ticker":                ticker,
         "daily_take":            daily_take,
