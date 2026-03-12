@@ -1,5 +1,5 @@
 {
   "last_updated": "2026-03-11",
-  "built_recently": "Big upgrade to how we pick the Market of the Day. It now cross-references every market against what is actually trending in the news using Wikipedia top stories from the day before. Markets that are moving AND matching what people are reading about rise to the top. We also decoupled the daily trade pick from the editorial hero, so the paper portfolio now only takes positions on markets resolving within 14 days.",
-  "coming_next": "Building The Spread: a feature that flags where Polymarket and Kalshi price the same event differently. When two crowds disagree by 8 or more points, one of them is wrong. We will show you which one and by how much."
+  "built_recently": "Two big things shipped this week. First, the paper portfolio is now a live public experiment — every trade, every rule, every result logged in real time with no retroactive edits. You can watch the system get built and refined at theprobnewsletter.com/portfolio. Second, the Market of the Day and the daily trade pick are now separate. The editorial hero can be any market worth watching. The trade pick only goes on markets resolving within 14 days, so the ledger actually turns over and you can see results fast.",
+  "coming_next": "Building The Spread — a feature that surfaces where Polymarket and Kalshi price the same event differently. When two crowds disagree by 8 or more points, one of them is wrong. We will show you exactly where the gap is and which direction to play it."
 }

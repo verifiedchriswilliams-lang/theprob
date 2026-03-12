@@ -165,7 +165,7 @@ def build_builder_section() -> str:
         return ""
     built_block = (
         f'<p class="body-text" style="font-size:15px;color:#d0dde8 !important;line-height:1.8;margin:0 0 12px;">'
-        f'<span style="color:#edf2f7 !important;font-weight:700;">Yesterday:</span> {built}'
+        f'<span style="color:#edf2f7 !important;font-weight:700;">Recently:</span> {built}'
         f'</p>'
     ) if built else ""
     coming_block = (
