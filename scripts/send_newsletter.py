@@ -451,8 +451,8 @@ def build_html(markets: dict, news: dict, subject: str, with_footer: bool = True
         t_change  = trade.get("change_pts", 0)
         t_color   = color_prob(t_prob)
         t_dir_color = "#00e5a0" if t_dir == "YES" else "#ff4d6d"
-        change_arrow = "&#9650;" if t_change > 0 else ("&#9660;" if t_change < 0 else "")
-        change_color = "#00e5a0" if t_change > 0 else ("#ff4d6d" if t_change < 0 else "#8ba3bc")
+        change_arrow  = "&#9650;" if t_change > 0 else ("&#9660;" if t_change < 0 else "")
+        t_change_color = "#00e5a0" if t_change > 0 else ("#ff4d6d" if t_change < 0 else "#8ba3bc")
         trade_html = f"""
   <tr><td class="section-pad" style="background:#080b0f !important;padding:28px 32px 8px;">
     <div style="font-family:'Courier New',monospace;font-size:10px;color:#f59e0b !important;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:12px;">&#9654; Today&#39;s Trade</div>
@@ -469,7 +469,7 @@ def build_html(markets: dict, news: dict, subject: str, with_footer: bool = True
               </td>
               <td style="padding-right:24px;">
                 <div style="font-family:'Courier New',monospace;font-size:11px;color:#8ba3bc !important;letter-spacing:0.1em;text-transform:uppercase;">24h Move</div>
-                <div style="font-family:'Courier New',monospace;font-size:18px;font-weight:700;color:{change_color} !important;">{change_arrow} {abs(t_change):.1f}pts</div>
+                <div style="font-family:'Courier New',monospace;font-size:18px;font-weight:700;color:{t_change_color} !important;">{change_arrow} {abs(t_change):.1f}pts</div>
               </td>
               <td>
                 <div style="font-family:'Courier New',monospace;font-size:11px;color:#8ba3bc !important;letter-spacing:0.1em;text-transform:uppercase;">The Prob plays</div>
