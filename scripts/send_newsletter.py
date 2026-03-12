@@ -68,25 +68,32 @@ CATEGORY_COLORS = {
 }
 
 # ── FROM THE BUILDER ──────────────────────────────────────────────────────────
-# Update each session: what we shipped yesterday, what's coming next.
+# Loaded from data/builder_notes.json — update that file each session.
+# Fields: built_recently, coming_next, last_updated
 # Keep it trader-facing — no implementation jargon.
 
-FROM_THE_BUILDER = {
-    "built_yesterday": (
-        "The Market of the Day engine got a significant upgrade this week. "
-        "It now cross-references every market against what's actually trending in the news, "
-        "using Wikipedia's top stories from the previous day. Markets that are both moving "
-        "and matching what people are reading about rise to the top. "
-        "We also tightened the repeat filter, so the same story can't dominate for more than "
-        "a week, and added category rotation so you get variety across politics, finance, "
-        "tech, and world markets day to day."
-    ),
-    "coming_next": (
-        "Building The Spread: a feature that flags where Polymarket and Kalshi "
-        "price the same event differently. When two crowds disagree by 8+ points, "
-        "one of them is wrong. We'll show you which one and by how much."
-    ),
-}
+def load_builder_notes() -> dict:
+    """Load From Chris section from data/builder_notes.json."""
+    try:
+        with open("data/builder_notes.json") as f:
+            notes = json.load(f)
+        # Warn in pipeline output if notes are stale (> 7 days)
+        last_updated = notes.get("last_updated", "")
+        if last_updated:
+            try:
+                updated_date = datetime.fromisoformat(last_updated).date()
+                days_stale   = (datetime.now(timezone.utc).date() - updated_date).days
+                if days_stale > 7:
+                    print(f"  [WARN] builder_notes.json is {days_stale} days old — update data/builder_notes.json")
+            except (ValueError, AttributeError):
+                pass
+        return notes
+    except FileNotFoundError:
+        print("  [WARN] data/builder_notes.json not found — From Chris section will be empty")
+        return {}
+    except Exception as e:
+        print(f"  [WARN] Could not load builder_notes.json: {e}")
+        return {}
 
 # ── LOAD DATA ─────────────────────────────────────────────────────────────────
 
@@ -150,9 +157,10 @@ def category_chip(cat: str) -> str:
     )
 
 def build_builder_section() -> str:
-    """Personal 'From Chris' section — what we built yesterday + what's coming next."""
-    built   = FROM_THE_BUILDER.get("built_yesterday", "")
-    coming  = FROM_THE_BUILDER.get("coming_next", "")
+    """Personal 'From Chris' section — loaded fresh from data/builder_notes.json each run."""
+    notes   = load_builder_notes()
+    built   = notes.get("built_recently", "")
+    coming  = notes.get("coming_next", "")
     if not built and not coming:
         return ""
     built_block = (
