@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-03-11",
-  "built_recently": "Two big things shipped this week. First, the paper portfolio is now a live public experiment — every trade, every rule, every result logged in real time with no retroactive edits. You can watch the system get built and refined at theprobnewsletter.com/portfolio. Second, the Market of the Day and the daily trade pick are now separate. The editorial hero can be any market worth watching. The trade pick only goes on markets resolving within 14 days, so the ledger actually turns over and you can see results fast.",
-  "coming_next": "Building The Spread — a feature that surfaces where Polymarket and Kalshi price the same event differently. When two crowds disagree by 8 or more points, one of them is wrong. We will show you exactly where the gap is and which direction to play it."
+  "last_updated": "2026-03-13",
+  "built_recently": "Shipped The Spread today. It finds where Polymarket and Kalshi price the same event at least 8 points apart and surfaces the biggest gaps front and center on the site and in the daily email. If two independent crowds disagree by that much on the same outcome, one of them is wrong. Now you can see exactly where that is every day.",
+  "coming_next": "Three things queued up: Yesterday's Biggest Swings (save a daily snapshot and diff it), a Closing Soon rail for markets resolving in under 72 hours near 50/50, and sparklines on every market card showing the 7-day probability trend. The data collection for sparklines starts this run."
 }

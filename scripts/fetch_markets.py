@@ -12,6 +12,7 @@ import base64
 import time
 import re
 import uuid
+import difflib
 import requests
 from datetime import datetime, timezone, timedelta
 
@@ -1967,6 +1968,104 @@ def update_portfolio(portfolio: dict, trade_market: dict | None, trade_direction
 
 # ── MAIN ─────────────────────────────────────────────────────────────────────
 
+def compute_spread(poly_markets: list, kalshi_markets: list) -> list:
+    """
+    Match Polymarket and Kalshi markets by title similarity.
+    Return the top 8 pairs sorted by interest score (gap + volume + uncertainty).
+    Flags pairs where |poly_prob - kalshi_prob| >= 8 points.
+    The crowd disagrees with itself — here's where.
+    """
+    MATCH_THRESHOLD    = 0.35
+    SPREAD_MIN_GAP_PTS = 8
+    SPREAD_MIN_VOL     = 10_000   # combined minimum to filter noise
+    SPREAD_MAX_RESULTS = 8
+
+    def _norm(title: str) -> str:
+        stopwords = {
+            "will", "the", "a", "an", "be", "is", "are", "was", "were",
+            "in", "on", "at", "by", "to", "of", "for", "with", "and",
+            "or", "not", "it", "its", "this", "that", "which", "who",
+            "than", "2024", "2025", "2026", "2027",
+        }
+        t = title.lower()
+        t = re.sub(r"[^\w\s]", " ", t)
+        return " ".join(w for w in t.split() if w not in stopwords and len(w) > 1)
+
+    def _sim(a: str, b: str) -> float:
+        na, nb = _norm(a), _norm(b)
+        seq = difflib.SequenceMatcher(None, na, nb).ratio()
+        wa, wb = set(na.split()), set(nb.split())
+        if not wa or not wb:
+            return seq
+        jaccard = len(wa & wb) / len(wa | wb)
+        return seq * 0.4 + jaccard * 0.6   # Jaccard weighted higher for short titles
+
+    pairs = []
+    used_kalshi = set()
+
+    for pm in poly_markets:
+        poly_prob = pm.get("prob")
+        poly_vol  = pm.get("volume", 0) or 0
+        if poly_prob is None or poly_vol < SPREAD_MIN_VOL / 2:
+            continue
+        if not (5 <= poly_prob <= 95):   # skip near-certain markets
+            continue
+
+        best_score, best_km = 0.0, None
+        for km in kalshi_markets:
+            if km.get("slug") in used_kalshi:
+                continue
+            kalshi_prob = km.get("prob")
+            kalshi_vol  = km.get("volume", 0) or 0
+            if kalshi_prob is None or kalshi_vol < SPREAD_MIN_VOL / 2:
+                continue
+            if not (5 <= kalshi_prob <= 95):
+                continue
+            s = _sim(pm["question"], km["question"])
+            if s > best_score:
+                best_score, best_km = s, km
+
+        if best_score < MATCH_THRESHOLD or best_km is None:
+            continue
+
+        kalshi_prob  = best_km["prob"]
+        gap          = abs(poly_prob - kalshi_prob)
+        combined_vol = poly_vol + (best_km.get("volume", 0) or 0)
+
+        if gap < SPREAD_MIN_GAP_PTS or combined_vol < SPREAD_MIN_VOL:
+            continue
+
+        # Score: wider gap + more volume + nearer to 50% = more interesting
+        mid              = (poly_prob + kalshi_prob) / 2
+        uncertainty_bonus = max(0, 25 - abs(mid - 50)) * 0.5
+        interest_score   = gap * 2 + math.log10(max(combined_vol, 1)) + uncertainty_bonus
+
+        pairs.append({
+            "display_title":   pm["question"],
+            "poly_question":   pm["question"],
+            "kalshi_question": best_km["question"],
+            "poly_prob":       round(poly_prob, 1),
+            "kalshi_prob":     round(kalshi_prob, 1),
+            "gap_pts":         round(gap, 1),
+            "higher_platform": "Polymarket" if poly_prob > kalshi_prob else "Kalshi",
+            "lower_platform":  "Kalshi" if poly_prob > kalshi_prob else "Polymarket",
+            "higher_prob":     round(max(poly_prob, kalshi_prob), 1),
+            "lower_prob":      round(min(poly_prob, kalshi_prob), 1),
+            "poly_volume":     poly_vol,
+            "kalshi_volume":   best_km.get("volume", 0) or 0,
+            "kalshi_oi":       best_km.get("open_interest", 0) or 0,
+            "combined_volume": combined_vol,
+            "poly_url":        pm.get("url", ""),
+            "kalshi_url":      best_km.get("url", ""),
+            "match_score":     round(best_score, 3),
+            "interest_score":  round(interest_score, 2),
+        })
+        used_kalshi.add(best_km["slug"])
+
+    pairs.sort(key=lambda x: x["interest_score"], reverse=True)
+    return pairs[:SPREAD_MAX_RESULTS]
+
+
 def main():
     now_utc     = datetime.now(timezone.utc)
     now_et      = now_utc + timedelta(hours=-5)
@@ -2071,6 +2170,16 @@ def main():
 
     # Rebuild all_markets with corrected Kalshi data
     all_markets = poly_markets + kalshi_markets
+
+    # Compute The Spread — surfaces where Poly and Kalshi disagree by 8+ pts
+    print("\nComputing The Spread...")
+    spread_markets = compute_spread(poly_markets, kalshi_markets)
+    if spread_markets:
+        top = spread_markets[0]
+        print(f"  Found {len(spread_markets)} divergence pair(s). "
+              f"Top gap: {top['gap_pts']}pts on '{top['display_title'][:55]}'")
+    else:
+        print("  No significant Poly/Kalshi divergences found this run")
 
     # Fetch trending topics and inject trends_bonus into every market dict.
     # Must happen BEFORE pick_hero/pick_movers so scoring reflects trends.
@@ -2248,6 +2357,7 @@ def main():
         "daily_take":            daily_take,
         "all_markets":           catalog,
         "portfolio":             portfolio_summary,
+        "the_spread":            spread_markets,
     }
 
     os.makedirs("data", exist_ok=True)

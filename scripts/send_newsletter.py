@@ -335,6 +335,85 @@ def build_head_styles() -> str:
   }
 </style>"""
 
+# ── THE SPREAD SECTION ────────────────────────────────────────────────────────
+
+def build_spread_section(spread_markets: list, max_items: int = 4) -> str:
+    """
+    Generate the 'The Spread' newsletter HTML block.
+    Surfaces where Polymarket and Kalshi price the same event differently.
+    Beehiiv-safe: no h1/h2, all colors !important, HTML entities, no double dollar signs.
+    Returns empty string if no divergence pairs available.
+    """
+    if not spread_markets:
+        return ""
+
+    items = spread_markets[:max_items]
+
+    def fv(n):
+        """Format volume — single dollar sign only (Beehiiv strips doubles)."""
+        if not n:
+            return "\u2014"
+        if n >= 1_000_000:
+            return f"${n/1_000_000:.1f}M"
+        if n >= 1_000:
+            return f"${n/1_000:.0f}K"
+        return f"${int(n)}"
+
+    def esc(s):
+        return str(s).replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+
+    rows = ""
+    for m in items:
+        poly_p   = m["poly_prob"]
+        kal_p    = m["kalshi_prob"]
+        gap      = m["gap_pts"]
+        title    = esc(m["display_title"])
+        vol      = fv(m.get("combined_volume", 0))
+
+        p_url    = m.get("poly_url", "")
+        k_url    = m.get("kalshi_url", "")
+        p_open   = f'<a href="{p_url}" style="color:#a78bfa !important;text-decoration:none !important;" target="_blank">' if p_url else "<span>"
+        p_close  = "</a>" if p_url else "</span>"
+        k_open   = f'<a href="{k_url}" style="color:#93c5fd !important;text-decoration:none !important;" target="_blank">' if k_url else "<span>"
+        k_close  = "</a>" if k_url else "</span>"
+
+        oi_str   = f' &bull; Kalshi OI: {fv(m.get("kalshi_oi", 0))}' if m.get("kalshi_oi", 0) > 0 else ""
+
+        rows += f"""
+    <tr><td style="padding:0 0 8px 0 !important;">
+      <table width="100%" cellpadding="0" cellspacing="0" style="background:#0d1117 !important;border:1px solid #1e2a38 !important;border-radius:8px !important;">
+      <tr><td style="padding:12px 14px 10px !important;">
+        <div style="font-size:13px !important;font-weight:600 !important;color:#edf2f7 !important;line-height:1.35 !important;margin-bottom:8px !important;">{title}</div>
+        <div style="display:flex !important;align-items:center !important;gap:8px !important;flex-wrap:wrap !important;margin-bottom:6px !important;">
+          {p_open}<span style="display:inline-block !important;background:rgba(139,92,246,.2) !important;color:#a78bfa !important;border:1px solid rgba(139,92,246,.3) !important;border-radius:999px !important;padding:3px 10px !important;font-size:12px !important;font-weight:700 !important;">Poly&nbsp;{poly_p}%</span>{p_close}
+          <span style="color:#546e85 !important;font-size:11px !important;">&#8596;</span>
+          {k_open}<span style="display:inline-block !important;background:rgba(59,130,246,.2) !important;color:#93c5fd !important;border:1px solid rgba(59,130,246,.3) !important;border-radius:999px !important;padding:3px 10px !important;font-size:12px !important;font-weight:700 !important;">Kalshi&nbsp;{kal_p}%</span>{k_close}
+          <span style="display:inline-block !important;background:rgba(245,166,35,.15) !important;color:#f5a623 !important;border:1px solid rgba(245,166,35,.3) !important;border-radius:999px !important;padding:3px 8px !important;font-size:11px !important;font-weight:700 !important;">&#9889; {gap} pts</span>
+        </div>
+        <div style="font-size:11px !important;color:#546e85 !important;">Vol: {vol}{oi_str}</div>
+      </td></tr>
+      </table>
+    </td></tr>"""
+
+    return f"""
+  <!-- THE SPREAD -->
+  <tr><td style="padding:20px 0 0 !important;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background:#080b0f !important;border:2px solid #1e2a38 !important;border-radius:10px !important;padding:0 !important;">
+  <tr><td style="padding:18px 20px 6px !important;">
+    <div style="font-family:'Space Mono',monospace !important;font-size:10px !important;letter-spacing:0.2em !important;text-transform:uppercase !important;color:#8ba3bc !important;margin-bottom:4px !important;">&#9889; The Spread</div>
+    <div style="font-size:16px !important;font-weight:700 !important;color:#edf2f7 !important;margin-bottom:4px !important;">The crowd disagrees with itself</div>
+    <div style="font-size:12px !important;color:#546e85 !important;margin-bottom:14px !important;">Polymarket vs Kalshi &bull; 8pt+ gap &bull; one of them is wrong</div>
+    <table width="100%" cellpadding="0" cellspacing="0">
+      {rows}
+    </table>
+    <div style="font-size:11px !important;color:#546e85 !important;padding-bottom:14px !important;">
+      <a href="https://theprobnewsletter.com" style="color:#8ba3bc !important;">See all divergences on The Prob &#8594;</a>
+    </div>
+  </td></tr>
+  </table>
+  </td></tr>"""
+
+
 # ── HTML BUILDER ──────────────────────────────────────────────────────────────
 
 def build_html(markets: dict, news: dict, subject: str, with_footer: bool = True) -> str:
@@ -638,8 +717,9 @@ def build_html(markets: dict, news: dict, subject: str, with_footer: bool = True
     # with_footer=False when posting via Beehiiv API — they inject their own
     # CAN-SPAM/GDPR footer, so we omit ours to avoid a duplicate footer.
     builder_html = build_builder_section()
+    spread_html  = build_spread_section(markets.get("the_spread", []), max_items=4)
     inner_sections = "\n".join([
-        header_html, hero_html, trade_html, movers_html, news_html, take_html,
+        header_html, hero_html, trade_html, movers_html, spread_html, news_html, take_html,
         builder_html, cta_html,
         footer_html if with_footer else "",
     ])

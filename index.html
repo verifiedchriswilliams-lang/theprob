@@ -922,6 +922,75 @@
       .why-grid { grid-template-columns: 1fr; }
       footer { grid-template-columns: 1fr; padding: 32px 24px; }
       .brief-section { margin: 0 24px; }
+      .spread-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── THE SPREAD ─────────────────────────────────────────── */
+    .spread-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 12px;
+    }
+    .spread-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px 16px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      transition: background 0.2s;
+    }
+    .spread-card:hover { background: var(--bg3); }
+    .spread-card-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.35;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .spread-chips {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .spread-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      text-decoration: none;
+      font-family: var(--mono);
+    }
+    .spread-chip:hover { opacity: 0.85; }
+    .spread-chip-poly   { background: rgba(139,92,246,.18); color: #a78bfa; border: 1px solid rgba(139,92,246,.3); }
+    .spread-chip-kalshi { background: rgba(59,130,246,.18);  color: #93c5fd; border: 1px solid rgba(59,130,246,.3); }
+    .spread-gap-badge {
+      background: rgba(245,166,35,.15);
+      color: var(--amber);
+      border: 1px solid rgba(245,166,35,.3);
+      border-radius: 999px;
+      padding: 3px 8px;
+      font-size: 11px;
+      font-weight: 700;
+      font-family: var(--mono);
+    }
+    .spread-foot {
+      font-size: 11px;
+      color: var(--text-dim);
+      font-family: var(--mono);
+    }
+    .spread-empty {
+      color: var(--text-muted);
+      font-size: 13px;
+      padding: 4px 0;
     }
   </style>
 
@@ -1084,6 +1153,21 @@
     </div>
     <div class="movers-grid" id="movers-grid">
       <!-- JS inserts mover cards here -->
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- THE SPREAD — Poly vs Kalshi divergence -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-title">
+        &#9889; The Spread <span>The Crowd Disagrees With Itself</span>
+      </div>
+      <div class="section-meta">Poly vs Kalshi &bull; 8pt+ gap</div>
+    </div>
+    <div class="spread-grid" id="spread-grid">
+      <p class="spread-empty">Loading&hellip;</p>
     </div>
   </section>
 
@@ -1460,6 +1544,7 @@ async function loadMarkets() {
     renderTicker(data.ticker     || []);
     renderHero(data.hero         || null);
     renderMovers(data.movers     || []);
+    renderSpread(data.the_spread || []);
     renderDailyTake(data.daily_take || null);
     renderTimestamp(data.updated || '');
     renderPortfolioWidget(data.portfolio || null);
@@ -1508,6 +1593,51 @@ async function loadNewsBrief() {
 function escHtml(s) {
   if (!s) return '';
   return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// ── THE SPREAD ────────────────────────────────────────────────────────────────
+
+function renderSpread(pairs) {
+  const grid = document.getElementById('spread-grid');
+  if (!grid) return;
+
+  if (!pairs || pairs.length === 0) {
+    grid.innerHTML = '<p class="spread-empty">No significant divergences right now. Check back soon.</p>';
+    return;
+  }
+
+  function fmtVol(n) {
+    if (!n) return '\u2014';
+    if (n >= 1e6)  return '$' + (n / 1e6).toFixed(1) + 'M';
+    if (n >= 1000) return '$' + (n / 1000).toFixed(0) + 'K';
+    return '$' + Math.round(n);
+  }
+
+  grid.innerHTML = pairs.map(p => {
+    const polyTag   = p.poly_url   ? `a href="${escHtml(p.poly_url)}" target="_blank" rel="noopener"` : 'span';
+    const polyClose = p.poly_url   ? 'a' : 'span';
+    const kTag      = p.kalshi_url ? `a href="${escHtml(p.kalshi_url)}" target="_blank" rel="noopener"` : 'span';
+    const kClose    = p.kalshi_url ? 'a' : 'span';
+
+    const volStr = fmtVol(p.combined_volume);
+    const oiStr  = p.kalshi_oi > 0 ? ` &bull; Kalshi OI: ${fmtVol(p.kalshi_oi)}` : '';
+
+    return `
+      <div class="spread-card">
+        <div class="spread-card-title">${escHtml(p.display_title)}</div>
+        <div class="spread-chips">
+          <${polyTag} class="spread-chip spread-chip-poly">
+            Poly&nbsp;${p.poly_prob}%
+          </${polyClose}>
+          <span style="color:var(--text-dim);font-size:11px;">&#8596;</span>
+          <${kTag} class="spread-chip spread-chip-kalshi">
+            Kalshi&nbsp;${p.kalshi_prob}%
+          </${kClose}>
+          <span class="spread-gap-badge">&#9889; ${p.gap_pts} pts</span>
+        </div>
+        <div class="spread-foot">Vol: ${volStr}${oiStr}</div>
+      </div>`;
+  }).join('');
 }
 
 // ── DAILY TAKE ────────────────────────────────────────────────────────────────
