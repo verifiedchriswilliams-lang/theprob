@@ -573,27 +573,9 @@ def fetch_kalshi() -> list[dict]:
                 kalshi_headers = make_kalshi_headers("GET", "/trade-api/v2/events")
                 resp = requests.get(f"{KALSHI_BASE}/events", params=params,
                                     headers=kalshi_headers, timeout=15)
-                if pages == 0:
-                    print(f"  [Kalshi debug] status={resp.status_code} url={resp.url[:80]}")
-                    if resp.status_code != 200:
-                        print(f"  [Kalshi debug] response body: {resp.text[:300]}")
                 resp.raise_for_status()
                 data   = resp.json()
                 events = data.get("events", [])
-                if pages == 0:
-                    top_keys = list(data.keys())
-                    print(f"  [Kalshi debug] response keys={top_keys} events={len(events)}")
-                    if events:
-                        sample = events[0]
-                        nested_list = sample.get("markets", [])
-                        nested = len(nested_list)
-                        print(f"  [Kalshi debug] sample event keys={list(sample.keys())} nested_markets={nested}")
-                        if nested_list:
-                            m0 = nested_list[0]
-                            print(f"  [Kalshi debug] sample market keys={list(m0.keys())}")
-                            print(f"  [Kalshi debug] sample market data={dict(list(m0.items())[:14])}")
-                    else:
-                        print(f"  [Kalshi debug] EMPTY events list — auth may be wrong or endpoint returning nothing")
                 if not events:
                     break
                 for event in events:
@@ -605,18 +587,25 @@ def fetch_kalshi() -> list[dict]:
                             ticker = m.get("ticker", "")
                             if ticker in seen_tickers:
                                 continue
-                            yes_bid = float(m.get("yes_bid", 0) or 0)
-                            yes_ask = float(m.get("yes_ask", 0) or 0)
-                            if yes_bid == 0 and yes_ask == 0:
+
+                            # ── Kalshi API v2 uses *_dollars fields (0-1 scale strings) ──
+                            # bid/ask are now "yes_bid_dollars"/"yes_ask_dollars" in 0–1 range.
+                            # We convert to 0–100 percentage points for internal consistency.
+                            yes_bid_d = float(m.get("yes_bid_dollars", 0) or 0)
+                            yes_ask_d = float(m.get("yes_ask_dollars", 0) or 0)
+                            if yes_bid_d == 0 and yes_ask_d == 0:
                                 continue
+                            yes_bid = round(yes_bid_d * 100, 2)   # 0-1 → 0-100
+                            yes_ask = round(yes_ask_d * 100, 2)
                             prob = round((yes_bid + yes_ask) / 2, 1)
                             if prob > 100 or prob < 0:
                                 continue
-                            volume_cents = float(m.get("volume", 0) or 0)
-                            volume_usd   = volume_cents / 100
+
+                            # volume_fp / volume_24h_fp are fixed-point cents (divide by 100 → USD)
+                            volume_usd = float(m.get("volume_fp", 0) or 0) / 100
                             if volume_usd < KALSHI_MIN_VOL:
                                 continue
-                            volume_24h_cents = float(m.get("volume_24h", 0) or 0)
+                            volume_24h_usd = float(m.get("volume_24h_fp", 0) or 0) / 100
                             close_time = m.get("close_time", "") or ""
 
                             # Build question: combine event title + market subtitle if distinct
@@ -626,41 +615,23 @@ def fetch_kalshi() -> list[dict]:
                             else:
                                 question = event_title
 
-                            # Calculate 24h change.
-                            # Kalshi API field names/scales vary by endpoint version.
-                            # Try explicit change fields first, then last vs previous price.
-                            # yes_bid/yes_ask are already 0-100 scale (that is why prob works).
+                            # 24h change: use last_price_dollars vs previous_price_dollars.
+                            # Both are 0-1 scale strings; convert to pts after diff.
+                            # Snapshot system overrides this later for accuracy.
                             change_pts = 0.0
-                            raw_change = (
-                                m.get("price_change_24h") or
-                                m.get("yes_price_change_24h") or
-                                m.get("one_day_price_change") or
-                                None
+                            last_price_d = float(m.get("last_price_dollars", 0) or 0)
+                            prev_price_d = float(
+                                m.get("previous_price_dollars", 0) or
+                                m.get("previous_yes_bid_dollars", 0) or 0
                             )
-                            if raw_change is not None:
-                                raw_change = float(raw_change)
-                                # Normalise: Kalshi sometimes returns decimal (0.05 = 5 pts)
-                                if abs(raw_change) <= 1.0 and raw_change != 0:
-                                    raw_change *= 100
-                                change_pts = round(raw_change, 1)
-                            else:
-                                last_price = float(m.get("last_price", 0) or 0)
-                                prev_price = float(
-                                    m.get("previous_yes_price", 0) or
-                                    m.get("previous_price", 0) or
-                                    m.get("yes_price_24h_ago", 0) or 0
-                                )
-                                if last_price > 0 and prev_price > 0:
-                                    if last_price <= 1.0:
-                                        last_price *= 100
-                                        prev_price *= 100
-                                    change_pts = round(last_price - prev_price, 1)
-                                else:
-                                    pass  # Snapshot system handles delta — no fallback needed
+                            if last_price_d > 0 and prev_price_d > 0:
+                                change_pts = round((last_price_d - prev_price_d) * 100, 1)
+                            # else: snapshot system computes real delta from kalshi_snapshot.json
 
                             disp_cat = KALSHI_CATEGORY_MAP.get(category, category or "World")
-                            spread = round(yes_ask - yes_bid, 2)
-                            open_interest_cents = float(m.get("open_interest", 0) or 0)
+                            # Spread in percentage points (for score_market liquidity signal)
+                            spread = round((yes_ask_d - yes_bid_d) * 100, 2)
+                            open_interest_usd = float(m.get("open_interest_fp", 0) or 0) / 100
                             results.append({
                                 "source":           "Kalshi",
                                 "question":         question,
@@ -671,7 +642,7 @@ def fetch_kalshi() -> list[dict]:
                                 "direction":        change_direction(change_pts),
                                 "volume":           volume_usd,
                                 "volume_fmt":       fmt_volume(volume_usd),
-                                "volume_24h":       volume_24h_cents / 100,
+                                "volume_24h":       volume_24h_usd,
                                 "end_date":         fmt_date(close_time) if close_time else "",
                                 "end_date_raw":     close_time,
                                 "liquidity":        volume_usd * 0.1,
@@ -680,7 +651,7 @@ def fetch_kalshi() -> list[dict]:
                                 "display_category": disp_cat,
                                 "tags":             [category.lower()],
                                 "spread":           spread,
-                                "open_interest":    open_interest_cents / 100,
+                                "open_interest":    open_interest_usd,
                             })
                             seen_tickers.add(ticker)
                         except (ValueError, KeyError):
