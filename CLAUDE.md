@@ -121,11 +121,14 @@ Fixed:
 - newsletter/index.json created — auto-updating archive index, backfilled with all 16 editions (Feb 24–Mar 11). Deduplication: re-running same day replaces the entry. (Mar 13, 2026)
 - Dynamic newsletter subtitle — generate_subtitle() in send_newsletter.py calls Claude API with hero + top 3 movers + daily take to write unique inbox preview each day. Falls back to static copy on failure. (Mar 13, 2026)
 - FROM_THE_BUILDER externalized — moved from hardcoded dict in send_newsletter.py to data/builder_notes.json. Pipeline warns if > 7 days stale. Edit JSON file each session, not Python. (Mar 13, 2026)
+- The Spread shipped — compute_spread() in fetch_markets.py matches Poly vs Kalshi markets by title similarity (Jaccard + SequenceMatcher blend), flags pairs with ≥8pt gap, scores by gap × volume × uncertainty. Surfaces top 8 pairs in "The Spread" section on index.html (purple/blue platform chips, amber gap badge) and as an HTML section in the newsletter between movers and news. Key: "the_spread" in markets.json. (Mar 13, 2026)
+- Kalshi auth fix — make_kalshi_headers() was defined but never called in fetch_kalshi_page(). Kalshi API started requiring authentication, causing fetch_kalshi() to silently return 0 markets. Fixed by passing headers=make_kalshi_headers("GET", "/trade-api/v2/events") to the requests.get() call. kalshi_snapshot.json was empty as a result; will repopulate on next pipeline run. (Mar 13, 2026)
 
 Remaining:
 - Topic key fingerprint cosmetic issue (low priority)
 - Monitor rolling hero block — confirm ping-pong stays resolved
 - Test 1 review: Apr 10, 2026
+- Monitor The Spread match quality after Kalshi auth fix — tune MATCH_THRESHOLD (0.35) up if false matches, down if too few pairs
 
 ## SEO Implementation (Completed Mar 1, 2026)
 
@@ -176,13 +179,21 @@ See VOICE.md. Sharp, confident, trader-focused. Lead with the number. "The crowd
 ## Session Handoff — TODO
 
 ### Pending Next Session
-1. The Spread (Poly vs Kalshi divergence) — highest trader value feature not yet built. Match markets across sources by title similarity, flag pairs where |poly_prob - kalshi_prob| > 8pts. Kalshi open_interest field already captured and waiting. Surface as "The Spread" section on index.html and in daily email.
-2. Polymarket "breaking" tab signal — Option A (API flag) confirmed NOT available. Need Option B: inspect Network tab on polymarket.com/breaking to find exact Gamma API ordering parameter, add separate fetch pass.
-3. Monitor Test 1 results — review Apr 10, 2026. Key question: does following crowd conviction (65/35 gate) have any edge, or do we need to fade them?
-4. Update data/builder_notes.json each session — edit built_recently + coming_next directly in that file. No longer in send_newsletter.py.
-5. Strategic review requested — top 10 ways to optimize and improve The Prob for traders (make money) AND prediction market-curious casual readers (buzz/entertainment). Requested Mar 13, 2026; carry into next session.
+1. Monitor The Spread output — check Actions logs after first post-fix pipeline run to confirm Kalshi markets are back and The Spread is finding pairs. Tune MATCH_THRESHOLD if needed.
+2. Yesterday's Biggest Swings — save data/markets_yesterday.json before each overwrite, diff vs today, show on index.html as "Markets That Moved Most in 24h". Zero new data needed. ~1 hour.
+3. Markets Closing Soon rail — filter days_to_resolution < 3 AND probability 35–65. Home page rail + newsletter section. High urgency signal for traders.
+4. Weird Markets section — auto-surface absurd/niche/counterintuitive markets (low volume + unusual category + active). Best viral/sharing feature for casual readers.
+5. Sparklines — start accumulating price_history.json now; display 7-day charts on cards in ~7 days once data exists.
+6. Polymarket "breaking" tab signal — Option B: inspect Network tab on polymarket.com/breaking to find Gamma API ordering parameter.
+7. Monitor Test 1 results — review Apr 10, 2026.
+8. Update data/builder_notes.json each session — edit built_recently + coming_next directly in that file.
 
-### Recently Completed (Mar 13, 2026)
+### Recently Completed (Mar 13, 2026) — Session 2
+- The Spread shipped — full implementation: compute_spread() in fetch_markets.py, "The Spread" section on index.html, build_spread_section() in send_newsletter.py. Uses Jaccard + SequenceMatcher title matching, ≥8pt gap threshold, interest scoring by gap × volume × uncertainty proximity to 50%. Output key: "the_spread" in markets.json.
+- Kalshi auth fix — make_kalshi_headers() was never being called in fetch_kalshi_page(). Auth header now passed on every Kalshi API request. This was silently returning 0 Kalshi markets and causing blank Kalshi columns on all category pages.
+- CLAUDE.md updated — The Spread and Kalshi fix logged, TODO refreshed with new P1 priorities.
+
+### Recently Completed (Mar 13, 2026) — Session 1
 - Archive dynamic loading — archive.html now loads from newsletter/index.json instead of hardcoded HTML. Groups by month, marks latest issue with badge.
 - newsletter/index.json — auto-updating index written by send_newsletter.py each morning run. Deduplication ensures one entry per day (re-run replaces, not appends). Backfilled with all 16 editions Feb 24–Mar 11.
 - UnboundLocalError fixed — `change_color` local var in trade block shadowed module-level function. Renamed to `t_change_color`.

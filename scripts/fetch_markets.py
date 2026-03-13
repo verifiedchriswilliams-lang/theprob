@@ -570,7 +570,9 @@ def fetch_kalshi() -> list[dict]:
             if cursor:
                 params["cursor"] = cursor
             try:
-                resp = requests.get(f"{KALSHI_BASE}/events", params=params, timeout=15)
+                kalshi_headers = make_kalshi_headers("GET", "/trade-api/v2/events")
+                resp = requests.get(f"{KALSHI_BASE}/events", params=params,
+                                    headers=kalshi_headers, timeout=15)
                 resp.raise_for_status()
                 data   = resp.json()
                 events = data.get("events", [])
