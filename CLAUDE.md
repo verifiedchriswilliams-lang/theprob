@@ -116,6 +116,11 @@ Fixed:
 - Portfolio decoupled: pick_trade() selects short-duration (≤14 days) markets separately from hero (Mar 11, 2026)
 - Portfolio reframed as live public experiment with 30-day test periods and experiment log (Mar 11, 2026)
 - Newsletter trade_html wired into inner_sections in send_newsletter.py (Mar 11, 2026)
+- UnboundLocalError fix — local `change_color` variable in trade block shadowed module-level `change_color()` function. Renamed to `t_change_color` (Mar 13, 2026)
+- archive.html made dynamic — replaced static hardcoded list with JS loader reading newsletter/index.json (Mar 13, 2026)
+- newsletter/index.json created — auto-updating archive index, backfilled with all 16 editions (Feb 24–Mar 11). Deduplication: re-running same day replaces the entry. (Mar 13, 2026)
+- Dynamic newsletter subtitle — generate_subtitle() in send_newsletter.py calls Claude API with hero + top 3 movers + daily take to write unique inbox preview each day. Falls back to static copy on failure. (Mar 13, 2026)
+- FROM_THE_BUILDER externalized — moved from hardcoded dict in send_newsletter.py to data/builder_notes.json. Pipeline warns if > 7 days stale. Edit JSON file each session, not Python. (Mar 13, 2026)
 
 Remaining:
 - Topic key fingerprint cosmetic issue (low priority)
@@ -171,10 +176,19 @@ See VOICE.md. Sharp, confident, trader-focused. Lead with the number. "The crowd
 ## Session Handoff — TODO
 
 ### Pending Next Session
-1. The Spread (Poly vs Kalshi divergence) — highest trader value feature not yet built
+1. The Spread (Poly vs Kalshi divergence) — highest trader value feature not yet built. Match markets across sources by title similarity, flag pairs where |poly_prob - kalshi_prob| > 8pts. Kalshi open_interest field already captured and waiting. Surface as "The Spread" section on index.html and in daily email.
 2. Polymarket "breaking" tab signal — Option A (API flag) confirmed NOT available. Need Option B: inspect Network tab on polymarket.com/breaking to find exact Gamma API ordering parameter, add separate fetch pass.
 3. Monitor Test 1 results — review Apr 10, 2026. Key question: does following crowd conviction (65/35 gate) have any edge, or do we need to fade them?
 4. Update data/builder_notes.json each session — edit built_recently + coming_next directly in that file. No longer in send_newsletter.py.
+5. Strategic review requested — top 10 ways to optimize and improve The Prob for traders (make money) AND prediction market-curious casual readers (buzz/entertainment). Requested Mar 13, 2026; carry into next session.
+
+### Recently Completed (Mar 13, 2026)
+- Archive dynamic loading — archive.html now loads from newsletter/index.json instead of hardcoded HTML. Groups by month, marks latest issue with badge.
+- newsletter/index.json — auto-updating index written by send_newsletter.py each morning run. Deduplication ensures one entry per day (re-run replaces, not appends). Backfilled with all 16 editions Feb 24–Mar 11.
+- UnboundLocalError fixed — `change_color` local var in trade block shadowed module-level function. Renamed to `t_change_color`.
+- Dynamic newsletter subtitle — generate_subtitle() calls Claude API with real hero/movers/take data each morning. Unique inbox preview line daily.
+- FROM_THE_BUILDER externalized to data/builder_notes.json — staleness warning fires if > 7 days since last_updated.
+- Session handoff: CLAUDE.md updated + comprehensive new-session prompt written.
 
 ### Recently Completed (Mar 11, 2026) — Session 3
 - Dynamic newsletter subtitle: generate_subtitle() added to send_newsletter.py. Claude writes a unique inbox preview each day based on the actual hero market, top 3 movers, and daily take. Falls back to static copy if Claude call fails.
