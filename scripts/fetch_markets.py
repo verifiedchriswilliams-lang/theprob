@@ -573,9 +573,22 @@ def fetch_kalshi() -> list[dict]:
                 kalshi_headers = make_kalshi_headers("GET", "/trade-api/v2/events")
                 resp = requests.get(f"{KALSHI_BASE}/events", params=params,
                                     headers=kalshi_headers, timeout=15)
+                if pages == 0:
+                    print(f"  [Kalshi debug] status={resp.status_code} url={resp.url[:80]}")
+                    if resp.status_code != 200:
+                        print(f"  [Kalshi debug] response body: {resp.text[:300]}")
                 resp.raise_for_status()
                 data   = resp.json()
                 events = data.get("events", [])
+                if pages == 0:
+                    top_keys = list(data.keys())
+                    print(f"  [Kalshi debug] response keys={top_keys} events={len(events)}")
+                    if events:
+                        sample = events[0]
+                        nested = len(sample.get("markets", []))
+                        print(f"  [Kalshi debug] sample event keys={list(sample.keys())} nested_markets={nested}")
+                    else:
+                        print(f"  [Kalshi debug] EMPTY events list — auth may be wrong or endpoint returning nothing")
                 if not events:
                     break
                 for event in events:
