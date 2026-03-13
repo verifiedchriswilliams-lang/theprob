@@ -1,26 +1,8 @@
 {
-  "updated": "Mar 13, 2026 \u00b7 1:04 PM ET",
-  "updated_iso": "2026-03-13T18:04:43.002391+00:00",
+  "updated": "Mar 13, 2026 \u00b7 6:55 PM ET",
+  "updated_iso": "2026-03-13T23:55:42.385642+00:00",
   "homepage_count": 3,
   "articles": [
-    {
-      "title": "Has Canada Really \u2018Dodged a Bullet\u2019 with Prediction Markets?",
-      "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxPNFN1YzItTW5GblBaZGxJM3E2b3NqREFFbmVRM3pXOW4xN3hIOHN3eFRnUkpEZGZrR0l0TS1tZWxYMmZZVm9DZzNvZl9fMnVFM09qMkxPd2dwZWZsbTJpZXNuS1R1UnZCT0prSEJkS3NxTUxLQ3BSbTRkTG9TekdpM3NyTnY2N0tSLU5PWA?oc=5",
-      "source": "Yahoo Finance",
-      "pub_iso": "2026-03-13T16:45:00+00:00",
-      "description": "",
-      "summary": "Canada's government appears to have avoided implementing harsh regulations on prediction markets that many feared were coming. This keeps one of the few major Western markets relatively open for operators and bettors, preventing another domino from falling in the global regulatory crackdown.",
-      "pub_display": "Mar 13"
-    },
-    {
-      "title": "Sharing Kalshi prediction data on Rotten Tomatoes",
-      "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTE9wVnAweXRpZnZRd2xKbGF3U19fT29EUVRnRzZUbGRCeWx6MjdJVHk5M2EtSkhUekNKUjJ4MGlrM2JYVFQwYUZESVhHcDFfWHpSUmtfXzNjQ1l3QWM5NzVRWnFKbkU5MklXTnBlLTl1dGlQUVAzRF9wMEF0cmg?oc=5",
-      "source": "Kalshi",
-      "pub_iso": "2026-03-13T15:07:59+00:00",
-      "description": "",
-      "summary": "Kalshi is apparently sharing its prediction market data with Rotten Tomatoes, likely showing odds on movie box office performance or critical reception alongside traditional reviews. This marks another step toward mainstream platforms integrating prediction market insights, potentially normalizing betting odds as a standard metric for entertainment industry forecasting.",
-      "pub_display": "Mar 13"
-    },
     {
       "title": "Miami vs. Virginia: Preview and Kalshi Markets for this ACC Tournament Semifinal",
       "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxPWE42cGlZUkFaeTFBRmNmeTl4a0FRM1BBVWM3djBYYWkza2tvVzU2TjhkZHZzbEZTeUVoVjdmVEwtLTF4cnZFeHBqUjBwUjdaZDVuWTlnVDNHT0VtdFVNMmh6em1lVm4yVmptc20tRlZkWElnaHM2clhEc19DM2RIaVZKb211akVielFaclgyY19SeFlWSjZURWI0YlFUUnh4V2IxcUwyV2hSRXluMDgyZlA3VVJtOE9yZm14aFNnR24tUQ?oc=5",
@@ -31,21 +13,39 @@
       "pub_display": "Mar 13"
     },
     {
+      "title": "Cash App Pay Now Available on Kalshi",
+      "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE1Bc0EyRXRDS2dMeklMemlKNXFyTkJuZGFUQnRaTWpJbzVscUQ2T3Y3RDd4RDBmaFJpT29PZExsalcwMlV0dlVyN0ExNi1rYVVBeVlpV2FMUGc5OFdHUmhudGdTSkxsd0x4amZEVjZ5SQ?oc=5",
+      "source": "Kalshi",
+      "pub_iso": "2026-03-13T14:07:57+00:00",
+      "description": "",
+      "summary": "Kalshi now accepts Cash App as a payment method, making it easier for users to fund their prediction market accounts. This removes a major friction point for retail bettors who prefer mobile payment apps over traditional bank transfers or credit cards.",
+      "pub_display": "Mar 13"
+    },
+    {
+      "title": "Prediction Markets Stories You May Have Missed This Week",
+      "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE9BYVJGcHBGdGhHb3NGT3dmUE9iaDBzR3pWVHZsUXFFSmY5U3lZWjI1a1g0NTBQdnlVRFNDVDEtVnNITGJ0X0hoNnd5NGY4dm9qWV8xZDl1Z0lnYmZ5U1ZCeGJNM1BNM25VakJCRWZaSE5ldmFjaXpwbVpR0gF_QVVfeXFMTWliOThqNGl6b0VEOU8zSUszTkpub1ozXzg1RXozMjdCQnBUYzF3Um1sMnBvOThRZDQ4ZDU4dW1pZUlya1BxVHpteUxNajBQOTkyVWFLNHcwbVpjLVF2X1R5el9vd3JPX0gwTDFib3dEVzM4U0FLWHR2dEZSSnBlbw?oc=5",
+      "source": "SBC Americas",
+      "pub_iso": "2026-03-13T13:43:50+00:00",
+      "description": "",
+      "summary": "While everyone was obsessing over election odds and Fed rate cuts, several smaller prediction market stories flew under the radar this week. These overlooked developments often signal where the real money and innovation are moving before the mainstream catches on.",
+      "pub_display": "Mar 13"
+    },
+    {
+      "title": "Illinois regulators say prediction markets are illegal gambling, but bettors \u2014 and the Trump family \u2014 love them",
+      "url": "https://news.google.com/rss/articles/CBMi6gFBVV95cUxPXzZkdV9wOU5BbnQ2d0hIdzVza19JcFgyU1JITHlzRGd1cjdwa2cxV290cXdHNkxYM2JfVzJVazdhUFEzOFJqd0piTGVLN0lSMUNXY3c1aGdOdnd1NDBtQVJab0piR0xVN2Q0WHZXS2w1ekZSaUVGLW9xVHNoSW5EQWJiRnIxZ1NEVFJwSUJuMENvSTJ6LTVQS18wQ0FBa1JXRlNZZm9ieS1BdGZkX25kN1NNYWR3UFgyTjBBYjZIRDF4c0o0ay15dmIzUG0tQm81d0Fud3B1MUh3dl9KaE1NbjRYTEZJRmxSZmc?oc=5",
+      "source": "NPR Illinois",
+      "pub_iso": "2026-03-13T13:32:00+00:00",
+      "description": "",
+      "summary": "Illinois regulators just declared prediction markets illegal gambling, setting up a potential clash with the booming industry that's attracted everyone from retail bettors to the Trump family. This could trigger a domino effect across other states as regulators scramble to define where prediction markets end and gambling begins.",
+      "pub_display": "Mar 13"
+    },
+    {
       "title": "When will a U.S.\u2013Iran ceasefire happen? Prediction markets point to early summer",
       "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxPV3FvQlVlS2FxQS1tSUNWekRuSkVRVjdWbWVIMXZySkxFQmxyc1JjMmxZMzNaa2o2WXl6TkZ0OUxhMUxKbDNzNEdmTDFsQVN2S3RiM3JPUmpBNWVwQjZJVnZYZTM1azNvUE1OYmJzMnBfcHpxeUxXS2hZWHJUa3dLb0xST29oX1pfZnUxeExheTYtN1E5Zk1YVFJ3TndrRmZsSjVQbjBseWpGcVdCNGFoTGw1clgyWk0?oc=5",
       "source": "Seeking Alpha",
       "pub_iso": "2026-03-13T13:08:04+00:00",
       "description": "",
       "summary": "Prediction markets are pricing in a U.S.\u2013Iran ceasefire deal by early summer 2025, suggesting traders expect diplomatic momentum to accelerate in the coming months. This timeline creates a clear binary bet with defined odds, making it one of the cleaner geopolitical plays for traders who can stomach the volatility of Middle East peace negotiations.",
-      "pub_display": "Mar 13"
-    },
-    {
-      "title": "Prediction Markets Up Against Illinois\u2019 Century-Old Gambling Law in Series of Lawsuits",
-      "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxPMVR1VGkta0NDWHBpSWVNVUo1bDl4WjJlRkNBRWsxSWtIV3lObHFWSDVjZXBrN19SaEl3VGcwUHlOOEI3MG9Ha1pWZEwzMjAwZjhNb0s1bEZZZUh0MnBXWUtWUWxQRXkwMVJhdDNxZTAydmw3Z2w5XzRObldhTTJfQ1dUSlRJNjNNN29TV1FTdlJvZ2p2X05CX1VlSldnOWM?oc=5",
-      "source": "Illinois Answers Project",
-      "pub_iso": "2026-03-13T11:00:00+00:00",
-      "description": "",
-      "summary": "Illinois prediction market operators are battling the state's century-old gambling laws in court, challenging regulations that treat political betting like casino games. The outcome could set precedent for how other states regulate prediction markets, potentially opening or closing major US markets worth millions in trading volume.",
       "pub_display": "Mar 13"
     },
     {
@@ -76,15 +76,6 @@
       "pub_display": "Mar 12"
     },
     {
-      "title": "CFTC Offers First Guidance on Manipulation in Prediction Markets",
-      "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxPS3dZS2dGZXk0bjJtUkdxMTg1Nnd0VFRnaGlmT3N2UHpEUExhSUhSRFF4cHRUX0FWM1pUN0xrQzJ5Q3Q1cVZsTHBzOGZMdXdlR2NscmNRRkpSUmNsZ0VGVFg4QnVxTnVXTEFUcGNtQkk2SGc2NDJfZXFWYWxadHdmNmpFeVhhTElMX3hsSmN4X2RCYWJyTXltamhhX1U0V25hUmdJMUZOR2hrbXV6Y3ZPcXJKWHdTdw?oc=5",
-      "source": "Bloomberg.com",
-      "pub_iso": "2026-03-12T20:44:27+00:00",
-      "description": "",
-      "summary": "The CFTC released its first official guidance on what constitutes market manipulation in prediction markets, establishing clearer rules for platforms and traders. This regulatory clarity should boost institutional confidence and potentially open doors for more mainstream prediction market adoption, though it also means stricter enforcement is coming.",
-      "pub_display": "Mar 12"
-    },
-    {
       "title": "US commodity regulator kicks off rulemaking for prediction markets",
       "url": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxOdEc2cy1LQXRFY0FNNjFfSFdrNHVhNVF4RkJQbFRnUnFxT3Mwc0tROTF0U3I0czlkNHFHT0VvY2h1LTVZVGduX2xINE9NS1cySFFQTzA0ZndkbUpJdk12akpBZWVwejVOdURHZ3Q0V0VHallaMTlwdEFuRzE0eEZfTThXN0QtV3RfXy1STUg0ZlZ5ZkdMY2VBNVpDWE0zWjZhV0kweWEwU01HLS1UelJFaHBUY2tCWnViZzdMUGdESlQ3ZnpCNmIzTGFGaHFMUVI5SHBsNw?oc=5",
       "source": "Reuters",
@@ -109,6 +100,15 @@
       "pub_iso": "2026-03-12T15:19:00+00:00",
       "description": "",
       "summary": "The heads of CME and Cboe are pushing regulators to crack down on the booming prediction markets industry. Traditional derivatives exchanges clearly see platforms like Kalshi and Polymarket as a threat to their monopoly on event-based trading, so they're trying to strangle the competition in the regulatory crib.",
+      "pub_display": "Mar 12"
+    },
+    {
+      "title": "Watch out, prediction markets. The 'super apps' are coming.",
+      "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNV2JBZlMzRzktSWRoRHFpamc5ZDJ0VElOTjdNRVI4cF94WVhKSE9FN3NkQW1WN3BDMnVPcUVfR1dmVW1ITFdpRU9yamJESE9pbnc1enVSQk8yUWxyYXppSlZ5VVRmZV9RVFFONUFrVUozRUlDcVdvNHdJaTJQQzNLMl9LbE5TeG8?oc=5",
+      "source": "Business Insider",
+      "pub_iso": "2026-03-12T10:37:00+00:00",
+      "description": "",
+      "summary": "Tech giants are building \"super apps\" that bundle multiple services, and they're eyeing prediction markets as their next feature. When WeChat or Meta decides to add betting to their billion-user platforms, standalone prediction market sites will face the same fate as independent photo apps after Instagram launched.",
       "pub_display": "Mar 12"
     }
   ]
