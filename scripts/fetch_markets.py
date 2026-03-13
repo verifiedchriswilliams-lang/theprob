@@ -585,8 +585,13 @@ def fetch_kalshi() -> list[dict]:
                     print(f"  [Kalshi debug] response keys={top_keys} events={len(events)}")
                     if events:
                         sample = events[0]
-                        nested = len(sample.get("markets", []))
+                        nested_list = sample.get("markets", [])
+                        nested = len(nested_list)
                         print(f"  [Kalshi debug] sample event keys={list(sample.keys())} nested_markets={nested}")
+                        if nested_list:
+                            m0 = nested_list[0]
+                            print(f"  [Kalshi debug] sample market keys={list(m0.keys())}")
+                            print(f"  [Kalshi debug] sample market data={dict(list(m0.items())[:14])}")
                     else:
                         print(f"  [Kalshi debug] EMPTY events list — auth may be wrong or endpoint returning nothing")
                 if not events:
