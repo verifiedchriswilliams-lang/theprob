@@ -834,10 +834,25 @@ def save_newsletter(subject: str, html_full: str, html_no_ftr: str, subtitle: st
             f.write(f"SUBJECT: {subject}\n")
             f.write(f"SUBTITLE: {subtitle}\n")
 
+        # Archive index — prepend today's entry so archive.html stays current
+        index_path = "newsletter/index.json"
+        try:
+            with open(index_path) as f:
+                index = json.load(f)
+        except (FileNotFoundError, json.JSONDecodeError):
+            index = []
+        display_date = now_et.strftime("%b %-d, %Y")
+        # Remove any existing entry for today (avoid duplicates on re-runs)
+        index = [e for e in index if e.get("date") != date_slug]
+        index.insert(0, {"date": date_slug, "display_date": display_date, "subject": subject})
+        with open(index_path, "w") as f:
+            json.dump(index, f, indent=2)
+
         print(f"  Preview: newsletter/latest.html")
         print(f"  Email:   newsletter/latest-email.html")
         print(f"  Copy:    newsletter/latest-copy.html  (no-footer — paste into Beehiiv)")
         print(f"  Archive: {archive}")
+        print(f"  Index:   newsletter/index.json  ({len(index)} editions)")
         print(f"  Subject: newsletter/latest-subject.txt")
         return True
     except Exception as e:

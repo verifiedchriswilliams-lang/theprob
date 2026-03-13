@@ -145,68 +145,9 @@
       </form>
     </div>
 
-    <!-- MARCH 2026 -->
-    <div class="month-group">
-      <div class="month-label">March 2026</div>
-      <div class="archive-list">
-        <a class="archive-row" href="newsletter/latest-email.html">
-          <span class="archive-date">Mar 5, 2026</span>
-          <span class="archive-title">Ubisoft M&amp;A odds tank 10pts: what the market knows <span class="latest-badge">Latest</span></span>
-          <span class="archive-arrow">&#8594;</span>
-        </a>
-        <a class="archive-row" href="newsletter/2026-03-04.html">
-          <span class="archive-date">Mar 4, 2026</span>
-          <span class="archive-title">Wednesday edition</span>
-          <span class="archive-arrow">&#8594;</span>
-        </a>
-        <a class="archive-row" href="newsletter/2026-03-03.html">
-          <span class="archive-date">Mar 3, 2026</span>
-          <span class="archive-title">Monday edition</span>
-          <span class="archive-arrow">&#8594;</span>
-        </a>
-        <a class="archive-row" href="newsletter/2026-03-02.html">
-          <span class="archive-date">Mar 2, 2026</span>
-          <span class="archive-title">Sunday edition</span>
-          <span class="archive-arrow">&#8594;</span>
-        </a>
-        <a class="archive-row" href="newsletter/2026-03-01.html">
-          <span class="archive-date">Mar 1, 2026</span>
-          <span class="archive-title">Sunday edition</span>
-          <span class="archive-arrow">&#8594;</span>
-        </a>
-      </div>
-    </div>
-
-    <!-- FEBRUARY 2026 -->
-    <div class="month-group">
-      <div class="month-label">February 2026</div>
-      <div class="archive-list">
-        <a class="archive-row" href="newsletter/2026-02-28.html">
-          <span class="archive-date">Feb 28, 2026</span>
-          <span class="archive-title">Saturday edition</span>
-          <span class="archive-arrow">&#8594;</span>
-        </a>
-        <a class="archive-row" href="newsletter/2026-02-27.html">
-          <span class="archive-date">Feb 27, 2026</span>
-          <span class="archive-title">Friday edition</span>
-          <span class="archive-arrow">&#8594;</span>
-        </a>
-        <a class="archive-row" href="newsletter/2026-02-26.html">
-          <span class="archive-date">Feb 26, 2026</span>
-          <span class="archive-title">Thursday edition</span>
-          <span class="archive-arrow">&#8594;</span>
-        </a>
-        <a class="archive-row" href="newsletter/2026-02-25.html">
-          <span class="archive-date">Feb 25, 2026</span>
-          <span class="archive-title">Wednesday edition</span>
-          <span class="archive-arrow">&#8594;</span>
-        </a>
-        <a class="archive-row" href="newsletter/2026-02-24.html">
-          <span class="archive-date">Feb 24, 2026</span>
-          <span class="archive-title">Tuesday edition</span>
-          <span class="archive-arrow">&#8594;</span>
-        </a>
-      </div>
+    <!-- Archive list — populated dynamically from newsletter/index.json -->
+    <div id="archive-container">
+      <div style="color:var(--text-muted);font-family:var(--mono);font-size:12px;padding:32px 0;">Loading archive...</div>
     </div>
 
   </section>
@@ -247,27 +188,52 @@
   </footer>
 
 <script>
-// Beehiiv subscribe form
-document.getElementById('subscribe-form').addEventListener('submit', function(e) {
-  e.preventDefault();
-  const email = document.getElementById('sub-email').value;
-  const btn = this.querySelector('button');
-  btn.textContent = 'Subscribing...';
-  btn.disabled = true;
-  fetch('https://api.beehiiv.com/v2/publications/YOUR_PUB_ID/subscriptions', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ email: email, reactivate_existing: true, send_welcome_email: true })
-  })
-  .then(() => {
-    btn.textContent = 'You\'re in!';
-    document.getElementById('sub-email').value = '';
-  })
-  .catch(() => {
-    btn.textContent = 'Subscribe Free';
-    btn.disabled = false;
-  });
-});
+// ── ARCHIVE LOADER ────────────────────────────────────────────────────────────
+async function loadArchive() {
+  const container = document.getElementById('archive-container');
+  try {
+    const res   = await fetch('newsletter/index.json?t=' + Date.now());
+    const index = await res.json();
+
+    if (!index.length) {
+      container.innerHTML = '<p style="color:var(--text-muted);font-size:14px;">No editions yet.</p>';
+      return;
+    }
+
+    // Group by "Month YYYY"
+    const groups = {};
+    index.forEach((entry, i) => {
+      const d     = new Date(entry.date + 'T12:00:00');
+      const label = d.toLocaleString('en-US', { month: 'long', year: 'numeric' });
+      if (!groups[label]) groups[label] = [];
+      groups[label].push({ ...entry, isLatest: i === 0 });
+    });
+
+    let html = '';
+    for (const [month, entries] of Object.entries(groups)) {
+      html += `<div class="month-group">
+        <div class="month-label">${month}</div>
+        <div class="archive-list">`;
+      entries.forEach(e => {
+        const href    = e.isLatest ? 'newsletter/latest-email.html' : `newsletter/${e.date}.html`;
+        const badge   = e.isLatest ? '<span class="latest-badge">Latest</span>' : '';
+        const subject = e.subject || 'Daily edition';
+        html += `<a class="archive-row" href="${href}">
+          <span class="archive-date">${e.display_date}</span>
+          <span class="archive-title">${subject} ${badge}</span>
+          <span class="archive-arrow">&#8594;</span>
+        </a>`;
+      });
+      html += `</div></div>`;
+    }
+    container.innerHTML = html;
+  } catch(err) {
+    container.innerHTML = '<p style="color:var(--text-muted);font-size:14px;">Could not load archive. Try refreshing.</p>';
+    console.error('Archive load error:', err);
+  }
+}
+
+loadArchive();
 </script>
 
 </body>
