@@ -2232,19 +2232,26 @@ def main():
         # ── Trading signal classification ────────────────────────────────────
         # Surfaces actionable markets for traders on category pages.
         # Priority: knife_edge > momentum > volume_spike > active > stale
+        # Kalshi markets run at 10-20x lower volumes than Polymarket, so
+        # thresholds are scaled down to avoid marking everything as stale.
         prob      = m.get("prob", 50)
         change    = abs(m.get("change_pts", 0))
         vol       = m.get("volume", 0)
         vol_24h   = m.get("volume_24h", 0)
         vol_ratio = vol_24h / vol if vol > 0 else 0
+        is_kalshi = m.get("source") == "Kalshi"
 
-        if 40 <= prob <= 60 and vol >= 50_000:
+        ke_vol_gate     = 5_000  if is_kalshi else 50_000
+        spike_vol_gate  = 500    if is_kalshi else 10_000
+        stale_vol_gate  = 3_000  if is_kalshi else 25_000
+
+        if 40 <= prob <= 60 and vol >= ke_vol_gate:
             trading_signal = "knife_edge"    # max uncertainty + liquid = most tradeable
         elif change >= 5:
             trading_signal = "momentum"      # big move today — momentum play
-        elif vol_ratio >= 0.20 and vol_24h >= 10_000:
+        elif vol_ratio >= 0.20 and vol_24h >= spike_vol_gate:
             trading_signal = "volume_spike"  # heavy recent activity — something is happening
-        elif vol < 25_000 and change < 2:
+        elif vol < stale_vol_gate and change < 2:
             trading_signal = "stale"         # low vol, no move — not actionable
         else:
             trading_signal = "active"
