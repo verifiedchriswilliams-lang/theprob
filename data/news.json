@@ -1,8 +1,53 @@
 {
-  "updated": "Mar 14, 2026 \u00b7 1:04 AM ET",
-  "updated_iso": "2026-03-14T06:04:17.435689+00:00",
+  "updated": "Mar 14, 2026 \u00b7 6:49 AM ET",
+  "updated_iso": "2026-03-14T11:49:11.318920+00:00",
   "homepage_count": 3,
   "articles": [
+    {
+      "title": "Scottie Pippen Helps Sell Wall Street on Prediction Markets",
+      "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxQaWdQMkRoWmg1WTdKX0xlVzJOMXRDSmtUVDQ2OGVRZGVGb2xoVlNrRlNFdGpNOUZoZmcyaTlKamlaSEJjbGltM3RyU2lCVlg4MjlLbzZFVXZnSUhUOHlYd0lqbmgxUHo1NzBkaW9Ra2pJeG5XQncxbU9PUDlHdUlxLWRLbVVNMlIyWHFObk9JZlBqM1h2aW5BNy1IZjhVTS1obU84ZEs5aTJnOTNmd0dV?oc=5",
+      "source": "Bloomberg.com",
+      "pub_iso": "2026-03-14T11:30:00+00:00",
+      "description": "",
+      "summary": "Scottie Pippen is apparently pitching prediction markets to Wall Street investors, lending his NBA legend status to help legitimize the industry. When a six-time NBA champion starts hawking your asset class to institutional money, it signals prediction markets are moving from niche betting curiosity to mainstream financial instrument.",
+      "pub_display": "Mar 14"
+    },
+    {
+      "title": "Ana Marie Cox on the societal scourge of prediction markets",
+      "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTE5NQlFPcDVUaFdYRG9nbVlVUG9FTWlJVlRVQlFzWUFmc3VycC1sRDBRbGRGZ08wc3FkRnpCOEpqNWxxYkhrN01hODBvWGdaSVBXcEk1Y2Zxdmpuc0dseHN4TWt2U1lCU25JQW9xQkxvM3o2NnlMaGt5VmROREQ?oc=5",
+      "source": "Public Notice | Aaron Rupar",
+      "pub_iso": "2026-03-14T10:17:59+00:00",
+      "description": "",
+      "summary": "Ana Marie Cox apparently thinks prediction markets are corrupting society, though she's probably more upset about people making money off politics than any actual harm. Her critique matters because mainstream media figures attacking prediction markets could fuel regulatory crackdowns, especially if politicians start listening to journalists who don't understand how markets work.",
+      "pub_display": "Mar 14"
+    },
+    {
+      "title": "With boom in prediction markets, some lawmakers worry about how to police themselves",
+      "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxNblN6U2RaVHRRcG10WTc3MVJoSWMzbWZWRm9iR2p6dWNLZEh5dFlqUzFReEpTeHViZ1BiQjZFalE0QTF5bGpjMmZqNjNMVWtrY0tuNE40RXNENmtMSmptZlhfOWxfRWJJTmwyLXRqaS1kNkNvSjhSRjVzWk9WTW1VN1laMUJaZjhHb3pkT0QzNjFld1k?oc=5",
+      "source": "NPR",
+      "pub_iso": "2026-03-14T10:00:00+00:00",
+      "description": "",
+      "summary": "Lawmakers are grappling with how to regulate prediction markets while potentially trading on them themselves, creating obvious conflicts of interest. The regulatory uncertainty could either legitimize these markets through proper oversight or kill their momentum if politicians overreact to avoid looking like hypocrites.",
+      "pub_display": "Mar 14"
+    },
+    {
+      "title": "Prediction Markets? An 83% Chance That Oscars Pundits Hate Them.",
+      "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxNTFVKV0JJOTVQRzRvVWhOUXhNTjlsZjlmQmotaUFIYVZkUFhON1lQVXdkNm9MZk5OYjczSEw3OFcxeE8zUTZuaHd4Wks1M05zSVJqYzFZU1AzVDJJZ0c0NTNGMWFOb2FVMGFKYXpNUmVzWkJMWXBLMEFaY3N5cTRWWFVfSjFGcHNaZXNUQmdqMA?oc=5",
+      "source": "The New York Times",
+      "pub_iso": "2026-03-14T09:00:41+00:00",
+      "description": "",
+      "summary": "Entertainment industry experts are pushing back against prediction markets tracking Oscar winners, claiming they undermine traditional awards season punditry. The resistance signals prediction markets are gaining enough mainstream credibility to threaten established gatekeepers, which historically drives wider adoption and legitimacy.",
+      "pub_display": "Mar 14"
+    },
+    {
+      "title": "Will Netanyahu tweet again by Saturday? Predictions & Odd...",
+      "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE1pSjhNY0hDdi1TSXF4M08zUmRaQlFURnZzeTJqczB5OG11eG5JYV9XTVpTeTlUZzhvZVYyNlo0NzVENVpUY3AwNE9UcmMzV0YyaFU3cXBzaTBsUUxzTkZPQlFaNlVRNDl2UURiS3VoSnV3b3M4bkE?oc=5",
+      "source": "Polymarket",
+      "pub_iso": "2026-03-13T22:42:59+00:00",
+      "description": "",
+      "summary": "Prediction markets are betting on whether Israeli Prime Minister Netanyahu will post on Twitter before Saturday, tracking his social media activity as a tradeable event. This represents the growing trend of political figure behavior becoming micro-bettable moments, where every tweet absence or presence creates real-time odds and profit opportunities for sharp traders.",
+      "pub_display": "Mar 13"
+    },
     {
       "title": "Federal regulators might actually make rules for prediction markets",
       "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxPU3dsM09UUEc5Mjg4M1hCUjdNZGV6YXlJeFNGNkdXS1Q4RXRPM240d1lPaWRqQmVlYk5OZ1VoSzNlYmRPRDFDcnE2R085aHZqNDRMMEQyZV9pYk5CYUV4cUlLdVNTcWsxVW1QN3djM09PREtTbU1wdWt5SnFWYjdOVERiQjFVNmhha25ReEpJZ0s1WE5LRi13QUs0WkVVZmVaWHpF?oc=5",
@@ -10,6 +55,15 @@
       "pub_iso": "2026-03-13T21:44:00+00:00",
       "description": "",
       "summary": "The CFTC is finally considering formal regulations for prediction markets after years of operating in a regulatory gray zone. Clear rules could legitimize the industry and attract institutional money, but they'll probably come with restrictions that kill the wild west vibe that made these markets fun in the first place.",
+      "pub_display": "Mar 13"
+    },
+    {
+      "title": "Prediction Markets 101: Read This Guide Before You Start Placing Bets",
+      "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxPNWJjd1dwTUxhc1ZLd0RiREZjaDR0QUVJNWdTTnlrc3MwazFUci13SURzMWZrbXhHMjh4LUlnckVuTjQ5aXNndFMxandwV3laVUt2LUdxQVZBVEd3Z2FxUnc5dTQyWFhFaTlOTldfaHBMbXhucG81Ymg0RHhNRnN6X2h5Mk95UVlkNTJ4SDZuUTA?oc=5",
+      "source": "money.com",
+      "pub_iso": "2026-03-13T20:56:30+00:00",
+      "description": "",
+      "summary": "Prediction markets are flooded with newcomers who dive in without understanding the basics, burning money on obvious traps and liquidity mirages. Smart money knows that 90% of betting profits come from exploiting these rookies who skip the fundamentals and chase flashy headlines instead of learning proper market mechanics.",
       "pub_display": "Mar 13"
     },
     {
@@ -43,7 +97,7 @@
       "title": "Utah's anti-gambling tradition meets Kalshi and Polymarket in a new legal fight",
       "url": "https://news.google.com/rss/articles/CBMi9AFBVV95cUxNWGZZNkt6c21zQzROUGV5WVdhOEp6ZVZXSXdMMDRNRkI2XzFTZzBuV0xmZ2VNQmlLQ0IwLWxqTlpoVGZmcnVrcUlSUXNXWHBGZGxHSnVpaTdTMGFjemVldU9WNlBWZ05keGcwZHVHWmZGYjN6a3R1ZDFXNlgwOHh6bFh2VFdCUnp6UzAydVprSWdYUHVidWZld2N6MU9fYlpJX0hjbjB2dGVZNXdlWG9DaGI2dzFYdGJGYWMxbWRJUjhXVnEweHJfMHdNZWZndWxTQk1iUl9VM2t2OVRQX3QzZWhfWmtwbkZmVnNFVWZQSHpGZWxz?oc=5",
       "source": "St. George News",
-      "pub_iso": "2026-03-13T02:33:54+00:00",
+      "pub_iso": "2026-03-13T02:30:00+00:00",
       "description": "",
       "summary": "Utah officials are targeting prediction markets platforms Kalshi and Polymarket, likely arguing their betting products violate the state's strict anti-gambling laws. This could set a precedent for how other conservative states regulate prediction markets, potentially forcing platforms to geo-block entire regions or face costly legal battles.",
       "pub_display": "Mar 13"
@@ -55,60 +109,6 @@
       "pub_iso": "2026-03-12T23:30:00+00:00",
       "description": "",
       "summary": "Courts are issuing conflicting rulings on prediction market regulations, creating legal uncertainty across jurisdictions. The patchwork of decisions makes it harder for platforms to operate confidently and could scare off institutional money that prediction markets desperately need to grow.",
-      "pub_display": "Mar 12"
-    },
-    {
-      "title": "CFTC Offers First Guidance on Manipulation in Prediction Markets",
-      "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxPS3dZS2dGZXk0bjJtUkdxMTg1Nnd0VFRnaGlmT3N2UHpEUExhSUhSRFF4cHRUX0FWM1pUN0xrQzJ5Q3Q1cVZsTHBzOGZMdXdlR2NscmNRRkpSUmNsZ0VGVFg4QnVxTnVXTEFUcGNtQkk2SGc2NDJfZXFWYWxadHdmNmpFeVhhTElMX3hsSmN4X2RCYWJyTXltamhhX1U0V25hUmdJMUZOR2hrbXV6Y3ZPcXJKWHdTdw?oc=5",
-      "source": "Bloomberg.com",
-      "pub_iso": "2026-03-12T20:44:27+00:00",
-      "description": "",
-      "summary": "The CFTC just released its first official guidance on what constitutes market manipulation in prediction markets, giving platforms and traders clearer rules about crossing the line. This regulatory clarity should reduce legal uncertainty for prediction market operators and potentially open the door for more institutional participation in political betting.",
-      "pub_display": "Mar 12"
-    },
-    {
-      "title": "US commodity regulator kicks off rulemaking for prediction markets",
-      "url": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxOdEc2cy1LQXRFY0FNNjFfSFdrNHVhNVF4RkJQbFRnUnFxT3Mwc0tROTF0U3I0czlkNHFHT0VvY2h1LTVZVGduX2xINE9NS1cySFFQTzA0ZndkbUpJdk12akpBZWVwejVOdURHZ3Q0V0VHallaMTlwdEFuRzE0eEZfTThXN0QtV3RfXy1STUg0ZlZ5ZkdMY2VBNVpDWE0zWjZhV0kweWEwU01HLS1UelJFaHBUY2tCWnViZzdMUGdESlQ3ZnpCNmIzTGFGaHFMUVI5SHBsNw?oc=5",
-      "source": "Reuters",
-      "pub_iso": "2026-03-12T15:46:42+00:00",
-      "description": "",
-      "summary": "The CFTC is starting formal rulemaking to establish regulations for prediction markets operating under US jurisdiction. This could finally provide the regulatory clarity that platforms like Kalshi and PredictIt need to expand their offerings without constant legal uncertainty.",
-      "pub_display": "Mar 12"
-    },
-    {
-      "title": "Jail break, election betting: These bets are illegal in Louisiana. But the state can't stop them.",
-      "url": "https://news.google.com/rss/articles/CBMi7wFBVV95cUxPYkt1blpEY0ltQ0ZUTEhsNHduTFJBM2NqajNYdzYyc21PYngySFR4WXlXWWhEQ1I5RVMyZi1HUUZwUjdTNWpsQm5wZ1h2SnFwcXM3NFByeklaX1Y3dlM4dmQxMThZYTltX3oteVhIa2hDeHdkM25OWnBqaEFFbUpVMEJwaFRZVkt3YmNiZl9fNjFqekxGR2cxZTdzUkxyNDZUWXIzbFFRSl9fNnhLTUU0NDNkaFZ4dWVoSmpLN2sxbGlyamRwNlpPbUxGMnM0YkhXQ2JxYmZqTWV3STdYR3NsX0NpTkZ4UTlMT2ZlWkhoRQ?oc=5",
-      "source": "The Advocate",
-      "pub_iso": "2026-03-12T15:25:00+00:00",
-      "description": "",
-      "summary": "Louisiana bettors are placing illegal wagers on everything from prison escapes to election outcomes, and state authorities lack the enforcement tools to shut them down. This enforcement gap highlights how prediction markets are thriving in legal gray areas, potentially setting precedent for other states struggling to regulate political betting and unconventional wagering.",
-      "pub_display": "Mar 12"
-    },
-    {
-      "title": "CME, Cboe chiefs urge crackdown on fast-growing prediction markets",
-      "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxPV3dsNk45RTV6Tm8wbnpCNC1MdDZoUnVONngyYVBPTzU5OGd0MTNiTTVQQ1IzRy03aC11enR6QzlHeG5XaFVzVFdJY1dLQUF1NDNlZmU0OTFuUmxPcUhwbXNpc3NQSlFUWDdWUEUtSC12WU9sSTdrNlRHb0pWSV9FWkgxQUx1UnhPMGw1Wkg3MlZhMzh4QWhIckhPdXhBelhqT1hDTGViNXU?oc=5",
-      "source": "Crain's Chicago Business",
-      "pub_iso": "2026-03-12T15:19:00+00:00",
-      "description": "",
-      "summary": "The heads of CME and Cboe are pushing regulators to crack down on the booming prediction markets industry. Traditional derivatives exchanges clearly see platforms like Kalshi and Polymarket as a threat to their monopoly on event-based trading, so they're trying to strangle the competition in the regulatory crib.",
-      "pub_display": "Mar 12"
-    },
-    {
-      "title": "Watch out, prediction markets. The 'super apps' are coming.",
-      "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNV2JBZlMzRzktSWRoRHFpamc5ZDJ0VElOTjdNRVI4cF94WVhKSE9FN3NkQW1WN3BDMnVPcUVfR1dmVW1ITFdpRU9yamJESE9pbnc1enVSQk8yUWxyYXppSlZ5VVRmZV9RVFFONUFrVUozRUlDcVdvNHdJaTJQQzNLMl9LbE5TeG8?oc=5",
-      "source": "Business Insider",
-      "pub_iso": "2026-03-12T10:37:00+00:00",
-      "description": "",
-      "summary": "Tech giants are building \"super apps\" that bundle multiple services, and they're eyeing prediction markets as their next feature. When WeChat or Meta decides to add betting to their billion-user platforms, standalone prediction market sites will face the same fate as independent photo apps after Instagram launched.",
-      "pub_display": "Mar 12"
-    },
-    {
-      "title": "Breakingviews - How insider-trading fears harm prediction markets",
-      "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNQXhOQnBEOEhiWDRpUWF3Vkgyazd3Zm5ZUmthWXVGalFfSkJ0aWxSR2tuWlNodWlKS3VrYUJ1OXRHSnpnUU5uSFAzZjNuRTBCQnNKYWQ4aERjejA2QWYxN0t5b21mVnhxTVdVY2RTM3BGdFNDY0VXQU9IN29Kd21KUTIwRE5aQjFLN0k0R1ozUTlfcVZjU2c0Ykt0SnVWOXRrU3lnMExJMGhwYkpyRlJN?oc=5",
-      "source": "Reuters",
-      "pub_iso": "2026-03-12T05:00:00+00:00",
-      "description": "",
-      "summary": "Regulators and critics worry that prediction markets create insider trading opportunities, where people with non-public information can profit unfairly from betting on outcomes they know in advance. These concerns are slowing mainstream adoption and regulatory approval of prediction markets, even though the fear is largely overblown compared to the actual benefits these markets provide for price discovery and information aggregation.",
       "pub_display": "Mar 12"
     }
   ]
