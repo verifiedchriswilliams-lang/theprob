@@ -1134,9 +1134,10 @@
         <div id="pw-record" style="font-family:'Courier New',monospace;font-size:26px;font-weight:700;color:var(--amber);">0&ndash;0</div>
         <div id="pw-winrate" style="font-size:11px;color:var(--text-muted);margin-top:4px;">Win rate &mdash;</div>
       </div>
-      <div style="background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:20px 24px;flex:2;min-width:200px;">
-        <div style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-muted);margin-bottom:10px;">Latest Trade</div>
-        <div id="pw-latest" style="font-size:14px;color:var(--text-muted);">No trades logged yet. First pick coming tomorrow.</div>
+      <div style="background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:20px 24px;min-width:120px;flex:1;">
+        <div style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-muted);margin-bottom:6px;">Open Positions</div>
+        <div id="pw-open" style="font-family:'Courier New',monospace;font-size:26px;font-weight:700;color:var(--text);">0</div>
+        <div id="pw-total" style="font-size:11px;color:var(--text-muted);margin-top:4px;">0 trades logged</div>
       </div>
     </div>
   </section>
@@ -1498,7 +1499,8 @@ function renderPortfolioWidget(p) {
   const losses = p.loss_count      ?? 0;
   const total  = wins + losses;
   const winRate = total > 0 ? Math.round(wins / total * 100) : null;
-  const trades = p.recent_trades   || [];
+  const trades  = p.trades || [];
+  const open    = p.open_count ?? trades.filter(t => t.status === 'open').length;
 
   const balEl = document.getElementById('pw-balance');
   if (balEl) {
@@ -1515,22 +1517,10 @@ function renderPortfolioWidget(p) {
   const wrEl = document.getElementById('pw-winrate');
   if (wrEl) wrEl.textContent = winRate !== null ? 'Win rate: ' + winRate + '%' : 'Win rate \u2014';
 
-  const latestEl = document.getElementById('pw-latest');
-  if (latestEl && trades.length > 0) {
-    const t = trades[0];
-    const isClosed = t.status === 'closed';
-    const pnlStr = isClosed
-      ? ' &rarr; <strong style="color:' + (t.pnl >= 0 ? 'var(--green)' : 'var(--red)') + '">'
-        + (t.pnl >= 0 ? '+$' : '-$') + Math.abs(t.pnl).toFixed(2) + '</strong>'
-      : ' &rarr; <span style="color:var(--amber)">Open</span>';
-    const dirColor = t.direction === 'YES' ? 'var(--green)' : 'var(--red)';
-    latestEl.innerHTML =
-      '<span style="font-family:\'Courier New\',monospace;font-size:11px;color:var(--text-muted)">' + t.entry_date + '</span> &nbsp;'
-      + '<strong style="color:' + dirColor + '">' + t.direction + '</strong> '
-      + '<a href="' + (t.url || '#') + '" target="_blank" style="color:var(--text)">'
-      + t.question.slice(0, 65) + (t.question.length > 65 ? '\u2026' : '') + '</a>'
-      + ' @ ' + t.entry_prob + '%' + pnlStr;
-  }
+  const openEl = document.getElementById('pw-open');
+  if (openEl) openEl.textContent = open;
+  const totalEl = document.getElementById('pw-total');
+  if (totalEl) totalEl.textContent = trades.length + ' trade' + (trades.length !== 1 ? 's' : '') + ' logged';
 }
 
 async function loadMarkets() {
