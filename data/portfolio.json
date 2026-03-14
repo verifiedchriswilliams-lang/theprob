@@ -1,11 +1,11 @@
 {
   "starting_balance": 1000.0,
-  "current_balance": 1000.0,
-  "total_pnl": 0.0,
-  "ytd_return_pct": 0.0,
-  "win_count": 0,
+  "current_balance": 1006.5,
+  "total_pnl": 6.5,
+  "ytd_return_pct": 0.7,
+  "win_count": 1,
   "loss_count": 0,
-  "open_count": 4,
+  "open_count": 3,
   "start_date": "2026-03-11",
   "last_updated": "2026-03-14",
   "trades": [
@@ -58,10 +58,10 @@
       "entry_date": "2026-03-13",
       "end_date_raw": "2026-03-15T00:00:00Z",
       "end_date": "Mar 15",
-      "status": "open",
-      "exit_prob": null,
-      "exit_date": null,
-      "pnl": null
+      "status": "closed",
+      "exit_prob": 5.0,
+      "exit_date": "2026-03-14",
+      "pnl": 6.5
     },
     {
       "trade_id": "ec74a7d0",
