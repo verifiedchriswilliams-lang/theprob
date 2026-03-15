@@ -1,13 +1,13 @@
 {
   "starting_balance": 1000.0,
-  "current_balance": 1012.32,
-  "total_pnl": 12.32,
-  "ytd_return_pct": 1.2,
-  "win_count": 2,
+  "current_balance": 1019.85,
+  "total_pnl": 19.85,
+  "ytd_return_pct": 2.0,
+  "win_count": 3,
   "loss_count": 0,
-  "open_count": 5,
+  "open_count": 4,
   "start_date": "2026-03-11",
-  "last_updated": "2026-03-14",
+  "last_updated": "2026-03-15",
   "trades": [
     {
       "trade_id": "ca0812d4",
@@ -130,10 +130,10 @@
       "entry_date": "2026-03-14",
       "end_date_raw": "2026-03-14T00:00:00Z",
       "end_date": "Mar 14",
-      "status": "open",
-      "exit_prob": null,
-      "exit_date": null,
-      "pnl": null
+      "status": "closed",
+      "exit_prob": 0.1,
+      "exit_date": "2026-03-15",
+      "pnl": 7.53
     }
   ]
 }
