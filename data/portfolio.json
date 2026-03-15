@@ -1,11 +1,11 @@
 {
   "starting_balance": 1000.0,
-  "current_balance": 1019.85,
-  "total_pnl": 19.85,
-  "ytd_return_pct": 2.0,
-  "win_count": 3,
+  "current_balance": 1026.46,
+  "total_pnl": 26.46,
+  "ytd_return_pct": 2.6,
+  "win_count": 4,
   "loss_count": 0,
-  "open_count": 4,
+  "open_count": 3,
   "start_date": "2026-03-11",
   "last_updated": "2026-03-15",
   "trades": [
@@ -40,10 +40,10 @@
       "entry_date": "2026-03-12",
       "end_date_raw": "2026-03-17T00:00:00Z",
       "end_date": "Mar 17",
-      "status": "open",
-      "exit_prob": null,
-      "exit_date": null,
-      "pnl": null
+      "status": "closed",
+      "exit_prob": 95.3,
+      "exit_date": "2026-03-15",
+      "pnl": 6.61
     },
     {
       "trade_id": "3a89e1e3",
