@@ -1,8 +1,53 @@
 {
-  "updated": "Mar 16, 2026 \u00b7 2:58 AM ET",
-  "updated_iso": "2026-03-16T07:58:59.603518+00:00",
+  "updated": "Mar 16, 2026 \u00b7 9:47 AM ET",
+  "updated_iso": "2026-03-16T14:47:51.949703+00:00",
   "homepage_count": 3,
   "articles": [
+    {
+      "title": "Prediction Markets Are Turning Into a Bot Playground",
+      "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxNU3dRcTI5ZG8yaGo4UWpiVDdZWFJRWEZoa3VLeEdUUDFpcnZaRldBNzNmQlczMlZTMlhvcDI5WkNQRFVydWpPVEFVUmV3X21LaUxXZGxUNTdlcFc1UVk2X2F2SGVQRlVLS09RZlVpVE93NkFLakQyeUNtdmpmdENUeGVja0xURHdHdWdKd1c4cDNJd0tnY1JaSDFR0gGfAUFVX3lxTE9pWW5Jb1lsdGhaZ1NjcXBLVngzbjh0Q2twWUJzV2c2NXc4MW9EbVhpUTNkaWxhSXBDeWY4bWRRdkRlZnh2eDdwYTZPc2MwVTI4RVFEVG94X09mOGdvNmpKMXV2aXQxNk5jTG4tRDBBbExjd2VkZi1JNUJiaXlKQllsdm9NS1FyMmh2QWJRY3lLeEpCRHlEanZmbjJxY25IZw?oc=5",
+      "source": "Finance Magnates",
+      "pub_iso": "2026-03-16T14:02:36+00:00",
+      "description": "",
+      "summary": "Automated trading bots are flooding prediction markets, executing thousands of micro-trades and exploiting tiny price inefficiencies faster than human traders can blink. This algorithmic arms race will either make markets more efficient by tightening spreads, or create a two-tiered system where retail bettors get consistently outmaneuvered by sophisticated trading algorithms.",
+      "pub_display": "Mar 16"
+    },
+    {
+      "title": "Why Does The CFTC Chair Want People To Bet On Drug Trials At Prediction Markets?",
+      "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxOek81aTZ2UnNtVVFVd2ZHV29hRWVxQVVIQXNSWEVrNE1fQVBSbm1NYzZONjRpMXd4WkVPeTM2cHk3QU9jUDlvX2ZETzJNeFZlMFlYOGhSTnd4SzR1STFyYXR5M0NkRUh5TklXcy1XeWpQZDdpZmpTLTA4elFzMWpMT1R5M0tQb0k1anNTWlpqT3Z0MnVVSlE?oc=5",
+      "source": "Event Horizon | Dustin Gouker",
+      "pub_iso": "2026-03-16T11:02:15+00:00",
+      "description": "",
+      "summary": "CFTC Chair Rostin Behnam is pushing for prediction markets on pharmaceutical trial outcomes, letting traders bet on whether experimental drugs will pass clinical trials. If regulators greenlight drug trial betting, it could unlock a massive new market while giving pharma companies real-time pricing signals on their pipeline value.",
+      "pub_display": "Mar 16"
+    },
+    {
+      "title": "You can bet on climate disasters. Business is booming",
+      "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOWlVuZWtKNkVBdG1vVXhCeHJGRWZjU25ad1hxN21WQVZXQnc0YU1GZklkeURWZmJDdjY4OHREY0dMMXB3UkpHamhnWnVrcGF3VUlhSDZ5NDJzRDZCOGFQZ1JhVmdIb1FybUJkY0oxN21GSFhTSlNKTnA5MlVILW9hclFMNlRLdHhjdWliSnhR?oc=5",
+      "source": "E&E News by POLITICO",
+      "pub_iso": "2026-03-16T10:23:00+00:00",
+      "description": "",
+      "summary": "Climate catastrophe bonds and disaster prediction markets are exploding as extreme weather becomes more frequent and expensive, letting investors bet on hurricanes, floods, and wildfires. The money flowing into these markets signals that smart money thinks climate disasters are becoming more predictable, creating new opportunities for anyone willing to bet against Mother Nature's tantrums.",
+      "pub_display": "Mar 16"
+    },
+    {
+      "title": "Prediction markets watch",
+      "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE45UjMyYWVuQ3lYRllORzQ0blV5NXJYMnFrZk5jaDh5Zm5TLU1mQUp6NmkzenZDYXo5TVIyUDBOMUF5UW5VTFdkU283dEctNlRXcTZ0WlRPVzRzeHhEQkZCckJCZ0g4Tl9TMWhKR204LXhReHfSAXhBVV95cUxOZnNraW13cktLbEVpbDAxUEoyNndCdGtuVFVldVVYSjRIRkt4ZzFQUG40MGpJTXBlczMzc0FVVnZtaUtxRDIxY2lyVTM3LUlzTzVzLWRPUUxpb0NEdWpfcUw3Q2RFckVLNk9ycWdiQ0hTdm16ZEJQdmw?oc=5",
+      "source": "investingLive",
+      "pub_iso": "2026-03-16T10:18:45+00:00",
+      "description": "",
+      "summary": "Prediction markets are gaining mainstream attention as news outlets and analysts start tracking their signals more seriously. This legitimizes betting markets as information sources and could drive more liquidity from institutions who previously dismissed them as gambling.",
+      "pub_display": "Mar 16"
+    },
+    {
+      "title": "Wall Street Is Already Betting on Prediction Markets",
+      "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxNRkxMNXh5TzNJcEphOE5Od0RFWERXMy1XZkh3SXlWV3JxNE5pRXFubXQ3QzlxbGVIOW1pb1BWalVLSVcwN011VDFIYTZ6Y2lWU3JGQ2htY0s4eVB5ajlGbkN4dWNZdUFYMEUyR2VGUjhaZVlncWM3aUlxNFVTMTE1Vnc3OA?oc=5",
+      "source": "WIRED",
+      "pub_iso": "2026-03-16T09:30:00+00:00",
+      "description": "",
+      "summary": "Wall Street firms are placing bets on prediction market platforms themselves, treating these forecasting venues as investment opportunities rather than just trading tools. This institutional money validates prediction markets as a legitimate asset class and will likely fuel rapid expansion, better liquidity, and higher-stakes political and economic betting.",
+      "pub_display": "Mar 16"
+    },
     {
       "title": "Traders Flip Senate Control Bet as Democrats Overtake Republicans on Kalshi, Polymarket",
       "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTFBjTmI0a3VydFlMajVPUTFEQWFUTG95SzJUMG5EQmJ3RnNNZkUwWlBIckpQYTlrUmJ4ZHlRdDdVYWFwOEUzcmxNUXBUV09xYTlIdHdYaEZXMnoxS0d6Z2J4UzdIaEdSWWpHckdJS0xWaG55UDY2dHRqUDNxZWF5RVHSAYcBQVVfeXFMUHdJalRfNDRBak02Ym9kSHM0UVVrV1QzdlJKV2pUcS1rX1ZSYTM3d0d6blNLMFdPWHJpNzFLSkNJeHVUYlFmQUlBQ0xfX3c4TFRJN3dQUTUyME94aHR0TFUxaUFTMTVYUjd2aUZCNmZQZVVuaDA4Ul9oTVpDd0lKeWhVcFBEcEFr?oc=5",
@@ -11,24 +56,6 @@
       "description": "",
       "summary": "Prediction market traders are now betting Democrats will control the Senate after the 2024 elections, with the party overtaking Republicans as favorites on both Kalshi and Polymarket. The flip signals either late-breaking campaign momentum or smart money recognizing value in previously underpriced Democratic odds.",
       "pub_display": "Mar 16"
-    },
-    {
-      "title": "Prediction Markets Hook Gen-Z Gamblers",
-      "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxQWVpEYk42d3pselVLT01PcThjZmhlZGhUcGxHaGhvUTc4WGViRlkxUVdXOUljbGpyYWdUdHZmSldySnU0eGhULURuNW1Pb0FsU2MzZG92OXZTaGNpV0VLa0NveU53a3JUME1TYUgxUGtQTmZBa0cwZGhuRk8wNXdkZU1EQko5UQ?oc=5",
-      "source": "Newser",
-      "pub_iso": "2026-03-15T21:07:00+00:00",
-      "description": "",
-      "summary": "Young bettors are ditching traditional sportsbooks for prediction markets, treating political races and cultural events like fantasy football lineups. This shift signals prediction markets are finally breaking into mainstream gambling culture, which means more liquidity, tighter spreads, and actual market efficiency instead of the thin trading we've seen for years.",
-      "pub_display": "Mar 15"
-    },
-    {
-      "title": "Will Florida be a No. 1 seed? Here\u2019s what prediction markets are saying",
-      "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxNdDA1dnlnUWdET1ZRRXloLVVLZGw3R2RBTmlwR1RQOU9Fei1iNTJWbDNCZ3RmUFhURlZTUE1CWWI0eVcwOW5vbG12WWlUc0NGN3g5QWJIck9XTTZoZUFCQm1PLWNOcnpnZ1dGQVNadlJ4ejJwbzFraE9fZHp6akFvT2VZZ0RJdmdqQk0tRXQ1M2pIUVcxRldwZ3JyS1ZZTWltRENDbGVQd1psM2tzVlVjQjVGNVJuOEN1NmduWjVKUmtDQ28zY3c?oc=5",
-      "source": "Saturday Down South",
-      "pub_iso": "2026-03-15T14:50:00+00:00",
-      "description": "",
-      "summary": "Florida's NCAA tournament seeding odds are heating up as March Madness approaches, with prediction markets weighing the Gators' chances of securing a coveted No. 1 seed. The betting action reveals how sharps are pricing Florida's remaining schedule and conference tournament performance against other bubble teams fighting for top-line positioning.",
-      "pub_display": "Mar 15"
     },
     {
       "title": "Polymarket Five-Minute Bets Capture \u2018Addictive\u2019 Crypto Craze",
@@ -49,13 +76,13 @@
       "pub_display": "Mar 15"
     },
     {
-      "title": "'Gruesome' war bets fuel calls for Kalshi Polymarket crackdown",
-      "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBtWERCZmExX09Vb2ctdmV6Z1Zndjgtcjl5S2FubVY4RWgtT0p4WG1VZFZUcjVGSUpGdnp0UlhZRU1GakRIWWVzUkpBUy14VU9oSi1wLVhEMjMzZw?oc=5",
-      "source": "BBC",
-      "pub_iso": "2026-03-15T00:01:31+00:00",
+      "title": "Mojtaba Khamenei To Be Removed Before 2026 Ends? Here's What Crypto Prediction Market Says About Iran's New Supreme Leader",
+      "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxQRzhpdTZYWVBPWFBLNHZ5N0FuQnRYSzFfZ3A1VFdnaHNCaWNDOU1qSk1KbXNYN2FFaHkwdXRWdlkyUW1EaEMyY2MzeXFyVEtNUmNaT3l1YVJ3bWRTNWFka2FhTDhSaFNNeFhOYVdHZEx5MHlwbTc1WFFSSGJ6UlRNZktyM0tkV0U?oc=5",
+      "source": "Yahoo Finance",
+      "pub_iso": "2026-03-14T19:31:52+00:00",
       "description": "",
-      "summary": "Politicians and activists are demanding regulators crack down on Kalshi and Polymarket after users placed bets on gruesome war-related outcomes. The backlash threatens to accelerate regulatory scrutiny of prediction markets just as they're gaining mainstream adoption and trading volume.",
-      "pub_display": "Mar 15"
+      "summary": "Crypto prediction markets are betting on whether Mojtaba Khamenei, Iran's newly appointed Supreme Leader, will get ousted before 2026 wraps up. The action suggests traders think Iran's power transition won't be smooth, creating volatile odds on Middle East geopolitical events that smart money can capitalize on.",
+      "pub_display": "Mar 14"
     },
     {
       "title": "San Jose mayor behind in polls but ahead on prediction markets",
@@ -64,15 +91,6 @@
       "pub_iso": "2026-03-14T15:34:13+00:00",
       "description": "",
       "summary": "San Jose's incumbent mayor is trailing in traditional polling but bettors are backing them to win reelection, creating a classic disconnect between public sentiment and market wisdom. This gap suggests either the polls are missing something crucial about voter turnout and late-deciding voters, or prediction market participants are about to learn an expensive lesson about local politics.",
-      "pub_display": "Mar 14"
-    },
-    {
-      "title": "Scottie Pippen Helps Sell Wall Street on Prediction Markets",
-      "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxQaWdQMkRoWmg1WTdKX0xlVzJOMXRDSmtUVDQ2OGVRZGVGb2xoVlNrRlNFdGpNOUZoZmcyaTlKamlaSEJjbGltM3RyU2lCVlg4MjlLbzZFVXZnSUhUOHlYd0lqbmgxUHo1NzBkaW9Ra2pJeG5XQncxbU9PUDlHdUlxLWRLbVVNMlIyWHFObk9JZlBqM1h2aW5BNy1IZjhVTS1obU84ZEs5aTJnOTNmd0dV?oc=5",
-      "source": "Bloomberg.com",
-      "pub_iso": "2026-03-14T11:30:00+00:00",
-      "description": "",
-      "summary": "Scottie Pippen is apparently pitching Wall Street investors on prediction markets, bringing his NBA credibility to legitimize the space for institutional money. When a six-time champion starts evangelizing your industry to the suits, it signals prediction markets are moving from niche trading floors to mainstream financial products.",
       "pub_display": "Mar 14"
     },
     {
@@ -85,31 +103,13 @@
       "pub_display": "Mar 14"
     },
     {
-      "title": "Will Netanyahu tweet again by Saturday? Predictions & Odd...",
-      "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE1pSjhNY0hDdi1TSXF4M08zUmRaQlFURnZzeTJqczB5OG11eG5JYV9XTVpTeTlUZzhvZVYyNlo0NzVENVpUY3AwNE9UcmMzV0YyaFU3cXBzaTBsUUxzTkZPQlFaNlVRNDl2UURiS3VoSnV3b3M4bkE?oc=5",
+      "title": "Kharg Island no longer under Iranian control by March 31?...",
+      "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOMndWN25iWVUxYXJXME51aFJtcFc2TjJzdE1MLVlBM3N2N1hVd2tFNnpKU2V6REF5ekItYzYtNmtQaGxRSEptT1RfRFhvS2pYcEhEVUhhS0xEUTRFRmxzbkZ5VGpXT3FENGdEOWcyU0Vid3daUDVnUWN1c290eWsyM25xaUNkak5iQXV4YjRB?oc=5",
       "source": "Polymarket",
-      "pub_iso": "2026-03-13T22:42:59+00:00",
+      "pub_iso": "2026-03-14T00:34:54+00:00",
       "description": "",
-      "summary": "Prediction markets are betting on whether Israeli Prime Minister Netanyahu will post on Twitter before Saturday, tracking his social media activity as a tradeable event. This represents the growing trend of political figure behavior becoming micro-bettable moments, where every tweet absence or presence creates real-time odds and profit opportunities for sharp traders.",
-      "pub_display": "Mar 13"
-    },
-    {
-      "title": "Utah's anti-gambling tradition meets Kalshi and Polymarket in a new legal fight",
-      "url": "https://news.google.com/rss/articles/CBMi9AFBVV95cUxNWGZZNkt6c21zQzROUGV5WVdhOEp6ZVZXSXdMMDRNRkI2XzFTZzBuV0xmZ2VNQmlLQ0IwLWxqTlpoVGZmcnVrcUlSUXNXWHBGZGxHSnVpaTdTMGFjemVldU9WNlBWZ05keGcwZHVHWmZGYjN6a3R1ZDFXNlgwOHh6bFh2VFdCUnp6UzAydVprSWdYUHVidWZld2N6MU9fYlpJX0hjbjB2dGVZNXdlWG9DaGI2dzFYdGJGYWMxbWRJUjhXVnEweHJfMHdNZWZndWxTQk1iUl9VM2t2OVRQX3QzZWhfWmtwbkZmVnNFVWZQSHpGZWxz?oc=5",
-      "source": "St. George News",
-      "pub_iso": "2026-03-13T02:30:00+00:00",
-      "description": "",
-      "summary": "Utah is challenging prediction markets platforms Kalshi and Polymarket, likely arguing their operations violate the state's strict anti-gambling laws. This could set a precedent for how other conservative states regulate prediction markets, potentially forcing platforms to block users from multiple jurisdictions or face costly legal battles.",
-      "pub_display": "Mar 13"
-    },
-    {
-      "title": "Future is unpredictable for prediction markets as courts add to confusion",
-      "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTE9acExVR2oyNmlROGlwSFA3R2Q4RXZ3Z093c29IdTVsa0laaUxyYjgzNFQza0VNbHdlMkpCanptS2R1cDlCUVlwaUgyTHpsRXZ3Y21ucjhaSDBLWnN4Q2ZJdTZYWHk4clhrNURTNEZNb1dKdS1NZGh1M0tPa3U?oc=5",
-      "source": "ESPN",
-      "pub_iso": "2026-03-12T23:30:00+00:00",
-      "description": "",
-      "summary": "Courts are issuing conflicting rulings on prediction market regulations, creating legal uncertainty across jurisdictions. The patchwork of decisions makes it harder for platforms to operate confidently and could scare off institutional money that prediction markets desperately need to grow.",
-      "pub_display": "Mar 12"
+      "summary": "Iran's Kharg Island, which handles 90% of the country's oil exports, faces potential loss of government control by March 31 according to prediction markets. Oil futures and geopolitical betting markets will swing wildly if this major export terminal actually changes hands, given Kharg processes roughly 1.6 million barrels daily.",
+      "pub_display": "Mar 14"
     }
   ]
 }
