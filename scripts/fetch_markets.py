@@ -1694,6 +1694,33 @@ def generate_hero_take(hero: dict) -> dict:
     if ANTHROPIC_API_KEY:
         try:
             import requests as req
+            # Build probability-aware framing guidance
+            if prob >= 85:
+                prob_framing = (
+                    f"The market is at {prob}% — that is near-certainty. "
+                    "Do NOT frame a small move as a crisis or a wake-up call. "
+                    "Lead with what the high consensus actually means: the crowd has essentially decided. "
+                    "Treat the daily change as minor texture, not the story."
+                )
+            elif prob <= 15:
+                prob_framing = (
+                    f"The market is at {prob}% — the crowd has largely ruled this out. "
+                    "Do NOT frame a small move as a revival. "
+                    "Lead with what near-zero probability means for the outcome. "
+                    "Treat the daily change as minor texture, not the story."
+                )
+            elif 40 <= prob <= 60:
+                prob_framing = (
+                    f"The market is at {prob}% — genuinely uncertain territory. "
+                    "The move is meaningful here because the crowd has no conviction. "
+                    "Lead with what the uncertainty signals."
+                )
+            else:
+                prob_framing = (
+                    f"The market is at {prob}%. "
+                    "Lead with what that probability level means — is the crowd right, or is this mispriced?"
+                )
+
             prompt = (
                 f"Market: {q}\n"
                 f"Odds: {prob}%\n"
@@ -1701,8 +1728,9 @@ def generate_hero_take(hero: dict) -> dict:
                 f"Volume: ${vol}\n"
                 f"Category: {cat}\n"
                 f"Source: {source}\n\n"
+                f"Framing guidance: {prob_framing}\n\n"
                 "Write exactly 2 sentences for The Prob's hero market card.\n"
-                "Sentence 1: what the price move is signaling — who is buying/selling and why it moved.\n"
+                "Sentence 1: what the current probability level tells a trader — lead with the odds, not just the move.\n"
                 "Sentence 2: the alpha angle — is the current price right, what is mispriced, or what catalyst to watch next.\n"
                 "No em dashes. No hedging. No 'This market' opener. Write like someone with real skin in the game.\n\n"
                 "Then on a new line write exactly one of:\n"
