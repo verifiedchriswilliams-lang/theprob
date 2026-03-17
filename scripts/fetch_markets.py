@@ -48,7 +48,7 @@ GAMMA_BASE       = "https://gamma-api.polymarket.com"
 
 MIN_VOLUME_USD         = 50_000
 KALSHI_MIN_VOL         = 1_000      # Kalshi volumes are much lower than Polymarket
-TOP_MOVERS_COUNT       = 9
+TOP_MOVERS_COUNT       = 6
 HERO_MIN_VOLUME        = 250_000     # Lowered from $1M — don't block explosive movers on low total volume
 HERO_MIN_24H_VOLUME    = 2_500       # Must have at least $2.5K trading activity TODAY to be hero-eligible.
                                      # Blocks markets that had a big move weeks ago but are now dead
@@ -2111,7 +2111,7 @@ def compute_spread(poly_markets: list, kalshi_markets: list) -> list:
     Flags pairs where |poly_prob - kalshi_prob| >= 8 points.
     The crowd disagrees with itself — here's where.
     """
-    MATCH_THRESHOLD    = 0.35
+    MATCH_THRESHOLD    = 0.35    # raised from 0.35 — range-bucket filter now handles most false positives
     SPREAD_MIN_GAP_PTS = 8
     SPREAD_MIN_VOL     = 10_000   # combined minimum to filter noise
     SPREAD_MAX_RESULTS = 8
@@ -2140,6 +2140,9 @@ def compute_spread(poly_markets: list, kalshi_markets: list) -> list:
     used_kalshi = set()
 
     for pm in poly_markets:
+        # Skip range-bucket, expired, near-certain, or too-small Poly markets
+        if is_range_bucket_market(pm) or is_effectively_resolved(pm) or is_past_close(pm):
+            continue
         poly_prob = pm.get("prob")
         poly_vol  = pm.get("volume", 0) or 0
         if poly_prob is None or poly_vol < SPREAD_MIN_VOL / 2:
@@ -2150,6 +2153,9 @@ def compute_spread(poly_markets: list, kalshi_markets: list) -> list:
         best_score, best_km = 0.0, None
         for km in kalshi_markets:
             if km.get("slug") in used_kalshi:
+                continue
+            # Skip range-bucket (:: separator), expired, or near-certain Kalshi markets
+            if is_range_bucket_market(km) or is_effectively_resolved(km) or is_past_close(km):
                 continue
             kalshi_prob = km.get("prob")
             kalshi_vol  = km.get("volume", 0) or 0

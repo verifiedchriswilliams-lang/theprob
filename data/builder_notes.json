@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-03-13",
-  "built_recently": "Shipped The Spread today. It finds where Polymarket and Kalshi price the same event at least 8 points apart and surfaces the biggest gaps front and center on the site and in the daily email. If two independent crowds disagree by that much on the same outcome, one of them is wrong. Now you can see exactly where that is every day.",
-  "coming_next": "Three things queued up: Yesterday's Biggest Swings (save a daily snapshot and diff it), a Closing Soon rail for markets resolving in under 72 hours near 50/50, and sparklines on every market card showing the 7-day probability trend. The data collection for sparklines starts this run."
+  "last_updated": "2026-03-17",
+  "built_recently": "Today we launched something I've been wanting to build for a while: a three-way horse race. Instead of running one paper trading strategy at a time, we now have three models competing simultaneously in real-time — The Crowd (follows consensus 65%+ conviction), The Contrarian (always bets NO against longshots ≤30%), and The Arb (trades Poly vs Kalshi platform gaps). Same $1,000 starting balance, same markets, same clock. You can pick your favorite model on the portfolio page. I want to know which logic the readers think will win — and whether the data backs it up.",
+  "coming_next": "The 3-model race is live as of today. I'll be watching the data closely for the first 30 days to see if any edge emerges. Next up on the build side: Yesterday's Biggest Swings (save a daily snapshot and show which markets moved most over the past 24 hours), and a Closing Soon rail for markets resolving in under 72 hours near 50/50."
 }

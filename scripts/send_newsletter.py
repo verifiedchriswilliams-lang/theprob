@@ -571,6 +571,78 @@ def build_html(markets: dict, news: dict, subject: str, with_footer: bool = True
     </table>
   </td></tr>"""
 
+    # ── EXPERIMENT SCOREBOARD SECTION ──
+    def _model_card(label, color, name, strategy, thesis, v):
+        ytd = v.get("ytd_return_pct", 0.0)
+        bal = v.get("current_balance", 1000.0)
+        rec = f"{v.get('win_count',0)}W / {v.get('loss_count',0)}L"
+        ytd_col = "#00e5a0" if ytd >= 0 else "#ff4d6d"
+        ytd_str = f"+{ytd:.1f}%" if ytd >= 0 else f"{ytd:.1f}%"
+        return f"""
+        <td style="padding:0 6px;vertical-align:top;width:33%;">
+          <table width="100%" cellpadding="0" cellspacing="0"
+                 style="border:1px solid {color};border-radius:4px;background:#0d1117;">
+            <tr><td style="padding:14px 12px;">
+              <div style="font-family:'Courier New',monospace;font-size:9px;color:{color} !important;
+                          letter-spacing:0.2em;text-transform:uppercase;margin-bottom:6px;">
+                Model {label}
+              </div>
+              <div style="font-size:13px;font-weight:700;color:#edf2f7 !important;margin-bottom:4px;">
+                {name}
+              </div>
+              <div style="font-family:'Courier New',monospace;font-size:10px;color:#8ba3bc !important;
+                          margin-bottom:10px;line-height:1.4;">
+                {strategy}
+              </div>
+              <div style="font-family:'Courier New',monospace;font-size:11px;
+                          color:{ytd_col} !important;font-weight:700;">
+                {ytd_str}
+              </div>
+              <div style="font-family:'Courier New',monospace;font-size:10px;
+                          color:#8ba3bc !important;margin-top:2px;">
+                ${bal:,.2f} &middot; {rec}
+              </div>
+            </td></tr>
+          </table>
+        </td>"""
+
+    mc_a = _model_card("A", "#3b82f6", "The Crowd",
+                       "YES &ge;65%, NO &le;35%",
+                       "Follow smart money. Ride conviction.",
+                       _v("a"))
+    mc_b = _model_card("B", "#ef4444", "The Contrarian",
+                       "Always NO on &le;30% shots",
+                       "Crowds overprice longshots. Sell the ticket.",
+                       _v("b"))
+    mc_c = _model_card("C", "#f59e0b", "The Arb",
+                       "Bet the lagging platform (gap &ge;10pt)",
+                       "Two liquid crowds disagree. One is wrong.",
+                       _v("c"))
+
+    experiment_html = f"""
+  <tr><td class="section-pad" style="padding:28px 32px;border-bottom:1px solid #1e2a38;background:#080b0f !important;">
+    <div style="font-family:'Courier New',monospace;font-size:10px;color:#a78bfa !important;
+                letter-spacing:0.2em;text-transform:uppercase;margin-bottom:16px;">
+      &#9654; The 3-Model Experiment
+    </div>
+    <div style="font-size:14px;color:#edf2f7 !important;line-height:1.5;margin-bottom:18px;">
+      Three strategies. Same $1,000 starting balance. Same markets. Running simultaneously
+      starting today &mdash; we find out which logic actually makes money.
+    </div>
+    <!--[if mso]><table width="100%"><tr><![endif]-->
+    <table width="100%" cellpadding="0" cellspacing="0">
+      <tr>{mc_a}{mc_b}{mc_c}</tr>
+    </table>
+    <!--[if mso]></tr></table><![endif]-->
+    <div style="margin-top:16px;text-align:center;">
+      <a href="{SITE_URL}/portfolio.html"
+         style="font-family:'Courier New',monospace;font-size:11px;color:#a78bfa !important;
+                text-decoration:none;letter-spacing:0.15em;text-transform:uppercase;">
+        Follow the race &amp; vote for your pick &#8599;
+      </a>
+    </div>
+  </td></tr>"""
+
     # ── MOVERS SECTION ──
     movers_rows = ""
     for i, m in enumerate(movers):
@@ -726,7 +798,7 @@ def build_html(markets: dict, news: dict, subject: str, with_footer: bool = True
     builder_html = build_builder_section()
     spread_html  = build_spread_section(markets.get("the_spread", []), max_items=4)
     inner_sections = "\n".join([
-        header_html, hero_html, trade_html, movers_html, spread_html, news_html, take_html,
+        header_html, hero_html, trade_html, experiment_html, movers_html, spread_html, news_html, take_html,
         builder_html, cta_html,
         footer_html if with_footer else "",
     ])

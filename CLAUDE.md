@@ -128,7 +128,7 @@ Remaining:
 - Topic key fingerprint cosmetic issue (low priority)
 - Monitor rolling hero block — confirm ping-pong stays resolved
 - Test 1 review: Apr 10, 2026
-- Monitor The Spread match quality after Kalshi auth fix — tune MATCH_THRESHOLD (0.35) up if false matches, down if too few pairs
+- The Spread false-positive fix (Mar 17): added range-bucket/past-close/resolved filters to compute_spread(). Spread card now shows Kalshi question as subtitle. Monitor pair counts — expect 1–5 real pairs per run with current Kalshi data coverage (94 filterable markets). If < 2 pairs consistently, lower MATCH_THRESHOLD to 0.30.
 
 ## SEO Implementation (Completed Mar 1, 2026)
 
@@ -179,7 +179,7 @@ See VOICE.md. Sharp, confident, trader-focused. Lead with the number. "The crowd
 ## Session Handoff — TODO
 
 ### Pending Next Session
-1. Monitor The Spread output — check Actions logs after first post-fix pipeline run to confirm Kalshi markets are back and The Spread is finding pairs. Tune MATCH_THRESHOLD if needed.
+1. Monitor The Spread output after session 3 fixes — with filters applied, expect 1–5 real pairs (vs 8 false positives before). MATCH_THRESHOLD stays at 0.35; the range-bucket/resolved/past-close filters do the heavy lifting. If < 2 pairs consistently, tune MATCH_THRESHOLD DOWN (try 0.30). If too many mismatches, raise to 0.40. The spread-card now shows the Kalshi question as a subtitle, so readers can evaluate match quality.
 2. Yesterday's Biggest Swings — save data/markets_yesterday.json before each overwrite, diff vs today, show on index.html as "Markets That Moved Most in 24h". Zero new data needed. ~1 hour.
 3. Markets Closing Soon rail — filter days_to_resolution < 3 AND probability 35–65. Home page rail + newsletter section. High urgency signal for traders.
 4. Weird Markets section — auto-surface absurd/niche/counterintuitive markets (low volume + unusual category + active). Best viral/sharing feature for casual readers.
@@ -187,6 +187,13 @@ See VOICE.md. Sharp, confident, trader-focused. Lead with the number. "The crowd
 6. Polymarket "breaking" tab signal — Option B: inspect Network tab on polymarket.com/breaking to find Gamma API ordering parameter.
 7. Monitor Test 1 results — review Apr 10, 2026.
 8. Update data/builder_notes.json each session — edit built_recently + coming_next directly in that file.
+
+### Recently Completed (Mar 17, 2026) — Session 3
+- **The Spread QA & fix** — diagnosed 8 false-positive pairs in live data. Root cause: compute_spread() wasn't filtering range-bucket (`::`) markets, past-close markets, or effectively-resolved markets from Kalshi before matching. Added `is_range_bucket_market()`, `is_past_close()`, and `is_effectively_resolved()` filters to both Poly and Kalshi sides of the inner loop. MATCH_THRESHOLD kept at 0.35; filters alone reduced false positives from 8 → 1–4 legitimate pairs. Spread card now shows Kalshi question as a subtitle so readers can evaluate match quality.
+- **Section reorder on index.html** — moved "Daily Markets News" (brief-section with news items + signup) UP between "Today's Biggest Movers" and "The Spread". Previous order was Movers → Spread → Daily Take → News. New order: Movers → News/Signup → Spread → Daily Take.
+- **Movers reduced 9 → 6** — TOP_MOVERS_COUNT constant in fetch_markets.py reverted to 6. Page was too long at 9.
+- **3-model experiment announcement newsletter section** — added `experiment_html` block to send_newsletter.py that appears after trade_html in every email. Shows A/B/C model cards with strategy descriptions, current YTD, and a "Follow the race & vote" CTA. Wired into inner_sections assembly.
+- **builder_notes.json updated** — announcement copy for the 3-model launch. Will appear in "From Chris" section of tomorrow's newsletter.
 
 ### Recently Completed (Mar 13, 2026) — Session 2
 - The Spread shipped — full implementation: compute_spread() in fetch_markets.py, "The Spread" section on index.html, build_spread_section() in send_newsletter.py. Uses Jaccard + SequenceMatcher title matching, ≥8pt gap threshold, interest scoring by gap × volume × uncertainty proximity to 50%. Output key: "the_spread" in markets.json.

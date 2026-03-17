@@ -1170,6 +1170,35 @@
 
   <div class="divider"></div>
 
+  <!-- THE DAILY BRIEF CTA -->
+  <div class="brief-section" style="max-width: 1184px; margin: 0 auto 60px;">
+    <div class="brief-header">
+      <div>
+        <div class="brief-title">The Prob · Daily Brief</div>
+        <div class="brief-headline">Every morning, the smartest money is already on the board. We tell you where it went.</div>
+      </div>
+      <div class="brief-signup">
+        <p>Join readers who'd rather know the odds than guess.</p>
+        <div class="brief-form">
+          <input type="email" id="brief-email" placeholder="your@email.com" />
+          <button onclick="submitToBeehiiv('brief-email', 'brief-btn', 'brief-msg')" id="brief-btn">Get the Brief</button>
+        </div>
+        <p style="font-family:var(--mono);font-size:10px;color:var(--text-dim);margin-top:8px;" id="brief-msg"></p>
+      </div>
+    </div>
+    <div class="brief-preview" id="brief-news">
+      <div class="brief-item">
+        <div class="brief-item-num">LOADING</div>
+        <div class="brief-item-text">Fetching latest news...</div>
+      </div>
+    </div>
+    <div style="margin-top:16px;text-align:right;">
+      <a href="news.html" style="font-family:var(--mono);font-size:11px;color:var(--accent);text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;">All Prediction Market News ↗</a>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
   <!-- THE SPREAD — Poly vs Kalshi divergence -->
   <section class="section">
     <div class="section-header">
@@ -1219,35 +1248,6 @@
   </section>
 
   <div class="divider" style="margin-bottom: 60px;"></div>
-
-  <!-- THE DAILY BRIEF CTA -->
-  <div class="brief-section" style="max-width: 1184px; margin: 0 auto 60px;">
-    <div class="brief-header">
-      <div>
-        <div class="brief-title">The Prob · Daily Brief</div>
-        <div class="brief-headline">Every morning, the smartest money is already on the board. We tell you where it went.</div>
-      </div>
-      <div class="brief-signup">
-        <p>Join readers who'd rather know the odds than guess.</p>
-        <div class="brief-form">
-          <input type="email" id="brief-email" placeholder="your@email.com" />
-          <button onclick="submitToBeehiiv('brief-email', 'brief-btn', 'brief-msg')" id="brief-btn">Get the Brief</button>
-        </div>
-        <p style="font-family:var(--mono);font-size:10px;color:var(--text-dim);margin-top:8px;" id="brief-msg"></p>
-      </div>
-    </div>
-    <div class="brief-preview" id="brief-news">
-      <div class="brief-item">
-        <div class="brief-item-num">LOADING</div>
-        <div class="brief-item-text">Fetching latest news...</div>
-      </div>
-    </div>
-    <div style="margin-top:16px;text-align:right;">
-      <a href="news.html" style="font-family:var(--mono);font-size:11px;color:var(--accent);text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;">All Prediction Market News ↗</a>
-    </div>
-  </div>
-
-  <div class="divider"></div>
 
   <!-- WHY THE PROB -->
   <section class="why-section">
@@ -1615,9 +1615,14 @@ function renderSpread(pairs) {
     const volStr = fmtVol(p.combined_volume);
     const oiStr  = p.kalshi_oi > 0 ? ` &bull; Kalshi OI: ${fmtVol(p.kalshi_oi)}` : '';
 
+    const kaliQ = p.kalshi_question && p.kalshi_question !== p.poly_question
+      ? escHtml(p.kalshi_question.replace(/\?\s*:.*/, '').trim())  // strip sub-question after ?:
+      : '';
+
     return `
       <div class="spread-card">
-        <div class="spread-card-title">${escHtml(p.display_title)}</div>
+        <div class="spread-card-title">${escHtml(p.poly_question || p.display_title)}</div>
+        ${kaliQ ? `<div style="font-size:11px;color:var(--text-dim);margin-top:4px;font-family:var(--mono);">Kalshi: ${kaliQ}</div>` : ''}
         <div class="spread-chips">
           <${polyTag} class="spread-chip spread-chip-poly">
             Poly&nbsp;${p.poly_prob}%
