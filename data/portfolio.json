@@ -1,5 +1,8 @@
 {
+  "version": 2,
+  "start_date": "2026-03-17",
   "starting_balance": 1000.0,
+<<<<<<< Updated upstream
   "current_balance": 975.97,
   "total_pnl": -24.03,
   "ytd_return_pct": -2.4,
@@ -260,6 +263,109 @@
       "exit_prob": null,
       "exit_date": null,
       "pnl": null
+=======
+  "variants": {
+    "a": {
+      "name": "The Crowd",
+      "strategy": "Follow consensus: YES when prob \u226565%, NO when prob \u226435%",
+      "thesis": "Smart money is already priced in. Ride the conviction.",
+      "current_balance": 1000.0,
+      "total_pnl": 0.0,
+      "ytd_return_pct": 0.0,
+      "win_count": 0,
+      "loss_count": 0,
+      "open_count": 0,
+      "start_date": "2026-03-17",
+      "last_updated": "2026-03-17",
+      "trades": []
+    },
+    "b": {
+      "name": "The Contrarian",
+      "strategy": "Fade longshots: always bet NO when crowd says \u226430%",
+      "thesis": "Crowds overprice long shots. Sell the overpriced tickets.",
+      "current_balance": 1000.0,
+      "total_pnl": 0.0,
+      "ytd_return_pct": 0.0,
+      "win_count": 0,
+      "loss_count": 0,
+      "open_count": 0,
+      "start_date": "2026-03-17",
+      "last_updated": "2026-03-17",
+      "trades": []
+    },
+    "c": {
+      "name": "The Arb",
+      "strategy": "Trade Poly vs Kalshi gaps: bet the lagging platform when gap \u226510pts",
+      "thesis": "When two liquid markets disagree by 10+ points, one is wrong.",
+      "current_balance": 1000.0,
+      "total_pnl": 0.0,
+      "ytd_return_pct": 0.0,
+      "win_count": 0,
+      "loss_count": 0,
+      "open_count": 0,
+      "start_date": "2026-03-17",
+      "last_updated": "2026-03-17",
+      "trades": []
+>>>>>>> Stashed changes
     }
-  ]
+  },
+  "legacy_test_1": {
+    "note": "Test 1 (Mar 11\u2013Mar 17, 2026): single-model 65/35 gate. Archived when 3-variant experiment launched.",
+    "final_balance": 1006.5,
+    "ytd_return_pct": 0.7,
+    "win_count": 1,
+    "loss_count": 0,
+    "start_date": "2026-03-11",
+    "end_date": "2026-03-17",
+    "trades": [
+      {
+        "trade_id": "ca0812d4",
+        "question": "Will One Battle After Another win Best Cinematography at the 98th Academy Awards?",
+        "url": "https://polymarket.com/event/oscars-2026-best-cinematography-winner",
+        "entry_prob": 74.5, "direction": "YES", "amount": 100.0,
+        "entry_date": "2026-03-12", "end_date": "Mar 15",
+        "status": "open", "exit_prob": null, "exit_date": null, "pnl": null
+      },
+      {
+        "trade_id": "2a9b033e",
+        "question": "Will Don Tracy be the Republican nominee for Senate in Illinois?",
+        "url": "https://polymarket.com/event/illinois-republican-senate-primary-winner",
+        "entry_prob": 93.8, "direction": "YES", "amount": 100.0,
+        "entry_date": "2026-03-12", "end_date": "Mar 17",
+        "status": "open", "exit_prob": null, "exit_date": null, "pnl": null
+      },
+      {
+        "trade_id": "3a89e1e3",
+        "question": "Will Sinners win Best Film Editing at the 98th Academy Awards?",
+        "url": "https://polymarket.com/event/oscars-2026-best-film-editing-winner",
+        "entry_prob": 6.1, "direction": "NO", "amount": 100.0,
+        "entry_date": "2026-03-13", "end_date": "Mar 15",
+        "status": "closed", "exit_prob": 5.0, "exit_date": "2026-03-14", "pnl": 6.5
+      },
+      {
+        "trade_id": "ec74a7d0",
+        "question": "Will Zootopia 2 win Best Animated Feature Film at the 98th Academy Awards?",
+        "url": "https://polymarket.com/event/oscars-2026-best-animated-feature-film-winner",
+        "entry_prob": 5.5, "direction": "NO", "amount": 100.0,
+        "entry_date": "2026-03-14", "end_date": "Mar 15",
+        "status": "open", "exit_prob": null, "exit_date": null, "pnl": null
+      },
+      {
+        "trade_id": "0102abeb",
+        "question": "Will Delroy Lindo win Best Supporting Actor at the 98th Academy Awards?",
+        "url": "https://polymarket.com/event/oscars-2026-best-supporting-actor-winner",
+        "entry_prob": 7.2, "direction": "NO", "amount": 100.0,
+        "entry_date": "2026-03-14", "end_date": "Mar 15",
+        "status": "open", "exit_prob": null, "exit_date": null, "pnl": null
+      },
+      {
+        "trade_id": "fc529042",
+        "question": "Will F1: The Movie win Best Film Editing at the 98th Academy Awards?",
+        "url": "https://polymarket.com/event/oscars-2026-best-film-editing-winner",
+        "entry_prob": 10.4, "direction": "NO", "amount": 100.0,
+        "entry_date": "2026-03-14", "end_date": "Mar 15",
+        "status": "open", "exit_prob": null, "exit_date": null, "pnl": null
+      }
+    ]
+  }
 }

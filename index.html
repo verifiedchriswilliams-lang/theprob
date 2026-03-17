@@ -1112,33 +1112,44 @@
 
   <div class="divider"></div>
 
-  <!-- PORTFOLIO WIDGET -->
+  <!-- PORTFOLIO WIDGET — 3-MODEL HORSE RACE -->
   <section class="section" id="portfolio-widget" style="padding-top:32px;padding-bottom:32px;">
     <div class="section-header" style="margin-bottom:16px;">
-      <div class="section-title">The Prob Portfolio <span>The Running Score</span></div>
+      <div class="section-title">The Prob Portfolio <span>3 Models &mdash; Who Wins?</span></div>
       <a href="portfolio.html" style="font-family:'Courier New',monospace;font-size:11px;letter-spacing:0.1em;color:var(--text-muted);text-transform:uppercase;">Full Ledger &#8599;</a>
     </div>
-    <div id="portfolio-bar" style="display:flex;gap:16px;flex-wrap:wrap;align-items:stretch;">
-      <div style="background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:20px 24px;min-width:160px;flex:1;">
-        <div style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-muted);margin-bottom:6px;">Balance</div>
-        <div id="pw-balance" style="font-family:'Courier New',monospace;font-size:26px;font-weight:700;color:var(--green);">$1,000</div>
-        <div style="font-size:11px;color:var(--text-muted);margin-top:4px;">Started $1,000 &middot; Mar 11 2026</div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;" id="portfolio-bar">
+
+      <div style="background:var(--bg2);border:1px solid var(--border);border-top:2px solid #4a9eff;border-radius:8px;padding:16px 20px;">
+        <div style="font-family:'Courier New',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:#4a9eff;margin-bottom:4px;">Model A</div>
+        <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:10px;">The Crowd</div>
+        <div id="pw-a-bal" style="font-family:'Courier New',monospace;font-size:22px;font-weight:700;color:var(--green);">$1,000.00</div>
+        <div style="display:flex;gap:12px;margin-top:6px;">
+          <div><div style="font-size:10px;color:var(--text-muted);">YTD</div><div style="font-family:'Courier New',monospace;font-size:12px;" id="pw-a-ytd">+0.0%</div></div>
+          <div><div style="font-size:10px;color:var(--text-muted);">Record</div><div style="font-family:'Courier New',monospace;font-size:12px;color:var(--amber);" id="pw-a-rec">0&ndash;0</div></div>
+        </div>
       </div>
-      <div style="background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:20px 24px;min-width:120px;flex:1;">
-        <div style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-muted);margin-bottom:6px;">YTD Return</div>
-        <div id="pw-ytd" style="font-family:'Courier New',monospace;font-size:26px;font-weight:700;color:var(--green);">+0.0%</div>
-        <div style="font-size:11px;color:var(--text-muted);margin-top:4px;">Paper portfolio</div>
+
+      <div style="background:var(--bg2);border:1px solid var(--border);border-top:2px solid var(--red);border-radius:8px;padding:16px 20px;">
+        <div style="font-family:'Courier New',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:var(--red);margin-bottom:4px;">Model B &mdash; Editor's Pick</div>
+        <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:10px;">The Contrarian</div>
+        <div id="pw-b-bal" style="font-family:'Courier New',monospace;font-size:22px;font-weight:700;color:var(--green);">$1,000.00</div>
+        <div style="display:flex;gap:12px;margin-top:6px;">
+          <div><div style="font-size:10px;color:var(--text-muted);">YTD</div><div style="font-family:'Courier New',monospace;font-size:12px;" id="pw-b-ytd">+0.0%</div></div>
+          <div><div style="font-size:10px;color:var(--text-muted);">Record</div><div style="font-family:'Courier New',monospace;font-size:12px;color:var(--amber);" id="pw-b-rec">0&ndash;0</div></div>
+        </div>
       </div>
-      <div style="background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:20px 24px;min-width:120px;flex:1;">
-        <div style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-muted);margin-bottom:6px;">Record</div>
-        <div id="pw-record" style="font-family:'Courier New',monospace;font-size:26px;font-weight:700;color:var(--amber);">0&ndash;0</div>
-        <div id="pw-winrate" style="font-size:11px;color:var(--text-muted);margin-top:4px;">Win rate &mdash;</div>
+
+      <div style="background:var(--bg2);border:1px solid var(--border);border-top:2px solid var(--amber);border-radius:8px;padding:16px 20px;">
+        <div style="font-family:'Courier New',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:var(--amber);margin-bottom:4px;">Model C</div>
+        <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:10px;">The Arb</div>
+        <div id="pw-c-bal" style="font-family:'Courier New',monospace;font-size:22px;font-weight:700;color:var(--green);">$1,000.00</div>
+        <div style="display:flex;gap:12px;margin-top:6px;">
+          <div><div style="font-size:10px;color:var(--text-muted);">YTD</div><div style="font-family:'Courier New',monospace;font-size:12px;" id="pw-c-ytd">+0.0%</div></div>
+          <div><div style="font-size:10px;color:var(--text-muted);">Record</div><div style="font-family:'Courier New',monospace;font-size:12px;color:var(--amber);" id="pw-c-rec">0&ndash;0</div></div>
+        </div>
       </div>
-      <div style="background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:20px 24px;min-width:120px;flex:1;">
-        <div style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-muted);margin-bottom:6px;">Open Positions</div>
-        <div id="pw-open" style="font-family:'Courier New',monospace;font-size:26px;font-weight:700;color:var(--text);">0</div>
-        <div id="pw-total" style="font-size:11px;color:var(--text-muted);margin-top:4px;">0 trades logged</div>
-      </div>
+
     </div>
   </section>
 
@@ -1493,34 +1504,26 @@ function renderTimestamp(updated) {
 
 function renderPortfolioWidget(p) {
   if (!p) return;
-  const bal    = p.current_balance ?? 1000;
-  const ytd    = p.ytd_return_pct  ?? 0;
-  const wins   = p.win_count       ?? 0;
-  const losses = p.loss_count      ?? 0;
-  const total  = wins + losses;
-  const winRate = total > 0 ? Math.round(wins / total * 100) : null;
-  const trades  = p.trades || [];
-  const open    = p.open_count ?? trades.filter(t => t.status === 'open').length;
+  const vars = p.variants || {};
+  ['a','b','c'].forEach(k => {
+    const v = vars[k]; if (!v) return;
+    const bal = v.current_balance ?? 1000;
+    const ytd = v.ytd_return_pct  ?? 0;
+    const el  = (id) => document.getElementById('pw-' + k + '-' + id);
 
-  const balEl = document.getElementById('pw-balance');
-  if (balEl) {
-    balEl.textContent = '$' + bal.toLocaleString('en-US', {minimumFractionDigits:2,maximumFractionDigits:2});
-    balEl.style.color = bal >= 1000 ? 'var(--green)' : 'var(--red)';
-  }
-  const ytdEl = document.getElementById('pw-ytd');
-  if (ytdEl) {
-    ytdEl.textContent = (ytd >= 0 ? '+' : '') + ytd.toFixed(1) + '%';
-    ytdEl.style.color = ytd >= 0 ? 'var(--green)' : 'var(--red)';
-  }
-  const recEl = document.getElementById('pw-record');
-  if (recEl) recEl.textContent = wins + '\u2013' + losses;
-  const wrEl = document.getElementById('pw-winrate');
-  if (wrEl) wrEl.textContent = winRate !== null ? 'Win rate: ' + winRate + '%' : 'Win rate \u2014';
-
-  const openEl = document.getElementById('pw-open');
-  if (openEl) openEl.textContent = open;
-  const totalEl = document.getElementById('pw-total');
-  if (totalEl) totalEl.textContent = trades.length + ' trade' + (trades.length !== 1 ? 's' : '') + ' logged';
+    const balEl = el('bal');
+    if (balEl) {
+      balEl.textContent = '$' + bal.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
+      balEl.style.color = bal >= 1000 ? 'var(--green)' : 'var(--red)';
+    }
+    const ytdEl = el('ytd');
+    if (ytdEl) {
+      ytdEl.textContent = (ytd >= 0 ? '+' : '') + ytd.toFixed(1) + '%';
+      ytdEl.style.color = ytd >= 0 ? 'var(--green)' : 'var(--red)';
+    }
+    const recEl = el('rec');
+    if (recEl) recEl.textContent = (v.win_count ?? 0) + '\u2013' + (v.loss_count ?? 0);
+  });
 }
 
 async function loadMarkets() {

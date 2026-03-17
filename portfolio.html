@@ -133,57 +133,117 @@
 
 <!-- HERO -->
 <div class="page-hero">
-  <div class="page-eyebrow">Live Experiment &middot; Test 1 &middot; Started Mar 11, 2026</div>
-  <h1 class="page-title">We're building a prediction market trading system in public.</h1>
-  <p class="page-subtitle">Every rule, every trade, every result — logged the moment it happens. No retroactive edits. No cherry-picking. You're watching us figure this out in real time.</p>
+  <div class="page-eyebrow">Live Experiment &middot; 3 Models &middot; Started Mar 17, 2026</div>
+  <h1 class="page-title">3 models. Same markets. Who wins?</h1>
+  <p class="page-subtitle">We're running three trading systems simultaneously — each with a different thesis about how prediction markets can be beaten. $1,000 each. Every trade logged in real time. Pick your side.</p>
 
-  <div class="stats-grid" id="stats-grid">
-    <div class="stat-card">
-      <div class="stat-label">Current Balance</div>
-      <div class="stat-value green" id="stat-balance">$1,000</div>
-      <div class="stat-sub">Started at $1,000 &middot; Mar 11, 2026</div>
+  <!-- 3-MODEL SCOREBOARD -->
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px;" id="scoreboard">
+
+    <div style="background:var(--bg2);border:1px solid var(--border);border-top:3px solid #4a9eff;border-radius:8px;padding:24px;">
+      <div style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:#4a9eff;margin-bottom:6px;">Model A</div>
+      <div style="font-size:18px;font-weight:700;margin-bottom:4px;">The Crowd</div>
+      <div style="font-size:12px;color:var(--text-muted);margin-bottom:16px;">Follow consensus: YES &ge;65%, NO &le;35%</div>
+      <div style="font-family:'Courier New',monospace;font-size:28px;font-weight:700;" id="sb-a-bal" class="green">$1,000.00</div>
+      <div style="display:flex;gap:16px;margin-top:8px;">
+        <div><div style="font-size:11px;color:var(--text-muted);">YTD</div><div style="font-family:'Courier New',monospace;font-size:14px;" id="sb-a-ytd" class="green">+0.0%</div></div>
+        <div><div style="font-size:11px;color:var(--text-muted);">Record</div><div style="font-family:'Courier New',monospace;font-size:14px;color:var(--amber);" id="sb-a-rec">0&ndash;0</div></div>
+        <div><div style="font-size:11px;color:var(--text-muted);">Open</div><div style="font-family:'Courier New',monospace;font-size:14px;" id="sb-a-open">0</div></div>
+      </div>
     </div>
-    <div class="stat-card">
-      <div class="stat-label">YTD Return</div>
-      <div class="stat-value" id="stat-ytd">0.0%</div>
-      <div class="stat-sub" id="stat-ytd-sub">vs. S&amp;P 500 benchmark</div>
+
+    <div style="background:var(--bg2);border:1px solid var(--border);border-top:3px solid var(--red);border-radius:8px;padding:24px;">
+      <div style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--red);margin-bottom:6px;">Model B &mdash; My Pick to Win</div>
+      <div style="font-size:18px;font-weight:700;margin-bottom:4px;">The Contrarian</div>
+      <div style="font-size:12px;color:var(--text-muted);margin-bottom:16px;">Fade longshots: always NO when crowd says &le;30%</div>
+      <div style="font-family:'Courier New',monospace;font-size:28px;font-weight:700;" id="sb-b-bal" class="green">$1,000.00</div>
+      <div style="display:flex;gap:16px;margin-top:8px;">
+        <div><div style="font-size:11px;color:var(--text-muted);">YTD</div><div style="font-family:'Courier New',monospace;font-size:14px;" id="sb-b-ytd" class="green">+0.0%</div></div>
+        <div><div style="font-size:11px;color:var(--text-muted);">Record</div><div style="font-family:'Courier New',monospace;font-size:14px;color:var(--amber);" id="sb-b-rec">0&ndash;0</div></div>
+        <div><div style="font-size:11px;color:var(--text-muted);">Open</div><div style="font-family:'Courier New',monospace;font-size:14px;" id="sb-b-open">0</div></div>
+      </div>
     </div>
-    <div class="stat-card">
-      <div class="stat-label">Win / Loss Record</div>
-      <div class="stat-value amber" id="stat-record">0 / 0</div>
-      <div class="stat-sub" id="stat-winrate">Win rate &mdash;</div>
+
+    <div style="background:var(--bg2);border:1px solid var(--border);border-top:3px solid var(--amber);border-radius:8px;padding:24px;">
+      <div style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--amber);margin-bottom:6px;">Model C</div>
+      <div style="font-size:18px;font-weight:700;margin-bottom:4px;">The Arb</div>
+      <div style="font-size:12px;color:var(--text-muted);margin-bottom:16px;">Trade Poly vs Kalshi gaps when they diverge &ge;10pts</div>
+      <div style="font-family:'Courier New',monospace;font-size:28px;font-weight:700;" id="sb-c-bal" class="green">$1,000.00</div>
+      <div style="display:flex;gap:16px;margin-top:8px;">
+        <div><div style="font-size:11px;color:var(--text-muted);">YTD</div><div style="font-family:'Courier New',monospace;font-size:14px;" id="sb-c-ytd" class="green">+0.0%</div></div>
+        <div><div style="font-size:11px;color:var(--text-muted);">Record</div><div style="font-family:'Courier New',monospace;font-size:14px;color:var(--amber);" id="sb-c-rec">0&ndash;0</div></div>
+        <div><div style="font-size:11px;color:var(--text-muted);">Open</div><div style="font-family:'Courier New',monospace;font-size:14px;" id="sb-c-open">0</div></div>
+      </div>
     </div>
-    <div class="stat-card">
-      <div class="stat-label">Open Positions</div>
-      <div class="stat-value" id="stat-open">0</div>
-      <div class="stat-sub">Markets currently live</div>
-    </div>
+
   </div>
+</div>
+
+<!-- READER POLL -->
+<div class="section">
+  <div class="section-title">Which Model Do You Think Wins?</div>
+  <p style="font-size:14px;color:var(--text-muted);margin-bottom:20px;">30 days, $1,000 each. Pick your horse. Results revealed in the newsletter April 17.</p>
+  <div style="display:flex;gap:12px;flex-wrap:wrap;" id="poll-btns">
+    <button onclick="castVote('a')" id="poll-a" style="flex:1;min-width:140px;background:var(--bg2);border:1px solid #4a9eff44;border-radius:8px;padding:16px;cursor:pointer;text-align:left;transition:border-color 0.15s;">
+      <div style="font-family:'Courier New',monospace;font-size:9px;letter-spacing:0.12em;color:#4a9eff;margin-bottom:6px;">MODEL A</div>
+      <div style="font-size:15px;font-weight:600;color:var(--text);">The Crowd</div>
+      <div style="font-size:12px;color:var(--text-muted);margin-top:4px;">Ride the consensus</div>
+    </button>
+    <button onclick="castVote('b')" id="poll-b" style="flex:1;min-width:140px;background:var(--bg2);border:1px solid var(--red)44;border-radius:8px;padding:16px;cursor:pointer;text-align:left;transition:border-color 0.15s;">
+      <div style="font-family:'Courier New',monospace;font-size:9px;letter-spacing:0.12em;color:var(--red);margin-bottom:6px;">MODEL B</div>
+      <div style="font-size:15px;font-weight:600;color:var(--text);">The Contrarian</div>
+      <div style="font-size:12px;color:var(--text-muted);margin-top:4px;">Fade the longshots</div>
+    </button>
+    <button onclick="castVote('c')" id="poll-c" style="flex:1;min-width:140px;background:var(--bg2);border:1px solid var(--amber)44;border-radius:8px;padding:16px;cursor:pointer;text-align:left;transition:border-color 0.15s;">
+      <div style="font-family:'Courier New',monospace;font-size:9px;letter-spacing:0.12em;color:var(--amber);margin-bottom:6px;">MODEL C</div>
+      <div style="font-size:15px;font-weight:600;color:var(--text);">The Arb</div>
+      <div style="font-size:12px;color:var(--text-muted);margin-top:4px;">Trade the platforms</div>
+    </button>
+  </div>
+  <div id="poll-confirm" style="display:none;margin-top:16px;font-family:'Courier New',monospace;font-size:12px;color:var(--green);">&#10003; Vote locked in. We'll reveal the reader consensus in the next newsletter.</div>
 </div>
 
 <!-- EXPERIMENT CONTEXT -->
 <div class="section">
-  <div class="section-title">What We're Testing</div>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:32px;">
-    <div style="background:var(--bg2);border:1px solid var(--border);border-left:3px solid var(--amber);border-radius:8px;padding:24px;">
-      <div style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--amber);margin-bottom:10px;">Test 1 &middot; Mar 11 – Apr 10, 2026</div>
-      <div style="font-weight:600;margin-bottom:10px;">Current ruleset</div>
-      <ul style="font-size:14px;color:var(--text-muted);line-height:2;list-style:none;padding:0;">
-        <li>&#9656; Only trade markets resolving within 14 days</li>
-        <li>&#9656; Buy YES when crowd says &ge;65% probability</li>
-        <li>&#9656; Buy NO when crowd says &le;35% probability</li>
-        <li>&#9656; $100 flat per trade, no sizing</li>
-        <li>&#9656; One trade logged per day max</li>
+  <div class="section-title">The 3 Models</div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:32px;">
+
+    <div style="background:var(--bg2);border:1px solid var(--border);border-left:3px solid #4a9eff;border-radius:8px;padding:24px;">
+      <div style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:#4a9eff;margin-bottom:10px;">Model A &middot; The Crowd</div>
+      <div style="font-weight:600;margin-bottom:10px;">Follow the conviction</div>
+      <ul style="font-size:13px;color:var(--text-muted);line-height:2;list-style:none;padding:0;">
+        <li>&#9656; Markets resolving within 14 days</li>
+        <li>&#9656; YES when prob &ge;65%</li>
+        <li>&#9656; NO when prob &le;35%</li>
+        <li>&#9656; $100 flat sizing</li>
       </ul>
+      <div style="margin-top:14px;font-size:12px;color:var(--text-muted);font-style:italic;">The thesis: smart money has already priced it in.</div>
     </div>
-    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:24px;">
-      <div style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-muted);margin-bottom:10px;">The Question</div>
-      <div style="font-weight:600;margin-bottom:10px;">Does following the crowd's conviction make money?</div>
-      <p style="font-size:14px;color:var(--text-muted);line-height:1.7;">Test 1 is the baseline. We buy with the crowd when they're convicted. After 30 days we'll know if that has any edge — or if we need to flip the script and fade them instead. Either result is useful.</p>
-      <div style="margin-top:16px;font-family:'Courier New',monospace;font-size:11px;color:var(--text-muted);">
-        Results reviewed: <span style="color:var(--text);">Apr 10, 2026</span>
-      </div>
+
+    <div style="background:var(--bg2);border:1px solid var(--border);border-left:3px solid var(--red);border-radius:8px;padding:24px;">
+      <div style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--red);margin-bottom:10px;">Model B &middot; The Contrarian</div>
+      <div style="font-weight:600;margin-bottom:10px;">Sell the longshots</div>
+      <ul style="font-size:13px;color:var(--text-muted);line-height:2;list-style:none;padding:0;">
+        <li>&#9656; Markets resolving within 14 days</li>
+        <li>&#9656; Always NO when prob &le;30%</li>
+        <li>&#9656; Pick the most liquid qualifying market</li>
+        <li>&#9656; $100 flat sizing</li>
+      </ul>
+      <div style="margin-top:14px;font-size:12px;color:var(--text-muted);font-style:italic;">The thesis: crowds overprice unlikely events. Sell the expensive tickets.</div>
     </div>
+
+    <div style="background:var(--bg2);border:1px solid var(--border);border-left:3px solid var(--amber);border-radius:8px;padding:24px;">
+      <div style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--amber);margin-bottom:10px;">Model C &middot; The Arb</div>
+      <div style="font-weight:600;margin-bottom:10px;">Trade the disagreement</div>
+      <ul style="font-size:13px;color:var(--text-muted);line-height:2;list-style:none;padding:0;">
+        <li>&#9656; Only when Poly and Kalshi gap &ge;10pts</li>
+        <li>&#9656; YES on the lagging (cheaper) platform</li>
+        <li>&#9656; Up to 30-day resolution window</li>
+        <li>&#9656; $100 flat sizing</li>
+      </ul>
+      <div style="margin-top:14px;font-size:12px;color:var(--text-muted);font-style:italic;">The thesis: when two liquid markets disagree by 10+ points, one is wrong.</div>
+    </div>
+
   </div>
 </div>
 
@@ -194,15 +254,22 @@
     <div style="padding:16px 20px;border-bottom:1px solid var(--border);display:flex;gap:16px;align-items:baseline;">
       <div style="font-family:'Courier New',monospace;font-size:11px;color:var(--text-muted);white-space:nowrap;">Mar 11, 2026</div>
       <div>
-        <div style="font-size:14px;font-weight:600;margin-bottom:4px;">Test 1 begins. System goes live.</div>
-        <div style="font-size:13px;color:var(--text-muted);">Portfolio reset to $1,000. Decoupled "Market of the Day" (editorial) from "The Prob Trade" (portfolio). Trade picker now selects only short-duration markets resolving within 14 days. 65/35 conviction gate. Flat $100/trade sizing.</div>
+        <div style="font-size:14px;font-weight:600;margin-bottom:4px;">Test 1 (single model) begins.</div>
+        <div style="font-size:13px;color:var(--text-muted);">$1,000 starting balance. 65/35 conviction gate. Short-duration only (&le;14 days). Flat $100/trade.</div>
+      </div>
+    </div>
+    <div style="padding:16px 20px;border-bottom:1px solid var(--border);display:flex;gap:16px;align-items:baseline;">
+      <div style="font-family:'Courier New',monospace;font-size:11px;color:var(--text-muted);white-space:nowrap;">Mar 17, 2026</div>
+      <div>
+        <div style="font-size:14px;font-weight:600;margin-bottom:4px;">3-model experiment launches.</div>
+        <div style="font-size:13px;color:var(--text-muted);">Test 1 archived (1W/0L, +$6.50). Three models start simultaneously at $1,000 each: Model A (Crowd), Model B (Contrarian), Model C (Arb). Each follows a distinct strategy. Results reviewed Apr 17, 2026.</div>
       </div>
     </div>
     <div style="padding:16px 20px;background:var(--bg3);display:flex;gap:16px;align-items:baseline;">
-      <div style="font-family:'Courier New',monospace;font-size:11px;color:var(--text-muted);white-space:nowrap;">Apr 10, 2026</div>
+      <div style="font-family:'Courier New',monospace;font-size:11px;color:var(--text-muted);white-space:nowrap;">Apr 17, 2026</div>
       <div>
-        <div style="font-size:14px;font-weight:600;margin-bottom:4px;color:var(--text-muted);">Test 1 results reviewed &mdash; Test 2 rules TBD</div>
-        <div style="font-size:13px;color:var(--text-muted);">Check back here to see what the data says and how the rules change.</div>
+        <div style="font-size:14px;font-weight:600;margin-bottom:4px;color:var(--text-muted);">3-model results reviewed &mdash; next phase TBD</div>
+        <div style="font-size:13px;color:var(--text-muted);">Check back to see which model won and how the rules evolve.</div>
       </div>
     </div>
   </div>
@@ -210,11 +277,17 @@
 
 <!-- TRADE LEDGER -->
 <div class="section">
-  <div class="section-title">Full Trade Ledger &mdash; Test 1</div>
+  <div class="section-title">Full Trade Ledger</div>
+  <!-- Model tabs -->
+  <div style="display:flex;gap:8px;margin-bottom:20px;" id="ledger-tabs">
+    <button onclick="switchLedger('a')" id="tab-a" style="font-family:'Courier New',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;padding:8px 18px;border-radius:4px;cursor:pointer;border:1px solid #4a9eff;background:#4a9eff22;color:#4a9eff;">Model A &mdash; The Crowd</button>
+    <button onclick="switchLedger('b')" id="tab-b" style="font-family:'Courier New',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;padding:8px 18px;border-radius:4px;cursor:pointer;border:1px solid var(--border);background:transparent;color:var(--text-muted);">Model B &mdash; The Contrarian</button>
+    <button onclick="switchLedger('c')" id="tab-c" style="font-family:'Courier New',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;padding:8px 18px;border-radius:4px;cursor:pointer;border:1px solid var(--border);background:transparent;color:var(--text-muted);">Model C &mdash; The Arb</button>
+  </div>
   <div id="trade-container">
     <div class="empty-state">
-      <div class="big">📋</div>
-      <p>No trades logged yet. The first Market of the Day pick will open the portfolio.</p>
+      <div class="big">&#128203;</div>
+      <p>No trades logged yet. First picks will appear after the next pipeline run.</p>
     </div>
   </div>
 </div>
@@ -260,105 +333,127 @@
 
 <script>
   const MARKETS_URL = 'data/markets.json';
+  const TAB_COLORS  = { a: '#4a9eff', b: 'var(--red)', c: 'var(--amber)' };
+  let allVariants   = {};
+  let activeTab     = 'a';
 
+  function truncate(str, n) { return str.length > n ? str.slice(0, n-1) + '\u2026' : str; }
+
+  function fmtBal(n)  { return '$' + n.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2}); }
+  function fmtYtd(n)  { return (n >= 0 ? '+' : '') + n.toFixed(1) + '%'; }
+  function fmtRec(w, l) { return w + '\u2013' + l; }
+
+  function updateScoreboard(variants) {
+    ['a','b','c'].forEach(k => {
+      const v = variants[k]; if (!v) return;
+      const bal = v.current_balance ?? 1000;
+      const ytd = v.ytd_return_pct  ?? 0;
+      const el  = (id) => document.getElementById('sb-' + k + '-' + id);
+      const balEl = el('bal');
+      if (balEl) { balEl.textContent = fmtBal(bal); balEl.style.color = bal >= 1000 ? 'var(--green)' : 'var(--red)'; }
+      const ytdEl = el('ytd');
+      if (ytdEl) { ytdEl.textContent = fmtYtd(ytd); ytdEl.style.color = ytd >= 0 ? 'var(--green)' : 'var(--red)'; }
+      const recEl = el('rec'); if (recEl) recEl.textContent = fmtRec(v.win_count??0, v.loss_count??0);
+      const opnEl = el('open'); if (opnEl) opnEl.textContent = v.open_count ?? 0;
+    });
+  }
+
+  function renderTradeTable(variant) {
+    const container = document.getElementById('trade-container');
+    const trades    = (variant && variant.trades) ? variant.trades : [];
+    if (!trades.length) {
+      container.innerHTML = '<div class="empty-state"><div class="big">&#128203;</div><p>No trades yet. First pick arrives with the next hourly pipeline run.</p></div>';
+      return;
+    }
+
+    const table = document.createElement('table');
+    table.className = 'trade-table';
+    table.innerHTML = `<thead><tr>
+      <th>Entered</th><th>Market</th><th>Side</th>
+      <th>Entry %</th><th>Resolves</th><th>Exit %</th><th>P&amp;L</th><th>Status</th>
+    </tr></thead><tbody id="trade-tbody"></tbody>`;
+
+    const tbody = table.querySelector('tbody');
+    trades.forEach(t => {
+      const isClosed = t.status === 'closed';
+      const isWin    = isClosed && t.pnl > 0;
+      const pnlText  = isClosed ? (t.pnl >= 0 ? '+$' : '-$') + Math.abs(t.pnl).toFixed(2) : '\u2014';
+      const pnlClass = isClosed ? (t.pnl >= 0 ? 'pos' : 'neg') : 'pending';
+      const stLabel  = isClosed ? (isWin ? 'WIN' : 'LOSS') : 'OPEN';
+      const stClass  = isClosed ? (isWin ? 'win' : 'loss') : 'open';
+      let resolves = '\u2014';
+      if (t.end_date) resolves = t.end_date;
+      else if (t.end_date_raw) { try { resolves = new Date(t.end_date_raw).toLocaleDateString('en-US',{month:'short',day:'numeric'}); } catch(e){} }
+      const tr = document.createElement('tr');
+      if (!isClosed) tr.className = 'open';
+      tr.innerHTML = `
+        <td style="font-family:'Courier New',monospace;font-size:12px;color:var(--text-muted)">${t.entry_date}</td>
+        <td><a class="market-link" href="${t.url||'#'}" target="_blank">${truncate(t.question,65)}</a>
+            <div class="market-source">${t.source||''}${t.display_category?' &middot; '+t.display_category:''}</div></td>
+        <td><span class="direction-badge ${(t.direction||'').toLowerCase()}">${t.direction}</span></td>
+        <td style="font-family:'Courier New',monospace;font-size:13px;">${t.entry_prob}%</td>
+        <td style="font-family:'Courier New',monospace;font-size:12px;color:var(--text-muted)">${resolves}</td>
+        <td style="font-family:'Courier New',monospace;font-size:13px;color:var(--text-muted)">${t.exit_prob!=null?t.exit_prob+'%':'\u2014'}</td>
+        <td><span class="pnl-value ${pnlClass}">${pnlText}</span></td>
+        <td><span class="status-badge ${stClass}">${stLabel}</span></td>`;
+      tbody.appendChild(tr);
+    });
+    container.innerHTML = '';
+    container.appendChild(table);
+  }
+
+  function switchLedger(key) {
+    activeTab = key;
+    ['a','b','c'].forEach(k => {
+      const btn = document.getElementById('tab-' + k);
+      if (!btn) return;
+      const isActive = k === key;
+      const col = TAB_COLORS[k];
+      btn.style.border    = isActive ? '1px solid ' + col : '1px solid var(--border)';
+      btn.style.background = isActive ? col + '22' : 'transparent';
+      btn.style.color     = isActive ? col : 'var(--text-muted)';
+    });
+    renderTradeTable(allVariants[key]);
+  }
+
+  // ── Poll (localStorage) ───────────────────────────────────────────────────
+  function initPoll() {
+    const stored = localStorage.getItem('theprob_model_vote');
+    if (stored) showVoteConfirm(stored);
+  }
+  function castVote(key) {
+    localStorage.setItem('theprob_model_vote', key);
+    showVoteConfirm(key);
+  }
+  function showVoteConfirm(key) {
+    const names = { a: 'Model A (The Crowd)', b: 'Model B (The Contrarian)', c: 'Model C (The Arb)' };
+    const conf = document.getElementById('poll-confirm');
+    if (conf) { conf.textContent = '\u2713 You picked ' + (names[key]||key) + '. Results revealed Apr 17 in the newsletter.'; conf.style.display = 'block'; }
+    ['a','b','c'].forEach(k => {
+      const btn = document.getElementById('poll-' + k);
+      if (!btn) return;
+      const col = { a: '#4a9eff', b: 'var(--red)', c: 'var(--amber)' }[k];
+      btn.style.opacity = k === key ? '1' : '0.45';
+      btn.style.border  = k === key ? '2px solid ' + col : '1px solid ' + col + '44';
+    });
+  }
+
+  // ── Main load ─────────────────────────────────────────────────────────────
   async function loadPortfolio() {
     try {
       const res  = await fetch(MARKETS_URL + '?t=' + Date.now());
       const data = await res.json();
       const p    = data.portfolio || {};
-      const trades = p.trades || p.recent_trades || [];  // full ledger
-
-      // Stats
-      const bal     = p.current_balance ?? 1000;
-      const ytd     = p.ytd_return_pct  ?? 0;
-      const wins    = p.win_count        ?? 0;
-      const losses  = p.loss_count       ?? 0;
-      const open    = p.open_count       ?? 0;
-      const total   = wins + losses;
-      const winRate = total > 0 ? Math.round(wins / total * 100) : null;
-
-      document.getElementById('stat-balance').textContent = '$' + bal.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
-      document.getElementById('stat-balance').className   = 'stat-value ' + (bal >= 1000 ? 'green' : 'red');
-
-      const ytdEl  = document.getElementById('stat-ytd');
-      ytdEl.textContent = (ytd >= 0 ? '+' : '') + ytd.toFixed(1) + '%';
-      ytdEl.className   = 'stat-value ' + (ytd >= 0 ? 'green' : 'red');
-
-      document.getElementById('stat-record').textContent  = wins + ' / ' + losses;
-      document.getElementById('stat-winrate').textContent = winRate !== null ? 'Win rate: ' + winRate + '%' : 'Win rate \u2014';
-      document.getElementById('stat-open').textContent    = open;
-
-      // Trade table
-      if (trades.length === 0) return;
-
-      const table = document.createElement('table');
-      table.className = 'trade-table';
-      table.innerHTML = `
-        <thead>
-          <tr>
-            <th>Entered</th>
-            <th>Market</th>
-            <th>Side</th>
-            <th>Entry %</th>
-            <th>Resolves</th>
-            <th>Exit %</th>
-            <th>P&amp;L</th>
-            <th>Status</th>
-          </tr>
-        </thead>
-        <tbody id="trade-tbody"></tbody>`;
-
-      const tbody = table.querySelector('tbody');
-
-      trades.forEach(t => {
-        const isClosed    = t.status === 'closed';
-        const isWin       = isClosed && t.pnl > 0;
-        const pnlText     = isClosed
-          ? (t.pnl >= 0 ? '+$' : '-$') + Math.abs(t.pnl).toFixed(2)
-          : '\u2014';
-        const pnlClass    = isClosed ? (t.pnl >= 0 ? 'pos' : 'neg') : 'pending';
-        const statusLabel = isClosed ? (isWin ? 'WIN' : 'LOSS') : 'OPEN';
-        const statusClass = isClosed ? (isWin ? 'win' : 'loss') : 'open';
-
-        // Format end date for display
-        let resolvesText = '\u2014';
-        if (t.end_date) {
-          resolvesText = t.end_date;
-        } else if (t.end_date_raw) {
-          try {
-            resolvesText = new Date(t.end_date_raw).toLocaleDateString('en-US', {month:'short', day:'numeric', year:'numeric'});
-          } catch(e) { resolvesText = '\u2014'; }
-        }
-
-        const tr = document.createElement('tr');
-        if (!isClosed) tr.className = 'open';
-        tr.innerHTML = `
-          <td style="font-family:'Courier New',monospace;font-size:12px;color:var(--text-muted)">${t.entry_date}</td>
-          <td>
-            <a class="market-link" href="${t.url || '#'}" target="_blank">${truncate(t.question, 65)}</a>
-            <div class="market-source">${t.source}${t.display_category ? ' · ' + t.display_category : ''}</div>
-          </td>
-          <td><span class="direction-badge ${(t.direction||'').toLowerCase()}">${t.direction}</span></td>
-          <td style="font-family:'Courier New',monospace;font-size:13px;">${t.entry_prob}%</td>
-          <td style="font-family:'Courier New',monospace;font-size:12px;color:var(--text-muted)">${resolvesText}</td>
-          <td style="font-family:'Courier New',monospace;font-size:13px;color:var(--text-muted)">${t.exit_prob != null ? t.exit_prob + '%' : '\u2014'}</td>
-          <td><span class="pnl-value ${pnlClass}">${pnlText}</span></td>
-          <td><span class="status-badge ${statusClass}">${statusLabel}</span></td>`;
-        tbody.appendChild(tr);
-      });
-
-      document.getElementById('trade-container').innerHTML = '';
-      document.getElementById('trade-container').appendChild(table);
-
+      const vars = p.variants || {};
+      allVariants = vars;
+      updateScoreboard(vars);
+      renderTradeTable(vars[activeTab]);
     } catch(e) {
       console.error('Portfolio load error:', e);
     }
   }
 
-  function truncate(str, n) {
-    return str.length > n ? str.slice(0, n - 1) + '\u2026' : str;
-  }
-
+  initPoll();
   loadPortfolio();
 </script>
 </body>

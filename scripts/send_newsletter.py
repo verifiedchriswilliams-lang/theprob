@@ -439,25 +439,32 @@ def build_html(markets: dict, news: dict, subject: str, with_footer: bool = True
     hero_end    = hero.get("end_date", "")
     prob_color  = color_prob(hero_prob)
 
-    # ── Portfolio line for header ──
-    portfolio    = markets.get("portfolio", {})
-    port_bal     = portfolio.get("current_balance", 1000.0)
-    port_ytd     = portfolio.get("ytd_return_pct", 0.0)
-    port_wins    = portfolio.get("win_count", 0)
-    port_losses  = portfolio.get("loss_count", 0)
-    ytd_sign     = "+" if port_ytd >= 0 else ""
-    ytd_color    = "#00e5a0" if port_ytd >= 0 else "#ff4d6d"
-    port_line    = (
-        f"Portfolio: <strong style='color:{ytd_color} !important'>"
-        f"${port_bal:,.2f} ({ytd_sign}{port_ytd:.1f}% YTD)</strong>"
-        f" &nbsp;&middot;&nbsp; W{port_wins}/L{port_losses}"
-        f" &nbsp;&middot;&nbsp; <a href='{SITE_URL}/portfolio.html' "
-        f"style='color:#8ba3bc !important;text-decoration:none;'>Track record &#8599;</a>"
-    ) if (port_wins + port_losses) > 0 else (
-        f"Portfolio: <span style='color:#8ba3bc !important'>Starting Mar 11 &middot; $100/trade</span>"
-        f" &nbsp;&middot;&nbsp; <a href='{SITE_URL}/portfolio.html' "
-        f"style='color:#8ba3bc !important;text-decoration:none;'>See how it works &#8599;</a>"
-    )
+    # ── Portfolio line for header (3-model experiment) ──
+    portfolio  = markets.get("portfolio", {})
+    variants   = portfolio.get("variants", {})
+    def _v(k):
+        return variants.get(k, {})
+    def _ytd_str(v):
+        ytd = v.get("ytd_return_pct", 0.0)
+        col = "#00e5a0" if ytd >= 0 else "#ff4d6d"
+        sign = "+" if ytd >= 0 else ""
+        return f"<span style='color:{col} !important'>{sign}{ytd:.1f}%</span>"
+    any_trades = any((_v(k).get("win_count",0) + _v(k).get("loss_count",0)) > 0 for k in "abc")
+    if any_trades:
+        port_line = (
+            f"3 Models &nbsp;"
+            f"A:{_ytd_str(_v('a'))} &nbsp;"
+            f"B:{_ytd_str(_v('b'))} &nbsp;"
+            f"C:{_ytd_str(_v('c'))}"
+            f" &nbsp;&middot;&nbsp; <a href='{SITE_URL}/portfolio.html' "
+            f"style='color:#8ba3bc !important;text-decoration:none;'>Pick your model &#8599;</a>"
+        )
+    else:
+        port_line = (
+            f"Portfolio: <span style='color:#8ba3bc !important'>3 models running &middot; A/B/C &middot; $100/trade each</span>"
+            f" &nbsp;&middot;&nbsp; <a href='{SITE_URL}/portfolio.html' "
+            f"style='color:#8ba3bc !important;text-decoration:none;'>Pick your model &#8599;</a>"
+        )
 
     # ── HEADER ──
     header_html = f"""

@@ -1838,124 +1838,269 @@ def pick_trade(markets: list[dict], exclude_slugs: set | None = None) -> dict | 
     return winner
 
 
-def load_portfolio() -> dict:
-    if os.path.exists(PORTFOLIO_FILE):
-        with open(PORTFOLIO_FILE) as f:
-            return json.load(f)
+def pick_trade_b(markets: list[dict], exclude_slugs: set | None = None) -> dict | None:
+    """
+    Model B — The Contrarian.
+    Fade longshots: systematically bet NO when the crowd prices an event at <= 30%.
+    Exploits well-documented longshot bias: crowds consistently overprice unlikely events.
+    Only short-duration markets (TRADE_MAX_DAYS) for fast feedback.
+    """
+    today   = datetime.now(timezone.utc).date()
+    cutoff  = today + timedelta(days=TRADE_MAX_DAYS)
+    exclude = exclude_slugs or set()
+
+    candidates = []
+    for m in markets:
+        end_raw = m.get("end_date_raw")
+        if not end_raw:
+            continue
+        try:
+            end_date = datetime.fromisoformat(str(end_raw).replace("Z", "+00:00")).date()
+        except (ValueError, AttributeError):
+            continue
+        if end_date < today or end_date > cutoff:
+            continue
+
+        prob = m.get("prob", 50)
+        if prob > 30:               # only fade genuine longshots
+            continue
+
+        if is_effectively_resolved(m) or is_junk_market(m) or is_range_bucket_market(m):
+            continue
+        if (m.get("slug") or m.get("url", "")) in exclude:
+            continue
+        if is_sports_market(m) and m.get("volume", 0) < HERO_SPORTS_MIN_VOLUME:
+            continue
+
+        candidates.append(m)
+
+    if not candidates:
+        return None
+
+    # Prefer most liquid (highest volume) — better data quality on liquid markets
+    winner = max(candidates, key=lambda m: m.get("volume", 0))
+    days_left = (datetime.fromisoformat(
+        str(winner.get("end_date_raw", "")).replace("Z", "+00:00")
+    ).date() - today).days
+    print(f"  [B] Trade pick: '{winner['question'][:55]}' "
+          f"prob={winner['prob']}% | resolves in {days_left}d | direction=NO")
+    return winner
+
+
+def pick_trade_c(spread_markets: list[dict], all_markets: list[dict],
+                 exclude_slugs: set | None = None) -> tuple[dict | None, str]:
+    """
+    Model C — The Arb.
+    When Polymarket and Kalshi disagree by >= 10pts on the same market, one platform
+    is mispriced. Bet YES on whichever platform shows the LOWER probability (the
+    'lagging' platform that should converge upward toward the other).
+    Only use pairs where the lower-prob side is itself <= 60% (not already high).
+    """
+    today   = datetime.now(timezone.utc).date()
+    cutoff  = today + timedelta(days=30)       # Arb can look 30 days out (wider window)
+    exclude = exclude_slugs or set()
+
+    # Build a lookup of end_date_raw from all_markets by URL
+    url_to_end: dict[str, str] = {}
+    for m in all_markets:
+        u = m.get("url", "")
+        if u and m.get("end_date_raw"):
+            url_to_end[u] = m["end_date_raw"]
+
+    for pair in spread_markets:
+        gap = pair.get("gap_pts", 0)
+        if gap < 10:
+            continue
+
+        # Choose the lagging (lower-prob) side
+        lower_platform = pair.get("lower_platform", "")
+        lower_prob     = pair.get("lower_prob", 50)
+        if lower_prob > 60:
+            continue   # too expensive, not interesting as an arb entry
+
+        url = pair.get("poly_url") if lower_platform == "Polymarket" else pair.get("kalshi_url")
+        if not url or url in exclude:
+            continue
+
+        # Reconstruct a trade-compatible market dict from the spread pair
+        end_raw = url_to_end.get(url, "")
+        if end_raw:
+            try:
+                end_date = datetime.fromisoformat(str(end_raw).replace("Z", "+00:00")).date()
+                if end_date < today or end_date > cutoff:
+                    continue
+            except (ValueError, AttributeError):
+                pass   # no end_date known — allow it
+
+        question = (pair.get("poly_question") if lower_platform == "Polymarket"
+                    else pair.get("kalshi_question"))
+        trade_market = {
+            "question":         question or pair.get("display_title", ""),
+            "url":              url,
+            "source":           lower_platform,
+            "display_category": "Finance",   # spread trades are cross-market, generic cat
+            "prob":             lower_prob,
+            "change_pts":       gap,          # gap as a proxy for "move potential"
+            "end_date_raw":     end_raw,
+            "end_date":         pair.get("end_date", ""),
+            "slug":             url,
+            "volume":           pair.get("poly_volume" if lower_platform == "Polymarket"
+                                         else "kalshi_volume", 0),
+            "volume_24h":       0,
+        }
+        days_left_str = ""
+        if end_raw:
+            try:
+                dl = (datetime.fromisoformat(str(end_raw).replace("Z", "+00:00")).date() - today).days
+                days_left_str = f" | resolves in {dl}d"
+            except Exception:
+                pass
+        print(f"  [C] Trade pick: '{question[:50]}' "
+              f"prob={lower_prob}% (gap={gap}pts vs {pair.get('higher_platform')})"
+              f"{days_left_str} | direction=YES")
+        return trade_market, "YES"
+
+    print("  [C] Trade: NO_PLAY — no qualifying arb pairs today")
+    return None, "NO_PLAY"
+
+
+def _blank_variant(name: str, strategy: str, thesis: str, start_date: str) -> dict:
     return {
-        "starting_balance": PORTFOLIO_START_BALANCE,
+        "name":             name,
+        "strategy":         strategy,
+        "thesis":           thesis,
         "current_balance":  PORTFOLIO_START_BALANCE,
         "total_pnl":        0.0,
         "ytd_return_pct":   0.0,
         "win_count":        0,
         "loss_count":       0,
         "open_count":       0,
-        "start_date":       "2026-03-06",
-        "last_updated":     "2026-03-06",
+        "start_date":       start_date,
+        "last_updated":     start_date,
         "trades":           [],
+    }
+
+def load_portfolio() -> dict:
+    if os.path.exists(PORTFOLIO_FILE):
+        with open(PORTFOLIO_FILE) as f:
+            data = json.load(f)
+        if data.get("version") == 2:
+            return data
+        # Migrate v1 → v2: archive old data as legacy_test_1
+        return {
+            "version":        2,
+            "start_date":     "2026-03-17",
+            "starting_balance": PORTFOLIO_START_BALANCE,
+            "variants": {
+                "a": _blank_variant("The Crowd",       "Follow consensus: YES \u226565%, NO \u226435%",         "Smart money is already priced in. Ride the conviction.", "2026-03-17"),
+                "b": _blank_variant("The Contrarian",  "Fade longshots: always NO when crowd says \u226430%",   "Crowds overprice long shots. Sell the overpriced tickets.", "2026-03-17"),
+                "c": _blank_variant("The Arb",         "Trade Poly vs Kalshi gaps: bet the lagging platform when gap \u226510pts", "When two liquid markets disagree by 10+ points, one is wrong.", "2026-03-17"),
+            },
+            "legacy_test_1": {"note": "Migrated from v1 automatically.", "trades": data.get("trades", [])},
+        }
+    today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    return {
+        "version":        2,
+        "start_date":     today,
+        "starting_balance": PORTFOLIO_START_BALANCE,
+        "variants": {
+            "a": _blank_variant("The Crowd",       "Follow consensus: YES \u226565%, NO \u226435%",         "Smart money is already priced in. Ride the conviction.", today),
+            "b": _blank_variant("The Contrarian",  "Fade longshots: always NO when crowd says \u226430%",   "Crowds overprice long shots. Sell the overpriced tickets.", today),
+            "c": _blank_variant("The Arb",         "Trade Poly vs Kalshi gaps: bet the lagging platform when gap \u226510pts", "When two liquid markets disagree by 10+ points, one is wrong.", today),
+        },
     }
 
 def save_portfolio(portfolio: dict) -> None:
     with open(PORTFOLIO_FILE, "w") as f:
         json.dump(portfolio, f, indent=2)
 
-def update_portfolio(portfolio: dict, trade_market: dict | None, trade_direction: str,
-                     all_markets: list, today_str: str) -> dict:
+def update_portfolio_variant(variant: dict, trade_market: dict | None, trade_direction: str,
+                              market_lookup: dict, today_str: str, label: str) -> dict:
     """
+    Update a single portfolio variant dict in-place.
     1. Close any open trades that have resolved (prob >= 95 or <= 5).
-    2. Open a new $100 trade on today's trade_market if direction is not NO_PLAY.
-       trade_market is picked by pick_trade() — short-duration, decoupled from hero.
-    Returns updated portfolio dict.
+    2. Open a new $100 trade if direction is not NO_PLAY.
+    Returns updated variant dict.
     """
-    market_prob_lookup = {}
-    for m in all_markets:
-        key = m.get("slug") or m.get("url", "")
-        if key:
-            market_prob_lookup[key] = m.get("prob", None)
-
     # ── 1. Check open trades for resolution ──────────────────────────────────
-    for trade in portfolio["trades"]:
+    for trade in variant["trades"]:
         if trade["status"] != "open":
             continue
         mid          = trade.get("market_id", "")
-        current_prob = market_prob_lookup.get(mid)
+        current_prob = market_lookup.get(mid)
         if current_prob is None:
-            continue   # market not in feed this run
+            continue
 
         resolved = False
         win      = False
         if current_prob >= 95:
             resolved = True
-            win      = (trade["direction"] == "YES")
+            win = (trade["direction"] == "YES")
         elif current_prob <= 5:
             resolved = True
-            win      = (trade["direction"] == "NO")
+            win = (trade["direction"] == "NO")
 
         if resolved:
             ep  = trade["entry_prob"] / 100.0
-            ep  = max(min(ep, 0.99), 0.01)   # clamp to avoid div-by-zero
+            ep  = max(min(ep, 0.99), 0.01)
             if win:
-                if trade["direction"] == "YES":
-                    pnl = round(TRADE_AMOUNT * (1 - ep) / ep, 2)
-                else:
-                    pnl = round(TRADE_AMOUNT * ep / (1 - ep), 2)
+                pnl = round(TRADE_AMOUNT * (1 - ep) / ep, 2) if trade["direction"] == "YES" \
+                      else round(TRADE_AMOUNT * ep / (1 - ep), 2)
             else:
                 pnl = -TRADE_AMOUNT
-
             trade["status"]    = "closed"
             trade["exit_prob"] = current_prob
             trade["exit_date"] = today_str
             trade["pnl"]       = pnl
-
             if win:
-                portfolio["win_count"] += 1
+                variant["win_count"] += 1
             else:
-                portfolio["loss_count"] += 1
-            portfolio["current_balance"] = round(portfolio["current_balance"] + pnl, 2)
-            portfolio["total_pnl"]       = round(portfolio["total_pnl"] + pnl, 2)
-            print(f"  Portfolio: CLOSED '{trade['question'][:45]}' "
+                variant["loss_count"] += 1
+            variant["current_balance"] = round(variant["current_balance"] + pnl, 2)
+            variant["total_pnl"]       = round(variant["total_pnl"] + pnl, 2)
+            print(f"  [{label}] CLOSED '{trade['question'][:40]}' "
                   f"{'WIN' if win else 'LOSS'} ${pnl:+.2f} "
-                  f"(bal: ${portfolio['current_balance']:.2f})")
+                  f"(bal: ${variant['current_balance']:.2f})")
 
-    # ── 2. Open new trade on today's short-duration pick ─────────────────────
+    # ── 2. Open new trade ─────────────────────────────────────────────────────
     if trade_market and trade_direction != "NO_PLAY":
         trade_id     = trade_market.get("slug") or trade_market.get("url", "")
         already_open = any(
             t["market_id"] == trade_id and t["status"] == "open"
-            for t in portfolio["trades"]
+            for t in variant["trades"]
         )
         if not already_open:
             trade = {
-                "trade_id":     str(uuid.uuid4())[:8],
-                "market_id":    trade_id,
-                "question":     trade_market.get("question", ""),
-                "url":          trade_market.get("url", ""),
-                "source":       trade_market.get("source", ""),
+                "trade_id":         str(uuid.uuid4())[:8],
+                "market_id":        trade_id,
+                "question":         trade_market.get("question", ""),
+                "url":              trade_market.get("url", ""),
+                "source":           trade_market.get("source", ""),
                 "display_category": trade_market.get("display_category", ""),
-                "entry_prob":   trade_market.get("prob", 50),
-                "direction":    trade_direction,
-                "amount":       TRADE_AMOUNT,
-                "entry_date":   today_str,
-                "end_date_raw": trade_market.get("end_date_raw", ""),
-                "end_date":     trade_market.get("end_date", ""),
-                "status":       "open",
-                "exit_prob":    None,
-                "exit_date":    None,
-                "pnl":          None,
+                "entry_prob":       trade_market.get("prob", 50),
+                "direction":        trade_direction,
+                "amount":           TRADE_AMOUNT,
+                "entry_date":       today_str,
+                "end_date_raw":     trade_market.get("end_date_raw", ""),
+                "end_date":         trade_market.get("end_date", ""),
+                "status":           "open",
+                "exit_prob":        None,
+                "exit_date":        None,
+                "pnl":              None,
             }
-            portfolio["trades"].append(trade)
-            print(f"  Portfolio: NEW TRADE '{trade_market['question'][:45]}' "
-                  f"{trade_direction} @ {trade_market.get('prob')}% "
-                  f"| closes {trade_market.get('end_date', '?')}")
+            variant["trades"].append(trade)
+            print(f"  [{label}] NEW TRADE '{trade_market['question'][:40]}' "
+                  f"{trade_direction} @ {trade_market.get('prob')}%"
+                  f" | closes {trade_market.get('end_date', '?')}")
 
     # ── 3. Refresh summary stats ──────────────────────────────────────────────
-    portfolio["open_count"]     = sum(1 for t in portfolio["trades"] if t["status"] == "open")
-    portfolio["last_updated"]   = today_str
-    portfolio["ytd_return_pct"] = round(
-        (portfolio["current_balance"] - portfolio["starting_balance"])
-        / portfolio["starting_balance"] * 100, 1
+    variant["open_count"]     = sum(1 for t in variant["trades"] if t["status"] == "open")
+    variant["last_updated"]   = today_str
+    variant["ytd_return_pct"] = round(
+        (variant["current_balance"] - PORTFOLIO_START_BALANCE)
+        / PORTFOLIO_START_BALANCE * 100, 1
     )
-    return portfolio
+    return variant
 
 # ── MAIN ─────────────────────────────────────────────────────────────────────
 
@@ -2287,29 +2432,59 @@ def main():
     else:
         hero_direction = "NO_PLAY"
 
-    # Pick today's portfolio trade — short-duration (≤14 days), decoupled from hero.
-    # This is what actually gets logged to the paper portfolio.
-    print("\nPicking trade...")
-    hero_id      = hero.get("slug") or hero.get("url", "") if hero else ""
-    trade_market = pick_trade(all_markets, exclude_slugs={hero_id} if hero_id else set())
-    if trade_market:
-        trade_prob = trade_market.get("prob", 50)
-        trade_direction = "YES" if trade_prob >= 65 else "NO"
-        print(f"  Trade direction: {trade_direction} (prob {trade_prob}%)")
-    else:
-        trade_direction = "NO_PLAY"
-        print("  Trade: NO_PLAY — no qualifying short-duration market today")
-
-    # Update portfolio (close resolved, open new trade on trade_market not hero)
-    print("\nUpdating Portfolio...")
+    # ── Pick trades for all 3 portfolio variants ─────────────────────────────
+    print("\nPicking trades (3 variants)...")
     today_str = now_utc.strftime("%Y-%m-%d")
+    hero_id   = hero.get("slug") or hero.get("url", "") if hero else ""
+    excl      = {hero_id} if hero_id else set()
+
+    # Model A — The Crowd: follow 65/35 conviction
+    trade_market_a = pick_trade(all_markets, exclude_slugs=excl)
+    if trade_market_a:
+        tp = trade_market_a.get("prob", 50)
+        trade_direction_a = "YES" if tp >= 65 else "NO"
+        print(f"  [A] direction: {trade_direction_a} (prob {tp}%)")
+    else:
+        trade_direction_a = "NO_PLAY"
+        print("  [A] NO_PLAY — no qualifying short-duration market today")
+
+    # Model B — The Contrarian: fade longshots (prob <= 30%, always NO)
+    trade_market_b = pick_trade_b(all_markets, exclude_slugs=excl)
+    trade_direction_b = "NO" if trade_market_b else "NO_PLAY"
+    if not trade_market_b:
+        print("  [B] NO_PLAY — no qualifying longshot market today")
+
+    # Model C — The Arb: bet the lagging platform on Poly/Kalshi divergences
+    trade_market_c, trade_direction_c = pick_trade_c(spread_markets, all_markets, exclude_slugs=excl)
+
+    # ── Update portfolio (close resolved, open new trades) ────────────────────
+    print("\nUpdating Portfolio...")
     portfolio = load_portfolio()
-    portfolio = update_portfolio(portfolio, trade_market, trade_direction, all_markets, today_str)
+
+    # Build market probability lookup once, shared across all variants
+    market_lookup: dict[str, float] = {}
+    for m in all_markets:
+        key = m.get("slug") or m.get("url", "")
+        if key:
+            market_lookup[key] = m.get("prob", None)
+
+    portfolio["variants"]["a"] = update_portfolio_variant(
+        portfolio["variants"]["a"], trade_market_a, trade_direction_a, market_lookup, today_str, "A")
+    portfolio["variants"]["b"] = update_portfolio_variant(
+        portfolio["variants"]["b"], trade_market_b, trade_direction_b, market_lookup, today_str, "B")
+    portfolio["variants"]["c"] = update_portfolio_variant(
+        portfolio["variants"]["c"], trade_market_c, trade_direction_c, market_lookup, today_str, "C")
+
     save_portfolio(portfolio)
-    print(f"  Balance: ${portfolio['current_balance']:.2f} "
-          f"({portfolio['ytd_return_pct']:+.1f}% YTD) | "
-          f"W{portfolio['win_count']}/L{portfolio['loss_count']} | "
-          f"{portfolio['open_count']} open")
+    for k, label in [("a", "A-Crowd"), ("b", "B-Contrarian"), ("c", "C-Arb")]:
+        v = portfolio["variants"][k]
+        print(f"  [{label}] ${v['current_balance']:.2f} "
+              f"({v['ytd_return_pct']:+.1f}% YTD) | "
+              f"W{v['win_count']}/L{v['loss_count']} | {v['open_count']} open")
+
+    # Expose today's trade_market for newsletter (use Model A as the "featured" trade)
+    trade_market  = trade_market_a
+    trade_direction = trade_direction_a
 
     # Generate "The Prob's Daily Take"
     print("\nGenerating Daily Take (Claude API)...")
@@ -2330,16 +2505,28 @@ def main():
     hero_cat_history += [c for c in recent_hero_categories if c not in hero_cat_history]
     hero_cat_history  = hero_cat_history[:3]
 
-    # Portfolio summary for frontend — all trades newest-first
-    all_trades_display = list(reversed(portfolio["trades"]))
+    # Portfolio summary for frontend — all 3 variants, trades newest-first
+    def _variant_summary(v: dict) -> dict:
+        return {
+            "name":             v["name"],
+            "strategy":         v["strategy"],
+            "thesis":           v["thesis"],
+            "current_balance":  v["current_balance"],
+            "ytd_return_pct":   v["ytd_return_pct"],
+            "win_count":        v["win_count"],
+            "loss_count":       v["loss_count"],
+            "open_count":       v["open_count"],
+            "start_date":       v.get("start_date", ""),
+            "trades":           list(reversed(v["trades"])),
+        }
+
     portfolio_summary = {
-        "current_balance":  portfolio["current_balance"],
-        "starting_balance": portfolio["starting_balance"],
-        "ytd_return_pct":   portfolio["ytd_return_pct"],
-        "win_count":        portfolio["win_count"],
-        "loss_count":       portfolio["loss_count"],
-        "open_count":       portfolio["open_count"],
-        "trades":           all_trades_display,   # full ledger for portfolio.html
+        "starting_balance": PORTFOLIO_START_BALANCE,
+        "variants": {
+            "a": _variant_summary(portfolio["variants"]["a"]),
+            "b": _variant_summary(portfolio["variants"]["b"]),
+            "c": _variant_summary(portfolio["variants"]["c"]),
+        },
     }
 
     output = {
