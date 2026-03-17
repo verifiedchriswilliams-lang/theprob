@@ -1,42 +1,69 @@
 {
-  "updated": "Mar 17, 2026 \u00b7 9:41 AM ET",
-  "updated_iso": "2026-03-17T14:41:25.383639+00:00",
+  "updated": "Mar 17, 2026 \u00b7 2:56 PM ET",
+  "updated_iso": "2026-03-17T19:56:05.617948+00:00",
   "homepage_count": 3,
   "articles": [
     {
-      "title": "Buenos Aires Court Orders Polymarket Blocked in Argentina",
-      "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxNWGUxUGJxcmdYb3ZYREVOcVJ1dkZrQ2dNZHZVRFRncjVYWk0tMlJzbjFqNWprRV9ZRjNZZ045WHR0eHV3MWNuUlhlOTBVMFR2eEM2aFlObl9PME9QS0FsUXdTUGNsZmNNX2E3VkNrTmRJLUpuOEpuTXNiNUZGZ0lCWGtpNF9ZYkF3NFE?oc=5",
-      "source": "Yahoo Finance",
-      "pub_iso": "2026-03-17T10:29:35+00:00",
+      "title": "Arizona Charges Kalshi With Illegal Gambling Operation",
+      "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxNUGdCcUJwX0dQczY2ZEVncG13Zmh3NlVCSDg2QWpQbU43TzdoN1R3T0pRUktKYjd5LVV5VnRWdVhSdW55djMtQ3d2UURtVUhSOWtpeFV1T0ljVlpSeUZQd2EzdjBCT0VCN3FUYzNEWVFILXJ6Mjl6NlFXdGY5SEVndUV3Tm5VbEtGU0tWRFNCbU4xN3VhVzJoNmU0MmI4ZEdYcEtERWMzSkM3TmNaaE5ycmRkZnU?oc=5",
+      "source": "Bloomberg.com",
+      "pub_iso": "2026-03-17T19:34:23+00:00",
       "description": "",
-      "summary": "A Buenos Aires court has ordered internet service providers to block access to Polymarket, effectively banning the prediction betting platform in Argentina. The move signals growing regulatory hostility toward crypto-based prediction markets in Latin America, potentially forcing operators to choose between compliance costs and abandoning entire regions.",
+      "summary": "Arizona regulators hit Kalshi with charges for allegedly running an illegal gambling operation in the state. The case could set a precedent for how other states treat prediction markets, potentially forcing platforms to navigate a patchwork of gambling laws or face similar crackdowns.",
       "pub_display": "Mar 17"
     },
     {
-      "title": "Prediction markets more like gambling than investing, Americans say",
-      "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE5jQlh4X0NYQmpkMXF5RE54QzR3WnAtSkwxYW5yMFkwbzRYUVBRdXJaOXdveS1heGVXZjV2b0NWNS1SVDNUTDQyYXdxVjY0Sl9RcFBEOERIVGw4OWZWLUFPYzhZVFZRZXFLS0FxaTA4azhyYmc?oc=5",
-      "source": "Axios",
-      "pub_iso": "2026-03-17T08:01:05+00:00",
+      "title": "Polymarket let people bet on when Iran would strike Israel. A journalist who covered the war got death threats.",
+      "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxQTHBrUENOQzJoZnZZNUR2RjNVVkp5NVJrUms1LXhEdzZFcTBZY043UEs1UVhvb29yVEQzVklFa3hpWndhNk1qdlN6c0p5cDh6bHNBaEd6SVhCTUFaSkZ2VUVBcFZueGZfZFV0SVlYT1NZcEl0SVQxbFhzdkVqM0NlLURTNjExU3lMY19tdUJ4ano0UXgwN3dsY0RR?oc=5",
+      "source": "Business Insider",
+      "pub_iso": "2026-03-17T18:12:34+00:00",
       "description": "",
-      "summary": "Americans view prediction markets as closer to gambling than investing, according to new survey data. This perception problem will keep limiting mainstream adoption and regulatory acceptance, no matter how accurate the markets prove to be.",
+      "summary": "Polymarket users wagered on the timing of Iran's retaliation against Israel, and a war correspondent covering the conflict received death threats afterward. The incident highlights how prediction markets on geopolitical violence can create perverse incentives and put journalists at risk when their reporting affects bet outcomes.",
       "pub_display": "Mar 17"
     },
     {
-      "title": "Prediction market Kalshi takes legal stand against Arizona\u2019s gambling laws",
-      "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxPTzdxSUhTVVFyRXJ1SEl2VU41S20xallqRWY0Znk2WlliQ09BSUxDaG11Z0JnV2N0TDF6cFlTT2JvdXh6dUw3TlIzWXNTRUp2VTdGMmsxM1ZiaXBzM09WV01lNHlHTjVMQm1PZ3ZVMzFFYk1OQXMtY1VnSjVMMTJybkhSN0JJZmN5Um04ZmJ1eXZZNlRUQ01FaGFqc25UTjlCRkRwZ25JSzJocF8zcUotclRqdll6S2Rt?oc=5",
-      "source": "Arizona Capitol Times",
-      "pub_iso": "2026-03-16T19:09:34+00:00",
+      "title": "Betting on the Oscars or the Super Bowl halftime show would be banned under new prediction market bill",
+      "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxOd1Z5dTltNTlHb3daX3c0RC1PQjFTdTMtX09qN3R2VElsU3ZZTWtTSDZwY0hRa211aHBoNk55ekJMenRjaVBZN2dJS0ZCdlVqV0x6S2FMek1hUlludjROWHZnV3lLNmpERG9JeEx5OUNoZUJJdXJnckQybVpOSEhadlF2WEJmaEFFaXZFRW45amlqZWZEWEpHWTlsZDRrOUk?oc=5",
+      "source": "Business Insider",
+      "pub_iso": "2026-03-17T17:28:16+00:00",
       "description": "",
-      "summary": "Kalshi is challenging Arizona's gambling laws in court, presumably to defend its prediction market operations in the state. If successful, the case could set important legal precedent for how prediction markets are regulated nationwide, potentially opening doors in other restrictive jurisdictions.",
+      "summary": "A new bill would ban prediction markets from offering bets on entertainment events like the Oscars and Super Bowl halftime shows. The restriction signals lawmakers want to draw clearer lines between \"legitimate\" forecasting on policy outcomes and what they view as frivolous gambling on pop culture.",
+      "pub_display": "Mar 17"
+    },
+    {
+      "title": "Major prediction market faces 34th country ban",
+      "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxPcWs5aHVPdTRJN1JQVldSa0lnT00yS18zaXppU0Y1NUxUcXRybVRxTnNBLUhtYzFVVlZZYkVkTnhWaDJ3SzBPSzFOTG0weTM5RnA5T3VTSUNCbC11aHp0NFpUdzEwakxLT0hJWUhrUS1aUVdrb1FoVXAtZzZCSTJnMjlGVmdDMHE5Z043OFdrUVY?oc=5",
+      "source": "thestreet.com",
+      "pub_iso": "2026-03-17T17:01:00+00:00",
+      "description": "",
+      "summary": "Another country has banned a major prediction market platform, bringing the total number of jurisdictions blocking access to 34. The growing regulatory crackdown signals that governments view prediction markets as gambling rather than information aggregation tools, forcing platforms to choose between compliance costs and global reach.",
+      "pub_display": "Mar 17"
+    },
+    {
+      "title": "U.S. Democratic lawmakers introduce bill to crack down on prediction markets",
+      "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxNNlk1OEJCQmZLb1NpTkVoSVp5cjhRUklybGhUR1RTRVdSQ0lGc0FlRWpfckxQQ0Q4WW5PTWhnWnYtSzNYNkRPVzZIYVcwT0ZaUmZhUmRMQ3k2SUtuVzRhaDZiNXl3TTJrNllmRHVoUGN2R2k4RGhXaUxoWDJiUzZwNFh3UlotYWR4bmdwYk1ScHVsUjdwT1V6Yl9QZk9NZHJqTFVPSkJxaEhwLTc0R3JPMFdDdEtzMThUVVVhcWx3?oc=5",
+      "source": "Reuters",
+      "pub_iso": "2026-03-17T16:53:11+00:00",
+      "description": "",
+      "summary": "Democratic lawmakers want to restrict prediction markets, likely targeting platforms like Kalshi and Polymarket that have exploded in popularity during election season. If it gains traction, this could force major platforms to delist political markets or face regulatory crackdowns, potentially pushing the action back to offshore sites where U.S. bettors already wager billions.",
+      "pub_display": "Mar 17"
+    },
+    {
+      "title": "Betting on 5-minute swings on Bitcoin price are the hot new thing on prediction markets",
+      "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxOa2RxQ3R0akI2OUxnbkx1bmxqY3locTc2WjRXNUI5dHpjQkhQanRkUm5rZ3czQ3ZpSElIMC03c1Fqay1PWnExZmN6Y0IxdkpQOG9ILUxmQVh3TUh6MzJTZ3RUb1ZiWFo3Wm15SW1TRFhjZWVpUXljdDczZGhCYTRxWUpWUlVsbGgtdnBPR3c5R0NabGZTdE5RYjhHcGpKU0sycUg2MTBEbUd0SVZoMGluU1VKVGtmODRPWW9J?oc=5",
+      "source": "Fortune",
+      "pub_iso": "2026-03-16T19:51:00+00:00",
+      "description": "",
+      "summary": "Traders are now placing bets on whether Bitcoin will move up or down in just 5-minute windows, turning crypto prediction markets into something that resembles high-frequency day trading. This ultra-short timeframe betting represents prediction markets evolving from long-term forecasting tools into real-time gambling products that could attract millions of new users seeking instant gratification.",
       "pub_display": "Mar 16"
     },
     {
-      "title": "Polymarket and Kalshi Got the Oscars About 80 Percent Right",
-      "url": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxOUnJQclRYblpyeDFmVVhHeFNHeWs0Y0t1UTJXY2Z2eUszNVdkQk1DZTlVclBZWmQyWENTc3NiUEhUNk9OOXpWSnZpaEllWDlMVEFJSjVYMXBMTWN4T2MtV2o2S0xrcTNhZEJYRWxRY0F6aXlhY0JHLVN1UlVMZDBuSDg3d3BZdjJOQkQ1aVM5Y1gwYkY4azV1akFucFhiUG1tMnNZZ1dPWmZPdjlJTnFEdzZ2YW9EaEpqYVctdnBJM1VkaGFKdHJReElnaDVVS2l2a0piRmVR?oc=5",
-      "source": "The Hollywood Reporter",
-      "pub_iso": "2026-03-16T18:38:17+00:00",
+      "title": "Prediction Markets Split on Next U.S. President: See Latest Odds for 2028 Election",
+      "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxPZEVjUThTRmtLZ0h5OS1XX01hRDlfZ1FfSVp2VVh3RlYxWFVoNS1RdDRld1RRUzc5OXJMMVdLaU1MOUFHb2RodGZIejFOSGFaSTVPUDA2Ml81Mm5OSmh6UDdNZDlhOWxYWmFhMkh2a3dEVmttVVFPLXlxUTJRYnd2eXo5b19rUWY4YXBLM19SeW5BbFp4amZtb012RnU0NXZvOGxaSFRIZ1RvTTctOEpjdDVfaHhlYnhZRlZ2U2VPaTBsV3ZiTmc?oc=5",
+      "source": "Federal News Network",
+      "pub_iso": "2026-03-16T19:45:54+00:00",
       "description": "",
-      "summary": "Prediction markets Polymarket and Kalshi correctly predicted roughly 80% of Oscar winners this year, showing their growing accuracy in entertainment forecasting. The strong performance validates that betting markets can cut through Hollywood hype and insider politics to identify actual frontrunners, making them valuable tools for future awards season gambling.",
+      "summary": "Prediction markets are already pricing the 2028 presidential race with notable disagreement between platforms on who leads the field. The early splits signal either major information asymmetries between market makers or genuine uncertainty about a wide-open race that could create profitable arbitrage opportunities for sharp bettors.",
       "pub_display": "Mar 16"
     },
     {
@@ -67,6 +94,15 @@
       "pub_display": "Mar 16"
     },
     {
+      "title": "Why Does The CFTC Chair Want People To Bet On Drug Trials At Prediction Markets?",
+      "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxOek81aTZ2UnNtVVFVd2ZHV29hRWVxQVVIQXNSWEVrNE1fQVBSbm1NYzZONjRpMXd4WkVPeTM2cHk3QU9jUDlvX2ZETzJNeFZlMFlYOGhSTnd4SzR1STFyYXR5M0NkRUh5TklXcy1XeWpQZDdpZmpTLTA4elFzMWpMT1R5M0tQb0k1anNTWlpqT3Z0MnVVSlE?oc=5",
+      "source": "Event Horizon | Dustin Gouker",
+      "pub_iso": "2026-03-16T11:02:15+00:00",
+      "description": "",
+      "summary": "CFTC Chair Rostin Behnam is pushing for prediction markets that let people bet on pharmaceutical drug trial outcomes. If regulators green-light pharma betting, it could unlock billions in trading volume while giving investors real-time odds on which drugs will actually make it to market.",
+      "pub_display": "Mar 16"
+    },
+    {
       "title": "The Polymarket Gamblers Betting on the Value of Your Apartment",
       "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE5xeVJXVUlWcTVfWGRxU3ZzSUNad194anRZWE9STzY4NmVJRUM5eVJJMmlWb1F6VnRQcVZZZlJpdjg1dVZCTFhBVUpTemQyaFUzbHEzTHhSXzBvSzJiYVZxdHl5d3h1V0MwSkszd00zNWRRMm44TW94Z3A3OA?oc=5",
       "source": "Curbed",
@@ -74,42 +110,6 @@
       "description": "",
       "summary": "Polymarket traders are now placing bets on real estate prices, turning your local housing market into another prediction market playground. This signals prediction markets are expanding beyond politics and sports into everyday economic indicators that actually affect people's wallets, creating new opportunities for informed bettors to profit from housing knowledge.",
       "pub_display": "Mar 16"
-    },
-    {
-      "title": "Wall Street Is Already Betting on Prediction Markets",
-      "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxNRkxMNXh5TzNJcEphOE5Od0RFWERXMy1XZkh3SXlWV3JxNE5pRXFubXQ3QzlxbGVIOW1pb1BWalVLSVcwN011VDFIYTZ6Y2lWU3JGQ2htY0s4eVB5ajlGbkN4dWNZdUFYMEUyR2VGUjhaZVlncWM3aUlxNFVTMTE1Vnc3OA?oc=5",
-      "source": "WIRED",
-      "pub_iso": "2026-03-16T09:30:00+00:00",
-      "description": "",
-      "summary": "Wall Street firms are placing institutional bets on prediction market platforms, signaling mainstream financial adoption of what was once a niche betting arena. This influx of serious money validates prediction markets as legitimate financial instruments and will likely drive massive liquidity increases that make these platforms more accurate and profitable for informed bettors.",
-      "pub_display": "Mar 16"
-    },
-    {
-      "title": "Traders Flip Senate Control Bet as Democrats Overtake Republicans on Kalshi, Polymarket",
-      "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTFBjTmI0a3VydFlMajVPUTFEQWFUTG95SzJUMG5EQmJ3RnNNZkUwWlBIckpQYTlrUmJ4ZHlRdDdVYWFwOEUzcmxNUXBUV09xYTlIdHdYaEZXMnoxS0d6Z2J4UzdIaEdSWWpHckdJS0xWaG55UDY2dHRqUDNxZWF5RVHSAYcBQVVfeXFMUHdJalRfNDRBak02Ym9kSHM0UVVrV1QzdlJKV2pUcS1rX1ZSYTM3d0d6blNLMFdPWHJpNzFLSkNJeHVUYlFmQUlBQ0xfX3c4TFRJN3dQUTUyME94aHR0TFUxaUFTMTVYUjd2aUZCNmZQZVVuaDA4Ul9oTVpDd0lKeWhVcFBEcEFr?oc=5",
-      "source": "Decrypt",
-      "pub_iso": "2026-03-16T03:14:54+00:00",
-      "description": "",
-      "summary": "Prediction market traders are now betting Democrats will control the Senate after the 2024 elections, reversing earlier odds that favored Republicans on both Kalshi and Polymarket. This flip signals either new polling data, campaign developments, or smart money moving in, giving bettors a real-time read on shifting electoral dynamics that polls might miss.",
-      "pub_display": "Mar 16"
-    },
-    {
-      "title": "Polymarket Five-Minute Bets Capture \u2018Addictive\u2019 Crypto Craze",
-      "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxNQVM1ajZCTjR5TzB6dVN6b1c3eVhPTFFmLTBYODdReWJfUE44OVhSdmkzVHlwQzN3WEwtNWZLSFh4blpUdWJMZ1UtSEg3cXNQajBBank5YWRQRDI2SFNqMzRaOHpjTjRrX2VMaDdtV25KVXFENkZneHlycXZiekdHdzZ5RmltbUdQUjd6M2JpV1FiRkYybmhCRjdTYmIxbEM5TUlmeGh1OEY2S2N6dHc?oc=5",
-      "source": "Bloomberg.com",
-      "pub_iso": "2026-03-15T14:00:00+00:00",
-      "description": "",
-      "summary": "Polymarket launched five-minute prediction bets that are apparently hooking crypto traders with their slot-machine-like rush of instant gratification. The move signals prediction markets are chasing the same dopamine-driven engagement that makes crypto trading and sports betting so profitable, which could either explode the user base or turn the whole space into a casino.",
-      "pub_display": "Mar 15"
-    },
-    {
-      "title": "AI agents are quietly rewriting prediction market trading",
-      "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxQX0c5NlFWSDk4WWJtX3RURXBFQmFPYmV4VEJTX3ZUbEFYUU54dTZyQTZ1UU1jNm0tcXQ0YlBKZHRVTldRX0RpejR1UVR4MVc3LTRtYlZSS0RxZFJieWJ1ZExTb243d3NVb1cteC14bUI5ZkZIb2Uza3gwSGRzYnBxRmFCcWU2dmtocldTclF1akxwUXVMSzdkWnVDcDhocjg?oc=5",
-      "source": "CoinDesk",
-      "pub_iso": "2026-03-15T12:02:34+00:00",
-      "description": "",
-      "summary": "Autonomous AI agents are now placing bets and executing complex trading strategies across prediction markets without human intervention. This shift threatens to create massive information asymmetries where algorithmic traders with superior data processing capabilities systematically outperform human bettors.",
-      "pub_display": "Mar 15"
     }
   ]
 }
