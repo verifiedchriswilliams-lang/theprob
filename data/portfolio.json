@@ -12,7 +12,7 @@
       "ytd_return_pct": 0.0,
       "win_count": 0,
       "loss_count": 0,
-      "open_count": 2,
+      "open_count": 3,
       "start_date": "2026-03-17",
       "last_updated": "2026-03-18",
       "trades": [
@@ -45,6 +45,24 @@
           "direction": "YES",
           "amount": 100.0,
           "entry_date": "2026-03-17",
+          "end_date_raw": "2026-03-31T00:00:00Z",
+          "end_date": "Mar 31",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
+        },
+        {
+          "trade_id": "8d82711d",
+          "market_id": "deepseek-v4-released-by-march-31-446-353-924-266-292",
+          "question": "DeepSeek V4 released by March 31?",
+          "url": "https://polymarket.com/event/deepseek-v4-released-by-march-31",
+          "source": "Polymarket",
+          "display_category": "Technology",
+          "entry_prob": 6.7,
+          "direction": "NO",
+          "amount": 100.0,
+          "entry_date": "2026-03-18",
           "end_date_raw": "2026-03-31T00:00:00Z",
           "end_date": "Mar 31",
           "status": "open",
@@ -132,10 +150,29 @@
       "ytd_return_pct": 0.0,
       "win_count": 0,
       "loss_count": 0,
-      "open_count": 0,
+      "open_count": 1,
       "start_date": "2026-03-17",
       "last_updated": "2026-03-18",
-      "trades": []
+      "trades": [
+        {
+          "trade_id": "d19bb1c5",
+          "market_id": "https://kalshi.com/markets/kxtrumpout27",
+          "question": "Donald Trump out as President?: Donald Trump out before 2027?",
+          "url": "https://kalshi.com/markets/kxtrumpout27",
+          "source": "Kalshi",
+          "display_category": "Finance",
+          "entry_prob": 13.5,
+          "direction": "YES",
+          "amount": 100.0,
+          "entry_date": "2026-03-18",
+          "end_date_raw": "2026-04-01T14:00:00Z",
+          "end_date": "",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
+        }
+      ]
     }
   },
   "legacy_test_1": {
