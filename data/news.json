@@ -1,33 +1,24 @@
 {
-  "updated": "Mar 17, 2026 \u00b7 2:56 PM ET",
-  "updated_iso": "2026-03-17T19:56:05.617948+00:00",
+  "updated": "Mar 17, 2026 \u00b7 7:00 PM ET",
+  "updated_iso": "2026-03-18T00:00:31.673732+00:00",
   "homepage_count": 3,
   "articles": [
     {
-      "title": "Arizona Charges Kalshi With Illegal Gambling Operation",
-      "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxNUGdCcUJwX0dQczY2ZEVncG13Zmh3NlVCSDg2QWpQbU43TzdoN1R3T0pRUktKYjd5LVV5VnRWdVhSdW55djMtQ3d2UURtVUhSOWtpeFV1T0ljVlpSeUZQd2EzdjBCT0VCN3FUYzNEWVFILXJ6Mjl6NlFXdGY5SEVndUV3Tm5VbEtGU0tWRFNCbU4xN3VhVzJoNmU0MmI4ZEdYcEtERWMzSkM3TmNaaE5ycmRkZnU?oc=5",
-      "source": "Bloomberg.com",
-      "pub_iso": "2026-03-17T19:34:23+00:00",
+      "title": "Arizona files landmark criminal charges against prediction market Kalshi",
+      "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxOelNtS1ZwTmROSjN0QV9ITVBwb3JlVG00MDJmNTFGaTdscHJYUHBlSDY5ak82RlYxUVZpM1I3Q25uNFJFU21vQzhVcW5LXzRwUHlESkM3a25LRWRaQVdMWEhEQXdfREtQY1NIc2hkUnlwS0tuaGxlSjI1Z293djRHdW9mbk8xSzA?oc=5",
+      "source": "CNN",
+      "pub_iso": "2026-03-17T20:11:30+00:00",
       "description": "",
-      "summary": "Arizona regulators hit Kalshi with charges for allegedly running an illegal gambling operation in the state. The case could set a precedent for how other states treat prediction markets, potentially forcing platforms to navigate a patchwork of gambling laws or face similar crackdowns.",
+      "summary": "Arizona prosecutors hit Kalshi with criminal charges, marking the first time a state has brought criminal action against a major prediction market platform. This sets a dangerous precedent that could trigger a domino effect of state-level crackdowns just as prediction markets were gaining mainstream acceptance.",
       "pub_display": "Mar 17"
     },
     {
-      "title": "Polymarket let people bet on when Iran would strike Israel. A journalist who covered the war got death threats.",
-      "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxQTHBrUENOQzJoZnZZNUR2RjNVVkp5NVJrUms1LXhEdzZFcTBZY043UEs1UVhvb29yVEQzVklFa3hpWndhNk1qdlN6c0p5cDh6bHNBaEd6SVhCTUFaSkZ2VUVBcFZueGZfZFV0SVlYT1NZcEl0SVQxbFhzdkVqM0NlLURTNjExU3lMY19tdUJ4ano0UXgwN3dsY0RR?oc=5",
-      "source": "Business Insider",
-      "pub_iso": "2026-03-17T18:12:34+00:00",
+      "title": "$1.2M bet on whether there's federal charges in Minneapolis shootings",
+      "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxOM1V0ZmdmVTVYNDRsVmFGRV96b0NFbHpFTEdacU83QlQza1hWUllSYW9lYU5RNGdTS3FoQTRpeHg5bXFlRFYybUo2RE0wMnk4RjdGLXI4a3BMMVk4ZGtibTMwZVJVMHRVNFhnNGk3dTdkblB0cXg1NnRpaUtIQzNPcVU0Q2NWdGwxdWhvYzZ0Q0JxY1hYUzJxbExQRUZscFg0VWtfYmJMdGpHeVNkOUlEcXRsYw?oc=5",
+      "source": "St. Cloud Times",
+      "pub_iso": "2026-03-17T18:03:27+00:00",
       "description": "",
-      "summary": "Polymarket users wagered on the timing of Iran's retaliation against Israel, and a war correspondent covering the conflict received death threats afterward. The incident highlights how prediction markets on geopolitical violence can create perverse incentives and put journalists at risk when their reporting affects bet outcomes.",
-      "pub_display": "Mar 17"
-    },
-    {
-      "title": "Betting on the Oscars or the Super Bowl halftime show would be banned under new prediction market bill",
-      "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxOd1Z5dTltNTlHb3daX3c0RC1PQjFTdTMtX09qN3R2VElsU3ZZTWtTSDZwY0hRa211aHBoNk55ekJMenRjaVBZN2dJS0ZCdlVqV0x6S2FMek1hUlludjROWHZnV3lLNmpERG9JeEx5OUNoZUJJdXJnckQybVpOSEhadlF2WEJmaEFFaXZFRW45amlqZWZEWEpHWTlsZDRrOUk?oc=5",
-      "source": "Business Insider",
-      "pub_iso": "2026-03-17T17:28:16+00:00",
-      "description": "",
-      "summary": "A new bill would ban prediction markets from offering bets on entertainment events like the Oscars and Super Bowl halftime shows. The restriction signals lawmakers want to draw clearer lines between \"legitimate\" forecasting on policy outcomes and what they view as frivolous gambling on pop culture.",
+      "summary": "Someone placed a $1.2M wager on whether federal charges will be filed in connection with recent Minneapolis shootings. The massive bet size signals either insider confidence or serious money chasing what could be predictable legal outcomes based on federal prosecution patterns.",
       "pub_display": "Mar 17"
     },
     {
@@ -49,22 +40,13 @@
       "pub_display": "Mar 17"
     },
     {
-      "title": "Betting on 5-minute swings on Bitcoin price are the hot new thing on prediction markets",
-      "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxOa2RxQ3R0akI2OUxnbkx1bmxqY3locTc2WjRXNUI5dHpjQkhQanRkUm5rZ3czQ3ZpSElIMC03c1Fqay1PWnExZmN6Y0IxdkpQOG9ILUxmQVh3TUh6MzJTZ3RUb1ZiWFo3Wm15SW1TRFhjZWVpUXljdDczZGhCYTRxWUpWUlVsbGgtdnBPR3c5R0NabGZTdE5RYjhHcGpKU0sycUg2MTBEbUd0SVZoMGluU1VKVGtmODRPWW9J?oc=5",
-      "source": "Fortune",
-      "pub_iso": "2026-03-16T19:51:00+00:00",
+      "title": "A journalist reported a missile strike. Then came the death threats.",
+      "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxPUTgzTzROdzZZc1pGTjRRVWt1LUxzM2JMWjl1aXV4OGZCUG1DOUMzNm1jNmNiSF9aWU1obXRaQ1JBT0YzNzVObzJraHRmdEIybTlhRXRkMXN3dFpha1V3VFdLMGNfMzhTSURtQzVCWEVPSnBlQ1ROcUppWkZza2sxN1QtZ2J3MUNxUllPUENKTzZuSDU5ay1JbDJn?oc=5",
+      "source": "The Washington Post",
+      "pub_iso": "2026-03-17T16:00:00+00:00",
       "description": "",
-      "summary": "Traders are now placing bets on whether Bitcoin will move up or down in just 5-minute windows, turning crypto prediction markets into something that resembles high-frequency day trading. This ultra-short timeframe betting represents prediction markets evolving from long-term forecasting tools into real-time gambling products that could attract millions of new users seeking instant gratification.",
-      "pub_display": "Mar 16"
-    },
-    {
-      "title": "Prediction Markets Split on Next U.S. President: See Latest Odds for 2028 Election",
-      "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxPZEVjUThTRmtLZ0h5OS1XX01hRDlfZ1FfSVp2VVh3RlYxWFVoNS1RdDRld1RRUzc5OXJMMVdLaU1MOUFHb2RodGZIejFOSGFaSTVPUDA2Ml81Mm5OSmh6UDdNZDlhOWxYWmFhMkh2a3dEVmttVVFPLXlxUTJRYnd2eXo5b19rUWY4YXBLM19SeW5BbFp4amZtb012RnU0NXZvOGxaSFRIZ1RvTTctOEpjdDVfaHhlYnhZRlZ2U2VPaTBsV3ZiTmc?oc=5",
-      "source": "Federal News Network",
-      "pub_iso": "2026-03-16T19:45:54+00:00",
-      "description": "",
-      "summary": "Prediction markets are already pricing the 2028 presidential race with notable disagreement between platforms on who leads the field. The early splits signal either major information asymmetries between market makers or genuine uncertainty about a wide-open race that could create profitable arbitrage opportunities for sharp bettors.",
-      "pub_display": "Mar 16"
+      "summary": "A journalist faced death threats after reporting on a missile strike, highlighting the dangerous intersection of war reporting and online harassment. Information warfare and journalist safety directly impact the reliability of conflict reporting that prediction markets depend on for geopolitical bets.",
+      "pub_display": "Mar 17"
     },
     {
       "title": "Make the Predictions Come True",
@@ -85,21 +67,12 @@
       "pub_display": "Mar 16"
     },
     {
-      "title": "Kalshi and Polymarket correctly predicted 19 out of 24 Oscar winners. Here are the ones they missed.",
-      "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxOZmhkeGFsSFFOZTA5Z3lNeGpoYUItaUZPV0FXTUpHYWJEenVnbXI3N25ray04c3kyWTVVa3M0Ny1BcjIzejBoREo2b0RvRU1vZVRxVi1LRlVYX29JV0c4MzQ2WDF1VTVpQnV0ZG42ZWt6eXdkWjZHZUU5ejE2c3N3d1Vyc1ZaYy1XTl9aVTNmVk1HZ3cyUXBNcUlNOA?oc=5",
-      "source": "Business Insider",
-      "pub_iso": "2026-03-16T16:45:00+00:00",
+      "title": "Gamblers trying to win a bet on Polymarket are vowing to kill me if I don\u2019t rewrite an Iran missile story",
+      "url": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxPVndKVW16QUx1RXl1Mkh1NnltUlhqemE2T0J1UC1xWXFqdl85Z2tXRWtRcmtuU0dVVTVKQ1c0LXN3MTY5ZFpKbWdKMHRXVHVFZE0yeGQxS05aenotUWw0dzcyYjNwdTByRmdUYW5LTVAyaTRNdXhoLVhCWUUxVzFxZ0lZc2JnZ3VET2JmZEZabTFYZkpKRGJVZEtvN2J5MWZJTUtYVVdBLTVzYy1LUm9xMWNZbW1iR3FxRUpyenUyS2NCZllvQ0toaldWM2lKM1FX0gHWAUFVX3lxTE9Db2V3akVvLTM5RFJLQ1ZiN09EcVpFNjZGSGk3RTFPM29VWUJ5ZE94SWgyT3dTZThNQ09zOVkxZS1hOE5acTA5VUoxaVhIVDFkVUFwclFvd0tFWmlNZ1NsYW5tNURpdDF0VFU4NGlFN3ctVzlubkxjLW9ENEE5NmdYalV0amk3REc2SlAxeHpHaUcyTjh0Z0JTMFREM2VMd010RFo0SHRNVW5IdEt3SlRIblNPRzdWbk93ZHlTMzE3dzNoRHVyZDdXcUhCQ2Vvai1VakdLeEE?oc=5",
+      "source": "The Times of Israel",
+      "pub_iso": "2026-03-16T11:22:00+00:00",
       "description": "",
-      "summary": "Prediction markets Kalshi and Polymarket nailed 79% of Oscar winners this year, missing only 5 categories out of 24. The strong performance adds more credibility to betting markets as entertainment forecasting tools, especially as Hollywood awards become increasingly predictable through industry sentiment and campaign spending.",
-      "pub_display": "Mar 16"
-    },
-    {
-      "title": "Why Does The CFTC Chair Want People To Bet On Drug Trials At Prediction Markets?",
-      "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxOek81aTZ2UnNtVVFVd2ZHV29hRWVxQVVIQXNSWEVrNE1fQVBSbm1NYzZONjRpMXd4WkVPeTM2cHk3QU9jUDlvX2ZETzJNeFZlMFlYOGhSTnd4SzR1STFyYXR5M0NkRUh5TklXcy1XeWpQZDdpZmpTLTA4elFzMWpMT1R5M0tQb0k1anNTWlpqT3Z0MnVVSlE?oc=5",
-      "source": "Event Horizon | Dustin Gouker",
-      "pub_iso": "2026-03-16T11:02:15+00:00",
-      "description": "",
-      "summary": "CFTC Chair Rostin Behnam is pushing for prediction markets that let people bet on pharmaceutical drug trial outcomes. If regulators green-light pharma betting, it could unlock billions in trading volume while giving investors real-time odds on which drugs will actually make it to market.",
+      "summary": "Polymarket bettors are apparently threatening violence against a journalist over how they covered Iran's missile attacks, presumably because the story's framing could affect bet outcomes. This shows how high-stakes prediction markets can turn users into deranged partisans who view news coverage as market manipulation rather than reporting.",
       "pub_display": "Mar 16"
     },
     {
@@ -110,6 +83,33 @@
       "description": "",
       "summary": "Polymarket traders are now placing bets on real estate prices, turning your local housing market into another prediction market playground. This signals prediction markets are expanding beyond politics and sports into everyday economic indicators that actually affect people's wallets, creating new opportunities for informed bettors to profit from housing knowledge.",
       "pub_display": "Mar 16"
+    },
+    {
+      "title": "Wall Street Is Already Betting on Prediction Markets",
+      "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxNRkxMNXh5TzNJcEphOE5Od0RFWERXMy1XZkh3SXlWV3JxNE5pRXFubXQ3QzlxbGVIOW1pb1BWalVLSVcwN011VDFIYTZ6Y2lWU3JGQ2htY0s4eVB5ajlGbkN4dWNZdUFYMEUyR2VGUjhaZVlncWM3aUlxNFVTMTE1Vnc3OA?oc=5",
+      "source": "WIRED",
+      "pub_iso": "2026-03-16T09:30:00+00:00",
+      "description": "",
+      "summary": "Major financial institutions are placing bets that prediction markets will become a massive asset class, likely through direct investments or by launching their own platforms. This institutional validation could pump billions into the space and legitimize betting on everything from elections to Fed policy decisions.",
+      "pub_display": "Mar 16"
+    },
+    {
+      "title": "Traders Flip Senate Control Bet as Democrats Overtake Republicans on Kalshi, Polymarket",
+      "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTFBjTmI0a3VydFlMajVPUTFEQWFUTG95SzJUMG5EQmJ3RnNNZkUwWlBIckpQYTlrUmJ4ZHlRdDdVYWFwOEUzcmxNUXBUV09xYTlIdHdYaEZXMnoxS0d6Z2J4UzdIaEdSWWpHckdJS0xWaG55UDY2dHRqUDNxZWF5RVHSAYcBQVVfeXFMUHdJalRfNDRBak02Ym9kSHM0UVVrV1QzdlJKV2pUcS1rX1ZSYTM3d0d6blNLMFdPWHJpNzFLSkNJeHVUYlFmQUlBQ0xfX3c4TFRJN3dQUTUyME94aHR0TFUxaUFTMTVYUjd2aUZCNmZQZVVuaDA4Ul9oTVpDd0lKeWhVcFBEcEFr?oc=5",
+      "source": "Decrypt",
+      "pub_iso": "2026-03-16T03:14:54+00:00",
+      "description": "",
+      "summary": "Prediction market traders are now betting Democrats will control the Senate after the 2024 elections, with the party's odds surging past Republicans on both Kalshi and Polymarket. This flip signals either new polling data, campaign developments, or smart money spotting value that the broader market missed.",
+      "pub_display": "Mar 16"
+    },
+    {
+      "title": "Polymarket Five-Minute Bets Capture \u2018Addictive\u2019 Crypto Craze",
+      "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxOSTR0SHFYcDJwcUd0MmNoMkZSQXNBc1lQaTFrYjNFVk5FRWRXUzJBRk1lc3VnRDN3a2wwNm1FM2p6UTVyNFJTMWpIU0RyU05CQ1FVOU11YkRzQUZnaUM1M0pyTFpKcTNyUF9EZWhUeG1EeERMVHN2dDNnMXRkYWtLX0ZPOHpNVV9i?oc=5",
+      "source": "Yahoo Finance",
+      "pub_iso": "2026-03-15T14:00:00+00:00",
+      "description": "",
+      "summary": "Polymarket launched five-minute betting windows that let traders make rapid-fire predictions on crypto price movements, tapping into the same dopamine-driven mechanics that make slot machines irresistible. The move signals prediction markets are abandoning their wonky policy-forecasting roots to chase the lucrative world of high-frequency gambling addiction.",
+      "pub_display": "Mar 15"
     }
   ]
 }
