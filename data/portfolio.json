@@ -14,7 +14,7 @@
       "loss_count": 0,
       "open_count": 2,
       "start_date": "2026-03-17",
-      "last_updated": "2026-03-17",
+      "last_updated": "2026-03-18",
       "trades": [
         {
           "trade_id": "ea14c291",
@@ -58,14 +58,14 @@
       "name": "The Contrarian",
       "strategy": "Fade longshots: always NO when crowd says \u226430%",
       "thesis": "Crowds overprice long shots. Sell the overpriced tickets.",
-      "current_balance": 1000.0,
-      "total_pnl": 0.0,
-      "ytd_return_pct": 0.0,
-      "win_count": 0,
+      "current_balance": 1005.82,
+      "total_pnl": 5.82,
+      "ytd_return_pct": 0.6,
+      "win_count": 1,
       "loss_count": 0,
       "open_count": 1,
       "start_date": "2026-03-17",
-      "last_updated": "2026-03-17",
+      "last_updated": "2026-03-18",
       "trades": [
         {
           "trade_id": "18b00e62",
@@ -78,6 +78,24 @@
           "direction": "NO",
           "amount": 100.0,
           "entry_date": "2026-03-17",
+          "end_date_raw": "2026-03-31T00:00:00Z",
+          "end_date": "Mar 31",
+          "status": "closed",
+          "exit_prob": 3.8,
+          "exit_date": "2026-03-18",
+          "pnl": 5.82
+        },
+        {
+          "trade_id": "02c14a65",
+          "market_id": "will-france-uk-or-germany-strike-iran-by-march-31-929",
+          "question": "Will France, UK, or Germany strike Iran by March 31?",
+          "url": "https://polymarket.com/event/will-france-uk-or-germany-strike-iran-by-march-31-929",
+          "source": "Polymarket",
+          "display_category": "Politics",
+          "entry_prob": 5.2,
+          "direction": "NO",
+          "amount": 100.0,
+          "entry_date": "2026-03-18",
           "end_date_raw": "2026-03-31T00:00:00Z",
           "end_date": "Mar 31",
           "status": "open",
@@ -98,7 +116,7 @@
       "loss_count": 0,
       "open_count": 0,
       "start_date": "2026-03-17",
-      "last_updated": "2026-03-17",
+      "last_updated": "2026-03-18",
       "trades": []
     }
   },
