@@ -184,18 +184,18 @@
   <div class="section-title">Which Model Do You Think Wins?</div>
   <p style="font-size:14px;color:var(--text-muted);margin-bottom:20px;">30 days, $1,000 each. Pick your horse. Results revealed in the newsletter April 17.</p>
   <div style="display:flex;gap:12px;flex-wrap:wrap;" id="poll-btns">
-    <button onclick="castVote('a')" id="poll-a" style="flex:1;min-width:140px;background:var(--bg2);border:1px solid #4a9eff44;border-radius:8px;padding:16px;cursor:pointer;text-align:left;transition:border-color 0.15s;">
+    <button onclick="castVote('a')" id="poll-a" style="flex:1;min-width:140px;background:var(--bg2);border:2px solid #4a9eff44;border-radius:8px;padding:16px;cursor:pointer;text-align:left;transition:all 0.15s;">
       <div style="font-family:'Courier New',monospace;font-size:9px;letter-spacing:0.12em;color:#4a9eff;margin-bottom:6px;">MODEL A</div>
       <div style="font-size:15px;font-weight:600;color:var(--text);">The Crowd</div>
       <div style="font-size:12px;color:var(--text-muted);margin-top:4px;">Ride the consensus</div>
     </button>
-    <button onclick="castVote('b')" id="poll-b" style="flex:1;min-width:140px;background:var(--bg2);border:1px solid var(--red)44;border-radius:8px;padding:16px;cursor:pointer;text-align:left;transition:border-color 0.15s;">
-      <div style="font-family:'Courier New',monospace;font-size:9px;letter-spacing:0.12em;color:var(--red);margin-bottom:6px;">MODEL B</div>
+    <button onclick="castVote('b')" id="poll-b" style="flex:1;min-width:140px;background:var(--bg2);border:2px solid #ff4d6d44;border-radius:8px;padding:16px;cursor:pointer;text-align:left;transition:all 0.15s;">
+      <div style="font-family:'Courier New',monospace;font-size:9px;letter-spacing:0.12em;color:#ff4d6d;margin-bottom:6px;">MODEL B</div>
       <div style="font-size:15px;font-weight:600;color:var(--text);">The Contrarian</div>
       <div style="font-size:12px;color:var(--text-muted);margin-top:4px;">Fade the longshots</div>
     </button>
-    <button onclick="castVote('c')" id="poll-c" style="flex:1;min-width:140px;background:var(--bg2);border:1px solid var(--amber)44;border-radius:8px;padding:16px;cursor:pointer;text-align:left;transition:border-color 0.15s;">
-      <div style="font-family:'Courier New',monospace;font-size:9px;letter-spacing:0.12em;color:var(--amber);margin-bottom:6px;">MODEL C</div>
+    <button onclick="castVote('c')" id="poll-c" style="flex:1;min-width:140px;background:var(--bg2);border:2px solid #f5a62344;border-radius:8px;padding:16px;cursor:pointer;text-align:left;transition:all 0.15s;">
+      <div style="font-family:'Courier New',monospace;font-size:9px;letter-spacing:0.12em;color:#f5a623;margin-bottom:6px;">MODEL C</div>
       <div style="font-size:15px;font-weight:600;color:var(--text);">The Arb</div>
       <div style="font-size:12px;color:var(--text-muted);margin-top:4px;">Trade the platforms</div>
     </button>
@@ -426,15 +426,20 @@
     showVoteConfirm(key);
   }
   function showVoteConfirm(key) {
-    const names = { a: 'Model A (The Crowd)', b: 'Model B (The Contrarian)', c: 'Model C (The Arb)' };
+    const names = { a: 'Model A \u2014 The Crowd', b: 'Model B \u2014 The Contrarian', c: 'Model C \u2014 The Arb' };
     const conf = document.getElementById('poll-confirm');
-    if (conf) { conf.textContent = '\u2713 You picked ' + (names[key]||key) + '. Results revealed Apr 17 in the newsletter.'; conf.style.display = 'block'; }
+    if (conf) {
+      conf.textContent = '\u2713 You picked ' + (names[key]||key) + '. Results revealed Apr 17 in the newsletter.';
+      conf.style.display = 'block';
+    }
+    const cols = { a: '#4a9eff', b: '#ff4d6d', c: '#f5a623' };
     ['a','b','c'].forEach(k => {
       const btn = document.getElementById('poll-' + k);
       if (!btn) return;
-      const col = { a: '#4a9eff', b: 'var(--red)', c: 'var(--amber)' }[k];
-      btn.style.opacity = k === key ? '1' : '0.45';
-      btn.style.border  = k === key ? '2px solid ' + col : '1px solid ' + col + '44';
+      const col = cols[k];
+      btn.style.opacity    = k === key ? '1' : '0.4';
+      btn.style.border     = k === key ? '2px solid ' + col : '2px solid ' + col + '44';
+      btn.style.background = k === key ? col + '18' : '';
     });
   }
 
