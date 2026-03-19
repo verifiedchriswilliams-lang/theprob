@@ -12,9 +12,9 @@
       "ytd_return_pct": 0.0,
       "win_count": 0,
       "loss_count": 0,
-      "open_count": 3,
+      "open_count": 4,
       "start_date": "2026-03-17",
-      "last_updated": "2026-03-18",
+      "last_updated": "2026-03-19",
       "trades": [
         {
           "trade_id": "ea14c291",
@@ -69,6 +69,24 @@
           "exit_prob": null,
           "exit_date": null,
           "pnl": null
+        },
+        {
+          "trade_id": "82bd9fe1",
+          "market_id": "will-manuel-saavedra-win-the-2026-santa-cruz-de-la-sierra-mayoral-election",
+          "question": "Will Manuel Saavedra win the 2026 Santa Cruz de la Sierra mayoral election?",
+          "url": "https://polymarket.com/event/santa-cruz-de-la-sierra-mayoral-election-winner-bolivia",
+          "source": "Polymarket",
+          "display_category": "Politics",
+          "entry_prob": 93.5,
+          "direction": "YES",
+          "amount": 100.0,
+          "entry_date": "2026-03-19",
+          "end_date_raw": "2026-03-22T00:00:00Z",
+          "end_date": "Mar 22",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
@@ -83,7 +101,7 @@
       "loss_count": 0,
       "open_count": 3,
       "start_date": "2026-03-17",
-      "last_updated": "2026-03-18",
+      "last_updated": "2026-03-19",
       "trades": [
         {
           "trade_id": "18b00e62",
@@ -188,7 +206,7 @@
       "loss_count": 0,
       "open_count": 1,
       "start_date": "2026-03-17",
-      "last_updated": "2026-03-18",
+      "last_updated": "2026-03-19",
       "trades": [
         {
           "trade_id": "d19bb1c5",
