@@ -1,97 +1,70 @@
 {
-  "updated": "Mar 19, 2026 \u00b7 7:02 AM ET",
-  "updated_iso": "2026-03-19T12:02:49.048912+00:00",
+  "updated": "Mar 19, 2026 \u00b7 2:37 PM ET",
+  "updated_iso": "2026-03-19T19:37:31.139965+00:00",
   "homepage_count": 3,
   "articles": [
     {
-      "title": "Opinion | Both parties fear this betting craze. It could lead to the next moon shot.",
+      "title": "Cboe's JJ Kinahan on the launch of prediction markets",
+      "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxPR0FJMG5PdlpHZnBUN1VjLW54V2ZfTG5PWDY5TUI0UXlwbS00Yi1FNlJjWUJLTUZycmY4MzNrWHNOM2RxZGNPTEYxaEY4TmRSbVRqS202V1ZFMk9fZWhOYjdjNHRJSHdzdzdfbGxZd3dxRzVjcHYwelNiSEptd1poSVBhM2NwMUYtYVpMZ253MWZFQWxZM2pDTzhFTQ?oc=5",
+      "source": "CNBC",
+      "pub_iso": "2026-03-19T19:19:46+00:00",
+      "description": "",
+      "summary": "Cboe's JJ Kinahan discusses the exchange's entry into prediction markets, marking another major traditional finance player jumping into the space. This validates prediction markets as a legitimate asset class and could bring institutional money and regulatory clarity that the industry desperately needs.",
+      "pub_display": "Mar 19"
+    },
+    {
+      "title": "People Are Making Money Betting on Pretaped \u2018Survivor\u2019 Episodes",
+      "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxQSEFrZVpVcVZqNW5YYnhTZnMzT3ZQeHppTzFUMEdpaHZMazUxNmdWeGZ5a0VXRU5WRi1RVkExSFFoMkJLd0hoY2lEbGhMVUN1X0R2S0FxVm5PbklUTnNGb3g4YS1kMkRuN2tBbVhOWUp3MkdKU2hMVk9JZ2hJUm16WkV2TEpEMDlxMEpKUE5Jc2NpZFNDRXc?oc=5",
+      "source": "The New York Times",
+      "pub_iso": "2026-03-19T19:12:00+00:00",
+      "description": "",
+      "summary": "Bettors are finding ways to profit on Survivor episodes that were filmed months ago, exploiting information asymmetries about predetermined outcomes. This exposes a fundamental flaw in entertainment betting markets where the \"future\" event already happened, creating insider trading opportunities that could force sportsbooks to rethink how they handle reality TV wagers.",
+      "pub_display": "Mar 19"
+    },
+    {
+      "title": "States vs. Prediction Markets: Regulatory Battles",
+      "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxNLTZ0cnhFdlJSbkxSNGdEejlNOUxNRDJKaGxIeGFXeWxrbHVCajB5MVhaa1ZwaG9wWHFVX0tNemExX1d0V01zdFo2MUtNMnk0cVNBcW9SWXB6U3QyZnFyY2ZrcUFOaTdZRTY0ZUN3aUl5QURFbUNjV08yekdYYVZiZ29YemFOb1NWdG5CTE9SMldSUWhRdUZHbUpOdlp1dy1HRFB1R1lja0VJX3F2OWFhNnQzTGpqd3A4Skk5LU9XTGk?oc=5",
+      "source": "MultiState",
+      "pub_iso": "2026-03-19T18:00:59+00:00",
+      "description": "",
+      "summary": "State regulators are cracking down on prediction markets, launching investigations and threatening legal action against platforms operating in their jurisdictions. These battles will determine whether Americans can legally bet on elections and other events, potentially forcing popular platforms underground or out of the US market entirely.",
+      "pub_display": "Mar 19"
+    },
+    {
+      "title": "Opinion | Both parties fear this betting craze. Blinding the public won\u2019t help.",
       "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxQQXd5dkxGWUFnQm44Z1VMRVY1UG9HUi0tUXBaTjZjS3hSVFRrMHFrS2VQdFlYQ1BEeW5DRHVGMThsZE5TZldZY0JKUjVMUGVXQnNXd3lwRlhfaUJlMFhrX05wek9hcnBaWXE2bUE1ek9yTGpQUmFKTW44WHlad1o2SUQyOU9BSWdQMjNPdVNpcmdKVklYcG1kNERFbHJqMlpn?oc=5",
       "source": "The Washington Post",
-      "pub_iso": "2026-03-19T11:31:56+00:00",
+      "pub_iso": "2026-03-19T17:00:23+00:00",
       "description": "",
-      "summary": "",
+      "summary": "Politicians from both sides want to crack down on the betting boom that's reshaping how Americans engage with politics and current events. The regulatory backlash threatens to push prediction markets underground just when they're proving most valuable for price discovery and public sentiment tracking.",
       "pub_display": "Mar 19"
     },
     {
-      "title": "Why Gas Prices Are Rising & The Dangers of Prediction Markets",
-      "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE1UZkJUODEwamN3U3RmOWVvaHd5REhkZTVUbFNuRi1vdERORjZBRWtFa2JoV0ZObURGMTJnUkEyb3BkdFBPY3JsdjB6MHMwRm8?oc=5",
-      "source": "Denison Forum",
-      "pub_iso": "2026-03-19T11:15:00+00:00",
+      "title": "MLB Partners with Polymarket, Signs Unprecedented Agreement with CFTC",
+      "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxORW1QemJiY3dORG1SanJ1QjFLLTNKeTVfOV9HajdCaDhPZVN3R1hQR3pzRlN6VHNFZzc4S3Noa0JBZVFSZVFZZlZ4bFBOdjNkWjVyLURWdHA1cE5PVHZaYkhNc2hDbV9NajNqbW5Sb3l1b1JxMmxvM0JyTmU0dmJRUmZOWkhxV2dlVVFyX1V1dVprV0RDMGtj?oc=5",
+      "source": "Yahoo Sports",
+      "pub_iso": "2026-03-19T15:45:00+00:00",
       "description": "",
-      "summary": "Gas prices are climbing again, and prediction markets are struggling to accurately forecast energy costs amid volatile geopolitical tensions and supply chain disruptions. When prediction markets consistently fail to price in black swan events like sudden oil shocks, bettors lose confidence in the entire ecosystem and start pulling their money out.",
+      "summary": "MLB just signed a groundbreaking deal with Polymarket that includes regulatory approval from the CFTC, marking the first time a major sports league has officially partnered with a prediction market platform. This partnership legitimizes prediction markets in mainstream sports and opens the door for other leagues to follow suit, potentially flooding these platforms with new retail money and liquidity.",
       "pub_display": "Mar 19"
     },
     {
-      "title": "Polymarket and Kalshi are suddenly in the government\u2019s crosshairs",
-      "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxQTTFfRjhtWVhDQ3JsVUVfcTBpLS1iVEs1ZEZxWTR1SjVXcUt4MmxyX2JTVHVxUmJ1QUhMQ3ZkNWF5SnRzSzFZektUaDJrcmoyNGZIMmhZU1RpSVVmYU9pZEVSNjZNanZ5Vm03UXdodnpfZE93S2lMZTUwaWF4R01tNmN6WmN1ZzlrdFpMb2xmanFQcGhpeWc?oc=5",
-      "source": "Fast Company",
-      "pub_iso": "2026-03-19T11:04:34+00:00",
+      "title": "Major League Baseball Steps Into the Prediction Markets, Strikes Deal With Polymarket",
+      "url": "https://news.google.com/rss/articles/CBMi0gNBVV95cUxOT212MEViN1NLeEZiem1QM0JaUGhmZGlfZm5zUUZoMEhONWt1Z1hFdW9VT25HLXhEcDR1eUdTelZDa29HeE1uVkJoRF93c0g4RXNHV2ZPbEh3aWdzb3Y2a0JKN2t2aWMtczdqOTRoc2Q0OGNQd2pYaGRNNDgxTExscmtfaTJGVENlSURrNzJfY21oTVZFMU5XdXFvT2pvZ3BtcjVZTkh3QmdJWE5QVjlRM3lybkgxQ2tGZ2R2QVhFN3ZUUV9ta2wyRkhxSk1WYW53dERVVklmMzI5cDZEX3J2eWo4V0g5TG43dmZES0VmY1B4bi15NjZxVS1JaDl1VE9GSUsxbXpYTTVNZ0k3d3ZPVEE5bDlrZUhKTzc2b1BZWFh6Nmk4VnoteFJId2p4eHVtUWpwSjNDXzM3b05KVXFqa3VPTlpJZEdGaS1vWE5rQWtLMTBPTVFKVjJNbDd5MG1tNFNzMXJxODJEc1hMU2MxTmZvRS1sYk9OM19lekhNNkVobzA3T05IUWxzQXFrNU12aVZYajUya2RiUndxc2lMb3EwcG9UQ0RHbml0MFBaRnR2VTdtWkFHazNJQkc3SExMZWpsNHB4NTc1NDhTZ3FKbFFB?oc=5",
+      "source": "WSJ",
+      "pub_iso": "2026-03-19T13:28:00+00:00",
       "description": "",
-      "summary": "The Biden administration is reportedly ramping up regulatory scrutiny of prediction market platforms Polymarket and Kalshi, signaling a potential crackdown on political betting. This threatens to either legitimize the space through clearer rules or kill the US political prediction market boom before it really gets started.",
+      "summary": "MLB just signed a partnership deal with Polymarket, bringing America's pastime into the crypto prediction markets arena. This marks another major sports league legitimizing prediction markets beyond traditional sportsbooks, potentially opening the floodgates for more mainstream adoption and regulatory acceptance.",
       "pub_display": "Mar 19"
     },
     {
-      "title": "How \u2018Irrelevant\u2019 Prediction Market Detail Led to Death Threats",
-      "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxNQ1JCRHd4STN1MC1kZ1RwOHBXclIxTi1KQVR5N1ZQekxkVjBVaHZva1N5VEdETUhCdVJOOXRLejVEUXo1VmtYakZZV2NvWkpPQVk2cHVQTFNpSkxKRkRNWkdKcmZxYkpGdDRJQVdyMGhTTDlsa3hEUml3NF90S2MyeEhsR0Y0dlBaTkdlOWVELUJWR2Q3ZWt2NFhhSkcwZDctYm4zRnNNNWhKTVJJeE5QeA?oc=5",
-      "source": "Bloomberg.com",
-      "pub_iso": "2026-03-19T11:00:39+00:00",
+      "title": "Polymarket Is Opening a Pop-Up Bar at DC\u2019s Proper 21",
+      "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxQTmRORERvWE9UWThIdzJvTmV1THk1eFhHM2FiUld0ZG4xWXpsdGU1Y3ZiUTd6M29uZjZ4R2lnMW9MdjNZR2VJTFBWMzJpZEdHeXE1S3hJV2pndjlzV2FnVWxvQTBocmNlLUxvSTViTVptUmpHNHhJV2pSb2tkQ0RyTXktUEhsUUJCbUtJeGlQZ2hjUHM?oc=5",
+      "source": "Washingtonian",
+      "pub_iso": "2026-03-19T13:15:54+00:00",
       "description": "",
-      "summary": "A seemingly minor technical detail or rule interpretation in a prediction market sparked serious enough controversy that someone received death threats over the outcome. This shows how high-stakes betting can turn even the most obscure market mechanics into flashpoints that threaten the industry's reputation and user safety.",
+      "summary": "Polymarket is launching a temporary bar at Proper 21 in Washington DC, bringing prediction markets directly to the political power center during what's likely a key election period. The move signals Polymarket's push to mainstream political betting and court DC insiders who could shape the regulatory future of prediction markets.",
       "pub_display": "Mar 19"
-    },
-    {
-      "title": "A \"Situation Room\" bar is popping up in downtown D.C",
-      "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxOOGxYMndrbGhJek1NNDZiOUZaZ05QLWZlZFBDNEhXMFRLTFF3NlJ4aXNiRjVnUWVjU0FRU0JBZEtEMWs2NnNWLTVKX1UzUUVpdTZVZW12aFcwT2R5NTIzdUJFZkY0Wmc4LUJrZGEwV083REh6ZVRaSThxQjl5RDcyQnpBU1d5QmRQT3pLc21NVnQxZURfQXJKdC0xYXJxVm1JV0o0?oc=5",
-      "source": "Axios",
-      "pub_iso": "2026-03-19T10:24:32+00:00",
-      "description": "",
-      "summary": "",
-      "pub_display": "Mar 19"
-    },
-    {
-      "title": "Trading or gambling? How a new way to wager on sports is evading Nebraska\u2019s betting ban",
-      "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxPN3BkLUZiaDk5Sk1NVnRkRVg4RHJYY1NXd3NJVVRaaXNiT3RyZVFPd1VfOE1YcVM4cWNGWUlveVR6Rk5RbTVjTnlLbGVBTjVpTXRUeGFITzN3LUdSVGRmbXY0Q09PcDFVVktpNVgzZF9yWTV2dzlmdFhUaEdQbV9WaUZKZWxULXMtSWNiTlBrcWpFelFhbUJ0MzlYQzVCUVBGRzdSZFBfTVI1S28ySVJySjZyRG5Sa3Iz?oc=5",
-      "source": "Flatwater Free Press",
-      "pub_iso": "2026-03-19T10:05:12+00:00",
-      "description": "",
-      "summary": "Nebraska banned sports betting, but a new wagering method is apparently skirting the state's restrictions by framing bets as trades rather than gambling. This matters because it shows how prediction markets and betting platforms will keep finding regulatory workarounds, potentially creating a template for other restricted states.",
-      "pub_display": "Mar 19"
-    },
-    {
-      "title": "Polymarket Has Problems Congress Can\u2019t Fix, Legal Experts Say",
-      "url": "https://news.google.com/rss/articles/CBMimwNBVV95cUxPeDdraUxYUEhMT2xkNThzZW1pa0ZyNkhvcFR6Y3hmT1g4cHpmWGo0WVMwUDM2YVViVUpRSWJLcWxIV3JuOWlCYnM2TDBDcE1KeVd4cW1TWTRycHI2M0ZIVnNEOURjS0NEMFNVNnd2NGdrTmpFOUhlWVFCcUhJdUJGdWZFTk1ZR1N2dElacXN0NmdqUWFaM0YyYUpjaXJBdjlNN3NmYlZEYVllVzVhYXZtNlUwN0F2QUVIa3RQQUlGWnp2ejUwUnZFd1hEeEtLSmFTNnpfVlFlcFN5SGRHUTV2dEFwOVZXSUNRa29YZkVJLVZaSnlKcnM4WHhjRDcydUNnRjBZdkJNaE94UnJFdm1ocUdPMHExRnYzX3htQ3FpZU00c2ctVWNRZlJFRFBYNElIZThyMlBxVlM4azBxU2VPNlQ3eDVib0ZPVmVUM0h2U2pWZFpJb25uRC10SktVcnhUeWlnUWdLOWhJenBobDN6X2hFS0hiV2VnNTdIS3pGTlgtcDlSUmF5RUg5WklpUjF1eGFMeHA4X2NtSXc?oc=5",
-      "source": "Barron's",
-      "pub_iso": "2026-03-19T06:30:00+00:00",
-      "description": "",
-      "summary": "Legal experts are warning that Polymarket faces fundamental structural issues that go beyond what congressional action could address. The problems suggest deeper regulatory and operational challenges that could reshape how prediction markets operate in the US, potentially forcing platforms to choose between compliance and functionality.",
-      "pub_display": "Mar 19"
-    },
-    {
-      "title": "$60 Million Says Duke. So Why Is the Market Still Fighting About It?",
-      "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxNTHlpUm1xYnlBTmlSbG9PQnF6MERSWTd6Nm1Nc2M0ZTdzTkI5LUJ4M2VFN1lINU1LTlFnVUJvaFlEQTFTUmNNVk44SHZrcnNsLVVOZXJRVS1yY2ZsVU1XTTJKdm01ZEtTQnBqYnNidk10ZkdxUnJQaGtxXzRFdHl5alhNVkJPRVdWbVRhSmk4bkJ3a21odmdzdlV2YllLeUF3emlEdnNhajlQTlRpbzh2UGlZYUFvN1RqZklXcWxaQkgyQUxGUE1hLTAwbnIwdw?oc=5",
-      "source": "Sports Illustrated",
-      "pub_iso": "2026-03-19T00:21:27+00:00",
-      "description": "",
-      "summary": "Duke just pulled in $60 million in backing, but prediction markets are still pricing in serious doubt about whatever they're claiming will happen. When big money conflicts with crowd wisdom, it usually means either the smart money knows something the market doesn't, or the market is spotting red flags that deep pockets are ignoring.",
-      "pub_display": "Mar 19"
-    },
-    {
-      "title": "Prediction Markets Claimed an Oscar Victory. The Reality Was Messier.",
-      "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxNcHUxMkNFcmVvNnFTeEVYWVNTOC1oU054ZFBWbW4ycUNNdk42VUEtQmdSQ3lNQzJHdHY1VFhTamp1eFBZQmlQWVhlWDFtV2pEWlA1cE9TU252WlhKZlk4alpEUWpERUZiZzNfcjQwVTdFdXh2UVpBeTA1SVAyaFdUWjVab2otVXB2M1daT253dHhTMmxDTWhaX0V2ODVUY2Rv?oc=5",
-      "source": "IndieWire",
-      "pub_iso": "2026-03-18T23:54:38+00:00",
-      "description": "",
-      "summary": "Prediction markets likely called the Academy Awards correctly but had some major misses or controversies along the way that made the \"victory\" less clean than the headline numbers suggest. The messy reality matters because it shows how even successful prediction market outcomes can mask underlying problems with liquidity, manipulation, or bias that bettors need to watch for.",
-      "pub_display": "Mar 18"
-    },
-    {
-      "title": "Polymarket\u2019s Next Bet: A Bar for Watching Global Chaos",
-      "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxPcVVuRXdEZmozTERRMzJlWFlVaDhSWk1feElZUEN4YV96bmU1blUyaTctX0otamhyQ2VMR1ktY2htU3J3aHFFaFZrV1U3T1JMYmt1dWlwM0NVZVBZamplS2tPeTIwTjVZdHFwaWJvcmd5d1VpNEtSajlyYksxamQzdmdWVThkUFUwcndOYi1YMHZMMmgyZmR1dFpWZjE?oc=5",
-      "source": "inc.com",
-      "pub_iso": "2026-03-18T21:09:38+00:00",
-      "description": "",
-      "summary": "Polymarket is reportedly opening a physical bar where people can watch major world events unfold while placing bets on the outcomes. The move signals prediction markets are evolving from pure tech platforms into social experiences, potentially attracting mainstream audiences who prefer to sweat their political and crisis bets with other humans instead of alone at their computers.",
-      "pub_display": "Mar 18"
     },
     {
       "title": "Maybe Turning War Into a Casino Was a Bad Idea?",
@@ -109,6 +82,33 @@
       "pub_iso": "2026-03-18T21:00:00+00:00",
       "description": "",
       "summary": "Betting markets are handicapping Survivor's milestone 50th season before it even airs, with odds already pointing to a likely winner despite the show's secrecy. The leak suggests either production security has serious holes or savvy bettors are finding ways to extract value from reality TV's most guarded secrets.",
+      "pub_display": "Mar 18"
+    },
+    {
+      "title": "How people are making millions on the Iran war",
+      "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxNemhEV2hxTk5aRE9CdklfUkZYVERYTmNockNqN2ZkUGx1aEkyZWNpQ09LYVlCa21MblZ2YlZUcmV2Q004cXJXZXM5ek5TbWtMdEdLanhKWklHcHphRHFDUVJUT1pmRkd1QnNKQS1kYjdIcTg4U2R0Y0NYNWRaWlB1cDZ6cl9jOVVacmhJanloTzl1dlBad0RaTGNhR2xRdEF3Y1E?oc=5",
+      "source": "Vox",
+      "pub_iso": "2026-03-18T20:30:04+00:00",
+      "description": "",
+      "summary": "Defense contractors and oil traders are raking in massive profits as Middle East tensions spike, with some firms seeing 40%+ stock gains since October. Smart money is already positioning on geopolitical prediction markets, where Iran conflict odds directly move energy futures and defense sector plays worth billions.",
+      "pub_display": "Mar 18"
+    },
+    {
+      "title": "Exclusive: Polymarket acquires the startup Brahma, in effort to scale its crypto and DeFi infrastructure",
+      "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxQSFNGNW1FbTZyREtCQy12MWxOTVl3QS15VmRXQmJQNVAyaVlVWHpEejJ0OVZlQUFocXlMc0hFWWhDdnJfcVlpekZsZ19mSHo4RDJlSzJPbTFQQ1h4d1N6N29WV0VDNFZSdmtaLThkM2FTLW9GTk8wMGtFOGRhY1cwdk5UVFZ6Tmc?oc=5",
+      "source": "Fortune",
+      "pub_iso": "2026-03-18T15:30:00+00:00",
+      "description": "",
+      "summary": "Polymarket bought DeFi startup Brahma to beef up its crypto infrastructure and handle more betting volume. The acquisition signals Polymarket expects massive growth and wants to avoid the technical meltdowns that plague other crypto betting platforms when big events drive traffic spikes.",
+      "pub_display": "Mar 18"
+    },
+    {
+      "title": "Betting on Ayatollah\u2019s Ouster Ignites Ire Over Prediction Markets",
+      "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxPMjJ3SUp0akZNeUFSQ3F4N0FvQUxpZHgyc3lha0x6NVZyZ2FWRnROZi1zT2w4ZHV5ZE1wVGFBN0V6RnRwVm9SWmJjRWFpbW1oR1ZBUVhKeFFNM0ZwdmFndUc1aGJ4bHRncUhEWjExTWgyOWEycFFPWG82R19kXzctS0NieUN3cDhmbmxTSQ?oc=5",
+      "source": "The New York Times",
+      "pub_iso": "2026-03-18T13:13:12+00:00",
+      "description": "",
+      "summary": "Prediction markets are taking bets on when Iran's Supreme Leader Ayatollah Khamenei will leave power, sparking outrage from critics who say it's morally wrong to gamble on political upheaval. The controversy highlights how prediction markets push boundaries by pricing sensitive geopolitical events, which could attract regulatory scrutiny or platform restrictions on what can be traded.",
       "pub_display": "Mar 18"
     }
   ]
