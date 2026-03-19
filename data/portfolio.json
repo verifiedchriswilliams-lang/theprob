@@ -94,12 +94,12 @@
       "name": "The Contrarian",
       "strategy": "Fade longshots: always NO when crowd says \u226430%",
       "thesis": "Crowds overprice long shots. Sell the overpriced tickets.",
-      "current_balance": 1011.31,
-      "total_pnl": 11.31,
-      "ytd_return_pct": 1.1,
-      "win_count": 2,
+      "current_balance": 1020.96,
+      "total_pnl": 20.96,
+      "ytd_return_pct": 2.1,
+      "win_count": 3,
       "loss_count": 0,
-      "open_count": 3,
+      "open_count": 2,
       "start_date": "2026-03-17",
       "last_updated": "2026-03-19",
       "trades": [
@@ -170,10 +170,10 @@
           "entry_date": "2026-03-18",
           "end_date_raw": "2026-03-31T00:00:00Z",
           "end_date": "Mar 31",
-          "status": "open",
-          "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "status": "closed",
+          "exit_prob": 4.5,
+          "exit_date": "2026-03-19",
+          "pnl": 9.65
         },
         {
           "trade_id": "0b629da2",
