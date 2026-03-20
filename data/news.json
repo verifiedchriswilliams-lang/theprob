@@ -1,24 +1,51 @@
 {
-  "updated": "Mar 20, 2026 \u00b7 6:57 AM ET",
-  "updated_iso": "2026-03-20T11:57:40.551363+00:00",
+  "updated": "Mar 20, 2026 \u00b7 2:25 PM ET",
+  "updated_iso": "2026-03-20T19:25:40.154393+00:00",
   "homepage_count": 3,
   "articles": [
     {
-      "title": "Kalshi says it's not a gambling platform. That's a problem | Editorial",
-      "url": "https://news.google.com/rss/articles/CBMi5AFBVV95cUxQYVMtQ3hfZk9tUUVpUFU2eFYxaVdwZVNTTUFGaVJkTFAzMElCalVlN3RmOU1KUEUyR1RKQVY3LWtKREM1c3VzT185YkdKem1EUmJ2cm91SjlYUU1xbEt6TWo4cUIyN1VVZTZIMUlBNUlYdTBqWUE5b1hlYXExblhPeFlNbmN2NC1UeE93Z3hfVV9QY3JubUxnTl9LaXotTWUxMm5fcE1YcGh1VWVCMnJLTVFvZ1VmVWR6WlVJVS1EcGZyNGFqOHk0NFFiWWdoYk1DeXF0NndQRGg2Q0NacEF4RnZycFA?oc=5",
-      "source": "Akron Beacon Journal",
-      "pub_iso": "2026-03-20T10:27:51+00:00",
+      "title": "Kalshi Temporarily Banned From Operating in Nevada by State Judge",
+      "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQTDhteE9EWXdfSFhnNjhGaHRPdmc2MElGX3VvdDJENnQyeWRPS1VPZFVNNXBwaVBCQ3lxaGV6bUhCREV5bEVNeXU3Smk1LVZOdk1qblJMeGtic1E3NVVzRXduZ1MxRVRBZUtJQXpMbC1xeENnb1MyV0lVb0k4MlRlWFF1RFlqbWg2UW43cDJfbXZ6VU93Mkx5QmZtbTQ1aTM5STFCcGphM3h5ME5SZzl3Nzl3?oc=5",
+      "source": "Bloomberg.com",
+      "pub_iso": "2026-03-20T18:21:41+00:00",
       "description": "",
-      "summary": "Kalshi is pushing back against critics who label their election betting platform as gambling, arguing they're running legitimate prediction markets instead. The distinction matters because gambling regulations could shut down their lucrative political contracts, while also revealing how flimsy the line between \"prediction markets\" and \"betting\" really is.",
+      "summary": "A Nevada state judge has temporarily banned Kalshi from operating in the state, likely over regulatory compliance issues or licensing disputes. This creates another regulatory headache for the prediction markets platform as it tries to expand nationwide while fighting various state-level restrictions on political betting.",
       "pub_display": "Mar 20"
     },
     {
-      "title": "2026 FIDE Candidates Tournament: Winner Predictions & Odd...",
-      "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE4wQjZhSXRvNHlZTUM3cXJHRWF2U2NIdjllZnNjdTVERXVFX1FrVklnVjk4VC04X3ItTk1wSXpxdHctaHI5aFo5Vm5DOXBOUjZzbmJ3YklJVlg0cWdmejM0N3E0M2EzQlhpMTRORGNMa0dRWGgxOGc?oc=5",
-      "source": "Polymarket",
-      "pub_iso": "2026-03-20T10:02:21+00:00",
+      "title": "Polymarket Says It Deals in Truth, but Its Social Feeds Are Filled With Falsehoods",
+      "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxPcDRBS3dHQ28wdU5wY3AyeGFrOXNxSGZLNlJCYW5RTXk5QmtrbUlzdmdOQnFDSlZ4U3F2S1FocjFzSTRjd19DRDI1SzZlbi0tYzBjLTJQVHRqUDhVdW1YN01jNlgxN1dESHRQb0w3MEV5V0xLWVc3anNTQVZyWTdYcFNIcTdyTXRFM212WVpR?oc=5",
+      "source": "The New York Times",
+      "pub_iso": "2026-03-20T18:06:09+00:00",
       "description": "",
-      "summary": "The 2026 FIDE Candidates Tournament will determine who challenges the world chess champion, and prediction markets are already pricing the contenders. Chess betting has exploded since the pandemic streaming boom, making this eight-player round-robin one of the year's most liquid intellectual sports markets.",
+      "summary": "Polymarket's social media feeds are reportedly spreading misinformation despite the platform's claims that it surfaces objective truth through market mechanisms. The contradiction undermines Polymarket's core value proposition and could invite regulatory scrutiny that threatens the entire prediction market ecosystem.",
+      "pub_display": "Mar 20"
+    },
+    {
+      "title": "Prediction market madness: Why and how are prediction markets legal?",
+      "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxQaFlweFd0NGNRNnFxdS1rMTNqeml6bjEzamducElvdW1MeGFHVkNkLUpLdlprY3NZbmdyVHNmODRjWmh5cldSbVVKZzJPR2NuZXBDanBma1EyWkRYMHBKTHZmMXV5aExRU09fYmFQMXYtWGs2MFV2UGFzMFQzQXZwVjRKUGR1SHRhSVUxaTN4MUJoUmh4VUVOeE9Lc09iZkEtTU55UUVJbV80WjR3?oc=5",
+      "source": "CBS News",
+      "pub_iso": "2026-03-20T15:11:00+00:00",
+      "description": "",
+      "summary": "Prediction markets occupy a bizarre legal gray area where you can bet on elections but not sports, trade on war outcomes but face restrictions on weather futures. This regulatory patchwork creates massive arbitrage opportunities for sharp bettors who understand which platforms operate under which loopholes.",
+      "pub_display": "Mar 20"
+    },
+    {
+      "title": "Google Finance Adds Prediction Data",
+      "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxQMXN5VnpDLThISEtoSlROSXc1YzBEVTk1R2xuWXBlcGJSMjdKQy1KdkxlbGVNNkMxVVE0Ylo4eW1rSThaNFh2bFh6Z0EyczhaZHhYbWJXdGJHOFpHRm1waTlpV0VhYjJ6ZUlicUxBVDVsQjVnXy04Q3FuRXpWUmRNOWNORzFvdmttUktCYV8yOHl0OWY3UF9nV09ZcTlPaUFJc01BMXZzUlJhZ2tZczZnWFBkdWZvaUZzRWxNN1NDaTNoUVh4dmFfTQ?oc=5",
+      "source": "Wealth Management",
+      "pub_iso": "2026-03-20T14:31:02+00:00",
+      "description": "",
+      "summary": "Google Finance is now displaying prediction market data alongside traditional stock information, giving mainstream investors direct access to crowd-sourced forecasts. This legitimizes prediction markets in a way that could drive massive new user adoption and force traditional financial platforms to start treating betting odds as serious economic indicators.",
+      "pub_display": "Mar 20"
+    },
+    {
+      "title": "Why the betting markets may have a unique impact on California governor\u2019s race",
+      "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxNd2hsTm5GRmpxeGZkTmV1aUV0bjlpVkRMYUhCY0pSYWsyaVBQb0ZUY0lYNlNEcWZ4cXZoTGJ5dWY0UGxRZkRySnBaa050cGhRWkFreFpXQlNyZk1CamtVbXdLTEdMLTljN0V6RzlKektKMS1zM2tUbE1LR1BFMHRrb09EVXRqdGhCcHBlWGtxZHZCNXlpNEpEYmJkNU9kTTNWZUpKRlRaRQ?oc=5",
+      "source": "San Francisco Chronicle",
+      "pub_iso": "2026-03-20T11:09:51+00:00",
+      "description": "",
+      "summary": "California's governor race could become the first major election where prediction markets significantly influence voter behavior and campaign strategy rather than just reflecting public sentiment. If betting odds start moving votes instead of tracking them, it would mark a turning point for how political markets operate and create new opportunities for savvy bettors to profit from the feedback loop.",
       "pub_display": "Mar 20"
     },
     {
@@ -40,12 +67,30 @@
       "pub_display": "Mar 19"
     },
     {
+      "title": "Mystery solved: Polymarket\u2019s \u2018Situation Room\u2019 pop-up bar coming to D.C.; here\u2019s where",
+      "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxNcU9WYWd4Wlhua2NUWDMtVFd1bU8xS2pCZWwxTFRTalpvRkZKSHNrQlh4S2psZEVvMlNwQ0JaYnI4QjJOOXhmeXNheVlSTm4xcndKdG54MzU5dmV4eFJZYWpNV0dhVFgtMnBHbGVOUl9OaG84V2dkaHFjNmtPRWg0ZmJiSGhfUkJ4aEE3bkUyejc0NjFOWFk0UENVdGxjZ0Z6b3VORThiMmx4QUJIcWxMQVYzR2xyQkRvalE?oc=5",
+      "source": "wusa9.com",
+      "pub_iso": "2026-03-19T21:50:00+00:00",
+      "description": "",
+      "summary": "Polymarket is opening a pop-up bar called \"Situation Room\" in Washington D.C., turning election betting into a social experience. The move signals prediction markets are going mainstream, giving bettors a physical space to gather while potentially normalizing crypto gambling among D.C.'s political class.",
+      "pub_display": "Mar 19"
+    },
+    {
+      "title": "Public relations firm picks bar fight with Polymarket",
+      "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTE5vQ3FrbDJlYktuNzFsNkQtT3gxZldMeEtwTS1DaU84SzRzOWRLRkNSR3BDdnlOaDZ0N096cEkzeGtsZk5zMnpZYnhIS1ZWdXR3UTlaNEVZT2h4aTBzTVFwZ252ZFBmNTllU2dPT3Q0SlRvOUxZQ1BRdHpKbVNLUdIBgwFBVV95cUxPOEVncFAxOFJjUHRLNnJKS0g2ajMwNk1Kcjg1VkJ0NklFRnhMemRGMklBWkhEMXdUWkR5QW80bTJRWG10ZjRuZkhhWWZqZDBHUnRXa0o4VTNZS29meUJjWTZROFdHbTZMbDdfQVRMQUwwcFo0dDUyWjBrTzU3THZMRzNIQQ?oc=5",
+      "source": "CNBC",
+      "pub_iso": "2026-03-19T21:41:11+00:00",
+      "description": "",
+      "summary": "A public relations firm is going after Polymarket, likely over reputation management or messaging disputes. This signals Polymarket is big enough to attract professional PR warfare, which means either serious money is flowing through the platform or powerful interests want to control the narrative around prediction markets.",
+      "pub_display": "Mar 19"
+    },
+    {
       "title": "Exclusive | Kalshi Cinches $22 Billion Valuation in Ongoing Round",
-      "url": "https://news.google.com/rss/articles/CBMimgNBVV95cUxQX3JJajNTRDNieU9sVng1YU1qeDRobGNiUXV5UjZvZzZhNHZMRHpKVWdhQWhqcHJlSDNIOXNBQnVGZmpMRkRwNi1JVFFYcV9Bdmpxdm9UQnFCYjFqa21RQldjWkYxVXhlbXFDTjdYTjd1aTJTUG1HbFdRVGhPd3UyZVdMX1A5UlhweFFBRE9WaFd1Y0J6ejlDZ0RCMzVJMVNXd212bDZ6MHFTTDVKTUktT21BekVReWZTekFLUjk2T0M1N2RaZWZZVWN5c0hCMkJXMERROXlTeDlrUFl4Z2x3ME91WDdiRXRFclV1TnIxVGVndmR2a2FqbFlJNEkxN2tZc1pfRmVxUXlmaDRZT3I5UThMOFEwcGhnX2Frekpxa3F4cFczZ1VoaGRHSFNZWFlTOEI3X25rR2s4a1FqeE1leVhvc1dTd0xXd3EwenRfbjJ0Q2szbnR6NVk1QnJMQnVCcy1pa1lLSnptMldwRXdkMjJXZ2JNVFcwb2pubTVlX2pwTy0xbHhVQ0RUMzBuczlxeF8zbU5Ua0NZQQ?oc=5",
+      "url": "https://news.google.com/rss/articles/CBMimgNBVV95cUxOb1ppTEg4Yy1NbDl3WmxUcHdlTFY5QV95YURpQkZycnRhZ1R0eWtPQkpqQng5N2JTcVdUbnNvLTlzSTUwMUJhbzdieXVBR3JkWnZGT1lwRVJhNXEyeFVmY2VjYURnZWEtd2hsMUY1Q0E0RWFkMW52UjlqdHRLbXd5akRucGQyM2RUNmo1Q1pTR1MxRFhhQ0ZiWUo0MHg4RDVrZV90X29rdWhKYkpKQU95c2FDZFBGRVZXTXdzVk5NRVVIZHo0bTZ2Q01nWUZQdVZYelluZmtIZGRKTC1wM3RhZmtvV3dzVENsUDJGQ2lLQ25DMEd0ZC04M3BGcEVIcWo5NklMOHdwRHo5UGRSbzBZMk1ITkRUX0pfYTc5bmpCMzk2SFBGM0hIVFBzZVFPb0xwTmVtaXBQMDJNZXRESU1OLS1PaU5JQ2lHMXNTbjZIUXVfN1BOMmJoSDF3V1VuaGlnX0c0QWJUbld0cE9wTEczdTZYVGk1TEZfQ3pzcHpfd2lVX1dweTlqMjZFWVdrM05jSVZ4NE51MUVaZw?oc=5",
       "source": "WSJ",
       "pub_iso": "2026-03-19T20:15:00+00:00",
       "description": "",
-      "summary": "Kalshi just locked in a $22 billion valuation in its current funding round, making it one of the most valuable prediction market platforms in the world. The massive valuation signals that institutional investors are betting big on regulated prediction markets becoming mainstream financial products, which should accelerate legitimacy and adoption across the space.",
+      "summary": "Kalshi just locked in a $22 billion valuation in their latest funding round, making the prediction market platform one of the most valuable fintech companies in the world. This massive war chest gives Kalshi serious ammunition to expand beyond politics into sports, entertainment, and financial markets while fending off competitors trying to muscle into their regulated prediction market territory.",
       "pub_display": "Mar 19"
     },
     {
@@ -58,58 +103,13 @@
       "pub_display": "Mar 19"
     },
     {
-      "title": "Opinion | Both parties fear this betting craze. Blinding the public won\u2019t help.",
-      "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxQQXd5dkxGWUFnQm44Z1VMRVY1UG9HUi0tUXBaTjZjS3hSVFRrMHFrS2VQdFlYQ1BEeW5DRHVGMThsZE5TZldZY0JKUjVMUGVXQnNXd3lwRlhfaUJlMFhrX05wek9hcnBaWXE2bUE1ek9yTGpQUmFKTW44WHlad1o2SUQyOU9BSWdQMjNPdVNpcmdKVklYcG1kNERFbHJqMlpn?oc=5",
-      "source": "The Washington Post",
-      "pub_iso": "2026-03-19T17:00:23+00:00",
+      "title": "It\u2019s Gambling",
+      "url": "https://news.google.com/rss/articles/CBMiSEFVX3lxTFA3eTZodzAtNGItdkNfQlZjQ0NvMVc4ek82d2UzSUh4QWJPc19VYUVLeUhOcHlKLUhzOEs4SmJjNUpfa1ZoZktEWA?oc=5",
+      "source": "Defector",
+      "pub_iso": "2026-03-19T17:36:00+00:00",
       "description": "",
-      "summary": "Politicians from both sides want to crack down on the betting boom that's reshaping how Americans engage with politics and current events. The regulatory backlash threatens to push prediction markets underground just when they're proving most valuable for price discovery and public sentiment tracking.",
+      "summary": "Critics are calling prediction markets nothing more than dressed-up gambling, likely triggered by recent regulatory scrutiny or a high-profile betting scandal. The \"gambling\" label threatens to push prediction markets into the same regulatory corner as casinos, which would kill institutional adoption and mainstream legitimacy faster than a bad earnings call.",
       "pub_display": "Mar 19"
-    },
-    {
-      "title": "The Odds of Me Being Mauled by a Bear This Weekend Keep Going Up on Kalshi",
-      "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNZjZlVEZrQmNDT2FwS09Hay1LdFRxdko2WDFVS1o1elY5ODFGaThLY1pNX3dNU28zRVpHXzBRenBJQzFQdVRoOWtTOVpwT1E3blNHSUYxdkNlNDJmMGNvNWM0bWFIYkJLc2xsNzNERlZWOU1tUzFwRUxTNHc3RGNxcEMyWkR3M2pDLVhFcDhqZnF2cUoyOTl3NjFJQUtaSk93TVlOYkVFOGZrOUFvQ1RV?oc=5",
-      "source": "McSweeney\u2019s Internet Tendency",
-      "pub_iso": "2026-03-19T17:00:00+00:00",
-      "description": "",
-      "summary": "Someone's personal bear attack odds are literally trading on Kalshi, turning what should be a camping trip into a tradeable event. This signals prediction markets are getting weird enough to price individual people's weekend activities, which means either we've found the bottom of the barrel for betting opportunities or we're about to see a flood of hyper-personal prediction contracts.",
-      "pub_display": "Mar 19"
-    },
-    {
-      "title": "Prediction Markets Claimed an Oscar Victory. The Reality Was Messier.",
-      "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxNcHUxMkNFcmVvNnFTeEVYWVNTOC1oU054ZFBWbW4ycUNNdk42VUEtQmdSQ3lNQzJHdHY1VFhTamp1eFBZQmlQWVhlWDFtV2pEWlA1cE9TU252WlhKZlk4alpEUWpERUZiZzNfcjQwVTdFdXh2UVpBeTA1SVAyaFdUWjVab2otVXB2M1daT253dHhTMmxDTWhaX0V2ODVUY2Rv?oc=5",
-      "source": "IndieWire",
-      "pub_iso": "2026-03-18T23:54:38+00:00",
-      "description": "",
-      "summary": "Prediction markets celebrated correctly forecasting Oscar winners, but a closer look reveals their track record was far from the clean sweep they advertised. The gap between marketing hype and actual performance highlights how platforms cherry-pick their wins while downplaying misses, a pattern bettors need to recognize when evaluating these markets' reliability.",
-      "pub_display": "Mar 18"
-    },
-    {
-      "title": "Who wins 'Survivor 50'? Odds predict Season 50 spoiler, but how?",
-      "url": "https://news.google.com/rss/articles/CBMi7gFBVV95cUxPMWpHcmpSTTVaUHh1MmxJeEJBbzl5endjVlFmWDNybjJyb1Z2LXhxSG03WFdCMVQ4TzlleTNNSldvOVUzcHNFWUlDQ2h6N1FNenZWNVVUVkhSbllHX3pNaDdpNkRFVElNcnVuVzB5aml3MktrVjNzRnR2YzdzSmFIT1h0VkJDMTRpZlE3QzdDUlRxX19tXzV6VW9Bazk0SUNnckhiTVZfdXhBcWZTVThScEx3bnJGVHd2SXE3c0g4TGVGZmVrZE0tb3ZVVE5CVXFLUTJUa1hVamZvdVFrVnpzdW9rcW5iNHVHTzllclVR?oc=5",
-      "source": "Bergen Record",
-      "pub_iso": "2026-03-18T21:00:00+00:00",
-      "description": "",
-      "summary": "Betting markets are already pricing in a winner for Survivor's milestone 50th season, despite the show's notorious secrecy around results. The leak suggests either production security has major holes or someone's about to lose serious money on what should be unpredictable reality TV.",
-      "pub_display": "Mar 18"
-    },
-    {
-      "title": "How people are making millions on the Iran war",
-      "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxNemhEV2hxTk5aRE9CdklfUkZYVERYTmNockNqN2ZkUGx1aEkyZWNpQ09LYVlCa21MblZ2YlZUcmV2Q004cXJXZXM5ek5TbWtMdEdLanhKWklHcHphRHFDUVJUT1pmRkd1QnNKQS1kYjdIcTg4U2R0Y0NYNWRaWlB1cDZ6cl9jOVVacmhJanloTzl1dlBad0RaTGNhR2xRdEF3Y1E?oc=5",
-      "source": "Vox",
-      "pub_iso": "2026-03-18T20:30:04+00:00",
-      "description": "",
-      "summary": "Traders are cashing in on Iran conflict predictions through defense stocks, oil futures, and geopolitical betting markets as tensions escalate. Smart money always follows instability, and right now that means positioning for supply chain disruptions, energy price spikes, and regime change scenarios before the crowd catches on.",
-      "pub_display": "Mar 18"
-    },
-    {
-      "title": "Kalshi Co-Founder Says Arizona Criminal Charges \u2018Total Overstep\u2019",
-      "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxNbGl2ekwzeG4tbS1EZWR1bjB0WUkyOHBiRm9kSVNmeHpvdjBPM2pCWXNFYVFrZHdPQ2h5d3dSY2o1MHhObWhGTkIyeERSRXJmWTdyZHdYbkhlVHdjMndGb2llTlNObk9FQnhjdjdxM2pBNUViY3lYMjd2QmsxLUlCUVR6NFpyclVSU3JnQ1pfdHVha3RTMXpLcENFc0pvUWszZy1zVWFaelJSZ0hVNGNHaXBHTQ?oc=5",
-      "source": "Bloomberg.com",
-      "pub_iso": "2026-03-18T16:07:16+00:00",
-      "description": "",
-      "summary": "Kalshi co-founder is facing criminal charges in Arizona and calling the prosecution an overreach by authorities. The charges could signal increased regulatory scrutiny of prediction market platforms, potentially affecting how these companies operate and expand across different states.",
-      "pub_display": "Mar 18"
     }
   ]
 }
