@@ -936,7 +936,7 @@ def compute_trends_bonus(m: dict, trend_kw_sets: list[frozenset]) -> float:
         min_required = 2 if len(kw_set) >= 2 else 1
         if len(intersection) >= min_required:
             bonus += 2.0
-    return min(bonus, 4.0)
+    return min(bonus, 8.0)
 
 
 # ── BUZZ / INTEREST SCORING ──────────────────────────────────────────────────
@@ -987,9 +987,21 @@ def score_market(m: dict) -> float:
     volume_24h  = m.get("volume_24h", 0) or 0
     prob        = m["prob"]
 
-    # 1. Price-move signal — capped at 30pts (raised from 20).
-    #    Gives meaningful separation between a 5pt grind and a 25pt breaking move.
-    move_score = min(abs_change * 2.5, 30.0)
+    # 1. Price-move signal — volume-tiered cap (Mar 20 2026).
+    #    A 15pt move on $55K 24h is a thinner signal than 15pts on $1M.
+    #    Thin markets were dominating hero via big % swings on low activity
+    #    (e.g. German state election +15pts, $55K 24h beating March Madness).
+    #    Cap now scales with 24h volume so market SIZE validates the move:
+    #      < $75K 24h  → cap 12pts  (regional/niche markets)
+    #      $75K–$250K  → cap 20pts  (mid-tier active markets)
+    #      $250K+      → cap 30pts  (large, well-traded markets)
+    if volume_24h >= 250_000:
+        move_cap = 30.0
+    elif volume_24h >= 75_000:
+        move_cap = 20.0
+    else:
+        move_cap = 12.0
+    move_score = min(abs_change * 2.5, move_cap)
 
     # 2. 24h volume surge — doubled weight (0–6 pts, was 0–3 pts).
     #    A market with $500K rushing in today is very hot — this was underweighted.
