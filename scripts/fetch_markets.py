@@ -1841,7 +1841,7 @@ def pick_trade(markets: list[dict], exclude_slugs: set | None = None) -> dict | 
             end_date = datetime.fromisoformat(str(end_raw).replace("Z", "+00:00")).date()
         except (ValueError, AttributeError):
             continue
-        if end_date < today or end_date > cutoff:
+        if end_date <= today or end_date > cutoff:  # must close tomorrow or later
             continue
 
         prob = m.get("prob", 50)
@@ -1903,7 +1903,7 @@ def pick_trade_b(markets: list[dict], exclude_slugs: set | None = None) -> dict 
             end_date = datetime.fromisoformat(str(end_raw).replace("Z", "+00:00")).date()
         except (ValueError, AttributeError):
             continue
-        if end_date < today or end_date > cutoff:
+        if end_date <= today or end_date > cutoff:  # must close tomorrow or later
             continue
 
         prob = m.get("prob", 50)
