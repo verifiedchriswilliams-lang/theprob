@@ -129,6 +129,8 @@ Remaining:
 - Monitor rolling hero block — confirm ping-pong stays resolved
 - Test 1 review: Apr 10, 2026
 - The Spread false-positive fix (Mar 17): added range-bucket/past-close/resolved filters to compute_spread(). Spread card now shows Kalshi question as subtitle. Monitor pair counts — expect 1–5 real pairs per run with current Kalshi data coverage (94 filterable markets). If < 2 pairs consistently, lower MATCH_THRESHOLD to 0.30.
+- NCAA hero fix (Mar 20): base_candidates volume gate now allows sports markets with $50K+ 24h to bypass $250K minimum. NCAA team markets now eligible. Monitor March Madness games (starting Mar 20) — expect to see tournament hero picks during active game days.
+- Kalshi NCAA gap: zero Kalshi college basketball markets in all_markets. Root cause unknown. Investigate via GitHub Actions logs during a pipeline run — look for Sports fetch count and whether basketball markets appear with a different Kalshi category string.
 
 ## SEO Implementation (Completed Mar 1, 2026)
 
@@ -179,14 +181,19 @@ See VOICE.md. Sharp, confident, trader-focused. Lead with the number. "The crowd
 ## Session Handoff — TODO
 
 ### Pending Next Session
-1. Monitor The Spread output after session 3 fixes — with filters applied, expect 1–5 real pairs (vs 8 false positives before). MATCH_THRESHOLD stays at 0.35; the range-bucket/resolved/past-close filters do the heavy lifting. If < 2 pairs consistently, tune MATCH_THRESHOLD DOWN (try 0.30). If too many mismatches, raise to 0.40. The spread-card now shows the Kalshi question as a subtitle, so readers can evaluate match quality.
-2. Yesterday's Biggest Swings — save data/markets_yesterday.json before each overwrite, diff vs today, show on index.html as "Markets That Moved Most in 24h". Zero new data needed. ~1 hour.
-3. Markets Closing Soon rail — filter days_to_resolution < 3 AND probability 35–65. Home page rail + newsletter section. High urgency signal for traders.
-4. Weird Markets section — auto-surface absurd/niche/counterintuitive markets (low volume + unusual category + active). Best viral/sharing feature for casual readers.
-5. Sparklines — start accumulating price_history.json now; display 7-day charts on cards in ~7 days once data exists.
-6. Polymarket "breaking" tab signal — Option B: inspect Network tab on polymarket.com/breaking to find Gamma API ordering parameter.
-7. Monitor Test 1 results — review Apr 10, 2026.
-8. Update data/builder_notes.json each session — edit built_recently + coming_next directly in that file.
+1. Monitor NCAA/March Madness hero — fix is live as of Mar 20. On non-game days (today), NCAA team markets score ~22-27 and lose to bigger financial/news movers. On game days with upsets (big price drops), they'll dominate. Confirm after first full round of games (March 20-23). Also: Kalshi NCAA markets are NOT appearing in our data at all — only 6 Kalshi Sports markets fetched, all tiny volume. Likely: either pagination doesn't reach them or they're categorized differently. Worth investigating in a future session by checking GitHub Actions logs during a pipeline run.
+2. Monitor The Spread output after session 3 fixes — with filters applied, expect 1–5 real pairs (vs 8 false positives before). MATCH_THRESHOLD stays at 0.35; the range-bucket/resolved/past-close filters do the heavy lifting. If < 2 pairs consistently, tune MATCH_THRESHOLD DOWN (try 0.30). If too many mismatches, raise to 0.40. The spread-card now shows the Kalshi question as a subtitle, so readers can evaluate match quality.
+3. Yesterday's Biggest Swings — save data/markets_yesterday.json before each overwrite, diff vs today, show on index.html as "Markets That Moved Most in 24h". Zero new data needed. ~1 hour.
+4. Markets Closing Soon rail — filter days_to_resolution < 3 AND probability 35–65. Home page rail + newsletter section. High urgency signal for traders.
+5. Weird Markets section — auto-surface absurd/niche/counterintuitive markets (low volume + unusual category + active). Best viral/sharing feature for casual readers.
+6. Sparklines — start accumulating price_history.json now; display 7-day charts on cards in ~7 days once data exists.
+7. Polymarket "breaking" tab signal — Option B: inspect Network tab on polymarket.com/breaking to find Gamma API ordering parameter.
+8. Monitor Test 1 results — review Apr 10, 2026.
+9. Update data/builder_notes.json each session — edit built_recently + coming_next directly in that file.
+
+### Recently Completed (Mar 20, 2026) — Session 4
+- **NCAA/March Madness hero fix** — root cause: the base `HERO_MIN_VOLUME = $250K` check blocked all NCAA team markets before the sports-specific 24h bypass gate was ever evaluated. Multi-team championship events split total event volume across 68+ team contracts — the Poly NCAA tournament is $22M total but no single team contract reaches $250K (Duke is $232K, Arizona $240K). Fix: restructured the `base_candidates` check in `pick_hero()` so sports markets with $50K+ 24h volume bypass the $250K base minimum (same threshold as the existing sports gate). Arizona (27.0), Duke (24.5), Florida (22.1), Houston (14.0), Michigan (12.9) now all enter the eligible pool. On non-game days they score 22-27 and lose to bigger news movers. On game days with upsets, the price drop generates 30pt move_scores and they'll dominate hero.
+- **Kalshi NCAA markets still MIA** — 0 Kalshi college basketball markets in our data (only 6 Kalshi Sports total, all low volume). Root cause unclear: could be pagination, category mismatch, or market structure. Flagged for investigation via GitHub Actions logs.
 
 ### Recently Completed (Mar 17, 2026) — Session 3
 - **The Spread QA & fix** — diagnosed 8 false-positive pairs in live data. Root cause: compute_spread() wasn't filtering range-bucket (`::`) markets, past-close markets, or effectively-resolved markets from Kalshi before matching. Added `is_range_bucket_market()`, `is_past_close()`, and `is_effectively_resolved()` filters to both Poly and Kalshi sides of the inner loop. MATCH_THRESHOLD kept at 0.35; filters alone reduced false positives from 8 → 1–4 legitimate pairs. Spread card now shows Kalshi question as a subtitle so readers can evaluate match quality.

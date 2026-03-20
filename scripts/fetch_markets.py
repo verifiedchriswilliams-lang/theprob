@@ -53,7 +53,8 @@ HERO_MIN_VOLUME        = 250_000     # Lowered from $1M — don't block explosiv
 HERO_MIN_24H_VOLUME    = 2_500       # Must have at least $2.5K trading activity TODAY to be hero-eligible.
                                      # Blocks markets that had a big move weeks ago but are now dead
                                      # (e.g. Anduril IPO: $286K total, $20 today — not a live story).
-HERO_SPORTS_MIN_VOLUME = 25_000_000  # Only truly massive sports events as hero
+HERO_SPORTS_MIN_VOLUME      = 25_000_000  # Established sports events (NFL/NBA champions etc)
+HERO_SPORTS_MIN_VOLUME_24H  =     50_000  # OR: tournament-fresh markets with $50K+ traded today
 
 # Minimum 24h volume to be worth showing — filters MrBeast/micro view-count markets
 MIN_INTERESTING_VOLUME = 100_000
@@ -66,8 +67,9 @@ HERO_MIN_CHANGE_PTS = 3.0
 # it only needs HERO_VOLUME_MIN_CHANGE to qualify as hero. Captures markets
 # like Iran/Hormuz ($1.8M 24h) where money is clearly rushing in even if the
 # price is holding steady — that IS a buzzy market worth featuring.
-HERO_VOLUME_GATE       = 500_000  # $500K 24h volume qualifies for relaxed gate
-HERO_VOLUME_MIN_CHANGE = 1.0      # only needs 1pt move if high-volume
+HERO_VOLUME_GATE           = 500_000  # $500K 24h volume qualifies for relaxed gate
+HERO_VOLUME_MIN_CHANGE     = 1.0      # only needs 1pt move if high-volume
+HERO_SPORTS_VOLUME_GATE    =  75_000  # sports markets trading $75K+ today are tournament-hot
 
 # Hero repeat penalty: applied per day a topic has appeared in hero_history.
 # Cumulative scaling forces genuine variety — a topic that won yesterday takes
@@ -1154,13 +1156,21 @@ def pick_hero(markets: list[dict], recent_topics: list[str] | None = None,
     recent_categories = recent_categories or []
     base_candidates = [
         m for m in markets
-        if m["volume"] >= HERO_MIN_VOLUME
+        # Volume gate: non-sports need $250K total. Sports markets trading $50K+
+        # today bypass this — individual team contracts in a tournament (e.g. NCAA,
+        # NBA playoffs) split total event volume across 68 teams. No single team
+        # contract will ever hit $250K total until late rounds, but $50K+ in 24h
+        # is a clear signal the market is actively priced and tournament-relevant.
+        if (m["volume"] >= HERO_MIN_VOLUME
+            or (is_sports_market(m) and m.get("volume_24h", 0) >= HERO_SPORTS_MIN_VOLUME_24H))
         and m.get("volume_24h", 0) >= HERO_MIN_24H_VOLUME  # must be actively trading TODAY
         and not is_effectively_resolved(m)
         and not is_past_close(m)
         and not is_junk_market(m)
         and not is_range_bucket_market(m)   # range buckets are misleading as hero
-        and (not is_sports_market(m) or m["volume"] >= HERO_SPORTS_MIN_VOLUME)
+        and (not is_sports_market(m)
+             or m["volume"] >= HERO_SPORTS_MIN_VOLUME
+             or m.get("volume_24h", 0) >= HERO_SPORTS_MIN_VOLUME_24H)  # hot tournament markets
     ]
 
     def hero_score(m: dict) -> float:
@@ -1183,6 +1193,10 @@ def pick_hero(markets: list[dict], recent_topics: list[str] | None = None,
                 base -= 10.0
             elif cat and len(recent_categories) > 1 and cat == recent_categories[1]:
                 base -= 5.0
+        # Tournament activity bonus: sports market with $75K+ traded today is
+        # actively bet regardless of whether price moved much. NCAA/playoffs signal.
+        if is_sports_market(m) and m.get("volume_24h", 0) >= HERO_SPORTS_VOLUME_GATE:
+            base += 8.0
         return base
 
     # Topic-level dedup for hero: collapse all variants of the same real-world
@@ -1213,6 +1227,7 @@ def pick_hero(markets: list[dict], recent_topics: list[str] | None = None,
         c for c in deduped_candidates
         if abs(c["change_pts"]) >= HERO_MIN_CHANGE_PTS
         or (c.get("volume_24h", 0) >= HERO_VOLUME_GATE and abs(c["change_pts"]) >= HERO_VOLUME_MIN_CHANGE)
+        or (is_sports_market(c) and c.get("volume_24h", 0) >= HERO_SPORTS_VOLUME_GATE and abs(c["change_pts"]) >= 1.0)
     ]
 
     # Fallback pool 1: anything with any movement
@@ -1841,8 +1856,10 @@ def pick_trade(markets: list[dict], exclude_slugs: set | None = None) -> dict | 
             continue
         if (m.get("slug") or m.get("url", "")) in exclude:
             continue
-        # Block game-level sports props — only allow major championship markets
-        if is_sports_market(m) and m.get("volume", 0) < HERO_SPORTS_MIN_VOLUME:
+        # Block low-activity sports markets; allow large championships OR hot tournament markets
+        if (is_sports_market(m)
+                and m.get("volume", 0) < HERO_SPORTS_MIN_VOLUME
+                and m.get("volume_24h", 0) < HERO_SPORTS_MIN_VOLUME_24H):
             continue
 
         candidates.append(m)
@@ -1897,7 +1914,9 @@ def pick_trade_b(markets: list[dict], exclude_slugs: set | None = None) -> dict 
             continue
         if (m.get("slug") or m.get("url", "")) in exclude:
             continue
-        if is_sports_market(m) and m.get("volume", 0) < HERO_SPORTS_MIN_VOLUME:
+        if (is_sports_market(m)
+                and m.get("volume", 0) < HERO_SPORTS_MIN_VOLUME
+                and m.get("volume_24h", 0) < HERO_SPORTS_MIN_VOLUME_24H):
             continue
 
         candidates.append(m)
