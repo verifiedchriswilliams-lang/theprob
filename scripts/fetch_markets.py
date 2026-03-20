@@ -939,6 +939,69 @@ def compute_trends_bonus(m: dict, trend_kw_sets: list[frozenset]) -> float:
     return min(bonus, 8.0)
 
 
+# ── US AUDIENCE RELEVANCE ────────────────────────────────────────────────────
+
+# The Prob targets American prediction market traders.
+# These keyword sets identify markets a US audience is likely to care about.
+
+# US-direct: American political institutions, companies, sports leagues
+_US_DIRECT_KW = [
+    # US political / government
+    'trump', 'biden', 'harris', 'congress', 'senate', 'white house',
+    'federal reserve', 'supreme court', 'republican', 'democrat', 'gop',
+    'tariff', 'u.s. ', ' us ', 'united states', 'american',
+    # Major US states that trade heavily
+    'california', 'new york', 'florida', 'texas',
+    # US economic indicators
+    'cpi', 'nonfarm', 'fed rate', 's&p 500', 'nasdaq', 'dow jones',
+    # US tech / major companies
+    'apple', 'microsoft', 'google', 'alphabet', 'amazon', 'tesla',
+    'nvidia', 'meta', 'openai', 'anthropic', 'spacex', 'elon musk',
+    'anduril', 'palantir',
+    # US sports leagues & events
+    'nba', 'nfl', 'mlb', 'nhl', 'ncaa', 'march madness',
+    'super bowl', 'world series', 'stanley cup', 'nba finals',
+    'mls', 'ufc', 'pga', 'masters tournament',
+]
+
+# Globally significant: topics US audiences actively follow internationally
+_US_GLOBAL_KW = [
+    'iran', 'ukraine', 'israel', 'gaza', 'china', 'russia',
+    'north korea', 'nato', 'bitcoin', 'crypto', 'ethereum',
+    ' ai ', 'artificial intelligence',
+]
+
+def us_audience_bonus(m: dict) -> float:
+    """
+    Score bonus for markets relevant to a US-based prediction market audience.
+
+      +4pts — clearly US-focused (US politics, US sports, US companies/economy)
+      +2pts — globally significant topics Americans actively follow
+       0pts — international/regional with no clear US connection
+
+    Design intent: prevent niche international markets (German state elections,
+    French mayoral races) from beating US/global topics for hero or trade picks.
+    Complements the trends_bonus (which uses US-biased Wikipedia/Google data)
+    with a direct editorial relevance check.
+    """
+    q = m.get("question", "").lower()
+    tag_slugs = set(m.get("tag_slugs", []))
+
+    # Polymarket tag-level check (fastest, most reliable)
+    US_TAGS = {"us-politics", "trump", "government", "nba", "nfl", "mlb",
+               "ncaa", "nhl", "mls", "pga", "ufc", "boxing", "mma"}
+    if tag_slugs & US_TAGS:
+        return 4.0
+
+    # Question keyword checks
+    if any(kw in q for kw in _US_DIRECT_KW):
+        return 4.0
+    if any(kw in q for kw in _US_GLOBAL_KW):
+        return 2.0
+
+    return 0.0
+
+
 # ── BUZZ / INTEREST SCORING ──────────────────────────────────────────────────
 
 def score_market(m: dict) -> float:
@@ -953,7 +1016,8 @@ def score_market(m: dict) -> float:
       7. Trade eligibility bonus (aligns hero with paper portfolio gate)
       8. Platform curation signal — Polymarket featured flag (+6pts)
       9. Kalshi bid-ask spread signal — tight spread = liquid market (+0–1pt)
-     10. Trending topic match — Wikipedia + Google Trends overlap (+2pt/match, cap +4pt)
+     10. Trending topic match — Wikipedia + Google Trends overlap (+2pt/match, cap +8pt)
+     11. US audience relevance — US politics/sports/companies +4pts, global topics +2pts
 
     Upgrade notes (Mar 7 2026):
       - move_score cap raised 20→30pts: better discrimination between 6pt moves (noise)
@@ -1053,13 +1117,19 @@ def score_market(m: dict) -> float:
             spread_signal = max(0.0, 1.0 - spread / 10.0)
 
     # 10. Trending topic match — pre-computed in main() via compute_trends_bonus().
-    #     +2pts per matching trending topic (Wikipedia + Google Trends), capped at +4pts.
+    #     +2pts per matching trending topic (Wikipedia + Google Trends), capped at +8pts.
     #     Lifts markets that are both financially active AND what people are searching for.
     trends_bonus = m.get("trends_bonus", 0.0)
 
+    # 11. US audience relevance bonus — The Prob targets American traders.
+    #     Prevents niche international markets (German state elections, French
+    #     mayoral races) from beating US/global topics for hero or trade picks.
+    #     Pre-computed via us_audience_bonus() above.
+    us_bonus = us_audience_bonus(m)
+
     return (move_score + vol_24h_score + vol_total_score + prob_interest
             + trade_bonus + urgency + recency_bonus
-            + featured_bonus + spread_signal + trends_bonus)
+            + featured_bonus + spread_signal + trends_bonus + us_bonus)
 
 def get_series_key(m: dict) -> str:
     """
