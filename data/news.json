@@ -1,8 +1,26 @@
 {
-  "updated": "Mar 22, 2026 \u00b7 1:33 AM ET",
-  "updated_iso": "2026-03-22T06:33:34.196504+00:00",
+  "updated": "Mar 22, 2026 \u00b7 6:47 AM ET",
+  "updated_iso": "2026-03-22T11:47:40.848066+00:00",
   "homepage_count": 3,
   "articles": [
+    {
+      "title": "Polymarket\u2019s 5-cent signal was the only thing that got the Netanyahu rumors right",
+      "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxQMFFMT1R4c2EtekxpZTJVY2FoSTZOX0Q1a3lCNGp2SUNmaFZzbGludGUyUFg1bTZuWG1IdXlqOFJ6bjNpVWZ6dWVEckVWcWtxbW9yS2d1UDJPdDlhUXBSZnBqa1hKMVlnMGFwYms1V29qVGdyQ3FFNGhuMFplSlVzak5QQUdXUjVXblJ5WDRCN1VzeVAzU2htamNEMzc1NVlqZGw5THRScV8?oc=5",
+      "source": "CoinDesk",
+      "pub_iso": "2026-03-21T16:04:25+00:00",
+      "description": "",
+      "summary": "A 5-cent bet on Polymarket correctly predicted Netanyahu-related news that traditional media and other forecasting methods missed entirely. This shows how even tiny-money prediction markets can surface real signal from noise, proving that betting incentives work even when the stakes are minimal.",
+      "pub_display": "Mar 21"
+    },
+    {
+      "title": "Polymarket Bar Opens, Sucks",
+      "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE8xWjJXTHVGem9MblNLcXl1MWRJRjhDMHBCd0cxUmF2a25wZXBwQUZtNUZsZ3A3MGV6ZVBzMndNZlNPZzQzVDBtaHVCU2N0ZGlYb0ZEM3VxeURKVVdkMkU3T1h6T1lYeHpQ?oc=5",
+      "source": "Gizmodo",
+      "pub_iso": "2026-03-21T15:29:15+00:00",
+      "description": "",
+      "summary": "Polymarket opened a physical bar in New York that apparently delivered a lackluster experience to patrons. The flop highlights how prediction market platforms struggle to translate their digital success into real-world brand experiences, potentially damaging user loyalty when the core product already faces regulatory uncertainty.",
+      "pub_display": "Mar 21"
+    },
     {
       "title": "You can bet on climate disasters. Business is booming.",
       "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxPTFFPQ1dBekplU0FieGxuckExbnFnOEYtQW05WmxvQ0F1Q2hzUzRndVBXbGxvM2RqR3VVT3lpRVVYdXNOSndGZXYwSEk4QzFxSDltRVlXM1BzZktZbzhab01BZE1tcFh4alp3YXFrd3RCLWNmbDh6bHgtWHEzV24xQVprNzVWZ29vbFF0dmVjUEs2SzIxU2dQbFMxNFRYMzZCbk55Sg?oc=5",
@@ -67,12 +85,12 @@
       "pub_display": "Mar 20"
     },
     {
-      "title": "Nevada judge temporarily blocks Kalshi from operating prediction market in state",
-      "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxPZGFKcVFvaEdfUDdGbGJUVDhkd2RVOF80VXVLVl8wa1BsWU9NdXBKM25sTC10aVpBbERMQjJBRERWN0ozTzlvOFVUVGxnVXRyMDVEb1h6WXI5czAtYjdpUExEWGxDbzlvYWJ3VXQ2UjlsRWRxeDg2SDZ1UGtFYmNWdklTWEk4alV4UVVOYzNGSmZIY2s2MHIwUndZQXVhSTd2QUthWEJqQ3pmRkJVRHJyVU1zRl8?oc=5",
-      "source": "Reuters",
-      "pub_iso": "2026-03-20T19:01:56+00:00",
+      "title": "Kalshi gets temporary Nevada ban in dispute over sports betting",
+      "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxNWFZTc1ItZWhkRXNXNGFyTGRtNUhuam1JNDhfSEhYeWs0b29tbW9kbl9uejl2TDh2WURxbTBnQmJVTUVwOWZqYmtoN2lNeTVDbVZFck9KaEZtaHVZRXJ3ZXZzam9obklLMVdOeFZITnhCQzRuSjFvbW51ZEEtU0ZWZEc0amFXVmRXNkRhbjJNdE5naUNkMXZNNElJU3lEanpzOGsxQmJNakhSUQ?oc=5",
+      "source": "CoinDesk",
+      "pub_iso": "2026-03-20T18:49:14+00:00",
       "description": "",
-      "summary": "A Nevada judge has issued a temporary restraining order preventing Kalshi from running its prediction markets in the state. This sets up another legal battleground for prediction markets after Kalshi's recent federal court victory over the CFTC, showing that state-level regulatory fights are just getting started.",
+      "summary": "Nevada regulators hit Kalshi with a temporary ban amid a fight over whether the prediction market can offer sports betting in the state. The move signals growing tension between traditional gambling regulators and prediction markets trying to expand beyond politics into sports territory.",
       "pub_display": "Mar 20"
     },
     {
@@ -85,30 +103,12 @@
       "pub_display": "Mar 20"
     },
     {
-      "title": "MLB enters prediction markets with Polymarket deal",
-      "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxPRE83OUhxMFowODR0QnBzSWJCRW9hM3J5NXk0WnBlUld2cXV2Y2ROREdWZVlOZUpRTEpaUWZua0g3Zm4zcl81YzRZZll4Tm1FQzBaWHhpRTZXZ1ZvLUFKR2ttVkxuZjFYME5QT215T1BDTHBQYUxMVGN0YWJ4RS0yNWNXNFpid3FEWnZDQnZaT0VURmRRQWRXQlhB?oc=5",
-      "source": "SportsPro",
-      "pub_iso": "2026-03-20T12:54:21+00:00",
-      "description": "",
-      "summary": "MLB just signed a deal with Polymarket to bring official baseball prediction markets to the platform. This marks the first major US sports league to partner directly with a prediction market, legitimizing the space and potentially opening the floodgates for NFL, NBA, and others to follow suit.",
-      "pub_display": "Mar 20"
-    },
-    {
       "title": "Point72, Balyasny Ban Staff Bets in Prediction-Market Crackdown",
       "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxPQm5jRmpVaFRoOHZrejRCQ0piMG9SM2h5b2hfVWZETWxUcGdpSHBRcWcwU251VWI4QXNfYmJ1d1d4S1pkOEhFNUhKUnN6MFhTa3FCY1lwQktSckliNFVlckF5dTFHVHFmY0hHTmo2SFdwZDJJc2JyWmEyYkx3SU5OT3ZDUm9KZGlzVGF6VzV2YmV6SFJKZl9hQ2xxemlVR1BUSVlTOUlTcFo3aEx3TWNESy1tOA?oc=5",
-      "source": "Bloomberg.com",
+      "source": "Bloomberg",
       "pub_iso": "2026-03-19T22:17:39+00:00",
       "description": "",
       "summary": "Two major hedge funds just banned their employees from trading on prediction markets, likely spooked by regulatory scrutiny around the election betting boom. This signals that Wall Street is treating prediction markets as serious enough to warrant compliance policies, which could either legitimize the space or scare off institutional money depending on how regulators respond.",
-      "pub_display": "Mar 19"
-    },
-    {
-      "title": "Public relations firm picks bar fight with Polymarket",
-      "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTE5vQ3FrbDJlYktuNzFsNkQtT3gxZldMeEtwTS1DaU84SzRzOWRLRkNSR3BDdnlOaDZ0N096cEkzeGtsZk5zMnpZYnhIS1ZWdXR3UTlaNEVZT2h4aTBzTVFwZ252ZFBmNTllU2dPT3Q0SlRvOUxZQ1BRdHpKbVNLUdIBgwFBVV95cUxPOEVncFAxOFJjUHRLNnJKS0g2ajMwNk1Kcjg1VkJ0NklFRnhMemRGMklBWkhEMXdUWkR5QW80bTJRWG10ZjRuZkhhWWZqZDBHUnRXa0o4VTNZS29meUJjWTZROFdHbTZMbDdfQVRMQUwwcFo0dDUyWjBrTzU3THZMRzNIQQ?oc=5",
-      "source": "CNBC",
-      "pub_iso": "2026-03-19T21:41:11+00:00",
-      "description": "",
-      "summary": "A public relations firm launched an aggressive campaign against Polymarket, likely targeting the platform's reputation or business practices. The attack signals growing institutional pressure on prediction markets as they gain mainstream attention and threaten traditional information gatekeepers.",
       "pub_display": "Mar 19"
     }
   ]
