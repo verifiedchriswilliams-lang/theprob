@@ -1,8 +1,44 @@
 {
-  "updated": "Mar 22, 2026 \u00b7 12:53 PM ET",
-  "updated_iso": "2026-03-22T17:53:46.194944+00:00",
+  "updated": "Mar 22, 2026 \u00b7 6:56 PM ET",
+  "updated_iso": "2026-03-22T23:56:58.656879+00:00",
   "homepage_count": 3,
   "articles": [
+    {
+      "title": "March Madness and the rise of prediction markets",
+      "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQaGo0WjQ2TWoza29HMmlHVFdRNi1tVDVvUkJaOW4tTm12TTc5TDg0TDlla0dUNEgzaklfaWF6V084NldLU1U5cm9RM3dpV2hEODB2OWpuV09IZkRNLXlNSkY1UWRCdG40cldQSkswS3JpZEl3dHh0YUp0dXZuVDV0YlgzVXY5dnV0LXFmTEN3?oc=5",
+      "source": "KSL.com",
+      "pub_iso": "2026-03-22T23:02:03+00:00",
+      "description": "",
+      "summary": "March Madness has become a breeding ground for prediction markets, with platforms seeing massive volume spikes as millions of casual bettors dive into bracket forecasting beyond traditional sportsbooks. This mainstream adoption during the tournament serves as a gateway drug, converting one-time users into year-round prediction market participants who stick around for politics, economics, and other non-sports events.",
+      "pub_display": "Mar 22"
+    },
+    {
+      "title": "blindStaking",
+      "url": "https://news.google.com/rss/articles/CBMiTEFVX3lxTFBmRTI1aVZ4X1cwX3JrWWhGTTdhNk1QRGtuT1NOeUpZejFCR0R1OU1sTlF0QjZXTjRuRURQNzZtb2VqaVEtU0h4ZHdTQ0Y?oc=5",
+      "source": "Polymarket",
+      "pub_iso": "2026-03-22T21:15:32+00:00",
+      "description": "",
+      "summary": "BlindStaking lets bettors place wagers without seeing the odds first, removing the psychological anchoring that makes people chase \"good\" lines instead of finding actual value. This could finally separate skilled handicappers from odds-shopping tourists, since only bettors with genuine edge would risk going in blind.",
+      "pub_display": "Mar 22"
+    },
+    {
+      "title": "If one trader can force the outcome of a prediction market, it shouldn\u2019t be tradable",
+      "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxOR0hrQ241TTd6bmMxX0k2MGxjVjc0OVhyRktHOHp5S0RZYkVYbTJaUXpLNENvanh6N0R3MDNBRzFFUjB1VDEwNTgyWmxZakFnSzEyZHp1djVjei16UWhSeU5XbUw5WDVDcVJsUUNmMkVETU9JVW8tMm5WT0dQNXo5ZzFTckl0S0RxSlNkWFZvUVpPcjBrUDZCRWpOMDBTVzZFRHdJc1Rpc1plMmVxSmlXcXlOS0xMclFvZUFkOFQ5QUZFaGt5OWc?oc=5",
+      "source": "CoinDesk",
+      "pub_iso": "2026-03-22T19:34:42+00:00",
+      "description": "",
+      "summary": "A single trader with enough capital can manipulate prediction markets by forcing outcomes through their actions rather than predicting them, essentially breaking the core mechanism that makes these markets valuable. This exposes a fundamental flaw in how we design prediction markets, since allowing outcome manipulation turns what should be information aggregation into expensive gambling on who has the deepest pockets.",
+      "pub_display": "Mar 22"
+    },
+    {
+      "title": "Nevada Wins Temporary Ban on Sports Betting on Kalshi",
+      "url": "https://news.google.com/rss/articles/CBMiowNBVV95cUxQVjYyS3J0R3N1VG9oM3NTV3I5cEkxYy1OTEd4TjU4M2RWT2lBMDAxQXFEX2gzX1NBVVZfWU9TSUVnZHo5WmdFVWc4b1BEMWE0WG1idFloS2tMWFJ3OGVobWlHOHgwNVJVSmRGOFg0c1RkUS1IRWY1VmFLdHlPaXZzRF8tcWZKUGZXcDNsaHFpTEM1YVZOeGw3RE1wY2NJVjZzbzZPeXdia1cyRDZtLWxNejJzOHZYN1hhQ1RMUDBmVExzWktDN1FxQzNYU1pNOEh0NTd0cDhXUG13Yzg5Z2dkQlEtMnc0ZUhzZ2ZzckI4YndSSWJxejRKMVNNYVhuM0hrRUtUUWpqR01RZUItNGFfWHF1TlZMMTFsOXZQWExxN0VULUw0ckZTRzFPMkVoZVR1UExHUGJJTkYtLWR6XzZkTC1MQmQzUzNpd2UwRDN1elJMTW5lZ2QwNUNTbzhDc2FCN1owbk13QmtZZUpRdHNkWUJqdkgzUTluVU1jbGpwNll1S0o3aGlsNEtENEg0MmszcWFJcG0xdHhHSUFuVzk5R2NxTQ?oc=5",
+      "source": "WSJ",
+      "pub_iso": "2026-03-22T18:40:00+00:00",
+      "description": "",
+      "summary": "Nevada secured a temporary restraining order blocking Kalshi from offering sports betting markets, likely arguing it violates state gaming regulations or federal law. This sets up a major jurisdictional fight that could determine whether prediction market platforms can bypass state-by-state sports betting licensing requirements.",
+      "pub_display": "Mar 22"
+    },
     {
       "title": "Predicting the Scope of Forthcoming Prediction Market Regulation",
       "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxPajctTmFmbEcyX2RzUXg1TjQ2V2lRYi1ucF8tRGExUVNtX3pUclF1bk45U1NvNVBTZTl2YTBVRlVxLUs1eEFRdzJEcVEySElPLVlveDRsTnZBUE41VmMzQU5vLXZWcDlXNk9Fa2FpcGMxVWNyMGo5cGk2N3hRaDdtVTk1eFBzdGhDa0tBUmI1NVltYk85Z3dyUkF5MjJuTVk?oc=5",
@@ -22,13 +58,13 @@
       "pub_display": "Mar 22"
     },
     {
-      "title": "March Madness Prediction Market Apps: Get Top Offers for Sunday CBB Trades",
-      "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxNYVVXQVNJbGVGSUZjNGlmTm16TzhfUkM1SUIxdTlHSDRXekdNbHdUNmdiVWJaaHd1ci1Bc091WWdha0p2cDg2cmMwZTVNa1VFQ1JpZ2M0SEtCeWNPR0luV1NMcWpXcDRlU2MyY3NnVFdWWnNLQi16bWd5Z1JJMkFWeGhjWUk4WmZ1dk9oMVg4Nm1ERlZ3QTF0bFBVTmVnZmhKRDlGVWFaaWlDQQ?oc=5",
-      "source": "WTOP",
-      "pub_iso": "2026-03-22T12:43:31+00:00",
+      "title": "Nevada judge temporarily blocks Kalshi from operating prediction market in state",
+      "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxOYWN4cV9vODgtdVFBOC1uNThSNWZEb3RPaWRjc0E5NE9DeTNRNFBWck9BYjBXUGthQWhjM1JGbEpBUnFWUDVnWUdFNmxfTnVhempHMXdsOXNGeERYUjdVTXRoRXlZa0trNjVYbGlQTGxwRHVyMF9mWUpvaEF1SVNZdFltR01DS3lONjdZRlRIQmJEc3AxMlNUeF84NzRkSHprZjIxMlcybE9DTzBWcFhubFk0LWtIdEZO?oc=5",
+      "source": "KSL.com",
+      "pub_iso": "2026-03-21T16:27:02+00:00",
       "description": "",
-      "summary": "Several prediction market platforms are rolling out special promotions and enhanced odds for Sunday's college basketball games as March Madness heats up. The competitive offers signal how platforms are aggressively fighting for market share during the tournament's peak trading volume, when casual bettors flood the markets with March Madness fever.",
-      "pub_display": "Mar 22"
+      "summary": "A Nevada judge issued a temporary restraining order preventing Kalshi from running prediction markets in the state. This marks the first state-level pushback against Kalshi's expansion since winning CFTC approval, signaling that regulatory battles aren't over despite federal green lights.",
+      "pub_display": "Mar 21"
     },
     {
       "title": "Polymarket\u2019s 5-cent signal was the only thing that got the Netanyahu rumors right",
@@ -37,15 +73,6 @@
       "pub_iso": "2026-03-21T16:04:25+00:00",
       "description": "",
       "summary": "A 5-cent bet on Polymarket correctly predicted Netanyahu-related news that traditional media and other forecasting methods missed entirely. This shows how even tiny-money prediction markets can surface real signal from noise, proving that betting incentives work even when the stakes are minimal.",
-      "pub_display": "Mar 21"
-    },
-    {
-      "title": "Polymarket Bar Opens, Sucks",
-      "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE8xWjJXTHVGem9MblNLcXl1MWRJRjhDMHBCd0cxUmF2a25wZXBwQUZtNUZsZ3A3MGV6ZVBzMndNZlNPZzQzVDBtaHVCU2N0ZGlYb0ZEM3VxeURKVVdkMkU3T1h6T1lYeHpQ?oc=5",
-      "source": "Gizmodo",
-      "pub_iso": "2026-03-21T15:29:15+00:00",
-      "description": "",
-      "summary": "Polymarket opened a physical bar in New York that apparently delivered a lackluster experience to patrons. The flop highlights how prediction market platforms struggle to translate their digital success into real-world brand experiences, potentially damaging user loyalty when the core product already faces regulatory uncertainty.",
       "pub_display": "Mar 21"
     },
     {
@@ -83,33 +110,6 @@
       "description": "",
       "summary": "The Trump family is pivoting from their collapsed casino business to capitalize on the booming prediction markets industry. This signals mainstream legitimacy for political betting and could attract a wave of retail money that follows Trump-branded ventures into previously niche markets.",
       "pub_display": "Mar 21"
-    },
-    {
-      "title": "Polymarket opening 'Situation Room' pop-up bar in DC. See when.",
-      "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxNa01jVXNEaHZtT0RFTXhOX2xlMlhPa0hUQWJMaW44OWZYWWp2THdiQkxrWnh6ZnY1V3NVRTFPUkp4OHVSQmdGbi1oUmtJZW94UXFyTjlSXzdHZ0VhWTdvVXdvemtFUHFYeFJtVDQ2dXJIOE44OWtibmc2dEtURDhsbWkwNXZfM05oVzdoZ1JVWTBJNXR2YUtsMmtqUjNZUlZLd2dOWDZIU055VEFna2V0bnFFQmZQaTVhU1BJ?oc=5",
-      "source": "USA Today",
-      "pub_iso": "2026-03-20T22:26:00+00:00",
-      "description": "",
-      "summary": "Polymarket is launching a temporary \"Situation Room\" bar in Washington DC, timing it around what's likely election night or another major political event. The move signals the platform's push to become the go-to destination for political betting, capitalizing on DC's power broker crowd who increasingly view prediction markets as essential intelligence.",
-      "pub_display": "Mar 20"
-    },
-    {
-      "title": "\u2018A Rigged and Dangerous Product\u2019: The Wildest Week for Prediction Markets Yet",
-      "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOcDUyZ2hUNkZPTVNGZVJvVTJOTTM3bGRGS3cydE5qRkNVaFdfVEU0WkQ2ekRWbGtEOVdUZWlYQUstZ0JRZzVlZ3F3S2otY0tkTkZSRWdfYVJ6MzZ0eWNDOEtXRlFXblFwRTExSXoxNHVLRnBYdlhGVGhUZzdlLTJYWC1BaUJ5eGp4WlZYWnBn?oc=5",
-      "source": "WIRED",
-      "pub_iso": "2026-03-20T21:07:00+00:00",
-      "description": "",
-      "summary": "Prediction markets faced their biggest credibility crisis as critics slammed the platforms as manipulated and potentially harmful to democracy. The backlash threatens to bring regulatory crackdowns and could derail the industry's mainstream adoption just as it was gaining serious political influence.",
-      "pub_display": "Mar 20"
-    },
-    {
-      "title": "Amid legal turmoil, Kalshi is temporarily banned in Nevada",
-      "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxQbWRHeUc1YTloRWk5d21qelVSdEJpMS1OZmVScWNmMmN5bDJHTEprc3RYV3cxZ2x1TTNRc1BUenMxRVNXdUJ2eVJCZVNhamhORzNUM0RwampETDFiaXU3OFlfdFN4M2VORjFMM1lXUUxHYUFlNkFrX0dsZnF6ckFQN0dEVE9QR0t0MzRKYk56Z2p1aW9ELXVtc3F3?oc=5",
-      "source": "TechCrunch",
-      "pub_iso": "2026-03-20T19:15:55+00:00",
-      "description": "",
-      "summary": "Nevada regulators have temporarily banned Kalshi from operating in the state while the prediction market platform faces ongoing legal challenges. The move signals growing state-level scrutiny of prediction markets just as they're gaining mainstream traction, potentially creating a patchwork of regulations that could fragment the industry.",
-      "pub_display": "Mar 20"
     }
   ]
 }
