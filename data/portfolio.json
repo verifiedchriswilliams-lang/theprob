@@ -7,14 +7,14 @@
       "name": "The Crowd",
       "strategy": "Follow consensus: YES when prob \u226565%, NO when prob \u226435%",
       "thesis": "Smart money is already priced in. Ride the conviction.",
-      "current_balance": 1041.8,
-      "total_pnl": 41.8,
-      "ytd_return_pct": 4.2,
-      "win_count": 4,
+      "current_balance": 1048.75,
+      "total_pnl": 48.75,
+      "ytd_return_pct": 4.9,
+      "win_count": 5,
       "loss_count": 0,
       "open_count": 4,
       "start_date": "2026-03-17",
-      "last_updated": "2026-03-21",
+      "last_updated": "2026-03-22",
       "trades": [
         {
           "trade_id": "ea14c291",
@@ -83,10 +83,10 @@
           "entry_date": "2026-03-19",
           "end_date_raw": "2026-03-22T00:00:00Z",
           "end_date": "Mar 22",
-          "status": "open",
-          "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "status": "closed",
+          "exit_prob": 96.2,
+          "exit_date": "2026-03-22",
+          "pnl": 6.95
         },
         {
           "trade_id": "72c96198",
@@ -159,6 +159,24 @@
           "exit_prob": 1.1,
           "exit_date": "2026-03-21",
           "pnl": 14.29
+        },
+        {
+          "trade_id": "d302f4f9",
+          "market_id": "will-russia-capture-all-of-rodynske-by-march-31",
+          "question": "Will Russia capture all of Rodynske by March 31?",
+          "url": "https://polymarket.com/event/will-russia-capture-all-of-rodynske-by",
+          "source": "Polymarket",
+          "display_category": "Politics",
+          "entry_prob": 94.2,
+          "direction": "YES",
+          "amount": 100.0,
+          "entry_date": "2026-03-22",
+          "end_date_raw": "2026-03-31T00:00:00Z",
+          "end_date": "Mar 31",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
@@ -173,7 +191,7 @@
       "loss_count": 0,
       "open_count": 2,
       "start_date": "2026-03-17",
-      "last_updated": "2026-03-21",
+      "last_updated": "2026-03-22",
       "trades": [
         {
           "trade_id": "18b00e62",
@@ -278,7 +296,7 @@
       "loss_count": 0,
       "open_count": 1,
       "start_date": "2026-03-17",
-      "last_updated": "2026-03-21",
+      "last_updated": "2026-03-22",
       "trades": [
         {
           "trade_id": "d19bb1c5",
