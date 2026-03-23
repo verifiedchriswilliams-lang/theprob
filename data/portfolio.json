@@ -12,9 +12,9 @@
       "ytd_return_pct": 9.9,
       "win_count": 10,
       "loss_count": 0,
-      "open_count": 6,
+      "open_count": 7,
       "start_date": "2026-03-17",
-      "last_updated": "2026-03-22",
+      "last_updated": "2026-03-23",
       "trades": [
         {
           "trade_id": "ea14c291",
@@ -303,6 +303,24 @@
           "exit_prob": 4.6,
           "exit_date": "2026-03-22",
           "pnl": 5.37
+        },
+        {
+          "trade_id": "87113585",
+          "market_id": "will-larry-page-be-2nd-richest-person-on-march-31",
+          "question": "Will Larry Page be 2nd richest person on March 31?",
+          "url": "https://polymarket.com/event/2nd-richest-person-on-march-31",
+          "source": "Polymarket",
+          "display_category": "Culture",
+          "entry_prob": 92.3,
+          "direction": "YES",
+          "amount": 100.0,
+          "entry_date": "2026-03-23",
+          "end_date_raw": "2026-03-31T00:00:00Z",
+          "end_date": "Mar 31",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
@@ -317,7 +335,7 @@
       "loss_count": 0,
       "open_count": 2,
       "start_date": "2026-03-17",
-      "last_updated": "2026-03-22",
+      "last_updated": "2026-03-23",
       "trades": [
         {
           "trade_id": "18b00e62",
@@ -422,7 +440,7 @@
       "loss_count": 0,
       "open_count": 1,
       "start_date": "2026-03-17",
-      "last_updated": "2026-03-22",
+      "last_updated": "2026-03-23",
       "trades": [
         {
           "trade_id": "d19bb1c5",
