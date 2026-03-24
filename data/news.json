@@ -1,15 +1,33 @@
 {
-  "updated": "Mar 24, 2026 \u00b7 12:52 PM ET",
-  "updated_iso": "2026-03-24T17:52:42.910325+00:00",
+  "updated": "Mar 24, 2026 \u00b7 6:38 PM ET",
+  "updated_iso": "2026-03-24T23:38:05.034073+00:00",
   "homepage_count": 3,
   "articles": [
     {
-      "title": "Gov. Cox stands for Utah's anti-gambling policy amidst legal battle with Kalshi",
-      "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxOT2ZlWDdQOFp6MW1rZ2p3U2t1by16V1pkMmQtd01rdlJvRHJhWXF1QUVDdGJGOTFYbXdsbmNmcEwtbTF0VmdLdnNxSnlmaFhkb2ZjS1l5dzVYNkh5c2lkVWMycU5fUkx5cm9fd0ZCcUI3S1NnT205UVl2Q2tCZDZtdVhvSy1VMGR1TnM3X0RUc1I2MVFmTzNOdkdhLVg3Tzd5cndRUUxOR0M3Rkcz?oc=5",
-      "source": "BYU Daily Universe",
-      "pub_iso": "2026-03-24T17:20:46+00:00",
+      "title": "AI Turns Polls And Prediction Markets Into A New Battleground",
+      "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxQYk01RDl5Q3hrbjl3UnZDQUt4amVQcEtoY0NiX1VKSDZaaDdkU0Z0dGlLX196LU8yaVFOelh2NnMwZ01QbE9VdEQ4TVZkQmZEUzRfRXFwRDlOWm5KUzNvNTY5XzY3elJ3QkkxZk1MM0Q2MHlLWmt3TW5qYUtvcEdsdk50RzE4Y0pETTNzakZzeXpOaFN4UGVDeWR6UU5sR29KRFItZGtZUWpwWFNnbl9n?oc=5",
+      "source": "Forbes",
+      "pub_iso": "2026-03-24T22:26:00+00:00",
       "description": "",
-      "summary": "Utah Governor Spencer Cox is defending the state's strict anti-gambling stance while facing a legal challenge from prediction market Kalshi. The fight matters because Utah remains one of the few states with zero tolerance for any form of wagering, making it a key battleground for whether prediction markets can operate nationwide without carve-outs.",
+      "summary": "AI is now being weaponized to manipulate both traditional polling and prediction markets, creating a new front in the information warfare that surrounds major elections and events. Bettors face a landscape where distinguishing genuine sentiment from algorithmic noise becomes critical to avoiding market manipulation designed to separate them from their money.",
+      "pub_display": "Mar 24"
+    },
+    {
+      "title": "An Evening at Polymarket\u2019s Totally Broken Pop-up Bar",
+      "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxON3Q2QUlTWnM1VHF1MGZSQnZadzEzZUFCUXNmeGFMZExIQk0xUk1RTUJ4YlFMVVpLYkZ5V3o4dERTRUZZV0JucVcxUDVvd0lWOFJxQkRvOXVmS0M4Z2g3RzJjei1vcHM3Yktib3czX3BoTllvTmg5NG9rd2FXV05qVkdKQzRJYnNRZDZHZHFZVUlMSDV2YWs1MXZKS0lVRlpOSnhFdDBXdGVudnJBRG92cA?oc=5",
+      "source": "The Bulwark",
+      "pub_iso": "2026-03-24T19:08:51+00:00",
+      "description": "",
+      "summary": "Polymarket threw a pop-up bar event that apparently went sideways, with broken systems or operations that left attendees frustrated. The incident highlights how the platform's real-world marketing efforts might be as glitchy as their occasional technical issues, potentially undermining user confidence just as they're trying to mainstream prediction markets.",
+      "pub_display": "Mar 24"
+    },
+    {
+      "title": "Strait of Hormuz tanker traffic won't return to normal for months, Kalshi bettors predict",
+      "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxPNEtldEgyTTVTOVhVQVEzWk1aOG9sbDNzeGR6WTJoMmZORi1qRTNtVFpVd2dIUzAxSHBNclJOeW0xa0dfeEhuOFMwaXlrQms4TTQxUWhxUk1YS3BGaC1nYmU3eHRJR2FtX0VjVjJFQnVEa3RrYnJyVDNBN2hKVmJaNmlTcF9RcWtfUmM0aDliWm5ZSXla0gGaAUFVX3lxTE96LU9MMHR4X3IySmxacGxoREFmOVlGM2RJc3VoSGhqam9uVHhZb2xPVWFlYkxGSS0tR0ppbHdrMUR3OHRoeEZ2UlZ6X2NiUlNUR2lkV3k3UlpiRXlua1ZFUDNuT1Rja2FzcXBpaXQ0UEFNaUVGVVNLSWR6M1Y1bDZwTWJEd1RGTnltdEttd29oZHEyamR1clpwOHc?oc=5",
+      "source": "CNBC",
+      "pub_iso": "2026-03-24T16:32:11+00:00",
+      "description": "",
+      "summary": "Kalshi traders are betting that tanker traffic through the critical Strait of Hormuz will remain disrupted for months, not weeks. The market signal suggests bettors expect prolonged geopolitical tensions or infrastructure damage that could keep oil prices elevated and shipping routes unstable.",
       "pub_display": "Mar 24"
     },
     {
@@ -22,12 +40,12 @@
       "pub_display": "Mar 24"
     },
     {
-      "title": "FIS Launches New Cleared Derivatives Solution for Prediction Markets",
-      "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxPeGFxT2p5NjhIVkRUYTRpeEd2ak5RMHJ1SWh5M0tEbXNSelg3WnpCWjhmVXI2VnVPRkxUaG5HZkEzanI3YzFjVllsVS04N19CcFYwdDhDZ0V3cFRTOFBlVDk2U3p6eE1uejdUSVZ3aVo3OU5Ib0pPUFlIY2ZLcU5CcG9DaFowSTc1LUdkN1ZvMmlEUW1nMERKMi1PTWtNMmZGMlNtV2tyajU2YUIzWXZHWGxvNW5qa2czLU1FZlhSajkwMXc?oc=5",
-      "source": "Business Wire",
-      "pub_iso": "2026-03-24T13:00:00+00:00",
+      "title": "U.S. regulators eye rules for prediction markets",
+      "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxQY1VobFNIZ3hLYlpaU0NhcndPQUlMSmNLbGNvZjU1OXJBUFF2S3lJVHJDYkszTDFSS1kwTkNXNGxucktXUzZ2MlBEQ0VTWWlRQzJkWWZYaWtTQWFLaWJNY2EwUExTWE51Y2QzdC02LTdQTG1rNkNiOHVsYV9uOVN6XzNaamVLU1lQbVdDN20yN1htUDc1bW5PXw?oc=5",
+      "source": "marketplace.org",
+      "pub_iso": "2026-03-24T10:00:49+00:00",
       "description": "",
-      "summary": "FIS, the massive financial technology company, just rolled out a new clearing solution specifically designed for prediction markets derivatives. This could legitimize prediction markets in the eyes of traditional finance by bringing institutional-grade infrastructure to what's still largely a retail playground.",
+      "summary": "U.S. financial regulators are considering new rules to govern how prediction markets operate, potentially affecting platforms like Kalshi, PredictIt, and the growing crypto betting scene. Any regulatory framework could either legitimize prediction markets for mainstream adoption or strangle them with compliance costs and trading restrictions.",
       "pub_display": "Mar 24"
     },
     {
@@ -40,21 +58,21 @@
       "pub_display": "Mar 24"
     },
     {
-      "title": "Analysis | Taking a gamble on prediction markets",
-      "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxNOWh2VUlmR3ZrVy1VWThpNmRGVjJQVlJYb0hTNnliN1RVRGVOZGVGMm1zcWQ2RTZFa1UyVVpyV1RqVVZrS3VYcDlXRnRSR0Z3MXJINlZPMVo0WlAtak5wTkJnRFdUazN2MlZsdzJRR2ZscnZrcjZYWm8yVjE3WEJUUXJjWXFCS21FX2p2Mw?oc=5",
-      "source": "The Washington Post",
-      "pub_iso": "2026-03-23T20:44:43+00:00",
-      "description": "",
-      "summary": "Another mainstream outlet is examining whether prediction markets deserve serious attention as forecasting tools. The coverage signals growing institutional curiosity about betting markets, which typically precedes either regulatory crackdowns or widespread adoption.",
-      "pub_display": "Mar 23"
-    },
-    {
       "title": "Lawmakers Introduce Bipartisan Bill Banning Sports Bets on Prediction Markets",
-      "url": "https://news.google.com/rss/articles/CBMizANBVV95cUxPRl93aFg3cF9PWHF1U3lvY1Bac1NseUtnZGZOMks4SDl4TV9FbDllNjJMcmNTbXpMcGNPRk1WNDZKNzVkaHZ1cHMtRHp3dHJjakQxUEhuTU1hcG5VV3F3VVg0dEdaS2NNYTRiWnU2VktjR2ZNcXFvN1A2Y2dxTkpFb3F1Qnk1U3pKMVdhODNmRWt6eW1wNVhMV2piM3JEaGlVT1V6dWtoZ08tTkc4V2dBLUJfdzBqZnNWVFBXcW15Um5PV1RDNERxaTJ2NWd4MERfUDlPaDc0S1RpYy1IS1l3SW85RmZRRlRETHI4YVp4NFJEU0hXRVgxelhOMmhqRVhiNEFjcXBEbnY2ZExTTEhrTjAyRWFoMmMyby1nMU5mVGdjR3J4bHUtQktsUEdvV3JESnVRQVlDWnNjRWM1U1NIQ1RtU28xY0haSFNNQ29EbllYclA3NTVpSFp2MURjdloxVEk4cTYzT2xkcGU2T0hVZE0tU1E2ZHNidXQ1Z2Q2bzRGUkoxMThlZ05BUzMtQXdYMm5RbnFOU2Y5R2otNVFoV0ppaTgtOVNITzhXQ2dfWlFuYmRjdnBVWHhsbHcxallwcHl5dWVyc0NSaVZ1?oc=5",
+      "url": "https://news.google.com/rss/articles/CBMizANBVV95cUxOOUFrZXF6Y09CTHRjR1IzVU1JQlN3Q0lnOVg5SmdmTFlZNTNXNU5MakNValFSNjFYMEdHd2p0U1gwazZOTVZUMTZJWTVpVGpzdmoyQVJ5Z1pJWXM2LW1LMkd0Q2pQRjNHQ3pkS05nbEhGc2RlN3Azd2l4ZVQ2VzA3bDZjVkhzeU5kMjFaM2dxcEFqdzhod0pEME1GeUxOWndYYUQyNklJODFzUE5BTk02ZGVoSjdxOTN6bV85RU9DRkFUakR3S2pFZVZPRnBoYkRGNEZXaGc4Z0JjdzFET0x6VTM3Q2hCMTljVHBKUmZwcXdNbnpfcy1IS0czb2t2WGhKeFV1WjdLQUd0UmxwU1Zxak9zdFNRRi0zRzVTb2V5Y1RwZHd5Mk11aHJuN3hDNlgzazFReTRDR1dEY2ItQVhoYmo2ODF5RGc1cTFBQWdrbFJDTWhsdFU0V1FzWHZxdzRKbU92SjZwbkkyN0VGS3dzeFZMQkhkVU1nRmZoNEF2MURTaTk0bVVvdmt2WDdRMnFTTE5pZnpndDhjYzBzbTFpanNTUTdhNmprUlNJRGZHWVByQkVWMWNISVg5Zlplbkx6OWdVM0lMTGI1ejNt?oc=5",
       "source": "WSJ",
       "pub_iso": "2026-03-23T20:30:00+00:00",
       "description": "",
-      "summary": "Bipartisan lawmakers want to ban sports betting on prediction markets, targeting platforms that let users wager on game outcomes alongside political and economic events. The move threatens to fragment the prediction market ecosystem by forcing platforms to choose between sports content that drives user engagement and the regulatory legitimacy they need to operate.",
+      "summary": "Bipartisan lawmakers just introduced legislation to ban sports betting on prediction markets, targeting platforms like Kalshi and PredictIt that offer wagers on game outcomes. The bill threatens to carve out a massive revenue stream from prediction markets just as they're gaining mainstream traction, potentially forcing platforms to choose between sports content and regulatory compliance.",
+      "pub_display": "Mar 23"
+    },
+    {
+      "title": "Bets on US-Iran ceasefire show signs of insider knowledge, say experts",
+      "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxNcktYSjJWV2hpd1NXN0xobVVsanhwRzFlVXE5V25MSFlxY3RQLXJRTzhlYkxZbjFrOExoZ05FTDhiZlhBZUE2Z1FtMVdHazVGckM2QW11NEpPWk52T2Uyd0VZNmVzamFnQTNrQUpDd1JqRmZhWlB5Yy1yd2RNSnZNbFVJbzRXdlhZUUM5LUhacXNRblhhLWxxNXludjZmVW9lLVdDYXJHdVpGNFc0eDk4YUpObzZGOFRLZDBFNjVsZTUxNlE?oc=5",
+      "source": "The Guardian",
+      "pub_iso": "2026-03-23T19:57:00+00:00",
+      "description": "",
+      "summary": "Prediction markets betting on a US-Iran ceasefire are showing suspicious trading patterns that experts believe indicate traders have access to non-public diplomatic information. This raises fresh concerns about information asymmetry in geopolitical markets, where connected insiders can exploit advance knowledge of sensitive negotiations to generate outsized returns.",
       "pub_display": "Mar 23"
     },
     {
