@@ -12,7 +12,7 @@
       "ytd_return_pct": 12.0,
       "win_count": 12,
       "loss_count": 0,
-      "open_count": 10,
+      "open_count": 11,
       "start_date": "2026-03-17",
       "last_updated": "2026-03-25",
       "trades": [
@@ -411,6 +411,24 @@
           "exit_prob": 5.0,
           "exit_date": "2026-03-25",
           "pnl": 14.94
+        },
+        {
+          "trade_id": "b3d70f5d",
+          "market_id": "KXDHSFUND-26MAR28",
+          "question": "When will DHS be funded again?: Will DHS funding bill become law before Mar 28, 2026?",
+          "url": "https://kalshi.com/markets/kxdhsfund",
+          "source": "Kalshi",
+          "display_category": "Politics",
+          "entry_prob": 23.5,
+          "direction": "NO",
+          "amount": 100.0,
+          "entry_date": "2026-03-25",
+          "end_date_raw": "2026-03-28T14:00:00Z",
+          "end_date": "Mar 28",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
