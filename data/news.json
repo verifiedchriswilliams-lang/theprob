@@ -1,15 +1,42 @@
 {
-  "updated": "Mar 26, 2026 \u00b7 6:53 AM ET",
-  "updated_iso": "2026-03-26T11:53:45.895573+00:00",
+  "updated": "Mar 26, 2026 \u00b7 12:58 PM ET",
+  "updated_iso": "2026-03-26T17:58:39.110434+00:00",
   "homepage_count": 3,
   "articles": [
     {
-      "title": "Sporticast: A Prediction Market Deep Dive",
-      "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxOc010eGJkWXo2cVFodEgweExQNTlrQ1VNLVVfa29Fc1p1YVlYOS1SY0tIbTc1TzNCN1JHZ2ppU1c1dW9ubFM2VVBEYTVlQjJRTzQtbHNrQUlRUGhVRnZRQVJ4LWQ5R2x3Vm5KYWVmeXFUSFdFZVplZm1hMzU4RkxnMGp1LWJBOGJRTjJkeGctem13aS0xRF9oTGNGVjduUjd4Njhjbmxma1l2NVlfc0NwMEln?oc=5",
-      "source": "Sportico.com",
-      "pub_iso": "2026-03-26T09:58:25+00:00",
+      "title": "The Political Backlash to Prediction Markets Has Arrived",
+      "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxOaXFTYTZuY2h1M0MyU3JqQ1RxTGtwOUE0amNWOXNsekZucE5WV0JGTjFaNWUtbWFwM2xYZFNBVnFJbG1mbVNrWU9RNE9vRDN6akRuTHBhMkJKajg5eHV4dTk5MDFGT3o2d09wc1EtTkxZU1FxemE4NldHSG5mUTlzYk5ySzlJSkRm?oc=5",
+      "source": "Front Office Sports",
+      "pub_iso": "2026-03-26T17:22:07+00:00",
       "description": "",
-      "summary": "Sporticast appears to be exploring how prediction markets are being applied to sports betting and forecasting. This matters because sports represent the biggest liquid market for real-money predictions, and any platform cracking the code on sports accuracy could dominate the entire prediction space.",
+      "summary": "Politicians and regulators are pushing back against the growing influence of prediction markets in politics and policy. This resistance could trigger new restrictions or oversight that limits market access and reduces the betting opportunities that have made political prediction markets so profitable.",
+      "pub_display": "Mar 26"
+    },
+    {
+      "title": "Lawmakers Press to Limit Prediction Bets by Policymakers",
+      "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTE1CT0xvVlplTGhCWUJELTJPOVZlYVBZTnlXbHA1aWgtaldPb3JEZ21jLVFLMldVT1phWGN1aHNIYnRZR0dVLVFXQ1RBdzF0dTZMcDBBVVAzWHRTdG5SNUVXZWZLXzB6Y0RTQ2RaQU80SWZUZjNQZWNaRXAyVU0?oc=5",
+      "source": "The New York Times",
+      "pub_iso": "2026-03-26T16:48:57+00:00",
+      "description": "",
+      "summary": "Congress is pushing to ban or restrict government officials from betting on political outcomes and policy decisions. The move could legitimize prediction markets by addressing the insider trading concerns that regulators have used to justify heavy restrictions on political betting.",
+      "pub_display": "Mar 26"
+    },
+    {
+      "title": "We Haven\u2019t Seen the Worst of What Gambling and Prediction Markets Will Do to America",
+      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTFBuVVZBQWViRHRUQUVOQkphMkRQb2lrUUV3eUpBVWtSeUNZdXJRMnZPS3EwMzlZdG9TeExET2JDd3pPM2tVVHBLTWZDWWd5X0d2WmdXN05BQktqbHJCemxfWmtMM0M5LTFiVWQ1OXpkVTFxUQ?oc=5",
+      "source": "Derek Thompson | Substack",
+      "pub_iso": "2026-03-26T10:01:17+00:00",
+      "description": "",
+      "summary": "A new piece argues that gambling and prediction markets will cause more social damage than we've witnessed so far. If regulators buy this narrative, expect stricter oversight that could kneecap the prediction market boom before it really gets started.",
+      "pub_display": "Mar 26"
+    },
+    {
+      "title": "Media\u2019s New Ethical Dilemma: Polymarket and Kalshi",
+      "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxQLTJRX3hLUWtkbWQtaEVOcENkdmk1QUZ2R21ocFVjN2NfdFIwMXUzZ19OWnU3MGk4a243X3p0bkVRRVJ0aHhXRmFCVHRsVllxTEgydmt1Nzl2MUx4dV9ZYXBacUtIUUJLMlcwTzhZeVJ3eVd6NWdDZzhLQ1dlVXhQcGl2anp6QQ?oc=5",
+      "source": "The Dispatch",
+      "pub_iso": "2026-03-26T06:49:25+00:00",
+      "description": "",
+      "summary": "Newsrooms are wrestling with whether to cover prediction market odds as legitimate polling data or gambling content that deserves different editorial standards. The coverage decisions will shape whether platforms like Polymarket and Kalshi get treated as serious forecasting tools or relegated to the sports betting section, directly impacting their mainstream credibility and user growth.",
       "pub_display": "Mar 26"
     },
     {
@@ -31,12 +58,12 @@
       "pub_display": "Mar 25"
     },
     {
-      "title": "Retail traders fare worse on prediction markets than sportsbooks",
-      "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxPeGFuRkpZU3pjRXEySWEtRVJMTUVCNTc4VWExcXNwR0ZKUjMtOHA4Wk00NXc5aG5PTmNMS1h0Sk1qUXFTWGRuQjZjUlZLWjAzcG9rd2ppRjUyM21zQXRxZnFtM0VrNjRCR0FTdjNmMWh4ekZrSG9yWDU3OEEwOWxHd25ZQ05kVnRIYmlEa3NHY0M3YjlGZy1ieDBESDgxb0w4ZnZiWHA5bGpKWUFB?oc=5",
-      "source": "CoinDesk",
-      "pub_iso": "2026-03-25T05:28:59+00:00",
+      "title": "Kalshi and Polymarket using influencers to lure in a group that isn\u2019t betting: Women",
+      "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxQeHJHNEdFcGJmSXBldDlYT2xaZnNPeHE0NXRpa1YzTXhPNEpFUUxZZGNpX25wNDJfTmFna0tTeWdlelgyUUlnRnNzemR4MXl1T0kydkpTc3NuWXMwbld1aE1hYnRjNS1Jd3hqVURhMzdkZkE0c21VUElpNFJZY0FBZU5WaFdhTzNDN2dZSEpEWFMyVWVwTFlGQWFaaHhZVlp3dFdmYXdR?oc=5",
+      "source": "the-independent.com",
+      "pub_iso": "2026-03-25T11:45:00+00:00",
       "description": "",
-      "summary": "Retail traders are losing money faster on prediction markets than they do betting on sports, suggesting these platforms might be even more brutal for casual participants than traditional sportsbooks. The finding could spell trouble for prediction market growth since most platforms need a steady flow of retail money to maintain liquidity and attract the institutional players who actually move prices.",
+      "summary": "Prediction market platforms Kalshi and Polymarket are launching influencer marketing campaigns specifically targeting women, a demographic that has largely stayed away from political betting. This push could dramatically expand the market size if successful, since women represent roughly half the population but a tiny fraction of current prediction market users.",
       "pub_display": "Mar 25"
     },
     {
@@ -50,20 +77,20 @@
     },
     {
       "title": "Exclusive: Trader made nearly $1 million on Polymarket with remarkably accurate Iran bets",
-      "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxPRWprOE9yM1pYeElmaUhVLXhlYUJJSnNhUGZZMTN6WndVQkRYbmJuY0pxbnFLeEo1eGpQVzg1dWpiemZhT1ZMa0JKTlVQTkhCTW5XSWxKN1RmdDlNN1lPSHRLTnFfNG96dWJ6WllZRnlpUzQ1YzZzbWJENzhEQjl3el9R?oc=5",
+      "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTE1UQ0xQNWhIQ1hmeTQwak0xYU01eV9ZNE9zU0dRVEVGM2lSVzREa19HVTdycTZUd3Y1U2pRa2JTMUZPdHBEbGlUM2JsZjlFMEhYdDNYWEVkeGNXSU4zQkF5UkdyREhrRmpiNGdNZlFtMnhZUUFnV1JodVBfSGM?oc=5",
       "source": "CNN",
       "pub_iso": "2026-03-24T10:00:33+00:00",
       "description": "",
-      "summary": "A Polymarket trader turned geopolitical analysis into serious cash, banking nearly $1M by correctly predicting Iran-related events with unusual precision. This shows how deep regional expertise can create massive edges in political prediction markets, especially when most bettors rely on headlines instead of real intelligence.",
+      "summary": "A trader netted nearly $1M on Polymarket by correctly predicting Iran-related events with unusual precision. This signals either exceptional geopolitical insight or potential information advantages that could reshape how markets price Middle Eastern risk.",
       "pub_display": "Mar 24"
     },
     {
-      "title": "Lawmakers Introduce Bipartisan Bill Banning Sports Bets on Prediction Markets",
-      "url": "https://news.google.com/rss/articles/CBMizANBVV95cUxQdk5HUU4xOG5MSThkbExXcEUzTlFzcGVOMVdsbFcybFNBQy03Z0hzLThBSGY5MC1HN3F3MlFuRzNQdWRSMlpZeWVkaXg4S3ExdVFkZVdMeGo0N2lYZFh3QzEyVU5EVTRDbS1mSHRqUmFvNnQ0eWZuZm9LVFZ0dVRnb1VJSHMzZnUyaEpxNjFjaTBkYVNiN05jdlJyX0NWXzhFRVp2alBuMl9RNFAzSkJ4SlV6XzMtZlZmeDZUZlpMM3lHQk5GTGlyMmxUVkw3TWtmZkZRbm45a3pPQ1lKYXktX3VNMmtfWDVNa3ZUT1UySzA1R1drMXVYUTJwcVVES1BtTnk2MF9HT3g0amVGVGJaWFVHaDZ5eUFwZVF4OTlKUHJSa1U0T2tNWm8tbmdvN2F4RWZXX2pvbUtnSVB0aUdJbzRSanhWMXRsbHNOdEJUWGJtUExYWWYzSE13Z24yMnZBTnVEMFNMaEY3aWxTTVo0ZjdUNlZaTW1aZlN3aF9UanNEMzBxNzlFR2RCZm9lSkhMUkhyQ1lzT0FfaVJrYjZjRjVnczk2b25TWWJwWmNsQlJvTVplUk5vNnptaTl4bUc2OUFRSHBwTzQ4WGJv?oc=5",
-      "source": "WSJ",
-      "pub_iso": "2026-03-23T20:30:00+00:00",
+      "title": "Kalshi, Polymarket Founders Back New Prediction Market VC Fund",
+      "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQOXczMmtIYVRvRmo0Z0UyT1JRd25PTEZaZlk0Q0syUFY0MTdQRmFqOTZCbTdMdG0zYk4tZ19NVGNmaU8tV3Z2elZhUXFBdjNRcjVZNTlQMGhqczN6M1RNU1lhQkdXUjFuTEZiMlF1RVVldVhRaVVYS3daSnh3UGZjV1FoYTg4VURCeFdiVTBEdGFGTWxDeW8ycDZxaDR5SXpDTkx3bnA3cnd2ZGFvRFMyb0FR?oc=5",
+      "source": "Bloomberg.com",
+      "pub_iso": "2026-03-23T21:33:30+00:00",
       "description": "",
-      "summary": "Bipartisan lawmakers are pushing legislation to prohibit sports betting on prediction markets, likely targeting platforms that blur the lines between political forecasting and gambling on games. The bill signals growing regulatory pressure on prediction markets as they expand beyond politics, potentially forcing platforms to choose between sports content and maintaining their broader forecasting legitimacy.",
+      "summary": "Kalshi's Tarek Mansour and Polymarket's Shayne Coplan are backing a new VC fund focused on prediction market investments. This signals that the biggest players in the space see massive growth ahead and want to fund the next wave of betting platforms before regulators figure out how to kill them.",
       "pub_display": "Mar 23"
     },
     {
