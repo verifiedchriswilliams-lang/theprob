@@ -12,7 +12,7 @@
       "ytd_return_pct": 24.0,
       "win_count": 18,
       "loss_count": 0,
-      "open_count": 8,
+      "open_count": 9,
       "start_date": "2026-03-17",
       "last_updated": "2026-03-27",
       "trades": [
@@ -483,6 +483,24 @@
           "exit_prob": 5.0,
           "exit_date": "2026-03-27",
           "pnl": 41.84
+        },
+        {
+          "trade_id": "d5adfec6",
+          "market_id": "KXDHSFUND-APR08",
+          "question": "When will DHS be funded again?: Will legislation that, upon becoming law, results in the Department of Homeland Security being funded at 12:01 AM ET on the later of (i) February 14, 2026 and (ii) the calendar day after enactment become law before Apr 8, 2026?",
+          "url": "https://kalshi.com/markets/kxdhsfund",
+          "source": "Kalshi",
+          "display_category": "Politics",
+          "entry_prob": 24.0,
+          "direction": "NO",
+          "amount": 100.0,
+          "entry_date": "2026-03-27",
+          "end_date_raw": "2026-04-08T14:00:00Z",
+          "end_date": "Apr 8",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
