@@ -7,12 +7,12 @@
       "name": "The Crowd",
       "strategy": "Follow consensus: YES when prob \u226565%, NO when prob \u226435%",
       "thesis": "Smart money is already priced in. Ride the conviction.",
-      "current_balance": 1198.13,
-      "total_pnl": 198.13,
-      "ytd_return_pct": 19.8,
-      "win_count": 17,
+      "current_balance": 1239.97,
+      "total_pnl": 239.97,
+      "ytd_return_pct": 24.0,
+      "win_count": 18,
       "loss_count": 0,
-      "open_count": 9,
+      "open_count": 8,
       "start_date": "2026-03-17",
       "last_updated": "2026-03-27",
       "trades": [
@@ -479,10 +479,10 @@
           "entry_date": "2026-03-27",
           "end_date_raw": "2026-03-28T14:00:00Z",
           "end_date": "Mar 28",
-          "status": "open",
-          "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "status": "closed",
+          "exit_prob": 5.0,
+          "exit_date": "2026-03-27",
+          "pnl": 41.84
         }
       ]
     },
