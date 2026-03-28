@@ -897,6 +897,9 @@
     .hero-card { animation: fadeUp 0.6s ease 0.2s both; }
 
     /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      .toggle-label { display: none; }
+    }
     @media (max-width: 1024px) {
       .nav-wrapper {
         position: sticky;
@@ -1015,8 +1018,8 @@
 
   <!-- ── DESIGN EXPERIMENT TOGGLE BAR ─────────────────────────────────────── -->
   <!-- Slim banner linking to alt design. Remove once experiment is complete.  -->
-  <div style="position:fixed;top:0;left:0;right:0;z-index:9999;height:32px;background:rgba(8,9,11,0.95);border-bottom:1px solid #1d2025;backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:flex-end;padding:0 16px;gap:8px;">
-    <span style="font-family:Lexend,sans-serif;font-size:9px;color:#46484d;text-transform:uppercase;letter-spacing:0.1em;margin-right:4px;display:none;" class="sm-show">Design Experiment — Which do you prefer?</span>
+  <div style="position:fixed;top:0;left:0;right:0;z-index:9999;height:32px;background:rgba(8,9,11,0.95);border-bottom:1px solid #1d2025;backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;padding:0 16px;gap:8px;">
+    <span class="toggle-label" style="font-family:Lexend,sans-serif;font-size:9px;color:#46484d;text-transform:uppercase;letter-spacing:0.1em;margin-right:4px;">Design Experiment — Which do you prefer?</span>
     <span style="font-family:Lexend,sans-serif;font-size:10px;color:#344900;background:#eaffb9;padding:3px 12px;border-radius:20px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;">Current ✓</span>
     <a href="index-alt.html" style="font-family:Lexend,sans-serif;font-size:10px;color:#74757a;padding:3px 12px;border-radius:20px;border:1px solid #2d3038;text-decoration:none;text-transform:uppercase;letter-spacing:0.08em;">Try Alt →</a>
     <a href="mailto:verifiedchriswilliams@gmail.com?subject=The Prob Design Feedback: I prefer the CURRENT design&body=Hey Chris — I prefer the CURRENT design. Here's what I like about it: " style="font-family:Lexend,sans-serif;font-size:10px;color:#74757a;padding:3px 12px;border-radius:20px;border:1px solid #2d3038;text-decoration:none;text-transform:uppercase;letter-spacing:0.08em;">👍 This one</a>
