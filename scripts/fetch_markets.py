@@ -1035,6 +1035,8 @@ def score_market(m: dict) -> float:
       9. Kalshi bid-ask spread signal — tight spread = liquid market (+0–1pt)
      10. Trending topic match — Wikipedia + Google Trends overlap (+2pt/match, cap +8pt)
      11. US audience relevance — US politics/sports/companies +4pts, global topics +2pts
+     12. Resolution distance penalty — far-future markets penalized: -0.5pt (30-90d),
+         -2pts (90-180d), -4pts (180d+). Hero should be about what's happening NOW.
 
     Upgrade notes (Mar 7 2026):
       - move_score cap raised 20→30pts: better discrimination between 6pt moves (noise)
@@ -1062,6 +1064,17 @@ def score_market(m: dict) -> float:
         appeared as hero 4/6 days, it was clear 3 days wasn't enough — once the
         penalty expired the same topic cycled right back in. Days 4-7 get -100pts,
         a near-absolute block for the rest of the week.
+
+    Upgrade notes (Mar 28 2026):
+      - move_cap tightened for <$50K 24h markets: cap drops from 12pts to 6pts.
+        Low-activity markets were maxing the cap on noise moves (Tom Steyer +4.2pts,
+        $45K 24h scoring 10.5 on move_score alone). At $50K+ the cap stays 12-30.
+      - Resolution distance penalty added (signal #12): markets closing >180 days
+        out now get -4pts, keeping hero picks focused on live/breaking stories.
+      - pick_hero() fresh_movers gate: removed the 1pt minimum change requirement
+        from volume gates. $500K+ 24h IS the story, even with 0pt price change.
+        This was blocking Iran ($3.5M 24h, featured) and March Madness games from
+        entering the primary hero pool while Tom Steyer ($45K 24h, 4.2pt) won.
     """
     abs_change  = abs(m["change_pts"])
     # For tournament markets, use the larger of individual contract volume or event
@@ -1071,20 +1084,23 @@ def score_market(m: dict) -> float:
     volume_24h  = m.get("volume_24h", 0) or 0
     prob        = m["prob"]
 
-    # 1. Price-move signal — volume-tiered cap (Mar 20 2026).
+    # 1. Price-move signal — volume-tiered cap (tightened Mar 28 2026).
     #    A 15pt move on $55K 24h is a thinner signal than 15pts on $1M.
     #    Thin markets were dominating hero via big % swings on low activity
-    #    (e.g. German state election +15pts, $55K 24h beating March Madness).
-    #    Cap now scales with 24h volume so market SIZE validates the move:
-    #      < $75K 24h  → cap 12pts  (regional/niche markets)
+    #    (e.g. Tom Steyer +4.2pts, $45K 24h beating Iran $3.5M 24h 0pt move).
+    #    Cap now scales more aggressively with 24h volume:
+    #      < $50K 24h  → cap 6pts   (low-activity: moves are mostly noise)
+    #      $50K–$75K   → cap 12pts  (mid-low, was cap for all <$75K)
     #      $75K–$250K  → cap 20pts  (mid-tier active markets)
     #      $250K+      → cap 30pts  (large, well-traded markets)
     if volume_24h >= 250_000:
         move_cap = 30.0
     elif volume_24h >= 75_000:
         move_cap = 20.0
-    else:
+    elif volume_24h >= 50_000:
         move_cap = 12.0
+    else:
+        move_cap = 6.0   # <$50K 24h: cap cut in half — low-activity moves are noise
     move_score = min(abs_change * 2.5, move_cap)
 
     # 2. 24h volume surge — doubled weight (0–6 pts, was 0–3 pts).
@@ -1147,9 +1163,29 @@ def score_market(m: dict) -> float:
     #     Pre-computed via us_audience_bonus() above.
     us_bonus = us_audience_bonus(m)
 
+    # 12. Resolution distance penalty — hero should be about what's happening NOW.
+    #     Far-future markets (closing months out) are less compelling as daily hero.
+    #     A 4pt move on a Nov 2026 market is less exciting than $3.5M flowing into
+    #     a market that resolves in 3 days. Penalty scales with months out:
+    #       > 180 days  (6+ months):  -4pts  heavy penalty
+    #       > 90 days   (3-6 months): -2pts
+    #       > 30 days   (1-3 months): -0.5pt slight nudge
+    #       ≤ 30 days: no penalty (short-term markets are fine)
+    resolution_penalty = 0.0
+    if raw_end:
+        days_out = days_until_close(raw_end)
+        if days_out is not None:
+            if days_out > 180:
+                resolution_penalty = -4.0
+            elif days_out > 90:
+                resolution_penalty = -2.0
+            elif days_out > 30:
+                resolution_penalty = -0.5
+
     return (move_score + vol_24h_score + vol_total_score + prob_interest
             + trade_bonus + urgency + recency_bonus
-            + featured_bonus + spread_signal + trends_bonus + us_bonus)
+            + featured_bonus + spread_signal + trends_bonus + us_bonus
+            + resolution_penalty)
 
 def get_series_key(m: dict) -> str:
     """
@@ -1324,12 +1360,20 @@ def pick_hero(markets: list[dict], recent_topics: list[str] | None = None,
 
     # Primary pool: markets that moved meaningfully today,
     # OR high-volume markets where money is clearly flowing even without a big price move.
-    # e.g. Iran/Hormuz with $1.8M 24h vol at 1pt move is more buzzy than a $50K market at 4pts.
+    #
+    # KEY FIX (Mar 28 2026): The old conditions required a minimum price change (1pt) even
+    # on $500K+ 24h markets. This excluded Iran ($3.5M 24h, -0.5pt) and March Madness games
+    # ($3.4M 24h, 0pt) from fresh_movers entirely, letting tiny low-volume markets with any
+    # 3pt move (Tom Steyer, $45K 24h) win hero by default.
+    #
+    # Fix: volume IS the signal. If $500K+ is flowing in 24h, that IS a live story regardless
+    # of whether the price has moved. Same for sports games: $75K+ on a live game means it's
+    # happening RIGHT NOW. Remove the minimum change requirements from volume gates.
     fresh_movers = [
         c for c in deduped_candidates
-        if abs(c["change_pts"]) >= HERO_MIN_CHANGE_PTS
-        or (c.get("volume_24h", 0) >= HERO_VOLUME_GATE and abs(c["change_pts"]) >= HERO_VOLUME_MIN_CHANGE)
-        or (is_sports_market(c) and c.get("volume_24h", 0) >= HERO_SPORTS_VOLUME_GATE and abs(c["change_pts"]) >= 1.0)
+        if abs(c["change_pts"]) >= HERO_MIN_CHANGE_PTS          # meaningful price move, OR
+        or c.get("volume_24h", 0) >= HERO_VOLUME_GATE           # $500K+ 24h: money IS the story
+        or (is_sports_market(c) and c.get("volume_24h", 0) >= HERO_SPORTS_VOLUME_GATE)  # live game/tournament
     ]
 
     # Fallback pool 1: anything with any movement
@@ -1343,7 +1387,7 @@ def pick_hero(markets: list[dict], recent_topics: list[str] | None = None,
     winner = max(pool, key=hero_score)
 
     # Debug output so you can see why a market won
-    print(f"\n  Hero selection pool: {len(pool)} unique topics (staleness gate: {HERO_MIN_CHANGE_PTS}pts or {HERO_VOLUME_MIN_CHANGE}pt+${HERO_VOLUME_GATE//1000}K 24h vol, deduped from {len(base_candidates)} candidates)")
+    print(f"\n  Hero selection pool: {len(pool)} unique topics (gates: ≥{HERO_MIN_CHANGE_PTS}pt move OR ≥${HERO_VOLUME_GATE//1000}K 24h vol OR sports ≥${HERO_SPORTS_VOLUME_GATE//1000}K 24h, deduped from {len(base_candidates)} candidates)")
     if recent_topics:
         print(f"  Repeat penalty (cumulative: {HERO_REPEAT_PENALTY_PER_DAY}) applied to: {recent_topics}")
     top3 = sorted(pool, key=hero_score, reverse=True)[:3]
@@ -1465,6 +1509,13 @@ def pick_movers(markets: list[dict], exclude_slug: str = "") -> list[dict]:
         and not is_junk_market(m)
         and not is_range_bucket_market(m)   # exclude :: separator markets (e.g. Kalshi shutdown length buckets)
         and (abs(m["change_pts"]) > 0 or m["source"] == "Kalshi")
+        # Must have real activity today — filters markets with big historic moves but no
+        # current trading (e.g. Anduril -22pts on $1K 24h, DHS funding -6pts on $1K 24h).
+        # Kalshi markets get a lower threshold ($200 min vs Polymarket's $2.5K) because
+        # their volumes are structurally smaller, but truly dead Kalshi markets ($80 24h)
+        # shouldn't appear in movers either.
+        and (m.get("volume_24h", 0) >= HERO_MIN_24H_VOLUME or
+             (m["source"] == "Kalshi" and m.get("volume_24h", 0) >= 200))
     ]
     candidates.sort(key=score_market, reverse=True)
 
@@ -1488,19 +1539,30 @@ def pick_movers(markets: list[dict], exclude_slug: str = "") -> list[dict]:
             c["display_category"] = c.get("display_category") or get_category_label(c)
             deduped.append(c)
 
-    # Slot layout: Politics, Sports, Finance, World, Technology, Sports
-    slot_categories = ["Politics", "Sports", "Finance", "World", "Technology", "Sports"]
+    # Score floor: filter out markets with negative composite scores.
+    # These are far-future Kalshi markets with tiny volume + no real movement
+    # (resolution_penalty brings them below zero). Not worth showing as movers.
+    deduped = [c for c in deduped if score_market(c) >= 0]
+
+    # Slot layout: Culture replaces World — World slot rarely had good candidates
+    # (mostly obscure Kalshi markets with far future resolution dates).
+    slot_categories = ["Politics", "Sports", "Finance", "Culture", "Technology", "Sports"]
     result = []
     used_slugs = set()
     sports_count = 0
     MAX_SPORTS_IN_MOVERS = 2
+
+    # Minimum score to fill any slot — keeps weak/stale markets out even when
+    # a slot category has no ideal candidate. Markets below this floor are skipped
+    # entirely rather than shown as editorial picks.
+    MIN_SLOT_SCORE = 5.0
 
     for slot_cat in slot_categories:
         filled = False
         for c in deduped:
             if c["slug"] in used_slugs:
                 continue
-            if c["display_category"] == slot_cat:
+            if c["display_category"] == slot_cat and score_market(c) >= MIN_SLOT_SCORE:
                 if slot_cat == "Sports" and sports_count >= MAX_SPORTS_IN_MOVERS:
                     break
                 result.append(c)
@@ -1510,15 +1572,17 @@ def pick_movers(markets: list[dict], exclude_slug: str = "") -> list[dict]:
                 filled = True
                 break
         if not filled:
+            # Fallback: use the next best market from any category, but still enforce floor
             for c in deduped:
-                if c["slug"] not in used_slugs and c["display_category"] != "Sports":
+                if (c["slug"] not in used_slugs and c["display_category"] != "Sports"
+                        and score_market(c) >= MIN_SLOT_SCORE):
                     result.append(c)
                     used_slugs.add(c["slug"])
                     filled = True
                     break
             if not filled:
                 for c in deduped:
-                    if c["slug"] not in used_slugs:
+                    if c["slug"] not in used_slugs and score_market(c) >= MIN_SLOT_SCORE:
                         if is_sports_market(c) and sports_count >= MAX_SPORTS_IN_MOVERS:
                             continue
                         result.append(c)
