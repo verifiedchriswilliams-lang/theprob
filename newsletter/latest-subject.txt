@@ -1,2 +1,1 @@
-SUBJECT: Bitcoin's 45K bet just shifted 10 points lower
-SUBTITLE: Bitcoin shorts just got real. Smart money is hedging hard.
+Lab Notes: We Rewired the Algorithm (Here's What Changed)
