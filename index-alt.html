@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>THE PROB — Alt Design | Prediction Market Intelligence</title>
+  <meta name="description" content="Daily intelligence from Polymarket and Kalshi. The Prob surfaces the biggest movers, sharpest crowd signals, and most interesting prediction market odds — every morning."/>
+  <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Lexend:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          fontFamily: {
+            headline: ["Space Grotesk", "sans-serif"],
+            body:     ["Inter", "sans-serif"],
+            label:    ["Lexend", "sans-serif"],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* Material Symbols */
+    .msymbol {
+      font-family: 'Material Symbols Outlined';
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      vertical-align: middle;
+      line-height: 1;
+      display: inline-block;
+    }
+    .msymbol.fill { font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+
+    /* Volt gradient */
+    .volt-gradient { background: linear-gradient(135deg, #eaffb9 0%, #bcfd00 100%); }
+
+    /* Scrolling ticker */
+    .ticker-track {
+      display: flex;
+      width: max-content;
+      animation: ticker-scroll 60s linear infinite;
+    }
+    .ticker-track:hover { animation-play-state: paused; }
+    @keyframes ticker-scroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* Smooth prob bar */
+    .prob-bar { transition: width 0.9s cubic-bezier(0.4, 0, 0.2, 1); }
+
+    /* Card hover lift */
+    .mover-card {
+      transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .mover-card:hover {
+      border-color: rgba(234, 255, 185, 0.25) !important;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 4px; height: 4px; }
+    ::-webkit-scrollbar-track { background: #0c0e12; }
+    ::-webkit-scrollbar-thumb { background: #23262c; border-radius: 4px; }
+
+    /* Line clamp */
+    .line-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .line-clamp-3 { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+
+    /* Selection */
+    ::selection { background: #eaffb9; color: #344900; }
+
+    /* Safe area bottom for iOS */
+    .pb-safe { padding-bottom: max(12px, env(safe-area-inset-bottom)); }
+  </style>
+</head>
+<body class="bg-[#0c0e12] text-[#f6f6fc] font-body">
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     TOGGLE BAR  — Design experiment switcher (stays on both pages)
+     ══════════════════════════════════════════════════════════════════════════ -->
+<div class="fixed top-0 left-0 right-0 z-[100] bg-[#08090b]/95 border-b border-[#1d2025] backdrop-blur-md">
+  <div class="max-w-7xl mx-auto px-4 h-9 flex items-center justify-between gap-3">
+    <span class="font-label text-[9px] text-[#46484d] uppercase tracking-widest hidden sm:block">Design Experiment — Which do you prefer?</span>
+    <div class="flex items-center gap-2 ml-auto">
+      <!-- Current design link -->
+      <a href="index.html"
+         class="font-label text-[10px] text-[#74757a] uppercase tracking-widest px-3 py-1 rounded-full border border-[#2d3038] hover:text-[#f6f6fc] hover:border-[#46484d] transition-colors whitespace-nowrap">
+        ← Current
+      </a>
+      <!-- Active indicator -->
+      <span class="font-label text-[10px] text-[#344900] bg-[#eaffb9] uppercase tracking-widest px-3 py-1 rounded-full font-bold whitespace-nowrap">
+        Alt ✓
+      </span>
+      <!-- Feedback: prefer Alt -->
+      <a href="mailto:verifiedchriswilliams@gmail.com?subject=The Prob Design Feedback: I prefer the ALT design&body=Hey Chris — I prefer the ALT design. Here's what I like about it: "
+         class="font-label text-[10px] text-[#eaffb9] uppercase tracking-widest px-3 py-1 rounded-full border border-[#eaffb9]/25 hover:bg-[#eaffb9]/10 transition-colors whitespace-nowrap hidden sm:block">
+        👍 This one
+      </a>
+      <!-- Feedback: prefer Current -->
+      <a href="mailto:verifiedchriswilliams@gmail.com?subject=The Prob Design Feedback: I prefer the CURRENT design&body=Hey Chris — I prefer the CURRENT design. Here's what I like about it: "
+         class="font-label text-[10px] text-[#74757a] uppercase tracking-widest px-3 py-1 rounded-full border border-[#2d3038] hover:text-[#f6f6fc] hover:border-[#46484d] transition-colors whitespace-nowrap hidden sm:block">
+        👍 Current
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     TOP NAV
+     ══════════════════════════════════════════════════════════════════════════ -->
+<nav class="fixed left-0 right-0 z-50 bg-[#0c0e12]/80 backdrop-blur-xl border-b border-[#23262c]/60" style="top:36px;">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between h-14">
+
+    <!-- Logo -->
+    <a href="index-alt.html" class="flex items-center gap-2 shrink-0">
+      <span class="font-headline text-xl font-black text-[#eaffb9] tracking-widest">THE PROB</span>
+    </a>
+
+    <!-- Category nav (desktop) -->
+    <div class="hidden md:flex items-center gap-6">
+      <a href="politics.html" class="font-label text-[10px] uppercase tracking-widest text-[#74757a] hover:text-[#eaffb9] transition-colors">Politics</a>
+      <a href="business.html" class="font-label text-[10px] uppercase tracking-widest text-[#74757a] hover:text-[#eaffb9] transition-colors">Business</a>
+      <a href="sports.html"   class="font-label text-[10px] uppercase tracking-widest text-[#74757a] hover:text-[#eaffb9] transition-colors">Sports</a>
+      <a href="tech.html"     class="font-label text-[10px] uppercase tracking-widest text-[#74757a] hover:text-[#eaffb9] transition-colors">Tech</a>
+      <a href="culture.html"  class="font-label text-[10px] uppercase tracking-widest text-[#74757a] hover:text-[#eaffb9] transition-colors">Culture</a>
+    </div>
+
+    <!-- Newsletter CTA (desktop) -->
+    <a href="#newsletter" class="hidden sm:block volt-gradient text-[#344900] font-label font-bold text-[10px] uppercase tracking-widest px-4 py-2 rounded-full hover:opacity-90 transition-opacity whitespace-nowrap">
+      Get the Newsletter
+    </a>
+
+    <!-- Mobile hamburger -->
+    <button class="md:hidden text-[#74757a] hover:text-[#f6f6fc]" id="mob-menu-btn" aria-label="Menu">
+      <span class="msymbol text-2xl">menu</span>
+    </button>
+  </div>
+
+  <!-- Mobile dropdown menu -->
+  <div id="mob-menu" class="hidden md:hidden border-t border-[#1d2025] px-4 py-4 grid grid-cols-3 gap-3">
+    <a href="politics.html" class="font-label text-[10px] uppercase tracking-widest text-[#aaabb0] hover:text-[#eaffb9] text-center py-2 border border-[#23262c] rounded-lg">Politics</a>
+    <a href="business.html" class="font-label text-[10px] uppercase tracking-widest text-[#aaabb0] hover:text-[#eaffb9] text-center py-2 border border-[#23262c] rounded-lg">Business</a>
+    <a href="sports.html"   class="font-label text-[10px] uppercase tracking-widest text-[#aaabb0] hover:text-[#eaffb9] text-center py-2 border border-[#23262c] rounded-lg">Sports</a>
+    <a href="tech.html"     class="font-label text-[10px] uppercase tracking-widest text-[#aaabb0] hover:text-[#eaffb9] text-center py-2 border border-[#23262c] rounded-lg">Tech</a>
+    <a href="culture.html"  class="font-label text-[10px] uppercase tracking-widest text-[#aaabb0] hover:text-[#eaffb9] text-center py-2 border border-[#23262c] rounded-lg">Culture</a>
+    <a href="news.html"     class="font-label text-[10px] uppercase tracking-widest text-[#aaabb0] hover:text-[#eaffb9] text-center py-2 border border-[#23262c] rounded-lg">News</a>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     LIVE TICKER
+     ══════════════════════════════════════════════════════════════════════════ -->
+<div class="overflow-hidden bg-[#080a0d] border-b border-[#1a1d23]" style="margin-top:86px;"><!-- 36px toggle + 50px nav -->
+  <div class="ticker-track py-2" id="ticker">
+    <span class="font-label text-[10px] text-[#46484d] uppercase tracking-widest px-8">Loading live markets…</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     MAIN CONTENT
+     ══════════════════════════════════════════════════════════════════════════ -->
+<main class="max-w-7xl mx-auto px-4 sm:px-6 py-8 pb-28 md:pb-16">
+
+  <!-- Updated timestamp -->
+  <div class="flex justify-end mb-5">
+    <span class="font-label text-[9px] text-[#46484d] uppercase tracking-widest" id="updated-time">—</span>
+  </div>
+
+  <!-- ════════════════════════════════════════════════════════════════════════
+       HERO SECTION
+       ════════════════════════════════════════════════════════════════════════ -->
+  <section class="grid grid-cols-1 lg:grid-cols-12 gap-5 mb-12">
+
+    <!-- Main hero card: big prob + question + CTA -->
+    <div class="lg:col-span-7 bg-[#111318] rounded-2xl p-7 border border-[#23262c] relative overflow-hidden group cursor-pointer" id="hero-card">
+      <!-- Ambient glow -->
+      <div class="absolute -bottom-20 -right-20 w-72 h-72 bg-[#eaffb9]/5 rounded-full blur-3xl group-hover:bg-[#eaffb9]/8 transition-all duration-700 pointer-events-none"></div>
+
+      <!-- Top row: live badge + source -->
+      <div class="flex items-center justify-between mb-6 relative z-10">
+        <div class="flex items-center gap-2 bg-[#eaffb9]/10 border border-[#eaffb9]/20 rounded-full px-3 py-1">
+          <span class="w-2 h-2 rounded-full bg-[#eaffb9] animate-pulse"></span>
+          <span class="font-label text-[9px] text-[#eaffb9] font-bold uppercase tracking-widest">Market of the Day</span>
+        </div>
+        <span id="hero-source-badge" class="font-label text-[9px] uppercase tracking-widest text-[#74757a]">—</span>
+      </div>
+
+      <!-- Giant probability number -->
+      <div class="mb-3 relative z-10">
+        <span class="font-headline font-black text-[#eaffb9] tracking-tighter" style="font-size:clamp(72px,10vw,104px);line-height:1;" id="hero-prob">—</span>
+        <span class="font-headline font-bold text-[#bcfd00]" style="font-size:clamp(36px,5vw,52px);">%</span>
+        <span class="font-label text-sm ml-3 font-bold" id="hero-change" style="color:#74757a;">—</span>
+      </div>
+
+      <!-- Question -->
+      <h2 class="font-headline text-2xl md:text-3xl font-bold text-[#f6f6fc] leading-snug mb-5 max-w-lg relative z-10 line-clamp-3" id="hero-question">
+        Loading market data…
+      </h2>
+
+      <!-- Probability bar -->
+      <div class="w-full h-1.5 bg-[#23262c] rounded-full overflow-hidden mb-6 relative z-10">
+        <div class="h-full bg-gradient-to-r from-[#eaffb9] to-[#bcfd00] rounded-full prob-bar" id="hero-bar" style="width:0%;"></div>
+      </div>
+
+      <!-- Meta row -->
+      <div class="flex items-center flex-wrap gap-6 relative z-10">
+        <div>
+          <span class="font-label text-[9px] text-[#46484d] uppercase tracking-widest block mb-0.5">24h Volume</span>
+          <span class="font-headline text-xl font-bold text-[#81ecff]" id="hero-volume">—</span>
+        </div>
+        <div>
+          <span class="font-label text-[9px] text-[#46484d] uppercase tracking-widest block mb-0.5">Closes</span>
+          <span class="font-headline text-xl font-bold text-[#f6f6fc]" id="hero-end-date">—</span>
+        </div>
+        <div id="hero-signal-wrap">
+          <span class="font-label text-[9px] text-[#46484d] uppercase tracking-widest block mb-0.5">Signal</span>
+          <span class="font-label text-[9px] text-[#74757a]">—</span>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <a id="hero-cta" href="#" target="_blank" rel="noopener"
+         class="inline-flex items-center gap-2 mt-7 volt-gradient text-[#344900] font-label font-bold text-[10px] uppercase tracking-widest px-6 py-3 rounded-full hover:opacity-90 transition-opacity relative z-10">
+        View Market <span class="msymbol text-sm">open_in_new</span>
+      </a>
+    </div>
+
+    <!-- Right sidebar: take + stats + today's trade -->
+    <div class="lg:col-span-5 flex flex-col gap-4">
+
+      <!-- The Prob's Take -->
+      <div class="bg-[#111318] rounded-2xl p-6 border border-[#23262c] flex-1">
+        <div class="flex items-center justify-between mb-4">
+          <span class="font-label text-[9px] text-[#74757a] uppercase tracking-widest font-bold">The Prob's Take</span>
+          <span class="msymbol text-[#eaffb9] text-base fill">auto_graph</span>
+        </div>
+        <p class="font-body text-[#aaabb0] text-sm leading-relaxed border-l-2 border-[#eaffb9]/60 pl-4 italic" id="hero-insight">
+          Loading analysis…
+        </p>
+      </div>
+
+      <!-- Volume stat -->
+      <div class="bg-[#111318] rounded-2xl px-6 py-5 border border-[#23262c]">
+        <div class="flex items-center justify-between">
+          <div>
+            <span class="font-label text-[9px] text-[#81ecff] uppercase tracking-widest block mb-1">Total Volume</span>
+            <span class="font-headline text-2xl font-bold text-[#f6f6fc]" id="hero-total-vol">—</span>
+          </div>
+          <span class="msymbol text-[#81ecff] text-3xl">waterfall_chart</span>
+        </div>
+      </div>
+
+      <!-- Today's Trade -->
+      <div class="bg-[#111318] rounded-2xl px-6 py-5 border border-[#23262c]" id="trade-section">
+        <span class="font-label text-[9px] text-[#ffd709] uppercase tracking-widest block mb-2 font-bold">Today's Trade</span>
+        <p class="font-headline font-bold text-[#f6f6fc] text-sm leading-tight line-clamp-2 mb-3" id="trade-question">—</p>
+        <div class="flex items-center justify-between">
+          <div>
+            <span class="font-label text-[9px] text-[#46484d] uppercase tracking-widest block mb-0.5">Prob</span>
+            <span class="font-headline text-2xl font-bold" id="trade-prob">—</span>
+          </div>
+          <a id="trade-cta" href="#" target="_blank" rel="noopener"
+             class="font-label text-[10px] uppercase tracking-widest text-[#ffd709] border border-[#ffd709]/30 px-4 py-2 rounded-full hover:bg-[#ffd709]/10 transition-colors">
+            View →
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════════════════
+       TODAY'S BIGGEST MOVERS
+       ════════════════════════════════════════════════════════════════════════ -->
+  <section class="mb-12">
+    <div class="flex items-center justify-between mb-5">
+      <h3 class="font-headline text-xl font-bold uppercase tracking-tight">Today's Biggest Movers</h3>
+      <a href="news.html" class="font-label text-[10px] uppercase tracking-widest text-[#eaffb9] hover:underline">View All</a>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4" id="movers-grid">
+      <div class="col-span-full text-center py-12 font-label text-[10px] text-[#46484d] uppercase tracking-widest">Loading markets…</div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════════════════
+       THE SPREAD — Poly vs Kalshi divergences
+       ════════════════════════════════════════════════════════════════════════ -->
+  <section class="mb-12" id="spread-section">
+    <div class="mb-5">
+      <div class="flex items-center gap-3 mb-1">
+        <h3 class="font-headline text-xl font-bold uppercase tracking-tight">The Spread</h3>
+        <span style="background:rgba(255,215,9,0.12);color:#ffd709;border:1px solid rgba(255,215,9,0.25);padding:2px 10px;border-radius:20px;font-family:Lexend,sans-serif;font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;">Divergence Alert</span>
+      </div>
+      <p class="font-body text-[#74757a] text-sm">The crowd disagrees with itself. Poly vs Kalshi on the same question.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="spread-grid">
+      <!-- JS populates -->
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════════════════
+       DAILY INTELLIGENCE
+       ════════════════════════════════════════════════════════════════════════ -->
+  <section class="mb-12 grid grid-cols-1 lg:grid-cols-3 gap-5" id="daily-take-section">
+
+    <!-- Main story -->
+    <div class="lg:col-span-2 bg-[#111318] rounded-2xl p-7 border border-[#23262c] relative overflow-hidden cursor-pointer" id="daily-take-main">
+      <div class="absolute top-0 right-0 w-56 h-56 bg-[#eaffb9]/3 rounded-full blur-3xl -mr-16 -mt-16 pointer-events-none"></div>
+
+      <div class="flex items-center gap-3 mb-5">
+        <span class="volt-gradient text-[#344900] font-label text-[9px] font-bold rounded-full px-3 py-1 uppercase tracking-widest">Daily Intelligence</span>
+        <span class="font-label text-[9px] text-[#46484d] uppercase tracking-widest" id="daily-take-date">—</span>
+      </div>
+
+      <span class="font-label text-[9px] text-[#74757a] uppercase tracking-widest block mb-2" id="daily-take-category">—</span>
+      <h3 class="font-headline text-3xl font-bold text-[#f6f6fc] leading-tight mb-4 relative z-10" id="daily-take-headline">Loading intelligence…</h3>
+      <p class="font-body text-[#aaabb0] leading-relaxed relative z-10 line-clamp-3" id="daily-take-deck">—</p>
+
+      <button id="daily-take-cta" class="flex items-center gap-2 mt-6 font-label text-[10px] text-[#eaffb9] uppercase tracking-widest hover:gap-3 transition-all">
+        View Market <span class="msymbol text-sm">arrow_forward</span>
+      </button>
+    </div>
+
+    <!-- Sidebar: supporting stories -->
+    <div class="bg-[#111318] rounded-2xl p-6 border border-[#23262c]">
+      <span class="font-label text-[9px] text-[#74757a] uppercase tracking-widest font-bold block mb-4">Also Moving</span>
+      <div class="space-y-4" id="daily-take-sidebar">
+        <div class="font-label text-[10px] text-[#46484d] uppercase tracking-widest">Loading…</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════════════════
+       PORTFOLIO SCOREBOARD  — Live public experiment
+       ════════════════════════════════════════════════════════════════════════ -->
+  <section class="mb-12">
+    <div class="flex items-center justify-between mb-5">
+      <div>
+        <h3 class="font-headline text-xl font-bold uppercase tracking-tight">Model Scoreboard</h3>
+        <p class="font-body text-[#74757a] text-sm mt-1">Live public experiment. Three models. One 30-day test.</p>
+      </div>
+      <a href="portfolio.html" class="font-label text-[10px] uppercase tracking-widest text-[#eaffb9] hover:underline hidden sm:block">Full Experiment →</a>
+    </div>
+    <div class="space-y-3" id="portfolio-scoreboard">
+      <div class="text-center py-10 font-label text-[10px] text-[#46484d] uppercase tracking-widest">Loading portfolio…</div>
+    </div>
+    <div class="mt-3 text-center sm:hidden">
+      <a href="portfolio.html" class="font-label text-[10px] uppercase tracking-widest text-[#74757a] hover:text-[#eaffb9] transition-colors">Full Experiment →</a>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════════════════
+       NEWSLETTER CTA
+       ════════════════════════════════════════════════════════════════════════ -->
+  <section class="volt-gradient rounded-2xl p-8 relative overflow-hidden" id="newsletter">
+    <!-- Grid texture -->
+    <div class="absolute inset-0 opacity-[0.07] pointer-events-none">
+      <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+        <defs><pattern id="grid-pat" width="24" height="24" patternUnits="userSpaceOnUse">
+          <path d="M 24 0 L 0 0 0 24" fill="none" stroke="currentColor" stroke-width="1"/>
+        </pattern></defs>
+        <rect width="100%" height="100%" fill="url(#grid-pat)"/>
+      </svg>
+    </div>
+
+    <div class="relative grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+      <div>
+        <span class="msymbol text-[#344900] fill mb-3 block" style="font-size:40px;">mail</span>
+        <h3 class="font-headline text-4xl font-black uppercase tracking-tighter text-[#344900] leading-none mb-2">
+          Alpha In Your Inbox
+        </h3>
+        <p class="font-body text-[#435d00] text-sm font-medium leading-relaxed">
+          Daily prediction market intelligence. Free. Every morning before the market opens.
+        </p>
+      </div>
+      <div class="space-y-3">
+        <input type="email" id="nl-email" placeholder="your@email.com"
+               class="w-full bg-[#344900]/20 border border-[#344900]/30 rounded-xl py-3 px-4 text-[#1a2900] placeholder-[#435d00]/50 font-body text-sm focus:outline-none focus:border-[#344900] transition-colors"/>
+        <button onclick="submitToBeehiiv('nl-email','nl-btn','nl-msg')" id="nl-btn"
+                class="w-full bg-[#344900] text-[#eaffb9] py-3 rounded-xl font-headline font-bold uppercase text-sm tracking-widest hover:bg-[#2a3a00] transition-colors active:scale-[0.98]">
+          Send It Daily
+        </button>
+        <p class="font-label text-[9px] text-[#435d00] text-center uppercase tracking-widest" id="nl-msg">
+          Free · No spam, ever · Unsubscribe anytime
+        </p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     FOOTER (desktop only)
+     ══════════════════════════════════════════════════════════════════════════ -->
+<footer class="hidden md:block border-t border-[#1d2025] bg-[#0c0e12] py-8 px-6">
+  <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+    <span class="font-headline text-[#eaffb9] font-black text-xl tracking-widest">THE PROB</span>
+    <div class="flex flex-wrap items-center justify-center gap-4 font-label text-[9px] uppercase tracking-widest text-[#46484d]">
+      <a href="https://polymarket.com" target="_blank" rel="noopener" class="hover:text-[#f6f6fc] transition-colors">Polymarket</a>
+      <span>·</span>
+      <a href="https://kalshi.com" target="_blank" rel="noopener" class="hover:text-[#f6f6fc] transition-colors">Kalshi</a>
+      <span>·</span>
+      <a href="prediction-markets-101.html" class="hover:text-[#f6f6fc] transition-colors">Prediction Markets 101</a>
+      <span>·</span>
+      <a href="archive.html" class="hover:text-[#f6f6fc] transition-colors">Newsletter Archive</a>
+      <span>·</span>
+      <a href="contact.html" class="hover:text-[#f6f6fc] transition-colors">Contact</a>
+    </div>
+    <p class="font-label text-[9px] text-[#46484d] uppercase tracking-widest">Not financial advice.</p>
+  </div>
+</footer>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     MOBILE BOTTOM NAV
+     ══════════════════════════════════════════════════════════════════════════ -->
+<nav class="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-[#0c0e12]/90 backdrop-blur-xl border-t border-[#eaffb9]/10 flex justify-around items-center px-2 pt-3 pb-safe">
+  <a href="index-alt.html" class="flex flex-col items-center gap-1 text-[#eaffb9] px-3">
+    <span class="msymbol fill" style="font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 24;">home</span>
+    <span class="font-label text-[8px] uppercase tracking-widest">Home</span>
+  </a>
+  <a href="sports.html" class="flex flex-col items-center gap-1 text-[#74757a] hover:text-[#f6f6fc] transition-colors px-3">
+    <span class="msymbol">sports_basketball</span>
+    <span class="font-label text-[8px] uppercase tracking-widest">Sports</span>
+  </a>
+  <a href="politics.html" class="flex flex-col items-center gap-1 text-[#74757a] hover:text-[#f6f6fc] transition-colors px-3">
+    <span class="msymbol">account_balance</span>
+    <span class="font-label text-[8px] uppercase tracking-widest">Politics</span>
+  </a>
+  <a href="portfolio.html" class="flex flex-col items-center gap-1 text-[#74757a] hover:text-[#f6f6fc] transition-colors px-3">
+    <span class="msymbol">show_chart</span>
+    <span class="font-label text-[8px] uppercase tracking-widest">Portfolio</span>
+  </a>
+  <a href="archive.html" class="flex flex-col items-center gap-1 text-[#74757a] hover:text-[#f6f6fc] transition-colors px-3">
+    <span class="msymbol">newspaper</span>
+    <span class="font-label text-[8px] uppercase tracking-widest">Archive</span>
+  </a>
+</nav>
+
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     JAVASCRIPT — same data pipeline as index.html
+     ══════════════════════════════════════════════════════════════════════════ -->
+<script>
+// ── CONFIG ─────────────────────────────────────────────────────────────────
+const DATA_URL   = 'data/markets.json';
+const WORKER_URL = 'https://theprob-subscribe.verifiedchriswilliams.workers.dev';
+
+// ── HELPERS ────────────────────────────────────────────────────────────────
+function esc(s) {
+  if (!s) return '';
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+function truncate(str, max) {
+  max = max || 60;
+  if (!str) return '';
+  return str.length > max ? str.slice(0, max).trimEnd() + '…' : str;
+}
+function fmtVol(n) {
+  if (!n) return '—';
+  if (n >= 1e6)  return '$' + (n / 1e6).toFixed(1) + 'M';
+  if (n >= 1000) return '$' + (n / 1000).toFixed(0) + 'K';
+  return '$' + Math.round(n);
+}
+function dirClass(pts) {
+  if (pts > 0.5)  return 'up';
+  if (pts < -0.5) return 'down';
+  return 'flat';
+}
+function changeColor(pts) {
+  if (pts > 0.5)  return '#4ade80';
+  if (pts < -0.5) return '#ff7351';
+  return '#74757a';
+}
+function changeArrow(pts) {
+  if (pts === null || pts === undefined) return '—';
+  const abs = Math.abs(pts).toFixed(1);
+  if (pts > 0.5)  return '▲ +' + abs + ' pts';
+  if (pts < -0.5) return '▼ −' + abs + ' pts';
+  return '● ' + abs + ' pts';
+}
+
+// Signal badge — maps trading_signal to colored pill
+function signalBadge(signal) {
+  var styles = {
+    knife_edge:   { label: 'Knife Edge',  bg: 'rgba(255,115,81,0.12)',  color: '#ff7351', border: 'rgba(255,115,81,0.3)' },
+    momentum:     { label: 'Momentum',    bg: 'rgba(234,255,185,0.1)',  color: '#eaffb9', border: 'rgba(234,255,185,0.25)' },
+    volume_spike: { label: 'Vol Spike',   bg: 'rgba(129,236,255,0.1)', color: '#81ecff', border: 'rgba(129,236,255,0.25)' },
+    active:       { label: 'Active',      bg: 'rgba(255,215,9,0.1)',   color: '#ffd709', border: 'rgba(255,215,9,0.25)' },
+    stale:        { label: 'Cooling',     bg: 'rgba(70,72,77,0.25)',   color: '#74757a', border: 'rgba(70,72,77,0.35)' },
+  };
+  var s = styles[signal] || { label: signal || '—', bg: 'rgba(70,72,77,0.25)', color: '#74757a', border: 'rgba(70,72,77,0.35)' };
+  return '<span style="background:' + s.bg + ';color:' + s.color + ';border:1px solid ' + s.border + ';padding:3px 10px;border-radius:20px;font-family:Lexend,sans-serif;font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;">' + s.label + '</span>';
+}
+
+// Source pill
+function sourceBadge(source) {
+  if (source === 'Kalshi') {
+    return '<span style="background:#00A550;color:white;padding:2px 9px;border-radius:12px;font-family:Lexend,sans-serif;font-size:9px;font-weight:700;letter-spacing:0.08em;">Kalshi</span>';
+  }
+  return '<span style="background:#0066FF;color:white;padding:2px 9px;border-radius:12px;font-family:Lexend,sans-serif;font-size:9px;font-weight:700;letter-spacing:0.08em;">Polymarket</span>';
+}
+
+
+// ── TICKER ────────────────────────────────────────────────────────────────
+function renderTicker(markets) {
+  var track = document.getElementById('ticker');
+  if (!track || !markets.length) return;
+
+  var item = function(m) {
+    var col = changeColor(m.change_pts);
+    var arrow = m.change_pts > 0.5 ? '▲' : m.change_pts < -0.5 ? '▼' : '●';
+    return '<span style="display:inline-flex;align-items:center;gap:8px;padding:0 20px;font-family:Lexend,sans-serif;font-size:10px;white-space:nowrap;">'
+      + '<span style="color:#eaffb9;font-weight:700;letter-spacing:0.05em;">' + truncate(m.question, 42).toUpperCase() + '</span>'
+      + '<span style="color:#f6f6fc;font-weight:700;">' + m.prob + '%</span>'
+      + '<span style="color:' + col + ';font-size:9px;">' + arrow + ' ' + Math.abs(m.change_pts).toFixed(1) + '</span>'
+      + '<span style="color:#23262c;font-size:18px;font-weight:100;margin:0 4px;">|</span>'
+      + '</span>';
+  };
+
+  var html = markets.map(item).join('');
+  track.innerHTML = html + html; // duplicate for seamless CSS loop
+}
+
+
+// ── HERO CARD ─────────────────────────────────────────────────────────────
+function renderHero(hero) {
+  if (!hero) return;
+
+  // Probability
+  var probEl = document.getElementById('hero-prob');
+  if (probEl) probEl.textContent = hero.prob;
+
+  // Question
+  var qEl = document.getElementById('hero-question');
+  if (qEl) qEl.textContent = hero.question;
+
+  // Change
+  var chEl = document.getElementById('hero-change');
+  if (chEl) {
+    chEl.textContent = changeArrow(hero.change_pts);
+    chEl.style.color = changeColor(hero.change_pts);
+  }
+
+  // Volumes
+  var volEl = document.getElementById('hero-volume');
+  if (volEl) volEl.textContent = fmtVol(hero.volume_24h);
+  var tvEl = document.getElementById('hero-total-vol');
+  if (tvEl) tvEl.textContent = fmtVol(hero.volume);
+
+  // Date
+  var dateEl = document.getElementById('hero-end-date');
+  if (dateEl) dateEl.textContent = hero.end_date || '—';
+
+  // Prob bar (animate after paint)
+  setTimeout(function() {
+    var bar = document.getElementById('hero-bar');
+    if (bar) bar.style.width = hero.prob + '%';
+  }, 120);
+
+  // Source badge
+  var srcEl = document.getElementById('hero-source-badge');
+  if (srcEl) srcEl.innerHTML = sourceBadge(hero.source);
+
+  // Signal badge
+  var sigWrap = document.getElementById('hero-signal-wrap');
+  if (sigWrap) {
+    sigWrap.innerHTML = '<span class="font-label text-[9px] text-[#46484d] uppercase tracking-widest block mb-0.5" style="font-family:Lexend,sans-serif;font-size:9px;color:#46484d;text-transform:uppercase;letter-spacing:0.1em;display:block;margin-bottom:4px;">Signal</span>'
+      + signalBadge(hero.trading_signal);
+  }
+
+  // CTA link
+  var ctaEl = document.getElementById('hero-cta');
+  if (ctaEl && hero.url) ctaEl.href = hero.url;
+
+  // Make whole card click through to market
+  var card = document.getElementById('hero-card');
+  if (card && hero.url) {
+    card.addEventListener('click', function(e) {
+      if (!e.target.closest('a')) window.open(hero.url, '_blank');
+    });
+  }
+
+  // The Prob's Take
+  var takeEl = document.getElementById('hero-insight');
+  if (takeEl && hero.prob_take) takeEl.textContent = hero.prob_take;
+}
+
+
+// ── MOVERS GRID ───────────────────────────────────────────────────────────
+function renderMovers(movers) {
+  var grid = document.getElementById('movers-grid');
+  if (!grid || !movers.length) return;
+
+  grid.innerHTML = movers.map(function(m) {
+    var col   = changeColor(m.change_pts);
+    var arrow = m.change_pts > 0.5 ? '▲' : m.change_pts < -0.5 ? '▼' : '●';
+    var abspts = Math.abs(m.change_pts).toFixed(1);
+    var probColor = col === '#74757a' ? '#f6f6fc' : col;
+
+    return '<div class="mover-card bg-[#111318] rounded-2xl p-5 border border-[#23262c] cursor-pointer" onclick="window.open(\'' + esc(m.url) + '\',\'_blank\')">'
+      + '<div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:12px;gap:8px;">'
+      + signalBadge(m.trading_signal)
+      + '<span style="color:' + col + ';font-family:Lexend,sans-serif;font-size:11px;font-weight:700;white-space:nowrap;">' + arrow + ' ' + abspts + ' pts</span>'
+      + '</div>'
+      + '<h4 style="font-family:Space Grotesk,sans-serif;font-weight:700;color:#f6f6fc;font-size:15px;line-height:1.3;margin-bottom:16px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">' + esc(m.question) + '</h4>'
+      + '<div style="display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:12px;">'
+      + '<div>'
+      + '<span style="font-family:Lexend,sans-serif;font-size:9px;color:#46484d;text-transform:uppercase;letter-spacing:0.1em;display:block;margin-bottom:2px;">Prob</span>'
+      + '<span style="font-family:Space Grotesk,sans-serif;font-size:28px;font-weight:700;color:' + probColor + ';">' + m.prob + '%</span>'
+      + '</div>'
+      + '<div style="text-align:right;">'
+      + '<span style="font-family:Lexend,sans-serif;font-size:9px;color:#46484d;text-transform:uppercase;letter-spacing:0.1em;display:block;margin-bottom:2px;">Vol 24h</span>'
+      + '<span style="font-family:Space Grotesk,sans-serif;font-size:15px;font-weight:700;color:#81ecff;">' + fmtVol(m.volume_24h) + '</span>'
+      + '</div>'
+      + '</div>'
+      + '<div style="width:100%;height:3px;background:#23262c;border-radius:4px;overflow:hidden;margin-bottom:12px;">'
+      + '<div style="height:100%;width:' + m.prob + '%;background:' + (col === '#74757a' ? '#46484d' : col) + ';border-radius:4px;"></div>'
+      + '</div>'
+      + '<div style="display:flex;align-items:center;justify-content:space-between;">'
+      + sourceBadge(m.source)
+      + '<span style="font-family:Lexend,sans-serif;font-size:9px;color:#46484d;text-transform:uppercase;letter-spacing:0.08em;">' + esc(m.display_category || '') + '</span>'
+      + '</div>'
+      + '</div>';
+  }).join('');
+}
+
+
+// ── THE SPREAD ────────────────────────────────────────────────────────────
+function renderSpread(pairs) {
+  var grid = document.getElementById('spread-grid');
+  if (!grid) return;
+
+  if (!pairs || !pairs.length) {
+    grid.innerHTML = '<p style="font-family:Lexend,sans-serif;font-size:10px;color:#46484d;text-transform:uppercase;letter-spacing:0.1em;padding:16px 0;">No significant divergences right now. Check back soon.</p>';
+    return;
+  }
+
+  grid.innerHTML = pairs.map(function(p) {
+    var kQ = (p.kalshi_question && p.kalshi_question !== p.poly_question)
+      ? esc(p.kalshi_question.replace(/\?\s*:.*/, '').trim())
+      : '';
+
+    return '<div style="background:#111318;border-radius:16px;overflow:hidden;border:1px solid #23262c;">'
+      + '<div style="padding:20px;border-bottom:1px solid #1d2025;">'
+      + '<h4 style="font-family:Space Grotesk,sans-serif;font-weight:700;color:#f6f6fc;line-height:1.35;margin-bottom:6px;">' + esc(p.poly_question || p.display_title) + '</h4>'
+      + (kQ ? '<p style="font-family:Inter,sans-serif;font-size:11px;color:#74757a;margin-top:4px;">Kalshi: ' + kQ + '</p>' : '')
+      + '<p style="font-family:Lexend,sans-serif;font-size:9px;color:#46484d;text-transform:uppercase;letter-spacing:0.1em;margin-top:8px;">Combined Vol: ' + fmtVol(p.combined_volume) + '</p>'
+      + '</div>'
+      + '<div style="display:grid;grid-template-columns:1fr 1fr;">'
+      + '<a href="' + esc(p.poly_url || '#') + '" target="_blank" rel="noopener" style="display:block;padding:20px;border-right:1px solid #1d2025;text-decoration:none;transition:background 0.15s;" onmouseover="this.style.background=\'#1d2025\'" onmouseout="this.style.background=\'transparent\'">'
+      + '<div style="display:flex;align-items:center;gap:6px;margin-bottom:10px;">'
+      + '<span style="width:16px;height:16px;background:#0066FF;border-radius:4px;display:inline-flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:white;font-family:Lexend,sans-serif;">P</span>'
+      + '<span style="font-family:Lexend,sans-serif;font-size:9px;color:#818cf8;text-transform:uppercase;letter-spacing:0.1em;font-weight:700;">Polymarket</span>'
+      + '</div>'
+      + '<span style="font-family:Space Grotesk,sans-serif;font-size:40px;font-weight:900;color:#818cf8;">' + p.poly_prob + '%</span>'
+      + '</a>'
+      + '<a href="' + esc(p.kalshi_url || '#') + '" target="_blank" rel="noopener" style="display:block;padding:20px;text-decoration:none;transition:background 0.15s;" onmouseover="this.style.background=\'#1d2025\'" onmouseout="this.style.background=\'transparent\'">'
+      + '<div style="display:flex;align-items:center;gap:6px;margin-bottom:10px;">'
+      + '<span style="width:16px;height:16px;background:#00A550;border-radius:4px;display:inline-flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:white;font-family:Lexend,sans-serif;">K</span>'
+      + '<span style="font-family:Lexend,sans-serif;font-size:9px;color:#34d399;text-transform:uppercase;letter-spacing:0.1em;font-weight:700;">Kalshi</span>'
+      + '</div>'
+      + '<span style="font-family:Space Grotesk,sans-serif;font-size:40px;font-weight:900;color:#34d399;">' + p.kalshi_prob + '%</span>'
+      + '</a>'
+      + '</div>'
+      + '<div style="padding:10px 20px;background:#08090b;border-top:1px solid #1d2025;text-align:center;">'
+      + '<span style="background:rgba(255,215,9,0.12);color:#ffd709;border:1px solid rgba(255,215,9,0.25);padding:4px 14px;border-radius:20px;font-family:Lexend,sans-serif;font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;">⚡ ' + p.gap_pts + ' pt gap</span>'
+      + '</div>'
+      + '</div>';
+  }).join('');
+}
+
+
+// ── DAILY TAKE ────────────────────────────────────────────────────────────
+function renderDailyTake(take) {
+  if (!take) return;
+
+  var set = function(id, val) {
+    var el = document.getElementById(id);
+    if (el && val) el.textContent = val;
+  };
+  set('daily-take-date',     take.date);
+  set('daily-take-category', take.category_label);
+  set('daily-take-headline', take.headline);
+  set('daily-take-deck',     take.deck);
+
+  var main = document.getElementById('daily-take-main');
+  if (main && take.hero_url) {
+    main.addEventListener('click', function(e) {
+      if (!e.target.closest('button, a')) window.open(take.hero_url, '_blank');
+    });
+    var cta = document.getElementById('daily-take-cta');
+    if (cta) cta.onclick = function() { window.open(take.hero_url, '_blank'); };
+  }
+
+  var sidebar = document.getElementById('daily-take-sidebar');
+  if (sidebar && take.sidebar && take.sidebar.length) {
+    sidebar.innerHTML = take.sidebar.map(function(item, i) {
+      return '<div style="padding-bottom:16px;border-bottom:1px solid #1d2025;margin-bottom:4px;cursor:pointer;" '
+        + (item.url ? 'onclick="window.open(\'' + esc(item.url) + '\',\'_blank\')"' : '') + '>'
+        + '<div style="display:flex;align-items:flex-start;gap:12px;">'
+        + '<span style="font-family:Space Grotesk,sans-serif;font-size:28px;font-weight:700;color:#23262c;flex-shrink:0;line-height:1;">0' + (i + 1) + '</span>'
+        + '<div>'
+        + '<p style="font-family:Space Grotesk,sans-serif;font-weight:700;font-size:13px;color:#f6f6fc;line-height:1.3;">' + esc(item.headline) + '</p>'
+        + (item.label ? '<span style="font-family:Lexend,sans-serif;font-size:9px;color:#eaffb9;text-transform:uppercase;letter-spacing:0.1em;margin-top:4px;display:block;">' + esc(item.label) + '</span>' : '')
+        + '</div>'
+        + '</div>'
+        + '</div>';
+    }).join('');
+  }
+}
+
+
+// ── TODAY'S TRADE ─────────────────────────────────────────────────────────
+function renderTrade(trade) {
+  var sec = document.getElementById('trade-section');
+  if (!trade) {
+    if (sec) sec.style.display = 'none';
+    return;
+  }
+  var qEl = document.getElementById('trade-question');
+  var pEl = document.getElementById('trade-prob');
+  var cEl = document.getElementById('trade-cta');
+  if (qEl) qEl.textContent = trade.question;
+  if (pEl) {
+    pEl.textContent = trade.prob + '%';
+    pEl.style.color = trade.direction === 'up' ? '#4ade80' : trade.direction === 'down' ? '#ff7351' : '#f6f6fc';
+  }
+  if (cEl && trade.url) cEl.href = trade.url;
+}
+
+
+// ── PORTFOLIO SCOREBOARD ──────────────────────────────────────────────────
+var MODEL_META = {
+  a: { name: 'Model A: Crowd Conviction', desc: '65/35 gate · Follow the crowd' },
+  b: { name: 'Model B: The Spread',       desc: 'Cross-platform arb signal' },
+  c: { name: 'Model C: Short Duration',   desc: '≤7-day expiry focus' },
+};
+
+function renderPortfolioWidget(p) {
+  var board = document.getElementById('portfolio-scoreboard');
+  if (!board) return;
+  if (!p || !p.variants) {
+    board.innerHTML = '<p style="font-family:Lexend,sans-serif;font-size:10px;color:#46484d;text-transform:uppercase;letter-spacing:0.1em;text-align:center;padding:24px;">Portfolio data loading…</p>';
+    return;
+  }
+
+  var entries = Object.entries(p.variants)
+    .map(function(pair) { return { k: pair[0], v: pair[1] }; })
+    .sort(function(a, b) { return (b.v.ytd_return_pct || 0) - (a.v.ytd_return_pct || 0); });
+
+  board.innerHTML = entries.map(function(entry, rank) {
+    var k   = entry.k;
+    var v   = entry.v;
+    var bal = v.current_balance !== undefined ? v.current_balance : 1000;
+    var ytd = v.ytd_return_pct  !== undefined ? v.ytd_return_pct  : 0;
+    var wins = v.win_count  || 0;
+    var losses = v.loss_count || 0;
+    var balColor = bal >= 1000 ? '#4ade80' : '#ff7351';
+    var ytdColor = ytd >= 0   ? '#4ade80' : '#ff7351';
+    var ytdStr   = (ytd >= 0 ? '+' : '') + ytd.toFixed(1) + '%';
+    var balStr   = '$' + bal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    var meta     = MODEL_META[k] || { name: 'Model ' + k.toUpperCase(), desc: '' };
+    var accentCol = rank === 0 ? '#eaffb9' : '#23262c';
+    var opacity   = rank === 0 ? '1' : rank === 1 ? '0.82' : '0.65';
+
+    return '<div style="display:flex;align-items:center;justify-content:space-between;background:#111318;border-radius:16px;padding:20px;border:1px solid #23262c;position:relative;overflow:hidden;opacity:' + opacity + ';">'
+      + '<div style="position:absolute;left:0;top:0;bottom:0;width:3px;background:' + accentCol + ';border-radius:16px 0 0 16px;"></div>'
+      + '<div style="display:flex;align-items:center;gap:16px;margin-left:4px;">'
+      + '<span style="font-family:Space Grotesk,sans-serif;font-size:28px;font-weight:700;color:' + (rank === 0 ? '#eaffb9' : '#23262c') + ';min-width:36px;">' + String(rank + 1).padStart(2, '0') + '</span>'
+      + '<div>'
+      + '<p style="font-family:Space Grotesk,sans-serif;font-weight:700;font-size:14px;color:#f6f6fc;margin-bottom:2px;">' + esc(meta.name) + '</p>'
+      + '<p style="font-family:Lexend,sans-serif;font-size:9px;color:#74757a;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:2px;">' + esc(meta.desc) + '</p>'
+      + '<p style="font-family:Lexend,sans-serif;font-size:9px;color:#46484d;">' + wins + 'W – ' + losses + 'L</p>'
+      + '</div>'
+      + '</div>'
+      + '<div style="text-align:right;">'
+      + '<p style="font-family:Space Grotesk,sans-serif;font-weight:700;font-size:18px;color:' + balColor + ';margin-bottom:2px;">' + balStr + '</p>'
+      + '<p style="font-family:Lexend,sans-serif;font-size:11px;font-weight:700;color:' + ytdColor + ';">' + ytdStr + ' YTD</p>'
+      + '</div>'
+      + '</div>';
+  }).join('');
+}
+
+
+// ── TIMESTAMP ─────────────────────────────────────────────────────────────
+function renderTimestamp(updated) {
+  var el = document.getElementById('updated-time');
+  if (el && updated) el.textContent = 'Updated ' + updated;
+}
+
+
+// ── BEEHIIV SUBSCRIBE ─────────────────────────────────────────────────────
+async function submitToBeehiiv(emailId, btnId, msgId) {
+  var emailEl = document.getElementById(emailId);
+  var btnEl   = document.getElementById(btnId);
+  var msgEl   = document.getElementById(msgId);
+  var email   = emailEl ? emailEl.value.trim() : '';
+
+  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    if (msgEl) { msgEl.textContent = 'Please enter a valid email address.'; msgEl.style.color = '#ff7351'; }
+    return;
+  }
+
+  if (btnEl) { btnEl.textContent = 'Sending…'; btnEl.disabled = true; }
+
+  try {
+    var res  = await fetch(WORKER_URL, { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify({ email }) });
+    var data = await res.json().catch(function() { return {}; });
+    if (res.ok && data.success) {
+      if (emailEl) emailEl.style.display = 'none';
+      if (btnEl) { btnEl.textContent = '✓ You\'re in. Check your inbox.'; btnEl.style.background = '#4ade80'; btnEl.style.color = '#0c0e12'; }
+      if (msgEl) { msgEl.textContent = 'Welcome to The Prob. First issue lands tomorrow morning.'; msgEl.style.color = '#2d6a35'; }
+    } else {
+      throw new Error(data.error || 'Error ' + res.status);
+    }
+  } catch(err) {
+    if (btnEl) { btnEl.textContent = 'Send It Daily'; btnEl.disabled = false; }
+    if (msgEl) { msgEl.textContent = 'Something went wrong. Try again in a moment.'; msgEl.style.color = '#ff7351'; }
+    console.error('Signup error:', err.message);
+  }
+}
+
+
+// ── BOOT ──────────────────────────────────────────────────────────────────
+async function loadMarkets() {
+  try {
+    var res  = await fetch(DATA_URL + '?v=' + Date.now());
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    var data = await res.json();
+
+    renderTicker(data.ticker      || []);
+    renderHero(data.hero          || null);
+    renderMovers(data.movers      || []);
+    renderSpread(data.the_spread  || []);
+    renderDailyTake(data.daily_take || null);
+    renderTrade(data.trade        || null);
+    renderPortfolioWidget(data.portfolio || null);
+    renderTimestamp(data.updated  || '');
+
+  } catch(err) {
+    console.warn('Market data load failed:', err.message);
+    var el = document.getElementById('updated-time');
+    if (el) el.textContent = 'Live data temporarily unavailable';
+  }
+}
+
+// Mobile menu toggle
+var mobBtn = document.getElementById('mob-menu-btn');
+if (mobBtn) {
+  mobBtn.addEventListener('click', function() {
+    var m = document.getElementById('mob-menu');
+    if (m) m.classList.toggle('hidden');
+  });
+}
+
+// Kick off data load
+loadMarkets();
+</script>
+
+</body>
+</html>

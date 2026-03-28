@@ -355,6 +355,12 @@ def fetch_polymarket() -> list[dict]:
             if is_sports:
                 display_cat = "Sports"
             tag_labels = [t.get("label", "").lower() for t in event_tags]
+            # Event-level aggregate volumes: for tournaments (NCAA, NBA playoffs) the
+            # event total ($19M) is split across 68+ individual team contracts.
+            # Storing these lets pick_hero() treat the full event volume as the
+            # eligibility signal rather than the per-contract slice.
+            ev_volume     = float(event.get("volume", 0) or 0)
+            ev_volume_24h = float(event.get("volume24hr", 0) or 0)
 
             for m in event.get("markets", []):
                 try:
@@ -402,6 +408,8 @@ def fetch_polymarket() -> list[dict]:
                         "tags":             tag_labels,
                         "tag_slugs":        [t.get("slug","").lower() for t in event_tags],
                         "featured":         bool(event.get("featured", False)),
+                        "event_volume":     ev_volume,
+                        "event_volume_24h": ev_volume_24h,
                     })
                 except (ValueError, IndexError, KeyError):
                     continue
@@ -596,10 +604,19 @@ def fetch_kalshi() -> list[dict]:
                             yes_bid_d = float(m.get("yes_bid_dollars", 0) or 0)
                             yes_ask_d = float(m.get("yes_ask_dollars", 0) or 0)
                             if yes_bid_d == 0 and yes_ask_d == 0:
-                                continue
-                            yes_bid = round(yes_bid_d * 100, 2)   # 0-1 → 0-100
-                            yes_ask = round(yes_ask_d * 100, 2)
-                            prob = round((yes_bid + yes_ask) / 2, 1)
+                                # Fallback for multi-outcome categorical markets (e.g. NCAA
+                                # tournament champion, college basketball champion): individual
+                                # team contracts show bid/ask = 0 but have a valid last price.
+                                # Using last_price_dollars as probability proxy rescues the
+                                # $163M NCAA market (and similar) from being silently skipped.
+                                last_price_fallback = float(m.get("last_price_dollars", 0) or 0)
+                                if last_price_fallback <= 0:
+                                    continue
+                                prob = round(last_price_fallback * 100, 1)
+                            else:
+                                yes_bid = round(yes_bid_d * 100, 2)   # 0-1 → 0-100
+                                yes_ask = round(yes_ask_d * 100, 2)
+                                prob = round((yes_bid + yes_ask) / 2, 1)
                             if prob > 100 or prob < 0:
                                 continue
 
@@ -1047,7 +1064,10 @@ def score_market(m: dict) -> float:
         a near-absolute block for the rest of the week.
     """
     abs_change  = abs(m["change_pts"])
-    volume      = m["volume"]
+    # For tournament markets, use the larger of individual contract volume or event
+    # aggregate. NCAA team contracts split $19M (Poly) / $163M (Kalshi) across many
+    # contracts — using event_volume restores the full event scale for scoring.
+    volume      = max(m["volume"], m.get("event_volume", 0))
     volume_24h  = m.get("volume_24h", 0) or 0
     prob        = m["prob"]
 
@@ -1238,12 +1258,12 @@ def pick_hero(markets: list[dict], recent_topics: list[str] | None = None,
     recent_categories = recent_categories or []
     base_candidates = [
         m for m in markets
-        # Volume gate: non-sports need $250K total. Sports markets trading $50K+
-        # today bypass this — individual team contracts in a tournament (e.g. NCAA,
-        # NBA playoffs) split total event volume across 68 teams. No single team
-        # contract will ever hit $250K total until late rounds, but $50K+ in 24h
-        # is a clear signal the market is actively priced and tournament-relevant.
-        if (m["volume"] >= HERO_MIN_VOLUME
+        # Volume gate: use whichever is larger — individual contract volume or the
+        # parent event aggregate. For tournaments (NCAA, NBA playoffs) individual
+        # team contracts split a large event total: NCAA $19M Poly / $163M Kalshi
+        # shows as $550K per Poly contract or ~$11M per Kalshi contract. Using
+        # event_volume collapses these back to the true event scale.
+        if (max(m["volume"], m.get("event_volume", 0)) >= HERO_MIN_VOLUME
             or (is_sports_market(m) and m.get("volume_24h", 0) >= HERO_SPORTS_MIN_VOLUME_24H))
         and m.get("volume_24h", 0) >= HERO_MIN_24H_VOLUME  # must be actively trading TODAY
         and not is_effectively_resolved(m)
@@ -1251,7 +1271,7 @@ def pick_hero(markets: list[dict], recent_topics: list[str] | None = None,
         and not is_junk_market(m)
         and not is_range_bucket_market(m)   # range buckets are misleading as hero
         and (not is_sports_market(m)
-             or m["volume"] >= HERO_SPORTS_MIN_VOLUME
+             or max(m["volume"], m.get("event_volume", 0)) >= HERO_SPORTS_MIN_VOLUME
              or m.get("volume_24h", 0) >= HERO_SPORTS_MIN_VOLUME_24H)  # hot tournament markets
     ]
 
