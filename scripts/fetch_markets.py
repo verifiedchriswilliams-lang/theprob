@@ -2714,11 +2714,22 @@ def main():
     # Build rolling hero history (keep last 7 days for repeat-penalty)
     hero_question = hero.get("question", "") if hero else ""
     hero_cat      = hero.get("display_category", "") if hero else ""
-    # Store the actual topic keys (already computed)
-    hero_history_keys = ([get_topic_key({"question": hero_question, "source": ""})]
-                         if hero_question else [])
-    hero_history_keys += [t for t in recent_hero_topics if t not in hero_history_keys]
-    hero_history_keys  = hero_history_keys[:7]   # cap at 7 days
+    new_hero_topic = get_topic_key({"question": hero_question, "source": ""}) if hero_question else ""
+    prev_hero_topic = recent_hero_topics[0] if recent_hero_topics else ""
+
+    # Only advance penalty position when the hero actually CHANGES.
+    # If the same hero wins two consecutive runs, it stays at index 0 (−40pts)
+    # rather than moving to index 1 (−70pts). The penalty escalates only when
+    # something genuinely unseats the current hero — designed for daily cycles,
+    # not hourly ones where the same big story should stay front-and-centre.
+    if new_hero_topic and new_hero_topic == prev_hero_topic:
+        # Hero unchanged — keep history as-is so penalty clock doesn't advance
+        hero_history_keys = list(recent_hero_topics)
+    else:
+        # New winner — prepend and push others back
+        hero_history_keys = ([new_hero_topic] if new_hero_topic else [])
+        hero_history_keys += [t for t in recent_hero_topics if t not in hero_history_keys]
+        hero_history_keys  = hero_history_keys[:7]   # cap at 7 days
     # Store category history (last 3 days for diversity penalty)
     hero_cat_history = ([hero_cat] if hero_cat else [])
     hero_cat_history += [c for c in recent_hero_categories if c not in hero_cat_history]
