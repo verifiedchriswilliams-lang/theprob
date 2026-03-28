@@ -286,6 +286,44 @@
   </section>
 
   <!-- ════════════════════════════════════════════════════════════════════════
+       DAILY BRIEF — News + Newsletter signup
+       ════════════════════════════════════════════════════════════════════════ -->
+  <section class="mb-12" id="news-section">
+    <!-- Header row -->
+    <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-6 mb-6 pb-5" style="border-bottom:1px solid #1d2025;">
+      <div>
+        <div class="font-label text-[9px] uppercase tracking-widest mb-1" style="color:#eaffb9;">The Prob · Daily Brief</div>
+        <h3 class="font-headline text-xl font-bold uppercase tracking-tight">Daily Markets News</h3>
+        <p class="font-body text-sm mt-1" style="color:#74757a;">The stories moving prediction markets right now.</p>
+      </div>
+      <!-- Inline newsletter signup -->
+      <div class="flex-shrink-0 w-full sm:w-auto" style="max-width:320px;">
+        <p class="font-body text-sm mb-3" style="color:#74757a;">Every morning, the smartest money is already on the board. We tell you where it went.</p>
+        <div class="flex gap-2">
+          <input type="email" id="news-email" placeholder="your@email.com"
+            style="flex:1;background:#0f1114;border:1px solid #2d3038;border-radius:6px;padding:9px 12px;font-family:Inter,sans-serif;font-size:13px;color:#e2e4e9;outline:none;min-width:0;"
+            onfocus="this.style.borderColor='#eaffb9'" onblur="this.style.borderColor='#2d3038'" />
+          <button id="news-btn"
+            onclick="altSignup('news-email','news-btn','news-msg')"
+            style="background:#eaffb9;color:#0c0e12;border:none;border-radius:6px;padding:9px 16px;font-family:Lexend,sans-serif;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;white-space:nowrap;">
+            Get It
+          </button>
+        </div>
+        <p id="news-msg" style="font-family:Lexend,sans-serif;font-size:10px;color:#74757a;margin-top:6px;min-height:14px;"></p>
+      </div>
+    </div>
+
+    <!-- News items -->
+    <div id="alt-brief-news" style="display:flex;flex-direction:column;gap:0;">
+      <div style="padding:16px 0;border-bottom:1px solid #1d2025;font-family:Lexend,sans-serif;font-size:10px;color:#46484d;text-transform:uppercase;letter-spacing:0.1em;">Loading news…</div>
+    </div>
+
+    <div style="margin-top:14px;text-align:right;">
+      <a href="news.html" style="font-family:Lexend,sans-serif;font-size:10px;color:#eaffb9;text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;">All Prediction Market News ↗</a>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════════════════
        THE SPREAD — Poly vs Kalshi divergences
        ════════════════════════════════════════════════════════════════════════ -->
   <section class="mb-12" id="spread-section">
@@ -824,6 +862,44 @@ async function submitToBeehiiv(emailId, btnId, msgId) {
 }
 
 
+// ── DAILY BRIEF / NEWS ────────────────────────────────────────────────────
+var ALT_NEWS_URL    = 'data/news.json';
+var ALT_BRIEF_LABELS = ['TODAY\'S LEAD', 'THE ANGLE', 'ALSO WORTH KNOWING'];
+
+async function loadAltNewsBrief() {
+  try {
+    var res = await fetch(ALT_NEWS_URL + '?v=' + Date.now());
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    var data = await res.json();
+    var articles = (data.articles || []).slice(0, data.homepage_count || 3);
+    if (!articles.length) return;
+
+    var container = document.getElementById('alt-brief-news');
+    if (!container) return;
+
+    container.innerHTML = articles.map(function(a, i) {
+      var label   = ALT_BRIEF_LABELS[i] || ('#' + (i + 1));
+      var summary = a.summary || a.description || '';
+      var source  = a.source  || 'READ MORE';
+      return '<div onclick="window.open(\'' + escAlt(a.url) + '\',\'_blank\')" style="padding:16px 0;border-bottom:1px solid #1d2025;cursor:pointer;display:flex;gap:16px;align-items:flex-start;">'
+           + '  <div style="font-family:Lexend,sans-serif;font-size:9px;font-weight:700;letter-spacing:0.12em;color:#eaffb9;text-transform:uppercase;white-space:nowrap;padding-top:2px;min-width:110px;">' + escAlt(label) + '</div>'
+           + '  <div style="font-family:Inter,sans-serif;font-size:13px;color:#b0b3b8;line-height:1.5;">'
+           + '    <span style="color:#e2e4e9;font-weight:600;">' + escAlt(a.title) + '</span>'
+           + (summary ? ' <span>' + escAlt(summary) + '</span>' : '')
+           + '    <span style="font-family:Lexend,sans-serif;font-size:10px;color:#eaffb9;margin-left:6px;"> → ' + escAlt(source) + '</span>'
+           + '  </div>'
+           + '</div>';
+    }).join('');
+  } catch(err) {
+    console.warn('Could not load news brief:', err.message);
+  }
+}
+
+function escAlt(s) {
+  if (!s) return '';
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
 // ── BOOT ──────────────────────────────────────────────────────────────────
 async function loadMarkets() {
   try {
@@ -856,8 +932,9 @@ if (mobBtn) {
   });
 }
 
-// Kick off data load
+// Kick off data loads
 loadMarkets();
+loadAltNewsBrief();
 </script>
 
 </body>
