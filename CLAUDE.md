@@ -181,15 +181,26 @@ See VOICE.md. Sharp, confident, trader-focused. Lead with the number. "The crowd
 ## Session Handoff — TODO
 
 ### Pending Next Session
-1. Monitor NCAA/March Madness hero — fix is live as of Mar 20. On non-game days (today), NCAA team markets score ~22-27 and lose to bigger financial/news movers. On game days with upsets (big price drops), they'll dominate. Confirm after first full round of games (March 20-23). Also: Kalshi NCAA markets are NOT appearing in our data at all — only 6 Kalshi Sports markets fetched, all tiny volume. Likely: either pagination doesn't reach them or they're categorized differently. Worth investigating in a future session by checking GitHub Actions logs during a pipeline run.
-2. Monitor The Spread output after session 3 fixes — with filters applied, expect 1–5 real pairs (vs 8 false positives before). MATCH_THRESHOLD stays at 0.35; the range-bucket/resolved/past-close filters do the heavy lifting. If < 2 pairs consistently, tune MATCH_THRESHOLD DOWN (try 0.30). If too many mismatches, raise to 0.40. The spread-card now shows the Kalshi question as a subtitle, so readers can evaluate match quality.
-3. Yesterday's Biggest Swings — save data/markets_yesterday.json before each overwrite, diff vs today, show on index.html as "Markets That Moved Most in 24h". Zero new data needed. ~1 hour.
-4. Markets Closing Soon rail — filter days_to_resolution < 3 AND probability 35–65. Home page rail + newsletter section. High urgency signal for traders.
-5. Weird Markets section — auto-surface absurd/niche/counterintuitive markets (low volume + unusual category + active). Best viral/sharing feature for casual readers.
-6. Sparklines — start accumulating price_history.json now; display 7-day charts on cards in ~7 days once data exists.
-7. Polymarket "breaking" tab signal — Option B: inspect Network tab on polymarket.com/breaking to find Gamma API ordering parameter.
+1. Monitor hero relevance — Mar 28 overhaul is live. Should now surface NCAA tournament + high-volume news markets (Iran, etc.) instead of low-activity political futures. On game days with big moves, sports will dominate. On quiet weekdays, financial/political markets with real volume should win. Watch for the next 3-5 pipeline runs to confirm quality improvement.
+2. Alt design user feedback — index-alt.html is live at theprobnewsletter.com/index-alt.html with toggle bar on index.html. Both designs are identical in functionality. Monitor for user "👍 This one" mailto feedback to learn which design readers prefer.
+3. Monitor The Spread output — expect 1–5 real pairs per run. If < 2 consistently, lower MATCH_THRESHOLD to 0.30. The spread-card shows the Kalshi question as subtitle.
+4. Yesterday's Biggest Swings — save data/markets_yesterday.json before each overwrite, diff vs today, show on index.html as "Markets That Moved Most in 24h". Zero new data needed. ~1 hour.
+5. Markets Closing Soon rail — filter days_to_resolution < 3 AND probability 35–65. Home page rail + newsletter section. High urgency signal for traders.
+6. Weird Markets section — auto-surface absurd/niche/counterintuitive markets (low volume + unusual category + active). Best viral/sharing feature for casual readers.
+7. Sparklines — start accumulating price_history.json now; display 7-day charts on cards in ~7 days once data exists.
 8. Monitor Test 1 results — review Apr 10, 2026.
 9. Update data/builder_notes.json each session — edit built_recently + coming_next directly in that file.
+
+### Recently Completed (Mar 28, 2026) — Session 5
+- **Alt design shipped (index-alt.html)** — Full Stitch design system applied to real data with complete feature parity. Volt green (#eaffb9) primary, dark terminal aesthetic, Space Grotesk headlines. Sections: hero, movers, spread, daily_take, trade, model scoreboard, newsletter CTA. Toggle bar on both pages with mailto feedback buttons. Stripped all fake Stitch features (wallet connect, Terminal sidebar, analyst avatars, "Execute Arb Strategy", etc.). Live at theprobnewsletter.com/index-alt.html.
+- **Kalshi bid/ask fallback for multi-outcome markets** — NCAA tournament champion markets (and similar categorical markets) show `yes_bid_dollars=0` and `yes_ask_dollars=0`, causing silent skip. Fix: fall back to `last_price_dollars` as probability proxy when bid/ask both zero. Should surface $163M Kalshi NCAA market in future pipeline runs.
+- **Polymarket event-level volume** — individual team contracts show ~$550K each but the NCAA event aggregate is $19M. Capture `event.get("volume")` and `event.get("volume24hr")` on each market dict. Use `max(m["volume"], m.get("event_volume", 0))` in hero eligibility and score_market() total volume.
+- **Hero relevance overhaul** — Three core fixes in fetch_markets.py:
+  1. `fresh_movers` gate: removed 1pt minimum change requirement from volume gates. `$500K+ 24h` OR `sports $75K+ 24h` now enters primary pool regardless of price move. Iran ($3.5M 24h, -0.5pt, featured) and March Madness games ($3.4M 24h, 0pt) were being blocked while Tom Steyer ($45K 24h, +4.2pt) won hero.
+  2. Resolution distance penalty (signal #12): -0.5pt at 30-90d, -2pts at 90-180d, -4pts at 180d+ out. Tom Steyer (Nov 2026, 220d) drops 4pts. Iran (Mar 31, 3d) gets no penalty.
+  3. `move_cap` tightened for <$50K 24h: cap drops from 12pts to 6pts. Low-activity noise moves no longer dominate.
+- **Movers improvements** — Added minimum 24h volume gate ($2.5K Poly / $200 Kalshi) to filter dead markets. Added score floor (>= 0) post-dedup. Added min score (5.0) to slot-filling fallback. Replaced "World" slot with "Culture" in slot layout.
+- **Result today**: Duke wins NCAA Tournament is hero (beat Tom Steyer). Movers include Iran ($3.5M 24h, March 31 deadline) + Finland Eurovision + Arizona NCAA + Houston Astros.
 
 ### Recently Completed (Mar 20, 2026) — Session 4
 - **NCAA/March Madness hero fix** — root cause: the base `HERO_MIN_VOLUME = $250K` check blocked all NCAA team markets before the sports-specific 24h bypass gate was ever evaluated. Multi-team championship events split total event volume across 68+ team contracts — the Poly NCAA tournament is $22M total but no single team contract reaches $250K (Duke is $232K, Arizona $240K). Fix: restructured the `base_candidates` check in `pick_hero()` so sports markets with $50K+ 24h volume bypass the $250K base minimum (same threshold as the existing sports gate). Arizona (27.0), Duke (24.5), Florida (22.1), Houston (14.0), Michigan (12.9) now all enter the eligible pool. On non-game days they score 22-27 and lose to bigger news movers. On game days with upsets, the price drop generates 30pt move_scores and they'll dominate hero.
