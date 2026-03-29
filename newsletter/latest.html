@@ -1,45 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Prob — Newsletter Preview</title>
-<style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { background: #080b0f; font-family: 'Courier New', monospace; color: #edf2f7; }
-  .topbar { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: #0d1117; border-bottom: 1px solid #1e2a38; padding: 12px 20px; display: flex; align-items: center; gap: 12px; }
-  .topbar-label { font-size: 11px; color: #8ba3bc; letter-spacing: 0.15em; text-transform: uppercase; flex: 1; }
-  .copy-btn { background: #00e5a0; color: #080b0f; border: none; font-family: 'Courier New', monospace; font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; padding: 8px 20px; cursor: pointer; border-radius: 2px; }
-  .copy-btn:hover { background: #00c990; }
-  .copy-btn.copied { background: #1e2a38; color: #00e5a0; }
-  .subject-line { font-size: 11px; color: #f59e0b; letter-spacing: 0.08em; }
-  .preview-frame { margin-top: 55px; width: 100%; border: none; min-height: calc(100vh - 55px); display: block; }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Prob &mdash; Newsletter Preview</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: #080b0f; font-family: 'Courier New', monospace; }
+    #preview-bar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 9999;
+      background: #0d1117; border-bottom: 2px solid #1e2a38;
+      padding: 10px 20px; display: flex; align-items: center;
+      justify-content: space-between; gap: 12px;
+    }
+    #subject-line {
+      font-size: 12px; color: #8ba3bc; flex: 1; overflow: hidden;
+      text-overflow: ellipsis; white-space: nowrap;
+    }
+    #subject-label {
+      color: #546e85; margin-right: 8px; font-size: 10px;
+      text-transform: uppercase; letter-spacing: 0.15em;
+    }
+    #copy-btn {
+      background: #00e5a0; color: #080b0f; border: none; padding: 9px 18px;
+      font-family: 'Courier New', monospace; font-size: 12px; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer;
+      white-space: nowrap; flex-shrink: 0; transition: opacity 0.15s;
+    }
+    #copy-btn:hover { opacity: 0.85; }
+    #copy-btn:disabled { opacity: 0.6; cursor: default; }
+    #copy-feedback {
+      font-size: 11px; color: #00e5a0; white-space: nowrap;
+      opacity: 0; transition: opacity 0.3s;
+    }
+    #note {
+      font-size: 10px; color: #546e85; white-space: nowrap; flex-shrink: 0;
+    }
+    #email-frame {
+      display: block; width: 100%; border: none;
+      margin-top: 46px; height: calc(100vh - 46px);
+    }
+  </style>
 </head>
 <body>
-<div class="topbar">
-  <div>
-    <div class="topbar-label">Newsletter Preview &mdash; Mar 28, 2026</div>
-    <div class="subject-line">Subject: Lab Notes: We Rewired the Algorithm (Here's What Changed)</div>
+  <div id="preview-bar">
+    <div id="subject-line">
+      <span id="subject-label">Subject</span>Iran war odds just dropped to 8.1%,here's why
+    </div>
+    <span id="copy-feedback">Copied to clipboard!</span>
+    <span id="note">no-footer version &rarr; paste into Beehiiv</span>
+    <button id="copy-btn" onclick="copyHTML()">Copy Email HTML</button>
   </div>
-  <button class="copy-btn" id="copyBtn" onclick="copyEmail()">Copy Email HTML</button>
-</div>
-<iframe class="preview-frame" src="latest-email.html" id="previewFrame"></iframe>
-<script>
-async function copyEmail() {
-  const btn = document.getElementById('copyBtn');
-  try {
-    const resp = await fetch('latest-copy.html');
-    const html = await resp.text();
-    await navigator.clipboard.writeText(html);
-    btn.textContent = 'Copied!';
-    btn.classList.add('copied');
-    setTimeout(() => { btn.textContent = 'Copy Email HTML'; btn.classList.remove('copied'); }, 3000);
-  } catch(e) {
-    btn.textContent = 'Error — try again';
-    console.error(e);
-  }
-}
-</script>
+  <iframe id="email-frame" src="latest-email.html" title="Newsletter Preview"
+          onload="resizeFrame(this)"></iframe>
+  <script>
+    function resizeFrame(f) {
+      try { f.style.height = f.contentDocument.body.scrollHeight + 'px'; }
+      catch(e) {}
+    }
+    function copyHTML() {
+      var btn = document.getElementById('copy-btn');
+      var fb  = document.getElementById('copy-feedback');
+      btn.disabled = true;
+      btn.textContent = 'Fetching...';
+      fetch('latest-copy.html?t=' + Date.now())
+        .then(function(r) {
+          if (!r.ok) throw new Error('HTTP ' + r.status);
+          return r.text();
+        })
+        .then(function(text) {
+          return navigator.clipboard.writeText(text);
+        })
+        .then(function() {
+          btn.textContent = 'Copied!';
+          btn.disabled = false;
+          fb.style.opacity = '1';
+          setTimeout(function() {
+            btn.textContent = 'Copy Email HTML';
+            fb.style.opacity = '0';
+          }, 3000);
+        })
+        .catch(function(err) {
+          btn.textContent = 'Error — retry';
+          btn.disabled = false;
+          console.error('Copy failed:', err);
+          setTimeout(function() { btn.textContent = 'Copy Email HTML'; }, 3000);
+        });
+    }
+  </script>
 </body>
 </html>
