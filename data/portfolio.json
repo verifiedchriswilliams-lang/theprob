@@ -12,7 +12,7 @@
       "ytd_return_pct": 39.6,
       "win_count": 27,
       "loss_count": 0,
-      "open_count": 5,
+      "open_count": 6,
       "start_date": "2026-03-17",
       "last_updated": "2026-03-30",
       "trades": [
@@ -591,6 +591,24 @@
           "exit_prob": 4.3,
           "exit_date": "2026-03-30",
           "pnl": 5.93
+        },
+        {
+          "trade_id": "95282cf7",
+          "market_id": "will-the-us-invade-iran-by-march-31",
+          "question": "Will the U.S. invade Iran by March 31?",
+          "url": "https://polymarket.com/event/will-the-us-invade-iran-by-march-31",
+          "source": "Polymarket",
+          "display_category": "Politics",
+          "entry_prob": 5.3,
+          "direction": "NO",
+          "amount": 100.0,
+          "entry_date": "2026-03-30",
+          "end_date_raw": "2026-03-31T00:00:00Z",
+          "end_date": "Mar 31",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
