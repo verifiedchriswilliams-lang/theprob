@@ -1,15 +1,51 @@
 {
-  "updated": "Mar 30, 2026 \u00b7 12:55 AM ET",
-  "updated_iso": "2026-03-30T05:55:38.654136+00:00",
+  "updated": "Mar 30, 2026 \u00b7 6:56 AM ET",
+  "updated_iso": "2026-03-30T11:56:23.183764+00:00",
   "homepage_count": 3,
   "articles": [
     {
-      "title": "Prediction Markets Break Records as Scrutiny Grows in March",
-      "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTE91ZG43UWxFUlNxRkwyWWViSU9BWmlNdmNETXU4bzF5VmhWajRpdHlPS3lLaFF2V09CeDhPYnJHZVF3SWVNRWRvZzhUVWxnYXlSak0xOHVtSS03V3U0OWtPc0xzVjg2X2NDaXg1aV9Idzktd2ZSM2RBblVuMzhWZw?oc=5",
-      "source": "BeInCrypto",
-      "pub_iso": "2026-03-30T05:45:00+00:00",
+      "title": "Rep. Moulton on regulating prediction markets: Violations should be investigated",
+      "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxONjRxZkhJWWJIUFJPdTNiRFhSVHl4UFFNblpYSkViNXdvd3VES0xFWUt0b2FjN2FVbzBpQ2lzV1pQOXpQNkJMOHRoVGJyallqcXBYTmxZVzR1aTJ3ZDBBUnp4WDVVd1E4YWs2RFNwaDkwb0ZlYlN0VUVGa0ZPN3pWdTJKZTk2RWFxdU9TQTd2d0E5a1h6M3FQcnF1ZGV5NndvS0xkV0xfX1E5bzlLNzRhTzA3WWVMMUczNlE3WmtB?oc=5",
+      "source": "CNBC",
+      "pub_iso": "2026-03-30T11:07:44+00:00",
       "description": "",
-      "summary": "Prediction markets hit new trading volumes and activity levels in March while facing increased regulatory and media attention. The surge in both usage and scrutiny suggests the industry is reaching a tipping point where mainstream adoption and potential crackdowns are happening simultaneously.",
+      "summary": "Rep. Seth Moulton is calling for investigations into potential violations in prediction markets regulation. His push signals growing congressional appetite for cracking down on the wild west era of political betting that's made platforms like Polymarket household names.",
+      "pub_display": "Mar 30"
+    },
+    {
+      "title": "Texas Finally Takes Aim At Prediction Markets",
+      "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOelppeXFZZHpNcDc5YlE4X1hwd1dyNGVaMENrdklZRktYQXBPU1NvN1N6OU93WC04Z2xaWHJFRjNodWw4QTJOaEVRVEFpY2h0ZTNJbW5sNXlqUXNYcDlQOC1sMjlfVkpSN09RSlY0QXJSX0xTYzA4TllpUEFIQTZseTBuLUh3QVI0TDdjLUJ3?oc=5",
+      "source": "Event Horizon | Dustin Gouker",
+      "pub_iso": "2026-03-30T11:03:50+00:00",
+      "description": "",
+      "summary": "Texas regulators are finally cracking down on prediction markets operating in the state. This could force major platforms to restrict Texas users or face legal battles, potentially setting a precedent for how other states handle the booming prediction market industry.",
+      "pub_display": "Mar 30"
+    },
+    {
+      "title": "Analysts Say $200 Oil Is Possible - Prediction Markets Show It\u2019s Not Probable",
+      "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxNYmR0WGdzMk5TQ3FReHF0ekQ1eEI3U1ZmNUV0TlhaOVpXbFdHSU5IYUpaQnBtdG9iTXVHY2c0MWlrcW1JaVBfWEpsRjllYTNqVG1BeEp3NFBaazhDU0FmdU5kVU9YTENUeHhFa202Y3d5NTJQQXdiai10MDNVNUFSQW1JZl9aelloXzRJQXYxb3lJUk9QZC1TSnFXeHRFWTEySk9lU3pRNmxBem5rV2RBajJGU1Nrd9IBuwFBVV95cUxPbzRTbFd4MmhWQW1Sa2puajJGZGtSSTZwQlZ5RVUteTk5X1JubGFHRnpWYVNCcVRLUG84MEphVUdub1VobEVIcDQ3YkNLSG92eEdfRFU3OWZxVjV6ODBOM3BiS2ZCNlFGbVV2cTJaODhJWlI0UDZESFpCSzE1THF6TDF6S2YwcENGSjd3SDRhbjZTdjZGRndVeEtJNVJUOWh6ZndtV25DTld4bnAwQ2NRTy1hcU4tbm16Qkxn?oc=5",
+      "source": "Finance Magnates",
+      "pub_iso": "2026-03-30T10:57:36+00:00",
+      "description": "",
+      "summary": "Oil analysts are floating the possibility of $200 crude while prediction markets price in much lower odds of such an extreme spike. The gap shows either the talking heads are drumming up clicks with doomsday scenarios, or the betting crowd is missing a black swan event that could send energy prices into orbit.",
+      "pub_display": "Mar 30"
+    },
+    {
+      "title": "Sports are 'gateway' for prediction markets as more institutions join in",
+      "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxNdlFHaDI2dXMzaVlqNElid1V5LVZ5Ym9BSkFFM0hYWFZHZzZUOWFNQUNuZGYxd0hwZHBpeXBlQUpodDVucjhwMDNzUXBINDI5WFROY0lWZWtIUXloSHl6WWhMSjRsdzdSZ25jbGt0QUxtRjBUM1U2NzdsRGVnZ2g1NGdqRWt5MURpTWJKRWVXYXJnTnRvazZmM0pOQ0ZaeWE3QXNMdHczZ1AtVjBHQWJHaXFvaUoxaUpY?oc=5",
+      "source": "Yahoo Finance",
+      "pub_iso": "2026-03-30T10:00:47+00:00",
+      "description": "",
+      "summary": "Sports betting is pulling mainstream institutions into prediction markets, with traditional firms using athletic events as their entry point into the broader forecasting space. The institutional influx brings serious capital and legitimacy to prediction markets, which could accelerate adoption for political, economic, and other non-sports betting categories.",
+      "pub_display": "Mar 30"
+    },
+    {
+      "title": "Polymarket trader exploits UFC blunder, turns $676 into $67,000 in under a minute",
+      "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxPejhHQWZPeThSTHdEaC1FelVSWUNsaDBCTTYyZ2l1VjNuVS1NQ2doenY0dlJMS2piMVhFeWVXN0w4ZUJRLTI3cVY0dUhOc1lSczk0azlFSkxqeEttUUQ2MlpkWjJvaUNqYXdER0xMUC1zQ0lpNnpTOEprSEVSdTJ6dE5GajJ1TXFwU3htNzZydnZ5Z01vcWEzQl8zeE5kSnNQTUVZQmFHaEdDM3ZlR2RtM0pPdTBJTG5GTndHR1dvTmpaWUdHMkZJ?oc=5",
+      "source": "CoinDesk",
+      "pub_iso": "2026-03-30T09:43:28+00:00",
+      "description": "",
+      "summary": "A Polymarket trader capitalized on the UFC's accidental early announcement of fight results, parlaying $676 into $67,000 before the market could correct itself. The incident highlights how information asymmetries can create massive arbitrage opportunities in prediction markets, though it also raises questions about whether such wins constitute legitimate trading or exploitation of technical errors.",
       "pub_display": "Mar 30"
     },
     {
@@ -22,36 +58,18 @@
       "pub_display": "Mar 29"
     },
     {
-      "title": "Kalshi Referral Code MASSLIVE1 extended: $10 NBA bonus for Celtics vs. Hornets tonight",
-      "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxQUkxDM1JQbGRZZ05DRVZNZm44VHQzTXFnWnAtcmZCXzNWek9iRC1OTnBlZ3UzZlp3djFkM1lCdXQ3ZnRFeFlKYlQzb3pwUkF1TGhmQk1sR0FmLU1YY3FaS3JHUDlxVE10WEczS0NNYWhOOUJKVHF6T04zU1Facm5yVWFrbkFtTEI2TmF6YUNVbXNld3h4cGl4Q2Z3LWpWbFFCZjByVm1CSEVlYnp3d3p6X1FraG91dVM2bXZ4Q3JtZ1ZpNlZhWE02cA?oc=5",
-      "source": "MassLive",
-      "pub_iso": "2026-03-29T20:55:00+00:00",
+      "title": "Event Wagers Face $143 Million Insider Problem as War Bets Boom",
+      "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxQTUt2eDdOWEV3T1RUVXFnTG10QVNXWXVpTTZvM0xQelI2dDlTSkt5ZnkxaTdkRzJWNEd3ME92WjhVV3ZROU5fVUlxX3czeUhQT2dDd2N4OW1jMGJxWGotVFg0SW5IUjU5Y2JhODZRRkZDT01LMTRfdU9OWGh3azQ0SlI3MFNieTZNWGtZeHk1bmVJTEN5dE95eWlWQmx5cHlzY2dFUzNsRTFCaWFjTzFhajgwRQ?oc=5",
+      "source": "Bloomberg.com",
+      "pub_iso": "2026-03-29T13:00:00+00:00",
       "description": "",
-      "summary": "Kalshi is extending their MASSLIVE1 referral promotion with a $10 bonus for tonight's Celtics vs. Hornets game. The extension signals strong user acquisition competition among prediction platforms, especially around high-visibility NBA matchups that drive trading volume.",
-      "pub_display": "Mar 29"
-    },
-    {
-      "title": "Prediction Markets Should Be Regulated",
-      "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxPM2FnTjROTGw5eDJmQTRPank5eXptYmJYYzIySXdBc1hLY0xyUGo1Q1Z6SGlFT0RNc1piR1ZESHpYQVdsd25YdTc5ZEk4UnpESTJ3Z1M0bVhqZjVHR0cySnhVeURSLXphUEFuUUVaLU5WdVhncFZuQTNBZVJ4dmc5Vm1n?oc=5",
-      "source": "bcheights.com",
-      "pub_iso": "2026-03-29T19:25:28+00:00",
-      "description": "",
-      "summary": "A new push for prediction market regulation is gaining momentum as the industry grows beyond its scrappy startup roots. Smart money knows that clear rules beat regulatory limbo, and proper oversight could unlock institutional capital that's been sitting on the sidelines.",
-      "pub_display": "Mar 29"
-    },
-    {
-      "title": "Duke vs UConn Predictions: Kalshi Odds and Markets",
-      "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxQWlZITkJXWHY1WkZnNVZqN29JV2Q4cVZwUVJ1R01FYlpTb0dLODd0OGRNRDJUTzJ0bTJRYUhJb1JQbTYteUFLWE9aV1lTOEp2Q25fbWxGV2QxLXpjWXdKcEtPaFZFNjd3d0o5VmpCVzZoZFF5RVk0Z21CVnZsdWtwZzhzVmd6a2dSVXYxZkVkbmlKUzFDdWgzdjZ3?oc=5",
-      "source": "Covers.com",
-      "pub_iso": "2026-03-29T14:05:00+00:00",
-      "description": "",
-      "summary": "Duke faces UConn in what appears to be a high-profile matchup with active betting markets on Kalshi showing live odds and prediction data. The game likely represents a significant liquidity opportunity for prediction market traders, especially given both programs' national followings and tournament implications.",
+      "summary": "Prediction markets are grappling with a massive $143 million insider trading problem as geopolitical conflict bets surge in popularity. The scandal threatens to undermine trust in event wagering platforms just as they're gaining mainstream adoption and regulatory acceptance.",
       "pub_display": "Mar 29"
     },
     {
       "title": "Pints meet prop bets: Polymarket\u2019s \u201cSituation Room\u201d pop-up bar in DC",
       "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxPdWVMUGFXd210S0lTMDgwYlRjNEc4WW94cHFFdlk0YW81TXh2SlJPeFdnS2N3eFJFRkctc3FteUlXTDJRQktKWHltUmZsa2JXbkczOFNjcERRS3lXamZ0MHZmVDlXT1B5cjZ3cDREbzZ3TDRMa3NLRzRWQ2JwTGVQSTdrLWFsa0ZzS1BNUmxCSnRpVG8tQ0s2aXp5RXcyc3k1ejlMSjlJWlI?oc=5",
-      "source": "Ars Technica",
+      "source": "arstechnica.com",
       "pub_iso": "2026-03-29T11:35:10+00:00",
       "description": "",
       "summary": "Polymarket opened a temporary \"Situation Room\" bar in Washington DC, mixing drinks with live prediction market betting during what's likely election coverage. The move signals prediction markets are pushing into mainstream social spaces, turning political betting from a niche online activity into a real-world spectator sport.",
@@ -67,33 +85,6 @@
       "pub_display": "Mar 29"
     },
     {
-      "title": "Opinion: Congress can rein in out-of-control prediction markets",
-      "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxQZkYxbjR1OFFzbXJ3QjYxMUFFM2JwNkJWN1ZQQkhqcVY4UmRQdHNMRzl5dEpYeU9xaG9Ua3pheTVJcm85V2IwN2pnVmpJV0FBVWJaTXVuZVh4U3ZsYUV2Ry1Rdk1HVUp1cEZHWlhucVJ1MEdJX3RlYl9yVVFHMjhUQ1R5Nzg1dEhzak5CTQ?oc=5",
-      "source": "Deseret News",
-      "pub_iso": "2026-03-29T03:00:00+00:00",
-      "description": "",
-      "summary": "Someone thinks Congress should step in to regulate prediction markets that have gotten too wild for comfort. If lawmakers actually act, it could kill the fun stuff like election betting and force platforms to stick to boring economic indicators that nobody wants to trade.",
-      "pub_display": "Mar 29"
-    },
-    {
-      "title": "Washington sues Kalshi as states ramp up legal pressure against prediction markets",
-      "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxNcGREc0ptR0NUOW05amRKZTZxUkJGU1VENXQ4bGl1cndMSVlXcEE2SUh1UGxBdHlMLXNFRGs1amtXMnA2blpzN0hrZjdfVzItYlJSZklRekxReGtOdHh1ZmtPN2dEMTFMako1bWI5Q2FPcmFKdk51VHR5X3Q0Nlk0NzhLdUppWFNvSFhkd3ZZa3dvMnZJQVc0eUFtRm15VURTVW5md1ZLYW9aUUctVlotcDFwT0JFTHFIQ0lPSzJOSHprMDA?oc=5",
-      "source": "CoinDesk",
-      "pub_iso": "2026-03-28T21:17:39+00:00",
-      "description": "",
-      "summary": "Washington state filed a lawsuit against Kalshi, joining a growing wave of state-level legal challenges targeting prediction markets. The coordinated state pushback could force platforms to navigate a patchwork of conflicting regulations, potentially limiting where Americans can legally bet on political and economic outcomes.",
-      "pub_display": "Mar 28"
-    },
-    {
-      "title": "Dan Patrick adds data centers, prediction markets and THC to Senate priorities",
-      "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxQaTFWT3BCWEtnbUpxWDVxOWhvYzJDQ2V3QjRIS2EtUTkwdzl4bXM1dHRHVkdZWGVuLWVaQzNjTFdzVVluQmZCNzdEUllGclhQU2VUX3JQbFc4VERNMFBQeWhZQVF0NE9ERFdrN1FoME9PWVIwZ0NfU05fMlVKOVNVZnhVSjFoVDJhQWlUMGxNRDlITTEzN2pOc3VPWEVwM09jRl9zeFhQRFZxTGs?oc=5",
-      "source": "San Antonio Report",
-      "pub_iso": "2026-03-28T19:00:00+00:00",
-      "description": "",
-      "summary": "Texas Lieutenant Governor Dan Patrick has announced that data centers, prediction markets, and THC legislation will be among his top priorities for the upcoming Senate session. The prediction markets inclusion signals growing state-level acceptance of political betting platforms, which could accelerate regulatory clarity and expansion opportunities across other red states.",
-      "pub_display": "Mar 28"
-    },
-    {
       "title": "The failures of prediction markets are predictable",
       "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxPRFMxaTZmSnVxaGNrX19oTFVpdUM5UlotTWdYenB1NDVqN3NtRk9oUjZ1NmJ5dlotZnFjRlRsQXpMN0hVc0M4ckhjbkpNMGE0NmdocGx1OEpKWXJLNTgyM2lxV0tLXzcwRFUyYUxWVmx6ZUZYaG9nWlhJZEl4cmFuWWZnano?oc=5",
       "source": "Financial Times",
@@ -101,6 +92,15 @@
       "description": "",
       "summary": "Prediction markets consistently stumble over the same obstacles: thin liquidity, manipulation attempts, regulatory uncertainty, and the eternal struggle between accuracy and popularity. These recurring failures reveal systematic weaknesses that smart bettors can exploit and market operators must finally address if they want to scale beyond niche curiosities.",
       "pub_display": "Mar 28"
+    },
+    {
+      "title": "Iowa vs Illinois Predictions: Kalshi Odds and Markets",
+      "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxNZEVfWmlCUFp4MTc4TXprOEl6dmdCd204UEJKVzllcTl2dkxLRV9zamJ3QjV0cUdiRExlbnNGYmV0M2t0eFpzZEpqVzBnXzV5MEJLaTNma29lOFJ0djUwZWdlXzlmd2hmTTNKUmhtQ2IzcXVEemtqZklFUG5iNU9fdUVpMFFvUkV5MWMtQUZ1akFPUVQxWmJXNjhMcVZNQQ?oc=5",
+      "source": "Covers.com",
+      "pub_iso": "2026-03-27T22:12:00+00:00",
+      "description": "",
+      "summary": "Kalshi's odds are pricing the Iowa vs Illinois matchup, giving bettors a regulated way to wager on college football through prediction markets. The game represents another test of whether legal prediction platforms can capture market share from traditional sportsbooks by offering cleaner interfaces and potentially better odds.",
+      "pub_display": "Mar 27"
     },
     {
       "title": "Kalshi Secures License to Offer Margin Trading to Pros",
