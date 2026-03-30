@@ -7,14 +7,14 @@
       "name": "The Crowd",
       "strategy": "Follow consensus: YES when prob \u226565%, NO when prob \u226435%",
       "thesis": "Smart money is already priced in. Ride the conviction.",
-      "current_balance": 1384.3,
-      "total_pnl": 384.3,
-      "ytd_return_pct": 38.4,
-      "win_count": 25,
+      "current_balance": 1390.57,
+      "total_pnl": 390.57,
+      "ytd_return_pct": 39.1,
+      "win_count": 26,
       "loss_count": 0,
-      "open_count": 7,
+      "open_count": 6,
       "start_date": "2026-03-17",
-      "last_updated": "2026-03-29",
+      "last_updated": "2026-03-30",
       "trades": [
         {
           "trade_id": "ea14c291",
@@ -533,10 +533,10 @@
           "entry_date": "2026-03-28",
           "end_date_raw": "2026-03-31T00:00:00Z",
           "end_date": "Mar 31",
-          "status": "open",
-          "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "status": "closed",
+          "exit_prob": 4.2,
+          "exit_date": "2026-03-30",
+          "pnl": 6.27
         },
         {
           "trade_id": "f85fde9b",
@@ -598,14 +598,14 @@
       "name": "The Contrarian",
       "strategy": "Fade longshots: always NO when crowd says \u226430%",
       "thesis": "Crowds overprice long shots. Sell the overpriced tickets.",
-      "current_balance": 1020.96,
-      "total_pnl": 20.96,
-      "ytd_return_pct": 2.1,
-      "win_count": 3,
+      "current_balance": 1027.23,
+      "total_pnl": 27.23,
+      "ytd_return_pct": 2.7,
+      "win_count": 4,
       "loss_count": 0,
-      "open_count": 3,
+      "open_count": 2,
       "start_date": "2026-03-17",
-      "last_updated": "2026-03-29",
+      "last_updated": "2026-03-30",
       "trades": [
         {
           "trade_id": "18b00e62",
@@ -710,10 +710,10 @@
           "entry_date": "2026-03-28",
           "end_date_raw": "2026-03-31T00:00:00Z",
           "end_date": "Mar 31",
-          "status": "open",
-          "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "status": "closed",
+          "exit_prob": 4.2,
+          "exit_date": "2026-03-30",
+          "pnl": 6.27
         }
       ]
     },
@@ -728,7 +728,7 @@
       "loss_count": 0,
       "open_count": 2,
       "start_date": "2026-03-17",
-      "last_updated": "2026-03-29",
+      "last_updated": "2026-03-30",
       "trades": [
         {
           "trade_id": "d19bb1c5",
