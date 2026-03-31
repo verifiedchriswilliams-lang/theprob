@@ -7,14 +7,14 @@
       "name": "The Crowd",
       "strategy": "Follow consensus: YES when prob \u226565%, NO when prob \u226435%",
       "thesis": "Smart money is already priced in. Ride the conviction.",
-      "current_balance": 1423.31,
-      "total_pnl": 423.31,
-      "ytd_return_pct": 42.3,
-      "win_count": 29,
+      "current_balance": 1429.13,
+      "total_pnl": 429.13,
+      "ytd_return_pct": 42.9,
+      "win_count": 30,
       "loss_count": 0,
       "open_count": 5,
       "start_date": "2026-03-17",
-      "last_updated": "2026-03-30",
+      "last_updated": "2026-03-31",
       "trades": [
         {
           "trade_id": "ea14c291",
@@ -623,6 +623,24 @@
           "entry_date": "2026-03-30",
           "end_date_raw": "2026-03-31T00:00:00Z",
           "end_date": "Mar 31",
+          "status": "closed",
+          "exit_prob": 0.1,
+          "exit_date": "2026-03-31",
+          "pnl": 5.82
+        },
+        {
+          "trade_id": "5603bf99",
+          "market_id": "will-alfonso-lpez-chau-win-the-2026-peruvian-presidential-election",
+          "question": "Will Alfonso L\u00f3pez Chau win the 2026 Peruvian presidential election?",
+          "url": "https://polymarket.com/event/peru-presidential-election-winner",
+          "source": "Polymarket",
+          "display_category": "Politics",
+          "entry_prob": 10.5,
+          "direction": "NO",
+          "amount": 100.0,
+          "entry_date": "2026-03-31",
+          "end_date_raw": "2026-04-12T00:00:00Z",
+          "end_date": "Apr 12",
           "status": "open",
           "exit_prob": null,
           "exit_date": null,
@@ -639,9 +657,9 @@
       "ytd_return_pct": 6.5,
       "win_count": 5,
       "loss_count": 0,
-      "open_count": 1,
+      "open_count": 2,
       "start_date": "2026-03-17",
-      "last_updated": "2026-03-30",
+      "last_updated": "2026-03-31",
       "trades": [
         {
           "trade_id": "18b00e62",
@@ -750,6 +768,24 @@
           "exit_prob": 4.2,
           "exit_date": "2026-03-30",
           "pnl": 6.27
+        },
+        {
+          "trade_id": "e37ed889",
+          "market_id": "will-connecticut-win-the-2026-ncaa-tournament",
+          "question": "Will Connecticut win the 2026 NCAA Tournament?",
+          "url": "https://polymarket.com/event/2026-ncaa-tournament-winner",
+          "source": "Polymarket",
+          "display_category": "Sports",
+          "entry_prob": 13.5,
+          "direction": "NO",
+          "amount": 100.0,
+          "entry_date": "2026-03-31",
+          "end_date_raw": "2026-04-04T00:00:00Z",
+          "end_date": "Apr 4",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
@@ -764,7 +800,7 @@
       "loss_count": 0,
       "open_count": 2,
       "start_date": "2026-03-17",
-      "last_updated": "2026-03-30",
+      "last_updated": "2026-03-31",
       "trades": [
         {
           "trade_id": "d19bb1c5",
