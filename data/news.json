@@ -1,15 +1,42 @@
 {
-  "updated": "Mar 31, 2026 \u00b7 6:40 PM ET",
-  "updated_iso": "2026-03-31T23:40:16.700197+00:00",
+  "updated": "Apr 1, 2026 \u00b7 12:51 AM ET",
+  "updated_iso": "2026-04-01T05:51:12.937159+00:00",
   "homepage_count": 3,
   "articles": [
     {
-      "title": "Jamie Dimon: JPMorgan could offer prediction market services to investors",
-      "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE9pLUNPcEpzUkliWi1feVdyMFY2MmtKZEFzV3Ixa2d1Y18zN1FEdXFpT2VDWnlEOWhMVWxwZTJ4bGx0SC14SHpJZjNZM29CNmlla2d0ZWhiSlRoNm5wQmRDQjZuSldvT1VBaDBoZTQ4RkRTV01lMUVIZg?oc=5",
-      "source": "CBS News",
-      "pub_iso": "2026-03-31T21:57:50+00:00",
+      "title": "Jamie Dimon says JPMorgan could do prediction markets \u2014 with big guardrails",
+      "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxQNVlueGVUNk0xb0lwaGNHbUZjdUVJanpuNjlSUHRaUlVjLVBpUnBleGJHczNZemJ4b0hXSlFvMU50c0FOdnBQNmRQR3JBRmRJMEdzVkFPN0dEcXlCaUdqTUpnNVZrTGZYTXZZT2psQVdObHgzb2U3MFlua3puTXZPWHNuZ3IxbGtnb2RSUTgyQTUzQWg2eVVDbmt0UVI3Y0NzVl9sUm4wTEV2b2lQ?oc=5",
+      "source": "Business Insider",
+      "pub_iso": "2026-04-01T05:21:00+00:00",
       "description": "",
-      "summary": "JPMorgan CEO Jamie Dimon says the bank might start offering prediction market services to its investment clients. If America's largest bank enters the space, it would legitimize prediction markets for institutional investors and potentially funnel billions in new capital into political and economic forecasting.",
+      "summary": "JPMorgan CEO Jamie Dimon told investors the bank could enter prediction markets if proper regulatory guardrails existed. The world's largest bank backing prediction markets would legitimize the industry overnight and potentially bring institutional money flooding in.",
+      "pub_display": "Apr 1"
+    },
+    {
+      "title": "As Prediction Markets Grow, Lawmakers and the Public Race to Keep Up",
+      "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxPWTN6b0tMeHFKT3B4M1BMdEt4ZEVTTlQtNUJEaFVUTktPRG1mWkE3ZGNrLXB0eWp3aFRBUElESkxEb3VJUkwwaGNWbFN0V0JScGlsMkp6cWdfYXUtVGV2SEozNEV4MnNrOTNQb0pPSXk4aFlUcVNZekdOeFVnMGp5eXUyTE05YW9Yb0pYTHpLWVQ?oc=5",
+      "source": "WTTW",
+      "pub_iso": "2026-04-01T00:39:00+00:00",
+      "description": "",
+      "summary": "Prediction markets are expanding faster than regulators can write rules, creating a messy patchwork of oversight as lawmakers scramble to understand how these platforms actually work. The regulatory confusion creates both opportunity and risk for bettors, who benefit from current gaps but face potential crackdowns as politicians figure out whether they're looking at gambling, financial markets, or something entirely new.",
+      "pub_display": "Apr 1"
+    },
+    {
+      "title": "CFTC Top Cop Warns Against Insider Trading on Prediction Markets",
+      "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxOeUlXZDJNeXhaUy05bFVtZjU0WnJpQjhORTdsZzgzTWVoTHdWaFpZTjFXSS1QTHgyQzRtUG1xdHVQX0tBc0FCbDRqQ00zd2ZpNjhOVzdVVF85WlRLWm11U1RTck1Bc2VyU3I1clYzUmRkQjEyX3IxeG9CWkZmVngzREhwWnBYVGVZal8weGZUVjYwMTdReGNpTTRRYnhXdkNXZGxRVDZJSHFOS2U4UzZlR1BSZkNBQQ?oc=5",
+      "source": "Bloomberg.com",
+      "pub_iso": "2026-03-31T23:55:06+00:00",
+      "description": "",
+      "summary": "The CFTC's enforcement director issued a warning about insider trading violations in prediction markets, signaling increased regulatory scrutiny of betting platforms. This puts prediction market operators and big bettors on notice that the same securities laws governing traditional markets now apply to political and event betting.",
+      "pub_display": "Mar 31"
+    },
+    {
+      "title": "wangpaifeixingyuan",
+      "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE5GT1d6bVJrSDF2RlJILTB5eG5qNkxVVFhDZ2lEdDdzNHgyY0FlZGNyRllKQzZaV1ZaN0V6c2d3ZEgzaFZuU3JwdXpaclFkM1RaZkk1Yw?oc=5",
+      "source": "Polymarket",
+      "pub_iso": "2026-03-31T22:52:58+00:00",
+      "description": "",
+      "summary": "Chinese space program officials are likely discussing or announcing new astronaut selection criteria or missions, given \"wangpaifeixingyuan\" roughly translates to \"ace pilot astronaut\" or \"elite flying personnel.\" Space race developments create betting opportunities on mission timelines, crew selections, and geopolitical competition between China and other space powers.",
       "pub_display": "Mar 31"
     },
     {
@@ -19,15 +46,6 @@
       "pub_iso": "2026-03-31T21:12:00+00:00",
       "description": "",
       "summary": "The Department of Justice is investigating suspiciously well-timed bets on prediction markets related to Nicol\u00e1s Maduro's potential capture and Iranian military strikes, suggesting possible insider trading concerns. This scrutiny could trigger new regulatory crackdowns on prediction markets, particularly around geopolitical events where government officials might have advance knowledge.",
-      "pub_display": "Mar 31"
-    },
-    {
-      "title": "Most Americans Say Prediction Market Sports Betting Could Increase Harm",
-      "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxOZ3ZHcEZ0M09PSWhMYURTZXBQdUtqNGQ1dmYxYmc2Q3FMZ1kxR2wyVkVDRWpZeGZKYmFFbmQtRDZZOF9NdUxjaURvMUJNMEFYUW42Ukx0R2hCZThpeFh0bGJsUVo2cFdRRWlULXhFaWduMjJPSm1lbExxcVh0TzBsRkNBV25IYzBIYml5a2RRZWxNVWZqVEp2UVo2WC1IR0lDTjdTS1Zqa25kU21SeHZMemJXTzAwY0tmcHNTNmozSExaZ01MbWdlTVRCUUo?oc=5",
-      "source": "Morningstar",
-      "pub_iso": "2026-03-31T19:55:00+00:00",
-      "description": "",
-      "summary": "A new survey shows most Americans believe prediction market-style sports betting will cause more gambling harm than traditional wagering. This perception could fuel regulatory pushback against prediction markets just as they're gaining mainstream acceptance, potentially limiting their expansion beyond politics into sports and entertainment.",
       "pub_display": "Mar 31"
     },
     {
@@ -42,46 +60,19 @@
     {
       "title": "How polling failures, gambling legalization and political gridlock paved the way for the explosive rise of prediction markets",
       "url": "https://news.google.com/rss/articles/CBMi8AFBVV95cUxQNzdYS3JkVXZVUnBIRGZVdDlhblhBRXFDRVNSMm0xZDNUMHJkVU5UYzU3d1pJOEVTRjRWUlFWUHJMMWIzQ3Z5WVRndndYQjFuWHRIalpzQXlhQlRtVGhNUUwwLXJRZnpDQy1IUGRWNkJaZTFaWTV0bTB5YUJQRk42a0dydERPUVRxQVBiZzVQbUxtS2JQX3RtOW1zeWJtbDRRbUdPSGRxSHJoQ281U0hBMFJSZ3JYRlBpQ1g3bjZCdE9SaFhXUk9ZZHpObTJSOGVJMm9JNlB1aXduTGVKTG5IeGhoaElpM0ZpY1VobDMwRGo?oc=5",
-      "source": "theconversation.com",
+      "source": "The Conversation",
       "pub_iso": "2026-03-31T12:44:56+00:00",
       "description": "",
       "summary": "Prediction markets exploded into mainstream consciousness because traditional polling became unreliable, sports betting went legal nationwide, and Washington gridlock made political outcomes feel like pure coin flips. The convergence created perfect conditions for Americans to abandon trust in experts and start putting real money behind their political hunches instead.",
       "pub_display": "Mar 31"
     },
     {
-      "title": "Prediction-market odds of a white-collar job wipeout have tripled since a bearish report went viral",
-      "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxNTWJNeFJfXzQ1WFBZN1pqTHdUT0tVZDFjZkhjR1NCREd3SUxPZFFiVU5FTEtTcjBxTWMybVZsWU81UXBTNm1qenZxcmFxYnBmZWs3dW1ST0IyN3ZPdHJ2SGNpTlVKZXNPeWxYTURRb2RweUxrOTlLUUNJdWNBTjM0MXQzNXprNnVCOUZLQmVFLWxDVUpKU2loOXZXeVZpRURTR2pIcTZCOUdhTk0?oc=5",
-      "source": "businessinsider.com",
-      "pub_iso": "2026-03-31T12:41:00+00:00",
+      "title": "As Utah battles Kalshi in court, Moore and Curtis look to regulate prediction markets in Congress",
+      "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxQTWVnSWYyNklCNzdHVFlxYmtsZGpFT0NHeW96QkxodUxTeFM0NW1STUxkZjFXSGZtQ1l4alF3Z3JZSGk1WjV4cnN5Z2MzT2VZQnhPaDFSa2s1NThXRU5sUVYtMXdWWkxkVS1MUHJCek5hYlNPUnNJRTZ4Nk9GclIteUx4d2R0a1k?oc=5",
+      "source": "The Salt Lake Tribune",
+      "pub_iso": "2026-03-31T12:00:59+00:00",
       "description": "",
-      "summary": "A viral bearish report has spooked prediction markets, with odds of massive white-collar job losses jumping 3x from their previous levels. The swing shows how quickly market sentiment can shift when a single credible analysis hits the zeitgeist, creating potential arbitrage opportunities for contrarian bettors who think the panic is overblown.",
-      "pub_display": "Mar 31"
-    },
-    {
-      "title": "Prediction markets backlash builds possible stormcloud for 2027",
-      "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxPdGdWRUZSemhjYnhaZXhQdVQzaGZLZlItaFFtb2JwVWg4ZjdqMW5RXzl6UHk3WjNjX1Q4YjBtWnFQMDRidk9kR095SUJsbWVUX3cxbjhrdEhjMTc2ODZFS2NCN05CWnk0cTdLeU5SS1BqemdTMWpreURsY0lRTWdrNnNvWWt5T2xqQnktTUkyR08yem9UekdJWkZ2MXFodF9XWWhiQm9RVXNJbVZGZzRyS3o5dw?oc=5",
-      "source": "CoinDesk",
-      "pub_iso": "2026-03-31T12:03:24+00:00",
-      "description": "",
-      "summary": "Prediction markets are facing growing criticism and potential regulatory pushback that could culminate in serious restrictions by 2027. The backlash threatens to kill the industry's momentum just as it's gaining mainstream adoption, potentially forcing platforms offshore or underground.",
-      "pub_display": "Mar 31"
-    },
-    {
-      "title": "Inside Prediction Markets' Battle Royale: Kalshi Vs. Polymarket Vs. Congress/States",
-      "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxNSWUzY2xfRmlBVWJxcGNqUk1ZNC12cE1NNEFINmdoUEI5SjdvTnFPSmtwMUM3c29LWDBZcWFjcHlJaHFmTlBheG15LTBvV3J4cUo3Z3cyQmcwWjhyMG4xS3RidFJtRUhHLU5ydXVfZFZURFJGSjN1SC1iNGVqV0YwOHJOVWkzQQ?oc=5",
-      "source": "Event Horizon | Dustin Gouker",
-      "pub_iso": "2026-03-31T11:03:52+00:00",
-      "description": "",
-      "summary": "The prediction markets space is heating up as Kalshi and Polymarket face off while navigating a maze of congressional scrutiny and state-level regulations. This regulatory battle will determine which platforms survive, what markets Americans can actually bet on, and whether prediction markets become mainstream or get strangled in red tape.",
-      "pub_display": "Mar 31"
-    },
-    {
-      "title": "Watch Prediction Markets Shouldn't Include Everything: Smarkets",
-      "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxPZWJLa2pndTIxRjdYWjNrVUFidDU5eXZlcVNNN3g2d3gxWmZ0cEdZajFPOGdWaHdkYUVjcXZJZ0pfZVY0X1A4RGNXTmZzeE9SdzAxekNDRlpBM3pjb19JbjMwUXdHOVJzVWdlWnJpcXlQeHprdmlGMkk4bGdXaWJjcUdpZ2tFNFdVRzdQWEZwbUZUQkJtTG9GT3lmOVpHVFY3WFNWMDViZUpqV3VT?oc=5",
-      "source": "Bloomberg.com",
-      "pub_iso": "2026-03-31T00:00:00+00:00",
-      "description": "",
-      "summary": "Smarkets is arguing that prediction markets work best when they stick to clearly defined, verifiable events rather than expanding into every possible topic under the sun. This matters because overreach into subjective or unmeasurable outcomes could undermine the credibility and accuracy that makes prediction markets valuable in the first place.",
+      "summary": "Utah is fighting Kalshi in court while Representatives Moore and Curtis push new congressional legislation to regulate prediction markets. The dual pressure from state litigation and federal lawmakers signals prediction markets are hitting a regulatory inflection point that could reshape which platforms survive and what Americans can bet on.",
       "pub_display": "Mar 31"
     },
     {
@@ -103,12 +94,21 @@
       "pub_display": "Mar 30"
     },
     {
-      "title": "NFL asks prediction market operators to refrain from 'objectionable bets'",
-      "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxPdzZqeE5QRnE0TnJ2bXFSZmxwOEdCMTF6MmJkN0Q0X3V2a29tVjZtUkQyNURhWDRCQUVyTG9IbW5qck14NFRvMlV3SGZ5d3ZzSm5xZk1IY2xFWlhxaHJZR05nemhET3huMmRwa2J6TzJabG1sSzVUQ2YzVUtSdTRST2U4OHpzbGFTLWZUWXcxQnpIUWJtNmtFcjVPUC1NWDJ20gGmAUFVX3lxTE8tSlk1dzYxN1A4TllNVGlWOEYtd3ktTjFmeUhaNHQ3QnF3S05UeXRITjdLSHdEdGxvQVQ5VEgySV9tTkUyNnYwTm80ckJtZ0ttYm5jcHktSmEwVl9zQWxrNUFOVXRyc29OdGFOMEFvNnZ3WGI2UVZ3OC1kVlBqcndIaGRFTGZkQ0NiY0JPc0ZzaXlnTE1MY3NQZUV6RkpnM3paMkMySlE?oc=5",
-      "source": "CNBC",
-      "pub_iso": "2026-03-30T17:41:42+00:00",
+      "title": "Kalshi is aggressively advertising on TikTok, seemingly targeting young people while promising a \u201cmoney hack\u201d",
+      "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxNb3lraXhyOWtHdkdHWWJYZm5ZcVRhdVg3Y2dpbUxoSjR4Wi1qa0xQMG95VzlvZ0lzZ3A1YkdfLXI5WUJIX2pwUkhSa1pCS3JFcG1TQVQ2WHZTbEx2SlNwZ3ozUDZXcEViR3NvWUJDU1lkbzFYS1plMHVuRVNFNy0yV0ppVzBHVVBVT01wZTVqbXljNTNKTmQ5OER5NTBOd190OG9Lb2J1bG8ta2hJcE96eHotanZHcGp5ZmMtN2RDX3E?oc=5",
+      "source": "Media Matters for America",
+      "pub_iso": "2026-03-30T14:38:43+00:00",
       "description": "",
-      "summary": "The NFL is pushing prediction market operators to avoid offering bets on scenarios that could damage the league's reputation or encourage problematic behavior. This signals growing tension between sports leagues trying to protect their brand and the prediction market industry's push to offer comprehensive betting options on everything.",
+      "summary": "Kalshi is flooding TikTok with ads that frame prediction markets as a \"money hack\" to young users who probably don't understand the risks. This aggressive youth marketing strategy could backfire spectacularly if regulators decide these ads cross the line into promoting gambling to minors.",
+      "pub_display": "Mar 30"
+    },
+    {
+      "title": "Polymarket trader exploits UFC blunder, turns $676 into $67,000 in under a minute",
+      "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxPejhHQWZPeThSTHdEaC1FelVSWUNsaDBCTTYyZ2l1VjNuVS1NQ2doenY0dlJMS2piMVhFeWVXN0w4ZUJRLTI3cVY0dUhOc1lSczk0azlFSkxqeEttUUQ2MlpkWjJvaUNqYXdER0xMUC1zQ0lpNnpTOEprSEVSdTJ6dE5GajJ1TXFwU3htNzZydnZ5Z01vcWEzQl8zeE5kSnNQTUVZQmFHaEdDM3ZlR2RtM0pPdTBJTG5GTndHR1dvTmpaWUdHMkZJ?oc=5",
+      "source": "CoinDesk",
+      "pub_iso": "2026-03-30T09:43:28+00:00",
+      "description": "",
+      "summary": "A Polymarket trader capitalized on UFC's incorrect announcement of a fight result, flipping $676 into $67,000 before the platform could correct its error. The incident highlights how traditional sportsbooks' operational mistakes create massive arbitrage opportunities for alert prediction market traders who can move faster than centralized betting platforms.",
       "pub_display": "Mar 30"
     }
   ]
