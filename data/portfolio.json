@@ -7,14 +7,14 @@
       "name": "The Crowd",
       "strategy": "Follow consensus: YES when prob \u226565%, NO when prob \u226435%",
       "thesis": "Smart money is already priced in. Ride the conviction.",
-      "current_balance": 1526.27,
-      "total_pnl": 526.27,
-      "ytd_return_pct": 52.6,
-      "win_count": 37,
+      "current_balance": 1532.99,
+      "total_pnl": 532.99,
+      "ytd_return_pct": 53.3,
+      "win_count": 38,
       "loss_count": 0,
-      "open_count": 9,
+      "open_count": 8,
       "start_date": "2026-03-17",
-      "last_updated": "2026-04-01",
+      "last_updated": "2026-04-02",
       "trades": [
         {
           "trade_id": "ea14c291",
@@ -839,10 +839,10 @@
           "entry_date": "2026-04-01",
           "end_date_raw": "2026-04-08T14:00:00Z",
           "end_date": "Apr 8",
-          "status": "open",
-          "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "status": "closed",
+          "exit_prob": 0.1,
+          "exit_date": "2026-04-02",
+          "pnl": 6.72
         }
       ]
     },
@@ -857,7 +857,7 @@
       "loss_count": 0,
       "open_count": 7,
       "start_date": "2026-03-17",
-      "last_updated": "2026-04-01",
+      "last_updated": "2026-04-02",
       "trades": [
         {
           "trade_id": "18b00e62",
@@ -1106,7 +1106,7 @@
       "loss_count": 0,
       "open_count": 2,
       "start_date": "2026-03-17",
-      "last_updated": "2026-04-01",
+      "last_updated": "2026-04-02",
       "trades": [
         {
           "trade_id": "d19bb1c5",
