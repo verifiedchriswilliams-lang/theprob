@@ -12,7 +12,7 @@
       "ytd_return_pct": 35.0,
       "win_count": 40,
       "loss_count": 2,
-      "open_count": 9,
+      "open_count": 10,
       "start_date": "2026-03-17",
       "last_updated": "2026-04-03",
       "trades": [
@@ -933,6 +933,24 @@
           "exit_prob": 100.0,
           "exit_date": "2026-04-03",
           "pnl": 7.53
+        },
+        {
+          "trade_id": "73e8f5af",
+          "market_id": "KXBONDIOUT-26APR16",
+          "question": "When will Pam Bondi depart as Attorney General?: Will Pam Bondi leaves as Attorney General before Apr 16, 2026?",
+          "url": "https://kalshi.com/markets/kxbondiout",
+          "source": "Kalshi",
+          "display_category": "Politics",
+          "entry_prob": 73.5,
+          "direction": "YES",
+          "amount": 100.0,
+          "entry_date": "2026-04-03",
+          "end_date_raw": "2026-04-16T03:59:00Z",
+          "end_date": "Apr 16",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
