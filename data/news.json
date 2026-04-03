@@ -1,15 +1,24 @@
 {
-  "updated": "Apr 3, 2026 \u00b7 12:29 AM ET",
-  "updated_iso": "2026-04-03T05:29:11.042749+00:00",
+  "updated": "Apr 3, 2026 \u00b7 6:41 AM ET",
+  "updated_iso": "2026-04-03T11:41:07.974023+00:00",
   "homepage_count": 3,
   "articles": [
     {
-      "title": "Prediction markets: the hunt for the new \u2018dumb money\u2019",
-      "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE9PSFBSZElfQ01LT0VxeXgwOVhqemdubzlyTzhTTm5ReVRabmNEbUVBckhtN1VDUHMyeWFiNUExR3BhSmpHMldwWTZCUVpQOGJGd0tFdkdNNG1RX0dVT0w0NVZvQ1lSdHZCcmo3S0dtWXc?oc=5",
-      "source": "Financial Times",
-      "pub_iso": "2026-04-03T04:01:21+00:00",
+      "title": "SCOTUS strikes down Trump's Birthright Citizenship EO? Pr...",
+      "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxNcTVXcmtXY3Q3dUlhOURNN2JtZ2F4Qy1aTDBkTGRFcndMWnFPeU9sN2xhNHdfUGJYcGtfVU9FTDUyazE4MXl0UWFGOV9nM1hmUWZ6eGQ0SUJXdFA3VExzcWswRkRHR0RYOEh3WlRrd3g4VHA3bnBST2JJTWxKQlpwQnF3TEpxbmdO?oc=5",
+      "source": "Polymarket",
+      "pub_iso": "2026-04-03T06:08:00+00:00",
       "description": "",
-      "summary": "Prediction markets are racing to identify and capture the next wave of uninformed bettors who consistently make poor wagers, following the playbook that made sports betting operators billions. Smart money always needs dumb money to feed on, and whoever finds the freshest supply of overconfident amateurs willing to bet against market consensus will dominate the next phase of prediction market growth.",
+      "summary": "SCOTUS appears poised to strike down Trump's executive order attempting to end birthright citizenship, based on prediction market movements. This creates immediate betting opportunities on constitutional challenges to Trump's immigration policies and sets the tone for how aggressively the Court will check executive overreach in his second term.",
+      "pub_display": "Apr 3"
+    },
+    {
+      "title": "Prediction markets: the hunt for the new \u2018dumb money\u2019",
+      "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxON042Rk9wUUJSdXlVM1VnYV82anRHN2VUdDQ4ekZZSDkzMy14SkJ2VHRQQkhpREpFN3c2NHprbDRZYm1PYU1BN2xkNkM4Z0JET2V3T2o4UDRvSUxLWVowMmFSRTZMT3BqT21rYUNHZzh0OTU2ekVhNkpnQUJWLS1pNWdycTA?oc=5",
+      "source": "Financial Times",
+      "pub_iso": "2026-04-03T04:00:12+00:00",
+      "description": "",
+      "summary": "Prediction markets are actively seeking out less sophisticated traders to provide liquidity and betting opportunities for sharper players. This hunt creates better odds for informed bettors while potentially expanding market participation, though it raises questions about whether these platforms are becoming more like casinos than information aggregation tools.",
       "pub_display": "Apr 3"
     },
     {
@@ -42,10 +51,19 @@
     {
       "title": "Prediction markets challenge tribal casinos\u2019 hard-won place in US gambling",
       "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxPZGJTMHZHT3NQTThGSlRobU43OU9lVDF6MjROZ3YzM25CRjhIeWpqd1B1a2FveGdtU2VPYWlfWVRJQUN6TTRHeG1GbnNGYzVXQ1pLY29IUDF4a2dTVFhsOFNhU0ItYXFUdmZtVFYxQ08wcUtqUEh0U1c5NmZxTzN3Qk9EZG8ybVA0ejliVFFDZ1A1SE9sYzJJUXBBMlRweDZJMTZj?oc=5",
-      "source": "AP News",
+      "source": "apnews.com",
       "pub_iso": "2026-04-02T19:42:00+00:00",
       "description": "",
       "summary": "Tribal casinos are pushing back against the expansion of prediction markets, viewing them as a threat to their exclusive gambling privileges that took decades to secure. If tribes successfully lobby to restrict prediction markets, it could kill the industry's momentum just as it's gaining mainstream traction with platforms like Kalshi and Polymarket.",
+      "pub_display": "Apr 2"
+    },
+    {
+      "title": "Next Attorney General Odds: Kalshi Predictions",
+      "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxNLXVhSlZvTml2bHhKcEh5TExSdkZMSXExQzdFN1dhOUVCWWRqQ3dxNVNkNGlmczc3SHp3d0h1MzV5dm1QeUIyVkd6UXpxSWdzbEZyWjZCVndTWWlmLUtMVzVUYWZ2Tm9GUDE0dTRtRkF5N2d1UHFPWWZ0Tm1vZEZ0em9aQU8zV1VUajdmWQ?oc=5",
+      "source": "Action Network",
+      "pub_iso": "2026-04-02T19:00:00+00:00",
+      "description": "",
+      "summary": "Kalshi is running odds on who Trump will pick as his next Attorney General, with bettors weighing legal expertise against loyalty litmus tests. The market offers a real-time read on Washington insider knowledge since AG picks often leak early through political networks that smart money follows.",
       "pub_display": "Apr 2"
     },
     {
@@ -58,15 +76,6 @@
       "pub_display": "Apr 2"
     },
     {
-      "title": "First Prediction Market Note Offers Nvidia Bets With Less Risk",
-      "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxNMTRuVVJBRDNsdC1KRVA1czVGUlUzWEFqS2ZlUm9ibkJxZXF0a1hXVFMtRktzbzIzLWFhd09QbU5mdl9jdW5VUFg3d2hIMm5ZX1E1RTR3Snc1T0ZpNVhzaXRaRHhEU0tWeW4xdzhUcDByZ19uTk0xSlZjZlRXU2dDcW9CUG1Vd2g3N1hlTHhTenA5RGd1bm1vMGRqZ3BCRnJzQm5iN3VpTFpJa1lWVjdoc0JCdw?oc=5",
-      "source": "Bloomberg.com",
-      "pub_iso": "2026-04-02T15:14:11+00:00",
-      "description": "",
-      "summary": "A financial firm has launched the first structured note that lets investors bet on Nvidia's stock price using prediction market mechanics, offering downside protection that straight equity bets don't provide. This bridges traditional finance and prediction markets, potentially opening the door for more complex betting instruments that could attract risk-averse traders who've avoided pure speculation.",
-      "pub_display": "Apr 2"
-    },
-    {
       "title": "US sues Arizona, Connecticut, Illinois to stop regulation of prediction markets",
       "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxOTGttYVp2UTRSMEF5dG1ZenlrRkNmb3lrZWs5OGFzU2ZsWm1Yc0FlTEhqQURnQTktT1F5ZnF6OXpES2J4VXQtajFrdlB3eG9DZFZFeGt0aEVXYzhtMVZkbVZFVl9pbDcxTERvcHduU1QtWUdTSkNrUlphSVNpMzBneTdqaW80X0RFOUJiaXF6dmpBTHdUeWhzTjh4WFRMWVhGR2tkWXdwMA?oc=5",
       "source": "Reuters",
@@ -76,12 +85,21 @@
       "pub_display": "Apr 2"
     },
     {
-      "title": "First look: Stephanie Cutter to advise fast-growing Kalshi",
-      "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxQUDdBblpPXzlQQzZqWU90VGRFdFNBUVJYNmZTM19kbmNoc0dxcW9MWmhoa0VDTTJkTXN4a09kTkZkWjNPLUFBOC1RNG9HaDZIcHlNdTBiQWk2TV8zRDdmMHN2U1Y2d3Q5N3MyLUdMd1pNVmplcUw5elJ5dFl3dllDbHNUNA?oc=5",
-      "source": "Axios",
-      "pub_iso": "2026-04-02T11:30:50+00:00",
+      "title": "Polymarket taps Pyth Network to resolve new US equity and commodity markets",
+      "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxPLUVEcUFYMHlZSVdDcnlRWGtIU2lxNzQyMEgxczhKcGxNQmp1amI0R0xHbzFsVEwwNE5mcDBoUnBPbjlHR21sSVdpemc1V2VMenRnU0xWOFRpb01KcG9JYUtTY0cxOE96UU5SQ0FnTjVEenV2ZGNZT19SRFhUOGFIMTRqb2RUdTZKS1RHcjI4bVludzhXUy10OW85cWFKNzdNeWtwWi1RQTJERUdaS25uMQ?oc=5",
+      "source": "The Block",
+      "pub_iso": "2026-04-02T14:00:00+00:00",
       "description": "",
-      "summary": "Stephanie Cutter, the Democratic strategist who ran Obama's 2012 campaign, is joining prediction market Kalshi as an advisor. Her political connections could help Kalshi navigate regulatory hurdles and expand into election betting, where the real money flows during campaign seasons.",
+      "summary": "Polymarket is partnering with Pyth Network's price feeds to automatically settle prediction markets on US stocks and commodities. This move signals Polymarket's push beyond politics into traditional financial betting, where instant settlement could attract traders tired of waiting for manual resolution.",
+      "pub_display": "Apr 2"
+    },
+    {
+      "title": "Prediction markets caught insider traders in real time. Congress wants to shut them down anyway",
+      "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxPVXJlWTlEQXU0Y0lLNjloMmxwWGNNaDdxaGx1MG1EVGZ5NmZnaXgtY0pGX3k3MkYxUk1weDgzWDVJTzV3Ui1SN3ZOQlZ2dFJTNnRBMnhmMUo0OUZ0RTRZTUpVRFlTQ1lCM1c1ckZObmFpQmgwRUdLcktHUURKaDQyQXoxTGowOHIzRktCRXYySkgzRDdpLWNvczBpNVZCQ1dIQVNld2Iycw?oc=5",
+      "source": "Fortune",
+      "pub_iso": "2026-04-02T12:30:00+00:00",
+      "description": "",
+      "summary": "Prediction markets successfully identified insider trading activity as it happened, but Congress is now pushing legislation to ban or restrict these platforms. The move shows lawmakers would rather eliminate the transparency that catches financial crimes than deal with the uncomfortable truths these markets reveal about political and economic events.",
       "pub_display": "Apr 2"
     },
     {
@@ -92,24 +110,6 @@
       "description": "",
       "summary": "News outlets are increasingly partnering with prediction markets or launching their own betting platforms, creating potential conflicts between journalistic integrity and profit motives. When reporters have financial incentives tied to market outcomes, it corrupts the very information flow that makes prediction markets valuable in the first place.",
       "pub_display": "Apr 2"
-    },
-    {
-      "title": "Fake or real, the \u201cinside traders\u201d on Polymarket are great engagement bait",
-      "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxOR0NFXy10ZnZ1ZWJzTlM4SzFURmFkdXdsMXlSQmdoY3ota1U5QzRZSU0tZmVic1hZWVdub09WOEV6RFkzSEZKS2l6UTdfZjVuY1dEX3ZHWGNPZ2RTX1JlSS1BR2ZWMVBDaVpxSG90R240d1ZReG5wYkNMcTFLeXRjMWxuWDFkNGxnQm9SUWtIeXhyekJVUHVnZ0lMXzBjdnE5eXRVVm9faGluQQ?oc=5",
-      "source": "The Verge",
-      "pub_iso": "2026-04-02T11:00:00+00:00",
-      "description": "",
-      "summary": "Polymarket users are buzzing about alleged insider trading on the platform, whether the claims are legitimate or just social media drama. The controversy drives massive attention to prediction markets while raising real questions about information asymmetries that could determine whether these platforms stay niche or go mainstream.",
-      "pub_display": "Apr 2"
-    },
-    {
-      "title": "\u2018Death Markets\u2019 and Attack Ads: Prediction Rivalry Turns Nasty",
-      "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxOM0tpLVVITEU5YzNSZGNsYWpSWW5HeVUtZHExWloyVWJDS3l2UHhyd0x0TmFGVDNQSnBfT3JpSWJxdmZLT3FRWXJtR2FNOWxGUVg1MENRRjlVZnE4OGdhUXNHNG15N1UwaUE5dDZXUkxRNFVOdWtkd19fQVNJU0t2WjJLTWxQWmZYSDlHZFpCdnI4Q3l6U25LRFhRVTU5UzJCaTVtU29NODFqQ3VCaWVkLQ?oc=5",
-      "source": "Bloomberg.com",
-      "pub_iso": "2026-04-01T19:40:14+00:00",
-      "description": "",
-      "summary": "Prediction market platforms are apparently slinging mud at each other in attack ads, with rivals throwing around inflammatory terms like \"death markets\" to describe assassination betting pools. The nastiness signals the industry is growing big enough for serious competitive warfare, which could either legitimize prediction markets through mainstream attention or torpedo them if regulators start paying attention to the drama.",
-      "pub_display": "Apr 1"
     }
   ]
 }
