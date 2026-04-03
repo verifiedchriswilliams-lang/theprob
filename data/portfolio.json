@@ -12,7 +12,7 @@
       "ytd_return_pct": 35.0,
       "win_count": 40,
       "loss_count": 2,
-      "open_count": 10,
+      "open_count": 11,
       "start_date": "2026-03-17",
       "last_updated": "2026-04-03",
       "trades": [
@@ -951,6 +951,24 @@
           "exit_prob": null,
           "exit_date": null,
           "pnl": null
+        },
+        {
+          "trade_id": "2d8cbee1",
+          "market_id": "KXTRUMPUFC-UFC327",
+          "question": "Which UFC events will Trump attend?: Will Donald Trump attend UFC 327?",
+          "url": "https://kalshi.com/markets/kxtrumpufc",
+          "source": "Kalshi",
+          "display_category": "Politics",
+          "entry_prob": 76.5,
+          "direction": "YES",
+          "amount": 100.0,
+          "entry_date": "2026-04-03",
+          "end_date_raw": "2026-04-12T14:00:00Z",
+          "end_date": "Apr 12",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
@@ -958,12 +976,12 @@
       "name": "The Contrarian",
       "strategy": "Fade longshots: always NO when crowd says \u226430%",
       "thesis": "Crowds overprice long shots. Sell the overpriced tickets.",
-      "current_balance": 1129.63,
-      "total_pnl": 129.63,
-      "ytd_return_pct": 13.0,
-      "win_count": 7,
+      "current_balance": 1135.0,
+      "total_pnl": 135.0,
+      "ytd_return_pct": 13.5,
+      "win_count": 8,
       "loss_count": 0,
-      "open_count": 7,
+      "open_count": 6,
       "start_date": "2026-03-17",
       "last_updated": "2026-04-03",
       "trades": [
@@ -1214,10 +1232,10 @@
           "entry_date": "2026-04-03",
           "end_date_raw": "2026-04-15T00:00:00Z",
           "end_date": "Apr 15",
-          "status": "open",
-          "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "status": "closed",
+          "exit_prob": 5.0,
+          "exit_date": "2026-04-03",
+          "pnl": 5.37
         }
       ]
     },
