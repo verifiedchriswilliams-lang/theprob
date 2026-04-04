@@ -12,7 +12,7 @@
       "ytd_return_pct": 37.1,
       "win_count": 42,
       "loss_count": 2,
-      "open_count": 12,
+      "open_count": 13,
       "start_date": "2026-03-17",
       "last_updated": "2026-04-04",
       "trades": [
@@ -1023,6 +1023,24 @@
           "exit_prob": 100.0,
           "exit_date": "2026-04-04",
           "pnl": 9.89
+        },
+        {
+          "trade_id": "ab709f20",
+          "market_id": "will-our-homeland-movement-mi-haznk-win-at-least-one-seat-in-the-next-hungarian-parliamentary-election",
+          "question": "Will Our Homeland Movement (Mi Haz\u00e1nk) win at least one seat in the next Hungarian parliamentary election?",
+          "url": "https://polymarket.com/event/hungary-parliamentary-election-which-parties-enter-parliament",
+          "source": "Polymarket",
+          "display_category": "Politics",
+          "entry_prob": 76.0,
+          "direction": "YES",
+          "amount": 100.0,
+          "entry_date": "2026-04-04",
+          "end_date_raw": "2026-04-12T00:00:00Z",
+          "end_date": "Apr 12",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
