@@ -7,14 +7,14 @@
       "name": "The Crowd",
       "strategy": "Follow consensus: YES when prob \u226565%, NO when prob \u226435%",
       "thesis": "Smart money is already priced in. Ride the conviction.",
-      "current_balance": 1349.81,
-      "total_pnl": 349.81,
-      "ytd_return_pct": 35.0,
-      "win_count": 40,
+      "current_balance": 1361.54,
+      "total_pnl": 361.54,
+      "ytd_return_pct": 36.2,
+      "win_count": 41,
       "loss_count": 2,
       "open_count": 12,
       "start_date": "2026-03-17",
-      "last_updated": "2026-04-03",
+      "last_updated": "2026-04-04",
       "trades": [
         {
           "trade_id": "ea14c291",
@@ -983,6 +983,24 @@
           "entry_date": "2026-04-03",
           "end_date_raw": "2026-04-10T14:00:00Z",
           "end_date": "Apr 10",
+          "status": "closed",
+          "exit_prob": 0.1,
+          "exit_date": "2026-04-04",
+          "pnl": 11.73
+        },
+        {
+          "trade_id": "dc7e81f2",
+          "market_id": "will-rafael-lpez-aliaga-win-the-2026-peruvian-presidential-election",
+          "question": "Will Rafael L\u00f3pez Aliaga win the 2026 Peruvian presidential election?",
+          "url": "https://polymarket.com/event/peru-presidential-election-winner",
+          "source": "Polymarket",
+          "display_category": "Politics",
+          "entry_prob": 22.5,
+          "direction": "NO",
+          "amount": 100.0,
+          "entry_date": "2026-04-04",
+          "end_date_raw": "2026-04-12T00:00:00Z",
+          "end_date": "Apr 12",
           "status": "open",
           "exit_prob": null,
           "exit_date": null,
@@ -999,9 +1017,9 @@
       "ytd_return_pct": 13.5,
       "win_count": 8,
       "loss_count": 0,
-      "open_count": 6,
+      "open_count": 7,
       "start_date": "2026-03-17",
-      "last_updated": "2026-04-03",
+      "last_updated": "2026-04-04",
       "trades": [
         {
           "trade_id": "18b00e62",
@@ -1254,6 +1272,24 @@
           "exit_prob": 5.0,
           "exit_date": "2026-04-03",
           "pnl": 5.37
+        },
+        {
+          "trade_id": "ab2510e6",
+          "market_id": "kharg-island-no-longer-under-iranian-control-by-april-15",
+          "question": "Kharg Island no longer under Iranian control by April 15?",
+          "url": "https://polymarket.com/event/kharg-island-no-longer-under-iranian-control-by-march-31",
+          "source": "Polymarket",
+          "display_category": "Politics",
+          "entry_prob": 10.5,
+          "direction": "NO",
+          "amount": 100.0,
+          "entry_date": "2026-04-04",
+          "end_date_raw": "2026-04-15T23:55:00Z",
+          "end_date": "Apr 15",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
@@ -1268,7 +1304,7 @@
       "loss_count": 0,
       "open_count": 2,
       "start_date": "2026-03-17",
-      "last_updated": "2026-04-03",
+      "last_updated": "2026-04-04",
       "trades": [
         {
           "trade_id": "d19bb1c5",
