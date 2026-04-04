@@ -1,6 +1,6 @@
 {
-  "updated": "Apr 3, 2026 \u00b7 6:40 PM ET",
-  "updated_iso": "2026-04-03T23:40:55.351292+00:00",
+  "updated": "Apr 4, 2026 \u00b7 12:18 AM ET",
+  "updated_iso": "2026-04-04T05:18:32.433183+00:00",
   "homepage_count": 3,
   "articles": [
     {
@@ -22,36 +22,27 @@
       "pub_display": "Apr 3"
     },
     {
-      "title": "Claude AI powered trading bot turns $1 into $3.3 million on Polymarket",
-      "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxQYUxoU0VhVUVMRlAyZVlNV0J2SjNWRC1jWmVvQWNSX1ZsV0h6U3FJa0J6blJRbEVVWlZtc25scjdwWWo1ZElvMVVrMkFrOUhpLVREOE1GOGxRNjNIUEVacDF6RWRZVGZEdUFTc1JQaUZQcmI2YXhxdGFma2lvZFJkYU5VMWpqTjZ2a1R0cWIyR2tYb0k?oc=5",
-      "source": "Finbold",
-      "pub_iso": "2026-04-03T14:23:45+00:00",
-      "description": "",
-      "summary": "A trading bot powered by Claude AI reportedly transformed a $1 investment into $3.3 million on Polymarket, delivering a 3,300,000% return that would make even the most degenerate gamblers weep with envy. This marks another milestone in AI-powered prediction market trading, suggesting that sophisticated algorithms are starting to identify and exploit pricing inefficiencies faster than human traders can blink.",
-      "pub_display": "Apr 3"
-    },
-    {
       "title": "Prediction markets: the hunt for the new \u2018dumb money\u2019",
       "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxON042Rk9wUUJSdXlVM1VnYV82anRHN2VUdDQ4ekZZSDkzMy14SkJ2VHRQQkhpREpFN3c2NHprbDRZYm1PYU1BN2xkNkM4Z0JET2V3T2o4UDRvSUxLWVowMmFSRTZMT3BqT21rYUNHZzh0OTU2ekVhNkpnQUJWLS1pNWdycTA?oc=5",
       "source": "Financial Times",
-      "pub_iso": "2026-04-03T04:00:12+00:00",
+      "pub_iso": "2026-04-03T04:01:21+00:00",
       "description": "",
       "summary": "Prediction markets are actively seeking out less sophisticated traders to provide liquidity and betting opportunities for sharper players. This hunt creates better odds for informed bettors while potentially expanding market participation, though it raises questions about whether these platforms are becoming more like casinos than information aggregation tools.",
       "pub_display": "Apr 3"
     },
     {
       "title": "Prediction markets challenge tribal casinos\u2019 hard-won place in US gambling",
-      "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxPZGJTMHZHT3NQTThGSlRobU43OU9lVDF6MjROZ3YzM25CRjhIeWpqd1B1a2FveGdtU2VPYWlfWVRJQUN6TTRHeG1GbnNGYzVXQ1pLY29IUDF4a2dTVFhsOFNhU0ItYXFUdmZtVFYxQ08wcUtqUEh0U1c5NmZxTzN3Qk9EZG8ybVA0ejliVFFDZ1A1SE9sYzJJUXBBMlRweDZJMTZj?oc=5",
-      "source": "AP News",
-      "pub_iso": "2026-04-02T23:55:13+00:00",
+      "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxOM2hGVVk3cl9OUnpIMUJGUm9uUXFwTjEtZGhXRU5KWE1FOUh6SDJWajQzY05YUEZUcmYyWUwxaWc0aDkxWi0xRlYxLU9qOEpnQVh2MnNZdkt1eUVKLWE0TlJnRUhZYm5jUFMtVkZ5eDFOU0ZYa3AxdTZESTc3eldHSjJCODBRalBvU2NFSnI1N193Y3lwSnJxQVNDbXdrci02NGVrY3pFT0QtYk3SAbABQVVfeXFMTklCZ0JSQmNzZnZobEZza0M1UlFJcE5GYUpaRU1KelY3VXA0cENCbnpOVW9mZTltTjFIaGh4ckJJM24zaXJEWWdpUTZTQWEyemV6N19TdGhVVWo3S25oWnJ3ZEl4cXZWQm9LcmNzZnBqd3VwbUFaRWVuTnAxamxSUnAySWo1S1VNRjVYYjV0bjFoa04tcDlUQjUtTGFOYm9naFl3cHF1OU4tS0xnbndxWlI?oc=5",
+      "source": "abcnews.com",
+      "pub_iso": "2026-04-02T20:35:41+00:00",
       "description": "",
-      "summary": "Tribal casinos are pushing back against the expansion of prediction markets, viewing them as a threat to their exclusive gambling privileges that took decades to secure. If tribes successfully lobby to restrict prediction markets, it could kill the industry's momentum just as it's gaining mainstream traction with platforms like Kalshi and Polymarket.",
+      "summary": "Tribal casinos are pushing back against prediction markets, viewing them as a threat to their exclusive gambling privileges that took decades of legal battles to secure. If tribes successfully lobby to restrict prediction markets through existing gaming compacts, it could severely limit where these platforms can operate in the US.",
       "pub_display": "Apr 2"
     },
     {
       "title": "First Prediction Market Note Offers Nvidia Bets With Less Risk",
       "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxNMTRuVVJBRDNsdC1KRVA1czVGUlUzWEFqS2ZlUm9ibkJxZXF0a1hXVFMtRktzbzIzLWFhd09QbU5mdl9jdW5VUFg3d2hIMm5ZX1E1RTR3Snc1T0ZpNVhzaXRaRHhEU0tWeW4xdzhUcDByZ19uTk0xSlZjZlRXU2dDcW9CUG1Vd2g3N1hlTHhTenA5RGd1bm1vMGRqZ3BCRnJzQm5iN3VpTFpJa1lWVjdoc0JCdw?oc=5",
-      "source": "Bloomberg.com",
+      "source": "Bloomberg",
       "pub_iso": "2026-04-02T15:14:11+00:00",
       "description": "",
       "summary": "A new financial instrument lets investors bet on Nvidia's performance through prediction markets while reducing their downside exposure. This could attract risk-averse traders who want tech exposure without the full volatility, potentially bringing more mainstream money into prediction markets.",
@@ -76,6 +67,15 @@
       "pub_display": "Apr 2"
     },
     {
+      "title": "Former Obama Campaign Manager Stephanie Cutter Joins Kalshi As Policy Advisor",
+      "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE1ZeEdYYXpFdHEzX0lrNGZ0MzFDM0YteDlubTRxVlRfTHpXX1pibDBSNU9vZ3B2YlUwSjZScEJNNFp3V0djUHlZRWNkQUZlS0VDYnpQeVhhXzNtYzZ5Zmg4aVNDcnVrcTJoRU9zekNEV3ZIYnlVNGE1Q1RR?oc=5",
+      "source": "Kalshi",
+      "pub_iso": "2026-04-02T13:14:08+00:00",
+      "description": "",
+      "summary": "Stephanie Cutter, who ran Obama's 2012 campaign, just joined prediction market Kalshi as a policy advisor. This signals Kalshi is gearing up for regulatory battles and wants serious Democratic firepower as Washington scrutinizes betting markets more closely.",
+      "pub_display": "Apr 2"
+    },
+    {
       "title": "The Problem with Binding News and Prediction Markets",
       "url": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxOX2Q5NHhnZ0ZVelR3SkN6ejRWdkpfbWNBSzdSOGNFRVYza3JST1I2eERkbllvWmxtVUtDSVJvN1VJNHV4QURCTERHRm56OGFuVmFGYk9FQWZnNEpBeXd3LW9MVFZTdHRYYXZGNHVsS2JvdW84bjNTZVdnVUlOMVRsZ2IzbVMxb1hvT3RYeDJDU0kzdWVZS2pxRjl2Y19IZGMwcHdXaU54ZTdGNkd2WlVhVjEtRzg2cnFURWJNemxzcWpUd0JRa3hWekllN21jcGkyRDVr?oc=5",
       "source": "Columbia Journalism Review",
@@ -85,18 +85,18 @@
       "pub_display": "Apr 2"
     },
     {
-      "title": "Fake or real, the \u201cinside traders\u201d on Polymarket are great engagement bait",
-      "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxOR0NFXy10ZnZ1ZWJzTlM4SzFURmFkdXdsMXlSQmdoY3ota1U5QzRZSU0tZmVic1hZWVdub09WOEV6RFkzSEZKS2l6UTdfZjVuY1dEX3ZHWGNPZ2RTX1JlSS1BR2ZWMVBDaVpxSG90R240d1ZReG5wYkNMcTFLeXRjMWxuWDFkNGxnQm9SUWtIeXhyekJVUHVnZ0lMXzBjdnE5eXRVVm9faGluQQ?oc=5",
-      "source": "The Verge",
-      "pub_iso": "2026-04-02T11:00:00+00:00",
+      "title": "Polymarket\u2019s Sports Push Continues With LaLiga Deal",
+      "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE1NZFVCQl9zVmZNU2FBX1gteGFnTUJ5Mk5EbkV3bmNJNW43REJDZVotNkRfVUgzQ1ZsSzljZ0RMa0lYM01KcEJleXUxWEgzZ29KOFVNNWtYWWNTOGVUaFZvRENQYVBReGZPUmt6XzBHcm91WVdZNFE?oc=5",
+      "source": "Front Office Sports",
+      "pub_iso": "2026-04-02T10:00:56+00:00",
       "description": "",
-      "summary": "Polymarket traders claiming insider knowledge are driving massive engagement whether their tips are legitimate or pure fiction. These self-proclaimed insiders create viral moments that pull new users into prediction markets, even when their track records crumble under scrutiny.",
+      "summary": "Polymarket signed a deal with Spain's LaLiga to expand its sports betting offerings beyond politics and current events. The partnership signals Polymarket's serious push into traditional sports markets, where it'll compete directly with established sportsbooks for mainstream betting volume.",
       "pub_display": "Apr 2"
     },
     {
       "title": "\u2018Death Markets\u2019 and Attack Ads: Prediction Rivalry Turns Nasty",
       "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxOM0tpLVVITEU5YzNSZGNsYWpSWW5HeVUtZHExWloyVWJDS3l2UHhyd0x0TmFGVDNQSnBfT3JpSWJxdmZLT3FRWXJtR2FNOWxGUVg1MENRRjlVZnE4OGdhUXNHNG15N1UwaUE5dDZXUkxRNFVOdWtkd19fQVNJU0t2WjJLTWxQWmZYSDlHZFpCdnI4Q3l6U25LRFhRVTU5UzJCaTVtU29NODFqQ3VCaWVkLQ?oc=5",
-      "source": "Bloomberg.com",
+      "source": "Bloomberg",
       "pub_iso": "2026-04-01T19:40:14+00:00",
       "description": "",
       "summary": "Prediction market platforms are trading barbs in increasingly aggressive marketing campaigns, with competitors attacking each other's credibility and labeling rivals as \"death markets\" that profit from human suffering. The mudslinging signals the industry is maturing beyond its wonky academic origins into a real business where platforms fight dirty for market share and user dollars.",
