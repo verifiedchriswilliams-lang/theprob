@@ -1,6 +1,6 @@
 {
-  "updated": "Apr 5, 2026 \u00b7 12:41 AM ET",
-  "updated_iso": "2026-04-05T05:41:53.789916+00:00",
+  "updated": "Apr 5, 2026 \u00b7 6:35 AM ET",
+  "updated_iso": "2026-04-05T11:35:30.256779+00:00",
   "homepage_count": 3,
   "articles": [
     {
@@ -31,13 +31,22 @@
       "pub_display": "Apr 4"
     },
     {
-      "title": "Don\u2019t wager against sports prediction markets",
-      "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxNMXpURnhsV25FM05MM0tLVVhzYUdBTk1Pa0MzRXVla3VMTDBQYVZLVDRxQUVwME5wZVhpU2ZhWTdMMzF3cnBhZzVDbi1ka2NZLUVTeEI4enZEajVnQ0FsTEl5U2FXaU5WZkdGOFN0WDdRSnVOdG1aNFRCQWxWd0VsMGVETUdVZFZtZWJyQkNHTUs4S3MtcUs0VA?oc=5",
-      "source": "The Boston Globe",
-      "pub_iso": "2026-04-04T07:02:34+00:00",
+      "title": "Why prediction markets are attracting the interest of Wall Street \u2014 and law enforcement scrutiny",
+      "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxNWVYwNGV1Qlc2bTBtUFM4alhoSGVWdnc3ZjBJb3czQWtEM2JiZmpJWlp0eGhTcFR5NHdXdHhHR05rX3VLdTUxVW5WM242ZkZCTWtCLVlZRjhtTzRIYlFQWVgwb3p1eFB4N3lRcU9BMlQyYzB3Uk5ON012QTMtTXZhV0FWQURkUlZiem9VYWkwVzBGbkN1b2g3UUlHTGpyT3V6TjduMldYNFpNUEVhLXZfSFFiZElqMmV4aUYtcXk5Z1J6Z1U?oc=5",
+      "source": "New York Post",
+      "pub_iso": "2026-04-03T14:39:00+00:00",
       "description": "",
-      "summary": "Sports prediction markets are consistently outperforming traditional sportsbooks and expert handicappers, making them dangerous to bet against. This accuracy advantage suggests the crowd-sourced wisdom of prediction markets is becoming the new gold standard for sports forecasting, potentially reshaping how we think about betting odds and expert analysis.",
-      "pub_display": "Apr 4"
+      "summary": "Wall Street firms are diving into prediction markets while regulators circle like sharks, drawn by the same thing that attracts most authority figures to new money-making schemes: the combination of massive potential profits and murky legal frameworks. This dual interest signals prediction markets are hitting mainstream legitimacy, but it also means the wild west days of minimal oversight are probably numbered.",
+      "pub_display": "Apr 3"
+    },
+    {
+      "title": "Claude AI powered trading bot turns $1 into $3.3 million on Polymarket",
+      "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxQYUxoU0VhVUVMRlAyZVlNV0J2SjNWRC1jWmVvQWNSX1ZsV0h6U3FJa0J6blJRbEVVWlZtc25scjdwWWo1ZElvMVVrMkFrOUhpLVREOE1GOGxRNjNIUEVacDF6RWRZVGZEdUFTc1JQaUZQcmI2YXhxdGFma2lvZFJkYU5VMWpqTjZ2a1R0cWIyR2tYb0k?oc=5",
+      "source": "Finbold",
+      "pub_iso": "2026-04-03T14:23:45+00:00",
+      "description": "",
+      "summary": "A trading bot powered by Anthropic's Claude AI reportedly transformed a single dollar into $3.3 million by placing bets on Polymarket. This demonstrates how sophisticated AI can potentially exploit market inefficiencies in prediction markets, raising questions about whether human bettors can compete with algorithmic trading strategies.",
+      "pub_display": "Apr 3"
     },
     {
       "title": "Prediction markets: the hunt for the new \u2018dumb money\u2019",
@@ -78,7 +87,7 @@
     {
       "title": "Polymarket taps Pyth Network to resolve new US equity and commodity markets",
       "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxPLUVEcUFYMHlZSVdDcnlRWGtIU2lxNzQyMEgxczhKcGxNQmp1amI0R0xHbzFsVEwwNE5mcDBoUnBPbjlHR21sSVdpemc1V2VMenRnU0xWOFRpb01KcG9JYUtTY0cxOE96UU5SQ0FnTjVEenV2ZGNZT19SRFhUOGFIMTRqb2RUdTZKS1RHcjI4bVludzhXUy10OW85cWFKNzdNeWtwWi1RQTJERUdaS25uMQ?oc=5",
-      "source": "The Block",
+      "source": "theblock.co",
       "pub_iso": "2026-04-02T14:00:00+00:00",
       "description": "",
       "summary": "Polymarket is partnering with Pyth Network's price feeds to automatically settle prediction markets on US stocks and commodities. This move signals Polymarket's push beyond politics into traditional financial betting, where instant settlement could attract traders tired of waiting for manual resolution.",
@@ -100,15 +109,6 @@
       "pub_iso": "2026-04-02T11:08:47+00:00",
       "description": "",
       "summary": "News outlets are increasingly partnering with prediction markets or launching their own betting platforms, creating potential conflicts between journalistic integrity and profit motives. When reporters have financial incentives tied to market outcomes, it corrupts the very information flow that makes prediction markets valuable in the first place.",
-      "pub_display": "Apr 2"
-    },
-    {
-      "title": "Fake or real, the \u201cinside traders\u201d on Polymarket are great engagement bait",
-      "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxOR0NFXy10ZnZ1ZWJzTlM4SzFURmFkdXdsMXlSQmdoY3ota1U5QzRZSU0tZmVic1hZWVdub09WOEV6RFkzSEZKS2l6UTdfZjVuY1dEX3ZHWGNPZ2RTX1JlSS1BR2ZWMVBDaVpxSG90R240d1ZReG5wYkNMcTFLeXRjMWxuWDFkNGxnQm9SUWtIeXhyekJVUHVnZ0lMXzBjdnE5eXRVVm9faGluQQ?oc=5",
-      "source": "The Verge",
-      "pub_iso": "2026-04-02T11:00:00+00:00",
-      "description": "",
-      "summary": "Polymarket's alleged \"inside traders\" are driving massive social media engagement, regardless of whether the trading patterns actually represent insider knowledge or just lucky streaks. This controversy highlights how perception of information asymmetry can boost platform visibility and user activity, even when the insider trading claims lack solid evidence.",
       "pub_display": "Apr 2"
     }
   ]
