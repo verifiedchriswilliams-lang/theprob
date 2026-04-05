@@ -2408,10 +2408,13 @@ def compute_spread(poly_markets: list, kalshi_markets: list) -> list:
             "lower_prob":      round(min(poly_prob, kalshi_prob), 1),
             "poly_volume":     poly_vol,
             "kalshi_volume":   best_km.get("volume", 0) or 0,
+            "kalshi_volume_24h": best_km.get("volume_24h", 0) or 0,
             "kalshi_oi":       best_km.get("open_interest", 0) or 0,
             "combined_volume": combined_vol,
             "poly_url":        pm.get("url", ""),
             "kalshi_url":      best_km.get("url", ""),
+            "kalshi_ticker":   best_km.get("slug", ""),
+            "kalshi_end_date_raw": best_km.get("end_date_raw", ""),
             "match_score":     round(best_score, 3),
             "interest_score":  round(interest_score, 2),
         })
