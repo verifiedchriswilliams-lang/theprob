@@ -12,7 +12,7 @@
       "ytd_return_pct": 41.8,
       "win_count": 51,
       "loss_count": 4,
-      "open_count": 13,
+      "open_count": 14,
       "start_date": "2026-03-17",
       "last_updated": "2026-04-05",
       "trades": [
@@ -1239,6 +1239,24 @@
           "exit_prob": 0.1,
           "exit_date": "2026-04-05",
           "pnl": 37.93
+        },
+        {
+          "trade_id": "4e776aab",
+          "market_id": "cricipl-roy-che-2026-04-05",
+          "question": "Indian Premier League: Royal Challengers Bangalore vs Chennai Super Kings",
+          "url": "https://polymarket.com/event/cricipl-roy-che-2026-04-05",
+          "source": "Polymarket",
+          "display_category": "Sports",
+          "entry_prob": 88.5,
+          "direction": "YES",
+          "amount": 100.0,
+          "entry_date": "2026-04-05",
+          "end_date_raw": "2026-04-12T10:00:00Z",
+          "end_date": "Apr 12",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
