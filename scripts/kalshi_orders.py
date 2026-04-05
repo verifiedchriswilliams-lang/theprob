@@ -1,3 +1,4 @@
+from __future__ import annotations
 """
 kalshi_orders.py
 ────────────────
@@ -16,8 +17,6 @@ Helper:
     calculate_contracts()      – how many contracts $N buys at a given price
     load_ledger() / append_ledger()  – JSON audit-log helpers
 """
-
-from __future__ import annotations
 
 import base64
 import json
