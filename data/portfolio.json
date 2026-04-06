@@ -12,7 +12,7 @@
       "ytd_return_pct": 54.6,
       "win_count": 59,
       "loss_count": 4,
-      "open_count": 15,
+      "open_count": 16,
       "start_date": "2026-03-17",
       "last_updated": "2026-04-06",
       "trades": [
@@ -1419,6 +1419,24 @@
           "exit_prob": null,
           "exit_date": null,
           "pnl": null
+        },
+        {
+          "trade_id": "bddddb66",
+          "market_id": "us-x-iran-ceasefire-by-april-7-278",
+          "question": "US x Iran ceasefire by April 7?",
+          "url": "https://polymarket.com/event/us-x-iran-ceasefire-by",
+          "source": "Polymarket",
+          "display_category": "Politics",
+          "entry_prob": 6.2,
+          "direction": "NO",
+          "amount": 100.0,
+          "entry_date": "2026-04-06",
+          "end_date_raw": "2026-04-07T00:00:00Z",
+          "end_date": "Apr 7",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
@@ -1426,10 +1444,10 @@
       "name": "The Contrarian",
       "strategy": "Fade longshots: always NO when crowd says \u226430%",
       "thesis": "Crowds overprice long shots. Sell the overpriced tickets.",
-      "current_balance": 1161.81,
-      "total_pnl": 161.81,
-      "ytd_return_pct": 16.2,
-      "win_count": 10,
+      "current_balance": 1173.54,
+      "total_pnl": 173.54,
+      "ytd_return_pct": 17.4,
+      "win_count": 11,
       "loss_count": 0,
       "open_count": 6,
       "start_date": "2026-03-17",
@@ -1700,10 +1718,10 @@
           "entry_date": "2026-04-04",
           "end_date_raw": "2026-04-15T23:55:00Z",
           "end_date": "Apr 15",
-          "status": "open",
-          "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "status": "closed",
+          "exit_prob": 4.5,
+          "exit_date": "2026-04-06",
+          "pnl": 11.73
         },
         {
           "trade_id": "e4f17e23",
@@ -1722,6 +1740,24 @@
           "exit_prob": 4.6,
           "exit_date": "2026-04-06",
           "pnl": 6.04
+        },
+        {
+          "trade_id": "6e82f4fa",
+          "market_id": "us-x-iran-ceasefire-by-april-7-278",
+          "question": "US x Iran ceasefire by April 7?",
+          "url": "https://polymarket.com/event/us-x-iran-ceasefire-by",
+          "source": "Polymarket",
+          "display_category": "Politics",
+          "entry_prob": 6.2,
+          "direction": "NO",
+          "amount": 100.0,
+          "entry_date": "2026-04-06",
+          "end_date_raw": "2026-04-07T00:00:00Z",
+          "end_date": "Apr 7",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
