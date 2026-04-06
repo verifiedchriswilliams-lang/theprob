@@ -1,15 +1,42 @@
 {
-  "updated": "Apr 6, 2026 \u00b7 12:40 PM ET",
-  "updated_iso": "2026-04-06T17:40:20.437235+00:00",
+  "updated": "Apr 6, 2026 \u00b7 6:42 PM ET",
+  "updated_iso": "2026-04-06T23:42:00.833313+00:00",
   "homepage_count": 3,
   "articles": [
+    {
+      "title": "Polymarket reveals a 'full exchange upgrade' to take control of its own trading and truth",
+      "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxNNl9DeEZCNFM4UXZPWTlTS0xlTUlhWFBwLW5tbk9qVkFacmRXR1Mzb3BaYVBqbzFiSjR2SE44NHQxQ2Q3M0hsZnhPVHVBRlBDcVZETVlXcVJTWkg5S3lfSkNuOElYNE1FSVJnV0N2dC1BRGRCekhDcFhlZEJweUZydHdaSGxmeWpVbUxvdVlzWFdES2Q5Y2YzelBBaHRXMGMzTDI0UUhRT2s5aHBkS1RURWJLUXhMT0M3TzBoRmNWNWNlMFJzMGM2eTd4TQ?oc=5",
+      "source": "CoinDesk",
+      "pub_iso": "2026-04-06T21:01:55+00:00",
+      "description": "",
+      "summary": "Polymarket is launching a major platform overhaul that will give them direct control over both trade execution and outcome resolution instead of relying on third-party infrastructure. This shift could eliminate the friction and delays that have plagued the platform, making it faster and more reliable for high-stakes political betting when every minute counts.",
+      "pub_display": "Apr 6"
+    },
+    {
+      "title": "Circle Partners With Polymarket In Exchange Overhaul",
+      "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxPOGZELTFCVG5TTTc2S1FhSTBGXzUzMEpOOTZIZFJLVk83X29XQ1dyQ3M1Y1hfLWZvckJKTEZZTW1lVHdGRVFDSFJoRjUzRDdkX2JJREJ2WVJxcWxudkVGOFNaTm5jQUlVOHkzSC1vcW9jSnZkMFVfclI2MF9neDJ0UFhDTmZfUXhaT0dvUEpkZGY2czJZMlBqZUZLS0tDMWdBbGZIQldhVXVzZmw2UGFITnoxY0ZmSG1iN3Vn?oc=5",
+      "source": "Benzinga",
+      "pub_iso": "2026-04-06T18:42:29+00:00",
+      "description": "",
+      "summary": "Circle is partnering with Polymarket to revamp the prediction market platform's exchange infrastructure. This move signals Polymarket is preparing for serious institutional money and regulatory scrutiny by bringing in the stablecoin giant's compliance expertise and financial rails.",
+      "pub_display": "Apr 6"
+    },
     {
       "title": "New Jersey cannot regulate Kalshi's prediction market, US appeals court rules",
       "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxPN1dEVlN2Q3JPSHlKMDlUWEJxd2lsRTZMQ19VSEFlbVpCOVlDU3NmOUJqbGdSdnhqWnR5QUxCQlF2aWRnaFNDT1dpbzBqdlpEcXJTaGJPbHVlS2ROSTYzeXVhX3VCS3RxdzhadFl5enBqWlhsVTVoeDZHdUx3ekxLQVNUM2hEZzFJeG5SQVVxdXByZmJyV01PenNLeC05Y01uaUdYR0ZoRENfb1RYbDNpZDEwTXpTck45?oc=5",
       "source": "Reuters",
-      "pub_iso": "2026-04-06T16:42:52+00:00",
+      "pub_iso": "2026-04-06T18:42:22+00:00",
       "description": "",
       "summary": "A federal appeals court ruled that New Jersey lacks authority to regulate Kalshi's prediction markets, likely blocking state-level restrictions on the platform's operations. This creates a clearer regulatory path for prediction markets by establishing that federal oversight trumps state gambling laws, potentially opening the door for broader market expansion.",
+      "pub_display": "Apr 6"
+    },
+    {
+      "title": "Polymarket criticized over \u2018disgusting\u2019 bets on fate of pilots on US jet shot by Iran",
+      "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxNaHUzSDVqdFE0NWU0SjRiUXRBOWF2OU5lSlBZYmtXckRvaWozWDlBMEVwODJHLWNlMkpqQVVPR1k0X0FIOUlpRUdVRl8wMndWUXFtVlNSc1NTNXdPV2hIRmtUc3J3SGNKdWtPVU5icngtRE81TlB5UlExUDF1eVN5bnhpTWwyWERuR1lfMWpyZmtaQzN0V2o1YjV3?oc=5",
+      "source": "The Guardian",
+      "pub_iso": "2026-04-06T17:35:00+00:00",
+      "description": "",
+      "summary": "Polymarket faced backlash for hosting prediction markets on whether pilots would survive after Iran shot down a US military aircraft. The controversy highlights how quickly betting platforms can cross ethical lines when real-time tragedy meets speculative markets, potentially triggering regulatory scrutiny that could reshape what events are deemed appropriate for prediction betting.",
       "pub_display": "Apr 6"
     },
     {
@@ -22,21 +49,12 @@
       "pub_display": "Apr 6"
     },
     {
-      "title": "Polymarket criticized over \u2018disgusting\u2019 bets on fate of pilots on US jet shot by Iran",
-      "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxNaHUzSDVqdFE0NWU0SjRiUXRBOWF2OU5lSlBZYmtXckRvaWozWDlBMEVwODJHLWNlMkpqQVVPR1k0X0FIOUlpRUdVRl8wMndWUXFtVlNSc1NTNXdPV2hIRmtUc3J3SGNKdWtPVU5icngtRE81TlB5UlExUDF1eVN5bnhpTWwyWERuR1lfMWpyZmtaQzN0V2o1YjV3?oc=5",
-      "source": "The Guardian",
-      "pub_iso": "2026-04-06T13:42:12+00:00",
+      "title": "Prediction markets push back odds of Iran-Israel-U.S. conflict ending soon",
+      "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxPUk5fcmQ5aUlnZ1U3VkYxclhBZTN1RGoxTUNGby1SbHpTR1lHR3BRc04wNDdHR24wU1NYdElNVEtFQUpUcVFyUEQ0TE1pTUhFalhYMTgxX0FWRzB0VW83NVNXMFR6QkRtQ0hoRHFNaktXd3JHNXVQLXJlSHV3UDFaNjhxbW11V1paR202NnRGenluT3BiUEZQcHRKNF9BRkx5RVE3MnhKdG1kMFFyUmlj?oc=5",
+      "source": "Seeking Alpha",
+      "pub_iso": "2026-04-06T12:43:13+00:00",
       "description": "",
-      "summary": "Polymarket faced backlash for hosting prediction markets on whether pilots would survive after Iran shot down a US military aircraft. The controversy highlights how quickly betting platforms can cross ethical lines when real-time tragedy meets speculative markets, potentially triggering regulatory scrutiny that could reshape what events are deemed appropriate for prediction betting.",
-      "pub_display": "Apr 6"
-    },
-    {
-      "title": "Amid Trump support, prediction markets face political headwinds",
-      "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPUkVRcE1jbDl6Rk1BeUxsZjVDY3ZCU0I2cml2U2U2VDlaUGZzTDJqeWtyUUhLeFZkVDh5MDBTZUMyX2x0VEpJRlVjajlhQkVsZmJ4VUVYMUFYRTI0ZTBLX05jZ2w2Ty1zM08xSDVXTElnM3JLaDh1Wk5JWjFwYXBBUFJlSE5idVJDWjN3bGNzSFRFMm51ZEswUzFldHdObHV5bXc?oc=5",
-      "source": "San Francisco Chronicle",
-      "pub_iso": "2026-04-06T11:04:38+00:00",
-      "description": "",
-      "summary": "Prediction markets are catching heat from critics who claim they skewed pro-Trump during the election cycle, potentially facing regulatory pushback or public skepticism about their accuracy. The controversy could throttle mainstream adoption and invite heavier government scrutiny just as these platforms were gaining credibility with Wall Street and retail investors.",
+      "summary": "Prediction markets are now betting that the escalating Middle East conflict between Iran, Israel, and potentially the U.S. will drag on longer than previously expected. Geopolitical volatility creates massive trading opportunities across defense stocks, oil futures, and safe-haven assets, making conflict duration one of the most lucrative event categories for informed bettors.",
       "pub_display": "Apr 6"
     },
     {
@@ -58,6 +76,15 @@
       "pub_display": "Apr 6"
     },
     {
+      "title": "Polymarket apologizes, takes down wager on US pilot\u2019s rescue - Straight Arrow News",
+      "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxPWER6empDM1Y3OUpreUJGdWZoVDFRTkFXRk1Ud3h4ZWlmcTFVOFNWX0g1R3kyc0FmRXZGTlpxWkNYR2NTWlhrSS1aVFVZLXFkWDBHa1dCNXhxdDkyQ19oTGdqSEJMRGdsVm9aNkhCOExWZWVncGVDQUQ2N0lqdXp3Q0pKSTk?oc=5",
+      "source": "SAN",
+      "pub_iso": "2026-04-05T21:00:00+00:00",
+      "description": "",
+      "summary": "Polymarket pulled a betting market on whether a US pilot would be successfully rescued after facing backlash over the tasteless wager. The incident highlights how prediction platforms struggle to balance free markets with basic human decency, potentially inviting regulatory scrutiny that could restrict what bettors can wager on.",
+      "pub_display": "Apr 5"
+    },
+    {
       "title": "Prediction Markets Create New Insider Trading Headaches for Executives",
       "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxOVGp2SE1feHJxSm42Rk5EYmxObmhFM2QzUXNxcF9weGFqTkRGTmx1Z3BlZHZSWEw5NzlJUzFNNmNPRzdIVmM2bENrWUIxNFcxRy1RNHc1SlU0dFRhSlNDVFFBMlJ0NzNuZHJnYXo0RDhKcUNjQ0FKM2t1VTh2b3BqNks5RGtEeW9NdFlnRTZISkFQcUdSYzI5UnJrWUNZaTJ5RkFPS29WUE1GQWdMVEVmS1lQY2xvQXNiOFE?oc=5",
       "source": "Bloomberg.com",
@@ -76,30 +103,12 @@
       "pub_display": "Apr 4"
     },
     {
-      "title": "Opinion | Major League Baseball\u2019s bad bet on Polymarket",
-      "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxNcC03OVQ5clhFcnRTMHVUUS1jMkg4ZzMzSnVuODhiWDdmUzNlUkU4ekdycXhINmRaeGVLRFFpYnhpLVU4aHpwQWZ4cnNTMjhvMjNrQk8yVUpmdkRFQVpXMVI4RkhGRVBwM3ZqRlhEbWRZVk1yRUNPUlA0elNrMlNHdlB1dTFLa2lTMkNVMDVXb2VpWGVEYlU2VVRkOA?oc=5",
-      "source": "bostonglobe.com",
-      "pub_iso": "2026-04-04T07:02:34+00:00",
+      "title": "Can anything stop Kalshi?",
+      "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE9YNFRNSGdrUGZzcm5OTGhiYXVRWXlQVXBvU1l0UG1icWc4X3FCNVBpVmJuM0xzT0ZQV0NuWnQ1dTFxdlhBMEFUNHpvZEprc2hqTVg3OG10Ql9BRHVhOHRxSDBwcGN0QQ?oc=5",
+      "source": "thehustle.co",
+      "pub_iso": "2026-04-03T18:00:07+00:00",
       "description": "",
-      "summary": "Major League Baseball apparently made some questionable decision involving Polymarket that's drawing criticism. Whatever MLB did wrong here could signal broader institutional wariness about prediction markets just as they're gaining mainstream traction.",
-      "pub_display": "Apr 4"
-    },
-    {
-      "title": "Prediction Market Odds for Next Attorney General",
-      "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxNOVdmMEhfamZ1azFsbFFTXzZhRFk0UHhNYm9GOEtqcTdkYnhyYXJHajVvZk11UVZRT1RYeFNQWFBIOW1QZ0tZMG5tZEk4LWw1RmxTNjdRNlA4UFltZFdpVnE3d3haSlRMU1d0cUF5WHlnM3pfUjZuS3Y2YlBmelhnZ3ptRDhmdXd2V0didFk1TkpwMGJicjJBeXBwNktTM29pRXlwU1FEa3FhM2M?oc=5",
-      "source": "Federal News Network",
-      "pub_iso": "2026-04-03T20:24:05+00:00",
-      "description": "",
-      "summary": "Prediction markets are pricing the odds on who Trump will pick as his next Attorney General, with bettors weighing legal backgrounds against loyalty tests. The AG pick carries massive implications for everything from antitrust enforcement to election law, making it a high-stakes bet that could move fast once Trump signals his preference.",
-      "pub_display": "Apr 3"
-    },
-    {
-      "title": "Prediction markets: the hunt for the new \u2018dumb money\u2019",
-      "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxON042Rk9wUUJSdXlVM1VnYV82anRHN2VUdDQ4ekZZSDkzMy14SkJ2VHRQQkhpREpFN3c2NHprbDRZYm1PYU1BN2xkNkM4Z0JET2V3T2o4UDRvSUxLWVowMmFSRTZMT3BqT21rYUNHZzh0OTU2ekVhNkpnQUJWLS1pNWdycTA?oc=5",
-      "source": "Financial Times",
-      "pub_iso": "2026-04-03T04:01:21+00:00",
-      "description": "",
-      "summary": "Prediction markets are actively seeking out inexperienced bettors who consistently make poor wagering decisions, essentially hunting for profitable counterparties to exploit. This represents a maturation of the industry from idealistic \"wisdom of crowds\" rhetoric toward the cold reality that someone has to lose money for others to profit consistently.",
+      "summary": "Kalshi has been steamrolling competitors and regulators alike, raising questions about whether anyone can challenge their growing dominance in legal prediction markets. Their momentum could reshape how Americans bet on everything from elections to economic data, potentially crushing smaller platforms and forcing regulators to either adapt or get left behind.",
       "pub_display": "Apr 3"
     }
   ]
