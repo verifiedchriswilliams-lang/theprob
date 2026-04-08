@@ -1406,5 +1406,37 @@
     "side": "no",
     "signal": "crowd",
     "error": "403 Client Error: Forbidden for url: https://api.elections.kalshi.com/trade-api/v2/portfolio/orders"
+  },
+  {
+    "event": "order_failed",
+    "timestamp": "2026-04-08T18:25:29.334076+00:00",
+    "ticker": "KXUSAIRANAGREEMENT-27-26MAY",
+    "side": "no",
+    "signal": "crowd",
+    "error": "403 Client Error: Forbidden for url: https://api.elections.kalshi.com/trade-api/v2/portfolio/orders"
+  },
+  {
+    "event": "order_failed",
+    "timestamp": "2026-04-08T18:25:29.366974+00:00",
+    "ticker": "KXTRUMPOUT27-27-26AUG01",
+    "side": "yes",
+    "signal": "spread",
+    "error": "403 Client Error: Forbidden for url: https://api.elections.kalshi.com/trade-api/v2/portfolio/orders"
+  },
+  {
+    "event": "order_failed",
+    "timestamp": "2026-04-08T18:25:29.398443+00:00",
+    "ticker": "KXBTCY-27JAN0100-B42500",
+    "side": "no",
+    "signal": "crowd",
+    "error": "403 Client Error: Forbidden for url: https://api.elections.kalshi.com/trade-api/v2/portfolio/orders"
+  },
+  {
+    "event": "order_failed",
+    "timestamp": "2026-04-08T18:25:29.427380+00:00",
+    "ticker": "KXETHY-27JAN0100-T1000.00",
+    "side": "no",
+    "signal": "crowd",
+    "error": "403 Client Error: Forbidden for url: https://api.elections.kalshi.com/trade-api/v2/portfolio/orders"
   }
 ]
