@@ -7,14 +7,14 @@
       "name": "The Crowd",
       "strategy": "Follow consensus: YES when prob \u226565%, NO when prob \u226435%",
       "thesis": "Smart money is already priced in. Ride the conviction.",
-      "current_balance": 1513.5,
-      "total_pnl": 513.5,
-      "ytd_return_pct": 51.3,
-      "win_count": 73,
+      "current_balance": 1527.79,
+      "total_pnl": 527.79,
+      "ytd_return_pct": 52.8,
+      "win_count": 74,
       "loss_count": 7,
       "open_count": 19,
       "start_date": "2026-03-17",
-      "last_updated": "2026-04-07",
+      "last_updated": "2026-04-08",
       "trades": [
         {
           "trade_id": "ea14c291",
@@ -1793,6 +1793,24 @@
           "entry_date": "2026-04-07",
           "end_date_raw": "2026-04-08T05:10:00Z",
           "end_date": "Apr 8",
+          "status": "closed",
+          "exit_prob": 100.0,
+          "exit_date": "2026-04-08",
+          "pnl": 14.29
+        },
+        {
+          "trade_id": "b10e2412",
+          "market_id": "us-x-iran-meeting-by-april-10-2026-895",
+          "question": "US x Iran meeting by April 10, 2026?",
+          "url": "https://polymarket.com/event/us-x-iran-diplomatic-meeting-by-833",
+          "source": "Polymarket",
+          "display_category": "Politics",
+          "entry_prob": 82.2,
+          "direction": "YES",
+          "amount": 100.0,
+          "entry_date": "2026-04-08",
+          "end_date_raw": "2026-04-10T00:00:00Z",
+          "end_date": "Apr 10",
           "status": "open",
           "exit_prob": null,
           "exit_date": null,
@@ -1811,7 +1829,7 @@
       "loss_count": 0,
       "open_count": 6,
       "start_date": "2026-03-17",
-      "last_updated": "2026-04-07",
+      "last_updated": "2026-04-08",
       "trades": [
         {
           "trade_id": "18b00e62",
@@ -2186,7 +2204,7 @@
       "loss_count": 0,
       "open_count": 2,
       "start_date": "2026-03-17",
-      "last_updated": "2026-04-07",
+      "last_updated": "2026-04-08",
       "trades": [
         {
           "trade_id": "d19bb1c5",
