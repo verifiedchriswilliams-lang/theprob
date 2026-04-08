@@ -1771,5 +1771,42 @@
       "user_id": "bc69262b-1253-4ad1-a774-46faf67acccb",
       "yes_price_dollars": "0.9400"
     }
+  },
+  {
+    "event": "order_placed",
+    "timestamp": "2026-04-08T23:50:38.701160+00:00",
+    "order_id": "f02ad27f-166d-48c6-9862-326e6acf3c8c",
+    "ticker": "KXTRUMPUFC-UFC327",
+    "side": "yes",
+    "count": 6,
+    "limit_price": 94,
+    "market_prob": 92,
+    "cost_dollars": 5.64,
+    "budget": 6.0,
+    "status": "executed",
+    "reason": "[crowd] Crowd conviction 92.3% \u2192 bet YES. $571 traded today. Resolves 3.6d.",
+    "client_order_id": "4d676a13-6ada-4a54-b62a-17a1c1f23a4d",
+    "raw_response": {
+      "action": "buy",
+      "client_order_id": "4d676a13-6ada-4a54-b62a-17a1c1f23a4d",
+      "created_time": "2026-04-08T23:50:38.694119Z",
+      "fill_count_fp": "6.00",
+      "initial_count_fp": "6.00",
+      "last_update_time": "2026-04-08T23:50:38.694119Z",
+      "maker_fees_dollars": "0.000000",
+      "maker_fill_cost_dollars": "0.000000",
+      "no_price_dollars": "0.0600",
+      "order_id": "f02ad27f-166d-48c6-9862-326e6acf3c8c",
+      "remaining_count_fp": "0.00",
+      "side": "yes",
+      "status": "executed",
+      "subaccount_number": 0,
+      "taker_fees_dollars": "0.044000",
+      "taker_fill_cost_dollars": "5.466000",
+      "ticker": "KXTRUMPUFC-UFC327",
+      "type": "limit",
+      "user_id": "bc69262b-1253-4ad1-a774-46faf67acccb",
+      "yes_price_dollars": "0.9400"
+    }
   }
 ]
