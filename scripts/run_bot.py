@@ -125,12 +125,13 @@ def run(dry_run: bool = False) -> None:
     # ── Step 4: Open position count ───────────────────────────────────────
     open_tickers = already_open_tickers(ledger)
 
-    # Cross-check with live Kalshi positions
+    # Use live Kalshi positions as the sole source of truth.
+    # The ledger may be stale if positions were manually closed on Kalshi's website.
     try:
         live_positions = client.get_open_positions()
         live_tickers   = [p.get("ticker", "") for p in live_positions if p.get("position", 0) > 0]
-        # Merge: use live as source of truth, supplement with ledger
-        all_open = list(set(open_tickers) | set(live_tickers))
+        all_open = live_tickers   # live API is ground truth — don't union with stale ledger
+        log.info("Open positions: %d", len(all_open))
     except Exception as exc:
         log.warning("Could not fetch live positions (%s), using ledger only.", exc)
         all_open = open_tickers
