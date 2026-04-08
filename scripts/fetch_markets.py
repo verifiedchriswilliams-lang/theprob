@@ -565,8 +565,10 @@ def fetch_kalshi() -> list[dict]:
     markets = []
     seen_tickers = set()
 
-    def fetch_kalshi_page(extra_params={}):
-        """Fetch one paginated pass of Kalshi events, return all qualifying markets."""
+    def fetch_kalshi_page(extra_params={}, min_vol=None):
+        """Fetch one paginated pass of Kalshi events, return all qualifying markets.
+        min_vol: override KALSHI_MIN_VOL for this fetch (pass 0 for near-term markets)."""
+        _min_vol = min_vol if min_vol is not None else KALSHI_MIN_VOL
         results = []
         cursor = None
         pages = 0
@@ -622,7 +624,7 @@ def fetch_kalshi() -> list[dict]:
 
                             # volume_fp / volume_24h_fp are fixed-point cents (divide by 100 → USD)
                             volume_usd = float(m.get("volume_fp", 0) or 0) / 100
-                            if volume_usd < KALSHI_MIN_VOL:
+                            if volume_usd < _min_vol:
                                 continue
                             volume_24h_usd = float(m.get("volume_24h_fp", 0) or 0) / 100
                             close_time = m.get("close_time", "") or ""
@@ -697,6 +699,25 @@ def fetch_kalshi() -> list[dict]:
             added = len(markets) - before
             if added:
                 print(f"  Kalshi {cat} fetch: +{added} markets")
+
+        # 3. Near-term fetch: markets closing within 72 hours — no volume floor.
+        #    These are the primary targets for the trading bot (fast compounding).
+        #    Uses close_time_max Kalshi API param (ISO 8601 datetime string).
+        try:
+            from datetime import timedelta
+            cutoff = (datetime.now(timezone.utc) + timedelta(hours=72)).strftime(
+                "%Y-%m-%dT%H:%M:%SZ"
+            )
+            nearterm = fetch_kalshi_page({"close_time_max": cutoff}, min_vol=0)
+            added_nt = 0
+            for m in nearterm:
+                if m.get("slug") not in seen_tickers:
+                    markets.append(m)
+                    seen_tickers.add(m["slug"])
+                    added_nt += 1
+            print(f"  Kalshi near-term (≤72h) fetch: +{added_nt} markets")
+        except Exception as e_nt:
+            print(f"  [WARN] Kalshi near-term fetch error: {e_nt}")
 
     except Exception as e:
         print(f"[WARN] Kalshi fetch failed: {e}")

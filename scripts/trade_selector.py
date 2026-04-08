@@ -5,28 +5,17 @@ trade_selector.py
 ─────────────────
 Reads markets.json and returns up to N best Kalshi trades available right now.
 
-Key design decisions:
-  - Kalshi only (CFTC-regulated, no crypto required)
-  - Up to 4 simultaneous open positions (caller passes how many slots are free)
-  - NO hard duration cap — Kalshi markets are mostly long-duration by nature.
-    Instead, duration is scored: shorter resolving markets ranked higher.
-  - Returns a RANKED LIST so the execution loop can place as many as slots allow
+Core philosophy:
+  Duration is everything. Fast-resolving markets = fast compounding.
+  Probability is the signal. Volume is NOT a signal filter.
+  We want to churn through as many winning positions as possible per day.
 
-Priority order (first matching signal wins for each candidate):
-  1. Spread signal  — Kalshi prob is 8+ pts BELOW Polymarket for same event.
-                      Bet YES on Kalshi — expecting convergence to Poly price.
-                      Requires: kalshi_ticker present, Kalshi vol_24h ≥ $500
-  2. Crowd model    — prob ≥ 65% (bet YES) or ≤ 35% (bet NO).
-                      Requires: vol_24h ≥ $500, signal != stale
-  3. Knife-edge     — trading_signal = knife_edge, clear directional move today,
-                      vol_24h ≥ $500, resolves ≤ 90 days
-
-Hard filters (every candidate must pass):
-  - Kalshi source only
-  - vol_24h ≥ $200 (de-facto dead market filter)
-  - trading_signal != stale
-  - Probability NOT between 40–60% (unless spread signal)
-  - Market not already in open_tickers list
+Selection logic:
+  1. ONLY consider Kalshi markets resolving within MAX_TRADE_DAYS (7 days).
+  2. Score by: duration (primary) + conviction (secondary) + spread bonus.
+  3. Probability gate: 65%+ → bet YES, 35%- → bet NO. No coin flips.
+  4. No volume floor — thin markets with clear consensus are valid trades.
+     (Fill quality is managed at order time via bid/ask spread check.)
 
 Run this directly to see today's picks:
     python3 scripts/trade_selector.py
@@ -34,35 +23,19 @@ Run this directly to see today's picks:
 """
 
 import json
+import math
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
 MARKETS_JSON = Path("data/markets.json")
 
-# Probability gates
-CROWD_YES_GATE  = 65.0
-CROWD_NO_GATE   = 35.0
-SPREAD_MIN_GAP  = 8.0
-
-# Volume floors
-MIN_VOL_24H     = 200     # absolute dead-market floor
-MIN_VOL_CROWD   = 500     # crowd model minimum
-MIN_VOL_SPREAD  = 500     # spread signal minimum
-MIN_VOL_KNIFE   = 500     # knife-edge minimum
-
-# Duration scoring: shorter = better, but nothing is hard-blocked
-# Markets resolving sooner get a bonus in ranking
-DURATION_TIERS = [
-    (7,   4.0),   # ≤ 7 days  → +4 score bonus
-    (30,  2.0),   # ≤ 30 days → +2
-    (90,  1.0),   # ≤ 90 days → +1
-    (365, 0.0),   # ≤ 365 days → no bonus
-    (9999, -1.0), # > 365 days → small penalty (long capital lockup)
-]
-
-# Knife-edge: only worth it if resolves soon enough to matter
-KNIFE_MAX_DAYS  = 90
+# ── Core gates ────────────────────────────────────────────────────────────────
+CROWD_YES_GATE   = 65.0   # bet YES when prob ≥ this
+CROWD_NO_GATE    = 35.0   # bet NO when prob ≤ this
+SPREAD_MIN_GAP   = 8.0    # minimum Poly vs Kalshi gap for spread signal
+MAX_TRADE_DAYS   = 7      # hard cap — never hold longer than a week
+MIN_VOL_ABSOLUTE = 0      # any non-zero volume accepted (fill quality handled at order time)
 
 
 def days_until(end_date_raw: str) -> float | None:
@@ -75,31 +48,46 @@ def days_until(end_date_raw: str) -> float | None:
         return None
 
 
-def duration_bonus(days: float | None) -> float:
+def duration_score(days: float | None) -> float:
+    """
+    Duration is the PRIMARY ranking factor. Shorter = higher score.
+    Resolves today: 10 pts. Resolves in 7 days: 1 pt.
+    Anything beyond MAX_TRADE_DAYS: disqualified (returns -999).
+    """
     if days is None:
-        return -2.0
-    for threshold, bonus in DURATION_TIERS:
-        if days <= threshold:
-            return bonus
-    return -1.0
+        return -999.0
+    if days <= 0:
+        return -999.0           # already expired
+    if days > MAX_TRADE_DAYS:
+        return -999.0           # hard cap — skip
+    if days <= 0.5:
+        return 10.0             # resolves within 12 hours
+    if days <= 1:
+        return 9.0              # resolves today
+    if days <= 2:
+        return 7.0              # resolves tomorrow
+    if days <= 3:
+        return 5.0              # resolves in 2-3 days
+    if days <= 5:
+        return 3.0              # resolves this week
+    return 1.0                  # resolves within the week
 
 
 def score_candidate(m: dict, signal: str, days: float | None) -> float:
     """
-    Higher score = better trade. Used to rank candidates when multiple qualify.
-    Components:
-      - Conviction: how far prob is from 50% (more extreme = more conviction)
-      - Volume: log of 24h volume (more liquid = better fill)
-      - Duration bonus: shorter resolving markets are preferred
+    Score = duration (primary) + conviction (secondary) + spread bonus.
+    Duration completely dominates: a 70% market closing today beats
+    an 85% market closing in 5 days.
     """
-    prob   = m.get("prob", 50)
-    vol24  = max(m.get("volume_24h", 1), 1)
-    import math
-    conviction = abs(prob - 50) / 50     # 0 at prob=50, 1.0 at prob=0 or 100
-    vol_score  = math.log10(vol24) / 5   # normalised, ~0.5 at $10K
-    dur_bonus  = duration_bonus(days)
-    spread_bonus = 1.5 if signal == "spread" else 0.0
-    return conviction * 3 + vol_score + dur_bonus + spread_bonus
+    dur   = duration_score(days)
+    if dur < -100:
+        return dur              # disqualified
+
+    prob       = m.get("prob", 50)
+    conviction = abs(prob - 50) / 50     # 0.0 at 50%, 1.0 at 0% or 100%
+    spread_bonus = 2.0 if signal == "spread" else 0.0
+
+    return dur + (conviction * 3) + spread_bonus
 
 
 def select_trades(
@@ -108,7 +96,7 @@ def select_trades(
     open_tickers: list[str] | None = None,
 ) -> dict:
     """
-    Return up to `max_slots` trade recommendations as a ranked list.
+    Return up to `max_slots` trade recommendations, ranked best first.
 
     Args:
         markets_path:  path to markets.json
@@ -116,9 +104,9 @@ def select_trades(
         open_tickers:  list of Kalshi tickers already held (skip these)
 
     Returns dict with:
-        trades        — list of trade dicts, best first
-        no_trade_reasons — why we couldn't fill all slots
-        data_updated  — ISO timestamp of markets.json
+        trades           — list of trade dicts, best first
+        no_trade_reasons — why we skipped markets
+        data_updated     — ISO timestamp of markets.json
     """
     open_tickers = set(open_tickers or [])
 
@@ -135,135 +123,119 @@ def select_trades(
     candidates   = []   # (score, trade_dict)
     rejections   = []
 
-    # ── Build spread lookup: kalshi_ticker → pair ─────────────────────────
+    # ── Build spread lookup ───────────────────────────────────────────────────
     spread_by_ticker = {}
-    spread_by_question = {}
     for pair in spread_pairs:
-        ticker = pair.get("kalshi_ticker") or pair.get("kalshi_slug")
+        ticker = pair.get("kalshi_ticker") or pair.get("kalshi_slug", "")
         if ticker and ticker not in ("", "MISSING"):
             spread_by_ticker[ticker] = pair
-        spread_by_question[pair.get("poly_question", "")[:60]] = pair
 
-    spread_missing = [
-        p.get("poly_question", "?")[:55]
-        for p in spread_pairs
+    spread_missing_count = sum(
+        1 for p in spread_pairs
         if not (p.get("kalshi_ticker") or p.get("kalshi_slug"))
         or (p.get("kalshi_ticker") or p.get("kalshi_slug")) in ("", "MISSING")
-    ]
-    if spread_missing:
-        for q in spread_missing:
-            rejections.append(f"[SPREAD] '{q}' — Kalshi ticker not stored in markets.json yet")
+    )
+    if spread_missing_count:
+        rejections.append(
+            f"[SPREAD] {spread_missing_count} spread pair(s) have no Kalshi ticker yet "
+            "(will populate next pipeline run)"
+        )
 
-    # ── Score every Kalshi market ─────────────────────────────────────────
+    # ── Score every Kalshi market ─────────────────────────────────────────────
     for m in all_markets:
         if m.get("source") != "Kalshi":
             continue
 
-        ticker  = m.get("slug", "")
-        prob    = m.get("prob", 50)
-        vol24   = m.get("volume_24h", 0)
-        signal  = m.get("trading_signal", "")
-        days    = days_until(m.get("end_date_raw", ""))
+        ticker   = m.get("slug", "")
+        prob     = m.get("prob", 50)
+        vol24    = m.get("volume_24h", 0) or 0
         question = m.get("question", "?")
+        days     = days_until(m.get("end_date_raw", ""))
 
-        # ── Hard filters ─────────────────────────────────────────────────
+        # ── Hard filters ─────────────────────────────────────────────────────
         if ticker in open_tickers:
-            rejections.append(f"[SKIP] '{question[:55]}' — already in open positions")
-            continue
-        if signal == "stale":
-            rejections.append(f"[SKIP] '{question[:55]}' — signal=stale")
-            continue
-        if vol24 < MIN_VOL_24H:
-            rejections.append(f"[SKIP] '{question[:55]}' — vol24h ${vol24:,.0f} < ${MIN_VOL_24H:,} floor")
-            continue
-        if days is not None and days <= 0:
-            rejections.append(f"[SKIP] '{question[:55]}' — already expired")
+            rejections.append(f"[SKIP] '{question[:55]}' — already open")
             continue
 
-        # ── Check for spread signal first ────────────────────────────────
+        dur = duration_score(days)
+        if dur < -100:
+            d_str = f"{days:.1f}d" if days is not None else "unknown"
+            if days is not None and days > MAX_TRADE_DAYS:
+                # Don't spam rejections with hundreds of long-duration markets
+                pass
+            elif days is not None and days <= 0:
+                rejections.append(f"[SKIP] '{question[:55]}' — already expired")
+            continue
+
+        # Probability gate — skip the coin-flip zone
+        if CROWD_NO_GATE < prob < CROWD_YES_GATE:
+            rejections.append(
+                f"[SKIP] '{question[:55]}' — prob {prob}% in dead zone "
+                f"({CROWD_NO_GATE}–{CROWD_YES_GATE}%)"
+            )
+            continue
+
+        d_str = f"{days:.1f}d" if days is not None else "?"
+
+        # ── Check spread signal first ─────────────────────────────────────────
         in_spread = spread_by_ticker.get(ticker)
         if in_spread:
-            gap   = in_spread.get("gap_pts", 0)
+            gap    = in_spread.get("gap_pts", 0)
             p_prob = in_spread.get("poly_prob", prob)
-            if gap >= SPREAD_MIN_GAP and vol24 >= MIN_VOL_SPREAD:
+            if gap >= SPREAD_MIN_GAP:
                 score = score_candidate(m, "spread", days)
-                d_str = f"{days:.0f}d" if days else "?"
                 candidates.append((score, {
                     "signal":    "spread",
                     "ticker":    ticker,
                     "side":      "yes",
                     "prob":      prob,
-                    "days_left": round(days, 1) if days else None,
+                    "days_left": round(days, 2) if days else None,
                     "question":  question,
-                    "reason":    f"Polymarket {p_prob}% vs Kalshi {prob}% — {gap:.1f}pt gap. "
-                                 f"Bet YES, expect convergence. Resolves {d_str}.",
+                    "reason":    (
+                        f"Polymarket {p_prob}% vs Kalshi {prob}% — {gap:.1f}pt gap. "
+                        f"Bet YES on Kalshi, expect convergence. Resolves {d_str}."
+                    ),
                 }))
                 continue
             else:
-                rejections.append(f"[SPREAD] '{question[:55]}' — gap {gap}pts or vol24h ${vol24:,.0f} too low")
+                rejections.append(
+                    f"[SPREAD] '{question[:55]}' — gap only {gap:.1f}pts (need ≥{SPREAD_MIN_GAP})"
+                )
 
-        # ── Crowd model ───────────────────────────────────────────────────
-        if prob >= CROWD_YES_GATE and vol24 >= MIN_VOL_CROWD:
-            side  = "yes"
+        # ── Crowd conviction ──────────────────────────────────────────────────
+        if prob >= CROWD_YES_GATE:
             score = score_candidate(m, "crowd", days)
-            d_str = f"{days:.0f}d" if days else "?"
             candidates.append((score, {
                 "signal":    "crowd",
                 "ticker":    ticker,
-                "side":      side,
+                "side":      "yes",
                 "prob":      prob,
-                "days_left": round(days, 1) if days else None,
+                "days_left": round(days, 2) if days else None,
                 "question":  question,
-                "reason":    f"Crowd conviction {prob}% → bet YES. "
-                             f"${vol24:,.0f} traded today. Resolves {d_str}.",
+                "reason":    (
+                    f"Crowd conviction {prob}% → bet YES. "
+                    f"${vol24:,.0f} traded today. Resolves {d_str}."
+                ),
             }))
             continue
 
-        if prob <= CROWD_NO_GATE and vol24 >= MIN_VOL_CROWD:
-            side  = "no"
+        if prob <= CROWD_NO_GATE:
             score = score_candidate(m, "crowd", days)
-            d_str = f"{days:.0f}d" if days else "?"
             candidates.append((score, {
                 "signal":    "crowd",
                 "ticker":    ticker,
-                "side":      side,
+                "side":      "no",
                 "prob":      prob,
-                "days_left": round(days, 1) if days else None,
+                "days_left": round(days, 2) if days else None,
                 "question":  question,
-                "reason":    f"Crowd conviction {prob}% → bet NO. "
-                             f"${vol24:,.0f} traded today. Resolves {d_str}.",
+                "reason":    (
+                    f"Crowd conviction {prob}% → bet NO. "
+                    f"${vol24:,.0f} traded today. Resolves {d_str}."
+                ),
             }))
             continue
 
-        # ── Knife-edge ────────────────────────────────────────────────────
-        if signal == "knife_edge":
-            change = m.get("change_pts", 0)
-            if abs(change) >= 1.0 and vol24 >= MIN_VOL_KNIFE:
-                if days is None or days > KNIFE_MAX_DAYS:
-                    rejections.append(f"[KNIFE] '{question[:55]}' — resolves {days:.0f}d out, need ≤{KNIFE_MAX_DAYS}d")
-                    continue
-                side  = "yes" if change > 0 else "no"
-                score = score_candidate(m, "knife_edge", days)
-                d_str = f"{days:.0f}d" if days else "?"
-                candidates.append((score, {
-                    "signal":    "knife_edge",
-                    "ticker":    ticker,
-                    "side":      side,
-                    "prob":      prob,
-                    "days_left": round(days, 1) if days else None,
-                    "question":  question,
-                    "reason":    f"Knife-edge: moved {change:+.1f}pts today at {prob}% → bet {side.upper()}. "
-                                 f"Resolves {d_str}.",
-                }))
-                continue
-
-        # Didn't qualify for any signal
-        if 40 < prob < 60:
-            rejections.append(f"[SKIP] '{question[:55]}' — prob {prob}% in dead zone (40-60%)")
-        elif vol24 < MIN_VOL_CROWD:
-            rejections.append(f"[SKIP] '{question[:55]}' — vol24h ${vol24:,.0f} below crowd floor")
-
-    # ── Rank and return top N ─────────────────────────────────────────────
+    # ── Rank and return top N ─────────────────────────────────────────────────
     candidates.sort(key=lambda x: x[0], reverse=True)
     top = [trade for _, trade in candidates[:max_slots]]
 
@@ -276,12 +248,11 @@ def select_trades(
 
 
 # ── CLI ───────────────────────────────────────────────────────────────────────
-
 if __name__ == "__main__":
-    import argparse, math
+    import argparse
     parser = argparse.ArgumentParser(description="Select today's best Kalshi trades")
-    parser.add_argument("--slots",   type=int, default=4, help="Open position slots available (default 4)")
-    parser.add_argument("--verbose", "-v", action="store_true", help="Show all rejection reasons")
+    parser.add_argument("--slots",   type=int,  default=4,     help="Open slots available")
+    parser.add_argument("--verbose", "-v", action="store_true", help="Show all rejections")
     args = parser.parse_args()
 
     result = select_trades(max_slots=args.slots)
@@ -289,30 +260,36 @@ if __name__ == "__main__":
     print()
     print(f"  Data as of : {result['data_updated']}")
     print(f"  Slots open : {args.slots}")
-    print(f"  Candidates : {result['all_candidates']} qualified markets found")
+    print(f"  Candidates : {result['all_candidates']} qualifying markets within {MAX_TRADE_DAYS} days")
     print()
 
     trades = result["trades"]
 
     if not trades:
         print("━" * 55)
-        print("  NO TRADES TODAY — no qualifying signals found")
+        print("  NO TRADES — no qualifying markets closing within 7 days")
         print("━" * 55)
     else:
-        labels = {"spread": "SPREAD", "crowd": "CROWD", "knife_edge": "KNIFE-EDGE"}
+        labels = {"spread": "SPREAD ⚡", "crowd": "CROWD", "knife_edge": "KNIFE-EDGE"}
         for i, t in enumerate(trades, 1):
-            print(f"━━━  Trade {i} of {len(trades)}  " + "━" * 35)
+            hours = round(t['days_left'] * 24, 1) if t.get('days_left') else None
+            time_str = f"{hours}h" if hours and hours < 48 else (f"{t['days_left']}d" if t.get('days_left') else "?")
+            print(f"━━━  Trade {i}  " + "━" * 42)
             print(f"  Signal  : {labels.get(t['signal'], t['signal'])}")
             print(f"  Ticker  : {t['ticker']}")
             print(f"  Side    : {t['side'].upper()}")
             print(f"  Prob    : {t['prob']}%")
-            print(f"  Expires : {t['days_left']} days" if t['days_left'] else "  Expires : unknown")
+            print(f"  Closes  : {time_str}")
             print(f"  Market  : {t['question'][:72]}")
             print(f"  Why     : {t['reason']}")
-        print("━" * 55)
+    print("━" * 55)
 
-    if args.verbose:
-        print()
-        print(f"── Rejections ({len(result['no_trade_reasons'])}) ──")
-        for r in result["no_trade_reasons"]:
-            print(f"  {r}")
+    if args.verbose or not trades:
+        if result["no_trade_reasons"]:
+            print()
+            relevant = [r for r in result["no_trade_reasons"]
+                       if "[SKIP]" not in r or args.verbose]
+            if relevant:
+                print(f"── Notable rejections ({len(relevant)}) ──")
+                for r in relevant[:20]:
+                    print(f"  {r}")
