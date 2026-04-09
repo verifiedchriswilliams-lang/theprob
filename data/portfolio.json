@@ -12,7 +12,7 @@
       "ytd_return_pct": 73.1,
       "win_count": 85,
       "loss_count": 7,
-      "open_count": 17,
+      "open_count": 18,
       "start_date": "2026-03-17",
       "last_updated": "2026-04-09",
       "trades": [
@@ -1977,6 +1977,24 @@
           "exit_prob": 0.1,
           "exit_date": "2026-04-09",
           "pnl": 36.05
+        },
+        {
+          "trade_id": "93dfbe33",
+          "market_id": "atp-schwaer-safiull-2026-04-09",
+          "question": "Madrid: Joel Schwaerzler vs Roman Safiullin",
+          "url": "https://polymarket.com/event/atp-schwaer-safiull-2026-04-09",
+          "source": "Polymarket",
+          "display_category": "Sports",
+          "entry_prob": 88.0,
+          "direction": "YES",
+          "amount": 100.0,
+          "entry_date": "2026-04-09",
+          "end_date_raw": "2026-04-16T09:00:00Z",
+          "end_date": "Apr 16",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
