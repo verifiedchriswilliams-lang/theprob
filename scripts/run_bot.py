@@ -129,7 +129,11 @@ def run(dry_run: bool = False) -> None:
     # The ledger may be stale if positions were manually closed on Kalshi's website.
     try:
         live_positions = client.get_open_positions()
-        live_tickers   = [p.get("ticker", "") for p in live_positions if p.get("position", 0) > 0]
+        # Accept any position entry with a non-empty ticker — Kalshi only returns
+        # active positions from /portfolio/positions, so no need to filter by size.
+        # Previously filtered by p.get("position",0)>0 which silently dropped all
+        # positions because Kalshi may use a different field name for position size.
+        live_tickers   = [p.get("ticker", "") for p in live_positions if p.get("ticker")]
         all_open = live_tickers   # live API is ground truth — don't union with stale ledger
         log.info("Open positions: %d", len(all_open))
     except Exception as exc:
