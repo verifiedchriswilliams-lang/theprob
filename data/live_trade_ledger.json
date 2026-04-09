@@ -1919,5 +1919,13 @@
       "user_id": "bc69262b-1253-4ad1-a774-46faf67acccb",
       "yes_price_dollars": "0.0400"
     }
+  },
+  {
+    "event": "order_failed",
+    "timestamp": "2026-04-09T07:52:49.428144+00:00",
+    "ticker": "KXTRUMPUFC-UFC327",
+    "side": "yes",
+    "signal": "crowd",
+    "error": "409 Client Error: Conflict for url: https://api.elections.kalshi.com/trade-api/v2/portfolio/orders"
   }
 ]
