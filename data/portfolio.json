@@ -7,14 +7,14 @@
       "name": "The Crowd",
       "strategy": "Follow consensus: YES when prob \u226565%, NO when prob \u226435%",
       "thesis": "Smart money is already priced in. Ride the conviction.",
-      "current_balance": 1791.07,
-      "total_pnl": 791.07,
-      "ytd_return_pct": 79.1,
-      "win_count": 88,
+      "current_balance": 1821.79,
+      "total_pnl": 821.79,
+      "ytd_return_pct": 82.2,
+      "win_count": 89,
       "loss_count": 7,
       "open_count": 19,
       "start_date": "2026-03-17",
-      "last_updated": "2026-04-09",
+      "last_updated": "2026-04-10",
       "trades": [
         {
           "trade_id": "ea14c291",
@@ -965,10 +965,10 @@
           "entry_date": "2026-04-03",
           "end_date_raw": "2026-04-12T14:00:00Z",
           "end_date": "Apr 12",
-          "status": "open",
-          "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "status": "closed",
+          "exit_prob": 95.0,
+          "exit_date": "2026-04-10",
+          "pnl": 30.72
         },
         {
           "trade_id": "35a68ecb",
@@ -2067,6 +2067,24 @@
           "exit_prob": null,
           "exit_date": null,
           "pnl": null
+        },
+        {
+          "trade_id": "499d09ad",
+          "market_id": "will-rory-mcilroy-win-the-2026-masters-tournament",
+          "question": "Will Rory McIlroy win the 2026 Masters tournament?",
+          "url": "https://polymarket.com/event/the-masters-winner-2026",
+          "source": "Polymarket",
+          "display_category": "Sports",
+          "entry_prob": 24.5,
+          "direction": "NO",
+          "amount": 100.0,
+          "entry_date": "2026-04-10",
+          "end_date_raw": "2026-04-13T00:00:00Z",
+          "end_date": "Apr 13",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
@@ -2081,7 +2099,7 @@
       "loss_count": 0,
       "open_count": 6,
       "start_date": "2026-03-17",
-      "last_updated": "2026-04-09",
+      "last_updated": "2026-04-10",
       "trades": [
         {
           "trade_id": "18b00e62",
@@ -2456,7 +2474,7 @@
       "loss_count": 0,
       "open_count": 2,
       "start_date": "2026-03-17",
-      "last_updated": "2026-04-09",
+      "last_updated": "2026-04-10",
       "trades": [
         {
           "trade_id": "d19bb1c5",
