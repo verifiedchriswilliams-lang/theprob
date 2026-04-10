@@ -12,7 +12,7 @@
       "ytd_return_pct": 77.9,
       "win_count": 93,
       "loss_count": 8,
-      "open_count": 20,
+      "open_count": 21,
       "start_date": "2026-03-17",
       "last_updated": "2026-04-10",
       "trades": [
@@ -2193,6 +2193,24 @@
           "exit_prob": 100.0,
           "exit_date": "2026-04-10",
           "pnl": 9.29
+        },
+        {
+          "trade_id": "2f0f21c9",
+          "market_id": "val-gm-kc3-2026-04-10",
+          "question": "Valorant: Gentle Mates vs Karmine Corp (BO3) - VCT EMEA Group Alpha",
+          "url": "https://polymarket.com/event/val-gm-kc3-2026-04-10",
+          "source": "Polymarket",
+          "display_category": "Sports",
+          "entry_prob": 88.0,
+          "direction": "YES",
+          "amount": 100.0,
+          "entry_date": "2026-04-10",
+          "end_date_raw": "2026-04-11T00:30:00Z",
+          "end_date": "Apr 11",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
