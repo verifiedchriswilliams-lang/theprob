@@ -169,6 +169,29 @@ def is_junk_market(m: dict) -> bool:
         return True
     return False
 
+# Slug prefixes that identify esports markets
+ESPORTS_SLUG_PREFIXES = ["lol-", "lck-", "lcs-", "lec-", "cs2-", "dota-", "valorant-", "rl-"]
+
+# Keywords in question text that identify esports markets
+ESPORTS_QUESTION_PATTERNS = [
+    "lol:", "lck:", "lec:", "lcs:", " bo3)", " bo5)", " bo3 ", " bo5 ",
+    "esports", "valorant", "overwatch", "dota 2", "counter-strike",
+    "league of legends", "rocket league championship",
+]
+
+def is_esports_market(m: dict) -> bool:
+    """
+    Returns True for esports/competitive gaming markets.
+    These are excluded from hero — low general-audience relevance vs. real news.
+    """
+    slug = m.get("slug", "").lower()
+    if any(slug.startswith(prefix) for prefix in ESPORTS_SLUG_PREFIXES):
+        return True
+    q = m.get("question", "").lower()
+    if any(pattern in q for pattern in ESPORTS_QUESTION_PATTERNS):
+        return True
+    return False
+
 def days_until_close(end_date_str: str) -> float | None:
     """Return how many days until market closes. None if unparseable."""
     try:
@@ -1327,6 +1350,7 @@ def pick_hero(markets: list[dict], recent_topics: list[str] | None = None,
         and not is_past_close(m)
         and not is_junk_market(m)
         and not is_range_bucket_market(m)   # range buckets are misleading as hero
+        and not is_esports_market(m)        # esports excluded — low general audience relevance
         and (not is_sports_market(m)
              or max(m["volume"], m.get("event_volume", 0)) >= HERO_SPORTS_MIN_VOLUME
              or m.get("volume_24h", 0) >= HERO_SPORTS_MIN_VOLUME_24H)  # hot tournament markets
@@ -1341,6 +1365,14 @@ def pick_hero(markets: list[dict], recent_topics: list[str] | None = None,
             for i, topic in enumerate(recent_topics):
                 if key == topic:
                     penalty = HERO_REPEAT_PENALTY_PER_DAY[min(i, len(HERO_REPEAT_PENALTY_PER_DAY) - 1)]
+                    # Dominant story relief: if this market is the biggest story of the day
+                    # ($300K+ 24h volume AND 20+ pt move), cap the repeat penalty at 40pts.
+                    # Prevents a genuinely breaking story (Iran diplomacy, major election move)
+                    # from being permanently buried by history while low-volume esports or
+                    # obscure markets win hero by default.
+                    if (m.get("volume_24h", 0) >= 300_000
+                            and abs(m.get("change_pts", 0)) >= 20):
+                        penalty = min(penalty, 40.0)
                     base -= penalty
                     break
         # Category diversity penalty: soft nudge toward editorial variety.
