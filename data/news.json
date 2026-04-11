@@ -1,8 +1,17 @@
 {
-  "updated": "Apr 11, 2026 \u00b7 6:35 AM ET",
-  "updated_iso": "2026-04-11T11:35:51.722341+00:00",
+  "updated": "Apr 11, 2026 \u00b7 12:27 PM ET",
+  "updated_iso": "2026-04-11T17:27:36.565872+00:00",
   "homepage_count": 3,
   "articles": [
+    {
+      "title": "Google says Polymarket bets showing up in News was an \u2018error\u2019",
+      "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE51eWJPNXFhWmM4eWxzMVdEX3hWM2hXczM5RWxGYW50OVFVdEtTQXBtWTA0RjNqSjZzbm5nX3hOczk0eEc2b25zY3pRMlloaGs0Z0o3U3NJZThNNTRXT2tVRjJQWlZWeGlrVEZTMXJDZnZhVWhuRHRreVZ3?oc=5",
+      "source": "The Verge",
+      "pub_iso": "2026-04-11T15:07:47+00:00",
+      "description": "",
+      "summary": "Google accidentally displayed Polymarket betting odds in its News results, prompting the company to call it an \"error\" and presumably remove the feature. The slip-up reveals Google's internal experiments with integrating prediction market data into search results, which could massively boost mainstream adoption if they decide to make it permanent.",
+      "pub_display": "Apr 11"
+    },
     {
       "title": "\u2018Abhorrent\u2019: the inside story of the Polymarket gamblers betting millions on war",
       "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxOWHFodG80TU5adFJXdzRLQ0NsVXdfR09RV1oyUEdVYnZxNWk3LVhkeWZaWlpVam9YVmFjMlVnQlpkQl9YN09vZ1pIS3lXQ3pNcUZkTjc3c2hXMkxnaThpd1REdmg5cl9tZERLMjNWYUUzdEtmZ095bUtmUEZTQTA5Z3JwOFB3XzQzSXZxQXBweEx3WXY1b1ZhbWFlN2FYRUZiSHVqXzVNZw?oc=5",
@@ -13,13 +22,13 @@
       "pub_display": "Apr 11"
     },
     {
-      "title": "Live Masters Win Probability: Who Will Win at Augusta?",
-      "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxOd0NocEhwak0zYWtJbnMwOG9McEJTSnd1TTNtcTRBU0k1SWctNTFrOTVvVUFLb0txSzM3WTVaZmNjWEhaSFJ0MVlyQWdkWWZ1MlFBSGN6RWluZl9vV01WUm1iMzNFNFNCcUc3cWYyU2V6NkdjY2wteVRRYW94Q1BwRXItUmdtdjE0b244dExHRGctXzg?oc=5",
-      "source": "Covers.com",
-      "pub_iso": "2026-04-10T22:58:00+00:00",
+      "title": "Polymarket\u2019s $269 Million Question: Did U.S. Forces \u2018Enter\u2019 Iran?",
+      "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE5Fblhlck55dC1EMm4tMEFYTHlNWmU0NVhmZXZEYkpIeEhoQWRMeVNieW1VNWprZ21UckNBLWd2dmc0bGZmUi1qbVdRSjNVMFZDYkx4clJRX2hTZlp0Mm1rUGpXNElrenVyVUlRM2FUbVA1YjB5Vk40Sjdncw?oc=5",
+      "source": "WSJ",
+      "pub_iso": "2026-04-11T09:30:00+00:00",
       "description": "",
-      "summary": "The Masters is underway at Augusta National, and live win probability models are tracking which golfer has the best shot at claiming the green jacket as conditions and leaderboards shift in real time. These dynamic odds create arbitrage opportunities for sharp bettors who can spot when the models diverge from traditional sportsbooks still updating their lines the old-fashioned way.",
-      "pub_display": "Apr 10"
+      "summary": "A massive $269 million Polymarket bet is riding on whether U.S. military forces have officially \"entered\" Iran, likely sparked by recent military tensions in the region. The semantic parsing of what constitutes \"entering\" a country could make or break fortunes, highlighting how prediction markets turn geopolitical crises into high-stakes grammar debates.",
+      "pub_display": "Apr 11"
     },
     {
       "title": "Prediction markets ramp up DC messaging",
@@ -31,30 +40,12 @@
       "pub_display": "Apr 10"
     },
     {
-      "title": "How Prediction Markets Turned the World Into a Casino",
-      "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxQdE5pY29pTEJkd0FXbzhiS0JIbUJvMWFmTFY3YmxEdnMtVjN0bFFtYjVfZ25DWlZpbFZlbTR1SkpSc3h4NnFOcUVxNjd5dFBVcWtCczVPRk9hUkZPQnRuQUk5RTQyUFJUZGp5c2JGeXdzd1ozQjN2aDNxaWFzLWRXY25oUzMxQ0U3c1A1cVBUOUNpYUc4YmVpMFA5TDVCa0xkMjFKVTV6cFJWbF9LLXRRVGVBa0VKS1dOaXdSUkRNMFg?oc=5",
-      "source": "Bloomberg",
-      "pub_iso": "2026-04-10T20:23:55+00:00",
-      "description": "",
-      "summary": "Prediction markets have exploded beyond politics and finance into everything from celebrity deaths to weather patterns, creating a global betting ecosystem where literally anything can become a tradeable outcome. This massive expansion means more liquidity and opportunities for sharp bettors, but also attracts casual gamblers who don't understand the fundamentals, potentially creating mispriced markets ripe for exploitation.",
-      "pub_display": "Apr 10"
-    },
-    {
       "title": "Prediction markets have made betting easier than ever\u2014and young men are paying the price",
       "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTFBTVkwxaUN2TkNPaTRxOEU0YnFGZzFaRHBLZTd1SkFtcXlZVFNNd3ZKWThvRGI1cnZOQ0ZPaUhPLWVUaXFMTlJ6VGxHUGFVb005ZzFoZ3d6ZXJhMEo0dWdGaGVrczF5blZHWEVtOXRnRkc2SktlR2xCNw?oc=5",
       "source": "Fortune",
       "pub_iso": "2026-04-10T17:13:00+00:00",
       "description": "",
       "summary": "Young men are getting hooked on sports betting and prediction markets at unprecedented rates, racking up serious losses as mobile apps make wagering as simple as ordering food. This gambling surge threatens to poison the well for legitimate prediction markets, as regulators and lawmakers struggle to distinguish between casino-style betting apps and information aggregation platforms.",
-      "pub_display": "Apr 10"
-    },
-    {
-      "title": "Google has reportedly started to add Polymarket data to News results",
-      "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxQYzlLenZzdGl3aWE2WnlXQ1FYLUdXOGVtc0pud0xtd0pVUmRiQTVJTm5zWE16Z3RUc0IyUVVPcWVfZVVodlpyT1ZRUFg3NlZRZVpsMGN0bm9uT0xYQ25uY3pFVS1FNjNPdFU5NnE2aG16VDltQkNQcDdFUmIwQkRORWZLRkpYbXpIWHlVWGZEOHlnLTlkSGJ4TFYwZHJKaGR4dDVkaVdtanNtY2FkYmI3TGw4QVZGek0z?oc=5",
-      "source": "Engadget",
-      "pub_iso": "2026-04-10T16:17:09+00:00",
-      "description": "",
-      "summary": "Google is now displaying Polymarket odds alongside traditional news coverage in search results. This legitimizes prediction markets as a news source and could drive massive mainstream adoption as millions of Google users discover betting odds for the first time.",
       "pub_display": "Apr 10"
     },
     {
@@ -76,6 +67,15 @@
       "pub_display": "Apr 10"
     },
     {
+      "title": "Weather Prediction Markets Are Booming. Can They Improve Forecasts?",
+      "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxOaFRGN2llcGlwZC1CVVRTUFV2LU1HVkZCai1POUtrdFc0X2VtZWY5MGxpTlFRWmpvVHdhWTljQ1IzdmxoZERxUXJfZWViMGZINzVZNnNPeTVReU9Qa0tiY3JjRkROMFBoYUFwUnpDMTNWTEtJSWpta3pOUkxHa2MyWEhkcktzekJ5Z3IwYWJTNUVHUGJTSEJFdEtYa3FGRTJWM1ZzaEd3?oc=5",
+      "source": "Bloomberg.com",
+      "pub_iso": "2026-04-10T06:00:00+00:00",
+      "description": "",
+      "summary": "Weather prediction markets are exploding as traders bet on everything from hurricane paths to temperature records, turning meteorology into a gambling opportunity. If these markets can actually outperform traditional forecasts, they'll prove that crowdsourced betting beats expert analysis in yet another domain.",
+      "pub_display": "Apr 10"
+    },
+    {
       "title": "Polymarket Orban Odds Drop After Vance Visit: $9M Wagered",
       "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxNOHpEX1pSSDRYY1lfaVdSck92MGR2RklDT3pHbV90VU94d09NMHpMMm81MW9vaHNCMDFWekl1dFh3dDY5S3FOOG1jUVdqN0xTRk9scGNhU1Vpd0pGQ0d6M3ZmWmhDY1ItTWZ3Vlh1TU0yM3NUUmZTTUZHcHYtTV9Pd1pBdXdIbnVsMVFNX0U0UFJjM1BiS280WWJqUXdxZXBuSHhCVU5Oc2JOQjU0Zlk3UHpNdklicFRpRHJDVw?oc=5",
       "source": "Forbes",
@@ -85,21 +85,21 @@
       "pub_display": "Apr 9"
     },
     {
-      "title": "Exclusive | White House Warns Staff Not to Place Bets on Prediction Markets Amid Iran War",
-      "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxQWmlxSzJ0SGRxM2lwZ2xMNThaTGMxUVczZFNhTC00ZklvUDBTemN4dXJ1eTVtbVI0N29SZjdRcjNVWUVTQmp1UUk5dzRlLVk3NEplZDVtc1JnMVVqV1JpS2l2MjR0NWNCelVVazBFR1ZPaklnZE8xM2xMdWloTVNRN2Z1b05OdmNkc29zS0xZNkpwb2dOR3V4R3Q4VmlNdGwtUnh1MDh0MkpwTE8zSmEtblg1Y2t3OGV2cWJvamlfTQ?oc=5",
-      "source": "WSJ",
-      "pub_iso": "2026-04-09T21:54:00+00:00",
-      "description": "",
-      "summary": "The White House has reportedly issued internal warnings prohibiting staff from betting on prediction markets related to potential conflict with Iran. The move signals growing official recognition that prediction markets have become influential enough to warrant formal restrictions on government insiders who might possess material non-public information.",
-      "pub_display": "Apr 9"
-    },
-    {
       "title": "'We have a gambling epidemic': WA AG explains why the state is trying to ban Kalshi and other predictive markets",
       "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE03RHBzUDJZSDJIV3I4S0ktSlVnYkppX0ZDR2JGNXJrbWR6NFZPTkl2Mm15aDZ3QjNUN29mWjk5ZkhpbW9jSGZHMF9WVGkyQVZfcW1KNGFjNG03VG5jcTAzelBLMEd4Sy1DZ2FjcmRkZ0J3cUh6OUpEekp3?oc=5",
       "source": "MyNorthwest.com",
       "pub_iso": "2026-04-09T21:18:00+00:00",
       "description": "",
       "summary": "Washington's Attorney General is pushing to ban Kalshi and other prediction markets, calling widespread betting a \"gambling epidemic.\" This signals a broader regulatory crackdown that could force prediction markets to choose between compliance costs and market access in major states.",
+      "pub_display": "Apr 9"
+    },
+    {
+      "title": "How Prediction Markets Turned the World Into a Casino",
+      "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxQdE5pY29pTEJkd0FXbzhiS0JIbUJvMWFmTFY3YmxEdnMtVjN0bFFtYjVfZ25DWlZpbFZlbTR1SkpSc3h4NnFOcUVxNjd5dFBVcWtCczVPRk9hUkZPQnRuQUk5RTQyUFJUZGp5c2JGeXdzd1ozQjN2aDNxaWFzLWRXY25oUzMxQ0U3c1A1cVBUOUNpYUc4YmVpMFA5TDVCa0xkMjFKVTV6cFJWbF9LLXRRVGVBa0VKS1dOaXdSUkRNMFg?oc=5",
+      "source": "Bloomberg.com",
+      "pub_iso": "2026-04-09T21:00:56+00:00",
+      "description": "",
+      "summary": "Prediction markets have exploded beyond politics and finance into everything from celebrity deaths to weather patterns, creating a global betting ecosystem where literally anything can become a tradeable outcome. This massive expansion means more liquidity and opportunities for sharp bettors, but also attracts casual gamblers who don't understand the fundamentals, potentially creating mispriced markets ripe for exploitation.",
       "pub_display": "Apr 9"
     },
     {
