@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-04-11",
-  "built_recently": "Improved hero relevance — again. The Prob was surfacing League of Legends esports matches as the lead market while Rory McIlroy's Masters surge and Iran diplomacy swings sat below the fold. Two fixes shipped: esports markets are now fully excluded from hero eligibility, and genuinely dominant stories (big volume + big move) can no longer be buried by the repeat penalty. Today's hero: Rory McIlroy to win The Masters, 46-point swing, $1.9M market. That's the front page.",
-  "coming_next": "Pressure-testing The Spread (Polymarket vs. Kalshi price gaps, our best arbitrage signal). Also shipping Yesterday's Biggest Swings and a Closing Soon rail for markets resolving within 72 hours near 50/50. Test 1 of the paper trading experiment just wrapped. Results incoming."
+  "last_updated": "2026-04-12",
+  "built_recently": "Launched a live Kalshi trading bot — real money, fully automated. The bot runs every hour via GitHub Actions, sizes trades dynamically (10% of balance, compounding as the account grows), and targets markets resolving within 7 days only. No year-long lockups. Duration is now the primary ranking signal: a 70% market closing tonight beats an 85% market closing next month. Starting balance: $89.62.",
+  "coming_next": "Watching the first live trades resolve and tuning the short-duration market pipeline. The near-term Kalshi fetch (markets closing within 72 hours) just went live — expect same-day and next-day trades to start appearing as the pipeline warms up. The Spread arbitrage signal is next once tickers are populating correctly."
 }
