@@ -203,13 +203,13 @@ def story_card_html(number: str, story: dict, copy: dict) -> str:
     return f"""
   <tr><td class="section-pad" style="padding:28px 32px;border-bottom:1px solid #1e2a38;">
     <div class="story-num" style="font-family:'Courier New',monospace;font-size:38px;font-weight:700;color:#00e5a0 !important;line-height:1;margin-bottom:6px;">{number}</div>
-    <div style="font-family:'Courier New',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:#8ba3bc !important;margin:0 0 10px;">via {source}</div>
+    <div style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:#a8bfce !important;margin:0 0 10px;">via {source}</div>
     <div class="story-headline" style="font-size:18px;font-weight:700;color:#edf2f7 !important;line-height:1.35;margin-bottom:12px;">
       <a href="{url}" style="color:#edf2f7 !important;text-decoration:none;">{headline}</a>
     </div>
     <p class="body-text" style="font-size:15px;color:#d0dde8 !important;line-height:1.8;margin:0 0 16px;">{summary}</p>
     <div style="margin-bottom:16px;">
-      <div style="font-family:'Courier New',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:#8ba3bc !important;margin-bottom:8px;">What You Need to Know</div>
+      <div style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:#a8bfce !important;margin-bottom:8px;">What You Need to Know</div>
       <ul style="margin:0;padding-left:18px;list-style:disc;">
         {bullet_items}
       </ul>
@@ -229,8 +229,8 @@ def build_header_html(date_str: str, edition: int, subtitle: str) -> str:
     <div style="margin-bottom:24px;">
       <a href="{SITE_URL}" style="text-decoration:none;">
         <span style="font-family:'Courier New',monospace;font-size:22px;font-weight:700;color:#00e5a0 !important;letter-spacing:-0.5px;">THE PROB</span>
-        <span style="font-family:'Courier New',monospace;font-size:16px;color:#1e2a38 !important;margin:0 8px;">|</span>
-        <span style="font-family:'Courier New',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#8ba3bc !important;">What's the Probability?</span>
+        <span style="font-family:'Courier New',monospace;font-size:16px;color:#4a6880 !important;margin:0 8px;">|</span>
+        <span style="font-family:'Courier New',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#a8bfce !important;">What's the Probability?</span>
       </a>
     </div>
 
@@ -245,15 +245,15 @@ def build_header_html(date_str: str, edition: int, subtitle: str) -> str:
     <!-- Sunday 5 title -->
     <div style="font-family:'Courier New',monospace;font-size:11px;letter-spacing:0.25em;text-transform:uppercase;color:#f5a623 !important;margin-bottom:8px;">Sunday Edition</div>
     <div style="font-size:30px;font-weight:700;color:#edf2f7 !important;line-height:1.15;margin-bottom:8px;">The Sunday 5</div>
-    <div style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:#546e85 !important;margin-bottom:18px;">{date_str} &nbsp;&#183;&nbsp; Edition #{edition:02d}</div>
+    <div style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:#8ba3bc !important;margin-bottom:18px;">{date_str} &nbsp;&#183;&nbsp; Edition #{edition:02d}</div>
 
     <!-- Two-sentence intro -->
-    <div style="font-size:14px;color:#8ba3bc !important;line-height:1.75;max-width:420px;margin:0 auto 6px;">
+    <div style="font-size:15px;color:#c8dae6 !important;line-height:1.8;max-width:420px;margin:0 auto 6px;">
       Every Sunday, I hand-pick the 5 most important stories from the prediction markets world and tell you why they matter. These are the headlines shaping where smart money is moving next.
     </div>
   </td></tr>
-  <tr><td style="padding:12px 32px 16px;background:#0d1117 !important;text-align:center;border-bottom:1px solid #1e2a38;">
-    <div style="font-size:13px;color:#d0dde8 !important;font-style:italic;">{subtitle}</div>
+  <tr><td style="padding:14px 32px 18px;background:#0d1117 !important;text-align:center;border-bottom:1px solid #1e2a38;">
+    <div style="font-size:15px;color:#edf2f7 !important;font-style:italic;">{subtitle}</div>
   </td></tr>"""
 
 
@@ -261,16 +261,16 @@ def build_footer_html() -> str:
     return f"""
   <tr><td class="section-pad" style="padding:28px 32px;background:#0a0e14 !important;text-align:center;border-top:1px solid #1e2a38;">
     <div style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:#8ba3bc !important;margin-bottom:16px;">The Prob</div>
-    <div style="font-size:12px;color:#546e85 !important;line-height:1.8;">
-      <a href="{SITE_URL}" style="color:#8ba3bc !important;text-decoration:none;">theprobnewsletter.com</a>
+    <div style="font-size:12px;color:#8ba3bc !important;line-height:1.8;">
+      <a href="{SITE_URL}" style="color:#a8bfce !important;text-decoration:none;">theprobnewsletter.com</a>
       &nbsp;&#183;&nbsp;
-      <a href="{SITE_URL}/prediction-markets-101.html" style="color:#8ba3bc !important;text-decoration:none;">Prediction Markets 101</a>
+      <a href="{SITE_URL}/prediction-markets-101.html" style="color:#a8bfce !important;text-decoration:none;">Prediction Markets 101</a>
       &nbsp;&#183;&nbsp;
-      <a href="{SITE_URL}/archive.html" style="color:#8ba3bc !important;text-decoration:none;">Archive</a>
+      <a href="{SITE_URL}/archive.html" style="color:#a8bfce !important;text-decoration:none;">Archive</a>
       &nbsp;&#183;&nbsp;
-      <a href="{SITE_URL}/contact.html" style="color:#8ba3bc !important;text-decoration:none;">Contact</a>
+      <a href="{SITE_URL}/contact.html" style="color:#a8bfce !important;text-decoration:none;">Contact</a>
     </div>
-    <div style="font-size:11px;color:#546e85 !important;margin-top:14px;line-height:1.7;">
+    <div style="font-size:11px;color:#8ba3bc !important;margin-top:14px;line-height:1.7;">
       Prediction markets data from Polymarket and Kalshi.<br>
       Not financial advice. Trade at your own risk.
     </div>
