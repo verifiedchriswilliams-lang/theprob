@@ -154,7 +154,7 @@ def run(dry_run: bool = False) -> None:
     # that opened since the last hourly pipeline run.
     live_markets = []
     try:
-        live_markets = client.get_live_candidates(max_hours=24.0)
+        live_markets = client.get_live_candidates(max_hours=48.0)
     except Exception as exc:
         log.warning("Live candidate fetch failed (%s) — falling back to markets.json.", exc)
 
