@@ -452,13 +452,16 @@ class KalshiOrderClient:
             def _f(key: str) -> float:
                 return abs(float(p.get(key) or 0))
 
+            # ONLY use fields that reflect CURRENT holdings, not historical cost.
+            # position_fp = current contract count (non-zero = still holding)
+            # market_exposure_dollars = current dollar exposure (non-zero = still open)
+            # total_traded_dollars is historical cost paid — always non-zero, DO NOT USE.
             has_position = (
-                _f("position_fp") > 0           # Kalshi v2: fixed-point contract count
-                or _f("market_exposure_dollars") > 0  # dollar exposure
-                or _f("total_traded_dollars") > 0     # total cost basis
-                or _f("position") > 0           # legacy integer field
-                or _f("market_exposure") > 0    # legacy cents field
-                or _f("resting_orders_count") > 0
+                _f("position_fp") > 0                # Kalshi v2: current contracts held
+                or _f("market_exposure_dollars") > 0  # current dollar exposure
+                or _f("position") > 0                 # legacy integer field
+                or _f("market_exposure") > 0          # legacy cents field
+                or _f("resting_orders_count") > 0     # unfilled limit orders
             )
             if has_position:
                 active.append(p)
