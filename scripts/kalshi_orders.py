@@ -527,6 +527,9 @@ class KalshiOrderClient:
         cursor  = None
         pages   = 0
         seen_tickers: set = set()
+        # Debug counters
+        n_range = n_mve = n_noprob = n_extremeprob = n_kept = 0
+        sample_nonrange: list = []   # first 5 non-range-bucket tickers for debug
 
         log.info("Fetching live Kalshi candidates via /markets closing within %.0fh …",
                  max_hours)
@@ -555,11 +558,24 @@ class KalshiOrderClient:
 
                         # Skip range-bucket markets (NASDAQ/S&P price levels)
                         if self._is_range_bucket(ticker):
+                            n_range += 1
                             continue
 
                         # Skip multivariate parlay markets (too complex to price)
                         if m.get("mve_collection_ticker"):
+                            n_mve += 1
                             continue
+
+                        # Collect sample non-range tickers for debug logging
+                        if len(sample_nonrange) < 10:
+                            sample_nonrange.append({
+                                "ticker": ticker,
+                                "close":  m.get("close_time","")[:16],
+                                "bid":    m.get("yes_bid_dollars"),
+                                "ask":    m.get("yes_ask_dollars"),
+                                "last":   m.get("last_price_dollars"),
+                                "title":  m.get("title","")[:50],
+                            })
 
                         close_time = m.get("close_time", "") or ""
                         if not close_time:
@@ -577,10 +593,13 @@ class KalshiOrderClient:
                         elif last > 0:
                             prob = round(last * 100, 1)
                         else:
+                            n_noprob += 1
                             continue
 
                         if not (1 < prob < 99):
+                            n_extremeprob += 1
                             continue
+                        n_kept += 1
 
                         volume_usd = float(m.get("volume_fp",     0) or 0) / 100
                         volume_24h = float(m.get("volume_24h_fp", 0) or 0) / 100
@@ -619,8 +638,18 @@ class KalshiOrderClient:
                 break
 
         results.sort(key=lambda x: x["days_left"])
-        log.info("Live candidates found: %d (scanned %d pages, %d tickers total)",
-                 len(results), pages + 1, len(seen_tickers))
+        log.info(
+            "Live candidates: %d kept | %d range-buckets | %d MVE | "
+            "%d no-prob | %d extreme-prob | %d pages | %d total tickers",
+            n_kept, n_range, n_mve, n_noprob, n_extremeprob,
+            pages + 1, len(seen_tickers),
+        )
+        if sample_nonrange:
+            log.info("First non-range-bucket tickers seen:")
+            for s in sample_nonrange:
+                log.info("  %s  close=%s  bid=%s ask=%s last=%s  %s",
+                         s["ticker"], s["close"], s["bid"], s["ask"],
+                         s["last"], s["title"])
         for r in results[:15]:
             log.info("  %.1fh  %s%%  $%.0f/24h  %s",
                      r["days_left"] * 24, r["prob"],
