@@ -424,15 +424,34 @@ class KalshiOrderClient:
 
     def get_open_positions(self) -> list[dict]:
         """
-        Return all current open positions.
+        Return only positions where you actually hold contracts.
 
-        Each position dict includes: ticker, side, position (contract count),
-        market_exposure, realized_pnl, unrealized_pnl.
+        Kalshi's /portfolio/positions returns ALL historical positions including
+        resolved/settled ones with 0 contracts remaining. We filter to only
+        entries where position != 0 (YES contracts) or resting_orders_count > 0.
+
+        Kalshi v2 field names tried in order:
+          position          — net YES contracts (positive=YES held, negative=NO held)
+          market_exposure   — dollar value > 0 if position is open
+          resting_orders_count — unfilled limit orders still sitting
         """
         data = self._get("/portfolio/positions")
-        positions = data.get("market_positions", [])
-        log.info("Open positions: %d", len(positions))
-        return positions
+        all_positions = data.get("market_positions", [])
+
+        # Keep only positions with actual exposure
+        active = []
+        for p in all_positions:
+            net_position    = p.get("position", 0) or 0
+            exposure        = p.get("market_exposure", 0) or 0
+            resting         = p.get("resting_orders_count", 0) or 0
+            # Also check alternate field names Kalshi v2 may use
+            quantity        = p.get("quantity", 0) or 0
+            if abs(net_position) > 0 or abs(exposure) > 0 or resting > 0 or abs(quantity) > 0:
+                active.append(p)
+
+        log.info("Open positions: %d  (raw from API: %d, filtered ghost positions: %d)",
+                 len(active), len(all_positions), len(all_positions) - len(active))
+        return active
 
     def cancel_order(self, order_id: str) -> dict:
         """Cancel a resting limit order."""
