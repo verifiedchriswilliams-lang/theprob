@@ -130,30 +130,33 @@ def generate_story_copy(story: dict) -> dict:
 
 
 def generate_subject(stories: list) -> str:
-    top = stories[0]
+    headlines = "\n".join(f"- {s.get('headline', '')}" for s in stories)
     prompt = (
-        f"Top story this week: {top.get('headline', '')}\n\n"
-        "Write ONE email subject line for The Prob's Sunday newsletter. "
-        "Max 60 characters. Make it feel essential and specific. "
-        "No em dashes. No 'The Prob:' prefix. No quotes. Just the subject line, nothing else."
+        f"This week's 5 prediction markets stories:\n{headlines}\n\n"
+        "Write ONE punchy email subject line for The Prob's Sunday 5 newsletter. "
+        "Angle: what's the most provocative or surprising thing in this list? "
+        "Lead with the tension or the stakes. Max 55 characters. "
+        "No em dashes. No 'The Prob:' or 'Sunday 5:' prefix. No quotes. "
+        "Just the subject line, nothing else."
     )
-    subj = claude(prompt, max_tokens=60)
+    subj = claude(prompt, max_tokens=70)
     if not subj:
         subj = "The Sunday 5: This Week in Prediction Markets"
     return subj
 
 
 def generate_subtitle(stories: list) -> str:
-    headlines = " | ".join(s.get("headline", "")[:40] for s in stories[:3])
+    headlines = " | ".join(s.get("headline", "")[:45] for s in stories[:3])
     prompt = (
-        f"This week's top stories: {headlines}\n\n"
-        "Write ONE short email preview line for The Prob's Sunday newsletter. "
-        "Shown under the subject in an inbox. Max 80 characters. "
-        "No em dashes. No quotes. Make it feel like something worth reading. Just the preview, nothing else."
+        f"This week's top prediction markets stories: {headlines}\n\n"
+        "Write ONE short inbox preview line for The Prob's Sunday 5 newsletter. "
+        "This appears under the subject line in Gmail/Apple Mail. Max 85 characters. "
+        "Make it feel urgent and specific to this week's actual stories. "
+        "No em dashes. No quotes. No generic filler. Just the preview text, nothing else."
     )
-    sub = claude(prompt, max_tokens=80)
+    sub = claude(prompt, max_tokens=90)
     if not sub:
-        sub = "Five stories that moved the prediction markets conversation this week."
+        sub = "Five stories shaping the prediction markets conversation this week."
     return sub
 
 # ── HTML HELPERS ──────────────────────────────────────────────────────────────
@@ -199,10 +202,8 @@ def story_card_html(number: str, story: dict, copy: dict) -> str:
 
     return f"""
   <tr><td class="section-pad" style="padding:28px 32px;border-bottom:1px solid #1e2a38;">
-    <div style="display:flex;align-items:flex-start;">
-      <div class="story-num" style="font-family:'Courier New',monospace;font-size:40px;font-weight:700;color:#1e2a38 !important;line-height:1;min-width:52px;margin-right:0;padding-right:0;">{number}</div>
-    </div>
-    <div style="font-family:'Courier New',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:#8ba3bc !important;margin:4px 0 10px;">via {source}</div>
+    <div class="story-num" style="font-family:'Courier New',monospace;font-size:38px;font-weight:700;color:#00e5a0 !important;line-height:1;margin-bottom:6px;">{number}</div>
+    <div style="font-family:'Courier New',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:#8ba3bc !important;margin:0 0 10px;">via {source}</div>
     <div class="story-headline" style="font-size:18px;font-weight:700;color:#edf2f7 !important;line-height:1.35;margin-bottom:12px;">
       <a href="{url}" style="color:#edf2f7 !important;text-decoration:none;">{headline}</a>
     </div>
@@ -223,24 +224,36 @@ def story_card_html(number: str, story: dict, copy: dict) -> str:
 
 def build_header_html(date_str: str, edition: int, subtitle: str) -> str:
     return f"""
-  <tr><td style="padding:32px 32px 0;text-align:center;background:#0a0e14 !important;">
-    <div style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.25em;text-transform:uppercase;color:#f5a623 !important;margin-bottom:20px;">The Prob</div>
+  <tr><td style="padding:24px 32px 20px;text-align:center;background:#0a0e14 !important;border-bottom:2px solid #1e2a38;">
+    <!-- Brand bar matching theprobnewsletter.com -->
+    <div style="margin-bottom:24px;">
+      <a href="{SITE_URL}" style="text-decoration:none;">
+        <span style="font-family:'Courier New',monospace;font-size:22px;font-weight:700;color:#00e5a0 !important;letter-spacing:-0.5px;">THE PROB</span>
+        <span style="font-family:'Courier New',monospace;font-size:16px;color:#1e2a38 !important;margin:0 8px;">|</span>
+        <span style="font-family:'Courier New',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#8ba3bc !important;">What's the Probability?</span>
+      </a>
+    </div>
 
-    <div style="width:72px;height:72px;border-radius:50%;overflow:hidden;margin:0 auto 14px;border:2px solid #1e2a38;background:#1e2a38;">
-      <img src="{CHRIS_PHOTO_URL}" alt="Chris Williams" width="72" height="72"
-           style="width:72px;height:72px;border-radius:50%;object-fit:cover;display:block;"
+    <!-- Photo bubble -->
+    <div style="width:80px;height:80px;border-radius:50%;overflow:hidden;margin:0 auto 10px;border:2px solid #00e5a0;background:#1e2a38;">
+      <img src="{CHRIS_PHOTO_URL}" alt="-usernamedchris" width="80" height="80"
+           style="width:80px;height:80px;border-radius:50%;object-fit:cover;display:block;"
            onerror="this.style.display='none'">
     </div>
-    <div style="font-size:12px;color:#8ba3bc !important;margin-bottom:4px;font-family:'Courier New',monospace;letter-spacing:0.05em;">Chris Williams</div>
+    <div style="font-family:'Courier New',monospace;font-size:11px;color:#00e5a0 !important;margin-bottom:20px;letter-spacing:0.05em;">-usernamedchris</div>
 
-    <div style="font-size:26px;font-weight:700;color:#edf2f7 !important;line-height:1.2;margin:16px 0 6px;">The Sunday 5</div>
-    <div style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#8ba3bc !important;margin-bottom:10px;">{date_str} &nbsp;&#183;&nbsp; Edition #{edition:02d}</div>
-    <div style="font-size:14px;color:#8ba3bc !important;line-height:1.6;max-width:400px;margin:0 auto 24px;font-style:italic;">Five stories that moved the prediction markets conversation this week.</div>
+    <!-- Sunday 5 title -->
+    <div style="font-family:'Courier New',monospace;font-size:11px;letter-spacing:0.25em;text-transform:uppercase;color:#f5a623 !important;margin-bottom:8px;">Sunday Edition</div>
+    <div style="font-size:30px;font-weight:700;color:#edf2f7 !important;line-height:1.15;margin-bottom:8px;">The Sunday 5</div>
+    <div style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:#546e85 !important;margin-bottom:18px;">{date_str} &nbsp;&#183;&nbsp; Edition #{edition:02d}</div>
 
-    <div style="height:1px;background:#1e2a38;margin:0 -32px 0;"></div>
+    <!-- Two-sentence intro -->
+    <div style="font-size:14px;color:#8ba3bc !important;line-height:1.75;max-width:420px;margin:0 auto 6px;">
+      Every Sunday, I hand-pick the 5 most important stories from the prediction markets world and tell you why they matter. These are the headlines shaping where smart money is moving next.
+    </div>
   </td></tr>
-  <tr><td style="padding:14px 32px 20px;background:#0f1825 !important;text-align:center;border-bottom:1px solid #1e2a38;">
-    <div style="font-size:13px;color:#8ba3bc !important;font-style:italic;">{subtitle}</div>
+  <tr><td style="padding:12px 32px 16px;background:#0d1117 !important;text-align:center;border-bottom:1px solid #1e2a38;">
+    <div style="font-size:13px;color:#d0dde8 !important;font-style:italic;">{subtitle}</div>
   </td></tr>"""
 
 
