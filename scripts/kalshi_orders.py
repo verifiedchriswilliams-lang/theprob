@@ -445,27 +445,25 @@ class KalshiOrderClient:
                      {k: v for k, v in sample.items() if v not in (None, 0, "", [])})
 
         # Filter to only positions with actual holdings.
-        # Kalshi v2 may use various field names — try all known variants.
-        # A position is "real" if ANY quantity/exposure field is non-zero.
+        # Kalshi v2 uses string dollar fields (e.g. '12.237000') and
+        # fixed-point strings for position count (e.g. '-13.00' = 13 NO contracts).
         active = []
         for p in all_positions:
-            # Try every field name Kalshi might use for contract count / value
-            checks = [
-                p.get("position", 0),            # net contracts (+ = YES, - = NO)
-                p.get("market_exposure", 0),      # dollar exposure (cents)
-                p.get("resting_orders_count", 0), # unfilled limit orders
-                p.get("quantity", 0),             # alternate name
-                p.get("yes_position", 0),         # explicit YES side
-                p.get("no_position", 0),          # explicit NO side
-                p.get("total_traded", 0),         # Kalshi v2 alternate
-                p.get("value", 0),                # market value
-                p.get("unrealized_pnl", 0),       # has P&L = still open
-            ]
-            if any(abs(v or 0) > 0 for v in checks):
+            def _f(key: str) -> float:
+                return abs(float(p.get(key) or 0))
+
+            has_position = (
+                _f("position_fp") > 0           # Kalshi v2: fixed-point contract count
+                or _f("market_exposure_dollars") > 0  # dollar exposure
+                or _f("total_traded_dollars") > 0     # total cost basis
+                or _f("position") > 0           # legacy integer field
+                or _f("market_exposure") > 0    # legacy cents field
+                or _f("resting_orders_count") > 0
+            )
+            if has_position:
                 active.append(p)
 
-        # Safety fallback: if we filtered everything but API returned positions,
-        # trust the raw API count rather than showing 0 (open = fail-safe).
+        # Safety fallback: if we still filtered everything, trust the raw count.
         if not active and all_positions:
             log.warning(
                 "Position filter removed all %d entries — field names may have changed. "
