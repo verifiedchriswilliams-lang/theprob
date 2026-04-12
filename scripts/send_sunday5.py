@@ -164,14 +164,31 @@ def generate_subtitle(stories: list) -> str:
 def build_head_styles() -> str:
     return """
 <style type="text/css">
+  /* ── Mobile ── */
   @media only screen and (max-width:600px){
     .outer-table{width:100%!important;}
-    .section-pad{padding:20px 18px!important;}
-    .story-num{font-size:32px!important;}
-    .story-headline{font-size:17px!important;}
-    .body-text{font-size:15px!important;}
-    .take-text{font-size:14px!important;}
+    .section-pad{padding:20px 16px!important;}
+    /* Story numbers stay bold on mobile */
+    .story-num{font-size:30px!important;}
+    /* Headlines readable on phone */
+    .story-headline{font-size:17px!important;line-height:1.4!important;}
+    /* Body copy comfortable on small screen */
+    .body-text{font-size:16px!important;line-height:1.85!important;}
+    /* Take text */
+    .take-text{font-size:15px!important;line-height:1.75!important;}
+    /* Labels — minimum 12px, never smaller */
+    .label-text{font-size:12px!important;letter-spacing:0.1em!important;}
+    /* Intro paragraph */
+    .intro-text{font-size:16px!important;line-height:1.85!important;}
+    /* Subtitle / preview row */
+    .subtitle-text{font-size:16px!important;}
+    /* Bullet list items */
+    .bullet-item{font-size:15px!important;line-height:1.75!important;}
+    /* Brand bar */
+    .brand-name{font-size:20px!important;}
+    .brand-tag{font-size:11px!important;}
   }
+  /* ── Dark mode lock ── */
   @media (prefers-color-scheme:dark){
     body,div,td{background-color:#0a0e14!important;color:#d0dde8!important;}
   }
@@ -188,7 +205,7 @@ def story_card_html(number: str, story: dict, copy: dict) -> str:
     signal   = story.get("market_signal", None)
 
     bullet_items = "".join(
-        f'<li style="margin-bottom:8px;color:#d0dde8 !important;font-size:14px;line-height:1.7;">{b}</li>'
+        f'<li class="bullet-item" style="margin-bottom:8px;color:#d0dde8 !important;font-size:14px;line-height:1.7;">{b}</li>'
         for b in bullets
     )
 
@@ -203,13 +220,13 @@ def story_card_html(number: str, story: dict, copy: dict) -> str:
     return f"""
   <tr><td class="section-pad" style="padding:28px 32px;border-bottom:1px solid #1e2a38;">
     <div class="story-num" style="font-family:'Courier New',monospace;font-size:38px;font-weight:700;color:#00e5a0 !important;line-height:1;margin-bottom:6px;">{number}</div>
-    <div style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:#a8bfce !important;margin:0 0 10px;">via {source}</div>
+    <div class="label-text" style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:#a8bfce !important;margin:0 0 10px;">via {source}</div>
     <div class="story-headline" style="font-size:18px;font-weight:700;color:#edf2f7 !important;line-height:1.35;margin-bottom:12px;">
       <a href="{url}" style="color:#edf2f7 !important;text-decoration:none;">{headline}</a>
     </div>
     <p class="body-text" style="font-size:15px;color:#d0dde8 !important;line-height:1.8;margin:0 0 16px;">{summary}</p>
     <div style="margin-bottom:16px;">
-      <div style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:#a8bfce !important;margin-bottom:8px;">What You Need to Know</div>
+      <div class="label-text" style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:#a8bfce !important;margin-bottom:8px;">What You Need to Know</div>
       <ul style="margin:0;padding-left:18px;list-style:disc;">
         {bullet_items}
       </ul>
@@ -228,9 +245,9 @@ def build_header_html(date_str: str, edition: int, subtitle: str) -> str:
     <!-- Brand bar matching theprobnewsletter.com -->
     <div style="margin-bottom:24px;">
       <a href="{SITE_URL}" style="text-decoration:none;">
-        <span style="font-family:'Courier New',monospace;font-size:22px;font-weight:700;color:#00e5a0 !important;letter-spacing:-0.5px;">THE PROB</span>
+        <span class="brand-name" style="font-family:'Courier New',monospace;font-size:22px;font-weight:700;color:#00e5a0 !important;letter-spacing:-0.5px;">THE PROB</span>
         <span style="font-family:'Courier New',monospace;font-size:16px;color:#4a6880 !important;margin:0 8px;">|</span>
-        <span style="font-family:'Courier New',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#a8bfce !important;">What's the Probability?</span>
+        <span class="brand-tag" style="font-family:'Courier New',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#a8bfce !important;">What's the Probability?</span>
       </a>
     </div>
 
@@ -248,12 +265,12 @@ def build_header_html(date_str: str, edition: int, subtitle: str) -> str:
     <div style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:#8ba3bc !important;margin-bottom:18px;">{date_str} &nbsp;&#183;&nbsp; Edition #{edition:02d}</div>
 
     <!-- Two-sentence intro -->
-    <div style="font-size:15px;color:#c8dae6 !important;line-height:1.8;max-width:420px;margin:0 auto 6px;">
+    <div class="intro-text" style="font-size:15px;color:#c8dae6 !important;line-height:1.8;max-width:420px;margin:0 auto 6px;">
       Every Sunday, I hand-pick the 5 most important stories from the prediction markets world and tell you why they matter. These are the headlines shaping where smart money is moving next.
     </div>
   </td></tr>
   <tr><td style="padding:14px 32px 18px;background:#0d1117 !important;text-align:center;border-bottom:1px solid #1e2a38;">
-    <div style="font-size:15px;color:#edf2f7 !important;font-style:italic;">{subtitle}</div>
+    <div class="subtitle-text" style="font-size:15px;color:#edf2f7 !important;font-style:italic;">{subtitle}</div>
   </td></tr>"""
 
 
