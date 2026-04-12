@@ -149,10 +149,20 @@ def run(dry_run: bool = False) -> None:
         return
 
     # ── Step 5: Trade selection ────────────────────────────────────────────
+    # Fetch live Kalshi markets directly (real-time, bypasses stale markets.json).
+    # This surfaces live sports games, daily economic releases, and any market
+    # that opened since the last hourly pipeline run.
+    live_markets = []
+    try:
+        live_markets = client.get_live_candidates(max_hours=24.0)
+    except Exception as exc:
+        log.warning("Live candidate fetch failed (%s) — falling back to markets.json.", exc)
+
     selection = select_trades(
         markets_path=MARKETS_JSON,
         max_slots=slots_available,
         open_tickers=all_open,
+        live_markets=live_markets,   # inject fresh live data
     )
     trades = selection.get("trades", [])
     log.info("Selector found %d candidate(s) for %d slot(s). Data: %s",

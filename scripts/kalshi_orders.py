@@ -478,6 +478,122 @@ class KalshiOrderClient:
                  len(active), len(all_positions), len(all_positions) - len(active))
         return active
 
+    def get_live_candidates(self, max_hours: float = 24.0) -> list[dict]:
+        """
+        Fetch Kalshi markets closing within max_hours directly from the live API.
+
+        This bypasses markets.json (which is up to 60 minutes stale) and gives
+        the bot real-time access to live sports games, economic data releases,
+        and any other near-term market — including ones that open and close between
+        hourly pipeline runs.
+
+        Returns a list of normalized market dicts ready for trade_selector.
+        """
+        from datetime import timedelta, timezone
+        now_utc  = datetime.now(timezone.utc)
+        cutoff   = now_utc + timedelta(hours=max_hours)
+        results  = []
+        cursor   = None
+        pages    = 0
+
+        log.info("Fetching live Kalshi candidates closing within %.0fh …", max_hours)
+
+        while pages < 20:
+            params: dict = {
+                "limit":               100,
+                "status":              "open",
+                "with_nested_markets": "true",
+            }
+            if cursor:
+                params["cursor"] = cursor
+
+            try:
+                data   = self._get("/events", params=params)
+                events = data.get("events", [])
+                if not events:
+                    break
+
+                for event in events:
+                    series_ticker = event.get("series_ticker",
+                                              event.get("event_ticker", ""))
+                    event_title   = event.get("title", "")
+                    category      = event.get("category", "")
+
+                    for m in event.get("markets", []):
+                        try:
+                            ticker     = m.get("ticker", "")
+                            close_time = m.get("close_time", "") or ""
+                            if not close_time:
+                                continue
+
+                            close_dt = datetime.fromisoformat(
+                                close_time.replace("Z", "+00:00"))
+
+                            # Only markets closing within our window
+                            if not (now_utc < close_dt <= cutoff):
+                                continue
+
+                            days_left = (close_dt - now_utc).total_seconds() / 86400
+
+                            # Probability from bid/ask
+                            yes_bid_d = float(m.get("yes_bid_dollars", 0) or 0)
+                            yes_ask_d = float(m.get("yes_ask_dollars", 0) or 0)
+                            if yes_bid_d == 0 and yes_ask_d == 0:
+                                last = float(m.get("last_price_dollars", 0) or 0)
+                                if last <= 0:
+                                    continue
+                                prob = round(last * 100, 1)
+                            else:
+                                prob = round((yes_bid_d + yes_ask_d) / 2 * 100, 1)
+
+                            if not (0 < prob < 100):
+                                continue
+
+                            volume_usd    = float(m.get("volume_fp", 0) or 0) / 100
+                            volume_24h    = float(m.get("volume_24h_fp", 0) or 0) / 100
+
+                            subtitle = m.get("subtitle", "") or m.get("title", "") or ""
+                            if subtitle and subtitle.lower() != event_title.lower():
+                                question = f"{event_title}: {subtitle}"
+                            else:
+                                question = event_title
+
+                            results.append({
+                                "source":           "Kalshi",
+                                "question":         question,
+                                "slug":             ticker,
+                                "url":              f"https://kalshi.com/markets/{series_ticker.lower()}",
+                                "prob":             prob,
+                                "volume":           volume_usd,
+                                "volume_24h":       volume_24h,
+                                "end_date_raw":     close_time,
+                                "days_left":        round(days_left, 3),
+                                "display_category": category or "Other",
+                                "trading_signal":   "active",
+                            })
+
+                        except Exception:
+                            continue
+
+                cursor = data.get("cursor")
+                if not cursor:
+                    break
+                pages += 1
+                time.sleep(0.2)
+
+            except Exception as exc:
+                log.warning("Live candidate fetch error (page %d): %s", pages, exc)
+                break
+
+        results.sort(key=lambda x: x["days_left"])
+        log.info("Live candidates found: %d markets closing within %.0fh",
+                 len(results), max_hours)
+        for r in results[:10]:
+            log.info("  %.1fh  %s%%  $%.0f/24h  %s",
+                     r["days_left"] * 24, r["prob"],
+                     r["volume_24h"], r["question"][:55])
+        return results
+
     def cancel_order(self, order_id: str) -> dict:
         """Cancel a resting limit order."""
         path = f"/portfolio/orders/{order_id}"

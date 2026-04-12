@@ -94,14 +94,18 @@ def select_trades(
     markets_path: Path = MARKETS_JSON,
     max_slots: int = 4,
     open_tickers: list[str] | None = None,
+    live_markets: list[dict] | None = None,
 ) -> dict:
     """
     Return up to `max_slots` trade recommendations, ranked best first.
 
     Args:
-        markets_path:  path to markets.json
+        markets_path:  path to markets.json (for spread pairs + fallback market list)
         max_slots:     how many new positions we're allowed to open
         open_tickers:  list of Kalshi tickers already held (skip these)
+        live_markets:  real-time market list from KalshiOrderClient.get_live_candidates()
+                       If provided, these are used INSTEAD of all_markets from markets.json
+                       for candidate scoring. Spread pairs still come from markets.json.
 
     Returns dict with:
         trades           — list of trade dicts, best first
@@ -117,8 +121,15 @@ def select_trades(
         data = json.load(f)
 
     updated      = data.get("updated_iso", "unknown")
-    all_markets  = data.get("all_markets", [])
+    # Use live_markets if provided (real-time); otherwise fall back to markets.json catalog
+    all_markets  = live_markets if live_markets is not None else data.get("all_markets", [])
     spread_pairs = data.get("the_spread", [])
+
+    if live_markets is not None:
+        import sys
+        print(f"  [selector] Using {len(live_markets)} live markets "
+              f"(real-time) + {len(spread_pairs)} spread pairs from markets.json",
+              file=sys.stderr)
 
     candidates   = []   # (score, trade_dict)
     rejections   = []
