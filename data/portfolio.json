@@ -12,9 +12,9 @@
       "ytd_return_pct": 93.9,
       "win_count": 106,
       "loss_count": 9,
-      "open_count": 16,
+      "open_count": 17,
       "start_date": "2026-03-17",
-      "last_updated": "2026-04-11",
+      "last_updated": "2026-04-12",
       "trades": [
         {
           "trade_id": "ea14c291",
@@ -2373,6 +2373,24 @@
           "exit_prob": 100.0,
           "exit_date": "2026-04-11",
           "pnl": 6.38
+        },
+        {
+          "trade_id": "3374b6fc",
+          "market_id": "mlb-hou-sea-2026-04-11",
+          "question": "Houston Astros vs. Seattle Mariners",
+          "url": "https://polymarket.com/event/mlb-hou-sea-2026-04-11",
+          "source": "Polymarket",
+          "display_category": "Sports",
+          "entry_prob": 85.5,
+          "direction": "YES",
+          "amount": 100.0,
+          "entry_date": "2026-04-12",
+          "end_date_raw": "2026-04-19T01:40:00Z",
+          "end_date": "Apr 19",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
@@ -2385,9 +2403,9 @@
       "ytd_return_pct": 22.5,
       "win_count": 16,
       "loss_count": 0,
-      "open_count": 4,
+      "open_count": 5,
       "start_date": "2026-03-17",
-      "last_updated": "2026-04-11",
+      "last_updated": "2026-04-12",
       "trades": [
         {
           "trade_id": "18b00e62",
@@ -2748,6 +2766,24 @@
           "exit_prob": 1.2,
           "exit_date": "2026-04-10",
           "pnl": 6.04
+        },
+        {
+          "trade_id": "55b3f1a5",
+          "market_id": "will-shane-lowry-win-the-2026-masters-tournament",
+          "question": "Will Shane Lowry win the 2026 Masters tournament?",
+          "url": "https://polymarket.com/event/the-masters-winner-2026",
+          "source": "Polymarket",
+          "display_category": "Sports",
+          "entry_prob": 6.3,
+          "direction": "NO",
+          "amount": 100.0,
+          "entry_date": "2026-04-12",
+          "end_date_raw": "2026-04-13T00:00:00Z",
+          "end_date": "Apr 13",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
@@ -2762,7 +2798,7 @@
       "loss_count": 0,
       "open_count": 2,
       "start_date": "2026-03-17",
-      "last_updated": "2026-04-11",
+      "last_updated": "2026-04-12",
       "trades": [
         {
           "trade_id": "d19bb1c5",
