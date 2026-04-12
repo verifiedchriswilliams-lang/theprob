@@ -7,12 +7,12 @@
       "name": "The Crowd",
       "strategy": "Follow consensus: YES when prob \u226565%, NO when prob \u226435%",
       "thesis": "Smart money is already priced in. Ride the conviction.",
-      "current_balance": 1864.05,
-      "total_pnl": 864.05,
-      "ytd_return_pct": 86.4,
-      "win_count": 108,
+      "current_balance": 1944.27,
+      "total_pnl": 944.27,
+      "ytd_return_pct": 94.4,
+      "win_count": 110,
       "loss_count": 10,
-      "open_count": 19,
+      "open_count": 18,
       "start_date": "2026-03-17",
       "last_updated": "2026-04-12",
       "trades": [
@@ -749,10 +749,10 @@
           "entry_date": "2026-04-01",
           "end_date_raw": "2026-04-12T00:00:00Z",
           "end_date": "Apr 12",
-          "status": "open",
-          "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "status": "closed",
+          "exit_prob": 97.2,
+          "exit_date": "2026-04-12",
+          "pnl": 45.99
         },
         {
           "trade_id": "73f8bddf",
@@ -2459,10 +2459,10 @@
           "entry_date": "2026-04-12",
           "end_date_raw": "2026-04-19T10:00:00Z",
           "end_date": "Apr 19",
-          "status": "open",
-          "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "status": "closed",
+          "exit_prob": 0.1,
+          "exit_date": "2026-04-12",
+          "pnl": 34.23
         },
         {
           "trade_id": "ad586b9a",
@@ -2481,6 +2481,24 @@
           "exit_prob": 99.8,
           "exit_date": "2026-04-12",
           "pnl": 11.73
+        },
+        {
+          "trade_id": "b2587229",
+          "market_id": "mlb-nyy-tb-2026-04-12",
+          "question": "New York Yankees vs. Tampa Bay Rays",
+          "url": "https://polymarket.com/event/mlb-nyy-tb-2026-04-12",
+          "source": "Polymarket",
+          "display_category": "Sports",
+          "entry_prob": 16.5,
+          "direction": "NO",
+          "amount": 100.0,
+          "entry_date": "2026-04-12",
+          "end_date_raw": "2026-04-19T17:40:00Z",
+          "end_date": "Apr 19",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
@@ -2488,12 +2506,12 @@
       "name": "The Contrarian",
       "strategy": "Fade longshots: always NO when crowd says \u226430%",
       "thesis": "Crowds overprice long shots. Sell the overpriced tickets.",
-      "current_balance": 1225.27,
-      "total_pnl": 225.27,
-      "ytd_return_pct": 22.5,
-      "win_count": 16,
+      "current_balance": 1269.92,
+      "total_pnl": 269.92,
+      "ytd_return_pct": 27.0,
+      "win_count": 18,
       "loss_count": 0,
-      "open_count": 5,
+      "open_count": 3,
       "start_date": "2026-03-17",
       "last_updated": "2026-04-12",
       "trades": [
@@ -2708,10 +2726,10 @@
           "entry_date": "2026-04-01",
           "end_date_raw": "2026-04-12T00:00:00Z",
           "end_date": "Apr 12",
-          "status": "open",
-          "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "status": "closed",
+          "exit_prob": 2.6,
+          "exit_date": "2026-04-12",
+          "pnl": 37.93
         },
         {
           "trade_id": "48540b43",
@@ -2870,10 +2888,10 @@
           "entry_date": "2026-04-12",
           "end_date_raw": "2026-04-13T00:00:00Z",
           "end_date": "Apr 13",
-          "status": "open",
-          "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "status": "closed",
+          "exit_prob": 2.9,
+          "exit_date": "2026-04-12",
+          "pnl": 6.72
         }
       ]
     },
