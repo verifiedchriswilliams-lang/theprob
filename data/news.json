@@ -1,24 +1,15 @@
 {
-  "updated": "Apr 12, 2026 \u00b7 6:37 AM ET",
-  "updated_iso": "2026-04-12T11:37:55.853631+00:00",
+  "updated": "Apr 12, 2026 \u00b7 12:30 PM ET",
+  "updated_iso": "2026-04-12T17:30:36.159825+00:00",
   "homepage_count": 3,
   "articles": [
     {
-      "title": "\u2018Abhorrent\u2019: the inside story of the Polymarket gamblers betting millions on war",
-      "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxOWHFodG80TU5adFJXdzRLQ0NsVXdfR09RV1oyUEdVYnZxNWk3LVhkeWZaWlpVam9YVmFjMlVnQlpkQl9YN09vZ1pIS3lXQ3pNcUZkTjc3c2hXMkxnaThpd1REdmg5cl9tZERLMjNWYUUzdEtmZ095bUtmUEZTQTA5Z3JwOFB3XzQzSXZxQXBweEx3WXY1b1ZhbWFlN2FYRUZiSHVqXzVNZw?oc=5",
-      "source": "The Guardian",
-      "pub_iso": "2026-04-12T09:51:00+00:00",
+      "title": "Are Polymarket, Kalshi illegal gambling sites or legitimate financial trading platforms? - opinion",
+      "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTFBpeDBRbXQ4NEhBWXRJV2YtV21UN1ZXWHFBdWlHT216a0tqSHppWElHOG9DQmcxUWMxV1RPMUdwMVMzUHBmdFdxVW5TNHcyejJtTTRGWVRBTQ?oc=5",
+      "source": "The Jerusalem Post",
+      "pub_iso": "2026-04-12T14:30:00+00:00",
       "description": "",
-      "summary": "Polymarket users are placing massive bets on war outcomes, sparking outrage over the ethics of profiting from human tragedy. The controversy threatens to fuel regulatory crackdowns on prediction markets, especially as platforms struggle to balance free speech with public relations disasters.",
-      "pub_display": "Apr 12"
-    },
-    {
-      "title": "Robinhood excludes some prediction markets over manipulation fears",
-      "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxPdVN1cDNjLWUySGpuNnc3ZW5JZUs4aGJfS1h2cGgtcHo2bXRfZkp3OG5XdVQ3V01sUzNJYU5vX1J5ajBzR3NCemRxQWRxSlRoS09fazRSeG9oNTJaNmFLd19lWmdWd2llNEJGVWkwTWFjSUZVQVN1STVWekoxVTF2MkR1VkI?oc=5",
-      "source": "Financial Times",
-      "pub_iso": "2026-04-12T06:57:16+00:00",
-      "description": "",
-      "summary": "Robinhood is blocking certain prediction markets from its platform due to concerns about potential manipulation. This move signals growing mainstream wariness about market integrity as prediction betting goes mass market, which could slow adoption if other platforms follow suit.",
+      "summary": "Regulators are wrestling with whether prediction markets like Polymarket and Kalshi should be classified as illegal gambling operations or legitimate financial exchanges. The distinction will determine if these platforms can operate freely in the US or face the same restrictions that drove offshore betting sites underground.",
       "pub_display": "Apr 12"
     },
     {
@@ -28,6 +19,15 @@
       "pub_iso": "2026-04-11T15:07:47+00:00",
       "description": "",
       "summary": "Google accidentally displayed Polymarket betting odds in its News results, prompting the company to call it an \"error\" and presumably remove the feature. The slip-up reveals Google's internal experiments with integrating prediction market data into search results, which could massively boost mainstream adoption if they decide to make it permanent.",
+      "pub_display": "Apr 11"
+    },
+    {
+      "title": "\u2018Abhorrent\u2019: the inside story of the Polymarket gamblers betting millions on war",
+      "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxOWHFodG80TU5adFJXdzRLQ0NsVXdfR09RV1oyUEdVYnZxNWk3LVhkeWZaWlpVam9YVmFjMlVnQlpkQl9YN09vZ1pIS3lXQ3pNcUZkTjc3c2hXMkxnaThpd1REdmg5cl9tZERLMjNWYUUzdEtmZ095bUtmUEZTQTA5Z3JwOFB3XzQzSXZxQXBweEx3WXY1b1ZhbWFlN2FYRUZiSHVqXzVNZw?oc=5",
+      "source": "The Guardian",
+      "pub_iso": "2026-04-11T11:00:00+00:00",
+      "description": "",
+      "summary": "Polymarket users are placing massive bets on war outcomes, sparking outrage over the ethics of profiting from human tragedy. The controversy threatens to fuel regulatory crackdowns on prediction markets, especially as platforms struggle to balance free speech with public relations disasters.",
       "pub_display": "Apr 11"
     },
     {
@@ -67,6 +67,15 @@
       "pub_display": "Apr 10"
     },
     {
+      "title": "Pile of Famous Athletes Quietly Invested in Kalshi Months Ago",
+      "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPX1hxSDl5WS0zRjBDeDhrcVVvQjRyaEtrX2hVMlozLXJmTVhTZUZvM3Jhb0RWSmNSRzRNd1lFRGk0QUlRTVdNOWYxSnlWX1U1REl5dl9xUDB0WnhjMjVwdDktZjk2Um8xUWpGdlJPX0VUUzk1bTBYUW1PeDdvcWxvQmlTX3BuTjhzd2J2VEI2VDI0TEFCWnZxWVFOb3ozeUMwUFE?oc=5",
+      "source": "Front Office Sports",
+      "pub_iso": "2026-04-10T15:09:32+00:00",
+      "description": "",
+      "summary": "A bunch of big-name athletes dropped money into Kalshi well before the prediction market went mainstream this election cycle. These early bets from celebrities with serious cash and influence signals that prediction markets are moving from niche finance tool to legitimate investment category that attracts real money.",
+      "pub_display": "Apr 10"
+    },
+    {
       "title": "Weather Prediction Markets Are Booming. Can They Improve Forecasts?",
       "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxOaFRGN2llcGlwZC1CVVRTUFV2LU1HVkZCai1POUtrdFc0X2VtZWY5MGxpTlFRWmpvVHdhWTljQ1IzdmxoZERxUXJfZWViMGZINzVZNnNPeTVReU9Qa0tiY3JjRkROMFBoYUFwUnpDMTNWTEtJSWpta3pOUkxHa2MyWEhkcktzekJ5Z3IwYWJTNUVHUGJTSEJFdEtYa3FGRTJWM1ZzaEd3?oc=5",
       "source": "Bloomberg.com",
@@ -85,15 +94,6 @@
       "pub_display": "Apr 9"
     },
     {
-      "title": "Exclusive | White House Warns Staff Not to Place Bets on Prediction Markets Amid Iran War",
-      "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxQWmlxSzJ0SGRxM2lwZ2xMNThaTGMxUVczZFNhTC00ZklvUDBTemN4dXJ1eTVtbVI0N29SZjdRcjNVWUVTQmp1UUk5dzRlLVk3NEplZDVtc1JnMVVqV1JpS2l2MjR0NWNCelVVazBFR1ZPaklnZE8xM2xMdWloTVNRN2Z1b05OdmNkc29zS0xZNkpwb2dOR3V4R3Q4VmlNdGwtUnh1MDh0MkpwTE8zSmEtblg1Y2t3OGV2cWJvamlfTQ?oc=5",
-      "source": "WSJ",
-      "pub_iso": "2026-04-09T21:54:00+00:00",
-      "description": "",
-      "summary": "The White House has reportedly issued internal warnings to staff prohibiting them from betting on prediction markets related to potential military conflict with Iran. This signals that senior officials view prediction markets as legitimate information sources worth restricting, which ironically validates their growing influence in policy circles while creating potential insider trading concerns around geopolitical events.",
-      "pub_display": "Apr 9"
-    },
-    {
       "title": "How Prediction Markets Turned the World Into a Casino",
       "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxQdE5pY29pTEJkd0FXbzhiS0JIbUJvMWFmTFY3YmxEdnMtVjN0bFFtYjVfZ25DWlZpbFZlbTR1SkpSc3h4NnFOcUVxNjd5dFBVcWtCczVPRk9hUkZPQnRuQUk5RTQyUFJUZGp5c2JGeXdzd1ozQjN2aDNxaWFzLWRXY25oUzMxQ0U3c1A1cVBUOUNpYUc4YmVpMFA5TDVCa0xkMjFKVTV6cFJWbF9LLXRRVGVBa0VKS1dOaXdSUkRNMFg?oc=5",
       "source": "Bloomberg.com",
@@ -103,13 +103,13 @@
       "pub_display": "Apr 9"
     },
     {
-      "title": "Kalshi now controls 89% of the U.S. prediction market as regulated trading takes over",
-      "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxQb3NwajJOMkxXaDFtRDMyb29sa3dCQ0dKOUJyYUJoR1JrNWFwYl9teW94T0hZb2hHSWdpa0VMemtyT3ZFNGIwU1VnNk9XM21kN0RIcGg4bEpxcFJ5NjF3NFJTdEQ5c0tkSGttMGsza3ROWWw4SzZBcUV1UFdSZk9wUkV1NnVUS1JoRlFCdHBuNzBibHhoOE9zVERqN182VmQ0bGF1V1J0QUxmVG5maVNSSGVGN0J5VE4zWkxqeTRWZE1IcDkxSlE?oc=5",
-      "source": "CoinDesk",
-      "pub_iso": "2026-04-09T18:40:00+00:00",
+      "title": "Kalshi, prediction markets face legal hurdles",
+      "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxPSWUyd0lITFFza1VxMmxFbXJfM3FZV2s4MFBVS0xleFZZYUdNV3FTQWZNekwwelc3cGxYZGtFRkw3MC1LazJFNEFZTzk1bTBmQTJWc2hiOXVMVFN6Ny1ZTklSNnhQQUdUWkJLYkZHSklId2lkZ1hWbV9SaWJ3dVAwbDBMbk1CS1BvNm5v0gGQAUFVX3lxTE13RDFWM0Z6aGJvQW1vXzFLN19XS2dPMFBYZWtUS0lsVG5HSGxuLVRXcU9qTjhxQ1JSekN0T1hYRk5HQm93ekQwZjRycTZSZlJQa1FqQktfeUcyTXJCYmZUOHVJT19VSmJhZ0lmS1BMNjkwRFBEZ0FhMm5mb2twbGc2ejJldnhGTk05QzhURXhDYg?oc=5",
+      "source": "The Hill",
+      "pub_iso": "2026-04-08T12:00:00+00:00",
       "description": "",
-      "summary": "Kalshi has captured 89% of the U.S. prediction markets, cementing its dominance as the regulated platform that beat out offshore competitors like Polymarket. This regulatory moat gives Kalshi massive pricing power and positions it to shape how Americans bet on everything from elections to interest rates.",
-      "pub_display": "Apr 9"
+      "summary": "Kalshi and other prediction markets are hitting new regulatory roadblocks that threaten to limit what Americans can bet on. These legal challenges could determine whether prediction markets become mainstream financial tools or remain niche platforms for political junkies and crypto degens.",
+      "pub_display": "Apr 8"
     }
   ]
 }
