@@ -723,22 +723,71 @@ def fetch_kalshi() -> list[dict]:
             if added:
                 print(f"  Kalshi {cat} fetch: +{added} markets")
 
-        # 3. Near-term fetch: markets closing within 72 hours — no volume floor.
-        #    These are the primary targets for the trading bot (fast compounding).
-        #    Uses close_time_max Kalshi API param (ISO 8601 datetime string).
+        # 3. Near-term fetch: grab ALL Kalshi markets with no volume floor,
+        #    then keep only those closing within 7 days.
+        #    Strategy A: try close_time_max API param (may not be supported).
+        #    Strategy B: fallback — fetch more pages with min_vol=0 and filter by date.
         try:
             from datetime import timedelta
-            cutoff = (datetime.now(timezone.utc) + timedelta(hours=72)).strftime(
-                "%Y-%m-%dT%H:%M:%SZ"
-            )
-            nearterm = fetch_kalshi_page({"close_time_max": cutoff}, min_vol=0)
+            now_utc = datetime.now(timezone.utc)
+            cutoff_7d = now_utc + timedelta(days=7)
+            cutoff_str = cutoff_7d.strftime("%Y-%m-%dT%H:%M:%SZ")
+
+            # Strategy A: close_time_max param
+            nearterm_a = fetch_kalshi_page({"close_time_max": cutoff_str}, min_vol=0)
             added_nt = 0
-            for m in nearterm:
-                if m.get("slug") not in seen_tickers:
-                    markets.append(m)
-                    seen_tickers.add(m["slug"])
-                    added_nt += 1
-            print(f"  Kalshi near-term (≤72h) fetch: +{added_nt} markets")
+            for m in nearterm_a:
+                slug = m.get("slug", "")
+                edr  = m.get("end_date_raw", "")
+                if slug and slug not in seen_tickers:
+                    # Only keep if actually within 7 days
+                    try:
+                        end = datetime.fromisoformat(edr.replace("Z", "+00:00"))
+                        if end <= cutoff_7d:
+                            markets.append(m)
+                            seen_tickers.add(slug)
+                            added_nt += 1
+                    except Exception:
+                        pass  # skip if date unparseable
+            print(f"  Kalshi near-term (≤7d) via close_time_max: +{added_nt} markets")
+
+            # Strategy B: broad low-volume fetch, filter by date in Python
+            # Catches markets that close_time_max missed (if param not supported)
+            nearterm_b = fetch_kalshi_page({}, min_vol=0)
+            added_b = 0
+            for m in nearterm_b:
+                slug = m.get("slug", "")
+                edr  = m.get("end_date_raw", "")
+                if slug and slug not in seen_tickers:
+                    try:
+                        end = datetime.fromisoformat(edr.replace("Z", "+00:00"))
+                        if now_utc < end <= cutoff_7d:
+                            markets.append(m)
+                            seen_tickers.add(slug)
+                            added_b += 1
+                    except Exception:
+                        pass
+            print(f"  Kalshi near-term (≤7d) via broad fetch+filter: +{added_b} markets")
+
+            # Print what we found
+            near_all = [m for m in markets
+                        if m.get("source") == "Kalshi"
+                        and m.get("end_date_raw", "")]
+            near_close = []
+            for m in near_all:
+                try:
+                    end = datetime.fromisoformat(
+                        m["end_date_raw"].replace("Z", "+00:00"))
+                    days_left = (end - now_utc).total_seconds() / 86400
+                    if days_left <= 7:
+                        near_close.append((days_left, m))
+                except Exception:
+                    pass
+            near_close.sort(key=lambda x: x[0])
+            print(f"  Kalshi markets closing ≤7 days: {len(near_close)}")
+            for dl, m in near_close[:10]:
+                print(f"    {dl:.1f}d  {m['prob']}%  ${m['volume_24h']:,.0f}/24h  {m['question'][:55]}")
+
         except Exception as e_nt:
             print(f"  [WARN] Kalshi near-term fetch error: {e_nt}")
 

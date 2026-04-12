@@ -438,16 +438,41 @@ class KalshiOrderClient:
         data = self._get("/portfolio/positions")
         all_positions = data.get("market_positions", [])
 
-        # Keep only positions with actual exposure
+        # Log raw fields of first position so we can see what Kalshi v2 actually returns
+        if all_positions:
+            sample = all_positions[0]
+            log.info("Position sample fields: %s",
+                     {k: v for k, v in sample.items() if v not in (None, 0, "", [])})
+
+        # Filter to only positions with actual holdings.
+        # Kalshi v2 may use various field names — try all known variants.
+        # A position is "real" if ANY quantity/exposure field is non-zero.
         active = []
         for p in all_positions:
-            net_position    = p.get("position", 0) or 0
-            exposure        = p.get("market_exposure", 0) or 0
-            resting         = p.get("resting_orders_count", 0) or 0
-            # Also check alternate field names Kalshi v2 may use
-            quantity        = p.get("quantity", 0) or 0
-            if abs(net_position) > 0 or abs(exposure) > 0 or resting > 0 or abs(quantity) > 0:
+            # Try every field name Kalshi might use for contract count / value
+            checks = [
+                p.get("position", 0),            # net contracts (+ = YES, - = NO)
+                p.get("market_exposure", 0),      # dollar exposure (cents)
+                p.get("resting_orders_count", 0), # unfilled limit orders
+                p.get("quantity", 0),             # alternate name
+                p.get("yes_position", 0),         # explicit YES side
+                p.get("no_position", 0),          # explicit NO side
+                p.get("total_traded", 0),         # Kalshi v2 alternate
+                p.get("value", 0),                # market value
+                p.get("unrealized_pnl", 0),       # has P&L = still open
+            ]
+            if any(abs(v or 0) > 0 for v in checks):
                 active.append(p)
+
+        # Safety fallback: if we filtered everything but API returned positions,
+        # trust the raw API count rather than showing 0 (open = fail-safe).
+        if not active and all_positions:
+            log.warning(
+                "Position filter removed all %d entries — field names may have changed. "
+                "Falling back to raw API count as conservative slot protection.",
+                len(all_positions)
+            )
+            active = all_positions
 
         log.info("Open positions: %d  (raw from API: %d, filtered ghost positions: %d)",
                  len(active), len(all_positions), len(all_positions) - len(active))
