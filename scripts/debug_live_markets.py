@@ -1,13 +1,14 @@
 #!/usr/bin/env python3
 """
-debug_live_markets.py v2
+debug_live_markets.py v3
 ─────────────────────────
-Try multiple strategies to find live/near-term Kalshi sports game markets.
+Find Kalshi game-winner series tickers by scanning /series for sports.
+Then fetch today's game events from those series.
 
 Run:
     python3 scripts/debug_live_markets.py
 """
-import sys, os, time, json
+import sys, os, time
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
 
@@ -16,146 +17,128 @@ from kalshi_orders import KalshiOrderClient
 
 client = KalshiOrderClient()
 now = datetime.now(timezone.utc)
+today_str = now.strftime("%y%b%d").upper()   # e.g. "26APR12"
+yesterday = now - timedelta(days=1)
 
 print(f"\n{'='*70}")
-print(f"  Kalshi Live Market Debug v2 — {now.strftime('%Y-%m-%dT%H:%M:%SZ')}")
+print(f"  Kalshi Game Finder v3 — {now.strftime('%Y-%m-%dT%H:%M:%SZ')}")
+print(f"  Today string: {today_str}")
 print(f"{'='*70}\n")
 
-# ── Strategy 1: /markets endpoint with min/max close_ts ───────────────────────
-print("STRATEGY 1: /markets with min_close_ts + max_close_ts (24h window)")
+# ── Strategy A: Scan /series for sports game series ───────────────────────────
+print("A) Scan /series for sports game-winner series")
 print("─"*70)
-try:
-    params = {
-        "limit": 100,
-        "min_close_ts": int(now.timestamp()),
-        "max_close_ts": int((now + timedelta(hours=24)).timestamp()),
-        "status": "open",
-    }
-    data = client._get("/markets", params=params)
-    mkts = data.get("markets", [])
-    print(f"  Markets returned: {len(mkts)}")
-    for m in mkts[:10]:
-        print(f"    {m.get('ticker','?'):40s}  prob={m.get('last_price_dollars','?')}  ct={m.get('close_time','?')[:16]}")
-except Exception as e:
-    print(f"  ERROR: {e}")
-
-print()
-
-# ── Strategy 2: /markets?status=open (no time filter) sample ─────────────────
-print("STRATEGY 2: /markets?status=open — first page sample")
-print("─"*70)
-try:
-    params = {"limit": 20, "status": "open"}
-    data = client._get("/markets", params=params)
-    mkts = data.get("markets", [])
-    print(f"  Markets returned: {len(mkts)}")
-    if mkts:
-        m = mkts[0]
-        print(f"  Sample ALL FIELDS:")
-        for k, v in sorted(m.items()):
-            print(f"    {k:35s}: {v!r}")
-except Exception as e:
-    print(f"  ERROR: {e}")
-
-print()
-
-# ── Strategy 3: /events?category=Sports ──────────────────────────────────────
-print("STRATEGY 3: /events?category=Sports")
-print("─"*70)
-# Try various category strings Kalshi might use
-for cat in ["Sports", "sports", "Baseball", "baseball", "MLB", "mlb"]:
-    try:
-        params = {"limit": 10, "category": cat, "with_nested_markets": "true"}
-        data = client._get("/events", params=params)
-        events = data.get("events", [])
-        if events:
-            print(f"  category={cat!r}: {len(events)} events found")
-            for ev in events[:3]:
-                mkts = ev.get("markets", [])
-                print(f"    [{ev.get('series_ticker','?')}] {ev.get('title','?')[:50]}  ({len(mkts)} markets)")
-                for m in mkts[:2]:
-                    print(f"      {m.get('ticker','?'):40s}  close={m.get('close_time','?')[:16]}  can_close_early={m.get('can_close_early')}")
-        else:
-            print(f"  category={cat!r}: 0 events")
-        time.sleep(0.2)
-    except Exception as e:
-        print(f"  category={cat!r}: ERROR {e}")
-
-print()
-
-# ── Strategy 4: fetch /series to find sports series tickers ──────────────────
-print("STRATEGY 4: /series endpoint")
-print("─"*70)
-try:
-    data = client._get("/series", params={"limit": 50})
-    series_list = data.get("series", [])
-    print(f"  Series returned: {len(series_list)}")
-    for s in series_list[:20]:
-        print(f"    {s.get('ticker','?'):20s}  {s.get('title','?')[:50]}  cat={s.get('category','?')}")
-except Exception as e:
-    print(f"  ERROR: {e}")
-
-print()
-
-# ── Strategy 5: fetch 10 pages of /events, look for any Sports ───────────────
-print("STRATEGY 5: Scan first 10 pages of /events for Sports category")
-print("─"*70)
-sports_events = []
+sports_keywords = [
+    "game", "winner", "win", "mlb", "nba", "nhl", "nfl",
+    "baseball", "basketball", "hockey", "football",
+    "score", "match",
+]
+sports_series = []
 cursor = None
-for page in range(10):
-    params = {"limit": 100, "with_nested_markets": "false"}
+pages = 0
+while pages < 100:
+    params = {"limit": 100}
     if cursor:
         params["cursor"] = cursor
     try:
-        data = client._get("/events", params=params)
-        events = data.get("events", [])
-        if not events:
+        data = client._get("/series", params=params)
+        series_list = data.get("series", [])
+        if not series_list:
             break
-        for ev in events:
-            cat = ev.get("category", "")
-            if cat and cat.lower() in ("sports", "baseball", "mlb", "nba", "nfl", "hockey", "soccer"):
-                sports_events.append(ev)
+        for s in series_list:
+            title = (s.get("title") or "").lower()
+            ticker = (s.get("ticker") or "")
+            cat = (s.get("category") or "").lower()
+            if any(k in title or k in ticker.lower() for k in sports_keywords):
+                sports_series.append(s)
         cursor = data.get("cursor")
         if not cursor:
             break
-        time.sleep(0.2)
+        pages += 1
+        time.sleep(0.1)
     except Exception as e:
-        print(f"  Page {page} error: {e}")
+        print(f"  Error page {pages}: {e}")
         break
 
-print(f"  Sports events found in first 10 pages: {len(sports_events)}")
-for ev in sports_events[:5]:
-    print(f"    [{ev.get('series_ticker','?')}] {ev.get('title','?')[:50]}  cat={ev.get('category','?')}")
+print(f"  Sports game series found: {len(sports_series)} (scanned {pages+1} pages)")
+for s in sports_series[:30]:
+    print(f"  {s.get('ticker','?'):30s}  cat={s.get('category','?'):12s}  {s.get('title','?')[:45]}")
 
 print()
 
-# ── Strategy 6: Try known MLB/sports series tickers directly ─────────────────
-print("STRATEGY 6: Fetch events by known sports series tickers")
+# ── Strategy B: Fetch today's events from promising series ───────────────────
+print(f"B) Fetch events from top sports series containing today's date ({today_str})")
 print("─"*70)
-known_sports_tickers = [
-    "KXMLB", "KXNBA", "KXNFL", "KXNHL", "KXSOCCER",
-    "MLB", "NBA", "NFL", "NHL",
-    "KXSPORTS", "SPORTS",
-]
-for ticker in known_sports_tickers:
+
+# Focus on series with game/winner patterns
+game_series = [s for s in sports_series if any(
+    k in (s.get("ticker","")).lower() or k in (s.get("title","")).lower()
+    for k in ["game", "winner", "win", "score", "mlb", "nba", "nhl", "nfl"]
+)]
+print(f"  Narrowed to {len(game_series)} game-related series\n")
+
+found_today = []
+for s in game_series[:50]:  # check first 50 game series
+    ticker = s.get("ticker","")
     try:
         params = {
-            "limit": 5,
+            "limit": 20,
             "series_ticker": ticker,
             "with_nested_markets": "true",
         }
         data = client._get("/events", params=params)
         events = data.get("events", [])
-        if events:
-            print(f"  series_ticker={ticker!r}: {len(events)} events")
-            for ev in events[:2]:
-                mkts = ev.get("markets", [])
-                print(f"    {ev.get('title','?')[:55]}")
-                for m in mkts[:2]:
-                    print(f"      {m.get('ticker','?'):40s}  ct={m.get('close_time','?')[:16]}  can_early={m.get('can_close_early')}")
-        time.sleep(0.15)
-    except Exception as e:
-        if "404" not in str(e) and "400" not in str(e):
-            print(f"  series_ticker={ticker!r}: {e}")
+        for ev in events:
+            ev_ticker = ev.get("event_ticker","") or ev.get("series_ticker","")
+            title = ev.get("title","")
+            # Look for today's date in ticker or title
+            if today_str in ev_ticker.upper() or today_str in title.upper():
+                mkts = ev.get("markets",[])
+                found_today.append({
+                    "series": ticker,
+                    "event": ev_ticker,
+                    "title": title,
+                    "markets": mkts,
+                })
+        time.sleep(0.1)
+    except Exception:
+        continue
+
+print(f"  Events containing today's date ({today_str}): {len(found_today)}")
+for ev in found_today:
+    print(f"\n  [{ev['series']}] {ev['event']}")
+    print(f"  Title: {ev['title']}")
+    for m in ev["markets"][:4]:
+        bid = m.get("yes_bid_dollars",0) or 0
+        ask = m.get("yes_ask_dollars",0) or 0
+        last = m.get("last_price_dollars",0) or 0
+        prob = round((float(bid)+float(ask))/2*100,1) if (bid or ask) else round(float(last)*100,1)
+        print(f"    {m.get('ticker','?'):45s}  prob={prob}%  ct={m.get('close_time','?')[:16]}")
+
+print()
+
+# ── Strategy C: Check events with recent created_time ─────────────────────────
+print("C) Markets endpoint filtered by status=active, look at non-MVE, non-range sample")
+print("─"*70)
+try:
+    params = {"limit": 100, "status": "active"}
+    data = client._get("/markets", params=params)
+    mkts = data.get("markets", [])
+    non_mve = [m for m in mkts if not m.get("mve_collection_ticker") and "::" not in m.get("ticker","")]
+    import re
+    non_range = [m for m in non_mve if not re.search(r"-T\d+(\.\d+)?$", m.get("ticker",""))]
+    print(f"  Total active: {len(mkts)}  Non-MVE: {len(non_mve)}  Non-range non-MVE: {len(non_range)}")
+    print(f"\n  First 10 non-MVE non-range active markets:")
+    for m in non_range[:10]:
+        bid = float(m.get("yes_bid_dollars",0) or 0)
+        ask = float(m.get("yes_ask_dollars",0) or 0)
+        last = float(m.get("last_price_dollars",0) or 0)
+        prob = round((bid+ask)/2*100,1) if (bid or ask) else round(last*100,1)
+        ct = m.get("close_time","")[:16]
+        exp = m.get("expected_expiration_time","")[:16]
+        vol24 = float(m.get("volume_24h_fp",0) or 0)/100
+        print(f"  {m.get('ticker','?'):42s}  prob={prob}%  ct={ct}  exp={exp}  24h=${vol24:.0f}")
+except Exception as e:
+    print(f"  ERROR: {e}")
 
 print(f"\n{'='*70}\n")
