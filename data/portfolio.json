@@ -12,7 +12,7 @@
       "ytd_return_pct": 94.4,
       "win_count": 110,
       "loss_count": 10,
-      "open_count": 18,
+      "open_count": 19,
       "start_date": "2026-03-17",
       "last_updated": "2026-04-12",
       "trades": [
@@ -2499,6 +2499,24 @@
           "exit_prob": null,
           "exit_date": null,
           "pnl": null
+        },
+        {
+          "trade_id": "5bbabfa3",
+          "market_id": "mlb-sf-bal-2026-04-12",
+          "question": "San Francisco Giants vs. Baltimore Orioles",
+          "url": "https://polymarket.com/event/mlb-sf-bal-2026-04-12",
+          "source": "Polymarket",
+          "display_category": "Sports",
+          "entry_prob": 6.5,
+          "direction": "NO",
+          "amount": 100.0,
+          "entry_date": "2026-04-12",
+          "end_date_raw": "2026-04-19T17:35:00Z",
+          "end_date": "Apr 19",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
@@ -2506,12 +2524,12 @@
       "name": "The Contrarian",
       "strategy": "Fade longshots: always NO when crowd says \u226430%",
       "thesis": "Crowds overprice long shots. Sell the overpriced tickets.",
-      "current_balance": 1269.92,
-      "total_pnl": 269.92,
-      "ytd_return_pct": 27.0,
-      "win_count": 18,
+      "current_balance": 1275.29,
+      "total_pnl": 275.29,
+      "ytd_return_pct": 27.5,
+      "win_count": 19,
       "loss_count": 0,
-      "open_count": 4,
+      "open_count": 3,
       "start_date": "2026-03-17",
       "last_updated": "2026-04-12",
       "trades": [
@@ -2906,10 +2924,10 @@
           "entry_date": "2026-04-12",
           "end_date_raw": "2026-04-13T00:00:00Z",
           "end_date": "Apr 13",
-          "status": "open",
-          "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "status": "closed",
+          "exit_prob": 0.3,
+          "exit_date": "2026-04-12",
+          "pnl": 5.37
         }
       ]
     },
