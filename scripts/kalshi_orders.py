@@ -479,122 +479,152 @@ class KalshiOrderClient:
                  len(active), len(all_positions), len(all_positions) - len(active))
         return active
 
-    def get_live_candidates(self, max_hours: float = 24.0) -> list[dict]:
+    @staticmethod
+    def _is_range_bucket(ticker: str) -> bool:
+        """
+        True if this ticker is a Kalshi range-bucket market.
+
+        Range buckets are the NASDAQ/S&P "above X.XX" style markets that
+        generate 50-200 tickers per event (one per price level). They're
+        identified by a -T<number> suffix or :: separator.
+
+        Examples of range buckets:
+            KXNASDAQ100U-26APR13H1600-T27899.99   <- threshold suffix
+            KXSPX-26APR13H1600-T5499.99
+            KXUSDCAD-25NOV-B105-110::              <- colon-colon separator
+
+        Examples of real binary markets (NOT range buckets):
+            KXMLBGAME-26APR12-MILBOS              <- game winner
+            KXNBAPTS-26APR12MEMHOU-HOURSHEPPARD15  <- player prop
+            KXFED-26MAY-B425                      <- Fed rate (single outcome)
+        """
+        import re
+        if "::" in ticker:
+            return True
+        if re.search(r"-T\d+(\.\d+)?$", ticker):
+            return True
+        return False
+
+    def get_live_candidates(self, max_hours: float = 48.0) -> list[dict]:
         """
         Fetch Kalshi markets closing within max_hours directly from the live API.
 
-        This bypasses markets.json (which is up to 60 minutes stale) and gives
-        the bot real-time access to live sports games, economic data releases,
-        and any other near-term market — including ones that open and close between
-        hourly pipeline runs.
+        Uses the /markets endpoint with min_close_ts + max_close_ts params —
+        confirmed working via debug (returns markets via time-window filter).
+        The /events endpoint was useless here: it returns markets sorted by
+        popularity with 0 near-term markets in the first 300 events.
 
-        Returns a list of normalized market dicts ready for trade_selector.
+        Skips range-bucket markets (NASDAQ/S&P price-level brackets) which
+        flood the results but aren't tradeable as clean binary YES/NO bets.
+
+        Returns a list of normalized market dicts sorted by days_left,
+        ready for trade_selector.
         """
-        from datetime import timedelta, timezone
-        now_utc  = datetime.now(timezone.utc)
-        cutoff   = now_utc + timedelta(hours=max_hours)
-        results  = []
-        cursor   = None
-        pages    = 0
+        from datetime import timedelta
+        now_utc = datetime.now(timezone.utc)
+        cutoff  = now_utc + timedelta(hours=max_hours)
+        results = []
+        cursor  = None
+        pages   = 0
+        seen_tickers: set = set()
 
-        log.info("Fetching live Kalshi candidates closing within %.0fh …", max_hours)
+        log.info("Fetching live Kalshi candidates via /markets closing within %.0fh …",
+                 max_hours)
 
-        while pages < 20:
+        while pages < 40:   # up to 4,000 markets
             params: dict = {
-                "limit":               100,
-                # Do NOT filter by status — live in-game markets may have
-                # status "active" or "live" rather than "open". We want all
-                # non-settled markets regardless of status.
-                "with_nested_markets": "true",
+                "limit":        100,
+                "min_close_ts": int(now_utc.timestamp()),
+                "max_close_ts": int(cutoff.timestamp()),
             }
             if cursor:
                 params["cursor"] = cursor
 
             try:
-                data   = self._get("/events", params=params)
-                events = data.get("events", [])
-                if not events:
+                data    = self._get("/markets", params=params)
+                markets = data.get("markets", [])
+                if not markets:
                     break
 
-                for event in events:
-                    series_ticker = event.get("series_ticker",
-                                              event.get("event_ticker", ""))
-                    event_title   = event.get("title", "")
-                    category      = event.get("category", "")
-
-                    for m in event.get("markets", []):
-                        try:
-                            ticker     = m.get("ticker", "")
-                            close_time = m.get("close_time", "") or ""
-                            if not close_time:
-                                continue
-
-                            close_dt = datetime.fromisoformat(
-                                close_time.replace("Z", "+00:00"))
-
-                            # Only markets closing within our window
-                            if not (now_utc < close_dt <= cutoff):
-                                continue
-
-                            days_left = (close_dt - now_utc).total_seconds() / 86400
-
-                            # Probability from bid/ask
-                            yes_bid_d = float(m.get("yes_bid_dollars", 0) or 0)
-                            yes_ask_d = float(m.get("yes_ask_dollars", 0) or 0)
-                            if yes_bid_d == 0 and yes_ask_d == 0:
-                                last = float(m.get("last_price_dollars", 0) or 0)
-                                if last <= 0:
-                                    continue
-                                prob = round(last * 100, 1)
-                            else:
-                                prob = round((yes_bid_d + yes_ask_d) / 2 * 100, 1)
-
-                            if not (0 < prob < 100):
-                                continue
-
-                            volume_usd    = float(m.get("volume_fp", 0) or 0) / 100
-                            volume_24h    = float(m.get("volume_24h_fp", 0) or 0) / 100
-
-                            subtitle = m.get("subtitle", "") or m.get("title", "") or ""
-                            if subtitle and subtitle.lower() != event_title.lower():
-                                question = f"{event_title}: {subtitle}"
-                            else:
-                                question = event_title
-
-                            results.append({
-                                "source":           "Kalshi",
-                                "question":         question,
-                                "slug":             ticker,
-                                "url":              f"https://kalshi.com/markets/{series_ticker.lower()}",
-                                "prob":             prob,
-                                "volume":           volume_usd,
-                                "volume_24h":       volume_24h,
-                                "end_date_raw":     close_time,
-                                "days_left":        round(days_left, 3),
-                                "display_category": category or "Other",
-                                "trading_signal":   "active",
-                            })
-
-                        except Exception:
+                for m in markets:
+                    try:
+                        ticker = m.get("ticker", "")
+                        if not ticker or ticker in seen_tickers:
                             continue
+                        seen_tickers.add(ticker)
+
+                        # Skip range-bucket markets (NASDAQ/S&P price levels)
+                        if self._is_range_bucket(ticker):
+                            continue
+
+                        # Skip multivariate parlay markets (too complex to price)
+                        if m.get("mve_collection_ticker"):
+                            continue
+
+                        close_time = m.get("close_time", "") or ""
+                        if not close_time:
+                            continue
+                        close_dt  = datetime.fromisoformat(
+                            close_time.replace("Z", "+00:00"))
+                        days_left = (close_dt - now_utc).total_seconds() / 86400
+
+                        # Probability: prefer mid of bid/ask, fall back to last
+                        yes_bid = float(m.get("yes_bid_dollars", 0) or 0)
+                        yes_ask = float(m.get("yes_ask_dollars", 0) or 0)
+                        last    = float(m.get("last_price_dollars", 0) or 0)
+                        if yes_bid > 0 or yes_ask > 0:
+                            prob = round((yes_bid + yes_ask) / 2 * 100, 1)
+                        elif last > 0:
+                            prob = round(last * 100, 1)
+                        else:
+                            continue
+
+                        if not (1 < prob < 99):
+                            continue
+
+                        volume_usd = float(m.get("volume_fp",     0) or 0) / 100
+                        volume_24h = float(m.get("volume_24h_fp", 0) or 0) / 100
+
+                        question     = m.get("title", ticker)
+                        event_ticker = m.get("event_ticker", "")
+
+                        results.append({
+                            "source":           "Kalshi",
+                            "question":         question,
+                            "slug":             ticker,
+                            "url":              (
+                                f"https://kalshi.com/markets/"
+                                f"{event_ticker.lower() or ticker.lower()}"
+                            ),
+                            "prob":             prob,
+                            "volume":           volume_usd,
+                            "volume_24h":       volume_24h,
+                            "end_date_raw":     close_time,
+                            "days_left":        round(days_left, 3),
+                            "display_category": "Other",
+                            "trading_signal":   "active",
+                        })
+
+                    except Exception:
+                        continue
 
                 cursor = data.get("cursor")
                 if not cursor:
                     break
                 pages += 1
-                time.sleep(0.2)
+                time.sleep(0.15)
 
             except Exception as exc:
                 log.warning("Live candidate fetch error (page %d): %s", pages, exc)
                 break
 
         results.sort(key=lambda x: x["days_left"])
-        log.info("Live candidates found: %d markets closing within %.0fh",
-                 len(results), max_hours)
-        for r in results[:10]:
+        log.info("Live candidates found: %d (scanned %d pages, %d tickers total)",
+                 len(results), pages + 1, len(seen_tickers))
+        for r in results[:15]:
             log.info("  %.1fh  %s%%  $%.0f/24h  %s",
                      r["days_left"] * 24, r["prob"],
-                     r["volume_24h"], r["question"][:55])
+                     r["volume_24h"], r["question"][:60])
         return results
 
     def cancel_order(self, order_id: str) -> dict:
