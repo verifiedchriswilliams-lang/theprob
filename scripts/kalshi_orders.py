@@ -502,7 +502,9 @@ class KalshiOrderClient:
         while pages < 20:
             params: dict = {
                 "limit":               100,
-                "status":              "open",
+                # Do NOT filter by status — live in-game markets may have
+                # status "active" or "live" rather than "open". We want all
+                # non-settled markets regardless of status.
                 "with_nested_markets": "true",
             }
             if cursor:
