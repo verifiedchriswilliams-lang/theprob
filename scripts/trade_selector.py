@@ -13,9 +13,15 @@ Core philosophy:
 Selection logic:
   1. ONLY consider Kalshi markets resolving within MAX_TRADE_DAYS (7 days).
   2. Score by: duration (primary) + conviction (secondary) + spread bonus.
-  3. Probability gate: 65%+ → bet YES, 35%- → bet NO. No coin flips.
+  3. Probability SWEET ZONE: 65–85% → bet YES. 15–35% → bet NO.
+     - Lower bound (65/35): avoids coin flips with no edge.
+     - Upper bound (85/15): avoids near-certainties with no upside.
+       e.g. buying NO at 98% prob costs $0.98 to win $1.00 = 2% return max.
+       The sweet zone targets 18–54% return per winning trade.
   4. No volume floor — thin markets with clear consensus are valid trades.
      (Fill quality is managed at order time via bid/ask spread check.)
+  5. If live sports markets are provided, use those first. When none are
+     available, fall back to markets.json catalog (Kalshi only, sweet zone).
 
 Run this directly to see today's picks:
     python3 scripts/trade_selector.py
@@ -33,6 +39,8 @@ MARKETS_JSON = Path("data/markets.json")
 # ── Core gates ────────────────────────────────────────────────────────────────
 CROWD_YES_GATE   = 65.0   # bet YES when prob ≥ this
 CROWD_NO_GATE    = 35.0   # bet NO when prob ≤ this
+MAX_YES_PROB     = 85.0   # CEILING: don't bet YES above this — near-certain, no upside
+MIN_YES_PROB     = 15.0   # FLOOR: don't bet NO when YES < this — near-certain NO, no upside
 SPREAD_MIN_GAP   = 8.0    # minimum Poly vs Kalshi gap for spread signal
 MAX_TRADE_DAYS   = 7      # hard cap — never hold longer than a week
 MIN_VOL_ABSOLUTE = 0      # any non-zero volume accepted (fill quality handled at order time)
@@ -121,15 +129,23 @@ def select_trades(
         data = json.load(f)
 
     updated      = data.get("updated_iso", "unknown")
-    # Use live_markets if provided (real-time); otherwise fall back to markets.json catalog
-    all_markets  = live_markets if live_markets is not None else data.get("all_markets", [])
     spread_pairs = data.get("the_spread", [])
 
-    if live_markets is not None:
-        import sys
-        print(f"  [selector] Using {len(live_markets)} live markets "
-              f"(real-time) + {len(spread_pairs)} spread pairs from markets.json",
-              file=sys.stderr)
+    # Source priority:
+    #   1. live_markets (real-time sports games) when non-empty — fresh, fast-resolving
+    #   2. markets.json all_markets (catalog) as fallback when live returns nothing
+    #      (covers non-sports runs: economic releases, political events, etc.)
+    # Note: live_markets=[] (empty, not None) means we checked and found nothing today,
+    # so fall back to catalog. live_markets=None means caller didn't try — also use catalog.
+    if live_markets:
+        all_markets = live_markets
+        live_label  = f"{len(live_markets)} live sports"
+    else:
+        all_markets = data.get("all_markets", [])
+        live_label  = f"markets.json catalog ({len(all_markets)} markets)"
+
+    print(f"  [selector] Using {live_label} + {len(spread_pairs)} spread pairs",
+          file=sys.stderr)
 
     candidates   = []   # (score, trade_dict)
     rejections   = []
@@ -178,11 +194,30 @@ def select_trades(
                 rejections.append(f"[SKIP] '{question[:55]}' — already expired")
             continue
 
-        # Probability gate — skip the coin-flip zone
+        # Probability gate — skip the coin-flip dead zone
         if CROWD_NO_GATE < prob < CROWD_YES_GATE:
             rejections.append(
                 f"[SKIP] '{question[:55]}' — prob {prob}% in dead zone "
                 f"({CROWD_NO_GATE}–{CROWD_YES_GATE}%)"
+            )
+            continue
+
+        # Sweet-zone CEILING — skip near-certainties with no upside
+        # YES at 98% → pay $0.98 to win $1.00 → 2% max return. Never compounds.
+        # NO when YES at 2% → same problem from the other side.
+        # Target zone: YES 65–85% or NO 15–35% (18–54% return per win).
+        if prob > MAX_YES_PROB:
+            upside = round(100 - prob, 1)
+            rejections.append(
+                f"[SKIP] '{question[:55]}' — prob {prob}% too high "
+                f"(near-certain YES, only {upside}% upside remaining)"
+            )
+            continue
+        if prob < MIN_YES_PROB:
+            upside = round(prob, 1)
+            rejections.append(
+                f"[SKIP] '{question[:55]}' — prob {prob}% too low "
+                f"(near-certain NO, only {upside}% upside on NO side)"
             )
             continue
 
