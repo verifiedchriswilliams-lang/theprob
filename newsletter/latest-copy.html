@@ -1,197 +1,538 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="x-apple-disable-message-reformatting">
 <meta name="color-scheme" content="dark">
-<title>Kalshi's 89% monopoly. Google's oops moment. War betting goes viral.</title>
+<meta name="supported-color-schemes" content="dark">
+<!--[if !mso]><!-->
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!--<![endif]-->
+<!--[if mso]>
+<xml><o:OfficeDocumentSettings><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml>
+<![endif]-->
+<title>Duckworth's odds just crashed 30pts. Here's why.</title>
 
 <style type="text/css">
-  /* ── Mobile ── */
-  @media only screen and (max-width:600px){
-    .outer-table{width:100%!important;}
-    .section-pad{padding:20px 16px!important;}
-    /* Story numbers stay bold on mobile */
-    .story-num{font-size:30px!important;}
-    /* Headlines readable on phone */
-    .story-headline{font-size:17px!important;line-height:1.4!important;}
-    /* Body copy comfortable on small screen */
-    .body-text{font-size:16px!important;line-height:1.85!important;}
-    /* Take text */
-    .take-text{font-size:15px!important;line-height:1.75!important;}
-    /* Labels — minimum 12px, never smaller */
-    .label-text{font-size:12px!important;letter-spacing:0.1em!important;}
-    /* Intro paragraph */
-    .intro-text{font-size:16px!important;line-height:1.85!important;}
-    /* Subtitle / preview row */
-    .subtitle-text{font-size:16px!important;}
-    /* Bullet list items */
-    .bullet-item{font-size:15px!important;line-height:1.75!important;}
-    /* Brand bar */
-    .brand-name{font-size:20px!important;}
-    .brand-tag{font-size:11px!important;}
+  /* ── Reset ── */
+  body, table, td, a { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+  table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
+  img { -ms-interpolation-mode: bicubic; border: 0; outline: none; text-decoration: none; }
+
+  /* ── Dark mode: lock our palette ── */
+  @media (prefers-color-scheme: dark) {
+    body, .email-body { background-color: #080b0f !important; }
+    .email-wrap { background-color: #080b0f !important; }
+    .section-bg { background-color: #080b0f !important; }
+    .alt-bg { background-color: #0d1117 !important; }
+    /* Prevent Apple Mail from inverting our intentional dark design */
+    [data-ogsc] .email-body { background-color: #080b0f !important; }
   }
-  /* ── Dark mode lock ── */
-  @media (prefers-color-scheme:dark){
-    body,div,td{background-color:#0a0e14!important;color:#d0dde8!important;}
+
+  /* ── Mobile: max 600px screens ── */
+  @media only screen and (max-width: 620px) {
+    .email-wrap    { width: 100% !important; max-width: 100% !important; }
+    .section-pad   { padding: 20px 16px !important; }
+    .header-pad    { padding: 20px 16px 16px !important; }
+    .footer-pad    { padding: 20px 16px !important; }
+
+    /* Typography scale-up */
+    .hero-title    { font-size: 22px !important; line-height: 1.35 !important; }
+    .hero-prob     { font-size: 56px !important; }
+    .hero-change   { font-size: 14px !important; }
+    .body-text     { font-size: 16px !important; line-height: 1.8 !important; }
+    .news-title    { font-size: 18px !important; }
+    .take-headline { font-size: 20px !important; line-height: 1.3 !important; }
+    .mover-q       { font-size: 15px !important; }
+    .mover-prob    { font-size: 18px !important; }
+    .eyebrow       { font-size: 11px !important; }
+    .logo-text     { font-size: 24px !important; }
+    .footer-text   { font-size: 12px !important; line-height: 2 !important; }
+    .read-time     { font-size: 11px !important; }
+
+    /* Stack hero stats vertically on mobile */
+    .hero-stats-left  { display: block !important; width: 100% !important; padding-bottom: 12px !important; }
+    .hero-stats-right { display: block !important; width: 100% !important; padding-left: 0 !important; }
+    .hero-stats-table { display: block !important; width: 100% !important; }
+    .hero-stats-row   { display: block !important; width: 100% !important; }
+
+    /* Bigger tap targets */
+    .cta-btn {
+      display: block !important;
+      text-align: center !important;
+      padding: 12px 20px !important;
+      font-size: 13px !important;
+    }
+    .cta-small {
+      font-size: 13px !important;
+      padding: 10px 0 !important;
+      display: inline-block !important;
+    }
+
+    /* Movers: more row padding */
+    .mover-row td  { padding-top: 14px !important; padding-bottom: 14px !important; }
+    .mover-num     { display: none !important; }
+
+    /* Hide movers 4 and 5 on mobile — show 3 + "see all" link */
+    .mover-hide-mobile { display: none !important; }
+
+    /* Section divider accent */
+    .section-accent { height: 3px !important; }
+  }
+
+  /* ── Tap highlight remove ── */
+  a { -webkit-tap-highlight-color: transparent; }
+
+  /* ── Link color lock ── */
+  a[x-apple-data-detectors] {
+    color: inherit !important;
+    text-decoration: none !important;
   }
 </style>
 </head>
-<body style="margin:0;padding:0;background:#0a0e14 !important;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;">
-<div style="display:none;max-height:0;overflow:hidden;">Polymarket's getting nuked. Google's freaked. Weather bets are printing.</div>
-<!--[if mso]><center><table width="600"><tr><td><![endif]-->
-<table class="outer-table" align="center" width="600" cellpadding="0" cellspacing="0" border="0"
-       style="max-width:600px;width:100%;background:#0a0e14 !important;border-radius:8px;overflow:hidden;">
-  
-  <tr><td style="padding:24px 32px 20px;text-align:center;background:#0a0e14 !important;border-bottom:2px solid #1e2a38;">
-    <!-- Brand bar matching theprobnewsletter.com -->
-    <div style="margin-bottom:24px;">
-      <a href="https://theprobnewsletter.com" style="text-decoration:none;">
-        <span class="brand-name" style="font-family:'Courier New',monospace;font-size:22px;font-weight:700;color:#00e5a0 !important;letter-spacing:-0.5px;">THE PROB</span>
-        <span style="font-family:'Courier New',monospace;font-size:16px;color:#4a6880 !important;margin:0 8px;">|</span>
-        <span class="brand-tag" style="font-family:'Courier New',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#a8bfce !important;">What's the Probability?</span>
+<body class="email-body" style="margin:0;padding:0;background:#080b0f !important;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;">
+
+<!-- Outlook wrapper -->
+<!--[if mso]>
+<table width="100%" cellpadding="0" cellspacing="0" bgcolor="#080b0f"><tr><td align="center">
+<![endif]-->
+
+<table width="100%" cellpadding="0" cellspacing="0" style="background:#080b0f !important;min-width:320px;">
+<tr><td align="center" style="padding:0;">
+
+  <!-- Main container: fluid on mobile, max 600px on desktop -->
+  <table class="email-wrap" width="600" cellpadding="0" cellspacing="0"
+         style="max-width:600px;width:100%;margin:0 auto;background:#080b0f !important;">
+
+    
+  <tr><td class="header-pad" style="background:#080b0f !important;padding:28px 32px 20px;border-bottom:2px solid #1e2a38;">
+    <!--[if mso]><table width="100%"><tr><td><![endif]-->
+    <a href="https://theprobnewsletter.com" class="logo-text" title="The Prob — Prediction Markets Intelligence"
+       style="font-family:'Courier New',monospace;font-size:22px;font-weight:700;color:#00e5a0 !important;letter-spacing:-0.5px;text-decoration:none;display:block;margin-bottom:8px;">THE PROB</a>
+    <table width="100%" cellpadding="0" cellspacing="0">
+      <tr>
+        <td style="vertical-align:middle;">
+          <div class="read-time" style="font-family:'Courier New',monospace;font-size:10px;color:#8ba3bc !important;letter-spacing:0.15em;text-transform:uppercase;">April 13, 2026 &middot; Prediction Markets Intelligence</div>
+        </td>
+        <td style="vertical-align:middle;text-align:right;">
+          <div class="read-time" style="font-family:'Courier New',monospace;font-size:10px;color:#8ba3bc !important;letter-spacing:0.1em;text-transform:uppercase;">6 min read</div>
+        </td>
+      </tr>
+    </table>
+    <div style="font-family:'Courier New',monospace;font-size:10px;color:#8ba3bc !important;letter-spacing:0.08em;margin-top:8px;padding-top:8px;border-top:1px solid #1e2a38;">3 Models &nbsp;A:<span style='color:#00e5a0 !important'>+84.7%</span> &nbsp;B:<span style='color:#00e5a0 !important'>+33.0%</span> &nbsp;C:<span style='color:#00e5a0 !important'>+0.0%</span> &nbsp;&middot;&nbsp; <a href='https://theprobnewsletter.com/portfolio.html' style='color:#8ba3bc !important;text-decoration:none;'>Pick your model &#8599;</a></div>
+    <!--[if mso]></td></tr></table><![endif]-->
+  </td></tr>
+
+  <tr><td class="section-pad" style="padding:28px 32px;border-bottom:1px solid #1e2a38;">
+    <div class="eyebrow" style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#00e5a0 !important;margin-bottom:14px;">
+      Market of the Day &middot; Polymarket
+    </div>
+    <div class="hero-title" style="font-family:Georgia,serif;font-size:26px;font-weight:700;line-height:1.3;color:#edf2f7 !important;margin:0 0 20px;">
+      <a href="https://polymarket.com/event/atp-duckwor-napolit-2026-04-12" title="Mexico City: James Duckworth vs Stefano Napolitano" style="color:#edf2f7 !important;text-decoration:none;">Mexico City: James Duckworth vs Stefano Napolitano</a>
+    </div>
+
+    <!--[if mso]><table width="100%"><tr><td width="40%" valign="top"><![endif]-->
+    <table class="hero-stats-table" width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 20px;">
+      <tr class="hero-stats-row">
+        <td class="hero-stats-left" width="40%" style="vertical-align:top;padding-bottom:0;">
+          <div class="hero-prob" style="font-family:'Courier New',monospace;font-size:56px;font-weight:700;color:#ff4757 !important;line-height:1;">24.5<span style="font-size:26px;color:#ff4757 !important;">%</span></div>
+          <div class="hero-change" style="font-family:'Courier New',monospace;font-size:13px;color:#ff4757 !important;margin-top:6px;font-weight:700;">&#9660; -30.0 pts today</div>
+        </td>
+        <!--[if mso]></td><td width="60%" valign="top" style="padding-left:20px;"><![endif]-->
+        <td class="hero-stats-right" width="60%" style="vertical-align:top;padding-left:20px;">
+          <div style="font-family:'Courier New',monospace;font-size:10px;color:#8ba3bc !important;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:3px;">VOLUME</div>
+          <div style="font-family:'Courier New',monospace;font-size:16px;color:#edf2f7 !important;font-weight:700;margin-bottom:12px;">$241K</div>
+          <div style="font-family:'Courier New',monospace;font-size:10px;color:#8ba3bc !important;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:3px;">RESOLVES</div>
+          <div style="font-family:'Courier New',monospace;font-size:16px;color:#edf2f7 !important;font-weight:700;">Apr 19</div>
+        </td>
+      </tr>
+    </table>
+    <!--[if mso]></td></tr></table><![endif]-->
+
+    <p class="body-text" style="font-size:15px;color:#d0dde8 !important;line-height:1.75;margin:0 0 20px;font-style:italic;border-left:3px solid #00e5a0;padding-left:16px;">At 24.5%, the crowd is giving Duckworth less than a 1-in-4 shot despite him being the higher-ranked player and a clay court specialist facing a qualifier in Mexico City. The 30-point drop in 24 hours smells like steam off sharp money, but you need to verify if Napolitano has a specific edge (injury intel, recent form, head-to-head) before chasing the contrarian play here.</p>
+
+    <!--[if mso]><table><tr><td><![endif]-->
+    <a href="https://polymarket.com/event/atp-duckwor-napolit-2026-04-12" class="cta-btn" title="View this market on Polymarket"
+       style="display:inline-block;background:#00e5a0;color:#080b0f !important;font-family:'Courier New',monospace;font-size:13px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:10px 22px;text-decoration:none;line-height:1.4;">
+      View Market &#8594;
+    </a>
+    <!--[if mso]></td></tr></table><![endif]-->
+  </td></tr>
+
+  <tr><td class="section-pad" style="background:#080b0f !important;padding:28px 32px 8px;">
+    <div style="font-family:'Courier New',monospace;font-size:10px;color:#f59e0b !important;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:12px;">&#9654; Today&#39;s Trade</div>
+    <table width="100%" cellpadding="0" cellspacing="0" style="border:1px solid #1e2a38;border-radius:8px;overflow:hidden;">
+      <tr>
+        <td style="background:#0d1117 !important;padding:20px 24px;vertical-align:top;">
+          <div style="font-family:'Courier New',monospace;font-size:10px;color:#8ba3bc !important;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:8px;">Polymarket &middot; Closes Apr 20</div>
+          <a href="https://polymarket.com/event/atp-buse-moutet-2026-04-13" style="font-size:16px;font-weight:600;color:#d0dde8 !important;text-decoration:none;line-height:1.4;display:block;margin-bottom:16px;">Barcelona Open: Ignacio Buse vs Corentin Moutet</a>
+          <table cellpadding="0" cellspacing="0">
+            <tr>
+              <td style="padding-right:24px;">
+                <div style="font-family:'Courier New',monospace;font-size:11px;color:#8ba3bc !important;letter-spacing:0.1em;text-transform:uppercase;">Probability</div>
+                <div style="font-family:'Courier New',monospace;font-size:28px;font-weight:700;color:#ff4757 !important;">25.5%</div>
+              </td>
+              <td style="padding-right:24px;">
+                <div style="font-family:'Courier New',monospace;font-size:11px;color:#8ba3bc !important;letter-spacing:0.1em;text-transform:uppercase;">24h Move</div>
+                <div style="font-family:'Courier New',monospace;font-size:18px;font-weight:700;color:#ff4d6d !important;">&#9660; 13.5pts</div>
+              </td>
+              <td>
+                <div style="font-family:'Courier New',monospace;font-size:11px;color:#8ba3bc !important;letter-spacing:0.1em;text-transform:uppercase;">The Prob plays</div>
+                <div style="font-family:'Courier New',monospace;font-size:28px;font-weight:700;color:#ff4d6d !important;">NO</div>
+              </td>
+            </tr>
+          </table>
+          <div style="margin-top:16px;font-family:'Courier New',monospace;font-size:10px;color:#8ba3bc !important;">
+            $100 paper trade &middot; tracked at <a href="https://theprobnewsletter.com/portfolio.html" style="color:#8ba3bc !important;text-decoration:underline;">theprobnewsletter.com/portfolio</a>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </td></tr>
+
+  <tr><td class="section-pad" style="padding:28px 32px;border-bottom:1px solid #1e2a38;background:#080b0f !important;">
+    <div style="font-family:'Courier New',monospace;font-size:10px;color:#a78bfa !important;
+                letter-spacing:0.2em;text-transform:uppercase;margin-bottom:16px;">
+      &#9654; The 3-Model Experiment
+    </div>
+    <div style="font-size:14px;color:#edf2f7 !important;line-height:1.5;margin-bottom:18px;">
+      Three strategies. Same $1,000 starting balance. Same markets. Running simultaneously
+      starting today &mdash; we find out which logic actually makes money.
+    </div>
+    <!--[if mso]><table width="100%"><tr><![endif]-->
+    <table width="100%" cellpadding="0" cellspacing="0">
+      <tr>
+        <td style="padding:0 6px;vertical-align:top;width:33%;">
+          <table width="100%" cellpadding="0" cellspacing="0"
+                 style="border:1px solid #3b82f6;border-radius:4px;background:#0d1117;">
+            <tr><td style="padding:14px 12px;">
+              <div style="font-family:'Courier New',monospace;font-size:9px;color:#3b82f6 !important;
+                          letter-spacing:0.2em;text-transform:uppercase;margin-bottom:6px;">
+                Model A
+              </div>
+              <div style="font-size:13px;font-weight:700;color:#edf2f7 !important;margin-bottom:4px;">
+                The Crowd
+              </div>
+              <div style="font-family:'Courier New',monospace;font-size:10px;color:#8ba3bc !important;
+                          margin-bottom:10px;line-height:1.4;">
+                YES &ge;65%, NO &le;35%
+              </div>
+              <div style="font-family:'Courier New',monospace;font-size:11px;
+                          color:#00e5a0 !important;font-weight:700;">
+                +84.7%
+              </div>
+              <div style="font-family:'Courier New',monospace;font-size:10px;
+                          color:#8ba3bc !important;margin-top:2px;">
+                $1,847.49 &middot; 119W / 13L
+              </div>
+            </td></tr>
+          </table>
+        </td>
+        <td style="padding:0 6px;vertical-align:top;width:33%;">
+          <table width="100%" cellpadding="0" cellspacing="0"
+                 style="border:1px solid #ef4444;border-radius:4px;background:#0d1117;">
+            <tr><td style="padding:14px 12px;">
+              <div style="font-family:'Courier New',monospace;font-size:9px;color:#ef4444 !important;
+                          letter-spacing:0.2em;text-transform:uppercase;margin-bottom:6px;">
+                Model B
+              </div>
+              <div style="font-size:13px;font-weight:700;color:#edf2f7 !important;margin-bottom:4px;">
+                The Contrarian
+              </div>
+              <div style="font-family:'Courier New',monospace;font-size:10px;color:#8ba3bc !important;
+                          margin-bottom:10px;line-height:1.4;">
+                Always NO on &le;30% shots
+              </div>
+              <div style="font-family:'Courier New',monospace;font-size:11px;
+                          color:#00e5a0 !important;font-weight:700;">
+                +33.0%
+              </div>
+              <div style="font-family:'Courier New',monospace;font-size:10px;
+                          color:#8ba3bc !important;margin-top:2px;">
+                $1,330.00 &middot; 21W / 0L
+              </div>
+            </td></tr>
+          </table>
+        </td>
+        <td style="padding:0 6px;vertical-align:top;width:33%;">
+          <table width="100%" cellpadding="0" cellspacing="0"
+                 style="border:1px solid #f59e0b;border-radius:4px;background:#0d1117;">
+            <tr><td style="padding:14px 12px;">
+              <div style="font-family:'Courier New',monospace;font-size:9px;color:#f59e0b !important;
+                          letter-spacing:0.2em;text-transform:uppercase;margin-bottom:6px;">
+                Model C
+              </div>
+              <div style="font-size:13px;font-weight:700;color:#edf2f7 !important;margin-bottom:4px;">
+                The Arb
+              </div>
+              <div style="font-family:'Courier New',monospace;font-size:10px;color:#8ba3bc !important;
+                          margin-bottom:10px;line-height:1.4;">
+                Bet the lagging platform (gap &ge;10pt)
+              </div>
+              <div style="font-family:'Courier New',monospace;font-size:11px;
+                          color:#00e5a0 !important;font-weight:700;">
+                +0.0%
+              </div>
+              <div style="font-family:'Courier New',monospace;font-size:10px;
+                          color:#8ba3bc !important;margin-top:2px;">
+                $1,000.00 &middot; 0W / 0L
+              </div>
+            </td></tr>
+          </table>
+        </td></tr>
+    </table>
+    <!--[if mso]></tr></table><![endif]-->
+    <div style="margin-top:16px;text-align:center;">
+      <a href="https://theprobnewsletter.com/portfolio.html"
+         style="font-family:'Courier New',monospace;font-size:11px;color:#a78bfa !important;
+                text-decoration:none;letter-spacing:0.15em;text-transform:uppercase;">
+        Follow the race &amp; vote for your pick &#8599;
       </a>
     </div>
+  </td></tr>
 
-    <!-- Photo bubble -->
-    <div style="width:80px;height:80px;border-radius:50%;overflow:hidden;margin:0 auto 10px;border:2px solid #00e5a0;background:#1e2a38;">
-      <img src="https://theprobnewsletter.com/images/chris-williams.jpg" alt="-usernamedchris" width="80" height="80"
-           style="width:80px;height:80px;border-radius:50%;object-fit:cover;display:block;"
-           onerror="this.style.display='none'">
+  <tr><td class="section-pad" style="padding:28px 32px;border-bottom:1px solid #1e2a38;">
+    <div class="eyebrow" style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#00e5a0 !important;margin-bottom:14px;">Today's Movers</div>
+    <table width="100%" cellpadding="0" cellspacing="0" style="border:1px solid #1e2a38;border-radius:2px;">
+      
+        <tr class="mover-row" style="background:#0d1117;">
+          <td class="mover-num" style="padding:12px 14px;font-family:'Courier New',monospace;font-size:11px;width:28px;color:#8ba3bc !important;vertical-align:top;">01</td>
+          <td style="padding:12px 10px 12px 14px;vertical-align:top;">
+            <a href="https://polymarket.com/event/bab-el-mandeb-strait-effectively-closed-by" class="mover-q" title="Bab el-Mandeb Strait effectively closed by April 30?"
+               style="font-size:14px;color:#edf2f7 !important;text-decoration:none;line-height:1.45;display:block;margin-bottom:6px;">Bab el-Mandeb Strait effectively closed by April 30?</a>
+            <div><span style="display:inline-block;background:#ff475722;color:#ff4757 !important;border:1px solid #ff475755;font-family:'Courier New',monospace;font-size:9px;font-weight:700;letter-spacing:0.08em;padding:2px 6px;text-transform:uppercase;border-radius:2px;margin-right:6px;">Politics</span><span style="font-family:'Courier New',monospace;font-size:10px;color:#8ba3bc !important;">Polymarket</span></div>
+          </td>
+          <td style="padding:12px 14px 12px 8px;text-align:right;white-space:nowrap;vertical-align:top;min-width:72px;">
+            <div class="mover-prob" style="font-family:'Courier New',monospace;font-size:17px;font-weight:700;color:#ff4757 !important;">24.0%</div>
+            <div style="font-family:'Courier New',monospace;font-size:11px;color:#00e5a0 !important;margin-top:3px;">&#9650; 11.5 pts</div>
+          </td>
+        </tr>
+        <tr class="mover-row" style="background:#080b0f;">
+          <td class="mover-num" style="padding:12px 14px;font-family:'Courier New',monospace;font-size:11px;width:28px;color:#8ba3bc !important;vertical-align:top;">02</td>
+          <td style="padding:12px 10px 12px 14px;vertical-align:top;">
+            <a href="https://polymarket.com/event/nhl-nyr-fla-2026-04-13" class="mover-q" title="Rangers vs. Panthers"
+               style="font-size:14px;color:#edf2f7 !important;text-decoration:none;line-height:1.45;display:block;margin-bottom:6px;">Rangers vs. Panthers</a>
+            <div><span style="display:inline-block;background:#a78bfa22;color:#a78bfa !important;border:1px solid #a78bfa55;font-family:'Courier New',monospace;font-size:9px;font-weight:700;letter-spacing:0.08em;padding:2px 6px;text-transform:uppercase;border-radius:2px;margin-right:6px;">Sports</span><span style="font-family:'Courier New',monospace;font-size:10px;color:#8ba3bc !important;">Polymarket</span></div>
+          </td>
+          <td style="padding:12px 14px 12px 8px;text-align:right;white-space:nowrap;vertical-align:top;min-width:72px;">
+            <div class="mover-prob" style="font-family:'Courier New',monospace;font-size:17px;font-weight:700;color:#f5a623 !important;">56.5%</div>
+            <div style="font-family:'Courier New',monospace;font-size:11px;color:#00e5a0 !important;margin-top:3px;">&#9650; 11.0 pts</div>
+          </td>
+        </tr>
+        <tr class="mover-row" style="background:#0d1117;">
+          <td class="mover-num" style="padding:12px 14px;font-family:'Courier New',monospace;font-size:11px;width:28px;color:#8ba3bc !important;vertical-align:top;">03</td>
+          <td style="padding:12px 10px 12px 14px;vertical-align:top;">
+            <a href="https://polymarket.com/event/strait-of-hormuz-traffic-returns-to-normal-by-april-30" class="mover-q" title="Strait of Hormuz traffic returns to normal by end of April?"
+               style="font-size:14px;color:#edf2f7 !important;text-decoration:none;line-height:1.45;display:block;margin-bottom:6px;">Strait of Hormuz traffic returns to normal by end of April?</a>
+            <div><span style="display:inline-block;background:#00e5a022;color:#00e5a0 !important;border:1px solid #00e5a055;font-family:'Courier New',monospace;font-size:9px;font-weight:700;letter-spacing:0.08em;padding:2px 6px;text-transform:uppercase;border-radius:2px;margin-right:6px;">Finance</span><span style="font-family:'Courier New',monospace;font-size:10px;color:#8ba3bc !important;">Polymarket</span></div>
+          </td>
+          <td style="padding:12px 14px 12px 8px;text-align:right;white-space:nowrap;vertical-align:top;min-width:72px;">
+            <div class="mover-prob" style="font-family:'Courier New',monospace;font-size:17px;font-weight:700;color:#ff4757 !important;">12.5%</div>
+            <div style="font-family:'Courier New',monospace;font-size:11px;color:#ff4757 !important;margin-top:3px;">&#9660; 5.0 pts</div>
+          </td>
+        </tr>
+        <tr class="mover-hide-mobile" style="background:#080b0f;">
+          <td class="mover-num" style="padding:12px 14px;font-family:'Courier New',monospace;font-size:11px;width:28px;color:#8ba3bc !important;vertical-align:top;">04</td>
+          <td style="padding:12px 10px 12px 14px;vertical-align:top;">
+            <a href="https://kalshi.com/markets/kxipospacex" class="mover-q" title="When will SpaceX officially announce an IPO?: When will SpaceX IPO?"
+               style="font-size:14px;color:#edf2f7 !important;text-decoration:none;line-height:1.45;display:block;margin-bottom:6px;">When will SpaceX officially announce an IPO?: When will SpaceX IPO?</a>
+            <div><span style="display:inline-block;background:#00e5a022;color:#00e5a0 !important;border:1px solid #00e5a055;font-family:'Courier New',monospace;font-size:9px;font-weight:700;letter-spacing:0.08em;padding:2px 6px;text-transform:uppercase;border-radius:2px;margin-right:6px;">Finance</span><span style="font-family:'Courier New',monospace;font-size:10px;color:#8ba3bc !important;">Kalshi</span></div>
+          </td>
+          <td style="padding:12px 14px 12px 8px;text-align:right;white-space:nowrap;vertical-align:top;min-width:72px;">
+            <div class="mover-prob" style="font-family:'Courier New',monospace;font-size:17px;font-weight:700;color:#ff4757 !important;">19.0%</div>
+            <div style="font-family:'Courier New',monospace;font-size:11px;color:#8ba3bc !important;margin-top:3px;">&ndash; 0.0 pts</div>
+          </td>
+        </tr>
+        <tr class="mover-hide-mobile" style="background:#0d1117;">
+          <td class="mover-num" style="padding:12px 14px;font-family:'Courier New',monospace;font-size:11px;width:28px;color:#8ba3bc !important;vertical-align:top;">05</td>
+          <td style="padding:12px 10px 12px 14px;vertical-align:top;">
+            <a href="https://kalshi.com/markets/kxtrumpout27" class="mover-q" title="Donald Trump out as President?: Will Donald Trump leave office before August 1, 2026?"
+               style="font-size:14px;color:#edf2f7 !important;text-decoration:none;line-height:1.45;display:block;margin-bottom:6px;">Donald Trump out as President?: Will Donald Trump leave office before August 1, 2026?</a>
+            <div><span style="display:inline-block;background:#ff475722;color:#ff4757 !important;border:1px solid #ff475755;font-family:'Courier New',monospace;font-size:9px;font-weight:700;letter-spacing:0.08em;padding:2px 6px;text-transform:uppercase;border-radius:2px;margin-right:6px;">Politics</span><span style="font-family:'Courier New',monospace;font-size:10px;color:#8ba3bc !important;">Kalshi</span></div>
+          </td>
+          <td style="padding:12px 14px 12px 8px;text-align:right;white-space:nowrap;vertical-align:top;min-width:72px;">
+            <div class="mover-prob" style="font-family:'Courier New',monospace;font-size:17px;font-weight:700;color:#ff4757 !important;">8.2%</div>
+            <div style="font-family:'Courier New',monospace;font-size:11px;color:#8ba3bc !important;margin-top:3px;">&ndash; 0.0 pts</div>
+          </td>
+        </tr>
+    </table>
+    <div style="margin-top:14px;">
+      <a href="https://theprobnewsletter.com" class="cta-small" title="See all markets on The Prob"
+         style="font-family:'Courier New',monospace;font-size:11px;color:#00e5a0 !important;text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;">
+        See all 5 movers &#8594;
+      </a>
     </div>
-    <div style="font-family:'Courier New',monospace;font-size:11px;color:#00e5a0 !important;margin-bottom:20px;letter-spacing:0.05em;">-usernamedchris</div>
+  </td></tr>
 
-    <!-- Sunday 5 title -->
-    <div style="font-family:'Courier New',monospace;font-size:11px;letter-spacing:0.25em;text-transform:uppercase;color:#f5a623 !important;margin-bottom:8px;">Sunday Edition</div>
-    <div style="font-size:30px;font-weight:700;color:#edf2f7 !important;line-height:1.15;margin-bottom:8px;">The Sunday 5</div>
-    <div style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:#8ba3bc !important;margin-bottom:18px;">April 12, 2026 &nbsp;&#183;&nbsp; Edition #01</div>
+  <!-- THE SPREAD -->
+  <tr><td style="padding:20px 0 0 !important;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background:#080b0f !important;border:2px solid #1e2a38 !important;border-radius:10px !important;padding:0 !important;">
+  <tr><td style="padding:18px 20px 6px !important;">
+    <div style="font-family:'Space Mono',monospace !important;font-size:10px !important;letter-spacing:0.2em !important;text-transform:uppercase !important;color:#8ba3bc !important;margin-bottom:4px !important;">&#9889; The Spread</div>
+    <div style="font-size:16px !important;font-weight:700 !important;color:#edf2f7 !important;margin-bottom:4px !important;">The crowd disagrees with itself</div>
+    <div style="font-size:12px !important;color:#546e85 !important;margin-bottom:14px !important;">Polymarket vs Kalshi &bull; 8pt+ gap &bull; one of them is wrong</div>
+    <table width="100%" cellpadding="0" cellspacing="0">
+      
+    <tr><td style="padding:0 0 8px 0 !important;">
+      <table width="100%" cellpadding="0" cellspacing="0" style="background:#0d1117 !important;border:1px solid #1e2a38 !important;border-radius:8px !important;">
+      <tr><td style="padding:12px 14px 10px !important;">
+        <div style="font-size:13px !important;font-weight:600 !important;color:#edf2f7 !important;line-height:1.35 !important;margin-bottom:8px !important;">Will Mojtaba Khamenei be head of state in Iran end of 2026?</div>
+        <div style="display:flex !important;align-items:center !important;gap:8px !important;flex-wrap:wrap !important;margin-bottom:6px !important;">
+          <a href="https://polymarket.com/event/iran-leader-end-of-2026" style="color:#a78bfa !important;text-decoration:none !important;" target="_blank"><span style="display:inline-block !important;background:rgba(139,92,246,.2) !important;color:#a78bfa !important;border:1px solid rgba(139,92,246,.3) !important;border-radius:999px !important;padding:3px 10px !important;font-size:12px !important;font-weight:700 !important;">Poly&nbsp;61.5%</span></a>
+          <span style="color:#546e85 !important;font-size:11px !important;">&#8596;</span>
+          <a href="https://kalshi.com/markets/kxpahlavihead" style="color:#93c5fd !important;text-decoration:none !important;" target="_blank"><span style="display:inline-block !important;background:rgba(59,130,246,.2) !important;color:#93c5fd !important;border:1px solid rgba(59,130,246,.3) !important;border-radius:999px !important;padding:3px 10px !important;font-size:12px !important;font-weight:700 !important;">Kalshi&nbsp;11.5%</span></a>
+          <span style="display:inline-block !important;background:rgba(245,166,35,.15) !important;color:#f5a623 !important;border:1px solid rgba(245,166,35,.3) !important;border-radius:999px !important;padding:3px 8px !important;font-size:11px !important;font-weight:700 !important;">&#9889; 50.0 pts</span>
+        </div>
+        <div style="font-size:11px !important;color:#546e85 !important;">Vol: $1.5M &bull; Kalshi OI: $5K</div>
+      </td></tr>
+      </table>
+    </td></tr>
+    <tr><td style="padding:0 0 8px 0 !important;">
+      <table width="100%" cellpadding="0" cellspacing="0" style="background:#0d1117 !important;border:1px solid #1e2a38 !important;border-radius:8px !important;">
+      <tr><td style="padding:12px 14px 10px !important;">
+        <div style="font-size:13px !important;font-weight:600 !important;color:#edf2f7 !important;line-height:1.35 !important;margin-bottom:8px !important;">Trump out as President before GTA VI?</div>
+        <div style="display:flex !important;align-items:center !important;gap:8px !important;flex-wrap:wrap !important;margin-bottom:6px !important;">
+          <a href="https://polymarket.com/event/what-will-happen-before-gta-vi" style="color:#a78bfa !important;text-decoration:none !important;" target="_blank"><span style="display:inline-block !important;background:rgba(139,92,246,.2) !important;color:#a78bfa !important;border:1px solid rgba(139,92,246,.3) !important;border-radius:999px !important;padding:3px 10px !important;font-size:12px !important;font-weight:700 !important;">Poly&nbsp;52.5%</span></a>
+          <span style="color:#546e85 !important;font-size:11px !important;">&#8596;</span>
+          <a href="https://kalshi.com/markets/kxtrumpout27" style="color:#93c5fd !important;text-decoration:none !important;" target="_blank"><span style="display:inline-block !important;background:rgba(59,130,246,.2) !important;color:#93c5fd !important;border:1px solid rgba(59,130,246,.3) !important;border-radius:999px !important;padding:3px 10px !important;font-size:12px !important;font-weight:700 !important;">Kalshi&nbsp;8.2%</span></a>
+          <span style="display:inline-block !important;background:rgba(245,166,35,.15) !important;color:#f5a623 !important;border:1px solid rgba(245,166,35,.3) !important;border-radius:999px !important;padding:3px 8px !important;font-size:11px !important;font-weight:700 !important;">&#9889; 44.3 pts</span>
+        </div>
+        <div style="font-size:11px !important;color:#546e85 !important;">Vol: $601K &bull; Kalshi OI: $15K</div>
+      </td></tr>
+      </table>
+    </td></tr>
+    <tr><td style="padding:0 0 8px 0 !important;">
+      <table width="100%" cellpadding="0" cellspacing="0" style="background:#0d1117 !important;border:1px solid #1e2a38 !important;border-radius:8px !important;">
+      <tr><td style="padding:12px 14px 10px !important;">
+        <div style="font-size:13px !important;font-weight:600 !important;color:#edf2f7 !important;line-height:1.35 !important;margin-bottom:8px !important;">2026 Balance of Power: D Senate, D House</div>
+        <div style="display:flex !important;align-items:center !important;gap:8px !important;flex-wrap:wrap !important;margin-bottom:6px !important;">
+          <a href="https://polymarket.com/event/balance-of-power-2026-midterms" style="color:#a78bfa !important;text-decoration:none !important;" target="_blank"><span style="display:inline-block !important;background:rgba(139,92,246,.2) !important;color:#a78bfa !important;border:1px solid rgba(139,92,246,.3) !important;border-radius:999px !important;padding:3px 10px !important;font-size:12px !important;font-weight:700 !important;">Poly&nbsp;53.5%</span></a>
+          <span style="color:#546e85 !important;font-size:11px !important;">&#8596;</span>
+          <a href="https://kalshi.com/markets/kxbalancepowercombo" style="color:#93c5fd !important;text-decoration:none !important;" target="_blank"><span style="display:inline-block !important;background:rgba(59,130,246,.2) !important;color:#93c5fd !important;border:1px solid rgba(59,130,246,.3) !important;border-radius:999px !important;padding:3px 10px !important;font-size:12px !important;font-weight:700 !important;">Kalshi&nbsp;13.5%</span></a>
+          <span style="display:inline-block !important;background:rgba(245,166,35,.15) !important;color:#f5a623 !important;border:1px solid rgba(245,166,35,.3) !important;border-radius:999px !important;padding:3px 8px !important;font-size:11px !important;font-weight:700 !important;">&#9889; 40.0 pts</span>
+        </div>
+        <div style="font-size:11px !important;color:#546e85 !important;">Vol: $1.3M &bull; Kalshi OI: $5K</div>
+      </td></tr>
+      </table>
+    </td></tr>
+    <tr><td style="padding:0 0 8px 0 !important;">
+      <table width="100%" cellpadding="0" cellspacing="0" style="background:#0d1117 !important;border:1px solid #1e2a38 !important;border-radius:8px !important;">
+      <tr><td style="padding:12px 14px 10px !important;">
+        <div style="font-size:13px !important;font-weight:600 !important;color:#edf2f7 !important;line-height:1.35 !important;margin-bottom:8px !important;">2026 Balance of Power: R Senate, R House</div>
+        <div style="display:flex !important;align-items:center !important;gap:8px !important;flex-wrap:wrap !important;margin-bottom:6px !important;">
+          <a href="https://polymarket.com/event/balance-of-power-2026-midterms" style="color:#a78bfa !important;text-decoration:none !important;" target="_blank"><span style="display:inline-block !important;background:rgba(139,92,246,.2) !important;color:#a78bfa !important;border:1px solid rgba(139,92,246,.3) !important;border-radius:999px !important;padding:3px 10px !important;font-size:12px !important;font-weight:700 !important;">Poly&nbsp;12.5%</span></a>
+          <span style="color:#546e85 !important;font-size:11px !important;">&#8596;</span>
+          <a href="https://kalshi.com/markets/kxbalancepowercombo" style="color:#93c5fd !important;text-decoration:none !important;" target="_blank"><span style="display:inline-block !important;background:rgba(59,130,246,.2) !important;color:#93c5fd !important;border:1px solid rgba(59,130,246,.3) !important;border-radius:999px !important;padding:3px 10px !important;font-size:12px !important;font-weight:700 !important;">Kalshi&nbsp;36.5%</span></a>
+          <span style="display:inline-block !important;background:rgba(245,166,35,.15) !important;color:#f5a623 !important;border:1px solid rgba(245,166,35,.3) !important;border-radius:999px !important;padding:3px 8px !important;font-size:11px !important;font-weight:700 !important;">&#9889; 24.0 pts</span>
+        </div>
+        <div style="font-size:11px !important;color:#546e85 !important;">Vol: $981K &bull; Kalshi OI: $5K</div>
+      </td></tr>
+      </table>
+    </td></tr>
+    </table>
+    <div style="font-size:11px !important;color:#546e85 !important;padding-bottom:14px !important;">
+      <a href="https://theprobnewsletter.com" style="color:#8ba3bc !important;">See all divergences on The Prob &#8594;</a>
+    </div>
+  </td></tr>
+  </table>
+  </td></tr>
 
-    <!-- Two-sentence intro -->
-    <div class="intro-text" style="font-size:15px;color:#c8dae6 !important;line-height:1.8;max-width:420px;margin:0 auto 6px;">
-      Every Sunday, I hand-pick the 5 most important stories from the prediction markets world and tell you why they matter. These are the headlines shaping where smart money is moving next.
-    </div>
-  </td></tr>
-  <tr><td style="padding:14px 32px 18px;background:#0d1117 !important;text-align:center;border-bottom:1px solid #1e2a38;">
-    <div class="subtitle-text" style="font-size:15px;color:#edf2f7 !important;font-style:italic;">Polymarket's getting nuked. Google's freaked. Weather bets are printing.</div>
-  </td></tr>
-  
   <tr><td class="section-pad" style="padding:28px 32px;border-bottom:1px solid #1e2a38;">
-    <div class="story-num" style="font-family:'Courier New',monospace;font-size:38px;font-weight:700;color:#00e5a0 !important;line-height:1;margin-bottom:6px;">01</div>
-    <div class="label-text" style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:#a8bfce !important;margin:0 0 10px;">via The Guardian</div>
-    <div class="story-headline" style="font-size:18px;font-weight:700;color:#edf2f7 !important;line-height:1.35;margin-bottom:12px;">
-      <a href="https://www.theguardian.com/business/2026/apr/11/polymarket-gamblers-betting-iran-war-ukraine-news-truth" style="color:#edf2f7 !important;text-decoration:none;">'Abhorrent': The Inside Story of the Polymarket Gamblers Betting Millions on War</a>
-    </div>
-    <p class="body-text" style="font-size:15px;color:#d0dde8 !important;line-height:1.8;margin:0 0 16px;">Polymarket users are betting millions on war outcomes, drawing criticism that prediction markets are enabling profit from human suffering. This PR nightmare could accelerate regulatory scrutiny that threatens the entire ecosystem's credibility and accessibility.</p>
-    <div style="margin-bottom:16px;">
-      <div class="label-text" style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:#a8bfce !important;margin-bottom:8px;">What You Need to Know</div>
-      <ul style="margin:0;padding-left:18px;list-style:disc;">
-        <li class="bullet-item" style="margin-bottom:8px;color:#d0dde8 !important;font-size:14px;line-height:1.7;">Watch regulators weaponize "ethics" against Polymarket while ignoring the real issue: transparency beats censorship.</li><li class="bullet-item" style="margin-bottom:8px;color:#d0dde8 !important;font-size:14px;line-height:1.7;">$2B in war bets reveals prediction markets work exactly as designed, whether Wall Street approves or not.</li><li class="bullet-item" style="margin-bottom:8px;color:#d0dde8 !important;font-size:14px;line-height:1.7;">CFTC moves faster on optics than substance, and platforms paying the PR price for being honest brokers.</li>
-      </ul>
-    </div>
-    <div style="background:#0f1825 !important;border:1px solid #1e2a38;border-left:3px solid #00e5a0;padding:12px 16px;border-radius:0 4px 4px 0;">
-      <div style="font-family:'Courier New',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:#00e5a0 !important;margin-bottom:6px;">The Prob's Take</div>
-      <p class="take-text" style="font-size:14px;color:#d0dde8 !important;line-height:1.7;margin:0;">The outrage is real, but regulatory risk is the actual move here. Start positioning for stricter offshore rules and shorter-duration binary contracts on geopolitical events.</p>
-    </div>
-    
-  </td></tr>
-  <tr><td class="section-pad" style="padding:28px 32px;border-bottom:1px solid #1e2a38;">
-    <div class="story-num" style="font-family:'Courier New',monospace;font-size:38px;font-weight:700;color:#00e5a0 !important;line-height:1;margin-bottom:6px;">02</div>
-    <div class="label-text" style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:#a8bfce !important;margin:0 0 10px;">via The Verge</div>
-    <div class="story-headline" style="font-size:18px;font-weight:700;color:#edf2f7 !important;line-height:1.35;margin-bottom:12px;">
-      <a href="https://www.theverge.com/tech/910691/google-news-polymarket-bets-error" style="color:#edf2f7 !important;text-decoration:none;">Google Says Polymarket Bets Showing Up in News Was an 'Error'</a>
-    </div>
-    <p class="body-text" style="font-size:15px;color:#d0dde8 !important;line-height:1.8;margin:0 0 16px;">Google briefly surfaced Polymarket odds in its News results before yanking the feature and calling it an accident. If Google legitimizes prediction markets as a search-integrated data source, you're looking at a mainstream credibility shift that could reshape how millions consume forecasts.</p>
-    <div style="margin-bottom:16px;">
-      <div class="label-text" style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:#a8bfce !important;margin-bottom:8px;">What You Need to Know</div>
-      <ul style="margin:0;padding-left:18px;list-style:disc;">
-        <li class="bullet-item" style="margin-bottom:8px;color:#d0dde8 !important;font-size:14px;line-height:1.7;">Google's accidental Polymarket integration suggests prediction markets are creeping into mainstream search sooner than anyone expected.</li><li class="bullet-item" style="margin-bottom:8px;color:#d0dde8 !important;font-size:14px;line-height:1.7;">47% of prediction market growth probably depends on tech platforms treating odds like legitimate data rather than gambling gossip.</li><li class="bullet-item" style="margin-bottom:8px;color:#d0dde8 !important;font-size:14px;line-height:1.7;">Watch for Google to quietly relaunch this feature within 18 months once regulatory dust settles slightly.</li>
-      </ul>
-    </div>
-    <div style="background:#0f1825 !important;border:1px solid #1e2a38;border-left:3px solid #00e5a0;padding:12px 16px;border-radius:0 4px 4px 0;">
-      <div style="font-family:'Courier New',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:#00e5a0 !important;margin-bottom:6px;">The Prob's Take</div>
-      <p class="take-text" style="font-size:14px;color:#d0dde8 !important;line-height:1.7;margin:0;">Google's "error" is a preview of inevitable integration. If prediction markets hit Google News permanently, odds compression happens fast. Start positioning now in mispriced long-tail events.</p>
-    </div>
-    
-  </td></tr>
-  <tr><td class="section-pad" style="padding:28px 32px;border-bottom:1px solid #1e2a38;">
-    <div class="story-num" style="font-family:'Courier New',monospace;font-size:38px;font-weight:700;color:#00e5a0 !important;line-height:1;margin-bottom:6px;">03</div>
-    <div class="label-text" style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:#a8bfce !important;margin:0 0 10px;">via Bloomberg</div>
-    <div class="story-headline" style="font-size:18px;font-weight:700;color:#edf2f7 !important;line-height:1.35;margin-bottom:12px;">
-      <a href="https://www.bloomberg.com/news/articles/2026-04-10/what-are-weather-prediction-markets-and-do-they-work" style="color:#edf2f7 !important;text-decoration:none;">Weather Prediction Markets Are Booming. Can They Actually Improve Forecasts?</a>
-    </div>
-    <p class="body-text" style="font-size:15px;color:#d0dde8 !important;line-height:1.8;margin:0 0 16px;">Weather traders are wagering billions on hurricane paths and temperature records, betting that markets beat meteorologists. If they're right, it's another proof point that incentivized crowds outthink experts, and a potential goldmine for early movers in an emerging asset class.</p>
-    <div style="margin-bottom:16px;">
-      <div class="label-text" style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:#a8bfce !important;margin-bottom:8px;">What You Need to Know</div>
-      <ul style="margin:0;padding-left:18px;list-style:disc;">
-        <li class="bullet-item" style="margin-bottom:8px;color:#d0dde8 !important;font-size:14px;line-height:1.7;">Traders are pricing hurricane paths better than meteorologists because money beats credentials.</li><li class="bullet-item" style="margin-bottom:8px;color:#d0dde8 !important;font-size:14px;line-height:1.7;">Bet $500M annually on weather outcomes that actually happen, unlike sports guessing games.</li><li class="bullet-item" style="margin-bottom:8px;color:#d0dde8 !important;font-size:14px;line-height:1.7;">Watch whether prediction markets become the National Weather Service's uncomfortable competition within 36 months.</li>
-      </ul>
-    </div>
-    <div style="background:#0f1825 !important;border:1px solid #1e2a38;border-left:3px solid #00e5a0;padding:12px 16px;border-radius:0 4px 4px 0;">
-      <div style="font-family:'Courier New',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:#00e5a0 !important;margin-bottom:6px;">The Prob's Take</div>
-      <p class="take-text" style="font-size:14px;color:#d0dde8 !important;line-height:1.7;margin:0;">Weather markets work best for tail events where traditional forecasts are worst. Start with hurricane intensity and temperature extremes, skip the daily high.</p>
-    </div>
-    
-  </td></tr>
-  <tr><td class="section-pad" style="padding:28px 32px;border-bottom:1px solid #1e2a38;">
-    <div class="story-num" style="font-family:'Courier New',monospace;font-size:38px;font-weight:700;color:#00e5a0 !important;line-height:1;margin-bottom:6px;">04</div>
-    <div class="label-text" style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:#a8bfce !important;margin:0 0 10px;">via CoinDesk</div>
-    <div class="story-headline" style="font-size:18px;font-weight:700;color:#edf2f7 !important;line-height:1.35;margin-bottom:12px;">
-      <a href="https://www.coindesk.com/markets/2026/04/09/kalshi-now-controls-89-of-the-u-s-prediction-market-as-regulated-trading-takes-over" style="color:#edf2f7 !important;text-decoration:none;">Kalshi Now Controls 89% of the U.S. Prediction Market as Regulated Trading Takes Over</a>
-    </div>
-    <p class="body-text" style="font-size:15px;color:#d0dde8 !important;line-height:1.8;margin:0 0 16px;">Kalshi now controls 89% of U.S. prediction markets, crushing offshore competitors through regulatory approval. This concentration gives one platform outsized influence over pricing and liquidity, meaning serious traders have nowhere else to go.</p>
-    <div style="margin-bottom:16px;">
-      <div class="label-text" style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:#a8bfce !important;margin-bottom:8px;">What You Need to Know</div>
-      <ul style="margin:0;padding-left:18px;list-style:disc;">
-        <li class="bullet-item" style="margin-bottom:8px;color:#d0dde8 !important;font-size:14px;line-height:1.7;">Kalshi's 89% market share means it now sets prices on every U.S. prediction market that matters legally.</li><li class="bullet-item" style="margin-bottom:8px;color:#d0dde8 !important;font-size:14px;line-height:1.7;">Regulatory moats are real: Polymarket's offshore model got crushed by a platform that just followed the rules.</li><li class="bullet-item" style="margin-bottom:8px;color:#d0dde8 !important;font-size:14px;line-height:1.7;">Control 89% of American prediction volume and you control what odds the entire country sees on elections.</li>
-      </ul>
-    </div>
-    <div style="background:#0f1825 !important;border:1px solid #1e2a38;border-left:3px solid #00e5a0;padding:12px 16px;border-radius:0 4px 4px 0;">
-      <div style="font-family:'Courier New',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:#00e5a0 !important;margin-bottom:6px;">The Prob's Take</div>
-      <p class="take-text" style="font-size:14px;color:#d0dde8 !important;line-height:1.7;margin:0;">Kalshi's 89% grip means you're trading their spreads, not the market's. Regulation killed the competition, but killed price discovery too. Watch for arbitrage opportunities when offshore volatility spikes.</p>
-    </div>
-    
-      <div style="background:#1a2535 !important;border-left:3px solid #f5a623;padding:10px 14px;margin:14px 0 0;border-radius:0 4px 4px 0;">
-        <span style="font-family:'Courier New',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:#f5a623 !important;display:block;margin-bottom:4px;">The Prob Notes</span>
-        <span style="font-size:13px;color:#d0dde8 !important;line-height:1.6;">89% market share. One regulated player. That is not a market, that is a monopoly in formation.</span>
-      </div>
-  </td></tr>
-  <tr><td class="section-pad" style="padding:28px 32px;border-bottom:1px solid #1e2a38;">
-    <div class="story-num" style="font-family:'Courier New',monospace;font-size:38px;font-weight:700;color:#00e5a0 !important;line-height:1;margin-bottom:6px;">05</div>
-    <div class="label-text" style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:#a8bfce !important;margin:0 0 10px;">via Bloomberg</div>
-    <div class="story-headline" style="font-size:18px;font-weight:700;color:#edf2f7 !important;line-height:1.35;margin-bottom:12px;">
-      <a href="https://www.bloomberg.com/news/articles/2026-04-09/how-prediction-markets-are-blurring-the-line-between-trading-and-betting" style="color:#edf2f7 !important;text-decoration:none;">How Prediction Markets Turned the World Into a Casino</a>
-    </div>
-    <p class="body-text" style="font-size:15px;color:#d0dde8 !important;line-height:1.8;margin:0 0 16px;">Prediction markets have sprawled from politics into celebrity deaths and weather, flooding these new verticals with casual money. That's catnip for sharp bettors who can spot the mispricings that amateur capital creates.</p>
-    <div style="margin-bottom:16px;">
-      <div class="label-text" style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:#a8bfce !important;margin-bottom:8px;">What You Need to Know</div>
-      <ul style="margin:0;padding-left:18px;list-style:disc;">
-        <li class="bullet-item" style="margin-bottom:8px;color:#d0dde8 !important;font-size:14px;line-height:1.7;">Prediction markets exploded from politics into celebrity deaths, creating a playground for sharp bettors.</li><li class="bullet-item" style="margin-bottom:8px;color:#d0dde8 !important;font-size:14px;line-height:1.7;">Casual gamblers flooded these new markets, and they're systematically leaving money on the table.</li><li class="bullet-item" style="margin-bottom:8px;color:#d0dde8 !important;font-size:14px;line-height:1.7;">Mispriced outcomes across weather, entertainment, and sports represent the easiest arbitrage opportunities in years.</li>
-      </ul>
-    </div>
-    <div style="background:#0f1825 !important;border:1px solid #1e2a38;border-left:3px solid #00e5a0;padding:12px 16px;border-radius:0 4px 4px 0;">
-      <div style="font-family:'Courier New',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:#00e5a0 !important;margin-bottom:6px;">The Prob's Take</div>
-      <p class="take-text" style="font-size:14px;color:#d0dde8 !important;line-height:1.7;margin:0;">The amateurs flooding celebrity death markets are gift-wrapping mispricings. Go where the dumb money is thickest and extract value before the market corrects.</p>
-    </div>
-    
-  </td></tr>
-  
-  <tr><td class="section-pad" style="padding:28px 32px;background:#0a0e14 !important;text-align:center;border-top:1px solid #1e2a38;">
-    <div style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:#8ba3bc !important;margin-bottom:16px;">The Prob</div>
-    <div style="font-size:12px;color:#8ba3bc !important;line-height:1.8;">
-      <a href="https://theprobnewsletter.com" style="color:#a8bfce !important;text-decoration:none;">theprobnewsletter.com</a>
-      &nbsp;&#183;&nbsp;
-      <a href="https://theprobnewsletter.com/prediction-markets-101.html" style="color:#a8bfce !important;text-decoration:none;">Prediction Markets 101</a>
-      &nbsp;&#183;&nbsp;
-      <a href="https://theprobnewsletter.com/archive.html" style="color:#a8bfce !important;text-decoration:none;">Archive</a>
-      &nbsp;&#183;&nbsp;
-      <a href="https://theprobnewsletter.com/contact.html" style="color:#a8bfce !important;text-decoration:none;">Contact</a>
-    </div>
-    <div style="font-size:11px;color:#8ba3bc !important;margin-top:14px;line-height:1.7;">
-      Prediction markets data from Polymarket and Kalshi.<br>
-      Not financial advice. Trade at your own risk.
+    <div class="eyebrow" style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#00e5a0 !important;margin-bottom:14px;">What People Are Writing About</div>
+    <table width="100%" cellpadding="0" cellspacing="0">
+      
+        <tr><td style="padding:16px 0;border-bottom:1px solid #1e2a38;">
+          <div style="font-family:'Courier New',monospace;font-size:10px;color:#8ba3bc !important;margin-bottom:8px;letter-spacing:0.08em;">01 &nbsp; NBC MONTANA &middot; Apr 13</div>
+          <div class="news-title" style="font-family:Georgia,serif;font-size:17px;font-weight:700;color:#edf2f7 !important;margin:0 0 8px;line-height:1.35;">
+            <a href="https://news.google.com/rss/articles/CBMiugFBVV95cUxOYnJDMFRrVkNIT2luYlhTaE05VGdDR0FjV1U4ZENaTnJ0Tl9GVVk3eFY1WHFhVGZkWnVUdzh0RUVRcXY3SG9JLXd6UExkU0NLeWhKbVM4SkpLN3N0S1BHeHo2YW5OVHhqTFAtVC1tbERBdGVzbElKXy1PZURJVERSajJfaS1NeGZEOTFGZEx6ZVl2SGExczRvS3o3SW4xZWdvSkJPbG1USE43dnNJSnZFSlc2bFlRcF9kbUE?oc=5" title="Montana sports betting revenue remains steady, despite rise of prediction market apps" style="color:#edf2f7 !important;text-decoration:none;">Montana sports betting revenue remains steady, despite rise of prediction market apps</a>
+          </div>
+          <p class="body-text" style="font-size:14px;color:#d0dde8 !important;line-height:1.7;margin:0;">Montana's sports betting market is holding firm even as prediction market apps like Kalshi and Polymarket gain traction nationwide. The steady revenue suggests traditional sports betting and prediction markets are attracting different user bases rather than cannibalizing each other.</p>
+        </td></tr>
+        <tr><td style="padding:16px 0;border-bottom:1px solid #1e2a38;">
+          <div style="font-family:'Courier New',monospace;font-size:10px;color:#8ba3bc !important;margin-bottom:8px;letter-spacing:0.08em;">02 &nbsp; THE MOTLEY FOOL &middot; Apr 13</div>
+          <div class="news-title" style="font-family:Georgia,serif;font-size:17px;font-weight:700;color:#edf2f7 !important;margin:0 0 8px;line-height:1.35;">
+            <a href="https://news.google.com/rss/articles/CBMimAFBVV95cUxPRTkwQy1NOGRJcVpIQzVYY1dURGVPRDNudnpLanh3V09KLWQ4bjJ2T2dsVThBbWtyMWpncWhkWEpuVEpvYXRqZjJneWtZOWFvZVMxZHhkYkFMQ2FMdHcyT0xUdGxmMl9UTTJyVHhpZjg1MGd0YUlrakl6ZDNKZ2I1WVJDRXVsS0ZoWDBlTGljOVdwY2FmekZGOA?oc=5" title="Should You Be Using Polymarket to Invest in Crypto?" style="color:#edf2f7 !important;text-decoration:none;">Should You Be Using Polymarket to Invest in Crypto?</a>
+          </div>
+          <p class="body-text" style="font-size:14px;color:#d0dde8 !important;line-height:1.7;margin:0;">Traders are debating whether Polymarket offers a viable path for crypto investing beyond traditional exchanges and DeFi protocols. The answer reveals how prediction markets are evolving from pure speculation into alternative investment vehicles that could reshape where smart money flows.</p>
+        </td></tr>
+        <tr><td style="padding:16px 0;">
+          <div style="font-family:'Courier New',monospace;font-size:10px;color:#8ba3bc !important;margin-bottom:8px;letter-spacing:0.08em;">03 &nbsp; UNHERD &middot; Apr 13</div>
+          <div class="news-title" style="font-family:Georgia,serif;font-size:17px;font-weight:700;color:#edf2f7 !important;margin:0 0 8px;line-height:1.35;">
+            <a href="https://news.google.com/rss/articles/CBMicEFVX3lxTE43WnJvOU83ZFNsdlNCWHdPeW0xLXVhUTEtUkJLYm5zRFJWaXBkNGJWNXA2WXN3Tk5jSDJhVjlyNTlnTExldHYwX3pMZzRYazFSd3R5LW5oOW1tWjV0MEhUUTRwU1FWWEFIT0tmZkJVcUY?oc=5" title="Is Polymarket a threat to democracy? The money is simply too good" style="color:#edf2f7 !important;text-decoration:none;">Is Polymarket a threat to democracy? The money is simply too good</a>
+          </div>
+          <p class="body-text" style="font-size:14px;color:#d0dde8 !important;line-height:1.7;margin:0;">Critics are raising alarms that Polymarket's massive trading volumes and profit incentives could distort democratic processes by turning elections into gambling spectacles. The debate matters because regulatory crackdowns on "democracy gambling" could reshape how prediction markets operate during future election cycles.</p>
+        </td></tr>
+    </table>
+    <div style="margin-top:16px;">
+      <a href="https://theprobnewsletter.com/news.html" class="cta-small" title="All prediction market news"
+         style="font-family:'Courier New',monospace;font-size:11px;color:#00e5a0 !important;text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;">
+        All Prediction Market News &#8594;
+      </a>
     </div>
   </td></tr>
+
+  <tr><td class="section-pad" style="padding:28px 32px;border-bottom:1px solid #1e2a38;background:#0a0e14 !important;">
+    <div class="eyebrow" style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#00e5a0 !important;margin-bottom:14px;">The Prob's Daily Take &middot; Market Watch · Sports</div>
+    <div class="take-headline" style="font-family:Georgia,serif;font-size:22px;font-weight:700;line-height:1.3;color:#edf2f7 !important;margin:0 0 14px;">
+      <a href="https://polymarket.com/event/atp-duckwor-napolit-2026-04-12" style="color:#edf2f7 !important;text-decoration:none;">Duckworth's collapse signals sharp money fleeing tennis futures</a>
+    </div>
+    <p class="body-text" style="font-size:15px;color:#d0dde8 !important;line-height:1.8;margin:0 0 20px;">Duckworth tanked 30 points in 24 hours to 24.5%, a violent repricing that doesn't match the fundamentals of a Mexico City matchup against a lower-ranked player. This looks like liquidation or inside information bleeding through. Smart money shorts overextended Duckworth positions into weakness, or there's something about Napolitano's form you're not seeing in the headlines. Either way, at 24.5% Duckworth is now a contrarian buy if you've got conviction on the ranking differential.</p>
+    <table width="100%" cellpadding="0" cellspacing="0" style="border-top:1px solid #1e2a38;margin-bottom:20px;">
+            <tr><td style="padding:14px 0;border-bottom:1px solid #1e2a38;">
+              <div style="font-family:'Courier New',monospace;font-size:10px;color:#8ba3bc !important;margin-bottom:5px;letter-spacing:0.08em;">01</div>
+              <div style="font-size:14px;color:#edf2f7 !important;line-height:1.5;">
+                <a href="https://polymarket.com/event/bab-el-mandeb-strait-effectively-closed-by" style="color:#edf2f7 !important;text-decoration:none;">Bab el-Mandeb's 11-point pop mirrors geopolitical relief pricing, not actual de-escalation.</a>
+              </div>
+              <div style="font-family:'Courier New',monospace;font-size:12px;color:#00e5a0 !important;margin-top:5px;font-weight:700;">Strait Closure: 24.0%</div>
+            </td></tr>
+            <tr><td style="padding:14px 0;border-bottom:1px solid #1e2a38;">
+              <div style="font-family:'Courier New',monospace;font-size:10px;color:#8ba3bc !important;margin-bottom:5px;letter-spacing:0.08em;">02</div>
+              <div style="font-size:14px;color:#edf2f7 !important;line-height:1.5;">
+                <a href="https://polymarket.com/event/nhl-nyr-fla-2026-04-13" style="color:#edf2f7 !important;text-decoration:none;">Rangers at 56.5% after 11-point jump screams overextension in a coin flip game.</a>
+              </div>
+              <div style="font-family:'Courier New',monospace;font-size:12px;color:#00e5a0 !important;margin-top:5px;font-weight:700;">Rangers vs. Panthers: 56.5%</div>
+            </td></tr>
+            <tr><td style="padding:14px 0;">
+              <div style="font-family:'Courier New',monospace;font-size:10px;color:#8ba3bc !important;margin-bottom:5px;letter-spacing:0.08em;">03</div>
+              <div style="font-size:14px;color:#edf2f7 !important;line-height:1.5;">
+                <a href="https://polymarket.com/event/strait-of-hormuz-traffic-returns-to-normal-by-april-30" style="color:#edf2f7 !important;text-decoration:none;">Hormuz at 12.5% with $7.5M volume suggests markets are pricing a worst-case scenario that won't materialize by April 30.</a>
+              </div>
+              <div style="font-family:'Courier New',monospace;font-size:12px;color:#00e5a0 !important;margin-top:5px;font-weight:700;">Hormuz Traffic: 12.5%</div>
+            </td></tr></table>
+    <a href="https://twitter.com/intent/tweet?text=Today%20on%20The%20Prob%3A%20Duckworth%27s%20collapse%20signals%20sharp%20money%20fleeing%20tennis%20futures&url=https://theprobnewsletter.com" title="Share this take on Twitter/X"
+       style="font-family:'Courier New',monospace;font-size:11px;color:#00e5a0 !important;text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;">
+      Share This Take &#8594;
+    </a>
+  </td></tr>
+
+  <tr><td class="section-pad" style="padding:28px 32px;border-bottom:1px solid #1e2a38;background:#0a0e14 !important;">
+    <div class="eyebrow" style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#f5a623 !important;margin-bottom:14px;">From Chris</div>
+    <p class="body-text" style="font-size:15px;color:#d0dde8 !important;line-height:1.8;margin:0 0 12px;"><span style="color:#edf2f7 !important;font-weight:700;">Recently:</span> Launched a live Kalshi trading bot — real money, fully automated. The bot runs every hour via GitHub Actions, sizes trades dynamically (10% of balance, compounding as the account grows), and targets markets resolving within 7 days only. No year-long lockups. Duration is now the primary ranking signal: a 70% market closing tonight beats an 85% market closing next month. Starting balance: $89.62.</p>
+    <p class="body-text" style="font-size:15px;color:#d0dde8 !important;line-height:1.8;margin:0 0 20px;"><span style="color:#edf2f7 !important;font-weight:700;">Next:</span> Watching the first live trades resolve and tuning the short-duration market pipeline. The near-term Kalshi fetch (markets closing within 72 hours) just went live — expect same-day and next-day trades to start appearing as the pipeline warms up. The Spread arbitrage signal is next once tickers are populating correctly.</p>
+    <div style="font-family:'Courier New',monospace;font-size:12px;color:#8ba3bc !important;border-top:1px solid #1e2a38;padding-top:14px;">&mdash; Chris</div>
+  </td></tr>
+
+  <tr><td style="padding:36px 32px;text-align:center;background:#0d1117 !important;">
+    <div style="font-family:'Courier New',monospace;font-size:11px;color:#8ba3bc !important;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:16px;">The full board is live</div>
+    <!--[if mso]><table align="center"><tr><td><![endif]-->
+    <a href="https://theprobnewsletter.com" class="cta-btn" title="See all markets on The Prob"
+       style="display:inline-block;background:#00e5a0;color:#080b0f !important;font-family:'Courier New',monospace;font-size:13px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:10px 22px;text-decoration:none;line-height:1.4;">
+      See All Markets &#8594;
+    </a>
+    <!--[if mso]></td></tr></table><![endif]-->
+    <div style="font-family:'Courier New',monospace;font-size:10px;color:#8ba3bc !important;margin-top:16px;">Updated Apr 13, 2026 · 5:46 AM ET</div>
+  </td></tr>
+
+
+  </table>
+
+</td></tr>
 </table>
-<!--[if mso]></td></tr></table></center><![endif]-->
+
+<!--[if mso]>
+</td></tr></table>
+<![endif]-->
+
 </body>
 </html>
