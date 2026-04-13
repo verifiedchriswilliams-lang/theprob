@@ -2112,5 +2112,42 @@
       "user_id": "bc69262b-1253-4ad1-a774-46faf67acccb",
       "yes_price_dollars": "0.0100"
     }
+  },
+  {
+    "event": "order_placed",
+    "timestamp": "2026-04-13T06:24:33.386409+00:00",
+    "order_id": "7f7900af-164f-4a5f-bcf6-57bc2155a96a",
+    "ticker": "KXFDAANNOUNCE-BPC-26APR15",
+    "side": "no",
+    "count": 9,
+    "limit_price": 99,
+    "market_prob": 2,
+    "cost_dollars": 8.91,
+    "budget": 9.12,
+    "status": "executed",
+    "reason": "[crowd] Crowd conviction 2.5% \u2192 bet NO. $1 traded today. Resolves 1.9d.",
+    "client_order_id": "84d90655-1544-415c-9c63-83883485510e",
+    "raw_response": {
+      "action": "buy",
+      "client_order_id": "84d90655-1544-415c-9c63-83883485510e",
+      "created_time": "2026-04-13T06:24:33.368955Z",
+      "fill_count_fp": "9.00",
+      "initial_count_fp": "9.00",
+      "last_update_time": "2026-04-13T06:24:33.368955Z",
+      "maker_fees_dollars": "0.000000",
+      "maker_fill_cost_dollars": "0.000000",
+      "no_price_dollars": "0.9900",
+      "order_id": "7f7900af-164f-4a5f-bcf6-57bc2155a96a",
+      "remaining_count_fp": "0.00",
+      "side": "no",
+      "status": "executed",
+      "subaccount_number": 0,
+      "taker_fees_dollars": "0.020000",
+      "taker_fill_cost_dollars": "8.820000",
+      "ticker": "KXFDAANNOUNCE-BPC-26APR15",
+      "type": "limit",
+      "user_id": "bc69262b-1253-4ad1-a774-46faf67acccb",
+      "yes_price_dollars": "0.0100"
+    }
   }
 ]
