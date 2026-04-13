@@ -723,69 +723,159 @@ def fetch_kalshi() -> list[dict]:
             if added:
                 print(f"  Kalshi {cat} fetch: +{added} markets")
 
-        # 3. Near-term fetch: grab ALL Kalshi markets with no volume floor,
-        #    then keep only those closing within 7 days.
-        #    Strategy A: try close_time_max API param (may not be supported).
-        #    Strategy B: fallback — fetch more pages with min_vol=0 and filter by date.
+        # 3. Near-term fetch — dedicated time-based query on the /markets endpoint.
+        #
+        # WHY /markets NOT /events:
+        # The /events endpoint returns results sorted by volume (Kalshi default).
+        # New short-duration markets (today's MLB game, this week's Fed decision,
+        # tomorrow's CPI release) have LOW total volume because they just opened.
+        # They're buried on page 50+ and we never reach them.
+        #
+        # The /markets endpoint supports max_close_time filtering which returns
+        # markets chronologically (soonest-closing first), bypassing volume ranking.
+        # This is the only reliable way to find near-term markets.
         try:
-            from datetime import timedelta
-            now_utc = datetime.now(timezone.utc)
+            now_utc   = datetime.now(timezone.utc)
             cutoff_7d = now_utc + timedelta(days=7)
+            # Kalshi /markets accepts max_close_time as an ISO timestamp string
             cutoff_str = cutoff_7d.strftime("%Y-%m-%dT%H:%M:%SZ")
 
-            # Strategy A: close_time_max param
-            nearterm_a = fetch_kalshi_page({"close_time_max": cutoff_str}, min_vol=0)
-            added_nt = 0
-            for m in nearterm_a:
-                slug = m.get("slug", "")
-                edr  = m.get("end_date_raw", "")
-                if slug and slug not in seen_tickers:
-                    # Only keep if actually within 7 days
-                    try:
-                        end = datetime.fromisoformat(edr.replace("Z", "+00:00"))
-                        if end <= cutoff_7d:
-                            markets.append(m)
-                            seen_tickers.add(slug)
-                            added_nt += 1
-                    except Exception:
-                        pass  # skip if date unparseable
-            print(f"  Kalshi near-term (≤7d) via close_time_max: +{added_nt} markets")
-
-            # Strategy B: broad low-volume fetch, filter by date in Python
-            # Catches markets that close_time_max missed (if param not supported)
-            nearterm_b = fetch_kalshi_page({}, min_vol=0)
-            added_b = 0
-            for m in nearterm_b:
-                slug = m.get("slug", "")
-                edr  = m.get("end_date_raw", "")
-                if slug and slug not in seen_tickers:
-                    try:
-                        end = datetime.fromisoformat(edr.replace("Z", "+00:00"))
-                        if now_utc < end <= cutoff_7d:
-                            markets.append(m)
-                            seen_tickers.add(slug)
-                            added_b += 1
-                    except Exception:
-                        pass
-            print(f"  Kalshi near-term (≤7d) via broad fetch+filter: +{added_b} markets")
-
-            # Print what we found
-            near_all = [m for m in markets
-                        if m.get("source") == "Kalshi"
-                        and m.get("end_date_raw", "")]
-            near_close = []
-            for m in near_all:
+            added_nt   = 0
+            nt_cursor  = None
+            nt_pages   = 0
+            while nt_pages < 10:
+                nt_params = {
+                    "status":          "open",
+                    "max_close_time":  cutoff_str,
+                    "limit":           200,
+                }
+                if nt_cursor:
+                    nt_params["cursor"] = nt_cursor
                 try:
-                    end = datetime.fromisoformat(
-                        m["end_date_raw"].replace("Z", "+00:00"))
+                    kalshi_headers = make_kalshi_headers("GET", "/trade-api/v2/markets")
+                    resp = requests.get(f"{KALSHI_BASE}/markets",
+                                        params=nt_params,
+                                        headers=kalshi_headers,
+                                        timeout=15)
+                    resp.raise_for_status()
+                    nt_data    = resp.json()
+                    nt_markets = nt_data.get("markets", [])
+                    if not nt_markets:
+                        break
+
+                    for m in nt_markets:
+                        try:
+                            ticker = m.get("ticker", "")
+                            if not ticker or ticker in seen_tickers:
+                                continue
+
+                            # /markets returns flat market objects (not nested under event)
+                            # Fields differ slightly from /events nested markets
+                            close_time = m.get("close_time", "") or ""
+                            if not close_time:
+                                continue
+                            try:
+                                end = datetime.fromisoformat(close_time.replace("Z", "+00:00"))
+                                if not (now_utc < end <= cutoff_7d):
+                                    continue  # outside our window
+                            except Exception:
+                                continue
+
+                            yes_bid_d = float(m.get("yes_bid") or m.get("yes_bid_dollars", 0) or 0)
+                            yes_ask_d = float(m.get("yes_ask") or m.get("yes_ask_dollars", 0) or 0)
+                            # /markets endpoint may return cents (0-100) or dollars (0-1)
+                            # Normalise to 0-100 pct
+                            if yes_bid_d > 1 or yes_ask_d > 1:
+                                # already in cents
+                                prob = round((yes_bid_d + yes_ask_d) / 2, 1)
+                            elif yes_bid_d > 0 or yes_ask_d > 0:
+                                # dollars → pct
+                                prob = round((yes_bid_d + yes_ask_d) / 2 * 100, 1)
+                            else:
+                                last = float(m.get("last_price") or m.get("last_price_dollars", 0) or 0)
+                                if last <= 0:
+                                    continue
+                                prob = round(last * 100, 1) if last <= 1 else round(last, 1)
+                            if not (1 < prob < 99):
+                                continue
+
+                            volume_usd     = float(m.get("volume",     0) or 0) / 100
+                            volume_24h_usd = float(m.get("volume_24h", 0) or 0) / 100
+                            # /markets may store volume in cents (fp) or dollars
+                            if volume_usd > 1_000_000:
+                                volume_usd     /= 100   # was already in cents/fp
+                                volume_24h_usd /= 100
+
+                            subtitle    = m.get("subtitle", "") or m.get("title", "") or ""
+                            event_title = m.get("event_title", "") or subtitle
+                            question    = (f"{event_title}: {subtitle}"
+                                          if subtitle and subtitle.lower() != event_title.lower()
+                                          else event_title or ticker)
+
+                            series_ticker = (m.get("event_ticker") or
+                                             m.get("series_ticker") or
+                                             ticker.rsplit("-", 1)[0])
+                            category     = m.get("category", "") or ""
+                            disp_cat     = KALSHI_CATEGORY_MAP.get(category, category or "World")
+
+                            spread         = round(abs(yes_ask_d - yes_bid_d) * 100, 2)
+                            last_p         = float(m.get("last_price") or m.get("last_price_dollars", 0) or 0)
+                            prev_p         = float(m.get("previous_price") or m.get("previous_yes_bid_dollars", 0) or 0)
+                            change_pts     = round((last_p - prev_p) * 100, 1) if last_p > 0 and prev_p > 0 else 0.0
+
+                            markets.append({
+                                "source":           "Kalshi",
+                                "question":         question,
+                                "slug":             ticker,
+                                "url":              f"https://kalshi.com/markets/{series_ticker.lower()}",
+                                "prob":             prob,
+                                "change_pts":       change_pts,
+                                "direction":        change_direction(change_pts),
+                                "volume":           volume_usd,
+                                "volume_fmt":       fmt_volume(volume_usd),
+                                "volume_24h":       volume_24h_usd,
+                                "end_date":         fmt_date(close_time),
+                                "end_date_raw":     close_time,
+                                "liquidity":        volume_usd * 0.1,
+                                "category":         category,
+                                "is_sports":        category.lower() == "sports",
+                                "display_category": disp_cat,
+                                "tags":             [category.lower()],
+                                "spread":           spread,
+                                "open_interest":    float(m.get("open_interest_fp", 0) or 0) / 100,
+                            })
+                            seen_tickers.add(ticker)
+                            added_nt += 1
+                        except Exception:
+                            continue
+
+                    nt_cursor = nt_data.get("cursor")
+                    if not nt_cursor:
+                        break
+                    nt_pages += 1
+                    time.sleep(0.2)
+                except Exception as e_page:
+                    print(f"  [WARN] near-term /markets page {nt_pages}: {e_page}")
+                    break
+
+            print(f"  Kalshi near-term (≤7d) via /markets endpoint: +{added_nt} markets")
+
+            # Diagnostic: log what we found within 7 days
+            near_close = []
+            for m in markets:
+                if m.get("source") != "Kalshi":
+                    continue
+                edr = m.get("end_date_raw", "")
+                try:
+                    end      = datetime.fromisoformat(edr.replace("Z", "+00:00"))
                     days_left = (end - now_utc).total_seconds() / 86400
-                    if days_left <= 7:
+                    if 0 < days_left <= 7:
                         near_close.append((days_left, m))
                 except Exception:
                     pass
             near_close.sort(key=lambda x: x[0])
             print(f"  Kalshi markets closing ≤7 days: {len(near_close)}")
-            for dl, m in near_close[:10]:
+            for dl, m in near_close[:15]:
                 print(f"    {dl:.1f}d  {m['prob']}%  ${m['volume_24h']:,.0f}/24h  {m['question'][:55]}")
 
         except Exception as e_nt:
