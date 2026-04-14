@@ -7,14 +7,14 @@
       "name": "The Crowd",
       "strategy": "Follow consensus: YES when prob \u226565%, NO when prob \u226435%",
       "thesis": "Smart money is already priced in. Ride the conviction.",
-      "current_balance": 1826.73,
-      "total_pnl": 826.73,
-      "ytd_return_pct": 82.7,
+      "current_balance": 1726.73,
+      "total_pnl": 726.73,
+      "ytd_return_pct": 72.7,
       "win_count": 126,
-      "loss_count": 15,
+      "loss_count": 16,
       "open_count": 12,
       "start_date": "2026-03-17",
-      "last_updated": "2026-04-13",
+      "last_updated": "2026-04-14",
       "trades": [
         {
           "trade_id": "ea14c291",
@@ -2765,6 +2765,24 @@
           "entry_date": "2026-04-13",
           "end_date_raw": "2026-04-20T22:35:00Z",
           "end_date": "Apr 20",
+          "status": "closed",
+          "exit_prob": 0.1,
+          "exit_date": "2026-04-14",
+          "pnl": -100.0
+        },
+        {
+          "trade_id": "24f5b187",
+          "market_id": "no-change-in-bank-of-japans-interest-rates-after-the-april-2026-meeting",
+          "question": "No change in Bank of Japan\u2019s interest rates after the April 2026 meeting?",
+          "url": "https://polymarket.com/event/bank-of-japan-decision-in-april",
+          "source": "Polymarket",
+          "display_category": "Politics",
+          "entry_prob": 89.5,
+          "direction": "YES",
+          "amount": 100.0,
+          "entry_date": "2026-04-14",
+          "end_date_raw": "2026-04-28T00:00:00Z",
+          "end_date": "Apr 28",
           "status": "open",
           "exit_prob": null,
           "exit_date": null,
@@ -2783,7 +2801,7 @@
       "loss_count": 0,
       "open_count": 3,
       "start_date": "2026-03-17",
-      "last_updated": "2026-04-13",
+      "last_updated": "2026-04-14",
       "trades": [
         {
           "trade_id": "18b00e62",
@@ -3230,7 +3248,7 @@
       "loss_count": 0,
       "open_count": 2,
       "start_date": "2026-03-17",
-      "last_updated": "2026-04-13",
+      "last_updated": "2026-04-14",
       "trades": [
         {
           "trade_id": "d19bb1c5",
