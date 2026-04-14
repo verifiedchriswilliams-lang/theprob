@@ -1,48 +1,66 @@
 {
-  "updated": "Apr 14, 2026 \u00b7 7:00 AM ET",
-  "updated_iso": "2026-04-14T12:00:29.313000+00:00",
+  "updated": "Apr 14, 2026 \u00b7 1:00 PM ET",
+  "updated_iso": "2026-04-14T18:00:16.947230+00:00",
   "homepage_count": 3,
   "articles": [
+    {
+      "title": "The NBA Play-In Is Here: Kalshi Gives Charlotte the Edge Over a Miami Team Built for This Moment",
+      "url": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxPM0J1Z0tTR3dYZjNTVFdmS1AzWW1GQ3pHZGVSMWgxWXc1ZmJQdDVHUEhnOUlyaFNVWGpRNUZYVmhSTjhDQVZJZlc4bjhoS0lWd3NrenNPc3JBbDJ3RDFDUWp1TkZPV2dHTk1Nc0g4azVKcEUwdWdlOVA3VEEzQnQwYllBTVk0MWxyUFdPZ25hS1kzcG05TC1ENkpPQjZrdktjemJBTnYwLUlnUGQtTzBPbzd6aUVsalVmMjMtYkJHRzNkZUxqOHJNYktpX3lxV0JKTGRqdVRQbW9HZUl3?oc=5",
+      "source": "Sports Illustrated",
+      "pub_iso": "2026-04-14T15:06:25+00:00",
+      "description": "",
+      "summary": "",
+      "pub_display": "Apr 14"
+    },
+    {
+      "title": "High Roller stock soars as much as 130% on Crypto.com prediction market agreement",
+      "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxNY2ZNaVFxaEZyMUg2OHY0ZXBwZDQ3enp6ZENvUndIWk1iZ0FrV1Znd2VtNWtjMEVlZ1FhR2VDaWxaOWtiNHlZbTd1RjVPZlozaEZYQmUtOFRhR1JsZURaVjkyTnptdVpWNXRKZVdWYmhzSzkya3JqRWRreUhubVhQNWdKOGlvdHg1Zi1XT3hraFVLTkhSNEN1YU50SmR5dTBIdmpXTGlrSVRIbmZ0LWF3WDVIQlZMM1VpRlZUR05ibWNHOVVOU29OZg?oc=5",
+      "source": "CoinDesk",
+      "pub_iso": "2026-04-14T14:53:23+00:00",
+      "description": "",
+      "summary": "",
+      "pub_display": "Apr 14"
+    },
+    {
+      "title": "Coinbase (COIN) and Robinhood (HOOD) best positioned in prediction market space, says Cantor",
+      "url": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxOdnlPY0RncEZkcTRoR3NYQlhVSTdQb2J3ckREb3cwQ083d2QxQ1RFRzE5amcwQmlzaV9kRjhlWGZpbUpYZmRtMkdZeHlsRWdhZUM2Mm9nUjA3M1J3dFhlYVYxcHFSaGNIbUtSSHFObVRQOWZ4Mzdaa29wLXVfb3VFWFp2WkJVMlNfd21SalhCYVFxWnlLMzBxY0E3OUFweUJEMGd1V3hLQVRrNEs1ckp6YndyT2FldmQzMTZIZW5qdlBYSXhLZEZZUjBnaE9zS2ZvVGhXamF2X1MxcXFnNHJuQ29n?oc=5",
+      "source": "CoinDesk",
+      "pub_iso": "2026-04-14T14:19:34+00:00",
+      "description": "",
+      "summary": "Cantor Fitzgerald analysts say Coinbase and Robinhood have the strongest positioning to capitalize on the growing prediction markets opportunity. The endorsement matters because both platforms have massive user bases and regulatory experience that could fast-track them past smaller competitors like Kalshi and Polymarket.",
+      "pub_display": "Apr 14"
+    },
+    {
+      "title": "Polymarket Reverses Course on Startups That Piggyback on Insider Trades",
+      "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPTk56dXVibG9DYTZOOFg2Slp5bUlacGQ3akFxU0pHY0I0VUhEWVFpbFh0SkdwN1IyNEN1NjM1cGRqTG94UHBPOVVoUVNrdHBqSGNQRjRiZUpfd1hjR0xuVGQycWlDdUIzSUl2TUlLTnpPak0xQUQ1X3dDaHY3ODVWZTAyZ1J4cW1DZ0hvRV9qMVA0eG5DbXd4emtuYUcycHdSa3c?oc=5",
+      "source": "The Information",
+      "pub_iso": "2026-04-14T13:00:00+00:00",
+      "description": "",
+      "summary": "Polymarket has changed its policy on startups that build products around insider trading activity on the platform. The reversal signals growing regulatory pressure on prediction markets and could force traders to find new ways to exploit information asymmetries.",
+      "pub_display": "Apr 14"
+    },
+    {
+      "title": "A casino operator wants in on a $1T U.S. event trading market",
+      "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxONjdZQnpMeVRYUUdReTRLYzcyR0ZzWjJILXUxWC1FZkIwb3R0NEdMQjY5TzhQVjBRNXJxeUdDQ0xLTkp1cnZISjlsSVZMVzEyajhWRk5ldjFWZjhkYnd2SlhnMF80V1JPa1hFc29uTEZ3WTh2VzdVT1RGeVdnc3VVdGk2MjZGOUZWdDJMaGdZQ0JRdGt2OTRDcE90czBPTkJTLTBXM245MGs1dVpOMU5IcTN3ZGdIMXVXejJmQ2Rn?oc=5",
+      "source": "Stock Titan",
+      "pub_iso": "2026-04-14T12:00:00+00:00",
+      "description": "",
+      "summary": "A major casino operator is eyeing the massive U.S. event trading market, which analysts value at $1 trillion annually. This signals that traditional gambling companies see prediction markets as the next frontier for monetizing public sentiment on everything from elections to entertainment awards.",
+      "pub_display": "Apr 14"
+    },
     {
       "title": "Kalshi Rides Legal Winning Streak Into Montana",
       "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxNdU9QZzI1QUsxUlFIVjFlYVhEaE1GMUJtQXA5MEVKSmg5UDhfakxVaU00TzBrVjN2WkJQd1FRN1VpUkpKeUdhZmZ0QmlLNWgxT2FUTWdzNktsLS12TDctN0tVT3J1UHFHQ2VvcHRRQUhJemwxaFNCV0Y4cFFRMHJZQ2M5WjJSX3UtQmlGMUxvc3JESkJMeEFaNg?oc=5",
       "source": "Sportico.com",
       "pub_iso": "2026-04-14T11:57:26+00:00",
       "description": "",
-      "summary": "",
+      "summary": "Kalshi is expanding into Montana after a series of legal victories that have strengthened its position in the prediction markets space. The move signals Kalshi's growing confidence in challenging state-level restrictions on political betting, potentially opening more markets for traders nationwide.",
       "pub_display": "Apr 14"
-    },
-    {
-      "title": "Introducing The Prediction Market Startups Database",
-      "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxOcmRNRERZcjFTVE5CdDJ2eUM4TWV1T0gzV2FGMGRHd1ozZHk3VTNtRlc2bUJrTTNFVVctOXNrMHpBc1czMGlDem12M20zMWJFVV9tY0tzTFlPeHhLbGJReTNPMkZaaF80eWZ2SXF2ekUxVndxU2pGRkhQdVdTejJYaG83cWdCd3piMkhvYUpvUlM1LVA0?oc=5",
-      "source": "Event Horizon | Dustin Gouker",
-      "pub_iso": "2026-04-14T11:02:42+00:00",
-      "description": "",
-      "summary": "We've built a comprehensive database tracking every prediction market startup, from the unicorns to the garage-stage hopefuls. This gives traders the intel they need to spot which platforms will actually survive long enough to pay out their bets.",
-      "pub_display": "Apr 14"
-    },
-    {
-      "title": "Betting on tomorrow: turning a prediction into a payday",
-      "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxPY2gxVm15dVJ3Si1WeWNMOUlvT3F6YmZMVjljSmdMZUR6ZVdXSk9UZ0ZfMlprMW40Ynl3b3FGb183Y2hvSkRIbTdSeHNSSkRUM1ZiTGdzU3lUR3FtcW9oa1ZWNWpCUU83SWlYbWVrdDJXOVdWSHhJZUhUTVRZOVR5RGh6Z3NFZXE5ZHAzS08zanBwUkRXc0dLUDZBTkxsOVJEMm1naWQxWHFuUQ?oc=5",
-      "source": "WKMG",
-      "pub_iso": "2026-04-14T10:24:03+00:00",
-      "description": "",
-      "summary": "Prediction markets are evolving from niche curiosities into legitimate investment vehicles where accurate forecasts translate directly into profits. This shift matters because it's attracting serious money and talent to an industry that could reshape how we price uncertainty and make collective decisions about everything from elections to economic policy.",
-      "pub_display": "Apr 14"
-    },
-    {
-      "title": "Dodgers Dominate Kalshi's NL Champion Market, But One Unlikely Team Is Gaining Ground",
-      "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxQMGlSTHRDaWhmYU9hUUEzV3dHV3B6ODRpcUN1Tk5FNjRHMmpMWDdhYlZUdEwxanFKcHNNU1poTlkzbXVqYk02di1OdDlFUmhpS1JPWGo5N1p6VncwdVhvUDdiUVVyR01TMUMtMXdWQmVUTHFyR3NfSkg0cVZFM3FfeFJ5bzN1UXZYOVhydU5XVnEzRFZjM2M2dUdpS1FrMWZiXzE5TW1UYnE5TzByY0lpbHVwRThHWXVNUTQ4cFZlN2dPbm9aYmwwc0NwdWk4QQ?oc=5",
-      "source": "Sports Illustrated",
-      "pub_iso": "2026-04-13T18:14:41+00:00",
-      "description": "",
-      "summary": "The Los Angeles Dodgers are crushing the National League Championship odds on Kalshi while some dark horse team is quietly climbing the board. This creates a classic prediction market setup where sharp money might be finding value in the longshot while casual bettors pile onto the obvious favorite.",
-      "pub_display": "Apr 13"
     },
     {
       "title": "Prediction Market Making Is Hard",
       "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxNaUtjV1R1TG1ncW9wUXY0Z24wMDNHT0RRVU5Ha2NReHBfRlU5WDlUdWVyZl9YT3gxX2lkSlJsdEUxcWtZQnFhay1ILXhSck9ubmktQ3dLelRpU25KZnFiRkp0S2hEb1hZQVZkTDhhUGRCbWtBVHhJblNvZEIwaks1Sjg2c2VoS0tWVnBHNHc4X1A1NG8?oc=5",
-      "source": "Bloomberg",
+      "source": "Bloomberg.com",
       "pub_iso": "2026-04-13T18:04:34+00:00",
       "description": "",
       "summary": "Market makers are struggling to price prediction markets accurately, getting burned by information asymmetries and volatile swings that don't follow traditional financial patterns. This creates huge opportunities for informed bettors to exploit mispriced contracts, but also threatens the liquidity that makes these markets function in the first place.",
@@ -67,6 +85,15 @@
       "pub_display": "Apr 13"
     },
     {
+      "title": "Kalshi Is Half Right About Prediction Markets and Gambling",
+      "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxPblNXWUZuWHo3aU5wSUxSeVVEd25fLWdFampTQm5YdFhwdWlZbjkxa2xxWEpHTU05b1hDcC1kalNHa0g0N3RXMDFRSkIyZk5wMTNRS0RvalVMRGtDWEJNalU3UWtOVHRmb1o2TmVZM0VpbHk5S3pMSmdlVEpMbDgySmV3dGlXQk9vVnNZSG5xZHJwMkFJOThubHo2T1hlR0dGWi1NV2J6aGpiSDIzMy1sZnVtQWRUUVJm?oc=5",
+      "source": "Bloomberg.com",
+      "pub_iso": "2026-04-13T09:30:07+00:00",
+      "description": "",
+      "summary": "Kalshi's defending prediction markets as fundamentally different from gambling, but they're only getting part of the argument right. The distinction matters because regulators are watching every move, and a weak defense could torpedo the entire industry's legitimacy.",
+      "pub_display": "Apr 13"
+    },
+    {
       "title": "Iran war puts prediction markets back in the spotlight",
       "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxORjNleHZtZ0c2akRzRFUyZUVqMjJHRHotOURzbWJ1YzVRdlYtbzZqVFptcUxDTEZpRFhkZkVCMV9BdHlpMVRMQkREVW9WRGVtSEdvMHpHR0V5d3BhUl96aHNJcncyQlQ2OXdTVThrRjRjMV95WnVxRzVaX0R3QWs3MDF4WXlETjFLREQ1MkoxTHFTQWF2enfSAZsBQVVfeXFMTW9EM1VKdWFkcm1ITEZWN0tYZ2xDX056eU9faXFDNGg5SmlXcFdNUkhZUVZ2VWxac1ZpWElvcXo1bFJpR3FhT3VJUGlRdHBjbUw0Rmk4eXlqR1JzMzlhT1gwQ3VPQUU2ZHhNQmVGX21JSHI0MWJiUmp2SENKRzhyNG5tdVZxNEVGZERabGs0ekdtY0ZrWnZDSTRmb2c?oc=5",
       "source": "PBS",
@@ -76,40 +103,13 @@
       "pub_display": "Apr 12"
     },
     {
-      "title": "Event Bets Pose a Problem for Wall Street Firms Looking to Trade",
-      "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxPVExXS1FTQ1ZFcmFKSmpYVkQ4b3ZRSk9iZW5mSUVBNUdBTHBYVERNMUlZSXJMYnpBMW4wODFUbFdYcjJRXzBkbkxBVmxPcVJQUFkxTXJCLVZRejNDSExOSllUbFFaS2o1WkFrS2RIMHZHTjZXbEU2RWgyZExObUM1U0pxSkIxWWRZdjFLUW8tQ0VHOUxJd1lMWkhRanBndnhPNHdkenprRUdpeFppU1IxWVNyTFVKUQ?oc=5",
-      "source": "Bloomberg",
-      "pub_iso": "2026-04-12T10:00:00+00:00",
+      "title": "Robinhood excludes some prediction markets over manipulation fears",
+      "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxPdVN1cDNjLWUySGpuNnc3ZW5JZUs4aGJfS1h2cGgtcHo2bXRfZkp3OG5XdVQ3V01sUzNJYU5vX1J5ajBzR3NCemRxQWRxSlRoS09fazRSeG9oNTJaNmFLd19lWmdWd2llNEJGVWkwTWFjSUZVQVN1STVWekoxVTF2MkR1VkI?oc=5",
+      "source": "Financial Times",
+      "pub_iso": "2026-04-12T06:59:27+00:00",
       "description": "",
-      "summary": "Wall Street firms want to trade prediction markets but can't figure out how to handle event-based bets that don't fit traditional financial models. This creates a massive opportunity for pure-play prediction market platforms to capture institutional money that banks are too rigid to chase.",
+      "summary": "Robinhood is blocking access to certain prediction markets on its platform due to concerns about market manipulation. The move signals growing regulatory scrutiny that could force other platforms to restrict offerings and reshape which political and event markets remain accessible to retail bettors.",
       "pub_display": "Apr 12"
-    },
-    {
-      "title": "\u2018Abhorrent\u2019: the inside story of the Polymarket gamblers betting millions on war",
-      "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxOWHFodG80TU5adFJXdzRLQ0NsVXdfR09RV1oyUEdVYnZxNWk3LVhkeWZaWlpVam9YVmFjMlVnQlpkQl9YN09vZ1pIS3lXQ3pNcUZkTjc3c2hXMkxnaThpd1REdmg5cl9tZERLMjNWYUUzdEtmZ095bUtmUEZTQTA5Z3JwOFB3XzQzSXZxQXBweEx3WXY1b1ZhbWFlN2FYRUZiSHVqXzVNZw?oc=5",
-      "source": "The Guardian",
-      "pub_iso": "2026-04-12T09:51:00+00:00",
-      "description": "",
-      "summary": "High-stakes bettors are wagering millions on Polymarket's war-related prediction markets, drawing fierce criticism from observers who view profiting from human suffering as morally reprehensible. The controversy highlights prediction markets' biggest reputational risk: when financial incentives to aggregate information clash with public sensibilities about what should and shouldn't be monetized.",
-      "pub_display": "Apr 12"
-    },
-    {
-      "title": "Well-timed bets on Polymarket tied to the Iran war draw calls for investigations from lawmakers",
-      "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxPamZGRWR1T0lZZUtUZDNRUXBBZ1VTenBJbm9NYVlCb1Z0QTZrc0tCWTZmY0FKMzJUWWotbmZSVUZWamY4TXVlSlBYQXQyQ0ZEMXp3SGxhS0pGdXFyQ3pSeFBYekozVDNMbjRvS0hCSERoNXZnTy1maFg3bEtrblZTQ2wxaXhrZFpWb29jeFEyMjc5eVdjQmRF?oc=5",
-      "source": "NPR",
-      "pub_iso": "2026-04-10T07:33:15+00:00",
-      "description": "",
-      "summary": "",
-      "pub_display": "Apr 10"
-    },
-    {
-      "title": "White House staff told not to place bets on prediction markets",
-      "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE9pVXJodjcyRURfdmhuZF9qUHJwZFN3NmZxYTdrcTZIQjFYS1ZGaEtZTnQ4Snp4bmZ2X2M4QlJOQlZlUDdFUjdkZGF2eTNRYkJneFV0eDVtd3dIZw?oc=5",
-      "source": "BBC",
-      "pub_iso": "2026-04-10T02:32:27+00:00",
-      "description": "",
-      "summary": "The Biden administration has banned White House staff from betting on prediction markets, apparently concerned about potential conflicts of interest or insider trading issues. This signals growing government attention on prediction markets as they gain mainstream adoption, which could lead to broader regulatory scrutiny that reshapes how these platforms operate.",
-      "pub_display": "Apr 10"
     }
   ]
 }
