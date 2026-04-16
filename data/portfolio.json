@@ -7,14 +7,14 @@
       "name": "The Crowd",
       "strategy": "Follow consensus: YES when prob \u226565%, NO when prob \u226435%",
       "thesis": "Smart money is already priced in. Ride the conviction.",
-      "current_balance": 1631.75,
-      "total_pnl": 631.75,
-      "ytd_return_pct": 63.2,
-      "win_count": 137,
+      "current_balance": 1639.86,
+      "total_pnl": 639.86,
+      "ytd_return_pct": 64.0,
+      "win_count": 138,
       "loss_count": 19,
       "open_count": 14,
       "start_date": "2026-03-17",
-      "last_updated": "2026-04-15",
+      "last_updated": "2026-04-16",
       "trades": [
         {
           "trade_id": "ea14c291",
@@ -3071,6 +3071,24 @@
           "entry_date": "2026-04-15",
           "end_date_raw": "2026-04-22T22:40:00Z",
           "end_date": "Apr 22",
+          "status": "closed",
+          "exit_prob": 0.1,
+          "exit_date": "2026-04-16",
+          "pnl": 8.11
+        },
+        {
+          "trade_id": "fd348d69",
+          "market_id": "us-x-iran-diplomatic-meeting-by-april-18-2026-456",
+          "question": "US x Iran diplomatic meeting by April 18, 2026?",
+          "url": "https://polymarket.com/event/us-x-iran-diplomatic-meeting-by-329",
+          "source": "Polymarket",
+          "display_category": "Politics",
+          "entry_prob": 20.5,
+          "direction": "NO",
+          "amount": 100.0,
+          "entry_date": "2026-04-16",
+          "end_date_raw": "2026-04-30T00:00:00Z",
+          "end_date": "Apr 30",
           "status": "open",
           "exit_prob": null,
           "exit_date": null,
@@ -3087,9 +3105,9 @@
       "ytd_return_pct": 35.4,
       "win_count": 22,
       "loss_count": 0,
-      "open_count": 4,
+      "open_count": 5,
       "start_date": "2026-03-17",
-      "last_updated": "2026-04-15",
+      "last_updated": "2026-04-16",
       "trades": [
         {
           "trade_id": "18b00e62",
@@ -3558,6 +3576,24 @@
           "exit_prob": null,
           "exit_date": null,
           "pnl": null
+        },
+        {
+          "trade_id": "4f413af4",
+          "market_id": "strait-of-hormuz-traffic-returns-to-normal-by-april-30",
+          "question": "Strait of Hormuz traffic returns to normal by end of April?",
+          "url": "https://polymarket.com/event/strait-of-hormuz-traffic-returns-to-normal-by-april-30",
+          "source": "Polymarket",
+          "display_category": "Finance",
+          "entry_prob": 25.5,
+          "direction": "NO",
+          "amount": 100.0,
+          "entry_date": "2026-04-16",
+          "end_date_raw": "2026-04-30T00:00:00Z",
+          "end_date": "Apr 30",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
@@ -3572,7 +3608,7 @@
       "loss_count": 0,
       "open_count": 2,
       "start_date": "2026-03-17",
-      "last_updated": "2026-04-15",
+      "last_updated": "2026-04-16",
       "trades": [
         {
           "trade_id": "d19bb1c5",
