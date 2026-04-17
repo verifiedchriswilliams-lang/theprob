@@ -12,9 +12,9 @@
       "ytd_return_pct": 53.4,
       "win_count": 143,
       "loss_count": 21,
-      "open_count": 13,
+      "open_count": 14,
       "start_date": "2026-03-17",
-      "last_updated": "2026-04-16",
+      "last_updated": "2026-04-17",
       "trades": [
         {
           "trade_id": "ea14c291",
@@ -3201,6 +3201,24 @@
           "exit_prob": 100.0,
           "exit_date": "2026-04-16",
           "pnl": 14.94
+        },
+        {
+          "trade_id": "29547c90",
+          "market_id": "mlb-col-hou-2026-04-16",
+          "question": "Colorado Rockies vs. Houston Astros",
+          "url": "https://polymarket.com/event/mlb-col-hou-2026-04-16",
+          "source": "Polymarket",
+          "display_category": "Sports",
+          "entry_prob": 72.5,
+          "direction": "YES",
+          "amount": 100.0,
+          "entry_date": "2026-04-17",
+          "end_date_raw": "2026-04-24T00:10:00Z",
+          "end_date": "Apr 24",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
@@ -3215,7 +3233,7 @@
       "loss_count": 0,
       "open_count": 5,
       "start_date": "2026-03-17",
-      "last_updated": "2026-04-16",
+      "last_updated": "2026-04-17",
       "trades": [
         {
           "trade_id": "18b00e62",
@@ -3716,7 +3734,7 @@
       "loss_count": 0,
       "open_count": 2,
       "start_date": "2026-03-17",
-      "last_updated": "2026-04-16",
+      "last_updated": "2026-04-17",
       "trades": [
         {
           "trade_id": "d19bb1c5",
