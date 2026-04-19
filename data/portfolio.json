@@ -12,9 +12,9 @@
       "ytd_return_pct": 52.5,
       "win_count": 147,
       "loss_count": 22,
-      "open_count": 23,
+      "open_count": 24,
       "start_date": "2026-03-17",
-      "last_updated": "2026-04-18",
+      "last_updated": "2026-04-19",
       "trades": [
         {
           "trade_id": "ea14c291",
@@ -3471,6 +3471,24 @@
           "exit_prob": null,
           "exit_date": null,
           "pnl": null
+        },
+        {
+          "trade_id": "ae96b172",
+          "market_id": "mlb-lad-col-2026-04-18",
+          "question": "Los Angeles Dodgers vs. Colorado Rockies",
+          "url": "https://polymarket.com/event/mlb-lad-col-2026-04-18",
+          "source": "Polymarket",
+          "display_category": "Sports",
+          "entry_prob": 23.5,
+          "direction": "NO",
+          "amount": 100.0,
+          "entry_date": "2026-04-19",
+          "end_date_raw": "2026-04-26T00:10:00Z",
+          "end_date": "Apr 26",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
@@ -3485,7 +3503,7 @@
       "loss_count": 0,
       "open_count": 5,
       "start_date": "2026-03-17",
-      "last_updated": "2026-04-18",
+      "last_updated": "2026-04-19",
       "trades": [
         {
           "trade_id": "18b00e62",
@@ -4004,7 +4022,7 @@
       "loss_count": 0,
       "open_count": 2,
       "start_date": "2026-03-17",
-      "last_updated": "2026-04-18",
+      "last_updated": "2026-04-19",
       "trades": [
         {
           "trade_id": "d19bb1c5",
