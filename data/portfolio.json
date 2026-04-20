@@ -7,14 +7,14 @@
       "name": "The Crowd",
       "strategy": "Follow consensus: YES when prob \u226565%, NO when prob \u226435%",
       "thesis": "Smart money is already priced in. Ride the conviction.",
-      "current_balance": 1415.63,
-      "total_pnl": 415.63,
-      "ytd_return_pct": 41.6,
-      "win_count": 154,
+      "current_balance": 1448.08,
+      "total_pnl": 448.08,
+      "ytd_return_pct": 44.8,
+      "win_count": 155,
       "loss_count": 24,
       "open_count": 25,
       "start_date": "2026-03-17",
-      "last_updated": "2026-04-19",
+      "last_updated": "2026-04-20",
       "trades": [
         {
           "trade_id": "ea14c291",
@@ -3665,6 +3665,24 @@
           "entry_date": "2026-04-19",
           "end_date_raw": "2026-04-20T03:40:00Z",
           "end_date": "Apr 20",
+          "status": "closed",
+          "exit_prob": 0.1,
+          "exit_date": "2026-04-20",
+          "pnl": 32.45
+        },
+        {
+          "trade_id": "e06106d0",
+          "market_id": "will-iran-strike-bahrain-by-april-30-2026-553",
+          "question": "Will Iran strike Bahrain by April 30, 2026?",
+          "url": "https://polymarket.com/event/iran-military-action-against-by-april-30",
+          "source": "Polymarket",
+          "display_category": "Politics",
+          "entry_prob": 32.5,
+          "direction": "NO",
+          "amount": 100.0,
+          "entry_date": "2026-04-20",
+          "end_date_raw": "2026-04-30T00:00:00Z",
+          "end_date": "Apr 30",
           "status": "open",
           "exit_prob": null,
           "exit_date": null,
@@ -3683,7 +3701,7 @@
       "loss_count": 0,
       "open_count": 5,
       "start_date": "2026-03-17",
-      "last_updated": "2026-04-19",
+      "last_updated": "2026-04-20",
       "trades": [
         {
           "trade_id": "18b00e62",
@@ -4202,7 +4220,7 @@
       "loss_count": 0,
       "open_count": 2,
       "start_date": "2026-03-17",
-      "last_updated": "2026-04-19",
+      "last_updated": "2026-04-20",
       "trades": [
         {
           "trade_id": "d19bb1c5",
