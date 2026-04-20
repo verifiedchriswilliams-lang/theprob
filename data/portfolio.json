@@ -12,7 +12,7 @@
       "ytd_return_pct": 43.5,
       "win_count": 160,
       "loss_count": 25,
-      "open_count": 26,
+      "open_count": 27,
       "start_date": "2026-03-17",
       "last_updated": "2026-04-20",
       "trades": [
@@ -3813,6 +3813,24 @@
           "exit_prob": 100.0,
           "exit_date": "2026-04-20",
           "pnl": 7.53
+        },
+        {
+          "trade_id": "bb1b4ea8",
+          "market_id": "mlb-hou-cle-2026-04-20",
+          "question": "Houston Astros vs. Cleveland Guardians",
+          "url": "https://polymarket.com/event/mlb-hou-cle-2026-04-20",
+          "source": "Polymarket",
+          "display_category": "Sports",
+          "entry_prob": 90.5,
+          "direction": "YES",
+          "amount": 100.0,
+          "entry_date": "2026-04-20",
+          "end_date_raw": "2026-04-27T22:10:00Z",
+          "end_date": "Apr 27",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
