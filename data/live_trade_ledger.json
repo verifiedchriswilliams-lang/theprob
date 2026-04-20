@@ -3222,5 +3222,42 @@
       "user_id": "bc69262b-1253-4ad1-a774-46faf67acccb",
       "yes_price_dollars": "0.7000"
     }
+  },
+  {
+    "event": "order_placed",
+    "timestamp": "2026-04-20T06:24:37.101278+00:00",
+    "order_id": "db67a04b-f983-4e32-b67f-ca9594585fa2",
+    "ticker": "KXMLBGAME-26APR212145LADSF-SF",
+    "side": "no",
+    "count": 7,
+    "limit_price": 68,
+    "market_prob": 34,
+    "cost_dollars": 4.76,
+    "budget": 5.31,
+    "status": "executed",
+    "reason": "[crowd] Crowd conviction 33.5% \u2192 bet NO. $16 traded today. Resolves 4.8d.",
+    "client_order_id": "b52cac06-bab6-48d9-b8b1-eb8020dca065",
+    "raw_response": {
+      "action": "buy",
+      "client_order_id": "b52cac06-bab6-48d9-b8b1-eb8020dca065",
+      "created_time": "2026-04-20T06:24:37.086413Z",
+      "fill_count_fp": "7.00",
+      "initial_count_fp": "7.00",
+      "last_update_time": "2026-04-20T06:24:37.086413Z",
+      "maker_fees_dollars": "0.000000",
+      "maker_fill_cost_dollars": "0.000000",
+      "no_price_dollars": "0.6800",
+      "order_id": "db67a04b-f983-4e32-b67f-ca9594585fa2",
+      "remaining_count_fp": "0.00",
+      "side": "no",
+      "status": "executed",
+      "subaccount_number": 0,
+      "taker_fees_dollars": "0.110000",
+      "taker_fill_cost_dollars": "4.760000",
+      "ticker": "KXMLBGAME-26APR212145LADSF-SF",
+      "type": "limit",
+      "user_id": "bc69262b-1253-4ad1-a774-46faf67acccb",
+      "yes_price_dollars": "0.3200"
+    }
   }
 ]
