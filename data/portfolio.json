@@ -12,7 +12,7 @@
       "ytd_return_pct": 39.4,
       "win_count": 157,
       "loss_count": 25,
-      "open_count": 24,
+      "open_count": 25,
       "start_date": "2026-03-17",
       "last_updated": "2026-04-20",
       "trades": [
@@ -3723,6 +3723,24 @@
           "exit_prob": 100.0,
           "exit_date": "2026-04-20",
           "pnl": 24.22
+        },
+        {
+          "trade_id": "75d22ea5",
+          "market_id": "atp-biryuko-brouwer-2026-04-20",
+          "question": "Shymkent: Petr Bar Biryukov vs Gijs Brouwer",
+          "url": "https://polymarket.com/event/atp-biryuko-brouwer-2026-04-20",
+          "source": "Polymarket",
+          "display_category": "Sports",
+          "entry_prob": 83.0,
+          "direction": "YES",
+          "amount": 100.0,
+          "entry_date": "2026-04-20",
+          "end_date_raw": "2026-04-27T05:00:00Z",
+          "end_date": "Apr 27",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
