@@ -12,7 +12,7 @@
       "ytd_return_pct": 64.9,
       "win_count": 168,
       "loss_count": 25,
-      "open_count": 23,
+      "open_count": 24,
       "start_date": "2026-03-17",
       "last_updated": "2026-04-21",
       "trades": [
@@ -3903,6 +3903,24 @@
           "exit_prob": 100.0,
           "exit_date": "2026-04-21",
           "pnl": 7.76
+        },
+        {
+          "trade_id": "cbdc5722",
+          "market_id": "lol-c9-sen-2026-04-21",
+          "question": "LoL: Cloud9 vs Sentinels (BO3) - Esports World Cup North America Qualifier Playoffs",
+          "url": "https://polymarket.com/event/lol-c9-sen-2026-04-21",
+          "source": "Polymarket",
+          "display_category": "Sports",
+          "entry_prob": 25.5,
+          "direction": "NO",
+          "amount": 100.0,
+          "entry_date": "2026-04-21",
+          "end_date_raw": "2026-04-22T02:05:00Z",
+          "end_date": "Apr 22",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
