@@ -7,12 +7,12 @@
       "name": "The Crowd",
       "strategy": "Follow consensus: YES when prob \u226565%, NO when prob \u226435%",
       "thesis": "Smart money is already priced in. Ride the conviction.",
-      "current_balance": 1568.18,
-      "total_pnl": 568.18,
-      "ytd_return_pct": 56.8,
-      "win_count": 164,
+      "current_balance": 1609.26,
+      "total_pnl": 609.26,
+      "ytd_return_pct": 60.9,
+      "win_count": 167,
       "loss_count": 25,
-      "open_count": 27,
+      "open_count": 24,
       "start_date": "2026-03-17",
       "last_updated": "2026-04-21",
       "trades": [
@@ -2855,10 +2855,10 @@
           "entry_date": "2026-04-14",
           "end_date_raw": "2026-04-22T00:00:00Z",
           "end_date": "Apr 22",
-          "status": "open",
-          "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "status": "closed",
+          "exit_prob": 4.2,
+          "exit_date": "2026-04-21",
+          "pnl": 25.79
         },
         {
           "trade_id": "253b30bd",
@@ -3881,10 +3881,10 @@
           "entry_date": "2026-04-21",
           "end_date_raw": "2026-04-30T00:00:00Z",
           "end_date": "Apr 30",
-          "status": "open",
-          "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "status": "closed",
+          "exit_prob": 95.5,
+          "exit_date": "2026-04-21",
+          "pnl": 7.53
         },
         {
           "trade_id": "7e39e0f3",
@@ -3899,10 +3899,10 @@
           "entry_date": "2026-04-21",
           "end_date_raw": "2026-04-30T00:00:00Z",
           "end_date": "Apr 30",
-          "status": "open",
-          "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "status": "closed",
+          "exit_prob": 100.0,
+          "exit_date": "2026-04-21",
+          "pnl": 7.76
         }
       ]
     },
@@ -3910,12 +3910,12 @@
       "name": "The Contrarian",
       "strategy": "Fade longshots: always NO when crowd says \u226430%",
       "thesis": "Crowds overprice long shots. Sell the overpriced tickets.",
-      "current_balance": 1390.39,
-      "total_pnl": 390.39,
-      "ytd_return_pct": 39.0,
-      "win_count": 24,
+      "current_balance": 1398.5,
+      "total_pnl": 398.5,
+      "ytd_return_pct": 39.9,
+      "win_count": 25,
       "loss_count": 0,
-      "open_count": 4,
+      "open_count": 3,
       "start_date": "2026-03-17",
       "last_updated": "2026-04-21",
       "trades": [
@@ -4346,10 +4346,10 @@
           "entry_date": "2026-04-13",
           "end_date_raw": "2026-04-22T00:00:00Z",
           "end_date": "Apr 22",
-          "status": "open",
-          "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "status": "closed",
+          "exit_prob": 4.2,
+          "exit_date": "2026-04-21",
+          "pnl": 8.11
         },
         {
           "trade_id": "e1ced0ef",
