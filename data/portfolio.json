@@ -3987,7 +3987,7 @@
       "ytd_return_pct": 39.9,
       "win_count": 25,
       "loss_count": 0,
-      "open_count": 3,
+      "open_count": 4,
       "start_date": "2026-03-17",
       "last_updated": "2026-04-22",
       "trades": [
@@ -4494,6 +4494,24 @@
           "exit_prob": 5.0,
           "exit_date": "2026-04-18",
           "pnl": 8.11
+        },
+        {
+          "trade_id": "7c7eb881",
+          "market_id": "kharg-island-no-longer-under-iranian-control-by-april-30-912",
+          "question": "Kharg Island no longer under Iranian control by April 30?",
+          "url": "https://polymarket.com/event/kharg-island-no-longer-under-iranian-control-by-march-31",
+          "source": "Polymarket",
+          "display_category": "Politics",
+          "entry_prob": 6.2,
+          "direction": "NO",
+          "amount": 100.0,
+          "entry_date": "2026-04-22",
+          "end_date_raw": "2026-04-30T23:55:00Z",
+          "end_date": "Apr 30",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
