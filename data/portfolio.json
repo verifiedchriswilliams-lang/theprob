@@ -12,7 +12,7 @@
       "ytd_return_pct": 87.3,
       "win_count": 176,
       "loss_count": 25,
-      "open_count": 22,
+      "open_count": 23,
       "start_date": "2026-03-17",
       "last_updated": "2026-04-22",
       "trades": [
@@ -4029,6 +4029,24 @@
           "exit_prob": 0.1,
           "exit_date": "2026-04-22",
           "pnl": 25.79
+        },
+        {
+          "trade_id": "de72fb52",
+          "market_id": "mlb-oak-sea-2026-04-22",
+          "question": "Athletics vs. Seattle Mariners",
+          "url": "https://polymarket.com/event/mlb-oak-sea-2026-04-22",
+          "source": "Polymarket",
+          "display_category": "Sports",
+          "entry_prob": 6.5,
+          "direction": "NO",
+          "amount": 100.0,
+          "entry_date": "2026-04-22",
+          "end_date_raw": "2026-04-29T20:10:00Z",
+          "end_date": "Apr 29",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
