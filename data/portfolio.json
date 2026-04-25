@@ -7,12 +7,12 @@
       "name": "The Crowd",
       "strategy": "Follow consensus: YES when prob \u226565%, NO when prob \u226435%",
       "thesis": "Smart money is already priced in. Ride the conviction.",
-      "current_balance": 1927.78,
-      "total_pnl": 927.78,
-      "ytd_return_pct": 92.8,
-      "win_count": 187,
+      "current_balance": 1986.94,
+      "total_pnl": 986.94,
+      "ytd_return_pct": 98.7,
+      "win_count": 189,
       "loss_count": 26,
-      "open_count": 25,
+      "open_count": 23,
       "start_date": "2026-03-17",
       "last_updated": "2026-04-25",
       "trades": [
@@ -3503,10 +3503,10 @@
           "entry_date": "2026-04-19",
           "end_date_raw": "2026-04-30T00:00:00Z",
           "end_date": "Apr 30",
-          "status": "open",
-          "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "status": "closed",
+          "exit_prob": 4.5,
+          "exit_date": "2026-04-25",
+          "pnl": 52.21
         },
         {
           "trade_id": "21444996",
@@ -4277,10 +4277,10 @@
           "entry_date": "2026-04-25",
           "end_date_raw": "2026-04-30T00:00:00Z",
           "end_date": "Apr 30",
-          "status": "open",
-          "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "status": "closed",
+          "exit_prob": 95.0,
+          "exit_date": "2026-04-25",
+          "pnl": 6.95
         },
         {
           "trade_id": "3e4dc812",
@@ -4306,12 +4306,12 @@
       "name": "The Contrarian",
       "strategy": "Fade longshots: always NO when crowd says \u226430%",
       "thesis": "Crowds overprice long shots. Sell the overpriced tickets.",
-      "current_balance": 1450.2,
-      "total_pnl": 450.2,
-      "ytd_return_pct": 45.0,
-      "win_count": 29,
+      "current_balance": 1486.92,
+      "total_pnl": 486.92,
+      "ytd_return_pct": 48.7,
+      "win_count": 31,
       "loss_count": 0,
-      "open_count": 4,
+      "open_count": 3,
       "start_date": "2026-03-17",
       "last_updated": "2026-04-25",
       "trades": [
@@ -4850,10 +4850,10 @@
           "entry_date": "2026-04-23",
           "end_date_raw": "2026-04-30T23:55:00Z",
           "end_date": "Apr 30",
-          "status": "open",
-          "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "status": "closed",
+          "exit_prob": 4.5,
+          "exit_date": "2026-04-25",
+          "pnl": 19.76
         },
         {
           "trade_id": "cf05ae31",
@@ -4868,10 +4868,10 @@
           "entry_date": "2026-04-23",
           "end_date_raw": "2026-04-30T00:00:00Z",
           "end_date": "Apr 30",
-          "status": "open",
-          "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "status": "closed",
+          "exit_prob": 4.5,
+          "exit_date": "2026-04-25",
+          "pnl": 16.96
         },
         {
           "trade_id": "004393ea",
@@ -4908,6 +4908,24 @@
           "exit_prob": 4.7,
           "exit_date": "2026-04-24",
           "pnl": 5.49
+        },
+        {
+          "trade_id": "931ef7fc",
+          "market_id": "will-openai-have-the-best-ai-model-at-the-end-of-april-2026",
+          "question": "Will OpenAI have the best AI model at the end of April 2026?",
+          "url": "https://polymarket.com/event/which-company-has-the-best-ai-model-end-of-april",
+          "source": "Polymarket",
+          "display_category": "Technology",
+          "entry_prob": 9.5,
+          "direction": "NO",
+          "amount": 100.0,
+          "entry_date": "2026-04-25",
+          "end_date_raw": "2026-04-30T00:00:00Z",
+          "end_date": "Apr 30",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
