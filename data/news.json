@@ -1,13 +1,40 @@
 {
-  "updated": "Apr 25, 2026 \u00b7 6:41 AM ET",
-  "updated_iso": "2026-04-25T11:41:42.479898+00:00",
+  "updated": "Apr 25, 2026 \u00b7 12:34 PM ET",
+  "updated_iso": "2026-04-25T17:34:34.135179+00:00",
   "homepage_count": 3,
   "articles": [
+    {
+      "title": "Insider Trading Cases Threaten Reckoning for Prediction Markets",
+      "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxOaUtVWTlfcDlubWxrRWpZLVVfa1ZlQmtuaEQ1MXNYYkoyblRFdVJSakQ5OWRQWnYyZ1k0aXlTcnhGa1UwNXRpS1pmYktZc3VlRVFVRnQzaDRuM2NwcjBPckthNzFHNmdpOTRuUFhsNUduZDBOYVNEMlFpek1OWmVqd3NUOVUyMk05dkxoWnpFY2cyODBzQUtBbkEzTksyZ1o1RjExWUtYYUgzV210M2dQV0VMVDg?oc=5",
+      "source": "Bloomberg.com",
+      "pub_iso": "2026-04-25T16:50:33+00:00",
+      "description": "",
+      "summary": "",
+      "pub_display": "Apr 25"
+    },
+    {
+      "title": "Opinion | What to do about prediction markets",
+      "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxQQkUzX2VualBCRUhEbXhRTTFJUmJOU3FrbGpFbHlreGhQRmk3YWhiMjFGZlBtRTl6MHlLZWpIMzM3YWpSakJWcXR0NnJpUXQyenU0bFFTM2pnaDNleVJpUXBzdTJuOGgtSnpTYXFwNHV5TkthVmxZaHEyQVliZTlYM2ZGb1FzMF9JNEZiRENISmltbUFjX2c?oc=5",
+      "source": "The Washington Post",
+      "pub_iso": "2026-04-25T16:29:49+00:00",
+      "description": "",
+      "summary": "",
+      "pub_display": "Apr 25"
+    },
     {
       "title": "\u2018Shot across the bow\u2019: How Washington plans to take on prediction markets",
       "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQeWlZNUhxNXN4RXVnZG1DTWNaMm0wVE5yZF9LSVZ1MDBDdUdxSUg0YlZDWWRRdllBY0EzZFJieUEzNU9BU3ZQa3FEUVpDa09sbVdOaUlUVUk0NGRHWDV4cFFZZVZRZUlaUnN5akJwbTBkNHpDcVhDb1NqQllSVWtNRlkyVWJrOU0xSXVlR3ZR?oc=5",
       "source": "Politico",
       "pub_iso": "2026-04-24T22:32:33+00:00",
+      "description": "",
+      "summary": "",
+      "pub_display": "Apr 24"
+    },
+    {
+      "title": "Polymarket tries to show it can play by the rules",
+      "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxQaElqd1dHdkZ2WWhRQmEyUngwOUtZQlF5dU9TR0VZUktSdlZ6bzlZeE5SaHRnSDd1QmQydndqdWo1YWMtaXN6NUhrNjgzbHI4TU5RSElOQU55ZnZSSXZsYUNlVVNURUZjZDR0UzNNOTZjVmUzeFV2MzRVWkV6RzBuZGdwWkVkWlN3MXljaFBsNDFZU1k?oc=5",
+      "source": "NBC News",
+      "pub_iso": "2026-04-24T20:51:14+00:00",
       "description": "",
       "summary": "",
       "pub_display": "Apr 24"
@@ -61,7 +88,7 @@
       "title": "What Are Prediction Markets, and Why Are They Causing Controversy?",
       "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxQb2Z0XzdxaGFoWUdpc0Z2LVRyeVJFYVdIN3FDTnQtanlPVzByeTVnN29tNnd2SGkxSG13d0hLNUNJeXFBRmlMWkJTa21uQ2szSjFTY05BWEpjb1hGSGEzN21EdmQtWlBlOHdUdjJKV2dNYWVhM2FHTTF3LVo5XzlBMWxR?oc=5",
       "source": "The New York Times",
-      "pub_iso": "2026-04-24T17:58:24+00:00",
+      "pub_iso": "2026-04-24T17:41:12+00:00",
       "description": "",
       "summary": "",
       "pub_display": "Apr 24"
@@ -83,33 +110,6 @@
       "description": "",
       "summary": "",
       "pub_display": "Apr 24"
-    },
-    {
-      "title": "AI traders are already testing prediction markets\u2014and losing money",
-      "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxQWXBkaDVhanJHNnZmcWpKM0JQVU9kMDE1OGNXT0JRTEI5M3NqSHgxWUJtS0N0bjcteFZHQVZVQ3FUd3AtZ2s3aWx6cXVzV1hmYTh6eVBvV3NNdkYxOXVqN3JOZXVNZWNiZHhfbnVDNUZRYXR2UXNQQUt0VmpRRll2ZTdKanI1STU2NkxFNFlRV1BGM3cxWGtrS3p5ZjAxWkhQbVpmY0hR?oc=5",
-      "source": "Fast Company",
-      "pub_iso": "2026-04-24T12:12:01+00:00",
-      "description": "",
-      "summary": "",
-      "pub_display": "Apr 24"
-    },
-    {
-      "title": "\u2018FBoy Island\u2019 contestant\u2019s bet on his own Senate bid exposes perils of Kalshi",
-      "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxPNS1fS3ZTT25kMF9VNk9PNnFaeDY0c3VFTEF1bmhTOTZ2bWVDMlBtanM0OU5XTkN6ZlpueWxYSDJBTEhPd1B2Ny1MYlAxZTg2d2lDenJmUnk4Z3VfZXAySFotV0J2WDdvaVBmN1ZMampXYV8yQ0ljWmRDVXZiWk44eFdEQXFYakItNnZqd0w5aEhaQQ?oc=5",
-      "source": "The Washington Post",
-      "pub_iso": "2026-04-23T23:14:47+00:00",
-      "description": "",
-      "summary": "",
-      "pub_display": "Apr 23"
-    },
-    {
-      "title": "French police probe suspected weather device tampering after odd Polymarket bet",
-      "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTE9nZXhyRnc0dXVwVU9IZ1NZRDlQMGxRVUNfTmdzTmVXZlNBUVZyWlFNVVJ2UkhYSkh2c2hrVEJGdUc5UUFjVVpPY3pXZ1lSMy1wazJzWkQ4V2hsaGxrLVBPUTNOVU4wcmFwOEpuMkdEa1FxWmpnUGFYSFdKOHpZQQ?oc=5",
-      "source": "NPR",
-      "pub_iso": "2026-04-23T22:22:38+00:00",
-      "description": "",
-      "summary": "",
-      "pub_display": "Apr 23"
     }
   ]
 }
