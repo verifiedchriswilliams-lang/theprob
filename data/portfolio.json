@@ -7,12 +7,12 @@
       "name": "The Crowd",
       "strategy": "Follow consensus: YES when prob \u226565%, NO when prob \u226435%",
       "thesis": "Smart money is already priced in. Ride the conviction.",
-      "current_balance": 1587.69,
-      "total_pnl": 587.69,
-      "ytd_return_pct": 58.8,
-      "win_count": 195,
+      "current_balance": 1598.19,
+      "total_pnl": 598.19,
+      "ytd_return_pct": 59.8,
+      "win_count": 196,
       "loss_count": 31,
-      "open_count": 21,
+      "open_count": 20,
       "start_date": "2026-03-17",
       "last_updated": "2026-04-27",
       "trades": [
@@ -4457,10 +4457,10 @@
           "entry_date": "2026-04-27",
           "end_date_raw": "2026-05-04T08:00:00Z",
           "end_date": "May 4",
-          "status": "open",
-          "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "status": "closed",
+          "exit_prob": 0.1,
+          "exit_date": "2026-04-27",
+          "pnl": 10.5
         }
       ]
     },
@@ -4468,12 +4468,12 @@
       "name": "The Contrarian",
       "strategy": "Fade longshots: always NO when crowd says \u226430%",
       "thesis": "Crowds overprice long shots. Sell the overpriced tickets.",
-      "current_balance": 1492.74,
-      "total_pnl": 492.74,
-      "ytd_return_pct": 49.3,
-      "win_count": 32,
+      "current_balance": 1503.24,
+      "total_pnl": 503.24,
+      "ytd_return_pct": 50.3,
+      "win_count": 33,
       "loss_count": 0,
-      "open_count": 4,
+      "open_count": 3,
       "start_date": "2026-03-17",
       "last_updated": "2026-04-27",
       "trades": [
@@ -5084,10 +5084,10 @@
           "entry_date": "2026-04-25",
           "end_date_raw": "2026-04-30T00:00:00Z",
           "end_date": "Apr 30",
-          "status": "open",
-          "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "status": "closed",
+          "exit_prob": 0.8,
+          "exit_date": "2026-04-27",
+          "pnl": 10.5
         },
         {
           "trade_id": "442c8cfc",
