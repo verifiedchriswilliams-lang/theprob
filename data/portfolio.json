@@ -7,12 +7,12 @@
       "name": "The Crowd",
       "strategy": "Follow consensus: YES when prob \u226565%, NO when prob \u226435%",
       "thesis": "Smart money is already priced in. Ride the conviction.",
-      "current_balance": 1517.95,
-      "total_pnl": 517.95,
-      "ytd_return_pct": 51.8,
-      "win_count": 197,
-      "loss_count": 32,
-      "open_count": 19,
+      "current_balance": 1442.17,
+      "total_pnl": 442.17,
+      "ytd_return_pct": 44.2,
+      "win_count": 198,
+      "loss_count": 33,
+      "open_count": 17,
       "start_date": "2026-03-17",
       "last_updated": "2026-04-28",
       "trades": [
@@ -4241,10 +4241,10 @@
           "entry_date": "2026-04-25",
           "end_date_raw": "2026-04-30T00:00:00Z",
           "end_date": "Apr 30",
-          "status": "open",
-          "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "status": "closed",
+          "exit_prob": 4.5,
+          "exit_date": "2026-04-28",
+          "pnl": -100.0
         },
         {
           "trade_id": "cbab344e",
@@ -4367,10 +4367,10 @@
           "entry_date": "2026-04-26",
           "end_date_raw": "2026-04-28T02:30:00Z",
           "end_date": "Apr 28",
-          "status": "open",
-          "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "status": "closed",
+          "exit_prob": 0.0,
+          "exit_date": "2026-04-28",
+          "pnl": 24.22
         },
         {
           "trade_id": "6fc49ea5",
@@ -4486,10 +4486,10 @@
       "name": "The Contrarian",
       "strategy": "Fade longshots: always NO when crowd says \u226430%",
       "thesis": "Crowds overprice long shots. Sell the overpriced tickets.",
-      "current_balance": 1503.24,
-      "total_pnl": 503.24,
-      "ytd_return_pct": 50.3,
-      "win_count": 33,
+      "current_balance": 1523.0,
+      "total_pnl": 523.0,
+      "ytd_return_pct": 52.3,
+      "win_count": 34,
       "loss_count": 0,
       "open_count": 3,
       "start_date": "2026-03-17",
@@ -5120,10 +5120,10 @@
           "entry_date": "2026-04-25",
           "end_date_raw": "2026-04-30T00:00:00Z",
           "end_date": "Apr 30",
-          "status": "open",
-          "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "status": "closed",
+          "exit_prob": 4.5,
+          "exit_date": "2026-04-28",
+          "pnl": 19.76
         },
         {
           "trade_id": "6340b525",
@@ -5142,6 +5142,24 @@
           "exit_prob": 3.8,
           "exit_date": "2026-04-26",
           "pnl": 5.82
+        },
+        {
+          "trade_id": "c8ff4329",
+          "market_id": "will-donald-trump-announce-that-the-united-states-blockade-of-the-strait-of-hormuz-has-been-lifted-by-april-30-2026-731",
+          "question": "Will Donald Trump announce that the United States blockade of the Strait of Hormuz has been lifted by April 30, 2026?",
+          "url": "https://polymarket.com/event/trump-announces-us-blockade-of-hormuz-lifted-by",
+          "source": "Polymarket",
+          "display_category": "Politics",
+          "entry_prob": 5.5,
+          "direction": "NO",
+          "amount": 100.0,
+          "entry_date": "2026-04-28",
+          "end_date_raw": "2026-04-30T00:00:00Z",
+          "end_date": "Apr 30",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
