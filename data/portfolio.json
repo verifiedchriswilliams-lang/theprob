@@ -7,10 +7,10 @@
       "name": "The Crowd",
       "strategy": "Follow consensus: YES when prob \u226565%, NO when prob \u226435%",
       "thesis": "Smart money is already priced in. Ride the conviction.",
-      "current_balance": 1547.59,
-      "total_pnl": 547.59,
-      "ytd_return_pct": 54.8,
-      "win_count": 205,
+      "current_balance": 1585.52,
+      "total_pnl": 585.52,
+      "ytd_return_pct": 58.6,
+      "win_count": 206,
       "loss_count": 34,
       "open_count": 18,
       "start_date": "2026-03-17",
@@ -4079,10 +4079,10 @@
           "entry_date": "2026-04-23",
           "end_date_raw": "2026-04-30T00:00:00Z",
           "end_date": "Apr 30",
-          "status": "open",
-          "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "status": "closed",
+          "exit_prob": 4.6,
+          "exit_date": "2026-04-30",
+          "pnl": 37.93
         },
         {
           "trade_id": "a1bf53b3",
@@ -4641,6 +4641,24 @@
           "exit_prob": null,
           "exit_date": null,
           "pnl": null
+        },
+        {
+          "trade_id": "47579fa8",
+          "market_id": "nba-playoffs-who-will-win-series-lakers-vs-rockets",
+          "question": "NBA Playoffs: Who Will Win Series? - Lakers vs. Rockets ",
+          "url": "https://polymarket.com/event/nba-playoffs-who-will-win-series-lakers-vs-rockets",
+          "source": "Polymarket",
+          "display_category": "Sports",
+          "entry_prob": 71.6,
+          "direction": "YES",
+          "amount": 100.0,
+          "entry_date": "2026-04-30",
+          "end_date_raw": "2026-05-04T00:00:00Z",
+          "end_date": "May 4",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
@@ -4648,12 +4666,12 @@
       "name": "The Contrarian",
       "strategy": "Fade longshots: always NO when crowd says \u226430%",
       "thesis": "Crowds overprice long shots. Sell the overpriced tickets.",
-      "current_balance": 1606.63,
-      "total_pnl": 606.63,
-      "ytd_return_pct": 60.7,
-      "win_count": 38,
+      "current_balance": 1627.84,
+      "total_pnl": 627.84,
+      "ytd_return_pct": 62.8,
+      "win_count": 39,
       "loss_count": 0,
-      "open_count": 5,
+      "open_count": 4,
       "start_date": "2026-03-17",
       "last_updated": "2026-04-30",
       "trades": [
@@ -5426,10 +5444,10 @@
           "entry_date": "2026-04-30",
           "end_date_raw": "2026-05-07T04:00:00Z",
           "end_date": "May 7",
-          "status": "open",
-          "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "status": "closed",
+          "exit_prob": 0.1,
+          "exit_date": "2026-04-30",
+          "pnl": 21.21
         }
       ]
     },
