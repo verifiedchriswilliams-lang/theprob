@@ -7,14 +7,14 @@
       "name": "The Crowd",
       "strategy": "Follow consensus: YES when prob \u226565%, NO when prob \u226435%",
       "thesis": "Smart money is already priced in. Ride the conviction.",
-      "current_balance": 1662.18,
-      "total_pnl": 662.18,
-      "ytd_return_pct": 66.2,
+      "current_balance": 1562.18,
+      "total_pnl": 562.18,
+      "ytd_return_pct": 56.2,
       "win_count": 213,
-      "loss_count": 35,
+      "loss_count": 36,
       "open_count": 22,
       "start_date": "2026-03-17",
-      "last_updated": "2026-05-01",
+      "last_updated": "2026-05-02",
       "trades": [
         {
           "trade_id": "ea14c291",
@@ -4871,6 +4871,24 @@
           "entry_date": "2026-05-01",
           "end_date_raw": "2026-05-08T23:10:00Z",
           "end_date": "May 8",
+          "status": "closed",
+          "exit_prob": 100.0,
+          "exit_date": "2026-05-02",
+          "pnl": -100.0
+        },
+        {
+          "trade_id": "2ddd0a88",
+          "market_id": "mlb-atl-col-2026-05-01",
+          "question": "Atlanta Braves vs. Colorado Rockies",
+          "url": "https://polymarket.com/event/mlb-atl-col-2026-05-01",
+          "source": "Polymarket",
+          "display_category": "Sports",
+          "entry_prob": 8.5,
+          "direction": "NO",
+          "amount": 100.0,
+          "entry_date": "2026-05-02",
+          "end_date_raw": "2026-05-09T00:40:00Z",
+          "end_date": "May 9",
           "status": "open",
           "exit_prob": null,
           "exit_date": null,
@@ -4889,7 +4907,7 @@
       "loss_count": 1,
       "open_count": 6,
       "start_date": "2026-03-17",
-      "last_updated": "2026-05-01",
+      "last_updated": "2026-05-02",
       "trades": [
         {
           "trade_id": "18b00e62",
@@ -5822,7 +5840,7 @@
       "loss_count": 0,
       "open_count": 3,
       "start_date": "2026-03-17",
-      "last_updated": "2026-05-01",
+      "last_updated": "2026-05-02",
       "trades": [
         {
           "trade_id": "d19bb1c5",
