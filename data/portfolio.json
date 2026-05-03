@@ -12,7 +12,7 @@
       "ytd_return_pct": 62.0,
       "win_count": 223,
       "loss_count": 37,
-      "open_count": 19,
+      "open_count": 20,
       "start_date": "2026-03-17",
       "last_updated": "2026-05-03",
       "trades": [
@@ -5037,6 +5037,24 @@
           "exit_prob": 100.0,
           "exit_date": "2026-05-03",
           "pnl": 10.25
+        },
+        {
+          "trade_id": "24e0058f",
+          "market_id": "f1-miami-grand-prix-winner-verstappen-2026-05-03",
+          "question": "Will Max Verstappen win the 2026 F1 Miami Grand Prix?",
+          "url": "https://polymarket.com/event/f1-miami-grand-prix-winner-2026-05-03",
+          "source": "Polymarket",
+          "display_category": "Sports",
+          "entry_prob": 27.8,
+          "direction": "NO",
+          "amount": 100.0,
+          "entry_date": "2026-05-03",
+          "end_date_raw": "2026-05-10T20:00:00Z",
+          "end_date": "May 10",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
@@ -5049,7 +5067,7 @@
       "ytd_return_pct": 63.7,
       "win_count": 45,
       "loss_count": 1,
-      "open_count": 6,
+      "open_count": 7,
       "start_date": "2026-03-17",
       "last_updated": "2026-05-03",
       "trades": [
@@ -5984,6 +6002,24 @@
           "entry_date": "2026-05-02",
           "end_date_raw": "2026-05-16T00:00:00Z",
           "end_date": "May 16",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
+        },
+        {
+          "trade_id": "f770b7ed",
+          "market_id": "strait-of-hormuz-traffic-returns-to-normal-by-may-15",
+          "question": "Strait of Hormuz traffic returns to normal by May 15?",
+          "url": "https://polymarket.com/event/strait-of-hormuz-traffic-returns-to-normal-by-may-15",
+          "source": "Polymarket",
+          "display_category": "Finance",
+          "entry_prob": 5.5,
+          "direction": "NO",
+          "amount": 100.0,
+          "entry_date": "2026-05-03",
+          "end_date_raw": "2026-05-15T00:00:00Z",
+          "end_date": "May 15",
           "status": "open",
           "exit_prob": null,
           "exit_date": null,
