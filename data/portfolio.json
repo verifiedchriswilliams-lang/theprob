@@ -12,7 +12,7 @@
       "ytd_return_pct": 61.0,
       "win_count": 222,
       "loss_count": 37,
-      "open_count": 19,
+      "open_count": 20,
       "start_date": "2026-03-17",
       "last_updated": "2026-05-03",
       "trades": [
@@ -5019,6 +5019,24 @@
           "exit_prob": 0.1,
           "exit_date": "2026-05-03",
           "pnl": 21.21
+        },
+        {
+          "trade_id": "1476b084",
+          "market_id": "crint-are-omn-2026-05-02",
+          "question": "ICC Cricket World Cup League Two: United Arab Emirates vs Oman",
+          "url": "https://polymarket.com/event/crint-are-omn-2026-05-02",
+          "source": "Polymarket",
+          "display_category": "Sports",
+          "entry_prob": 90.7,
+          "direction": "YES",
+          "amount": 100.0,
+          "entry_date": "2026-05-03",
+          "end_date_raw": "2026-05-10T03:45:00Z",
+          "end_date": "May 10",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
