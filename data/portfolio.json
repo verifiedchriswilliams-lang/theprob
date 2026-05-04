@@ -12,9 +12,9 @@
       "ytd_return_pct": 79.8,
       "win_count": 231,
       "loss_count": 37,
-      "open_count": 19,
+      "open_count": 20,
       "start_date": "2026-03-17",
-      "last_updated": "2026-05-03",
+      "last_updated": "2026-05-04",
       "trades": [
         {
           "trade_id": "ea14c291",
@@ -5181,6 +5181,24 @@
           "exit_prob": null,
           "exit_date": null,
           "pnl": null
+        },
+        {
+          "trade_id": "79435703",
+          "market_id": "strait-of-hormuz-traffic-returns-to-normal-by-may-15",
+          "question": "Strait of Hormuz traffic returns to normal by May 15?",
+          "url": "https://polymarket.com/event/strait-of-hormuz-traffic-returns-to-normal-by-may-15",
+          "source": "Polymarket",
+          "display_category": "Finance",
+          "entry_prob": 6.5,
+          "direction": "NO",
+          "amount": 100.0,
+          "entry_date": "2026-05-04",
+          "end_date_raw": "2026-05-15T00:00:00Z",
+          "end_date": "May 15",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
@@ -5195,7 +5213,7 @@
       "loss_count": 1,
       "open_count": 7,
       "start_date": "2026-03-17",
-      "last_updated": "2026-05-03",
+      "last_updated": "2026-05-04",
       "trades": [
         {
           "trade_id": "18b00e62",
@@ -6164,7 +6182,7 @@
       "loss_count": 0,
       "open_count": 5,
       "start_date": "2026-03-17",
-      "last_updated": "2026-05-03",
+      "last_updated": "2026-05-04",
       "trades": [
         {
           "trade_id": "d19bb1c5",
