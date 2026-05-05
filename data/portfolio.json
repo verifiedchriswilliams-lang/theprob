@@ -12,9 +12,9 @@
       "ytd_return_pct": 70.5,
       "win_count": 232,
       "loss_count": 38,
-      "open_count": 20,
+      "open_count": 21,
       "start_date": "2026-03-17",
-      "last_updated": "2026-05-04",
+      "last_updated": "2026-05-05",
       "trades": [
         {
           "trade_id": "ea14c291",
@@ -5235,6 +5235,24 @@
           "exit_prob": null,
           "exit_date": null,
           "pnl": null
+        },
+        {
+          "trade_id": "1062d4c1",
+          "market_id": "mlb-cws-laa-2026-05-04",
+          "question": "Chicago White Sox vs. Los Angeles Angels",
+          "url": "https://polymarket.com/event/mlb-cws-laa-2026-05-04",
+          "source": "Polymarket",
+          "display_category": "Sports",
+          "entry_prob": 92.5,
+          "direction": "YES",
+          "amount": 100.0,
+          "entry_date": "2026-05-05",
+          "end_date_raw": "2026-05-12T01:38:00Z",
+          "end_date": "May 12",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
@@ -5249,7 +5267,7 @@
       "loss_count": 1,
       "open_count": 6,
       "start_date": "2026-03-17",
-      "last_updated": "2026-05-04",
+      "last_updated": "2026-05-05",
       "trades": [
         {
           "trade_id": "18b00e62",
@@ -6218,7 +6236,7 @@
       "loss_count": 0,
       "open_count": 5,
       "start_date": "2026-03-17",
-      "last_updated": "2026-05-04",
+      "last_updated": "2026-05-05",
       "trades": [
         {
           "trade_id": "d19bb1c5",
