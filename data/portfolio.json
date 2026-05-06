@@ -7,14 +7,14 @@
       "name": "The Crowd",
       "strategy": "Follow consensus: YES when prob \u226565%, NO when prob \u226435%",
       "thesis": "Smart money is already priced in. Ride the conviction.",
-      "current_balance": 1817.28,
-      "total_pnl": 817.28,
-      "ytd_return_pct": 81.7,
-      "win_count": 235,
+      "current_balance": 1823.1,
+      "total_pnl": 823.1,
+      "ytd_return_pct": 82.3,
+      "win_count": 236,
       "loss_count": 38,
       "open_count": 25,
       "start_date": "2026-03-17",
-      "last_updated": "2026-05-05",
+      "last_updated": "2026-05-06",
       "trades": [
         {
           "trade_id": "ea14c291",
@@ -5375,6 +5375,24 @@
           "entry_date": "2026-05-05",
           "end_date_raw": "2026-05-12T13:00:00Z",
           "end_date": "May 12",
+          "status": "closed",
+          "exit_prob": 100.0,
+          "exit_date": "2026-05-06",
+          "pnl": 5.82
+        },
+        {
+          "trade_id": "eea42cd3",
+          "market_id": "mlb-sd-sf-2026-05-05",
+          "question": "San Diego Padres vs. San Francisco Giants",
+          "url": "https://polymarket.com/event/mlb-sd-sf-2026-05-05",
+          "source": "Polymarket",
+          "display_category": "Sports",
+          "entry_prob": 77.5,
+          "direction": "YES",
+          "amount": 100.0,
+          "entry_date": "2026-05-06",
+          "end_date_raw": "2026-05-13T01:45:00Z",
+          "end_date": "May 13",
           "status": "open",
           "exit_prob": null,
           "exit_date": null,
@@ -5393,7 +5411,7 @@
       "loss_count": 1,
       "open_count": 6,
       "start_date": "2026-03-17",
-      "last_updated": "2026-05-05",
+      "last_updated": "2026-05-06",
       "trades": [
         {
           "trade_id": "18b00e62",
@@ -6362,7 +6380,7 @@
       "loss_count": 0,
       "open_count": 5,
       "start_date": "2026-03-17",
-      "last_updated": "2026-05-05",
+      "last_updated": "2026-05-06",
       "trades": [
         {
           "trade_id": "d19bb1c5",
