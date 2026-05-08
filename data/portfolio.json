@@ -12,9 +12,9 @@
       "ytd_return_pct": 95.6,
       "win_count": 250,
       "loss_count": 39,
-      "open_count": 26,
+      "open_count": 27,
       "start_date": "2026-03-17",
-      "last_updated": "2026-05-07",
+      "last_updated": "2026-05-08",
       "trades": [
         {
           "trade_id": "ea14c291",
@@ -5685,6 +5685,24 @@
           "exit_prob": null,
           "exit_date": null,
           "pnl": null
+        },
+        {
+          "trade_id": "ead23c7d",
+          "market_id": "gemini-3pt2-released-by-may-15-2026",
+          "question": "Gemini 3.2 released by May 15, 2026?",
+          "url": "https://polymarket.com/event/gemini-3pt2-released-by",
+          "source": "Polymarket",
+          "display_category": "Technology",
+          "entry_prob": 20.2,
+          "direction": "NO",
+          "amount": 100.0,
+          "entry_date": "2026-05-08",
+          "end_date_raw": "2026-05-15T00:00:00Z",
+          "end_date": "May 15",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
@@ -5697,9 +5715,9 @@
       "ytd_return_pct": 66.5,
       "win_count": 49,
       "loss_count": 1,
-      "open_count": 7,
+      "open_count": 8,
       "start_date": "2026-03-17",
-      "last_updated": "2026-05-07",
+      "last_updated": "2026-05-08",
       "trades": [
         {
           "trade_id": "18b00e62",
@@ -6726,6 +6744,24 @@
           "exit_prob": null,
           "exit_date": null,
           "pnl": null
+        },
+        {
+          "trade_id": "ed108136",
+          "market_id": "will-greece-win-eurovision-2026",
+          "question": "Will Greece win Eurovision 2026?",
+          "url": "https://polymarket.com/event/eurovision-winner-2026",
+          "source": "Polymarket",
+          "display_category": "Culture",
+          "entry_prob": 12.3,
+          "direction": "NO",
+          "amount": 100.0,
+          "entry_date": "2026-05-08",
+          "end_date_raw": "2026-05-16T00:00:00Z",
+          "end_date": "May 16",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
@@ -6740,7 +6776,7 @@
       "loss_count": 0,
       "open_count": 5,
       "start_date": "2026-03-17",
-      "last_updated": "2026-05-07",
+      "last_updated": "2026-05-08",
       "trades": [
         {
           "trade_id": "d19bb1c5",
