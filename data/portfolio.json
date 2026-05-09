@@ -12,9 +12,9 @@
       "ytd_return_pct": 104.4,
       "win_count": 259,
       "loss_count": 40,
-      "open_count": 25,
+      "open_count": 26,
       "start_date": "2026-03-17",
-      "last_updated": "2026-05-08",
+      "last_updated": "2026-05-09",
       "trades": [
         {
           "trade_id": "ea14c291",
@@ -5847,6 +5847,24 @@
           "exit_prob": null,
           "exit_date": null,
           "pnl": null
+        },
+        {
+          "trade_id": "163539c4",
+          "market_id": "mlb-pit-sf-2026-05-08",
+          "question": "Pittsburgh Pirates vs. San Francisco Giants",
+          "url": "https://polymarket.com/event/mlb-pit-sf-2026-05-08",
+          "source": "Polymarket",
+          "display_category": "Sports",
+          "entry_prob": 32.5,
+          "direction": "NO",
+          "amount": 100.0,
+          "entry_date": "2026-05-09",
+          "end_date_raw": "2026-05-16T02:15:00Z",
+          "end_date": "May 16",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
@@ -5861,7 +5879,7 @@
       "loss_count": 1,
       "open_count": 8,
       "start_date": "2026-03-17",
-      "last_updated": "2026-05-08",
+      "last_updated": "2026-05-09",
       "trades": [
         {
           "trade_id": "18b00e62",
@@ -6920,7 +6938,7 @@
       "loss_count": 0,
       "open_count": 5,
       "start_date": "2026-03-17",
-      "last_updated": "2026-05-08",
+      "last_updated": "2026-05-09",
       "trades": [
         {
           "trade_id": "d19bb1c5",
