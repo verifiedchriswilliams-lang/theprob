@@ -12,7 +12,7 @@
       "ytd_return_pct": 90.6,
       "win_count": 270,
       "loss_count": 43,
-      "open_count": 29,
+      "open_count": 30,
       "start_date": "2026-03-17",
       "last_updated": "2026-05-10",
       "trades": [
@@ -6171,6 +6171,24 @@
           "exit_prob": 100.0,
           "exit_date": "2026-05-10",
           "pnl": 10.5
+        },
+        {
+          "trade_id": "8d6821c3",
+          "market_id": "cricipl-roy-mum-2026-05-10",
+          "question": "Indian Premier League: Royal Challengers Bangalore vs Mumbai Indians",
+          "url": "https://polymarket.com/event/cricipl-roy-mum-2026-05-10",
+          "source": "Polymarket",
+          "display_category": "Sports",
+          "entry_prob": 80.5,
+          "direction": "YES",
+          "amount": 100.0,
+          "entry_date": "2026-05-10",
+          "end_date_raw": "2026-05-17T10:00:00Z",
+          "end_date": "May 17",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
