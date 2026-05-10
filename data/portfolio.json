@@ -7,14 +7,14 @@
       "name": "The Crowd",
       "strategy": "Follow consensus: YES when prob \u226565%, NO when prob \u226435%",
       "thesis": "Smart money is already priced in. Ride the conviction.",
-      "current_balance": 1862.58,
-      "total_pnl": 862.58,
-      "ytd_return_pct": 86.3,
-      "win_count": 266,
+      "current_balance": 1873.08,
+      "total_pnl": 873.08,
+      "ytd_return_pct": 87.3,
+      "win_count": 267,
       "loss_count": 43,
       "open_count": 29,
       "start_date": "2026-03-17",
-      "last_updated": "2026-05-09",
+      "last_updated": "2026-05-10",
       "trades": [
         {
           "trade_id": "ea14c291",
@@ -6095,6 +6095,24 @@
           "entry_date": "2026-05-09",
           "end_date_raw": "2026-05-16T22:05:00Z",
           "end_date": "May 16",
+          "status": "closed",
+          "exit_prob": 0.0,
+          "exit_date": "2026-05-10",
+          "pnl": 10.5
+        },
+        {
+          "trade_id": "1dfe875b",
+          "market_id": "mlb-pit-sf-2026-05-09",
+          "question": "Pittsburgh Pirates vs. San Francisco Giants",
+          "url": "https://polymarket.com/event/mlb-pit-sf-2026-05-09",
+          "source": "Polymarket",
+          "display_category": "Sports",
+          "entry_prob": 88.5,
+          "direction": "YES",
+          "amount": 100.0,
+          "entry_date": "2026-05-10",
+          "end_date_raw": "2026-05-17T01:05:00Z",
+          "end_date": "May 17",
           "status": "open",
           "exit_prob": null,
           "exit_date": null,
@@ -6113,7 +6131,7 @@
       "loss_count": 1,
       "open_count": 9,
       "start_date": "2026-03-17",
-      "last_updated": "2026-05-09",
+      "last_updated": "2026-05-10",
       "trades": [
         {
           "trade_id": "18b00e62",
@@ -7190,7 +7208,7 @@
       "loss_count": 0,
       "open_count": 5,
       "start_date": "2026-03-17",
-      "last_updated": "2026-05-09",
+      "last_updated": "2026-05-10",
       "trades": [
         {
           "trade_id": "d19bb1c5",
