@@ -12,7 +12,7 @@
       "ytd_return_pct": 90.9,
       "win_count": 279,
       "loss_count": 45,
-      "open_count": 28,
+      "open_count": 29,
       "start_date": "2026-03-17",
       "last_updated": "2026-05-11",
       "trades": [
@@ -6351,6 +6351,24 @@
           "exit_prob": 0.1,
           "exit_date": "2026-05-11",
           "pnl": 8.11
+        },
+        {
+          "trade_id": "9ae82769",
+          "market_id": "cs2-navi-pssnua-2026-05-11-map-handicap-away-1pt5",
+          "question": "Map Handicap: NAVI (-1.5) vs Passion UA (+1.5)",
+          "url": "https://polymarket.com/event/cs2-navi-pssnua-2026-05-11",
+          "source": "Polymarket",
+          "display_category": "Sports",
+          "entry_prob": 11.5,
+          "direction": "NO",
+          "amount": 100.0,
+          "entry_date": "2026-05-11",
+          "end_date_raw": "2026-05-12T02:30:00Z",
+          "end_date": "May 12",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
