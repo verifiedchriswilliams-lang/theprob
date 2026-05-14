@@ -12,7 +12,7 @@
       "ytd_return_pct": 86.0,
       "win_count": 287,
       "loss_count": 47,
-      "open_count": 30,
+      "open_count": 31,
       "start_date": "2026-03-17",
       "last_updated": "2026-05-14",
       "trades": [
@@ -6567,6 +6567,24 @@
           "exit_prob": 0.1,
           "exit_date": "2026-05-14",
           "pnl": 22.7
+        },
+        {
+          "trade_id": "7c0d4579",
+          "market_id": "will-trump-say-tariff-during-events-with-xi-jinping",
+          "question": "Will Trump say \"Tariff\" during events with Xi Jinping?",
+          "url": "https://polymarket.com/event/what-will-trump-say-during-bilateral-events-with-xi-jinping",
+          "source": "Polymarket",
+          "display_category": "Politics",
+          "entry_prob": 29.5,
+          "direction": "NO",
+          "amount": 100.0,
+          "entry_date": "2026-05-14",
+          "end_date_raw": "2026-05-15T00:00:00Z",
+          "end_date": "May 15",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
