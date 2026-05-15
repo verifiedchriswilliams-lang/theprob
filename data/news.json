@@ -1,13 +1,58 @@
 {
-  "updated": "May 15, 2026 \u00b7 7:57 AM ET",
-  "updated_iso": "2026-05-15T12:57:41.964123+00:00",
+  "updated": "May 15, 2026 \u00b7 1:18 PM ET",
+  "updated_iso": "2026-05-15T18:18:33.474453+00:00",
   "homepage_count": 3,
   "articles": [
     {
-      "title": "Gemini Stock Rises After Hours On $100M Investment, Prediction Markets Push",
-      "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxQVDFjSjc2VzBMTFJYa2p4bi10OENVdTNNUldzR2VuanpKaXQ5cFloOWEwSmZ4cURHUGQtQmtMYjJQR1NxSzZiaGFKVWx1andjWGJFSHlkeWRHT3o0VEc3OTdVSkxKZWpBa3BQU0JOdmFmRjJSWFRSSXk0V0Nsb3VOUHN5OHZDTXRrZERmRFVuWE03NkR3enJ6UDg1S3J3UQ?oc=5",
-      "source": "Event Horizon | Dustin Gouker",
-      "pub_iso": "2026-05-15T11:02:48+00:00",
+      "title": "Who Is Really Winning on Kalshi Parlays According to the Data",
+      "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxQQ3FfSW9zREl3eFlSYzl5SFF5d1ZCTnpkUjg2bWh4SS10dnVSNnkwOWxTUVVDT2R3ckVHU0dZREFWZGRJd216aDQyX1ZvV2NEeElXaVhta2UwNlVsMUtrQnRwckxoX3lXQkY4aDlJRGp4b0pNcTE1Nzk0cHloSFZkc3JodzFZc1FKQ2MyVkpRREViaU5HZVc1OFdaaFFCYTM1RDhNUkFSQzRYX2U4c09pSHk0WQ?oc=5",
+      "source": "Sports Illustrated",
+      "pub_iso": "2026-05-15T18:15:23+00:00",
+      "description": "",
+      "summary": "",
+      "pub_display": "May 15"
+    },
+    {
+      "title": "Prediction markets for Yankees vs Mets: Trade Subway Series on Kalshi",
+      "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxNSENNbTMxZ3hGYjdEWkdMaE1uZVlJS0lGTlBHRkNWcTFDWFRzSUJEZ2hkaXgyQzZpc3ppSjhJRUQxNXRnNDdTYmJJRGxoRTFPZ042dnNFOTU1azN4anY4akw5bjcwSlFXN25IS3F2N3BoQUY0MGhpdWdXY2pHazJGX1ZZb0FGZUR6UWdR?oc=5",
+      "source": "Yahoo Sports",
+      "pub_iso": "2026-05-15T17:33:40+00:00",
+      "description": "",
+      "summary": "",
+      "pub_display": "May 15"
+    },
+    {
+      "title": "Ho-Chunk lawsuit against Kalshi, online gambling can move forward",
+      "url": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxQNWJBaXVLanV3VnhDLVNKMFBBWkhNT19nSGRjbFE1TUROR2V2UEVNUndna20xWGRmc0NzXzNKeU9feFRlbmpROUgtNjYtNlE1c2pnck16OFB3VDIxdUZVUmowdUFQbWVmbi1DaHFLUDRieGEwQzhoWXQ1MUl0aER5ZkxsTk5UVUpoaEV5QmlOUVZDV3pKalBudFNGUkVYRkhQb1dZTkVGeU8tTGlORzBNLWFmSUlYUVl5ZjRLOGdjNE1jajFraFE0Z1JYT1YwNVZ4YjE3TVI0bw?oc=5",
+      "source": "Milwaukee Journal Sentinel",
+      "pub_iso": "2026-05-15T17:26:00+00:00",
+      "description": "",
+      "summary": "",
+      "pub_display": "May 15"
+    },
+    {
+      "title": "Prediction markets see surge in suspicious trades as popularity explodes",
+      "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxONkktZ2pMZEVSU1VUdk9FT2hOYWFHMjc2VkxfSzhvY29Rd2owdUs2YmZaLVFDcDhSb1loVm5VcW9zRzBUc1FxZnpEYU55NGg4OE1DWE5hc0xSWjdEdzh3YmVybGNJbVdHU2NFSDluV2J6V3lTeHdNTnFnNnhGOXdNVDFZWUpZZmtrSjRETERIclJNX2NHblo1VV9iVlBBOWlZR1EzT3pHaUx2cGhlV2h6LWxLV1o2QWk1YjJv?oc=5",
+      "source": "Reuters",
+      "pub_iso": "2026-05-15T17:23:22+00:00",
+      "description": "",
+      "summary": "",
+      "pub_display": "May 15"
+    },
+    {
+      "title": "NFL wants certain trading contracts banned from prediction markets like 'first play of game,' injuries",
+      "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxQenpIM01rdGl6WHBLVlJDSGFjUnNibkRnQ0dvZkRhVExHZ3JYWG1jYkhZMHF1d3pEQnY3RXlqUFlza3F5dktZVVJTT25VVUdWbjd3cW5RQ0plcXRBSXZmSlZTRGNPd1RKeVF3RnRXZWZMVng2bFQtd0g1aThubmpTLVNacW9hc0N1WnJxTC1SNXRtYkh2cnlicTZJU1ZrTEFxUVNtdllpbW3SAa4BQVVfeXFMTUZlaDNIVC1xSmVMMnZIbmktUlc1Z09KdE81Y09UaXV4UEpUUUlpWjFNQmJCMDMwdkRFM1JhLUxYSVlfNU44THhhdXlMbm5YQjgyUUxCdWViRldQLTFXdTJMM3RFWC05M2RKSUxSemVuQUVTLTFZMkYxVjhxTGhqQU95UmFIckh1TDM4VGJtOXRoOGtLcDZwTlRqVkFqV1NBZFhIQ1BBaXd3YkNrMGpB?oc=5",
+      "source": "CNBC",
+      "pub_iso": "2026-05-15T16:23:41+00:00",
+      "description": "",
+      "summary": "",
+      "pub_display": "May 15"
+    },
+    {
+      "title": "Horse racing has fended off prediction market betting \u2014 here's how",
+      "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxNWHpqbXAyb0FjYlhwQXM4SHdrM0lHNEtMUm1veHJnSEt2eS1CQTZsX20tZEtiS2dzdk1kU1c5ek0wUE54cTdMcDctVndvS21maWFzSnA4cm5ndEE4QklLY1l1eDhjMDYzTGxfOUUzTjNzTk9VTm1YM3pJaVJZR1FHNmJLbk1WN2RmT1lhYW8tV0FDNVo5Mk13TlZ3?oc=5",
+      "source": "marketplace.org",
+      "pub_iso": "2026-05-15T15:32:16+00:00",
       "description": "",
       "summary": "",
       "pub_display": "May 15"
@@ -31,15 +76,6 @@
       "pub_display": "May 15"
     },
     {
-      "title": "House Mulls Betting Crackdown After Senate Prediction Market Ban",
-      "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxPWldaeXZRZk5qcFRpVHN4M0pQSFZDakpVa1hwaTFXZkdYcEFyaFBSN214N3A0UFY3eExYM1l3RDZvQTNpRW00TzhVZ2NOMG4zeG5wbERFT09Xb2xtbFZmUVV3THRLb3l0b0R1UnpLOVVGM0NjdE05b19SZmRTNG5qTk9GWkkzeVNLSXEyNlhfdWQ0LXVDbUpzczQzLWdvbEpmZHhObkpuaWdldVVDMHhHVWZB?oc=5",
-      "source": "Bloomberg Government News",
-      "pub_iso": "2026-05-15T09:00:00+00:00",
-      "description": "",
-      "summary": "",
-      "pub_display": "May 15"
-    },
-    {
       "title": "Prediction Markets Can\u2019t Go on Without Legal Enforcement in Place",
       "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxONWhnSFdPLUpDWXQtQnVhN3RMM0RkV3NoaDdRNnIzZ0dMN1YxdnBGb0EtUW5taFlWMFNkbVB6MWNNZzdLMVIzc2VnV1RVUkJPbzROS3Mtb09DYU5mTzNWc1pvNHQwZ0tBUDR4RGg0cTFZOG1BN05nWmhhZUFNcXdHYWQ1UFViNGl4QnZ1aV9sSm5OcHN1MlVSNzZmUXZ2S3pIRm5ZOFRZXzRFODlRZm1qREx1RDloSUh0d2RKX1FZUHVGQ1dSSU9ZNThJUmotQQ?oc=5",
       "source": "Bloomberg Law News",
@@ -58,55 +94,19 @@
       "pub_display": "May 15"
     },
     {
-      "title": "\u201cPrediction Markets,\u201d Gambling, the CFTC & Regulation: Facts, Fiction & The Law",
-      "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxORl9LSUFGNjJhVEtPMDlQSHJIa0ZKQ0RadENTTklNLXJvY0NNOGprSVIzTWFqcTZtb1VmVlFCRDNvajlWVXdDMERwREgycDhzX2ZoM25EUzJVVDY2QnBVajgzaGNYSm5OUXlYRDdFRzVBZWtJLXpraUJmMC1oZ1JKREltTVQwclJBNFZmV0RWR080YTJuNEkxQWs1a0tvWHZoYmFsb2Q0Wm0?oc=5",
-      "source": "Better Markets",
-      "pub_iso": "2026-05-15T02:15:58+00:00",
+      "title": "Casino Cancels Prediction Markets Conference. Not Everything Can Stay in Vegas.",
+      "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxNcldvQmp5ZGxaTzBCRGNVemNsRkxRTVJvM1RlbV9ZOHd2WlZhaUlRSEZKbEt4WlQ4bzBJYzBGdi1Rc0lPbC1FY19nUlc5X3hZYUdUMFM0ajQ3RGcyUG9yMGpGWkZpWlVHWlhDemdROGhycVBabzloWHdxMTJ2OG1PZDZTckZmRHlrMU80LUFBRGItQQ?oc=5",
+      "source": "Barron's",
+      "pub_iso": "2026-05-14T19:06:00+00:00",
       "description": "",
       "summary": "",
-      "pub_display": "May 15"
+      "pub_display": "May 14"
     },
     {
       "title": "DraftKings gets rare sell rating as Kalshi, Polymarket threaten growth",
       "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxPNlUzai1vekNyU2J2Zjhzb3FFdmo5bFFyZHhRZGRYa0l5V2FFU1IyLWJnRVh4dTdXeXk3MVY4NmxSVnExWHFDbENsN2gzMGROc2JxcGtjaC1vZHpuTjl6VHBQQ2s4TFBoM1VNNGh3QTBlWmI3OWtqcEM2Q1pmaV9QWVEtNjNJT24zeEtKTHh4dDBaclU?oc=5",
       "source": "The Boston Globe",
       "pub_iso": "2026-05-14T17:32:00+00:00",
-      "description": "",
-      "summary": "",
-      "pub_display": "May 14"
-    },
-    {
-      "title": "Retail investors have a new 'toy' for speculation, Barclays says",
-      "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxQZnoyVk1EUjZkbkpzc1NWMDVidmRLNlR4U2FnSmhScGJPX2JieXVDU3Z5Nk83SkFIWmp2cVE1anZOV3JvSmlub1JROHEza1lqeTJCUFdYbmU0aEtrczJ4eW1YX2Y3MEdXZmxKNjFEdmZ0bWk2RTJSZ3Q3LVZ3SXBvWTNmRHM4Z3RkTGVXWW9MZ085SEIyRkh2bXNlMUNYWjB0QWM0dlRR0gGrAUFVX3lxTE95QUhDdjhuM2VNdG5vd3d0eXhjb1I0LWVxS25sUTVtQUZMSElDLTc3T01IMFZNa21wTk51OWkyNElpVkV6VGJqdzA2ZE9ySnNnNVNzcldBRzQzS05BX3FrNHVqRmEyS3NJWklxa0dSeUw4c3Z4WXNnenZSb1JPVXQ2RExlSmo5R1EyWUlJZDl6ZFcxZlNBbVdpUFMzaEFSTkZ0MDJlT2VrV2ROYw?oc=5",
-      "source": "CNBC",
-      "pub_iso": "2026-05-14T17:30:13+00:00",
-      "description": "",
-      "summary": "",
-      "pub_display": "May 14"
-    },
-    {
-      "title": "Why Kalshi Traders Are All In on the USA in World Cup Group D",
-      "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxQNnpMU1ctc3p1YnVrU2FISWs4V19ncDBwN1hVSmxqT2NMY281YkNiUjA3aFhPd3BQcTVUUjNIZkZOQk1wclRENzRpT2JjbVY1RW5KN1F2RzM5NWtJb25wUUpJbUpLVFJzMmNaUGxsdnV3Y2JMa1lUMFN0aUhEOHFTVXJtM2F1UGdHRkVxT1lMd21nc3k2RG1WY2EtSUxCZVVJT0UwWW45bUY2NzFVdFhVYg?oc=5",
-      "source": "Sports Illustrated",
-      "pub_iso": "2026-05-14T16:15:46+00:00",
-      "description": "",
-      "summary": "",
-      "pub_display": "May 14"
-    },
-    {
-      "title": "Polymarket Named Official Prediction Market Partner of Serie A in the U.S.",
-      "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxNRmNfVTN0VE1vRDZpNFNiU2tPYUhUckRvN0EyVVBaUUxNRFlEbnM5NmxFNThfYlhVTi1DMnNhVUMwOVVIRndTdWhDd1N1cW1yVklWcmtMNWdlX254Tzk2eDhRNzB1anVkb1RkSklvcTBpcC1yQmF1Y2lRS2lnS2lwcVBDMW9NTmxYaEliQ2g1LVhtV3RMNlhZNFJuYUI4VnBJU1hlQ3pCdTAzczlFSDdZd19rTGpab1E0YWdHMTRLTDVnSWtpRGQ4SGM0dw?oc=5",
-      "source": "Business Wire",
-      "pub_iso": "2026-05-14T16:00:00+00:00",
-      "description": "",
-      "summary": "",
-      "pub_display": "May 14"
-    },
-    {
-      "title": "Polymarket\u2019s Soccer Spree Continues With Serie A Deal",
-      "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxPYW1DVmR4NmRBVDRNQ2NZNEUtN3diMHUwbVRwUE1CQ2txZWlDX0RGY0E0dnVsMHZsS3EwMWR0Q2h5N1BSTXFZN2h4QkNadTNEZFMyVEo5YXhaMDhWLTZVNlNIaXg3dU5nU0NFSkI3dXV2UDQ0RVpKWTJlLU1MZG5OV0FFQkNmcVl6OE9R?oc=5",
-      "source": "Front Office Sports",
-      "pub_iso": "2026-05-14T15:25:05+00:00",
       "description": "",
       "summary": "",
       "pub_display": "May 14"
