@@ -7,14 +7,14 @@
       "name": "The Crowd",
       "strategy": "Follow consensus: YES when prob \u226565%, NO when prob \u226435%",
       "thesis": "Smart money is already priced in. Ride the conviction.",
-      "current_balance": 1729.06,
-      "total_pnl": 729.06,
-      "ytd_return_pct": 72.9,
-      "win_count": 290,
-      "loss_count": 49,
-      "open_count": 32,
+      "current_balance": 1656.69,
+      "total_pnl": 656.69,
+      "ytd_return_pct": 65.7,
+      "win_count": 292,
+      "loss_count": 50,
+      "open_count": 30,
       "start_date": "2026-03-17",
-      "last_updated": "2026-05-15",
+      "last_updated": "2026-05-16",
       "trades": [
         {
           "trade_id": "ea14c291",
@@ -5213,10 +5213,10 @@
           "entry_date": "2026-05-04",
           "end_date_raw": "2026-05-15T00:00:00Z",
           "end_date": "May 15",
-          "status": "open",
-          "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "status": "closed",
+          "exit_prob": 100.0,
+          "exit_date": "2026-05-16",
+          "pnl": -100.0
         },
         {
           "trade_id": "d8dfdf95",
@@ -6527,10 +6527,10 @@
           "entry_date": "2026-05-13",
           "end_date_raw": "2026-05-23T00:00:00Z",
           "end_date": "May 23",
-          "status": "open",
-          "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "status": "closed",
+          "exit_prob": 98.2,
+          "exit_date": "2026-05-16",
+          "pnl": 9.29
         },
         {
           "trade_id": "d0c9387d",
@@ -6689,6 +6689,24 @@
           "entry_date": "2026-05-15",
           "end_date_raw": "2026-05-22T23:10:00Z",
           "end_date": "May 22",
+          "status": "closed",
+          "exit_prob": 0.1,
+          "exit_date": "2026-05-16",
+          "pnl": 18.34
+        },
+        {
+          "trade_id": "2179da56",
+          "market_id": "will-china-announce-a-boeing-aircraft-purchase-by-may-22-385",
+          "question": "Will China announce a Boeing aircraft purchase by May 22?",
+          "url": "https://polymarket.com/event/trump-xi-summit-what-will-china-announce-by-may-22",
+          "source": "Polymarket",
+          "display_category": "Politics",
+          "entry_prob": 34.5,
+          "direction": "NO",
+          "amount": 100.0,
+          "entry_date": "2026-05-16",
+          "end_date_raw": "2026-05-22T00:00:00Z",
+          "end_date": "May 22",
           "status": "open",
           "exit_prob": null,
           "exit_date": null,
@@ -6705,9 +6723,9 @@
       "ytd_return_pct": 61.2,
       "win_count": 52,
       "loss_count": 2,
-      "open_count": 7,
+      "open_count": 8,
       "start_date": "2026-03-17",
-      "last_updated": "2026-05-15",
+      "last_updated": "2026-05-16",
       "trades": [
         {
           "trade_id": "18b00e62",
@@ -7806,6 +7824,24 @@
           "exit_prob": null,
           "exit_date": null,
           "pnl": null
+        },
+        {
+          "trade_id": "9c31ea30",
+          "market_id": "will-scottie-scheffler-win-the-2026-pga-championship",
+          "question": "Will Scottie Scheffler win the 2026 PGA Championship?",
+          "url": "https://polymarket.com/event/pga-championship-winner-2026",
+          "source": "Polymarket",
+          "display_category": "Sports",
+          "entry_prob": 18.5,
+          "direction": "NO",
+          "amount": 100.0,
+          "entry_date": "2026-05-16",
+          "end_date_raw": "2026-05-18T00:00:00Z",
+          "end_date": "May 18",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
@@ -7820,7 +7856,7 @@
       "loss_count": 0,
       "open_count": 5,
       "start_date": "2026-03-17",
-      "last_updated": "2026-05-15",
+      "last_updated": "2026-05-16",
       "trades": [
         {
           "trade_id": "d19bb1c5",
