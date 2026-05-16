@@ -12,7 +12,7 @@
       "ytd_return_pct": 65.7,
       "win_count": 292,
       "loss_count": 50,
-      "open_count": 30,
+      "open_count": 31,
       "start_date": "2026-03-17",
       "last_updated": "2026-05-16",
       "trades": [
@@ -6711,6 +6711,24 @@
           "exit_prob": null,
           "exit_date": null,
           "pnl": null
+        },
+        {
+          "trade_id": "24ebac40",
+          "market_id": "will-soldier-boy-die-in-the-boys-season-5",
+          "question": "Will Soldier Boy die in \"The Boys: Season 5\"?",
+          "url": "https://polymarket.com/event/who-will-die-in-the-boys-season-5",
+          "source": "Polymarket",
+          "display_category": "Culture",
+          "entry_prob": 6.7,
+          "direction": "NO",
+          "amount": 100.0,
+          "entry_date": "2026-05-16",
+          "end_date_raw": "2026-05-20T00:00:00Z",
+          "end_date": "May 20",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
@@ -6718,12 +6736,12 @@
       "name": "The Contrarian",
       "strategy": "Fade longshots: always NO when crowd says \u226430%",
       "thesis": "Crowds overprice long shots. Sell the overpriced tickets.",
-      "current_balance": 1612.26,
-      "total_pnl": 612.26,
-      "ytd_return_pct": 61.2,
-      "win_count": 52,
+      "current_balance": 1618.76,
+      "total_pnl": 618.76,
+      "ytd_return_pct": 61.9,
+      "win_count": 53,
       "loss_count": 2,
-      "open_count": 8,
+      "open_count": 7,
       "start_date": "2026-03-17",
       "last_updated": "2026-05-16",
       "trades": [
@@ -7820,10 +7838,10 @@
           "entry_date": "2026-05-15",
           "end_date_raw": "2026-05-16T00:00:00Z",
           "end_date": "May 16",
-          "status": "open",
-          "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "status": "closed",
+          "exit_prob": 4.2,
+          "exit_date": "2026-05-16",
+          "pnl": 6.5
         },
         {
           "trade_id": "9c31ea30",
