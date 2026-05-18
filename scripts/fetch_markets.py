@@ -169,6 +169,29 @@ def is_junk_market(m: dict) -> bool:
         return True
     return False
 
+# Slug prefixes that identify esports markets
+ESPORTS_SLUG_PREFIXES = ["lol-", "lck-", "lcs-", "lec-", "cs2-", "dota-", "valorant-", "rl-"]
+
+# Keywords in question text that identify esports markets
+ESPORTS_QUESTION_PATTERNS = [
+    "lol:", "lck:", "lec:", "lcs:", " bo3)", " bo5)", " bo3 ", " bo5 ",
+    "esports", "valorant", "overwatch", "dota 2", "counter-strike",
+    "league of legends", "rocket league championship",
+]
+
+def is_esports_market(m: dict) -> bool:
+    """
+    Returns True for esports/competitive gaming markets.
+    These are excluded from hero — low general-audience relevance vs. real news.
+    """
+    slug = m.get("slug", "").lower()
+    if any(slug.startswith(prefix) for prefix in ESPORTS_SLUG_PREFIXES):
+        return True
+    q = m.get("question", "").lower()
+    if any(pattern in q for pattern in ESPORTS_QUESTION_PATTERNS):
+        return True
+    return False
+
 def days_until_close(end_date_str: str) -> float | None:
     """Return how many days until market closes. None if unparseable."""
     try:
@@ -565,8 +588,10 @@ def fetch_kalshi() -> list[dict]:
     markets = []
     seen_tickers = set()
 
-    def fetch_kalshi_page(extra_params={}):
-        """Fetch one paginated pass of Kalshi events, return all qualifying markets."""
+    def fetch_kalshi_page(extra_params={}, min_vol=None):
+        """Fetch one paginated pass of Kalshi events, return all qualifying markets.
+        min_vol: override KALSHI_MIN_VOL for this fetch (pass 0 for near-term markets)."""
+        _min_vol = min_vol if min_vol is not None else KALSHI_MIN_VOL
         results = []
         cursor = None
         pages = 0
@@ -622,7 +647,7 @@ def fetch_kalshi() -> list[dict]:
 
                             # volume_fp / volume_24h_fp are fixed-point cents (divide by 100 → USD)
                             volume_usd = float(m.get("volume_fp", 0) or 0) / 100
-                            if volume_usd < KALSHI_MIN_VOL:
+                            if volume_usd < _min_vol:
                                 continue
                             volume_24h_usd = float(m.get("volume_24h_fp", 0) or 0) / 100
                             close_time = m.get("close_time", "") or ""
@@ -697,6 +722,164 @@ def fetch_kalshi() -> list[dict]:
             added = len(markets) - before
             if added:
                 print(f"  Kalshi {cat} fetch: +{added} markets")
+
+        # 3. Near-term fetch — dedicated time-based query on the /markets endpoint.
+        #
+        # WHY /markets NOT /events:
+        # The /events endpoint returns results sorted by volume (Kalshi default).
+        # New short-duration markets (today's MLB game, this week's Fed decision,
+        # tomorrow's CPI release) have LOW total volume because they just opened.
+        # They're buried on page 50+ and we never reach them.
+        #
+        # The /markets endpoint supports max_close_time filtering which returns
+        # markets chronologically (soonest-closing first), bypassing volume ranking.
+        # This is the only reliable way to find near-term markets.
+        try:
+            now_utc   = datetime.now(timezone.utc)
+            cutoff_7d = now_utc + timedelta(days=7)
+            # Kalshi /markets accepts max_close_time as an ISO timestamp string
+            cutoff_str = cutoff_7d.strftime("%Y-%m-%dT%H:%M:%SZ")
+
+            added_nt   = 0
+            nt_cursor  = None
+            nt_pages   = 0
+            while nt_pages < 10:
+                nt_params = {
+                    "status":          "open",
+                    "max_close_time":  cutoff_str,
+                    "limit":           200,
+                }
+                if nt_cursor:
+                    nt_params["cursor"] = nt_cursor
+                try:
+                    kalshi_headers = make_kalshi_headers("GET", "/trade-api/v2/markets")
+                    resp = requests.get(f"{KALSHI_BASE}/markets",
+                                        params=nt_params,
+                                        headers=kalshi_headers,
+                                        timeout=15)
+                    resp.raise_for_status()
+                    nt_data    = resp.json()
+                    nt_markets = nt_data.get("markets", [])
+                    if not nt_markets:
+                        break
+
+                    for m in nt_markets:
+                        try:
+                            ticker = m.get("ticker", "")
+                            if not ticker or ticker in seen_tickers:
+                                continue
+
+                            # /markets returns flat market objects (not nested under event)
+                            # Fields differ slightly from /events nested markets
+                            close_time = m.get("close_time", "") or ""
+                            if not close_time:
+                                continue
+                            try:
+                                end = datetime.fromisoformat(close_time.replace("Z", "+00:00"))
+                                if not (now_utc < end <= cutoff_7d):
+                                    continue  # outside our window
+                            except Exception:
+                                continue
+
+                            yes_bid_d = float(m.get("yes_bid") or m.get("yes_bid_dollars", 0) or 0)
+                            yes_ask_d = float(m.get("yes_ask") or m.get("yes_ask_dollars", 0) or 0)
+                            # /markets endpoint may return cents (0-100) or dollars (0-1)
+                            # Normalise to 0-100 pct
+                            if yes_bid_d > 1 or yes_ask_d > 1:
+                                # already in cents
+                                prob = round((yes_bid_d + yes_ask_d) / 2, 1)
+                            elif yes_bid_d > 0 or yes_ask_d > 0:
+                                # dollars → pct
+                                prob = round((yes_bid_d + yes_ask_d) / 2 * 100, 1)
+                            else:
+                                last = float(m.get("last_price") or m.get("last_price_dollars", 0) or 0)
+                                if last <= 0:
+                                    continue
+                                prob = round(last * 100, 1) if last <= 1 else round(last, 1)
+                            if not (1 < prob < 99):
+                                continue
+
+                            volume_usd     = float(m.get("volume",     0) or 0) / 100
+                            volume_24h_usd = float(m.get("volume_24h", 0) or 0) / 100
+                            # /markets may store volume in cents (fp) or dollars
+                            if volume_usd > 1_000_000:
+                                volume_usd     /= 100   # was already in cents/fp
+                                volume_24h_usd /= 100
+
+                            subtitle    = m.get("subtitle", "") or m.get("title", "") or ""
+                            event_title = m.get("event_title", "") or subtitle
+                            question    = (f"{event_title}: {subtitle}"
+                                          if subtitle and subtitle.lower() != event_title.lower()
+                                          else event_title or ticker)
+
+                            series_ticker = (m.get("event_ticker") or
+                                             m.get("series_ticker") or
+                                             ticker.rsplit("-", 1)[0])
+                            category     = m.get("category", "") or ""
+                            disp_cat     = KALSHI_CATEGORY_MAP.get(category, category or "World")
+
+                            spread         = round(abs(yes_ask_d - yes_bid_d) * 100, 2)
+                            last_p         = float(m.get("last_price") or m.get("last_price_dollars", 0) or 0)
+                            prev_p         = float(m.get("previous_price") or m.get("previous_yes_bid_dollars", 0) or 0)
+                            change_pts     = round((last_p - prev_p) * 100, 1) if last_p > 0 and prev_p > 0 else 0.0
+
+                            markets.append({
+                                "source":           "Kalshi",
+                                "question":         question,
+                                "slug":             ticker,
+                                "url":              f"https://kalshi.com/markets/{series_ticker.lower()}",
+                                "prob":             prob,
+                                "change_pts":       change_pts,
+                                "direction":        change_direction(change_pts),
+                                "volume":           volume_usd,
+                                "volume_fmt":       fmt_volume(volume_usd),
+                                "volume_24h":       volume_24h_usd,
+                                "end_date":         fmt_date(close_time),
+                                "end_date_raw":     close_time,
+                                "liquidity":        volume_usd * 0.1,
+                                "category":         category,
+                                "is_sports":        category.lower() == "sports",
+                                "display_category": disp_cat,
+                                "tags":             [category.lower()],
+                                "spread":           spread,
+                                "open_interest":    float(m.get("open_interest_fp", 0) or 0) / 100,
+                            })
+                            seen_tickers.add(ticker)
+                            added_nt += 1
+                        except Exception:
+                            continue
+
+                    nt_cursor = nt_data.get("cursor")
+                    if not nt_cursor:
+                        break
+                    nt_pages += 1
+                    time.sleep(0.2)
+                except Exception as e_page:
+                    print(f"  [WARN] near-term /markets page {nt_pages}: {e_page}")
+                    break
+
+            print(f"  Kalshi near-term (≤7d) via /markets endpoint: +{added_nt} markets")
+
+            # Diagnostic: log what we found within 7 days
+            near_close = []
+            for m in markets:
+                if m.get("source") != "Kalshi":
+                    continue
+                edr = m.get("end_date_raw", "")
+                try:
+                    end      = datetime.fromisoformat(edr.replace("Z", "+00:00"))
+                    days_left = (end - now_utc).total_seconds() / 86400
+                    if 0 < days_left <= 7:
+                        near_close.append((days_left, m))
+                except Exception:
+                    pass
+            near_close.sort(key=lambda x: x[0])
+            print(f"  Kalshi markets closing ≤7 days: {len(near_close)}")
+            for dl, m in near_close[:15]:
+                print(f"    {dl:.1f}d  {m['prob']}%  ${m['volume_24h']:,.0f}/24h  {m['question'][:55]}")
+
+        except Exception as e_nt:
+            print(f"  [WARN] Kalshi near-term fetch error: {e_nt}")
 
     except Exception as e:
         print(f"[WARN] Kalshi fetch failed: {e}")
@@ -1306,6 +1489,7 @@ def pick_hero(markets: list[dict], recent_topics: list[str] | None = None,
         and not is_past_close(m)
         and not is_junk_market(m)
         and not is_range_bucket_market(m)   # range buckets are misleading as hero
+        and not is_esports_market(m)        # esports excluded — low general audience relevance
         and (not is_sports_market(m)
              or max(m["volume"], m.get("event_volume", 0)) >= HERO_SPORTS_MIN_VOLUME
              or m.get("volume_24h", 0) >= HERO_SPORTS_MIN_VOLUME_24H)  # hot tournament markets
@@ -1320,6 +1504,14 @@ def pick_hero(markets: list[dict], recent_topics: list[str] | None = None,
             for i, topic in enumerate(recent_topics):
                 if key == topic:
                     penalty = HERO_REPEAT_PENALTY_PER_DAY[min(i, len(HERO_REPEAT_PENALTY_PER_DAY) - 1)]
+                    # Dominant story relief: if this market is the biggest story of the day
+                    # ($300K+ 24h volume AND 20+ pt move), cap the repeat penalty at 40pts.
+                    # Prevents a genuinely breaking story (Iran diplomacy, major election move)
+                    # from being permanently buried by history while low-volume esports or
+                    # obscure markets win hero by default.
+                    if (m.get("volume_24h", 0) >= 300_000
+                            and abs(m.get("change_pts", 0)) >= 20):
+                        penalty = min(penalty, 40.0)
                     base -= penalty
                     break
         # Category diversity penalty: soft nudge toward editorial variety.
@@ -2408,10 +2600,13 @@ def compute_spread(poly_markets: list, kalshi_markets: list) -> list:
             "lower_prob":      round(min(poly_prob, kalshi_prob), 1),
             "poly_volume":     poly_vol,
             "kalshi_volume":   best_km.get("volume", 0) or 0,
+            "kalshi_volume_24h": best_km.get("volume_24h", 0) or 0,
             "kalshi_oi":       best_km.get("open_interest", 0) or 0,
             "combined_volume": combined_vol,
             "poly_url":        pm.get("url", ""),
             "kalshi_url":      best_km.get("url", ""),
+            "kalshi_ticker":   best_km.get("slug", ""),
+            "kalshi_end_date_raw": best_km.get("end_date_raw", ""),
             "match_score":     round(best_score, 3),
             "interest_score":  round(interest_score, 2),
         })

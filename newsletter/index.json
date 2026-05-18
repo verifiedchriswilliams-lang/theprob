@@ -1,5 +1,232 @@
 [
   {
+    "date": "2026-05-18",
+    "display_date": "May 18, 2026",
+    "subject": "The crowd moved 7.0 pts up on this one"
+  },
+  {
+    "date": "2026-04-12",
+    "subject": "The Sunday 5: This Week in Prediction Markets",
+    "subtitle": "Five stories shaping the prediction markets conversation this week.",
+    "url": "https://theprobnewsletter.com/newsletter/2026-04-12-sunday5.html",
+    "type": "sunday5"
+  },
+  {
+    "date": "2026-05-16",
+    "display_date": "May 16, 2026",
+    "subject": "The crowd moved 23.0 pts up on this one"
+  },
+  {
+    "date": "2026-05-15",
+    "display_date": "May 15, 2026",
+    "subject": "The crowd moved 25.5 pts down on this one"
+  },
+  {
+    "date": "2026-05-14",
+    "display_date": "May 14, 2026",
+    "subject": "The crowd moved 11.5 pts down on this one"
+  },
+  {
+    "date": "2026-05-13",
+    "display_date": "May 13, 2026",
+    "subject": "The crowd moved 10.0 pts down on this one"
+  },
+  {
+    "date": "2026-05-12",
+    "display_date": "May 12, 2026",
+    "subject": "The crowd moved 15.0 pts up on this one"
+  },
+  {
+    "date": "2026-05-11",
+    "display_date": "May 11, 2026",
+    "subject": "The crowd moved 8.0 pts up on this one"
+  },
+  {
+    "date": "2026-05-09",
+    "display_date": "May 9, 2026",
+    "subject": "The crowd moved 30.0 pts up on this one"
+  },
+  {
+    "date": "2026-05-08",
+    "display_date": "May 8, 2026",
+    "subject": "The crowd moved 8.0 pts up on this one"
+  },
+  {
+    "date": "2026-05-07",
+    "display_date": "May 7, 2026",
+    "subject": "The crowd moved 52.0 pts up on this one"
+  },
+  {
+    "date": "2026-05-06",
+    "display_date": "May 6, 2026",
+    "subject": "The crowd moved 24.1 pts up on this one"
+  },
+  {
+    "date": "2026-05-05",
+    "display_date": "May 5, 2026",
+    "subject": "The crowd moved 5.0 pts down on this one"
+  },
+  {
+    "date": "2026-05-04",
+    "display_date": "May 4, 2026",
+    "subject": "The crowd moved 1.0 pts up on this one"
+  },
+  {
+    "date": "2026-05-02",
+    "display_date": "May 2, 2026",
+    "subject": "The crowd moved 17.0 pts down on this one"
+  },
+  {
+    "date": "2026-05-01",
+    "display_date": "May 1, 2026",
+    "subject": "The crowd moved 8.5 pts down on this one"
+  },
+  {
+    "date": "2026-04-30",
+    "display_date": "Apr 30, 2026",
+    "subject": "The crowd moved 13.5 pts down on this one"
+  },
+  {
+    "date": "2026-04-29",
+    "display_date": "Apr 29, 2026",
+    "subject": "The crowd moved 9.0 pts down on this one"
+  },
+  {
+    "date": "2026-04-28",
+    "display_date": "Apr 28, 2026",
+    "subject": "The crowd moved 47.8 pts up on this one"
+  },
+  {
+    "date": "2026-04-27",
+    "display_date": "Apr 27, 2026",
+    "subject": "The crowd moved 40.0 pts down on this one"
+  },
+  {
+    "date": "2026-04-25",
+    "display_date": "Apr 25, 2026",
+    "subject": "The crowd moved 8.2 pts down on this one"
+  },
+  {
+    "date": "2026-04-24",
+    "display_date": "Apr 24, 2026",
+    "subject": "The crowd moved 22.4 pts down on this one"
+  },
+  {
+    "date": "2026-04-23",
+    "display_date": "Apr 23, 2026",
+    "subject": "The crowd moved 32.0 pts up on this one"
+  },
+  {
+    "date": "2026-04-22",
+    "display_date": "Apr 22, 2026",
+    "subject": "The crowd moved 27.0 pts down on this one"
+  },
+  {
+    "date": "2026-04-21",
+    "display_date": "Apr 21, 2026",
+    "subject": "The crowd moved 20.6 pts up on this one"
+  },
+  {
+    "date": "2026-04-20",
+    "display_date": "Apr 20, 2026",
+    "subject": "The crowd moved 32.0 pts up on this one"
+  },
+  {
+    "date": "2026-04-18",
+    "display_date": "Apr 18, 2026",
+    "subject": "Scheffler Heritage Odds Just Tanked 5 Points"
+  },
+  {
+    "date": "2026-04-17",
+    "display_date": "Apr 17, 2026",
+    "subject": "Iran Peace Deal Odds Jump to 25% - Smart Money Knows Something"
+  },
+  {
+    "date": "2026-04-16",
+    "display_date": "Apr 16, 2026",
+    "subject": "Altmaier's 36.5% just broke hard. Here's why."
+  },
+  {
+    "date": "2026-04-15",
+    "display_date": "Apr 15, 2026",
+    "subject": "Peru's Dark Horse Surges to 30%: What's the Play?"
+  },
+  {
+    "date": "2026-04-14",
+    "display_date": "Apr 14, 2026",
+    "subject": "Ducks hitting 54.5% , sharp money moving fast"
+  },
+  {
+    "date": "2026-04-13",
+    "display_date": "Apr 13, 2026",
+    "subject": "Duckworth's odds just crashed 30pts. Here's why."
+  },
+  {
+    "date": "2026-04-11",
+    "display_date": "Apr 11, 2026",
+    "subject": "Rory 70.5% to Win Masters: Sharp Money Just Loaded Up"
+  },
+  {
+    "date": "2026-04-10",
+    "display_date": "Apr 10, 2026",
+    "subject": "Scottie's Masters Odds Just Jumped 6 Points. Here's Why"
+  },
+  {
+    "date": "2026-04-09",
+    "display_date": "Apr 9, 2026",
+    "subject": "Celtics odds crashed 19pts overnight. Here's why"
+  },
+  {
+    "date": "2026-04-08",
+    "display_date": "Apr 8, 2026",
+    "subject": "NiP's Game 2 Odds Just Hit 87%. Here's the Play"
+  },
+  {
+    "date": "2026-04-07",
+    "display_date": "Apr 7, 2026",
+    "subject": "Dimitrov Favored 94.5% - Market Overreacting to Etcheverry Form"
+  },
+  {
+    "date": "2026-04-06",
+    "display_date": "Apr 6, 2026",
+    "subject": "Under 2.5 Goals Falling Fast: Sharp Bettors Pouncing at 37.5%"
+  },
+  {
+    "date": "2026-04-05",
+    "display_date": "Apr 5, 2026",
+    "subject": "IPL Alert: SRH 20% is a gift"
+  },
+  {
+    "date": "2026-04-04",
+    "display_date": "Apr 4, 2026",
+    "subject": "NRG at 86.5%: Why sharps just moved 20 points"
+  },
+  {
+    "date": "2026-04-03",
+    "display_date": "Apr 3, 2026",
+    "subject": "Pacers upset stuck at 9.5%. Sharp money says pass."
+  },
+  {
+    "date": "2026-04-02",
+    "display_date": "Apr 2, 2026",
+    "subject": "Illinois 17.3%: The Big Ten Trap Nobody Sees Coming"
+  },
+  {
+    "date": "2026-04-01",
+    "display_date": "Apr 1, 2026",
+    "subject": "Israel Strikes 3 Countries in 2026? Now 13.8%"
+  },
+  {
+    "date": "2026-03-31",
+    "display_date": "Mar 31, 2026",
+    "subject": "Blazers at 31.5%? The Market's Overreacting"
+  },
+  {
+    "date": "2026-03-30",
+    "display_date": "Mar 30, 2026",
+    "subject": "Finland's Eurovision Play: 35% Odds and Rising"
+  },
+  {
     "date": "2026-03-29",
     "display_date": "Mar 29, 2026",
     "subject": "Illinois March Madness Odds Just Dropped: Here's Why"

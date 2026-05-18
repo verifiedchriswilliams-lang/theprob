@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-03-28",
-  "built_recently": "Big week under the hood. The hero algorithm was picking Tom Steyer (California Governor, Nov 2026, $45K traded today) over Iran ($3.5M traded today) and March Madness. Fixed. Volume is now the story — a market with $3M+ in action doesn't need a 5-point move to earn the front page. We also shipped two home page designs: the current dark/minimal look and a new Stitch design (volt green, terminal aesthetic). Both are live at theprobnewsletter.com — toggle between them and let me know which you prefer.",
-  "coming_next": "Yesterday's Biggest Swings (daily snapshot diff showing which markets moved most in 24h), a Closing Soon rail for markets resolving within 72 hours near 50/50, and watching which homepage design readers prefer. Vote with the feedback buttons at the top of either page."
+  "last_updated": "2026-04-12",
+  "built_recently": "Launched a live Kalshi trading bot — real money, fully automated. The bot runs every hour via GitHub Actions, sizes trades dynamically (10% of balance, compounding as the account grows), and targets markets resolving within 7 days only. No year-long lockups. Duration is now the primary ranking signal: a 70% market closing tonight beats an 85% market closing next month. Starting balance: $89.62.",
+  "coming_next": "Watching the first live trades resolve and tuning the short-duration market pipeline. The near-term Kalshi fetch (markets closing within 72 hours) just went live — expect same-day and next-day trades to start appearing as the pipeline warms up. The Spread arbitrage signal is next once tickers are populating correctly."
 }

@@ -1,0 +1,46 @@
+{
+  "date": "2026-04-12",
+  "edition": 1,
+  "stories": [
+    {
+      "number": "01",
+      "source": "The Guardian",
+      "url": "https://www.theguardian.com/business/2026/apr/11/polymarket-gamblers-betting-iran-war-ukraine-news-truth",
+      "headline": "'Abhorrent': The Inside Story of the Polymarket Gamblers Betting Millions on War",
+      "raw_summary": "Polymarket users are placing massive bets on war outcomes, sparking outrage over the ethics of profiting from human tragedy. The controversy threatens to fuel regulatory crackdowns on prediction markets, especially as platforms struggle to balance free speech with public relations disasters.",
+      "market_signal": null
+    },
+    {
+      "number": "02",
+      "source": "The Verge",
+      "url": "https://www.theverge.com/tech/910691/google-news-polymarket-bets-error",
+      "headline": "Google Says Polymarket Bets Showing Up in News Was an 'Error'",
+      "raw_summary": "Google accidentally displayed Polymarket betting odds in its News results, prompting the company to call it an 'error' and remove the feature. The slip-up reveals Google's internal experiments with integrating prediction market data into search results, which could massively boost mainstream adoption if made permanent.",
+      "market_signal": null
+    },
+    {
+      "number": "03",
+      "source": "Bloomberg",
+      "url": "https://www.bloomberg.com/news/articles/2026-04-10/what-are-weather-prediction-markets-and-do-they-work",
+      "headline": "Weather Prediction Markets Are Booming. Can They Actually Improve Forecasts?",
+      "raw_summary": "Weather prediction markets are exploding as traders bet on everything from hurricane paths to temperature records, turning meteorology into a gambling opportunity. If these markets can actually outperform traditional forecasts, they will prove that crowdsourced betting beats expert analysis in yet another domain.",
+      "market_signal": null
+    },
+    {
+      "number": "04",
+      "source": "CoinDesk",
+      "url": "https://www.coindesk.com/markets/2026/04/09/kalshi-now-controls-89-of-the-u-s-prediction-market-as-regulated-trading-takes-over",
+      "headline": "Kalshi Now Controls 89% of the U.S. Prediction Market as Regulated Trading Takes Over",
+      "raw_summary": "Kalshi has captured 89% of the U.S. prediction markets, cementing its dominance as the regulated platform that beat out offshore competitors like Polymarket. This regulatory moat gives Kalshi massive pricing power and positions it to shape how Americans bet on everything from elections to interest rates.",
+      "market_signal": "89% market share. One regulated player. That is not a market, that is a monopoly in formation."
+    },
+    {
+      "number": "05",
+      "source": "Bloomberg",
+      "url": "https://www.bloomberg.com/news/articles/2026-04-09/how-prediction-markets-are-blurring-the-line-between-trading-and-betting",
+      "headline": "How Prediction Markets Turned the World Into a Casino",
+      "raw_summary": "Prediction markets have exploded beyond politics and finance into everything from celebrity deaths to weather patterns, creating a global betting ecosystem where literally anything can become a tradeable outcome. This massive expansion means more liquidity and opportunities for sharp bettors, but also attracts casual gamblers who do not understand the fundamentals, potentially creating mispriced markets ripe for exploitation.",
+      "market_signal": null
+    }
+  ]
+}

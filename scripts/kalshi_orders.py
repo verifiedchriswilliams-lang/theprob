@@ -1,0 +1,812 @@
+from __future__ import annotations
+"""
+kalshi_orders.py
+────────────────
+Kalshi order placement module for the $100→$1M live trading bot.
+
+Authentication: RSA-PSS/SHA-256 using KALSHI_KEY_ID + KALSHI_PRIVATE_KEY
+API: Kalshi Trade API v2  (https://trading.kalshi.com/trade-api/v2)
+
+Public surface:
+    KalshiOrderClient          – authenticated HTTP client
+    KalshiOrderClient.place_order()  – place a limit YES or NO order
+    KalshiOrderClient.get_order()    – fetch single order status
+    KalshiOrderClient.get_balance()  – current account balance
+
+Helper:
+    calculate_contracts()      – how many contracts $N buys at a given price
+    load_ledger() / append_ledger()  – JSON audit-log helpers
+"""
+
+import base64
+import json
+import logging
+import os
+import time
+import uuid
+from datetime import datetime, timezone
+from math import floor
+from pathlib import Path
+from typing import Any
+
+import requests
+from cryptography.hazmat.primitives import hashes, serialization
+from cryptography.hazmat.primitives.asymmetric import padding
+
+# ─────────────────────────────────────────────
+# Config / constants
+# ─────────────────────────────────────────────
+
+PROD_BASE_URL  = "https://api.elections.kalshi.com/trade-api/v2"
+DEMO_BASE_URL  = "https://demo-api.kalshi.co/trade-api/v2"
+LEDGER_PATH    = Path("trade_ledger.json")
+REQUEST_TIMEOUT = 15          # seconds
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s  %(levelname)-8s  %(message)s",
+    datefmt="%Y-%m-%dT%H:%M:%SZ",
+)
+log = logging.getLogger("kalshi_orders")
+
+
+# ─────────────────────────────────────────────
+# Utility – dynamic trade sizing
+# ─────────────────────────────────────────────
+
+def calculate_trade_budget(balance: float) -> float:
+    """
+    Dynamic trade size: scales with account balance to maximise compounding.
+
+    Tiers (% of balance per trade):
+        $0   – $1,000   →  10%   e.g. $100 account → $10/trade
+        $1K  – $10,000  →   8%   e.g. $5,000       → $400/trade
+        $10K – $50,000  →   5%   e.g. $20,000      → $1,000/trade
+        $50K+           →   2%   e.g. $100,000      → $2,000/trade
+
+    Minimum $5 so we can always place at least one contract.
+    Maximum $5,000 per trade regardless of balance (risk cap).
+    """
+    if balance <= 1_000:
+        pct = 0.10
+    elif balance <= 10_000:
+        pct = 0.08
+    elif balance <= 50_000:
+        pct = 0.05
+    else:
+        pct = 0.02
+    return round(min(max(balance * pct, 5.0), 5_000.0), 2)
+
+
+# ─────────────────────────────────────────────
+# Utility – contract sizing
+# ─────────────────────────────────────────────
+
+def calculate_contracts(
+    budget_dollars: float,
+    price_cents: int,
+) -> int:
+    """
+    How many whole contracts can we buy for `budget_dollars` at `price_cents`
+    per contract?
+
+    Kalshi contracts cost `price_cents / 100` dollars each and pay $1 on win.
+
+    Example:
+        calculate_contracts(10.00, 65)  →  15  (costs $9.75)
+        calculate_contracts(10.00, 30)  →  33  (costs $9.90)
+    """
+    if not (1 <= price_cents <= 99):
+        raise ValueError(f"price_cents must be 1–99, got {price_cents}")
+    budget_cents = budget_dollars * 100
+    return floor(budget_cents / price_cents)
+
+
+# ─────────────────────────────────────────────
+# Utility – audit ledger
+# ─────────────────────────────────────────────
+
+def load_ledger(path: Path = LEDGER_PATH) -> list[dict]:
+    """Return the current ledger as a list; creates file if absent."""
+    if not path.exists():
+        return []
+    with path.open() as f:
+        return json.load(f)
+
+
+def append_ledger(entry: dict, path: Path = LEDGER_PATH) -> None:
+    """Append one trade/event record to the JSON ledger."""
+    ledger = load_ledger(path)
+    ledger.append(entry)
+    with path.open("w") as f:
+        json.dump(ledger, f, indent=2)
+    log.info("Ledger updated → %s (%d entries)", path, len(ledger))
+
+
+# ─────────────────────────────────────────────
+# Core client
+# ─────────────────────────────────────────────
+
+class KalshiOrderClient:
+    """
+    Thin authenticated wrapper around the Kalshi Trade API v2.
+
+    Reads credentials from environment variables by default:
+        KALSHI_KEY_ID         – your API key ID (UUID string)
+        KALSHI_PRIVATE_KEY    – PEM-encoded RSA private key
+                                (newlines as \\n are accepted)
+
+    Pass demo=True to route requests to the sandbox environment.
+    """
+
+    def __init__(
+        self,
+        key_id:      str | None = None,
+        private_key_pem: str | None = None,
+        *,
+        demo: bool = False,
+        budget_per_trade: float | None = None,  # None = use dynamic sizing
+        ledger_path: Path = LEDGER_PATH,
+    ) -> None:
+        self.key_id          = key_id or os.environ["KALSHI_KEY_ID"]
+        self.base_url        = DEMO_BASE_URL if demo else PROD_BASE_URL
+        self._fixed_budget   = budget_per_trade   # None means dynamic
+        self.budget          = budget_per_trade or 10.00  # fallback until balance fetched
+        self.ledger_path     = ledger_path
+        self._session        = requests.Session()
+        self._private_key    = self._load_private_key(
+            private_key_pem or os.environ["KALSHI_PRIVATE_KEY"]
+        )
+        log.info(
+            "KalshiOrderClient ready  key=%s  env=%s  budget=$%.2f",
+            self.key_id[:8] + "…",
+            "DEMO" if demo else "LIVE",
+            self.budget,
+        )
+
+    # ── auth ──────────────────────────────────
+
+    @staticmethod
+    def _load_private_key(pem_string: str):
+        """
+        Load an RSA private key from a PEM string.
+        Handles both literal newlines and escaped \\n (common in env vars).
+        """
+        pem_string = pem_string.replace("\\n", "\n").strip()
+        if not pem_string.startswith("-----"):
+            # Assume raw base64-encoded DER; wrap it.
+            pem_string = (
+                "-----BEGIN RSA PRIVATE KEY-----\n"
+                + pem_string
+                + "\n-----END RSA PRIVATE KEY-----"
+            )
+        return serialization.load_pem_private_key(pem_string.encode(), password=None)
+
+    def _sign(self, method: str, path: str) -> tuple[str, str]:
+        """
+        Produce (timestamp_ms_str, base64_signature) for a request.
+
+        Kalshi signature message = timestamp_ms + METHOD + /path
+        Algorithm: RSA-PSS with SHA-256, salt length = digest length (32 bytes).
+        """
+        ts_ms = str(int(time.time() * 1000))
+        # Kalshi requires the full path including the /trade-api/v2 prefix in the signature
+        full_path = "/trade-api/v2" + path
+        message = (ts_ms + method.upper() + full_path).encode("utf-8")
+        raw_sig = self._private_key.sign(
+            message,
+            padding.PSS(
+                mgf=padding.MGF1(hashes.SHA256()),
+                salt_length=padding.PSS.DIGEST_LENGTH,
+            ),
+            hashes.SHA256(),
+        )
+        return ts_ms, base64.b64encode(raw_sig).decode("utf-8")
+
+    def _auth_headers(self, method: str, path: str) -> dict[str, str]:
+        """Return the three Kalshi authentication headers for a request."""
+        ts, sig = self._sign(method, path)
+        return {
+            "KALSHI-ACCESS-KEY":       self.key_id,
+            "KALSHI-ACCESS-TIMESTAMP": ts,
+            "KALSHI-ACCESS-SIGNATURE": sig,
+            "Content-Type":            "application/json",
+        }
+
+    # ── low-level HTTP ─────────────────────────
+
+    def _get(self, path: str, params: dict | None = None) -> dict:
+        """Authenticated GET. Raises on non-2xx."""
+        url     = self.base_url + path
+        headers = self._auth_headers("GET", path)   # sign path only, not query
+        resp    = self._session.get(
+            url, headers=headers, params=params, timeout=REQUEST_TIMEOUT
+        )
+        resp.raise_for_status()
+        return resp.json()
+
+    def _post(self, path: str, body: dict) -> dict:
+        """Authenticated POST with JSON body. Raises on non-2xx."""
+        url     = self.base_url + path
+        headers = self._auth_headers("POST", path)
+        resp    = self._session.post(
+            url, headers=headers, json=body, timeout=REQUEST_TIMEOUT
+        )
+        resp.raise_for_status()
+        return resp.json()
+
+    # ── account info ──────────────────────────
+
+    def get_trade_budget(self) -> float:
+        """
+        Fetch live balance and return the dynamic trade size for this run.
+        If a fixed budget was set at init, use that instead.
+        """
+        if self._fixed_budget is not None:
+            return self._fixed_budget
+        data    = self.get_balance()
+        balance = data.get("balance", 0) / 100
+        budget  = calculate_trade_budget(balance)
+        self.budget = budget   # cache for logging
+        log.info("Dynamic budget: $%.2f  (balance $%.2f)", budget, balance)
+        return budget
+
+    def get_balance(self) -> dict:
+        """
+        Return account balance info.
+        Response includes: balance (cents), payout (cents).
+
+        Example:
+            {"balance": 10000, "payout": 0}   # $100.00 available
+        """
+        data = self._get("/portfolio/balance")
+        dollars = data.get("balance", 0) / 100
+        log.info("Account balance: $%.2f", dollars)
+        return data
+
+    # ── orders ────────────────────────────────
+
+    def place_order(
+        self,
+        ticker:       str,
+        side:         str,          # "yes" or "no"
+        prob:         float,        # current market probability (0–1 or 0–100)
+        *,
+        budget:       float | None = None,
+        limit_buffer: int = 2,      # extra cents added to limit price for fill confidence
+        reason:       str = "",     # human-readable signal description for ledger
+        dry_run:      bool = False,
+    ) -> dict:
+        """
+        Place a Kalshi limit order and log the result.
+
+        Parameters
+        ----------
+        ticker        Kalshi market ticker, e.g. "KXINFL-25JAN-B3.5"
+        side          "yes" or "no"
+        prob          Market probability (0.0–1.0  OR  0–100 accepted)
+        budget        Dollar amount to spend. Defaults to self.budget ($10).
+        limit_buffer  Cents added to limit price to improve fill probability.
+                      e.g. buffer=2 on a YES@65 sets limit to 67¢.
+        reason        Free-text reason for the trade (logged for audit).
+        dry_run       If True, build the payload but don't send it.
+
+        Returns
+        -------
+        dict with keys: order_id, status, ticker, side, count,
+                        yes_price, cost_dollars, ledger_entry
+        """
+        side = side.lower()
+        if side not in ("yes", "no"):
+            raise ValueError(f"side must be 'yes' or 'no', got {side!r}")
+
+        # Normalise prob to 0–100 range
+        if 0.0 < prob <= 1.0:
+            prob = prob * 100
+        prob_pct = round(prob)          # integer cents representation of YES price
+
+        # Determine limit price for the chosen side
+        if side == "yes":
+            raw_price  = prob_pct
+            limit_price = min(99, raw_price + limit_buffer)
+        else:
+            raw_price  = 100 - prob_pct
+            limit_price = min(99, raw_price + limit_buffer)
+
+        trade_budget = budget if budget is not None else self.budget
+        count = calculate_contracts(trade_budget, limit_price)
+
+        if count < 1:
+            raise ValueError(
+                f"Budget ${trade_budget:.2f} too small for 1 contract at {limit_price}¢"
+            )
+
+        cost_dollars = round(count * limit_price / 100, 2)
+
+        # Build order payload
+        payload: dict[str, Any] = {
+            "ticker":           ticker,
+            "action":           "buy",
+            "type":             "limit",
+            "side":             side,
+            "count":            count,
+            "client_order_id":  str(uuid.uuid4()),   # idempotency key
+        }
+        if side == "yes":
+            payload["yes_price"] = limit_price
+        else:
+            payload["no_price"] = limit_price
+
+        log.info(
+            "ORDER  %s  BUY-%s  count=%d  limit=%d¢  cost≈$%.2f%s",
+            ticker, side.upper(), count, limit_price, cost_dollars,
+            "  [DRY RUN]" if dry_run else "",
+        )
+
+        if dry_run:
+            log.info("Dry run — skipping API call.")
+            return {
+                "order_id":     None,
+                "status":       "dry_run",
+                "ticker":       ticker,
+                "side":         side,
+                "count":        count,
+                "yes_price":    limit_price if side == "yes" else None,
+                "no_price":     limit_price if side == "no"  else None,
+                "cost_dollars": cost_dollars,
+                "payload":      payload,
+            }
+
+        # ── Send the order ──
+        try:
+            response = self._post("/portfolio/orders", payload)
+        except requests.HTTPError as exc:
+            status_code = exc.response.status_code if exc.response is not None else "?"
+            body        = exc.response.text       if exc.response is not None else ""
+            log.error("Order rejected  HTTP %s: %s", status_code, body)
+            self._log_failure(ticker, side, count, limit_price, reason, str(exc))
+            raise
+
+        order = response.get("order", response)   # API wraps in "order" key
+        order_id = order.get("order_id") or order.get("id", "unknown")
+        status   = order.get("status", "unknown")
+
+        log.info("Order accepted  order_id=%s  status=%s", order_id, status)
+
+        # ── Audit ledger entry ──
+        entry = {
+            "event":        "order_placed",
+            "timestamp":    datetime.now(timezone.utc).isoformat(),
+            "order_id":     order_id,
+            "ticker":       ticker,
+            "side":         side,
+            "count":        count,
+            "limit_price":  limit_price,
+            "market_prob":  prob_pct,
+            "cost_dollars": cost_dollars,
+            "budget":       trade_budget,
+            "status":       status,
+            "reason":       reason,
+            "client_order_id": payload["client_order_id"],
+            "raw_response": order,
+        }
+        append_ledger(entry, self.ledger_path)
+
+        return {
+            "order_id":     order_id,
+            "status":       status,
+            "ticker":       ticker,
+            "side":         side,
+            "count":        count,
+            "yes_price":    limit_price if side == "yes" else None,
+            "no_price":     limit_price if side == "no"  else None,
+            "cost_dollars": cost_dollars,
+            "ledger_entry": entry,
+        }
+
+    def get_order(self, order_id: str) -> dict:
+        """
+        Fetch the current state of an order by ID.
+
+        Response fields include: order_id, status, ticker, side,
+        count, remaining_count, yes_price, no_price, created_time.
+        """
+        data = self._get(f"/portfolio/orders/{order_id}")
+        order = data.get("order", data)
+        log.info(
+            "Order %s  status=%s  filled=%d/%d",
+            order_id,
+            order.get("status"),
+            order.get("count", 0) - order.get("remaining_count", 0),
+            order.get("count", 0),
+        )
+        return order
+
+    def get_open_positions(self) -> list[dict]:
+        """
+        Return only positions where you actually hold contracts.
+
+        Kalshi's /portfolio/positions returns ALL historical positions including
+        resolved/settled ones with 0 contracts remaining. We filter to only
+        entries where position != 0 (YES contracts) or resting_orders_count > 0.
+
+        Kalshi v2 field names tried in order:
+          position          — net YES contracts (positive=YES held, negative=NO held)
+          market_exposure   — dollar value > 0 if position is open
+          resting_orders_count — unfilled limit orders still sitting
+        """
+        data = self._get("/portfolio/positions")
+        all_positions = data.get("market_positions", [])
+
+        # Log raw fields of first position so we can see what Kalshi v2 actually returns
+        if all_positions:
+            sample = all_positions[0]
+            log.info("Position sample fields: %s",
+                     {k: v for k, v in sample.items() if v not in (None, 0, "", [])})
+
+        # Filter to only positions with actual holdings.
+        # Kalshi v2 uses string dollar fields (e.g. '12.237000') and
+        # fixed-point strings for position count (e.g. '-13.00' = 13 NO contracts).
+        active = []
+        for p in all_positions:
+            def _f(key: str) -> float:
+                return abs(float(p.get(key) or 0))
+
+            # ONLY use fields that reflect CURRENT holdings, not historical cost.
+            # position_fp = current contract count (non-zero = still holding)
+            # market_exposure_dollars = current dollar exposure (non-zero = still open)
+            # total_traded_dollars is historical cost paid — always non-zero, DO NOT USE.
+            has_position = (
+                _f("position_fp") > 0                # Kalshi v2: current contracts held
+                or _f("market_exposure_dollars") > 0  # current dollar exposure
+                or _f("position") > 0                 # legacy integer field
+                or _f("market_exposure") > 0          # legacy cents field
+                or _f("resting_orders_count") > 0     # unfilled limit orders
+            )
+            if has_position:
+                active.append(p)
+
+        # Safety fallback: if we still filtered everything, trust the raw count.
+        if not active and all_positions:
+            log.warning(
+                "Position filter removed all %d entries — field names may have changed. "
+                "Falling back to raw API count as conservative slot protection.",
+                len(all_positions)
+            )
+            active = all_positions
+
+        log.info("Open positions: %d  (raw from API: %d, filtered ghost positions: %d)",
+                 len(active), len(all_positions), len(all_positions) - len(active))
+        return active
+
+    @staticmethod
+    def _is_range_bucket(ticker: str) -> bool:
+        """
+        True if this ticker is a Kalshi range-bucket market.
+
+        Range buckets are the NASDAQ/S&P "above X.XX" style markets that
+        generate 50-200 tickers per event (one per price level). They're
+        identified by a -T<number> suffix or :: separator.
+
+        Examples of range buckets:
+            KXNASDAQ100U-26APR13H1600-T27899.99   <- threshold suffix
+            KXSPX-26APR13H1600-T5499.99
+            KXUSDCAD-25NOV-B105-110::              <- colon-colon separator
+
+        Examples of real binary markets (NOT range buckets):
+            KXMLBGAME-26APR12-MILBOS              <- game winner
+            KXNBAPTS-26APR12MEMHOU-HOURSHEPPARD15  <- player prop
+            KXFED-26MAY-B425                      <- Fed rate (single outcome)
+        """
+        import re
+        if "::" in ticker:
+            return True
+        if re.search(r"-T\d+(\.\d+)?$", ticker):
+            return True
+        return False
+
+    # Sports game series tickers confirmed to exist on Kalshi.
+    # Pattern: each series generates events named SERIES-YYMONDD... for each game day.
+    # To find today's games, we fetch series events and look for today's date in the
+    # event ticker. Close_time is set to end of season (can_close_early); do NOT use
+    # close_time for near-term filtering on these markets.
+    GAME_SERIES = [
+        # ── American sports ────────────────────────────────────────────────
+        "KXMLBGAME",         # MLB game winner
+        "KXMLBHOMETEAM",     # MLB home team win
+        "KXNBAGAME",         # NBA game winner
+        "KXNBAPLAYOFF",      # NBA playoff game winner
+        "KXNHLGAME",         # NHL game winner
+        "KXNHLPLAYOFF",      # NHL playoff game winner
+        "KXNFLGAME",         # NFL game winner
+        "KXNHLFIRSTGOAL",    # NHL: who scores first ✓
+        "KXNFLNEXTTD",       # NFL: next TD scorer ✓
+        "KXNCAAHOCKEYGAME",  # College hockey ✓
+        "KXNCAABBSPREAD",    # College baseball spread ✓
+        # ── International sports ───────────────────────────────────────────
+        "KXEPLGAME",         # EPL game winner
+        "KXEPLBTTS",         # EPL both teams to score ✓
+        "KXBUNDESLIGAGAME",  # Bundesliga game winner
+        "KXBUNDESLIGA1H",    # Bundesliga first half ✓
+        "KXEREDIVISIEGAME",  # Eredivisie game ✓
+        "KXARGPREMDIV",      # Argentine soccer ✓
+        "KXAFLGAME",         # AFL Australian football ✓
+        "KXBBSERIEAGAME",    # Italian basketball ✓
+        "KXCHNSLGAME",       # Chinese soccer ✓
+        "KXCOUPEDEFRANCEGAME",  # Coupe de France ✓
+    ]
+
+    def get_live_candidates(self, max_hours: float = 48.0) -> list[dict]:
+        """
+        Fetch live Kalshi game markets by querying known sports game series.
+
+        KEY INSIGHT (confirmed via debug): Kalshi sports game-winner markets
+        have close_time set to END OF SEASON (months away), NOT end of game.
+        They resolve early via can_close_early when the game ends. This means
+        any time-window filter on close_time MISSES all game markets entirely.
+
+        Solution: fetch directly from known GAME_SERIES tickers, look for
+        events containing today's/tomorrow's date in the event ticker,
+        then return markets where close_time is still in the future (game
+        hasn't started yet, or is currently in progress with betting still open).
+
+        Returns a list of normalized market dicts sorted by close_time,
+        ready for trade_selector.
+        """
+        from datetime import timedelta
+        now_utc = datetime.now(timezone.utc)
+
+        # Build date strings for today and tomorrow (Kalshi format: 26APR12)
+        date_strings = [
+            (now_utc - timedelta(hours=4)).strftime("%y%b%d").upper(),  # yesterday (late games)
+            now_utc.strftime("%y%b%d").upper(),                          # today
+            (now_utc + timedelta(days=1)).strftime("%y%b%d").upper(),    # tomorrow
+        ]
+
+        results    = []
+        seen       : set = set()
+        series_hit = 0
+
+        log.info("Fetching live game candidates from %d series (dates: %s) …",
+                 len(self.GAME_SERIES), ", ".join(date_strings))
+
+        for series_ticker in self.GAME_SERIES:
+            try:
+                data   = self._get("/events", params={
+                    "limit":               50,
+                    "series_ticker":       series_ticker,
+                    "with_nested_markets": "true",
+                })
+                events = data.get("events", [])
+                if not events:
+                    time.sleep(0.05)
+                    continue
+
+                for event in events:
+                    ev_ticker = (event.get("event_ticker")
+                                 or event.get("series_ticker", ""))
+                    ev_title  = event.get("title", "")
+
+                    # Only events for today or tomorrow
+                    if not any(d in ev_ticker.upper() for d in date_strings):
+                        continue
+
+                    series_hit += 1
+                    for m in event.get("markets", []):
+                        try:
+                            ticker = m.get("ticker", "")
+                            if not ticker or ticker in seen:
+                                continue
+                            seen.add(ticker)
+
+                            # Skip already-settled
+                            if m.get("status") in ("settled", "finalized",
+                                                    "resolved", "closed"):
+                                continue
+
+                            # Skip range buckets and parlays
+                            if self._is_range_bucket(ticker):
+                                continue
+                            if m.get("mve_collection_ticker"):
+                                continue
+
+                            # close_time: if in past, betting already closed
+                            # (game in progress or over). Skip those.
+                            close_time = m.get("close_time", "") or ""
+                            if not close_time:
+                                continue
+                            close_dt  = datetime.fromisoformat(
+                                close_time.replace("Z", "+00:00"))
+                            if close_dt <= now_utc:
+                                continue   # game already started / betting closed
+                            days_left = (close_dt - now_utc).total_seconds() / 86400
+
+                            # Probability
+                            yes_bid = float(m.get("yes_bid_dollars", 0) or 0)
+                            yes_ask = float(m.get("yes_ask_dollars", 0) or 0)
+                            last    = float(m.get("last_price_dollars", 0) or 0)
+                            if yes_bid > 0 or yes_ask > 0:
+                                prob = round((yes_bid + yes_ask) / 2 * 100, 1)
+                            elif last > 0:
+                                prob = round(last * 100, 1)
+                            else:
+                                continue
+                            if not (1 < prob < 99):
+                                continue
+
+                            subtitle = (m.get("subtitle") or m.get("title") or "")
+                            question = (
+                                f"{ev_title}: {subtitle}"
+                                if subtitle and subtitle.lower() != ev_title.lower()
+                                else ev_title or ticker
+                            )
+
+                            results.append({
+                                "source":           "Kalshi",
+                                "question":         question,
+                                "slug":             ticker,
+                                "url":              f"https://kalshi.com/markets/{ev_ticker.lower()}",
+                                "prob":             prob,
+                                "volume":           float(m.get("volume_fp",     0) or 0) / 100,
+                                "volume_24h":       float(m.get("volume_24h_fp", 0) or 0) / 100,
+                                "end_date_raw":     close_time,
+                                "days_left":        round(days_left, 3),
+                                "display_category": "Sports",
+                                "trading_signal":   "active",
+                            })
+
+                        except Exception:
+                            continue
+
+                time.sleep(0.1)
+
+            except Exception as exc:
+                log.debug("Series %s: %s", series_ticker, exc)
+                continue
+
+        results.sort(key=lambda x: x["days_left"])
+        log.info(
+            "Live sports candidates: %d found | %d series had today's events | "
+            "%d series checked",
+            len(results), series_hit, len(self.GAME_SERIES),
+        )
+
+        # ── Time-based near-term sweep ────────────────────────────────────────
+        # Sports series fetch covers game markets, but misses economic releases
+        # (Fed decisions, CPI, jobs), political events, and cultural markets.
+        # Those are short-duration sweet-zone trades with real edge.
+        # Query: /markets with max_close_time = now + 48h, no volume floor.
+        # Returns ALL Kalshi markets closing soon regardless of category or volume.
+        try:
+            cutoff = now_utc + timedelta(hours=max_hours)
+            cutoff_str = cutoff.strftime("%Y-%m-%dT%H:%M:%SZ")
+            nt_cursor = None
+            nt_added  = 0
+            nt_pages  = 0
+            while nt_pages < 5:
+                nt_params = {
+                    "status":         "open",
+                    "max_close_time": cutoff_str,
+                    "limit":          200,
+                }
+                if nt_cursor:
+                    nt_params["cursor"] = nt_cursor
+                nt_data    = self._get("/markets", params=nt_params)
+                nt_markets = nt_data.get("markets", [])
+                if not nt_markets:
+                    break
+
+                for m in nt_markets:
+                    ticker = m.get("ticker", "")
+                    if not ticker or ticker in seen:
+                        continue
+                    if self._is_range_bucket(ticker):
+                        continue
+                    if m.get("status") in ("settled", "finalized", "resolved", "closed"):
+                        continue
+
+                    close_time = m.get("close_time", "") or ""
+                    if not close_time:
+                        continue
+                    try:
+                        close_dt = datetime.fromisoformat(close_time.replace("Z", "+00:00"))
+                    except Exception:
+                        continue
+                    if close_dt <= now_utc:
+                        continue   # already expired
+                    if close_dt > cutoff:
+                        continue   # outside window
+                    days_left = (close_dt - now_utc).total_seconds() / 86400
+
+                    # Normalise probability — /markets may return cents or dollars
+                    yes_bid = float(m.get("yes_bid") or m.get("yes_bid_dollars", 0) or 0)
+                    yes_ask = float(m.get("yes_ask") or m.get("yes_ask_dollars", 0) or 0)
+                    if yes_bid > 1 or yes_ask > 1:
+                        # already in cents (0-100)
+                        prob = round((yes_bid + yes_ask) / 2, 1)
+                    elif yes_bid > 0 or yes_ask > 0:
+                        prob = round((yes_bid + yes_ask) / 2 * 100, 1)
+                    else:
+                        last = float(m.get("last_price") or m.get("last_price_dollars", 0) or 0)
+                        if last <= 0:
+                            continue
+                        prob = round(last * 100, 1) if last <= 1 else round(last, 1)
+                    if not (1 < prob < 99):
+                        continue
+
+                    seen.add(ticker)
+                    subtitle    = m.get("subtitle", "") or m.get("title", "") or ""
+                    event_title = m.get("event_title", "") or subtitle
+                    question    = (f"{event_title}: {subtitle}"
+                                   if subtitle and subtitle.lower() != event_title.lower()
+                                   else event_title or ticker)
+                    series_ticker = (m.get("event_ticker") or
+                                     m.get("series_ticker") or
+                                     ticker.rsplit("-", 1)[0])
+                    category = m.get("category", "") or ""
+
+                    results.append({
+                        "source":           "Kalshi",
+                        "question":         question,
+                        "slug":             ticker,
+                        "url":              f"https://kalshi.com/markets/{series_ticker.lower()}",
+                        "prob":             prob,
+                        "volume":           float(m.get("volume",     0) or 0) / 100,
+                        "volume_24h":       float(m.get("volume_24h", 0) or 0) / 100,
+                        "end_date_raw":     close_time,
+                        "days_left":        round(days_left, 3),
+                        "display_category": category or "Other",
+                        "trading_signal":   "active",
+                    })
+                    nt_added += 1
+
+                nt_cursor = nt_data.get("cursor")
+                if not nt_cursor:
+                    break
+                nt_pages += 1
+                time.sleep(0.15)
+
+            log.info("Near-term sweep (≤%.0fh): +%d non-sports markets", max_hours, nt_added)
+        except Exception as exc:
+            log.warning("Near-term /markets sweep failed: %s", exc)
+
+        results.sort(key=lambda x: x["days_left"])
+        log.info("Total live candidates: %d", len(results))
+        for r in results[:20]:
+            log.info("  %.1fh  %s%%  $%.0f/24h  %s",
+                     r["days_left"] * 24, r["prob"],
+                     r["volume_24h"], r["question"][:60])
+        return results
+
+    def cancel_order(self, order_id: str) -> dict:
+        """Cancel a resting limit order."""
+        path = f"/portfolio/orders/{order_id}"
+        url  = self.base_url + path
+        headers = self._auth_headers("DELETE", path)
+        resp = self._session.delete(url, headers=headers, timeout=REQUEST_TIMEOUT)
+        resp.raise_for_status()
+        log.info("Order %s cancelled.", order_id)
+        return resp.json()
+
+    # ── internal helpers ──────────────────────
+
+    def _log_failure(
+        self,
+        ticker: str,
+        side: str,
+        count: int,
+        limit_price: int,
+        reason: str,
+        error: str,
+    ) -> None:
+        entry = {
+            "event":      "order_failed",
+            "timestamp":  datetime.now(timezone.utc).isoformat(),
+            "ticker":     ticker,
+            "side":       side,
+            "count":      count,
+            "limit_price": limit_price,
+            "reason":     reason,
+            "error":      error,
+        }
+        append_ledger(entry, self.ledger_path)

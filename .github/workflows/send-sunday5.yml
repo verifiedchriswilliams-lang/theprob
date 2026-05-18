@@ -1,13 +1,12 @@
-name: Build and Send Daily Newsletter
+name: Build and Send Sunday 5 Newsletter
 
 on:
   schedule:
-    - cron: '50 10 * * 1-6'  # 6:50 AM EDT Mon-Sat — Sundays handled by send-sunday5.yml
-    # DST updated Mar 6 2026 — was '50 11 * * *' (EST/UTC-5), now '50 10 * * *' (EDT/UTC-4)
-  workflow_dispatch:        # allow manual trigger for testing
+    - cron: '50 10 * * 0'  # 6:50 AM EDT (UTC-4) every Sunday — same send time as daily newsletter
+  workflow_dispatch:        # allow manual trigger for testing / sending today's edition
 
 jobs:
-  build-newsletter:
+  build-sunday5:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
@@ -21,18 +20,18 @@ jobs:
       - name: Install dependencies
         run: pip install requests
 
-      - name: Build and send newsletter
+      - name: Build Sunday 5 newsletter
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           BEEHIIV_API_KEY:   ${{ secrets.BEEHIIV_API_KEY }}
           BEEHIIV_PUB_ID:    ${{ secrets.BEEHIIV_PUB_ID }}
-        run: python scripts/send_newsletter.py
+        run: python scripts/send_sunday5.py
 
       - name: Commit newsletter to repo
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add newsletter/
-          git diff --staged --quiet || git commit -m "chore: build daily newsletter [skip ci]"
+          git diff --staged --quiet || git commit -m "chore: build Sunday 5 newsletter [skip ci]"
           git pull --rebase origin main
           git push
