@@ -12,7 +12,7 @@
       "ytd_return_pct": 77.8,
       "win_count": 313,
       "loss_count": 53,
-      "open_count": 27,
+      "open_count": 28,
       "start_date": "2026-03-17",
       "last_updated": "2026-05-18",
       "trades": [
@@ -7089,6 +7089,24 @@
           "exit_prob": null,
           "exit_date": null,
           "pnl": null
+        },
+        {
+          "trade_id": "879ecfa3",
+          "market_id": "will-figures-f03-robots-push-at-least-250000-packages-by-1000-pm-on-may-21-671-585",
+          "question": "Will Figure's F.03 robots push at least 250,000 packages by 10:00 PM on May 21?",
+          "url": "https://polymarket.com/event/of-packages-pushed-by-figures-f03-robots-by-may-21-10-pm-et",
+          "source": "Polymarket",
+          "display_category": "Technology",
+          "entry_prob": 33.5,
+          "direction": "NO",
+          "amount": 100.0,
+          "entry_date": "2026-05-18",
+          "end_date_raw": "2026-05-21T00:00:00Z",
+          "end_date": "May 21",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
@@ -7096,12 +7114,12 @@
       "name": "The Contrarian",
       "strategy": "Fade longshots: always NO when crowd says \u226430%",
       "thesis": "Crowds overprice long shots. Sell the overpriced tickets.",
-      "current_balance": 1704.53,
-      "total_pnl": 704.53,
-      "ytd_return_pct": 70.5,
-      "win_count": 57,
+      "current_balance": 1714.66,
+      "total_pnl": 714.66,
+      "ytd_return_pct": 71.5,
+      "win_count": 58,
       "loss_count": 2,
-      "open_count": 7,
+      "open_count": 6,
       "start_date": "2026-03-17",
       "last_updated": "2026-05-18",
       "trades": [
@@ -8270,10 +8288,10 @@
           "entry_date": "2026-05-16",
           "end_date_raw": "2026-05-19T12:00:00Z",
           "end_date": "May 19",
-          "status": "open",
-          "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "status": "closed",
+          "exit_prob": 2.6,
+          "exit_date": "2026-05-18",
+          "pnl": 10.13
         },
         {
           "trade_id": "c815aa90",
