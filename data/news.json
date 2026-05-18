@@ -1,13 +1,76 @@
 {
-  "updated": "May 17, 2026 \u00b7 12:55 PM ET",
-  "updated_iso": "2026-05-17T17:55:04.926687+00:00",
+  "updated": "May 17, 2026 \u00b7 7:02 PM ET",
+  "updated_iso": "2026-05-18T00:02:29.604623+00:00",
   "homepage_count": 3,
   "articles": [
     {
-      "title": "If You Used Insider Knowledge to Score Big on Polymarket, You May Now Be in Huge Trouble",
-      "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTFBGZ3gyemdWQWlHeHhORTI3N1FlTmZ3blNmMzlXZll1RzE1MFhHQ21MenhQQUM4aVp5SEdTTExMdW5PTDdZU1J2S1hfcXRvb2VNYUtVWHFPa180RmkxaWtkM1YzZ2VpNU9fdTU3M21ZalVuYXM1eEJYMWhWYzJ0dw?oc=5",
-      "source": "Futurism",
-      "pub_iso": "2026-05-17T17:30:00+00:00",
+      "title": "The Mysterious Crypto Judges Who Settle Polymarket Disputes",
+      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9CY0NkOXFPckh4NXNxVm9tUGdhQnlHZVVUNkxFN0p6clFOclN4Q3d3WjlXbHlOVDdGM0tYRndXNnJEcDJVTEJFb0tTSEtrbkdIaTBETmRWV3haSmp6YVkwblQ3MXVDVThURF9TcQ?oc=5",
+      "source": "WSJ",
+      "pub_iso": "2026-05-18T00:00:00+00:00",
+      "description": "",
+      "summary": "",
+      "pub_display": "May 18"
+    },
+    {
+      "title": "Suspected insider accounts net $2.4 million on Polymarket Iran war bets with 98% win rate, firm finds",
+      "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxNX3lZdm0wMnVoc21PZGk2bURtUHRlUEFoUjNiUFV6MTRGc1ZveVJySVZOUDdPYmUyXzJ0SWVLSDJUbmtWa0xJRDJCNHFIVTFHZmVsUmZiT3RHZi11dV8xRDZtNEl2UElmZENvWGJsYzdBMFNtcTREWUxkTzNGbVVJSmgyOWtkLUJGdmkyNW9SZGp2aWdWZnVYZTRsNGNxNlhmREwybjczONIBrAFBVV95cUxOd2ZOQjMzQ1F0c2N2WjM5NnpjUGFvQWlsSTA1Q1V6WHgwdWc0MUxKWHlDcnZQdzB6eURndG5fZHdtU0RaLUF5aEN5Z1J2dXVpNzJ5ZXBBeGpsMGs0d3oxdXZTLTBtSXRXUkpHR2ozMFBNbVFtZW9oaDFuSkVoT0ZleW5VVWtWTEdsSUMwSzAzV0d1RFNQZVl6TFp2Nkt2LVhnOXNOcW4wYXdkdjhC?oc=5",
+      "source": "CBS News",
+      "pub_iso": "2026-05-17T23:17:49+00:00",
+      "description": "",
+      "summary": "",
+      "pub_display": "May 17"
+    },
+    {
+      "title": "Online prediction market traders make millions betting on U.S. military operations",
+      "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxQRkk1MkpaZ18tUXhmdGRHTEVPdEpQVzZvNHl4VWVGY1JYMko5TkxueG9WYlgwVHlKOEVTUjRqNDNlTnNNNU5mSi1CVlo2dzQ3RkNJZ0RqdkJYcExDLW43ajFfU3VjdUhCMU8wbWctYnJXelh3TlBKWW0zTnVIenNQZF9MOFVYT3V1MnplbWdWc1pQYjBrNDlUYXVoUWNhNndDQWhVandnOEg1V3UyMVB2MGk1VkdCNlJsNWQ1RlN3T0tnY3PSAcgBQVVfeXFMTkR1M2FGUllEd1pNQXVxWlpoNFlaNHZOUzF5eWtDeTkwOVVHQ2w3WHBLUEpNQ3pSWFBHOVp1VHVyTGptVW9rMy1sblBzV0REMVRwRlY2VGx2M0RmbmhnX1dscjVZWWp4OEhvamJZOVlYSENyZ2lZUEk2c0g2QUI3amZ6Y1d3Y1pqVm0zeHVKUGN0V05pdlZsQzFKcGUtdmtSTWktNWxxQXM5eXZIQ1E3UkR4REVGd1dJLTBCeWNPUEJxNG5SOVRJd0Y?oc=5",
+      "source": "CBS News",
+      "pub_iso": "2026-05-17T23:17:47+00:00",
+      "description": "",
+      "summary": "",
+      "pub_display": "May 17"
+    },
+    {
+      "title": "Claude achieves 68.4% success rate as prediction market trader",
+      "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTE5EckZWWVNMU0trRlduM1ZHeU8wTG9UV24zSUNQSlhNNlplby00ejdibENzSFBGNEFqdkVZQnNzZ2hzZHRTS2c3QTFWM1d1bVh1NzJfUHNPc0RKSnl2Q0ZMM1RHNDlxb2VVQjhfaDkzbFo1UVhfM1hpR2Y4Mzc?oc=5",
+      "source": "Crypto Briefing",
+      "pub_iso": "2026-05-17T21:22:35+00:00",
+      "description": "",
+      "summary": "",
+      "pub_display": "May 17"
+    },
+    {
+      "title": "Ho-Chunk lawsuit against Kalshi, online gambling can move forward",
+      "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxQd2FvZ1lsUmdqNm1EclIwLWVVRUNjNFFSMF9YaldITnJaUnlRazc4aTJ6YkttQ3JVdk1ha3JrVEZ0d3AxQ2trZklBUVc1eTh4SEhTLW1lWWxrY0lCNExRaTR6QXVUbmRFS1pfY1VrbE1DMkRlVUZmWnB2d2JYOWMwMExtZ1dMT0h3WFpjakg5S2dWQzdBMXQ3UGFCM2V6bExId2l1bmFpVzBCdG94Mmc?oc=5",
+      "source": "Wausau Pilot & Review",
+      "pub_iso": "2026-05-17T21:17:00+00:00",
+      "description": "",
+      "summary": "",
+      "pub_display": "May 17"
+    },
+    {
+      "title": "Polymarket Spreads Sensationalist Garbage About Hantavirus Case in U.S.",
+      "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxPUVNoanh6bWVKbWxZWVU4U2JDdHVrbEN4NjlQTHZ1MU1TTlY5WDV5cGp1Z0F3OTNnQTMwX3ZhWE1aejhOQmZCY0EtTEpSYkI4LWt4RDVpU2JuOFkxMEN5OUNVX3Q4ZVQ1NDhIdi1iZ2dVVHRxbzJGaVlHTzdMTU5ZM0E0TjVNc2ZGQXBtcTcxc2FCQ0F3dmdqNUw1Sm1kTy1ISFRJ?oc=5",
+      "source": "Gizmodo",
+      "pub_iso": "2026-05-17T19:33:51+00:00",
+      "description": "",
+      "summary": "",
+      "pub_display": "May 17"
+    },
+    {
+      "title": "Massie vs. Gallrein: Prediction Markets Bet $5.5M on the Most Expensive US House Primary Ever",
+      "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxQRXhZaTRNbFc0ekFXR1VEbDNCb09TSTZVX29hLTYwUnhSOThiUzFnbWF5bDhkWUthV2Y3eDRZSDd0QmEtYWhYVjcyck45QnpxVVM4RFFNXy1CcEVmSDlaU3JvaFkyZHA4X25TSHI2VlpoTWoyOW5nbWVKd0RhS1F0Z3c2U3FCcU12NEYyek5td0VQcHFxa0JqTDFBNXJhYXZuRFRXNExtT0w0MEZyRkhYVzRiS0JtUHM?oc=5",
+      "source": "Bitcoin News",
+      "pub_iso": "2026-05-17T19:30:10+00:00",
+      "description": "",
+      "summary": "",
+      "pub_display": "May 17"
+    },
+    {
+      "title": "Polymarket referral code \u201cCUSE\u201d extends $50 MLB bonus through May in NY, FL, and PA",
+      "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxQMW1TRVBXM1lvcFl0Y1NWa1FVUkpfV0dVbmJYV1d1cDI0NUtGLTNaeThBR2E0TnpwWjNIYWYyS2oyaGpmQV8zcnpKLUY4T09zdFJnblFZT0RoamFCV1FSZFFZX2h6U2h2eDJpbm5uOGpBNlpsWk5DMFlOdzRlSDNBdUppQjd4MU9kalZfbUxJczB0Y1IzenZTNDhTaTZhSDBBblNSV1MyVFdueDlwck9pZUtPQ3hIbzlCdmw4cE02QWJvUQ?oc=5",
+      "source": "Syracuse.com",
+      "pub_iso": "2026-05-17T15:45:00+00:00",
       "description": "",
       "summary": "",
       "pub_display": "May 17"
@@ -31,15 +94,6 @@
       "pub_display": "May 17"
     },
     {
-      "title": "Federal regulators crack down on suspicious prediction market bets - WSJ",
-      "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxORUJBUDhhc1hidDZfRmJSYlBMWEloZjdCc185UXVzbmJaUGw0ck1lVnotLW9haGs3ZGg2TF91aXgtczdmS3l2dnV1NDJXYmNqVlFvdE5wYlNwSGk5ZjMzM05yN01fZklENUdKWjkybC0wU24tS3hpWHRzeU9YN2x0czgxbjlDbS1GU21ub3NVdUg1NWFxV1JneDZXcG1mVW1EV1pYWmdCaFVPa3FsX3pLbDYxaXdlNjBPRUNNaDZPeXc?oc=5",
-      "source": "Investing.com",
-      "pub_iso": "2026-05-17T06:13:10+00:00",
-      "description": "",
-      "summary": "",
-      "pub_display": "May 17"
-    },
-    {
       "title": "Suspicious Betting in Washington Is on the Rise\u2014and Authorities Are Playing Catch-Up",
       "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQd21sbEdPQmFkSXpiNWNLTGdTclJMUkowTzY1QnlwTHJjQTkxMm9jQXZKNG9ydG16V3NIRjJmS3ROeXFFbVQ0M1hWSFVlSnVDaVRCSHlzUTBuQ25Sb1hMMklZNUFxV05sdUFVRGhncWQwQnN1WEI2QktwX3NVOEVMTExfTHFfNF9kZ2pCUmR3?oc=5",
       "source": "WSJ",
@@ -56,60 +110,6 @@
       "description": "",
       "summary": "",
       "pub_display": "May 16"
-    },
-    {
-      "title": "Vegas casino pulls plug on prediction market conference amid Nevada crackdown: report",
-      "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxNS0k0UjhpVmVBTmd1bTJfQ3pvMmNRQ09hX2RkdU1odkpXb0Q4cE52REVmS2EzNGJ5azNPX0V6WFpnVmFMbl9idzZVQm5SVXlTNGhxR0VfdjZ5enRhWnVBdHdQcWVOX1VQZ1VtaXB3QS1BbDMxTThYYTZldmtEZV9WYU15OFFYZjZuXzE5bHR0MWplTW5vcE4zeVRLbm9ES0Uybl9oeGVKQWExclRrVHAxbE10WGJGa2hUT0NBTlhPVVk1Zw?oc=5",
-      "source": "nypost.com",
-      "pub_iso": "2026-05-15T21:04:00+00:00",
-      "description": "",
-      "summary": "",
-      "pub_display": "May 15"
-    },
-    {
-      "title": "Goldman Sachs using AI to analyze prediction markets",
-      "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxPQWhCMGt6QmRFdmlZaDM2VEs5dzR3VmpaMnMtYURtX3NOcDhVMGhCaW1TOHRkVkx4SlYwMXZNLW53U090RHVCS0xPWm5LR2YwaUJGckNWTXh1UTc2Y3phT1dENDV2b3BwT1diT2JfTlN2NDNtajR6MDZmVk9JQXBXRXltaWpBTkw1S1ItaDRwaHNxbXdzenExcGREbklEYXBJVHlHaTE0eXl3SjRFOVNDZjlmRDRtckVieU5uWlMzZVhWelk?oc=5",
-      "source": "InvestmentNews",
-      "pub_iso": "2026-05-15T19:35:33+00:00",
-      "description": "",
-      "summary": "",
-      "pub_display": "May 15"
-    },
-    {
-      "title": "Prediction markets see surge in suspicious trades as popularity explodes",
-      "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxONkktZ2pMZEVSU1VUdk9FT2hOYWFHMjc2VkxfSzhvY29Rd2owdUs2YmZaLVFDcDhSb1loVm5VcW9zRzBUc1FxZnpEYU55NGg4OE1DWE5hc0xSWjdEdzh3YmVybGNJbVdHU2NFSDluV2J6V3lTeHdNTnFnNnhGOXdNVDFZWUpZZmtrSjRETERIclJNX2NHblo1VV9iVlBBOWlZR1EzT3pHaUx2cGhlV2h6LWxLV1o2QWk1YjJv?oc=5",
-      "source": "Reuters",
-      "pub_iso": "2026-05-15T19:05:28+00:00",
-      "description": "",
-      "summary": "",
-      "pub_display": "May 15"
-    },
-    {
-      "title": "Who Is Really Winning on Kalshi Parlays According to the Data",
-      "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxQQ3FfSW9zREl3eFlSYzl5SFF5d1ZCTnpkUjg2bWh4SS10dnVSNnkwOWxTUVVDT2R3ckVHU0dZREFWZGRJd216aDQyX1ZvV2NEeElXaVhta2UwNlVsMUtrQnRwckxoX3lXQkY4aDlJRGp4b0pNcTE1Nzk0cHloSFZkc3JodzFZc1FKQ2MyVkpRREViaU5HZVc1OFdaaFFCYTM1RDhNUkFSQzRYX2U4c09pSHk0WQ?oc=5",
-      "source": "Sports Illustrated",
-      "pub_iso": "2026-05-15T18:15:23+00:00",
-      "description": "",
-      "summary": "",
-      "pub_display": "May 15"
-    },
-    {
-      "title": "Why Polymarket Now Gives Strategy 82% Odds of Selling Bitcoin (BTC) This Year",
-      "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxPa3F1OXNvUE12alk4T1ctei1BV1NOalNSaWM5UjFsdGdhRG5TNlJsNWhnQjI2REQyQlZMQUN3M2Y1S3R6SU5GM2hrWVlzU2NkaDlyVVVTR1dsUjF4Wm1BWno1XzFrdFV2YTRidnppQW9wYmZZTFhRQmpzdFpwX2NuMEcyVWo5NlpVVjZJTFZPcjlqcUdTU1lKS1NxTVluajNzeHVxMWlEMksxZFQzXzVPUGc3UXY3THF1TXc?oc=5",
-      "source": "24/7 Wall St.",
-      "pub_iso": "2026-05-15T16:25:32+00:00",
-      "description": "",
-      "summary": "",
-      "pub_display": "May 15"
-    },
-    {
-      "title": "There\u2019s Only One Rule for Prediction Markets \u2014 Ignore It and You\u2019re the Sucker",
-      "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxNX0NPWG1TWEJOVzJoUTh5UzVIR1BGQk8zMUFZR01aUVJVZVRnRjRCU2dmVU91SXFrTFZ6UzlxbjItaUozamtlaWNnU3hsaGVocmhGZFpMRThhOElFNjVJM0pHMUlZUFQ3bk5CaXRMSUxpRXhmRjNkX2lDdnhqZzNLSzdYR3JJNnRwZlN0UUVwWWkyLXVvZUpkdm5fenBmeV9lTFZSUG9oXy1DQQ?oc=5",
-      "source": "Money Talks News",
-      "pub_iso": "2026-05-15T11:55:38+00:00",
-      "description": "",
-      "summary": "",
-      "pub_display": "May 15"
     }
   ]
 }
