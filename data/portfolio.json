@@ -12,9 +12,9 @@
       "ytd_return_pct": 78.7,
       "win_count": 314,
       "loss_count": 53,
-      "open_count": 30,
+      "open_count": 31,
       "start_date": "2026-03-17",
-      "last_updated": "2026-05-18",
+      "last_updated": "2026-05-19",
       "trades": [
         {
           "trade_id": "ea14c291",
@@ -7161,6 +7161,24 @@
           "exit_prob": null,
           "exit_date": null,
           "pnl": null
+        },
+        {
+          "trade_id": "3336d8cc",
+          "market_id": "mlb-nym-wsh-2026-05-18",
+          "question": "New York Mets vs. Washington Nationals",
+          "url": "https://polymarket.com/event/mlb-nym-wsh-2026-05-18",
+          "source": "Polymarket",
+          "display_category": "Sports",
+          "entry_prob": 34.5,
+          "direction": "NO",
+          "amount": 100.0,
+          "entry_date": "2026-05-19",
+          "end_date_raw": "2026-05-25T22:45:00Z",
+          "end_date": "May 25",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
@@ -7173,9 +7191,9 @@
       "ytd_return_pct": 71.5,
       "win_count": 58,
       "loss_count": 2,
-      "open_count": 6,
+      "open_count": 7,
       "start_date": "2026-03-17",
-      "last_updated": "2026-05-18",
+      "last_updated": "2026-05-19",
       "trades": [
         {
           "trade_id": "18b00e62",
@@ -8364,6 +8382,24 @@
           "exit_prob": null,
           "exit_date": null,
           "pnl": null
+        },
+        {
+          "trade_id": "c5a3db05",
+          "market_id": "us-x-iran-permanent-peace-deal-by-may-31-2026-333-871-241-192-799-449",
+          "question": "US x Iran permanent peace deal by May 31, 2026?",
+          "url": "https://polymarket.com/event/us-x-iran-permanent-peace-deal-by",
+          "source": "Polymarket",
+          "display_category": "Politics",
+          "entry_prob": 15.5,
+          "direction": "NO",
+          "amount": 100.0,
+          "entry_date": "2026-05-19",
+          "end_date_raw": "2026-05-31T00:00:00Z",
+          "end_date": "May 31",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
@@ -8378,7 +8414,7 @@
       "loss_count": 0,
       "open_count": 5,
       "start_date": "2026-03-17",
-      "last_updated": "2026-05-18",
+      "last_updated": "2026-05-19",
       "trades": [
         {
           "trade_id": "d19bb1c5",
