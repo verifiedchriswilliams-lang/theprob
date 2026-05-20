@@ -7,14 +7,14 @@
       "name": "The Crowd",
       "strategy": "Follow consensus: YES when prob \u226565%, NO when prob \u226435%",
       "thesis": "Smart money is already priced in. Ride the conviction.",
-      "current_balance": 1835.03,
-      "total_pnl": 835.03,
-      "ytd_return_pct": 83.5,
-      "win_count": 316,
+      "current_balance": 1873.92,
+      "total_pnl": 873.92,
+      "ytd_return_pct": 87.4,
+      "win_count": 317,
       "loss_count": 53,
       "open_count": 33,
       "start_date": "2026-03-17",
-      "last_updated": "2026-05-19",
+      "last_updated": "2026-05-20",
       "trades": [
         {
           "trade_id": "ea14c291",
@@ -7193,10 +7193,10 @@
           "entry_date": "2026-05-19",
           "end_date_raw": "2026-05-20T00:00:00Z",
           "end_date": "May 20",
-          "status": "open",
-          "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "status": "closed",
+          "exit_prob": 97.0,
+          "exit_date": "2026-05-20",
+          "pnl": 38.89
         },
         {
           "trade_id": "27bbc290",
@@ -7251,6 +7251,24 @@
           "exit_prob": null,
           "exit_date": null,
           "pnl": null
+        },
+        {
+          "trade_id": "89e3bad6",
+          "market_id": "mlb-oak-laa-2026-05-19",
+          "question": "Athletics vs. Los Angeles Angels",
+          "url": "https://polymarket.com/event/mlb-oak-laa-2026-05-19",
+          "source": "Polymarket",
+          "display_category": "Sports",
+          "entry_prob": 78.5,
+          "direction": "YES",
+          "amount": 100.0,
+          "entry_date": "2026-05-20",
+          "end_date_raw": "2026-05-27T01:38:00Z",
+          "end_date": "May 27",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
@@ -7265,7 +7283,7 @@
       "loss_count": 2,
       "open_count": 7,
       "start_date": "2026-03-17",
-      "last_updated": "2026-05-19",
+      "last_updated": "2026-05-20",
       "trades": [
         {
           "trade_id": "18b00e62",
@@ -8486,7 +8504,7 @@
       "loss_count": 0,
       "open_count": 5,
       "start_date": "2026-03-17",
-      "last_updated": "2026-05-19",
+      "last_updated": "2026-05-20",
       "trades": [
         {
           "trade_id": "d19bb1c5",
