@@ -12,9 +12,9 @@
       "ytd_return_pct": 84.8,
       "win_count": 321,
       "loss_count": 54,
-      "open_count": 33,
+      "open_count": 34,
       "start_date": "2026-03-17",
-      "last_updated": "2026-05-20",
+      "last_updated": "2026-05-21",
       "trades": [
         {
           "trade_id": "ea14c291",
@@ -7359,6 +7359,24 @@
           "exit_prob": null,
           "exit_date": null,
           "pnl": null
+        },
+        {
+          "trade_id": "96514059",
+          "market_id": "will-russia-capture-all-of-pokrovsk-by-may-31-2026",
+          "question": "Will Russia capture all of Pokrovsk by May 31, 2026?",
+          "url": "https://polymarket.com/event/will-russia-capture-all-of-pokrovsk-by",
+          "source": "Polymarket",
+          "display_category": "Politics",
+          "entry_prob": 94.8,
+          "direction": "YES",
+          "amount": 100.0,
+          "entry_date": "2026-05-21",
+          "end_date_raw": "2026-05-31T00:00:00Z",
+          "end_date": "May 31",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
@@ -7366,14 +7384,14 @@
       "name": "The Contrarian",
       "strategy": "Fade longshots: always NO when crowd says \u226430%",
       "thesis": "Crowds overprice long shots. Sell the overpriced tickets.",
-      "current_balance": 1714.66,
-      "total_pnl": 714.66,
-      "ytd_return_pct": 71.5,
-      "win_count": 58,
+      "current_balance": 1720.93,
+      "total_pnl": 720.93,
+      "ytd_return_pct": 72.1,
+      "win_count": 59,
       "loss_count": 2,
-      "open_count": 8,
+      "open_count": 7,
       "start_date": "2026-03-17",
-      "last_updated": "2026-05-20",
+      "last_updated": "2026-05-21",
       "trades": [
         {
           "trade_id": "18b00e62",
@@ -8594,10 +8612,10 @@
           "entry_date": "2026-05-20",
           "end_date_raw": "2026-05-31T00:00:00Z",
           "end_date": "May 31",
-          "status": "open",
-          "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "status": "closed",
+          "exit_prob": 4.7,
+          "exit_date": "2026-05-21",
+          "pnl": 6.27
         }
       ]
     },
@@ -8612,7 +8630,7 @@
       "loss_count": 0,
       "open_count": 5,
       "start_date": "2026-03-17",
-      "last_updated": "2026-05-20",
+      "last_updated": "2026-05-21",
       "trades": [
         {
           "trade_id": "d19bb1c5",
