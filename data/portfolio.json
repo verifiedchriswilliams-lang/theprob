@@ -12,9 +12,9 @@
       "ytd_return_pct": 89.6,
       "win_count": 326,
       "loss_count": 54,
-      "open_count": 34,
+      "open_count": 35,
       "start_date": "2026-03-17",
-      "last_updated": "2026-05-22",
+      "last_updated": "2026-05-23",
       "trades": [
         {
           "trade_id": "ea14c291",
@@ -7467,6 +7467,24 @@
           "exit_prob": null,
           "exit_date": null,
           "pnl": null
+        },
+        {
+          "trade_id": "c9db2e50",
+          "market_id": "iran-closes-its-airspace-by-may-24",
+          "question": "Iran closes its airspace by May 24?",
+          "url": "https://polymarket.com/event/iran-closes-its-airspace-by",
+          "source": "Polymarket",
+          "display_category": "Politics",
+          "entry_prob": 94.3,
+          "direction": "YES",
+          "amount": 100.0,
+          "entry_date": "2026-05-23",
+          "end_date_raw": "2026-05-24T00:00:00Z",
+          "end_date": "May 24",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
@@ -7481,7 +7499,7 @@
       "loss_count": 2,
       "open_count": 8,
       "start_date": "2026-03-17",
-      "last_updated": "2026-05-22",
+      "last_updated": "2026-05-23",
       "trades": [
         {
           "trade_id": "18b00e62",
@@ -8738,7 +8756,7 @@
       "loss_count": 0,
       "open_count": 5,
       "start_date": "2026-03-17",
-      "last_updated": "2026-05-22",
+      "last_updated": "2026-05-23",
       "trades": [
         {
           "trade_id": "d19bb1c5",
