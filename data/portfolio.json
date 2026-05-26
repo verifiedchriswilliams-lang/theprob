@@ -7,10 +7,10 @@
       "name": "The Crowd",
       "strategy": "Follow consensus: YES when prob \u226565%, NO when prob \u226435%",
       "thesis": "Smart money is already priced in. Ride the conviction.",
-      "current_balance": 2061.87,
-      "total_pnl": 1061.87,
-      "ytd_return_pct": 106.2,
-      "win_count": 339,
+      "current_balance": 2072.37,
+      "total_pnl": 1072.37,
+      "ytd_return_pct": 107.2,
+      "win_count": 340,
       "loss_count": 55,
       "open_count": 44,
       "start_date": "2026-03-17",
@@ -7751,10 +7751,10 @@
           "entry_date": "2026-05-24",
           "end_date_raw": "2026-05-26T00:00:00Z",
           "end_date": "May 26",
-          "status": "open",
-          "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "status": "closed",
+          "exit_prob": 4.2,
+          "exit_date": "2026-05-26",
+          "pnl": 10.5
         },
         {
           "trade_id": "839bb333",
@@ -7899,6 +7899,24 @@
           "exit_prob": null,
           "exit_date": null,
           "pnl": null
+        },
+        {
+          "trade_id": "e25d635b",
+          "market_id": "wta-ruzic-krueger-2026-05-25",
+          "question": "Roland Garros WTA: Antonia Ruzic vs Ashlyn Krueger",
+          "url": "https://polymarket.com/event/wta-ruzic-krueger-2026-05-25",
+          "source": "Polymarket",
+          "display_category": "Sports",
+          "entry_prob": 87.0,
+          "direction": "YES",
+          "amount": 100.0,
+          "entry_date": "2026-05-26",
+          "end_date_raw": "2026-06-01T09:00:00Z",
+          "end_date": "Jun 1",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
@@ -7906,12 +7924,12 @@
       "name": "The Contrarian",
       "strategy": "Fade longshots: always NO when crowd says \u226430%",
       "thesis": "Crowds overprice long shots. Sell the overpriced tickets.",
-      "current_balance": 1773.32,
-      "total_pnl": 773.32,
-      "ytd_return_pct": 77.3,
-      "win_count": 61,
+      "current_balance": 1783.82,
+      "total_pnl": 783.82,
+      "ytd_return_pct": 78.4,
+      "win_count": 62,
       "loss_count": 2,
-      "open_count": 10,
+      "open_count": 9,
       "start_date": "2026-03-17",
       "last_updated": "2026-05-26",
       "trades": [
@@ -9224,10 +9242,10 @@
           "entry_date": "2026-05-25",
           "end_date_raw": "2026-05-26T00:00:00Z",
           "end_date": "May 26",
-          "status": "open",
-          "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "status": "closed",
+          "exit_prob": 4.2,
+          "exit_date": "2026-05-26",
+          "pnl": 10.5
         }
       ]
     },
