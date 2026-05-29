@@ -12,9 +12,9 @@
       "ytd_return_pct": 115.0,
       "win_count": 347,
       "loss_count": 56,
-      "open_count": 49,
+      "open_count": 50,
       "start_date": "2026-03-17",
-      "last_updated": "2026-05-28",
+      "last_updated": "2026-05-29",
       "trades": [
         {
           "trade_id": "ea14c291",
@@ -8151,6 +8151,24 @@
           "exit_prob": null,
           "exit_date": null,
           "pnl": null
+        },
+        {
+          "trade_id": "aa9f0f55",
+          "market_id": "will-russia-capture-all-of-hryshyne-by-may-31",
+          "question": "Will Russia capture all of Hryshyne by May 31?",
+          "url": "https://polymarket.com/event/will-russia-capture-all-of-hryshyne-by-april-30",
+          "source": "Polymarket",
+          "display_category": "Politics",
+          "entry_prob": 87.5,
+          "direction": "YES",
+          "amount": 100.0,
+          "entry_date": "2026-05-29",
+          "end_date_raw": "2026-05-31T00:00:00Z",
+          "end_date": "May 31",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
@@ -8165,7 +8183,7 @@
       "loss_count": 2,
       "open_count": 9,
       "start_date": "2026-03-17",
-      "last_updated": "2026-05-28",
+      "last_updated": "2026-05-29",
       "trades": [
         {
           "trade_id": "18b00e62",
@@ -9494,7 +9512,7 @@
       "loss_count": 0,
       "open_count": 5,
       "start_date": "2026-03-17",
-      "last_updated": "2026-05-28",
+      "last_updated": "2026-05-29",
       "trades": [
         {
           "trade_id": "d19bb1c5",
