@@ -12,9 +12,9 @@
       "ytd_return_pct": 117.0,
       "win_count": 349,
       "loss_count": 56,
-      "open_count": 49,
+      "open_count": 50,
       "start_date": "2026-03-17",
-      "last_updated": "2026-05-29",
+      "last_updated": "2026-05-30",
       "trades": [
         {
           "trade_id": "ea14c291",
@@ -8187,6 +8187,24 @@
           "exit_prob": null,
           "exit_date": null,
           "pnl": null
+        },
+        {
+          "trade_id": "68a5b8a4",
+          "market_id": "mlb-phi-lad-2026-05-29",
+          "question": "Philadelphia Phillies vs. Los Angeles Dodgers",
+          "url": "https://polymarket.com/event/mlb-phi-lad-2026-05-29",
+          "source": "Polymarket",
+          "display_category": "Sports",
+          "entry_prob": 10.5,
+          "direction": "NO",
+          "amount": 100.0,
+          "entry_date": "2026-05-30",
+          "end_date_raw": "2026-06-06T02:15:00Z",
+          "end_date": "Jun 6",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
@@ -8201,7 +8219,7 @@
       "loss_count": 2,
       "open_count": 9,
       "start_date": "2026-03-17",
-      "last_updated": "2026-05-29",
+      "last_updated": "2026-05-30",
       "trades": [
         {
           "trade_id": "18b00e62",
@@ -9530,7 +9548,7 @@
       "loss_count": 0,
       "open_count": 5,
       "start_date": "2026-03-17",
-      "last_updated": "2026-05-29",
+      "last_updated": "2026-05-30",
       "trades": [
         {
           "trade_id": "d19bb1c5",
