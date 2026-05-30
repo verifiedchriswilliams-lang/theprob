@@ -12,7 +12,7 @@
       "ytd_return_pct": 117.0,
       "win_count": 349,
       "loss_count": 56,
-      "open_count": 50,
+      "open_count": 51,
       "start_date": "2026-03-17",
       "last_updated": "2026-05-30",
       "trades": [
@@ -8205,6 +8205,24 @@
           "exit_prob": null,
           "exit_date": null,
           "pnl": null
+        },
+        {
+          "trade_id": "ddb0ada8",
+          "market_id": "will-joao-fonseca-win-the-2026-mens-french-open",
+          "question": "Will Joao Fonseca win the 2026 Men's French Open?",
+          "url": "https://polymarket.com/event/2026-mens-french-open-winner",
+          "source": "Polymarket",
+          "display_category": "Sports",
+          "entry_prob": 8.1,
+          "direction": "NO",
+          "amount": 100.0,
+          "entry_date": "2026-05-30",
+          "end_date_raw": "2026-06-07T00:00:00Z",
+          "end_date": "Jun 7",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
@@ -8212,12 +8230,12 @@
       "name": "The Contrarian",
       "strategy": "Fade longshots: always NO when crowd says \u226430%",
       "thesis": "Crowds overprice long shots. Sell the overpriced tickets.",
-      "current_balance": 1783.82,
-      "total_pnl": 783.82,
-      "ytd_return_pct": 78.4,
-      "win_count": 62,
+      "current_balance": 1816.27,
+      "total_pnl": 816.27,
+      "ytd_return_pct": 81.6,
+      "win_count": 63,
       "loss_count": 2,
-      "open_count": 9,
+      "open_count": 8,
       "start_date": "2026-03-17",
       "last_updated": "2026-05-30",
       "trades": [
@@ -9458,10 +9476,10 @@
           "entry_date": "2026-05-21",
           "end_date_raw": "2026-05-31T00:00:00Z",
           "end_date": "May 31",
-          "status": "open",
-          "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "status": "closed",
+          "exit_prob": 4.5,
+          "exit_date": "2026-05-30",
+          "pnl": 32.45
         },
         {
           "trade_id": "0f76f9f4",
