@@ -7,14 +7,14 @@
       "name": "The Crowd",
       "strategy": "Follow consensus: YES when prob \u226565%, NO when prob \u226435%",
       "thesis": "Smart money is already priced in. Ride the conviction.",
-      "current_balance": 1932.01,
-      "total_pnl": 932.01,
-      "ytd_return_pct": 93.2,
-      "win_count": 351,
+      "current_balance": 1951.77,
+      "total_pnl": 951.77,
+      "ytd_return_pct": 95.2,
+      "win_count": 352,
       "loss_count": 59,
       "open_count": 52,
       "start_date": "2026-03-17",
-      "last_updated": "2026-05-30",
+      "last_updated": "2026-05-31",
       "trades": [
         {
           "trade_id": "ea14c291",
@@ -8327,6 +8327,24 @@
           "entry_date": "2026-05-30",
           "end_date_raw": "2026-06-06T20:10:00Z",
           "end_date": "Jun 6",
+          "status": "closed",
+          "exit_prob": 100.0,
+          "exit_date": "2026-05-31",
+          "pnl": 19.76
+        },
+        {
+          "trade_id": "0d190040",
+          "market_id": "will-the-breadwinner-opening-weekend-box-office-be-greater-than-7m",
+          "question": "Will \"The Breadwinner\" Opening Weekend Box Office be greater than 7m?",
+          "url": "https://polymarket.com/event/the-breadwinner-opening-weekend-box-office",
+          "source": "Polymarket",
+          "display_category": "Culture",
+          "entry_prob": 89.0,
+          "direction": "YES",
+          "amount": 100.0,
+          "entry_date": "2026-05-31",
+          "end_date_raw": "2026-06-01T12:00:00Z",
+          "end_date": "Jun 1",
           "status": "open",
           "exit_prob": null,
           "exit_date": null,
@@ -8345,7 +8363,7 @@
       "loss_count": 2,
       "open_count": 8,
       "start_date": "2026-03-17",
-      "last_updated": "2026-05-30",
+      "last_updated": "2026-05-31",
       "trades": [
         {
           "trade_id": "18b00e62",
@@ -9674,7 +9692,7 @@
       "loss_count": 0,
       "open_count": 5,
       "start_date": "2026-03-17",
-      "last_updated": "2026-05-30",
+      "last_updated": "2026-05-31",
       "trades": [
         {
           "trade_id": "d19bb1c5",
