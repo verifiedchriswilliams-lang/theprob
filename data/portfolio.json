@@ -12,7 +12,7 @@
       "ytd_return_pct": 113.4,
       "win_count": 368,
       "loss_count": 60,
-      "open_count": 52,
+      "open_count": 53,
       "start_date": "2026-03-17",
       "last_updated": "2026-06-03",
       "trades": [
@@ -8655,6 +8655,24 @@
           "exit_prob": null,
           "exit_date": null,
           "pnl": null
+        },
+        {
+          "trade_id": "db896d7b",
+          "market_id": "wta-radivoj-ristic-2026-06-03",
+          "question": "Makarska: Lola Radivojevic vs Mia Ristic",
+          "url": "https://polymarket.com/event/wta-radivoj-ristic-2026-06-03",
+          "source": "Polymarket",
+          "display_category": "Sports",
+          "entry_prob": 22.0,
+          "direction": "NO",
+          "amount": 100.0,
+          "entry_date": "2026-06-03",
+          "end_date_raw": "2026-06-10T08:00:00Z",
+          "end_date": "Jun 10",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
@@ -9996,7 +10014,7 @@
       "ytd_return_pct": 0.0,
       "win_count": 0,
       "loss_count": 0,
-      "open_count": 5,
+      "open_count": 6,
       "start_date": "2026-03-17",
       "last_updated": "2026-06-03",
       "trades": [
@@ -10084,6 +10102,24 @@
           "amount": 100.0,
           "entry_date": "2026-05-03",
           "end_date_raw": "2026-05-31T00:00:00Z",
+          "end_date": "",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
+        },
+        {
+          "trade_id": "aaaa8ce1",
+          "market_id": "https://polymarket.com/event/who-will-trump-announce-as-next-ag",
+          "question": "Will Donald Trump announce Todd Blanche as the next United States Attorney General by June 30?",
+          "url": "https://polymarket.com/event/who-will-trump-announce-as-next-ag",
+          "source": "Polymarket",
+          "display_category": "Finance",
+          "entry_prob": 28.5,
+          "direction": "YES",
+          "amount": 100.0,
+          "entry_date": "2026-06-03",
+          "end_date_raw": "2026-06-30T00:00:00Z",
           "end_date": "",
           "status": "open",
           "exit_prob": null,
