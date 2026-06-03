@@ -12,9 +12,9 @@
       "ytd_return_pct": 111.3,
       "win_count": 367,
       "loss_count": 60,
-      "open_count": 52,
+      "open_count": 53,
       "start_date": "2026-03-17",
-      "last_updated": "2026-06-02",
+      "last_updated": "2026-06-03",
       "trades": [
         {
           "trade_id": "ea14c291",
@@ -8637,6 +8637,24 @@
           "exit_prob": null,
           "exit_date": null,
           "pnl": null
+        },
+        {
+          "trade_id": "bb248a60",
+          "market_id": "wta-tomljan-swan-2026-06-01",
+          "question": "Birmingham: Ajla Tomljanovic vs Katie Swan",
+          "url": "https://polymarket.com/event/wta-tomljan-swan-2026-06-01",
+          "source": "Polymarket",
+          "display_category": "Sports",
+          "entry_prob": 22.5,
+          "direction": "NO",
+          "amount": 100.0,
+          "entry_date": "2026-06-03",
+          "end_date_raw": "2026-06-08T09:30:00Z",
+          "end_date": "Jun 8",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
@@ -8651,7 +8669,7 @@
       "loss_count": 2,
       "open_count": 8,
       "start_date": "2026-03-17",
-      "last_updated": "2026-06-02",
+      "last_updated": "2026-06-03",
       "trades": [
         {
           "trade_id": "18b00e62",
@@ -9980,7 +9998,7 @@
       "loss_count": 0,
       "open_count": 5,
       "start_date": "2026-03-17",
-      "last_updated": "2026-06-02",
+      "last_updated": "2026-06-03",
       "trades": [
         {
           "trade_id": "d19bb1c5",
