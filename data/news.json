@@ -1,13 +1,58 @@
 {
-  "updated": "Jun 5, 2026 \u00b7 3:00 AM ET",
-  "updated_iso": "2026-06-05T08:00:39.985363+00:00",
+  "updated": "Jun 5, 2026 \u00b7 8:53 AM ET",
+  "updated_iso": "2026-06-05T13:53:48.844884+00:00",
   "homepage_count": 3,
   "articles": [
     {
-      "title": "Korean Police Launch Gambling Probe Targeting Polymarket Users",
-      "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxNTTF5dzhRZVEtQmt6cFBEZTJJR3BjUXc4QlVrOThaS1NscXNuM2JrU1VvdU8tUkRJUHFWLTFFUXlUVE5ndUhUVkZ4ZjFRLWUtNy1EaTRxN2dnTDNDTWdEVnVDeHFKaElGa19HY3hNcVV0M0RNc3RLQU9IQmFHOERxaUpyT3NfaXdLM1JVMW9XN2JybEZma1lSSUI3LWV0aXdEYVJvbkxsZXNnT1NXV2FwX2FVdw?oc=5",
-      "source": "Bloomberg.com",
-      "pub_iso": "2026-06-05T06:05:00+00:00",
+      "title": "Prediction markets are fueling a new era of political graft",
+      "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxNTlREa1dCYWN2a3o4TlJtR1A5V29JekduMHg2dkh5enF2NDNVSVpSLW5EUEFFOVprXy1NcXBtdGxEMjI3NHJ5VFc2c3NxYm96V3ZkRjU4QkZyX1ROLVVvUlNnZUJYYWlzSU5ldDVidWI1ZnkyclQwQk0ySW5fWi1XVmgxcWxnLWZZSUZOMW5OYk4wSFE?oc=5",
+      "source": "Fast Company",
+      "pub_iso": "2026-06-05T11:09:58+00:00",
+      "description": "",
+      "summary": "",
+      "pub_display": "Jun 5"
+    },
+    {
+      "title": "Prediction markets see little chance of Bitcoin breaking out of its current range this month",
+      "url": "https://news.google.com/rss/articles/CBMi9gFBVV95cUxNV1EyakZkRjA3SFJEd0ZDN0xEY0Z5SHY2aEVNQ09YX1p5SEpLdG1NcFJTRE9lSklrWUtWeGxuQ08yTmFxZjdEUEYyMFlicGxUVTctSEVUVUs2aW1PalZCSVJWY2NZVW80Q1ZtU0xQSjk5Q2Z1LTlrcTRHajE2UWZtNWdHZGNwWVhGSkQ3eXZISDZEMEpJUkdhTDQ5eXZCeHJhYUh0Y2ZwbDg3bWxoNkx3Z1hOX21PX3pQYkxQVE1IWE5abEVMWTExQXNoMDhhR2J5QXp2S2hHMExVS2RPRlBuenBQdmV3U2xjancxbXdWRjByX1otdkE?oc=5",
+      "source": "Proactive financial news",
+      "pub_iso": "2026-06-05T09:58:25+00:00",
+      "description": "",
+      "summary": "",
+      "pub_display": "Jun 5"
+    },
+    {
+      "title": "South Korea Opens First Polymarket Gambling Probe Targeting Domestic Users",
+      "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxOT2paeEZsR0tzeUZiWkJ5QkVFQXJqb2p1SFRpYlVmRE9mLXNYV29pVVh3d3A0amYxeHNCTkRkUHJIUTU0bTNyYk1RMGhBR1Y2RmFjUlZaQV9NR2JYczEzUjRjQ042Y3RyVjMtc3llMWNBd0J4QzQzdEVwWG1ySjF0T0pRQWJiRUVqTWplZ0FzR3F5aE1LM2dlSTdn?oc=5",
+      "source": "Yahoo",
+      "pub_iso": "2026-06-05T09:25:22+00:00",
+      "description": "",
+      "summary": "",
+      "pub_display": "Jun 5"
+    },
+    {
+      "title": "\u2018Unbelievable how accurate\u2019: How paid influencers hype Polymarket\u2019s odds",
+      "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxOQXRNZlpmM29PVVhKbzNWSmNURmlxUFdvY0w1Y05xTmJjTWZNcVBTQzZvNDlmR2ZGWHRCUUFqTTg3eE9hMWZ5NHFHSTR4NW9iR0Njb2JhRGZWZm1XMjIxZWVUc2VzQ3EwczVxOUtIZGNiNW1xVnU3bkw5ajdqTWN0X2xjX0J3SEc0b2w5bU5pOEY?oc=5",
+      "source": "Politico",
+      "pub_iso": "2026-06-05T09:00:00+00:00",
+      "description": "",
+      "summary": "",
+      "pub_display": "Jun 5"
+    },
+    {
+      "title": "United States Seeing Domination of a New Kind of Business: Prediction Markets",
+      "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxNLTNRSG1LNllDUHhHS1lheEJtMFpPT0ZfNVRKRzAwSmluOHU4emhrWDlKY0lzNFFIZU1RczlJZWhJYXUwOW5WcEdrWm5KZTYzY0pNYXNrUFRvYTJPcV82OEZGMDVPSmladEpJTjVvZ0dTM0xOVjVwSFlTeTBYN1dZTC05U3lOT25yU25iNEZxaGtsRmw2REhadGhENXlXdURqQUdINldfVDFBdDQweXM0MmdGZWFBSXBFOUpVTjVVZw?oc=5",
+      "source": "businessfocusmagazine.com",
+      "pub_iso": "2026-06-05T07:47:23+00:00",
+      "description": "",
+      "summary": "",
+      "pub_display": "Jun 5"
+    },
+    {
+      "title": "New York City bar covers tab, with help from Kalshi, after Knicks win",
+      "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxONWlVUkxIOHZBQnpTUkZHNW5LWTZYUTdjMjBfRkY3M1NUQzQ1c1FvV0NzRDg4SjBaeEJOazA0TUp5TzBQc1JDcFVqZC1HWVhwbWhtX0pFNnJRbFFnMEljTTRXZy1ibnZYTnFBTXhMbDIyZVhXdXlRSzgtSHlvMmQxdDhXNS0yOHkwSmJvcHNVcVZrNjN0N1E40gGcAUFVX3lxTE5JdzVoaGIwbWp3a1RlTDB1VjJBdl8tZGVlRlJ3dk9NUDZJaUt0WVFlN1F2bTgtRWtJV2RIbHI5djlwQ29MTWZ3cUwtQ3NYeTNwaE1kU3d3Q3ZCdWVzb3dXOXI2cVByeVYwdHNrQ2JMOWxjNHZaZHpXWnVIWnBXdjFtNjBpVG5qNzUtQVRidVRkRWlGb0ZPSm5iam1rcQ?oc=5",
+      "source": "NewsNation",
+      "pub_iso": "2026-06-05T02:39:20+00:00",
       "description": "",
       "summary": "",
       "pub_display": "Jun 5"
@@ -31,28 +76,28 @@
       "pub_display": "Jun 4"
     },
     {
-      "title": "Fanatics Brings Rewards Program to Its Prediction Market",
-      "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxQMFpmWXg3c0tLeFEyYm02ZkxiZ1Q5THBsb0cyc0ppOTFFLUtFVVZqT05SUlUzYkp0aGNGYzhiM0FxTEc3dmtXbVd4UU1ZdVZHeFlnYWRlTnRDN2NEcGE1WmNPMkhaR1pxeE5XNno3T3JfUVFoZHotVUt3enZISHNxMWh3R0N0TE9pQ04tdzZoOWJBY0RLOHR6Qmd5dVZpZF9nNmgybDNYQkZMbzZq?oc=5",
-      "source": "PYMNTS.com",
-      "pub_iso": "2026-06-04T20:28:45+00:00",
+      "title": "Opinion | George Santos\u2019 latest alleged scandal shines light on politicians betting on their own actions",
+      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTFBOVWhKNDdkVXhWUTY0OEY5dEFnaHZYb0RoTXEwY0NJN1Fha3MxT3EzaUc2SDlQeWs1Mm93R0NzUWViTzNzYk8xUzM1dUJ4ZHpadUJ4d1h1U3pldDRyZHhNYlJNUW90b09pYXZ3ZjBzRnBnZw?oc=5",
+      "source": "MS NOW",
+      "pub_iso": "2026-06-04T16:19:46+00:00",
       "description": "",
       "summary": "",
       "pub_display": "Jun 4"
     },
     {
-      "title": "Polymarket Upholds No Outcome in Strategy Bitcoin Sale Dispute",
-      "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxQTXFqNFl5T3dvSW5Rd2tQM3VYcFZEcDVvN2k5YkhUdWRLMkkxQzhJeDh0ZmN1azRBNEd4cVBWWDZtekVzOTZRQlRqWVJLenR1YzhITXdJcGJWWTFUVmx0VndsS3llZ09SZzRhQk9wQW5mTFlGRlBKWkloM1JkTy0xeUtnVkhvXzZZVTNIeXVLb3E0Zw?oc=5",
-      "source": "FinanceFeeds",
-      "pub_iso": "2026-06-04T16:29:44+00:00",
+      "title": "Exclusive / A soccer team bet against itself. This is the (good) future of prediction markets.",
+      "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxPemktVEtCcmtLQjhXVVhHMmt3bUh6ODZCUER4bUlOZzlKdzVzVW1EMU85R2R2eVg3TWFha0hwVGJFdm0zVW1uYUNCOXRBR28xTTMteWNZOWUtOHE4c0xBMXhrd0tHTW9zMXdYc196ckxlb2FsSDJGRXhadml6WkZrWUhaVGVDODZQMTJDR2hsLU1vbXdzeUxjZnd6ZVdMWm1BYXNVSjc0S3dWcDgwTU01cEhMMEdTRkxUWEFuRlR3?oc=5",
+      "source": "Semafor",
+      "pub_iso": "2026-06-04T15:56:00+00:00",
       "description": "",
       "summary": "",
       "pub_display": "Jun 4"
     },
     {
-      "title": "Concerns and questions about prediction markets",
-      "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxNLVdKLWNUMm5QMkh5Y19LdDVIdjNabXZ1UmNVSUFfWE1vSlA5LTFGYnN6a2Q0VTlxM3R6bjBYUTlCRlNlT3RXTlZZNWdxdzU4VXJqUDFSd1RTNWFGRW5qOC1aRk9LVFN4VnNrNGEzWnJSTDViTWgyVHluWG9kTGMwYWZNMGZ4ZjRLWHc?oc=5",
-      "source": "WBAY",
-      "pub_iso": "2026-06-04T12:33:00+00:00",
+      "title": "Nevada wins preliminary injunction to block Polymarket in state",
+      "url": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxQNG9FdV9qcHZpOVhEX0hDb3dsdEltWjFfaTNicE92ei10amN2WmY3N1k2NFhoek1aU3AyTTNwcnptTTI3QTNXU3VLN0h1YXFTUDZmcXEtdXlkOUp3VDZJd2p6OThPQVR2Nm0xU2JYajlxZ2cxZ3BvS1lmNUZZd3lkUXhLNkFXV1ozb0MzUkNHYXpQTms4QUVRY3VNWHB2dnI3amN6VjJFa3FmVHh2NDJ1NWI1SVpEZV9KcDhUUEF0NXZCZktmUHZWVEpIMU90MW9MX3lBQVB5TllURk1MNmk1Sk5RUWdWY0JY?oc=5",
+      "source": "KSNV",
+      "pub_iso": "2026-06-04T13:15:15+00:00",
       "description": "",
       "summary": "",
       "pub_display": "Jun 4"
@@ -65,51 +110,6 @@
       "description": "",
       "summary": "",
       "pub_display": "Jun 4"
-    },
-    {
-      "title": "Prediction Markets Are Learning From the Addiction Industry",
-      "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxPLWFEREZmLTItekRRRklVQURlN1kxT1g5SmY2Z1libTMzZWZqYTQtOThzYlNKYWpsNEpDRG9ObVFrcF9HSmlKSjhBSDB0NF9QYmdWLTVFQS0tdjE0b0FrYmY4eEFTZ3h2QXk1aV95cmRMRGdfTWozZlItWVFQcmVCZi1uWE5iUWYwWVBDNW1B?oc=5",
-      "source": "The New Republic",
-      "pub_iso": "2026-06-04T10:00:00+00:00",
-      "description": "",
-      "summary": "",
-      "pub_display": "Jun 4"
-    },
-    {
-      "title": "Polymarket believes archrival Kalshi could be spying on its NYC offices, employees: \u2018Too many coincidences\u2019",
-      "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxOMXlBa1Eyc1RIUEQ3UG8tcFJLSVM3TTNDUFctSVJnSEZ1QnJxbzlNUTFwbmtHZVM0WW1rSmI4UEtwdWRXeVRWQzViTGduUEdENjFoeDEzTjhRUXdGcjlXMjdzdXItV1U0NGZzS2VQTEo0WnRPZmV3T0dIOHBoVWljX1hNUTROOXlqQWtEeGZjRWU1blhYODBFY1N6a0ZBX0dtQVdxZXpvZmZ4V1k?oc=5",
-      "source": "New York Post",
-      "pub_iso": "2026-06-03T23:07:00+00:00",
-      "description": "",
-      "summary": "",
-      "pub_display": "Jun 3"
-    },
-    {
-      "title": "Judge blocks Polymarket from operating in Nevada",
-      "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxOckY3eHFyTGM0QXJKVFZsQktELXkzZElnSXFaaEJlT0VQamtBakI3Yldpamg3SVpYZ0cxUGZOVEo2WGNRSFJJNkxmUzRHckxBbmM0ci0wTWVlX2lHVVJqY1VCOWw2UlpjRWNacVFQc2NMMXJzLUUtc1VOdUVtdkpxX2RoUE9KZnRTZ1lkOW5ocE4xYm5x?oc=5",
-      "source": "KLAS 8 News Now",
-      "pub_iso": "2026-06-03T19:10:28+00:00",
-      "description": "",
-      "summary": "",
-      "pub_display": "Jun 3"
-    },
-    {
-      "title": "Federal Regulators Investigating George Santos Over Suspicious Prediction-Market Trading",
-      "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxQWTdoUjFEZHdjdHh5SUVMLU5WMUpQYUY3SHJzeENVc3VHWXZCcE9kaHRyR2xpZWdNa29IV0VwMEQ3QnIyXzcyMnpueTJWLTNKQThRd3FTanlLaHdUQXhQMWhETUc1TVE1clg1ZWtzMjZ6c0dVOHhBaHEyZS0yZGlwSHI0YlFTRzJIa2NQZUkyQXRJSUNuWkNrb3p0OEpldmdvNnRoRXI3SjBjNFVtNTBlVnVpeUF4Zw?oc=5",
-      "source": "WSJ",
-      "pub_iso": "2026-06-03T16:12:00+00:00",
-      "description": "",
-      "summary": "",
-      "pub_display": "Jun 3"
-    },
-    {
-      "title": "Why Kalshi Wants Businesses to Bet on the Knicks, Too",
-      "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxQSm1oTFVNcmdmU19KUlJVS0dpS0dJT25HU09xdExZblNqRUViRi1xLUU0OUd6VmctQWNheTJ1cVdmd1h0UGdLejFfNHktZEJKUkpYNXFmcUc5VTFMZ1kzYVIzdzF2SzlLYlF3Z2FjYUF0RFdDWmdERUgxM1JwQlhpLVdadWJLWTRTbmxhWEk5cUxnVENWSS1mazJHZWhlUQ?oc=5",
-      "source": "New York Magazine",
-      "pub_iso": "2026-06-03T14:47:41+00:00",
-      "description": "",
-      "summary": "",
-      "pub_display": "Jun 3"
     }
   ]
 }
