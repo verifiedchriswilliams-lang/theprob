@@ -8793,7 +8793,7 @@
       "ytd_return_pct": 81.6,
       "win_count": 63,
       "loss_count": 2,
-      "open_count": 8,
+      "open_count": 9,
       "start_date": "2026-03-17",
       "last_updated": "2026-06-05",
       "trades": [
@@ -10110,6 +10110,24 @@
           "exit_prob": 4.2,
           "exit_date": "2026-05-26",
           "pnl": 10.5
+        },
+        {
+          "trade_id": "95ca500b",
+          "market_id": "will-jakub-mensik-win-the-2026-mens-french-open",
+          "question": "Will Jakub Mensik win the 2026 Men's French Open?",
+          "url": "https://polymarket.com/event/2026-mens-french-open-winner",
+          "source": "Polymarket",
+          "display_category": "Sports",
+          "entry_prob": 13.8,
+          "direction": "NO",
+          "amount": 100.0,
+          "entry_date": "2026-06-05",
+          "end_date_raw": "2026-06-07T00:00:00Z",
+          "end_date": "Jun 7",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
