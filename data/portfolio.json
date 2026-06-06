@@ -12,7 +12,7 @@
       "ytd_return_pct": 110.9,
       "win_count": 375,
       "loss_count": 62,
-      "open_count": 55,
+      "open_count": 56,
       "start_date": "2026-03-17",
       "last_updated": "2026-06-06",
       "trades": [
@@ -8871,6 +8871,24 @@
           "exit_prob": 0.1,
           "exit_date": "2026-06-06",
           "pnl": 23.46
+        },
+        {
+          "trade_id": "8657b94c",
+          "market_id": "atp-fery-bu-2026-06-06",
+          "question": "Birmingham: Arthur Fery vs Yunchaokete Bu",
+          "url": "https://polymarket.com/event/atp-fery-bu-2026-06-06",
+          "source": "Polymarket",
+          "display_category": "Sports",
+          "entry_prob": 19.5,
+          "direction": "NO",
+          "amount": 100.0,
+          "entry_date": "2026-06-06",
+          "end_date_raw": "2026-06-13T10:00:00Z",
+          "end_date": "Jun 13",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
