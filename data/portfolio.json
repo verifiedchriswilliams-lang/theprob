@@ -7,12 +7,12 @@
       "name": "The Crowd",
       "strategy": "Follow consensus: YES when prob \u226565%, NO when prob \u226435%",
       "thesis": "Smart money is already priced in. Ride the conviction.",
-      "current_balance": 2108.61,
-      "total_pnl": 1108.61,
-      "ytd_return_pct": 110.9,
-      "win_count": 375,
+      "current_balance": 2151.17,
+      "total_pnl": 1151.17,
+      "ytd_return_pct": 115.1,
+      "win_count": 377,
       "loss_count": 62,
-      "open_count": 60,
+      "open_count": 58,
       "start_date": "2026-03-17",
       "last_updated": "2026-06-07",
       "trades": [
@@ -8885,10 +8885,10 @@
           "entry_date": "2026-06-06",
           "end_date_raw": "2026-06-13T10:00:00Z",
           "end_date": "Jun 13",
-          "status": "open",
-          "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "status": "closed",
+          "exit_prob": 0.1,
+          "exit_date": "2026-06-07",
+          "pnl": 24.22
         },
         {
           "trade_id": "38db1173",
@@ -8957,10 +8957,10 @@
           "entry_date": "2026-06-07",
           "end_date_raw": "2026-06-13T13:10:00Z",
           "end_date": "Jun 13",
-          "status": "open",
-          "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "status": "closed",
+          "exit_prob": 0.1,
+          "exit_date": "2026-06-07",
+          "pnl": 18.34
         }
       ]
     },
@@ -8973,7 +8973,7 @@
       "ytd_return_pct": 83.2,
       "win_count": 64,
       "loss_count": 2,
-      "open_count": 11,
+      "open_count": 12,
       "start_date": "2026-03-17",
       "last_updated": "2026-06-07",
       "trades": [
@@ -10358,6 +10358,24 @@
           "entry_date": "2026-06-07",
           "end_date_raw": "2026-06-21T14:00:00Z",
           "end_date": "Jun 21",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
+        },
+        {
+          "trade_id": "36007ffa",
+          "market_id": "atp-cobolli-zverev-2026-06-07",
+          "question": "Roland Garros ATP: Flavio Cobolli vs Alexander Zverev",
+          "url": "https://polymarket.com/event/atp-cobolli-zverev-2026-06-07",
+          "source": "Polymarket",
+          "display_category": "Sports",
+          "entry_prob": 18.5,
+          "direction": "NO",
+          "amount": 100.0,
+          "entry_date": "2026-06-07",
+          "end_date_raw": "2026-06-14T13:00:00Z",
+          "end_date": "Jun 14",
           "status": "open",
           "exit_prob": null,
           "exit_date": null,
