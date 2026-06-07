@@ -7,10 +7,10 @@
       "name": "The Crowd",
       "strategy": "Follow consensus: YES when prob \u226565%, NO when prob \u226435%",
       "thesis": "Smart money is already priced in. Ride the conviction.",
-      "current_balance": 2151.17,
-      "total_pnl": 1151.17,
-      "ytd_return_pct": 115.1,
-      "win_count": 377,
+      "current_balance": 2156.99,
+      "total_pnl": 1156.99,
+      "ytd_return_pct": 115.7,
+      "win_count": 378,
       "loss_count": 62,
       "open_count": 58,
       "start_date": "2026-03-17",
@@ -8939,10 +8939,10 @@
           "entry_date": "2026-06-07",
           "end_date_raw": "2026-06-14T13:00:00Z",
           "end_date": "Jun 14",
-          "status": "open",
-          "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "status": "closed",
+          "exit_prob": 0.1,
+          "exit_date": "2026-06-07",
+          "pnl": 5.82
         },
         {
           "trade_id": "67e5881f",
@@ -8961,6 +8961,24 @@
           "exit_prob": 0.1,
           "exit_date": "2026-06-07",
           "pnl": 18.34
+        },
+        {
+          "trade_id": "61dcd847",
+          "market_id": "f1-monaco-grand-prix-winner-antonelli-2026-06-07",
+          "question": "Will Kimi Antonelli win the 2026 F1 Monaco Grand Prix?",
+          "url": "https://polymarket.com/event/f1-monaco-grand-prix-winner-2026-06-07",
+          "source": "Polymarket",
+          "display_category": "Sports",
+          "entry_prob": 84.0,
+          "direction": "YES",
+          "amount": 100.0,
+          "entry_date": "2026-06-07",
+          "end_date_raw": "2026-06-14T13:00:00Z",
+          "end_date": "Jun 14",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
