@@ -12,9 +12,9 @@
       "ytd_return_pct": 110.9,
       "win_count": 375,
       "loss_count": 62,
-      "open_count": 58,
+      "open_count": 59,
       "start_date": "2026-03-17",
-      "last_updated": "2026-06-06",
+      "last_updated": "2026-06-07",
       "trades": [
         {
           "trade_id": "ea14c291",
@@ -8925,6 +8925,24 @@
           "exit_prob": null,
           "exit_date": null,
           "pnl": null
+        },
+        {
+          "trade_id": "5feee821",
+          "market_id": "f1-monaco-grand-prix-winner-leclerc-2026-06-07",
+          "question": "Will Charles Leclerc win the 2026 F1 Monaco Grand Prix?",
+          "url": "https://polymarket.com/event/f1-monaco-grand-prix-winner-2026-06-07",
+          "source": "Polymarket",
+          "display_category": "Sports",
+          "entry_prob": 5.5,
+          "direction": "NO",
+          "amount": 100.0,
+          "entry_date": "2026-06-07",
+          "end_date_raw": "2026-06-14T13:00:00Z",
+          "end_date": "Jun 14",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
@@ -8937,9 +8955,9 @@
       "ytd_return_pct": 83.2,
       "win_count": 64,
       "loss_count": 2,
-      "open_count": 10,
+      "open_count": 11,
       "start_date": "2026-03-17",
-      "last_updated": "2026-06-06",
+      "last_updated": "2026-06-07",
       "trades": [
         {
           "trade_id": "18b00e62",
@@ -10308,6 +10326,24 @@
           "exit_prob": null,
           "exit_date": null,
           "pnl": null
+        },
+        {
+          "trade_id": "78f992d6",
+          "market_id": "will-ivan-cepeda-castro-win-the-2026-colombian-presidential-election",
+          "question": "Will Ivan Cepeda Castro win the 2026 Colombian presidential election?",
+          "url": "https://polymarket.com/event/colombia-presidential-election",
+          "source": "Polymarket",
+          "display_category": "Politics",
+          "entry_prob": 17.5,
+          "direction": "NO",
+          "amount": 100.0,
+          "entry_date": "2026-06-07",
+          "end_date_raw": "2026-06-21T14:00:00Z",
+          "end_date": "Jun 21",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
@@ -10322,7 +10358,7 @@
       "loss_count": 0,
       "open_count": 6,
       "start_date": "2026-03-17",
-      "last_updated": "2026-06-06",
+      "last_updated": "2026-06-07",
       "trades": [
         {
           "trade_id": "d19bb1c5",
