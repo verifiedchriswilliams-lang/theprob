@@ -7,12 +7,12 @@
       "name": "The Crowd",
       "strategy": "Follow consensus: YES when prob \u226565%, NO when prob \u226435%",
       "thesis": "Smart money is already priced in. Ride the conviction.",
-      "current_balance": 2176.04,
-      "total_pnl": 1176.04,
-      "ytd_return_pct": 117.6,
-      "win_count": 379,
+      "current_balance": 2206.59,
+      "total_pnl": 1206.59,
+      "ytd_return_pct": 120.7,
+      "win_count": 380,
       "loss_count": 62,
-      "open_count": 58,
+      "open_count": 57,
       "start_date": "2026-03-17",
       "last_updated": "2026-06-07",
       "trades": [
@@ -8813,10 +8813,10 @@
           "entry_date": "2026-06-05",
           "end_date_raw": "2026-06-07T00:00:00Z",
           "end_date": "Jun 7",
-          "status": "open",
-          "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "status": "closed",
+          "exit_prob": 100.0,
+          "exit_date": "2026-06-07",
+          "pnl": 30.55
         },
         {
           "trade_id": "01bcf086",
@@ -9004,12 +9004,12 @@
       "name": "The Contrarian",
       "strategy": "Fade longshots: always NO when crowd says \u226430%",
       "thesis": "Crowds overprice long shots. Sell the overpriced tickets.",
-      "current_balance": 1832.28,
-      "total_pnl": 832.28,
-      "ytd_return_pct": 83.2,
-      "win_count": 64,
+      "current_balance": 1883.19,
+      "total_pnl": 883.19,
+      "ytd_return_pct": 88.3,
+      "win_count": 66,
       "loss_count": 2,
-      "open_count": 12,
+      "open_count": 10,
       "start_date": "2026-03-17",
       "last_updated": "2026-06-07",
       "trades": [
@@ -10376,10 +10376,10 @@
           "entry_date": "2026-06-06",
           "end_date_raw": "2026-06-07T00:00:00Z",
           "end_date": "Jun 7",
-          "status": "open",
-          "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "status": "closed",
+          "exit_prob": 0.1,
+          "exit_date": "2026-06-07",
+          "pnl": 28.21
         },
         {
           "trade_id": "78f992d6",
@@ -10412,10 +10412,10 @@
           "entry_date": "2026-06-07",
           "end_date_raw": "2026-06-14T13:00:00Z",
           "end_date": "Jun 14",
-          "status": "open",
-          "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "status": "closed",
+          "exit_prob": 0.1,
+          "exit_date": "2026-06-07",
+          "pnl": 22.7
         }
       ]
     },
