@@ -2799,7 +2799,16 @@ def main():
     hero = candidate_hero
     try:
         prev_hero_data = prev.get("hero") if 'prev' in dir() else None
-        if prev_hero_data and candidate_hero:
+        # Hold only applies to markets worth protecting: featured or non-sports.
+        # An unfeatured sports market (random tennis match) should never block rotation.
+        incumbent_is_holdable = (
+            prev_hero_data and (
+                prev_hero_data.get("featured")
+                or prev_hero_data.get("kalshi_featured")
+                or not prev_hero_data.get("is_sports", False)
+            )
+        )
+        if prev_hero_data and candidate_hero and incumbent_is_holdable:
             held_since_iso = prev_hero_data.get("held_since") or prev.get("updated_iso", "")
             if held_since_iso:
                 held_since = datetime.fromisoformat(held_since_iso.replace("Z", "+00:00"))
