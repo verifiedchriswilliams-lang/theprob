@@ -1116,42 +1116,61 @@
 
   <div class="divider"></div>
 
-  <!-- PORTFOLIO WIDGET — 3-MODEL HORSE RACE -->
+  <!-- PORTFOLIO WIDGET — EXPERIMENT 1 CONCLUDED -->
   <section class="section" id="portfolio-widget" style="padding-top:32px;padding-bottom:32px;">
     <div class="section-header" style="margin-bottom:16px;">
-      <div class="section-title">The Prob Portfolio <span>3 Models &mdash; Who Wins?</span></div>
-      <a href="portfolio.html" style="font-family:'Courier New',monospace;font-size:11px;letter-spacing:0.1em;color:var(--text-muted);text-transform:uppercase;">Full Ledger &#8599;</a>
+      <div class="section-title">The Prob Portfolio <span>Experiment 1 Concluded</span></div>
+      <a href="portfolio.html" style="font-family:'Courier New',monospace;font-size:11px;letter-spacing:0.1em;color:var(--text-muted);text-transform:uppercase;">Full Post-Mortem &#8599;</a>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;" id="portfolio-bar">
 
-      <div style="background:var(--bg2);border:1px solid var(--border);border-top:2px solid #4a9eff;border-radius:8px;padding:16px 20px;">
-        <div style="font-family:'Courier New',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:#4a9eff;margin-bottom:4px;">Model A</div>
-        <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:10px;">The Crowd</div>
-        <div id="pw-a-bal" style="font-family:'Courier New',monospace;font-size:22px;font-weight:700;color:var(--green);">$1,000.00</div>
-        <div style="display:flex;gap:12px;margin-top:6px;">
-          <div><div style="font-size:10px;color:var(--text-muted);">YTD</div><div style="font-family:'Courier New',monospace;font-size:12px;" id="pw-a-ytd">+0.0%</div></div>
-          <div><div style="font-size:10px;color:var(--text-muted);">Record</div><div style="font-family:'Courier New',monospace;font-size:12px;color:var(--amber);" id="pw-a-rec">0&ndash;0</div></div>
+    <div style="background:var(--bg2);border:1px solid #4a9eff44;border-radius:8px;overflow:hidden;">
+
+      <!-- Winner banner -->
+      <div style="background:linear-gradient(135deg,#0d1f35 0%,#0a1628 100%);border-bottom:1px solid #4a9eff44;padding:20px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+        <div>
+          <div style="font-family:'Courier New',monospace;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:#4a9eff;margin-bottom:6px;">&#9654; Experiment 1 &middot; 83 Days &middot; 591 Trades &middot; Winner</div>
+          <div style="font-size:22px;font-weight:700;color:var(--text);line-height:1.2;">Model A &mdash; The Crowd</div>
+          <div style="font-size:13px;color:var(--text-muted);margin-top:4px;">Followed crowd conviction. Turned $1,000 into $2,277 in 83 days.</div>
+        </div>
+        <div style="text-align:right;">
+          <div style="font-family:'Courier New',monospace;font-size:38px;font-weight:700;color:#4a9eff;line-height:1;">+127.8%</div>
+          <div style="font-family:'Courier New',monospace;font-size:12px;color:var(--text-muted);margin-top:2px;">$2,277.60 final balance</div>
         </div>
       </div>
 
-      <div style="background:var(--bg2);border:1px solid var(--border);border-top:2px solid var(--red);border-radius:8px;padding:16px 20px;">
-        <div style="font-family:'Courier New',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:var(--red);margin-bottom:4px;">Model B &mdash; Editor's Pick</div>
-        <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:10px;">The Contrarian</div>
-        <div id="pw-b-bal" style="font-family:'Courier New',monospace;font-size:22px;font-weight:700;color:var(--green);">$1,000.00</div>
-        <div style="display:flex;gap:12px;margin-top:6px;">
-          <div><div style="font-size:10px;color:var(--text-muted);">YTD</div><div style="font-family:'Courier New',monospace;font-size:12px;" id="pw-b-ytd">+0.0%</div></div>
-          <div><div style="font-size:10px;color:var(--text-muted);">Record</div><div style="font-family:'Courier New',monospace;font-size:12px;color:var(--amber);" id="pw-b-rec">0&ndash;0</div></div>
+      <!-- Final standings -->
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);border-bottom:1px solid var(--border);">
+
+        <div style="padding:14px 20px;border-right:1px solid var(--border);">
+          <div style="display:flex;align-items:center;gap:7px;margin-bottom:8px;">
+            <div style="font-family:'Courier New',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:#4a9eff;">Model A</div>
+            <div style="font-family:'Courier New',monospace;font-size:8px;font-weight:700;letter-spacing:0.1em;background:#4a9eff;color:#080b0f;padding:1px 5px;border-radius:2px;">WIN</div>
+          </div>
+          <div style="font-family:'Courier New',monospace;font-size:18px;font-weight:700;color:#4a9eff;" id="pw-a-bal">$2,277.60</div>
+          <div style="font-family:'Courier New',monospace;font-size:11px;color:var(--green);margin-top:2px;" id="pw-a-ytd">+127.8%</div>
+          <div style="font-size:11px;color:var(--text-muted);margin-top:3px;" id="pw-a-rec">382&ndash;62 &middot; 505 trades</div>
         </div>
+
+        <div style="padding:14px 20px;border-right:1px solid var(--border);opacity:0.85;">
+          <div style="font-family:'Courier New',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:var(--red);margin-bottom:8px;">Model B</div>
+          <div style="font-family:'Courier New',monospace;font-size:18px;font-weight:700;color:var(--text);" id="pw-b-bal">$1,896.18</div>
+          <div style="font-family:'Courier New',monospace;font-size:11px;color:var(--green);margin-top:2px;" id="pw-b-ytd">+89.6%</div>
+          <div style="font-size:11px;color:var(--text-muted);margin-top:3px;" id="pw-b-rec">67&ndash;2 &middot; 80 trades</div>
+        </div>
+
+        <div style="padding:14px 20px;opacity:0.5;">
+          <div style="font-family:'Courier New',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px;">Model C &middot; Inconclusive</div>
+          <div style="font-family:'Courier New',monospace;font-size:18px;font-weight:700;color:var(--text-muted);" id="pw-c-bal">$1,000.00</div>
+          <div style="font-family:'Courier New',monospace;font-size:11px;color:var(--text-muted);margin-top:2px;" id="pw-c-ytd">0.0%</div>
+          <div style="font-size:11px;color:var(--text-muted);margin-top:3px;" id="pw-c-rec">Not enough data</div>
+        </div>
+
       </div>
 
-      <div style="background:var(--bg2);border:1px solid var(--border);border-top:2px solid var(--amber);border-radius:8px;padding:16px 20px;">
-        <div style="font-family:'Courier New',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:var(--amber);margin-bottom:4px;">Model C</div>
-        <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:10px;">The Arb</div>
-        <div id="pw-c-bal" style="font-family:'Courier New',monospace;font-size:22px;font-weight:700;color:var(--green);">$1,000.00</div>
-        <div style="display:flex;gap:12px;margin-top:6px;">
-          <div><div style="font-size:10px;color:var(--text-muted);">YTD</div><div style="font-family:'Courier New',monospace;font-size:12px;" id="pw-c-ytd">+0.0%</div></div>
-          <div><div style="font-size:10px;color:var(--text-muted);">Record</div><div style="font-family:'Courier New',monospace;font-size:12px;color:var(--amber);" id="pw-c-rec">0&ndash;0</div></div>
-        </div>
+      <!-- CTA row -->
+      <div style="padding:14px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;">
+        <div style="font-size:13px;color:var(--text-muted);">Test 2 launches Friday &middot; Model A defends vs 2 new challengers.</div>
+        <a href="portfolio.html" style="font-family:'Courier New',monospace;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#4a9eff;text-decoration:none;white-space:nowrap;">See the full breakdown &#8599;</a>
       </div>
 
     </div>
