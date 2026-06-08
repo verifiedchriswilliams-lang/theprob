@@ -34,8 +34,21 @@ theprob/
   scripts/
     fetch_markets.py      # Main data pipeline
     send_newsletter.py    # Beehiiv newsletter generation and send
+    send_sunday5.py       # Sunday newsletter variant
+    fetch_news.py         # News fetcher (4x daily)
+    run_bot.py            # LIVE Kalshi trading bot — see "Live Trading Bot" section below
+    trade_selector.py     # Bot trade selection logic (pure, no side effects)
+    kalshi_orders.py      # KalshiOrderClient — authenticated Kalshi API wrapper
+    debug_live_markets.py # Bot diagnostic — Kalshi series scanner
+    test_connection.py    # Bot health check — confirms Kalshi credentials work
+  BOT_MIGRATION_HANDOFF.md # Full live-bot context doc — read this for any bot session (added Jun 8, 2026)
+  kalshi_trading_key.pem  # Kalshi RSA private key — gitignored, LOCAL ONLY, never commit/transmit
   .github/workflows/
     fetch-markets.yml     # Hourly GitHub Actions workflow
+    run-bot.yml           # Hourly at :05 — runs live trading bot
+    send-newsletter.yml   # Daily 6:50am ET Mon-Sat — builds + sends newsletter
+    send-sunday5.yml      # Sunday newsletter variant
+    fetch-news.yml        # 4x daily news fetch
 
 ## Data Pipeline — fetch_markets.py
 
@@ -174,6 +187,80 @@ Sections: Hero, Movers (6), Ticker (10), Daily Take
 Beehiiv quirks: use div not h1/h2, all colors need !important, HTML arrow entities, no double dollar signs.
 Automation goal: wire up Beehiiv API /publications/{id}/posts endpoint.
 
+## Live Trading Bot ("The Snowball") — added Jun 8, 2026
+
+> **Read `BOT_MIGRATION_HANDOFF.md` first for the full context dump on this
+> subsystem** (architecture, credentials, recent fixes, open threads). This
+> section is the persistent summary; that file is the deep-dive handoff doc.
+
+A separate, real-money trading bot — Chris's personal project, distinct from
+"The Prob Portfolio" (which only simulates trades for newsletter readers). Goal:
+grow a small Kalshi account ("the snowball") through fast-compounding,
+short-duration trades.
+
+**Files (all in `scripts/`):**
+- `run_bot.py` — main execution loop. Connects to Kalshi, checks balance/positions
+  (max 4 open, `MAX_POSITIONS = 4`), runs the selector, places orders, logs
+  everything to `data/live_trade_ledger.json`. Daily loss limit $20
+  (`DAILY_LOSS_LIMIT`). Stops if balance < $5. Trade size = 10% of balance.
+- `trade_selector.py` — pure selection logic (no side effects). Reads
+  `data/markets.json`, scores Kalshi candidates by duration (primary) +
+  conviction (secondary) + spread bonus, returns ranked picks. Safe to run
+  standalone: `python3 scripts/trade_selector.py --slots 4 --verbose`
+- `kalshi_orders.py` — `KalshiOrderClient`, RSA-PSS/SHA-256 authenticated Kalshi
+  Trade API v2 wrapper. `get_balance()`, `get_open_positions()`,
+  `get_live_candidates()`, `place_order()`.
+- `debug_live_markets.py` — diagnostic, scans Kalshi `/series` for sports markets.
+- `test_connection.py` — read-only health check, confirms credentials work.
+
+**Workflow:** `.github/workflows/run-bot.yml`, cron `5 * * * *` (5 min past
+every hour, right after `fetch-markets.yml` refreshes `markets.json`). Secrets:
+`KALSHI_KEY_ID`, `KALSHI_PRIVATE_KEY`. Supports `workflow_dispatch` with a
+`dry_run` input.
+
+**Strategy — the "sweet zone":** trade YES at 65–85% prob or NO at 15–35% prob.
+Avoids both the 35–65% coin-flip dead zone (no edge) AND >85%/<15% near-certainties
+(buying at 99¢ to win $1 = ~1% return, can never compound). Targets 18–54% return
+per winning trade. Hard cap: never hold longer than 7 days
+(`MAX_TRADE_DAYS = 7`) — duration is the primary ranking factor, fast resolution
+= fast compounding.
+
+**⚠️ Credentials:** `KALSHI_KEY_ID` (UUID) + `KALSHI_PRIVATE_KEY` (PEM RSA key)
+are required env vars (the client `KeyError`s without them — not optional). In
+production they're GitHub Actions secrets. Locally, Chris sources them from
+`kalshi_trading_key.pem` in the repo root — **this file is gitignored and NOT
+tracked by git** (`git ls-files | grep pem` returns empty), so it lives only on
+Chris's Mac and won't transfer via git clone/pull/workspace mount. Never read,
+display, log, commit, or transmit this file or its contents. See
+`BOT_MIGRATION_HANDOFF.md` §5 for the full credential-transfer writeup.
+
+**Recently completed (Jun 8, 2026 — Cowork session):**
+- **Sweet-zone ceiling added** (`371870b`) — Chris flagged the bot was buying at
+  94–99% prob with "basically no upside." Added `MAX_YES_PROB = 85.0` /
+  `MIN_YES_PROB = 15.0` bounds to `trade_selector.py`; markets outside 15–85%
+  are now skipped with explicit rejection reasons. Also fixed a fallback bug
+  where `live_markets=[]` (checked, found nothing) wasn't triggering the
+  `markets.json` catalog fallback the way `live_markets=None` did.
+- **Kalshi near-term market discovery fixed** (`81c4097`) — Chris correctly
+  pushed back on my claim that "Kalshi structurally has fewer actionable markets
+  than Polymarket": *"I think they have almost identical markets, we are just
+  missing them for some reason."* Root cause: both `fetch_markets.py` and
+  `kalshi_orders.py` queried Kalshi's `/events` endpoint (sorted by volume
+  descending), burying new short-duration markets on page 50+. Fixed by
+  switching to the `/markets` endpoint with `max_close_time` filtering and
+  cursor pagination in both files. **Not yet verified with live data** — watch
+  for log lines `"Kalshi near-term (≤7d) via /markets endpoint: +N markets"`
+  (pipeline) and `"Total live candidates: N"` (bot) showing `N > 0` across the
+  next several hourly runs.
+
+**Open threads (see `BOT_MIGRATION_HANDOFF.md` §9 for full detail):**
+1. Verify the `/markets` endpoint fix actually surfaces near-term Kalshi markets
+2. Confirm new positions land in the 65–85%/15–35% sweet zone, not 94–99%+
+3. If candidates still scarce: check auth headers on `/markets` calls, cursor
+   pagination completeness, and whether filters are too aggressive
+4. Track whether live bot results start converging with paper portfolio results
+   now that both use similar sweet-zone logic and market discovery
+
 ## Editorial Voice
 
 See VOICE.md. Sharp, confident, trader-focused. Lead with the number. "The crowd is telling you something." No hedging.
@@ -181,6 +268,7 @@ See VOICE.md. Sharp, confident, trader-focused. Lead with the number. "The crowd
 ## Session Handoff — TODO
 
 ### Pending Next Session
+0. **[NEW — bot] Verify the two live-bot fixes shipped Jun 8** — sweet-zone ceiling (`371870b`) and Kalshi `/markets`-endpoint near-term discovery (`81c4097`). Watch `fetch-markets.yml`/`run-bot.yml` Action logs for `"Kalshi near-term (≤7d) via /markets endpoint: +N markets"` and `"Total live candidates: N"` with N > 0, and confirm new ledger entries land in the 65–85%/15–35% sweet zone (not 94–99%+). Full context: `BOT_MIGRATION_HANDOFF.md`.
 1. Monitor hero relevance — Mar 28 overhaul is live. Should now surface NCAA tournament + high-volume news markets (Iran, etc.) instead of low-activity political futures. On game days with big moves, sports will dominate. On quiet weekdays, financial/political markets with real volume should win. Watch for the next 3-5 pipeline runs to confirm quality improvement.
 2. Alt design user feedback — index-alt.html is live at theprobnewsletter.com/index-alt.html with toggle bar on index.html. Both designs are identical in functionality. Monitor for user "👍 This one" mailto feedback to learn which design readers prefer.
 3. Monitor The Spread output — expect 1–5 real pairs per run. If < 2 consistently, lower MATCH_THRESHOLD to 0.30. The spread-card shows the Kalshi question as subtitle.
@@ -190,6 +278,14 @@ See VOICE.md. Sharp, confident, trader-focused. Lead with the number. "The crowd
 7. Sparklines — start accumulating price_history.json now; display 7-day charts on cards in ~7 days once data exists.
 8. Monitor Test 1 results — review Apr 10, 2026.
 9. Update data/builder_notes.json each session — edit built_recently + coming_next directly in that file.
+
+### Recently Completed (Jun 8, 2026) — Cowork session (live bot work + Claude Code migration prep)
+- **Live trading bot diagnosed and fixed** — Chris flagged the bot was buying positions at 94–99% prob with "basically no upside," and that `run_bot.py` was finding 0 trade candidates. Two fixes shipped and pushed (`371870b`, `81c4097`):
+  1. **Sweet-zone ceiling** — added `MAX_YES_PROB = 85.0` / `MIN_YES_PROB = 15.0` bounds to `trade_selector.py` (combines with existing 35–65% dead-zone gate to define the "sweet zone": YES 65–85% or NO 15–35%, targeting 18–54% return per win — the range that can actually compound). Also fixed a fallback bug where `live_markets=[]` wasn't triggering the `markets.json` catalog fallback.
+  2. **Kalshi near-term market discovery fix** — Chris correctly corrected my claim that "Kalshi structurally has fewer actionable markets than Polymarket" (*"I think they have almost identical markets, we are just missing them for some reason"*). Root cause: both `fetch_markets.py` and `kalshi_orders.py` queried Kalshi's `/events` endpoint (volume-sorted), burying short-duration markets on page 50+. Fixed by switching to the `/markets` endpoint with `max_close_time` filtering + cursor pagination in both files. **Not yet verified with live data** — watch next several hourly runs.
+- **Trading bot subsystem documented for the first time** — `run_bot.py`, `trade_selector.py`, `kalshi_orders.py`, `debug_live_markets.py`, `test_connection.py` were completely absent from CLAUDE.md (only the newsletter/site pipeline was documented). Added new "Live Trading Bot ('The Snowball')" section above, plus repo-structure and workflow entries.
+- **Claude Code migration prep** — Chris asked to migrate this project from Cowork to Claude Code "with no drop off and no missed context." Created `BOT_MIGRATION_HANDOFF.md` — a dedicated deep-dive doc covering bot architecture, the GitHub Actions workflow, recent fixes, how to run things locally, and (critically) credential handling.
+- **⚠️ Credential transfer flagged** — discovered `kalshi_trading_key.pem` (RSA private key, 1,675 bytes) sitting in the repo root. It's listed in `.gitignore` and confirmed NOT tracked by git (`git ls-files | grep pem` → empty), so it lives only on Chris's Mac and will NOT transfer automatically to a new environment via git/workspace mount. Documented in both CLAUDE.md and `BOT_MIGRATION_HANDOFF.md` §5 — Chris needs to personally ensure the key material is present wherever the new Claude Code session runs; this is not something an assistant should handle (entering/transmitting credentials is off-limits).
 
 ### Recently Completed (Mar 28, 2026) — Session 5
 - **Alt design shipped (index-alt.html)** — Full Stitch design system applied to real data with complete feature parity. Volt green (#eaffb9) primary, dark terminal aesthetic, Space Grotesk headlines. Sections: hero, movers, spread, daily_take, trade, model scoreboard, newsletter CTA. Toggle bar on both pages with mailto feedback buttons. Stripped all fake Stitch features (wallet connect, Terminal sidebar, analyst avatars, "Execute Arb Strategy", etc.). Live at theprobnewsletter.com/index-alt.html.
