@@ -12,7 +12,7 @@
       "ytd_return_pct": 117.8,
       "win_count": 382,
       "loss_count": 63,
-      "open_count": 61,
+      "open_count": 62,
       "start_date": "2026-03-17",
       "last_updated": "2026-06-08",
       "trades": [
@@ -9123,6 +9123,24 @@
           "exit_prob": null,
           "exit_date": null,
           "pnl": null
+        },
+        {
+          "trade_id": "e70d81da",
+          "market_id": "israel-closes-its-airspace-by-june-15-687-594-783-732-455-613-653",
+          "question": "Israel closes its airspace by June 15?",
+          "url": "https://polymarket.com/event/israel-closes-its-airspace-by",
+          "source": "Polymarket",
+          "display_category": "Politics",
+          "entry_prob": 16.5,
+          "direction": "NO",
+          "amount": 100.0,
+          "entry_date": "2026-06-08",
+          "end_date_raw": "2026-06-15T00:00:00Z",
+          "end_date": "Jun 15",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
@@ -9130,12 +9148,12 @@
       "name": "The Contrarian",
       "strategy": "Fade longshots: always NO when crowd says \u226430%",
       "thesis": "Crowds overprice long shots. Sell the overpriced tickets.",
-      "current_balance": 1896.18,
-      "total_pnl": 896.18,
-      "ytd_return_pct": 89.6,
-      "win_count": 67,
+      "current_balance": 1902.0,
+      "total_pnl": 902.0,
+      "ytd_return_pct": 90.2,
+      "win_count": 68,
       "loss_count": 2,
-      "open_count": 11,
+      "open_count": 10,
       "start_date": "2026-03-17",
       "last_updated": "2026-06-08",
       "trades": [
@@ -10574,10 +10592,10 @@
           "entry_date": "2026-06-08",
           "end_date_raw": "2026-06-15T00:00:00Z",
           "end_date": "Jun 15",
-          "status": "open",
-          "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "status": "closed",
+          "exit_prob": 4.5,
+          "exit_date": "2026-06-08",
+          "pnl": 5.82
         }
       ]
     },
