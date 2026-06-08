@@ -1328,15 +1328,18 @@ def score_market(m: dict) -> float:
             recency_bonus = min(ratio * 5, 3.0)
 
     # 8. Platform curation signal — editorial teams at Poly and/or Kalshi spotlighted this.
-    #    Single platform: +10pts. Both platforms agree: +25pts (near-override).
+    #    Single platform: +20pts. Both platforms agree: +35pts (near-override).
     #    Two competing exchanges independently choosing the same market is strong signal
     #    that it's the story a general audience cares about right now (e.g. NBA Finals).
+    #    Raised from +10/+25 (Jun 8): a -26pt tennis swing was scoring ~40 on move alone,
+    #    drowning out an $836K featured NBA Finals market. +20 single / +35 dual ensures
+    #    editorially curated markets reliably beat niche sports noise.
     poly_feat   = bool(m.get("featured", False))
     kalshi_feat = bool(m.get("kalshi_featured", False))
     if poly_feat and kalshi_feat:
-        featured_bonus = 25.0   # consensus: both platforms spotlighting it
+        featured_bonus = 35.0   # consensus: both platforms spotlighting it
     elif poly_feat or kalshi_feat:
-        featured_bonus = 10.0   # one platform's editorial pick
+        featured_bonus = 20.0   # one platform's editorial pick
     else:
         featured_bonus = 0.0
 
@@ -1537,10 +1540,35 @@ def pick_hero(markets: list[dict], recent_topics: list[str] | None = None,
                 base -= 10.0
             elif cat and len(recent_categories) > 1 and cat == recent_categories[1]:
                 base -= 5.0
-        # Tournament activity bonus: sports market with $75K+ traded today is
-        # actively bet regardless of whether price moved much. NCAA/playoffs signal.
-        if is_sports_market(m) and m.get("volume_24h", 0) >= HERO_SPORTS_VOLUME_GATE:
-            base += 8.0
+        # Tournament activity bonus: tiered by 24h volume — more money = bigger story.
+        # $1M+: Finals/championship game happening RIGHT NOW → +20pts
+        # $250K+: Major tournament game → +12pts
+        # $75K+:  Active tournament market → +8pts
+        vol24 = m.get("volume_24h", 0)
+        if is_sports_market(m):
+            if vol24 >= 1_000_000:
+                base += 20.0
+            elif vol24 >= 250_000:
+                base += 12.0
+            elif vol24 >= HERO_SPORTS_VOLUME_GATE:
+                base += 8.0
+
+        # Unfeatured sports move cap: prevent a random tennis/golf match with a big
+        # price swing (e.g. -26pt HSBC) from beating genuinely newsworthy markets.
+        # If a sports market has no platform curation signal, cap its contribution
+        # from price movement at 15pts. Featured sports markets are uncapped.
+        poly_feat_h   = bool(m.get("featured", False))
+        kalshi_feat_h = bool(m.get("kalshi_featured", False))
+        if is_sports_market(m) and not poly_feat_h and not kalshi_feat_h:
+            # Recalculate what the move_score component contributed and cap it
+            change = abs(m.get("change_pts", 0))
+            raw_move = min(change, 30.0) * (3.0 if change >= 15 else (2.0 if change >= 5 else 1.5))
+            capped_move = min(raw_move, 15.0)
+            # Subtract the excess move score above the cap
+            excess = raw_move - capped_move
+            if excess > 0:
+                base -= excess
+
         return base
 
     # Topic-level dedup for hero: collapse all variants of the same real-world
