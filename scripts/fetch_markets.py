@@ -56,6 +56,12 @@ HERO_MIN_24H_VOLUME    = 2_500       # Must have at least $2.5K trading activity
 HERO_SPORTS_MIN_VOLUME      = 25_000_000  # Established sports events (NFL/NBA champions etc)
 HERO_SPORTS_MIN_VOLUME_24H  =     50_000  # OR: tournament-fresh markets with $50K+ traded today
 
+# Hero hold: don't replace the current hero unless it has held for this many hours
+# OR the challenger beats it by HERO_HOLD_SCORE_MARGIN pts. Prevents a good NBA Finals
+# story from getting knocked off by a tennis match just because it moved more at 2pm.
+HERO_HOLD_HOURS        = 6
+HERO_HOLD_SCORE_MARGIN = 20   # challenger must beat current hero by this much to unseat it early
+
 # Minimum 24h volume to be worth showing — filters MrBeast/micro view-count markets
 MIN_INTERESTING_VOLUME = 100_000
 
@@ -696,6 +702,7 @@ def fetch_kalshi() -> list[dict]:
                                 "tags":             [category.lower()],
                                 "spread":           spread,
                                 "open_interest":    open_interest_usd,
+                                "kalshi_featured":  bool(event.get("featured", False)),
                             })
                             seen_tickers.add(ticker)
                         except (ValueError, KeyError):
@@ -843,6 +850,7 @@ def fetch_kalshi() -> list[dict]:
                                 "tags":             [category.lower()],
                                 "spread":           spread,
                                 "open_interest":    float(m.get("open_interest_fp", 0) or 0) / 100,
+                                "kalshi_featured":  bool(m.get("featured", False)),
                             })
                             seen_tickers.add(ticker)
                             added_nt += 1
@@ -1319,12 +1327,18 @@ def score_market(m: dict) -> float:
         if ratio > 0.15:   # >15% of all volume in last 24h = breaking
             recency_bonus = min(ratio * 5, 3.0)
 
-    # 8. Polymarket featured flag — their editorial team curated this market as
-    #    timely/relevant. Raised from +2 to +6pts (Mar 10): at +2 it couldn't
-    #    overcome a 10pt move_score advantage from a stale trending market.
-    #    At +6 a featured market with a 4pt move (score ~16+6=22) can reliably
-    #    beat a non-featured market with a 6pt move (score ~15 no bonus).
-    featured_bonus = 6.0 if m.get("featured") else 0.0
+    # 8. Platform curation signal — editorial teams at Poly and/or Kalshi spotlighted this.
+    #    Single platform: +10pts. Both platforms agree: +25pts (near-override).
+    #    Two competing exchanges independently choosing the same market is strong signal
+    #    that it's the story a general audience cares about right now (e.g. NBA Finals).
+    poly_feat   = bool(m.get("featured", False))
+    kalshi_feat = bool(m.get("kalshi_featured", False))
+    if poly_feat and kalshi_feat:
+        featured_bonus = 25.0   # consensus: both platforms spotlighting it
+    elif poly_feat or kalshi_feat:
+        featured_bonus = 10.0   # one platform's editorial pick
+    else:
+        featured_bonus = 0.0
 
     # 9. Kalshi bid-ask spread signal — tight spread means active order book.
     #    Formula: max(0, 1 - spread/10) → 1pt at 0 spread, 0pt at 10+ spread.
@@ -2749,7 +2763,41 @@ def main():
     else:
         print("  Trends bonus: no market matches (both sources may have failed)")
 
-    hero      = pick_hero(all_markets, recent_topics=recent_hero_topics, recent_categories=recent_hero_categories)
+    candidate_hero = pick_hero(all_markets, recent_topics=recent_hero_topics, recent_categories=recent_hero_categories)
+
+    # 6-hour hero hold: keep the current hero unless it has been showing for >= HERO_HOLD_HOURS
+    # OR the challenger beats it by HERO_HOLD_SCORE_MARGIN pts. This prevents a good NBA Finals
+    # story from being knocked off by a random tennis match that just had a big price swing.
+    hero = candidate_hero
+    try:
+        prev_hero_data = prev.get("hero") if 'prev' in dir() else None
+        if prev_hero_data and candidate_hero:
+            held_since_iso = prev_hero_data.get("held_since") or prev.get("updated_iso", "")
+            if held_since_iso:
+                held_since = datetime.fromisoformat(held_since_iso.replace("Z", "+00:00"))
+                hours_held = (now_utc - held_since).total_seconds() / 3600
+                same_topic = get_topic_key(prev_hero_data) == get_topic_key(candidate_hero)
+                challenger_score = score_market(candidate_hero)
+                incumbent_score  = score_market(prev_hero_data)
+                if hours_held < HERO_HOLD_HOURS and not same_topic:
+                    if challenger_score - incumbent_score < HERO_HOLD_SCORE_MARGIN:
+                        # Keep the incumbent — challenger hasn't earned the swap yet
+                        hero = prev_hero_data
+                        hero["held_since"] = held_since_iso   # preserve original timestamp
+                        print(f"  Hero HELD ({hours_held:.1f}h < {HERO_HOLD_HOURS}h, margin {challenger_score - incumbent_score:.1f} < {HERO_HOLD_SCORE_MARGIN}): {hero['question'][:60]}")
+                    else:
+                        print(f"  Hero UNSEATED early (margin +{challenger_score - incumbent_score:.1f}): {candidate_hero['question'][:60]}")
+                else:
+                    if not same_topic:
+                        print(f"  Hero ROTATED after {hours_held:.1f}h: {candidate_hero['question'][:60]}")
+    except Exception as e:
+        print(f"  [WARN] hero hold check failed: {e}")
+
+    # Stamp held_since on new heroes so hold logic knows when they first appeared
+    if hero and not hero.get("held_since"):
+        hero = dict(hero)
+        hero["held_since"] = now_utc.isoformat()
+
     hero_slug = hero["slug"] if hero else ""
     movers    = pick_movers(all_markets, exclude_slug=hero_slug)
     ticker    = pick_ticker(all_markets)
