@@ -12,7 +12,7 @@
       "ytd_return_pct": 122.5,
       "win_count": 381,
       "loss_count": 62,
-      "open_count": 59,
+      "open_count": 60,
       "start_date": "2026-03-17",
       "last_updated": "2026-06-08",
       "trades": [
@@ -9051,6 +9051,24 @@
           "exit_prob": null,
           "exit_date": null,
           "pnl": null
+        },
+        {
+          "trade_id": "49ed2c44",
+          "market_id": "wta-linette-birrell-2026-06-08",
+          "question": "Libema Open: Magda Linette vs Kimberly Birrell",
+          "url": "https://polymarket.com/event/wta-linette-birrell-2026-06-08",
+          "source": "Polymarket",
+          "display_category": "Sports",
+          "entry_prob": 90.5,
+          "direction": "YES",
+          "amount": 100.0,
+          "entry_date": "2026-06-08",
+          "end_date_raw": "2026-06-15T08:00:00Z",
+          "end_date": "Jun 15",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
@@ -9058,10 +9076,10 @@
       "name": "The Contrarian",
       "strategy": "Fade longshots: always NO when crowd says \u226430%",
       "thesis": "Crowds overprice long shots. Sell the overpriced tickets.",
-      "current_balance": 1883.19,
-      "total_pnl": 883.19,
-      "ytd_return_pct": 88.3,
-      "win_count": 66,
+      "current_balance": 1896.18,
+      "total_pnl": 896.18,
+      "ytd_return_pct": 89.6,
+      "win_count": 67,
       "loss_count": 2,
       "open_count": 10,
       "start_date": "2026-03-17",
@@ -10412,10 +10430,10 @@
           "entry_date": "2026-06-05",
           "end_date_raw": "2026-06-15T00:00:00Z",
           "end_date": "Jun 15",
-          "status": "open",
-          "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "status": "closed",
+          "exit_prob": 4.5,
+          "exit_date": "2026-06-08",
+          "pnl": 12.99
         },
         {
           "trade_id": "c38df7a8",
@@ -10470,6 +10488,24 @@
           "exit_prob": 0.1,
           "exit_date": "2026-06-07",
           "pnl": 22.7
+        },
+        {
+          "trade_id": "61ebfa39",
+          "market_id": "israel-closes-its-airspace-by-june-15-687-594-783-732-455-613-653",
+          "question": "Israel closes its airspace by June 15?",
+          "url": "https://polymarket.com/event/israel-closes-its-airspace-by",
+          "source": "Polymarket",
+          "display_category": "Politics",
+          "entry_prob": 28.5,
+          "direction": "NO",
+          "amount": 100.0,
+          "entry_date": "2026-06-08",
+          "end_date_raw": "2026-06-15T00:00:00Z",
+          "end_date": "Jun 15",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
