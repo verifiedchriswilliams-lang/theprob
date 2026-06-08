@@ -34,8 +34,7 @@
     "trends_bonus": 0.0,
     "trading_signal": "knife_edge",
     "cat_rank": 97.06,
-    "prob_take": "The crowd has $$340K on this at 45.5%, calling it a toss-up. Odds are down 26.0 pts today. Worth watching.",
-    "held_since": "2026-06-08T17:53:20.338288+00:00"
+    "prob_take": "The crowd has $$340K on this at 45.5%, calling it a toss-up. Odds are down 26.0 pts today. Worth watching."
   },
   "trade": {
     "source": "Polymarket",
@@ -77,20 +76,8 @@
     "trading_signal": "momentum",
     "cat_rank": 67.91
   },
-  "hero_history": [
-    "championships: hsbc qinwen zheng",
-    "cilic libema marin open:",
-    "alejandro davidovich open: stuttgart",
-    "attend nba president trump",
-    "airspace closes israel",
-    "mets new vs york",
-    "atlanta pirates pittsburgh vs"
-  ],
-  "hero_category_history": [
-    "Sports",
-    "Politics",
-    "Finance"
-  ],
+  "hero_history": [],
+  "hero_category_history": [],
   "trending_topics": [
     "Alexander Zverev",
     "Obsession (2025 film)",
