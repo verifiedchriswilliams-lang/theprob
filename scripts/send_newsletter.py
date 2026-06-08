@@ -571,74 +571,90 @@ def build_html(markets: dict, news: dict, subject: str, with_footer: bool = True
     </table>
   </td></tr>"""
 
-    # ── EXPERIMENT SCOREBOARD SECTION ──
-    def _model_card(label, color, name, strategy, thesis, v):
-        ytd = v.get("ytd_return_pct", 0.0)
-        bal = v.get("current_balance", 1000.0)
-        rec = f"{v.get('win_count',0)}W / {v.get('loss_count',0)}L"
-        ytd_col = "#00e5a0" if ytd >= 0 else "#ff4d6d"
-        ytd_str = f"+{ytd:.1f}%" if ytd >= 0 else f"{ytd:.1f}%"
-        return f"""
-        <td style="padding:0 6px;vertical-align:top;width:33%;">
+    # ── EXPERIMENT 1 RESULTS SECTION ──
+    # NOTE: Replace this section with Test 2 scoreboard after Friday Jun 13 launch.
+    _va = _v("a")
+    _vb = _v("b")
+    experiment_html = f"""
+  <tr><td class="section-pad" style="padding:28px 32px;border-bottom:1px solid #1e2a38;background:#080b0f !important;">
+    <div style="font-family:'Courier New',monospace;font-size:10px;color:#4a9eff !important;
+                letter-spacing:0.2em;text-transform:uppercase;margin-bottom:16px;">
+      &#9654; Experiment 1 Results
+    </div>
+    <div style="font-size:20px;font-weight:700;color:#edf2f7 !important;line-height:1.3;margin-bottom:8px;">
+      Model A wins. +127.8% in 83 days.
+    </div>
+    <div style="font-size:14px;color:#8ba3bc !important;line-height:1.6;margin-bottom:20px;">
+      We ran 3 trading models head-to-head for 83 days. Same $1,000 each. Same markets. The Crowd beat The Contrarian by $381. The Arb never got off the ground.
+    </div>
+    <!--[if mso]><table width="100%"><tr><![endif]-->
+    <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:20px;">
+      <tr>
+        <td style="padding:0 6px 0 0;vertical-align:top;width:50%;">
           <table width="100%" cellpadding="0" cellspacing="0"
-                 style="border:1px solid {color};border-radius:4px;background:#0d1117;">
-            <tr><td style="padding:14px 12px;">
-              <div style="font-family:'Courier New',monospace;font-size:9px;color:{color} !important;
-                          letter-spacing:0.2em;text-transform:uppercase;margin-bottom:6px;">
-                Model {label}
+                 style="border:2px solid #4a9eff;border-radius:4px;background:#0d1117;">
+            <tr><td style="padding:16px 14px;">
+              <div style="font-family:'Courier New',monospace;font-size:9px;color:#4a9eff !important;
+                          letter-spacing:0.2em;text-transform:uppercase;margin-bottom:4px;">
+                Model A &middot; WINNER
               </div>
-              <div style="font-size:13px;font-weight:700;color:#edf2f7 !important;margin-bottom:4px;">
-                {name}
-              </div>
-              <div style="font-family:'Courier New',monospace;font-size:10px;color:#8ba3bc !important;
-                          margin-bottom:10px;line-height:1.4;">
-                {strategy}
-              </div>
-              <div style="font-family:'Courier New',monospace;font-size:11px;
-                          color:{ytd_col} !important;font-weight:700;">
-                {ytd_str}
-              </div>
-              <div style="font-family:'Courier New',monospace;font-size:10px;
-                          color:#8ba3bc !important;margin-top:2px;">
-                ${bal:,.2f} &middot; {rec}
+              <div style="font-size:14px;font-weight:700;color:#edf2f7 !important;margin-bottom:8px;">The Crowd</div>
+              <div style="font-family:'Courier New',monospace;font-size:22px;font-weight:700;color:#4a9eff !important;">+127.8%</div>
+              <div style="font-family:'Courier New',monospace;font-size:11px;color:#8ba3bc !important;margin-top:4px;">
+                ${_va.get('current_balance', 2277.60):,.2f} &middot; {_va.get('win_count',382)}W/{_va.get('loss_count',62)}L &middot; 505 trades
               </div>
             </td></tr>
           </table>
-        </td>"""
-
-    mc_a = _model_card("A", "#3b82f6", "The Crowd",
-                       "YES &ge;65%, NO &le;35%",
-                       "Follow smart money. Ride conviction.",
-                       _v("a"))
-    mc_b = _model_card("B", "#ef4444", "The Contrarian",
-                       "Always NO on &le;30% shots",
-                       "Crowds overprice longshots. Sell the ticket.",
-                       _v("b"))
-    mc_c = _model_card("C", "#f59e0b", "The Arb",
-                       "Bet the lagging platform (gap &ge;10pt)",
-                       "Two liquid crowds disagree. One is wrong.",
-                       _v("c"))
-
-    experiment_html = f"""
-  <tr><td class="section-pad" style="padding:28px 32px;border-bottom:1px solid #1e2a38;background:#080b0f !important;">
-    <div style="font-family:'Courier New',monospace;font-size:10px;color:#a78bfa !important;
-                letter-spacing:0.2em;text-transform:uppercase;margin-bottom:16px;">
-      &#9654; The 3-Model Experiment
-    </div>
-    <div style="font-size:14px;color:#edf2f7 !important;line-height:1.5;margin-bottom:18px;">
-      Three strategies. Same $1,000 starting balance. Same markets. Running simultaneously
-      starting today &mdash; we find out which logic actually makes money.
-    </div>
-    <!--[if mso]><table width="100%"><tr><![endif]-->
-    <table width="100%" cellpadding="0" cellspacing="0">
-      <tr>{mc_a}{mc_b}{mc_c}</tr>
+        </td>
+        <td style="padding:0 0 0 6px;vertical-align:top;width:50%;">
+          <table width="100%" cellpadding="0" cellspacing="0"
+                 style="border:1px solid #1e2a38;border-radius:4px;background:#0d1117;margin-bottom:8px;">
+            <tr><td style="padding:12px 14px;">
+              <div style="font-family:'Courier New',monospace;font-size:9px;color:#ef4444 !important;
+                          letter-spacing:0.2em;text-transform:uppercase;margin-bottom:4px;">Model B</div>
+              <div style="font-size:13px;font-weight:600;color:#edf2f7 !important;margin-bottom:6px;">The Contrarian</div>
+              <div style="font-family:'Courier New',monospace;font-size:16px;font-weight:700;color:#00e5a0 !important;">+89.6%</div>
+              <div style="font-family:'Courier New',monospace;font-size:10px;color:#8ba3bc !important;margin-top:2px;">
+                ${_vb.get('current_balance', 1896.18):,.2f} &middot; 97.1% win rate &middot; 80 trades
+              </div>
+            </td></tr>
+          </table>
+          <table width="100%" cellpadding="0" cellspacing="0"
+                 style="border:1px solid #1e2a38;border-radius:4px;background:#0d1117;opacity:0.6;">
+            <tr><td style="padding:12px 14px;">
+              <div style="font-family:'Courier New',monospace;font-size:9px;color:#8ba3bc !important;
+                          letter-spacing:0.2em;text-transform:uppercase;margin-bottom:4px;">Model C &middot; Inconclusive</div>
+              <div style="font-size:13px;font-weight:600;color:#8ba3bc !important;margin-bottom:6px;">The Arb</div>
+              <div style="font-family:'Courier New',monospace;font-size:16px;font-weight:700;color:#8ba3bc !important;">0.0%</div>
+              <div style="font-family:'Courier New',monospace;font-size:10px;color:#8ba3bc !important;margin-top:2px;">
+                Not enough qualifying Poly/Kalshi pairs. 6 trades, none resolved.
+              </div>
+            </td></tr>
+          </table>
+        </td>
+      </tr>
     </table>
     <!--[if mso]></tr></table><![endif]-->
-    <div style="margin-top:16px;text-align:center;">
+    <div style="background:#0d1117 !important;border:1px solid #1e2a38;border-radius:4px;padding:16px 18px;margin-bottom:16px;">
+      <div style="font-family:'Courier New',monospace;font-size:10px;color:#4a9eff !important;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:10px;">What we learned</div>
+      <div style="font-size:13px;color:#8ba3bc !important;line-height:1.7;margin-bottom:8px;">
+        <span style="color:#edf2f7 !important;font-weight:600;">Model A won on volume and consistency.</span> Betting with the crowd at 83% average entry probability wins 86% of the time. The math is boring. The returns aren't.
+      </div>
+      <div style="font-size:13px;color:#8ba3bc !important;line-height:1.7;margin-bottom:8px;">
+        <span style="color:#edf2f7 !important;font-weight:600;">Model B's 97% win rate is a trap.</span> Risking $100 to win $16 at 14% average entry isn't edge. It's slowly giving yourself the illusion of edge while one bad week erases a month of gains.
+      </div>
+      <div style="font-size:13px;color:#8ba3bc !important;line-height:1.7;">
+        <span style="color:#edf2f7 !important;font-weight:600;">Model C needs better data.</span> The arb concept is valid. Poly and Kalshi do disagree. But qualifying pairs surface maybe once a day. Not enough frequency to run a real test.
+      </div>
+    </div>
+    <div style="font-size:13px;color:#8ba3bc !important;line-height:1.6;margin-bottom:16px;">
+      Test 2 launches Friday. Model A defends as the control. Two new challengers: a tighter 75/25 conviction gate, and a version that adds momentum confirmation. Same $1,000. Same markets. 30 days.
+    </div>
+    <div style="text-align:center;">
       <a href="{SITE_URL}/portfolio.html"
-         style="font-family:'Courier New',monospace;font-size:11px;color:#a78bfa !important;
+         style="font-family:'Courier New',monospace;font-size:11px;color:#4a9eff !important;
                 text-decoration:none;letter-spacing:0.15em;text-transform:uppercase;">
-        Follow the race &amp; vote for your pick &#8599;
+        Full results + post-mortem &#8599;
       </a>
     </div>
   </td></tr>"""

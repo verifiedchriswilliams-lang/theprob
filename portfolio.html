@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Prob Live Experiment — Building a Prediction Market Trading System in Public</title>
-  <meta name="description" content="We're building a systematic prediction market trading system in public. Every rule, every trade, every result — logged in real time. Test 1 started Mar 11, 2026.">
+  <title>The Prob Experiment 1 Results — Model A Wins. Here's What We Learned.</title>
+  <meta name="description" content="Experiment 1 concluded. Model A (The Crowd) returned +127.8% in 83 days. Full post-mortem, trade ledger, and what comes next.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://theprobnewsletter.com/portfolio.html">
-  <meta property="og:title" content="The Prob Live Experiment — Prediction Market Trading System, Built in Public">
-  <meta property="og:description" content="We're building a systematic trading system for prediction markets and logging every trade in real time. Watch us figure it out.">
+  <meta property="og:title" content="The Prob Experiment 1 Results — Model A Wins. Here's What We Learned.">
+  <meta property="og:description" content="Experiment 1 concluded. Model A (The Crowd) returned +127.8% in 83 days. Full post-mortem on all 3 models and what comes next.">
   <meta property="og:url" content="https://theprobnewsletter.com/portfolio.html">
   <meta property="og:type" content="website">
   <style>
@@ -150,79 +150,105 @@
 
 <!-- HERO -->
 <div class="page-hero">
-  <div class="page-eyebrow">Live Experiment &middot; 3 Models &middot; Started Mar 17, 2026</div>
-  <h1 class="page-title">3 models. Same markets. Who wins?</h1>
-  <p class="page-subtitle">We're running three trading systems simultaneously — each with a different thesis about how prediction markets can be beaten. $1,000 each. Every trade logged in real time. Pick your side.</p>
+  <div class="page-eyebrow">Experiment 1 Concluded &middot; Mar 17 &ndash; Jun 8, 2026 &middot; 83 Days</div>
+  <h1 class="page-title">Model A wins. Here's what we learned.</h1>
+  <p class="page-subtitle">3 models. 83 days. 591 trades. The Crowd beat The Contrarian by $381. The Arb never got off the ground. Full results and post-mortem below. Test 2 launches Friday.</p>
 
-  <!-- 3-MODEL SCOREBOARD -->
+  <!-- FINAL SCOREBOARD -->
   <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px;" id="scoreboard">
 
-    <div style="background:var(--bg2);border:1px solid var(--border);border-top:3px solid #4a9eff;border-radius:8px;padding:24px;">
-      <div style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:#4a9eff;margin-bottom:6px;">Model A</div>
+    <div style="background:var(--bg2);border:2px solid #4a9eff;border-top:3px solid #4a9eff;border-radius:8px;padding:24px;position:relative;">
+      <div style="position:absolute;top:14px;right:14px;font-family:'Courier New',monospace;font-size:9px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;background:#4a9eff;color:#080b0f;padding:3px 8px;border-radius:3px;">WINNER</div>
+      <div style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:#4a9eff;margin-bottom:6px;">Model A &middot; Final</div>
       <div style="font-size:18px;font-weight:700;margin-bottom:4px;">The Crowd</div>
       <div style="font-size:12px;color:var(--text-muted);margin-bottom:16px;">Follow consensus: YES &ge;65%, NO &le;35%</div>
-      <div style="font-family:'Courier New',monospace;font-size:28px;font-weight:700;" id="sb-a-bal" class="green">$1,000.00</div>
+      <div style="font-family:'Courier New',monospace;font-size:28px;font-weight:700;color:#4a9eff;" id="sb-a-bal">$2,277.60</div>
       <div style="display:flex;gap:16px;margin-top:8px;">
-        <div><div style="font-size:11px;color:var(--text-muted);">YTD</div><div style="font-family:'Courier New',monospace;font-size:14px;" id="sb-a-ytd" class="green">+0.0%</div></div>
-        <div><div style="font-size:11px;color:var(--text-muted);">Record</div><div style="font-family:'Courier New',monospace;font-size:14px;color:var(--amber);" id="sb-a-rec">0&ndash;0</div></div>
-        <div><div style="font-size:11px;color:var(--text-muted);">Open</div><div style="font-family:'Courier New',monospace;font-size:14px;" id="sb-a-open">0</div></div>
+        <div><div style="font-size:11px;color:var(--text-muted);">Return</div><div style="font-family:'Courier New',monospace;font-size:14px;color:#4a9eff;" id="sb-a-ytd">+127.8%</div></div>
+        <div><div style="font-size:11px;color:var(--text-muted);">Record</div><div style="font-family:'Courier New',monospace;font-size:14px;color:var(--amber);" id="sb-a-rec">382&ndash;62</div></div>
+        <div><div style="font-size:11px;color:var(--text-muted);">Trades</div><div style="font-family:'Courier New',monospace;font-size:14px;" id="sb-a-open">505</div></div>
       </div>
     </div>
 
     <div style="background:var(--bg2);border:1px solid var(--border);border-top:3px solid var(--red);border-radius:8px;padding:24px;">
-      <div style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--red);margin-bottom:6px;">Model B &mdash; My Pick to Win</div>
+      <div style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--red);margin-bottom:6px;">Model B &middot; Final</div>
       <div style="font-size:18px;font-weight:700;margin-bottom:4px;">The Contrarian</div>
       <div style="font-size:12px;color:var(--text-muted);margin-bottom:16px;">Fade longshots: always NO when crowd says &le;30%</div>
-      <div style="font-family:'Courier New',monospace;font-size:28px;font-weight:700;" id="sb-b-bal" class="green">$1,000.00</div>
+      <div style="font-family:'Courier New',monospace;font-size:28px;font-weight:700;" id="sb-b-bal" class="green">$1,896.18</div>
       <div style="display:flex;gap:16px;margin-top:8px;">
-        <div><div style="font-size:11px;color:var(--text-muted);">YTD</div><div style="font-family:'Courier New',monospace;font-size:14px;" id="sb-b-ytd" class="green">+0.0%</div></div>
-        <div><div style="font-size:11px;color:var(--text-muted);">Record</div><div style="font-family:'Courier New',monospace;font-size:14px;color:var(--amber);" id="sb-b-rec">0&ndash;0</div></div>
-        <div><div style="font-size:11px;color:var(--text-muted);">Open</div><div style="font-family:'Courier New',monospace;font-size:14px;" id="sb-b-open">0</div></div>
+        <div><div style="font-size:11px;color:var(--text-muted);">Return</div><div style="font-family:'Courier New',monospace;font-size:14px;" id="sb-b-ytd" class="green">+89.6%</div></div>
+        <div><div style="font-size:11px;color:var(--text-muted);">Record</div><div style="font-family:'Courier New',monospace;font-size:14px;color:var(--amber);" id="sb-b-rec">67&ndash;2</div></div>
+        <div><div style="font-size:11px;color:var(--text-muted);">Trades</div><div style="font-family:'Courier New',monospace;font-size:14px;" id="sb-b-open">80</div></div>
       </div>
     </div>
 
-    <div style="background:var(--bg2);border:1px solid var(--border);border-top:3px solid var(--amber);border-radius:8px;padding:24px;">
-      <div style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--amber);margin-bottom:6px;">Model C</div>
+    <div style="background:var(--bg2);border:1px solid var(--border);border-top:3px solid var(--border);border-radius:8px;padding:24px;opacity:0.7;">
+      <div style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-muted);margin-bottom:6px;">Model C &middot; Inconclusive</div>
       <div style="font-size:18px;font-weight:700;margin-bottom:4px;">The Arb</div>
       <div style="font-size:12px;color:var(--text-muted);margin-bottom:16px;">Trade Poly vs Kalshi gaps when they diverge &ge;10pts</div>
-      <div style="font-family:'Courier New',monospace;font-size:28px;font-weight:700;" id="sb-c-bal" class="green">$1,000.00</div>
+      <div style="font-family:'Courier New',monospace;font-size:28px;font-weight:700;color:var(--text-muted);" id="sb-c-bal">$1,000.00</div>
       <div style="display:flex;gap:16px;margin-top:8px;">
-        <div><div style="font-size:11px;color:var(--text-muted);">YTD</div><div style="font-family:'Courier New',monospace;font-size:14px;" id="sb-c-ytd" class="green">+0.0%</div></div>
-        <div><div style="font-size:11px;color:var(--text-muted);">Record</div><div style="font-family:'Courier New',monospace;font-size:14px;color:var(--amber);" id="sb-c-rec">0&ndash;0</div></div>
-        <div><div style="font-size:11px;color:var(--text-muted);">Open</div><div style="font-family:'Courier New',monospace;font-size:14px;" id="sb-c-open">0</div></div>
+        <div><div style="font-size:11px;color:var(--text-muted);">Return</div><div style="font-family:'Courier New',monospace;font-size:14px;color:var(--text-muted);" id="sb-c-ytd">0.0%</div></div>
+        <div><div style="font-size:11px;color:var(--text-muted);">Record</div><div style="font-family:'Courier New',monospace;font-size:14px;color:var(--text-muted);" id="sb-c-rec">0&ndash;0</div></div>
+        <div><div style="font-size:11px;color:var(--text-muted);">Trades</div><div style="font-family:'Courier New',monospace;font-size:14px;color:var(--text-muted);" id="sb-c-open">6</div></div>
       </div>
     </div>
 
   </div>
 </div>
 
-<!-- READER POLL -->
+<!-- POST-MORTEM -->
 <div class="section">
-  <div class="section-title">Which Model Do You Think Wins?</div>
-  <p style="font-size:14px;color:var(--text-muted);margin-bottom:20px;">30 days, $1,000 each. Pick your horse. Results revealed in the newsletter April 17.</p>
-  <div style="display:flex;gap:12px;flex-wrap:wrap;" id="poll-btns">
-    <button onclick="castVote('a')" id="poll-a" style="flex:1;min-width:140px;background:var(--bg2);border:2px solid #4a9eff44;border-radius:8px;padding:16px;cursor:pointer;text-align:left;transition:all 0.15s;">
-      <div style="font-family:'Courier New',monospace;font-size:9px;letter-spacing:0.12em;color:#4a9eff;margin-bottom:6px;">MODEL A</div>
-      <div style="font-size:15px;font-weight:600;color:var(--text);">The Crowd</div>
-      <div style="font-size:12px;color:var(--text-muted);margin-top:4px;">Ride the consensus</div>
-    </button>
-    <button onclick="castVote('b')" id="poll-b" style="flex:1;min-width:140px;background:var(--bg2);border:2px solid #ff4d6d44;border-radius:8px;padding:16px;cursor:pointer;text-align:left;transition:all 0.15s;">
-      <div style="font-family:'Courier New',monospace;font-size:9px;letter-spacing:0.12em;color:#ff4d6d;margin-bottom:6px;">MODEL B</div>
-      <div style="font-size:15px;font-weight:600;color:var(--text);">The Contrarian</div>
-      <div style="font-size:12px;color:var(--text-muted);margin-top:4px;">Fade the longshots</div>
-    </button>
-    <button onclick="castVote('c')" id="poll-c" style="flex:1;min-width:140px;background:var(--bg2);border:2px solid #f5a62344;border-radius:8px;padding:16px;cursor:pointer;text-align:left;transition:all 0.15s;">
-      <div style="font-family:'Courier New',monospace;font-size:9px;letter-spacing:0.12em;color:#f5a623;margin-bottom:6px;">MODEL C</div>
-      <div style="font-size:15px;font-weight:600;color:var(--text);">The Arb</div>
-      <div style="font-size:12px;color:var(--text-muted);margin-top:4px;">Trade the platforms</div>
-    </button>
+  <div class="section-title">Post-Mortem</div>
+
+  <!-- Model A -->
+  <div style="border:1px solid #4a9eff44;border-left:3px solid #4a9eff;border-radius:8px;padding:24px;margin-bottom:16px;background:var(--bg2);">
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;">
+      <div style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:#4a9eff;">Model A &middot; The Crowd</div>
+      <div style="font-family:'Courier New',monospace;font-size:9px;font-weight:700;letter-spacing:0.12em;background:#4a9eff;color:#080b0f;padding:2px 7px;border-radius:3px;">WINNER</div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:18px;">
+      <div><div style="font-size:10px;color:var(--text-muted);margin-bottom:4px;">Final Balance</div><div style="font-family:'Courier New',monospace;font-size:18px;font-weight:700;color:#4a9eff;">$2,277.60</div></div>
+      <div><div style="font-size:10px;color:var(--text-muted);margin-bottom:4px;">Return</div><div style="font-family:'Courier New',monospace;font-size:18px;font-weight:700;color:var(--green);">+127.8%</div></div>
+      <div><div style="font-size:10px;color:var(--text-muted);margin-bottom:4px;">Win Rate</div><div style="font-family:'Courier New',monospace;font-size:18px;font-weight:700;">86.0%</div></div>
+      <div><div style="font-size:10px;color:var(--text-muted);margin-bottom:4px;">Trades</div><div style="font-family:'Courier New',monospace;font-size:18px;font-weight:700;">505</div></div>
+    </div>
+    <p style="font-size:14px;color:var(--text-muted);line-height:1.7;margin-bottom:10px;">The Crowd won because it traded volume. 505 trades across 83 days. 69% of them were sports markets, where conviction is cleanest: favorites at 83% average entry probability win 86% of the time. The math checks out.</p>
+    <p style="font-size:14px;color:var(--text-muted);line-height:1.7;margin-bottom:10px;">The edge here is real but narrow. Average win was $19.57 on a $100 bet. The conviction gate (65/35) filters out the noise. What's left is a steady drip of small, high-probability wins, punctuated by occasional $100 losses when the favorite collapses.</p>
+    <p style="font-size:14px;color:var(--text-muted);line-height:1.7;"><strong style="color:var(--text);">What to watch in Test 2:</strong> We tighten the gate to 75/25 as the new challenger. Fewer trades, higher confidence. Does stricter selection improve the return-per-trade, or does it just cut volume without improving quality?</p>
   </div>
-  <div id="poll-confirm" style="display:none;margin-top:16px;font-family:'Courier New',monospace;font-size:12px;color:var(--green);">&#10003; Vote locked in. We'll reveal the reader consensus in the next newsletter.</div>
+
+  <!-- Model B -->
+  <div style="border:1px solid var(--border);border-left:3px solid var(--red);border-radius:8px;padding:24px;margin-bottom:16px;background:var(--bg2);">
+    <div style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--red);margin-bottom:14px;">Model B &middot; The Contrarian</div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:18px;">
+      <div><div style="font-size:10px;color:var(--text-muted);margin-bottom:4px;">Final Balance</div><div style="font-family:'Courier New',monospace;font-size:18px;font-weight:700;">$1,896.18</div></div>
+      <div><div style="font-size:10px;color:var(--text-muted);margin-bottom:4px;">Return</div><div style="font-family:'Courier New',monospace;font-size:18px;font-weight:700;color:var(--green);">+89.6%</div></div>
+      <div><div style="font-size:10px;color:var(--text-muted);margin-bottom:4px;">Win Rate</div><div style="font-family:'Courier New',monospace;font-size:18px;font-weight:700;">97.1%</div></div>
+      <div><div style="font-size:10px;color:var(--text-muted);margin-bottom:4px;">Trades</div><div style="font-family:'Courier New',monospace;font-size:18px;font-weight:700;">80</div></div>
+    </div>
+    <p style="font-size:14px;color:var(--text-muted);line-height:1.7;margin-bottom:10px;">97% win rate sounds better than it is. At an average entry of 13.9% probability, Model B was risking $100 to win $16. Every trade. The two losses wiped out the gains from 12 wins each. That's the structural trap of fading longshots with flat sizing.</p>
+    <p style="font-size:14px;color:var(--text-muted);line-height:1.7;margin-bottom:10px;">The thesis isn't wrong. Crowds do overprice unlikely events. But you need position sizing that reflects the actual edge, not a flat $100 regardless of odds. Betting $100 to win $16 at 13.9% probability has almost zero expected edge above breakeven.</p>
+    <p style="font-size:14px;color:var(--text-muted);line-height:1.7;"><strong style="color:var(--text);">What to watch in Test 2:</strong> Model B gets retired as a standalone model. The insight lives on in a new variant that pairs the contrarian signal with Kelly-adjusted sizing instead of flat bets.</p>
+  </div>
+
+  <!-- Model C -->
+  <div style="border:1px solid var(--border);border-left:3px solid var(--border);border-radius:8px;padding:24px;background:var(--bg2);opacity:0.75;">
+    <div style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-muted);margin-bottom:14px;">Model C &middot; The Arb &middot; Inconclusive</div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:18px;">
+      <div><div style="font-size:10px;color:var(--text-muted);margin-bottom:4px;">Final Balance</div><div style="font-family:'Courier New',monospace;font-size:18px;font-weight:700;color:var(--text-muted);">$1,000.00</div></div>
+      <div><div style="font-size:10px;color:var(--text-muted);margin-bottom:4px;">Return</div><div style="font-family:'Courier New',monospace;font-size:18px;font-weight:700;color:var(--text-muted);">0.0%</div></div>
+      <div><div style="font-size:10px;color:var(--text-muted);margin-bottom:4px;">Win Rate</div><div style="font-family:'Courier New',monospace;font-size:18px;font-weight:700;color:var(--text-muted);">N/A</div></div>
+      <div><div style="font-size:10px;color:var(--text-muted);margin-bottom:4px;">Trades</div><div style="font-family:'Courier New',monospace;font-size:18px;font-weight:700;color:var(--text-muted);">6</div></div>
+    </div>
+    <p style="font-size:14px;color:var(--text-muted);line-height:1.7;margin-bottom:10px;">The Arb never had enough to work with. The strategy requires Polymarket and Kalshi to disagree on the same market by 10+ points. That happens, but rarely. The Spread surfaces 1 to 5 qualifying pairs per day on a good day, zero on most days.</p>
+    <p style="font-size:14px;color:var(--text-muted);line-height:1.7;">6 trades placed, all still open, all in long-duration political markets that never approached resolution. The concept is valid. The data coverage wasn't there. Model C is inconclusive, not disproven. We'll revisit when Kalshi coverage improves.</p>
+  </div>
 </div>
 
 <!-- EXPERIMENT CONTEXT -->
 <div class="section">
-  <div class="section-title">The 3 Models</div>
+  <div class="section-title">Experiment 1 &middot; The 3 Models</div>
   <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:32px;">
 
     <div style="background:var(--bg2);border:1px solid var(--border);border-left:3px solid #4a9eff;border-radius:8px;padding:24px;">
@@ -282,13 +308,65 @@
         <div style="font-size:13px;color:var(--text-muted);">Test 1 archived (1W/0L, +$6.50). Three models start simultaneously at $1,000 each: Model A (Crowd), Model B (Contrarian), Model C (Arb). Each follows a distinct strategy. Results reviewed Apr 17, 2026.</div>
       </div>
     </div>
-    <div style="padding:16px 20px;background:var(--bg3);display:flex;gap:16px;align-items:baseline;">
-      <div style="font-family:'Courier New',monospace;font-size:11px;color:var(--text-muted);white-space:nowrap;">Apr 17, 2026</div>
+    <div style="padding:16px 20px;border-bottom:1px solid var(--border);display:flex;gap:16px;align-items:baseline;">
+      <div style="font-family:'Courier New',monospace;font-size:11px;color:var(--text-muted);white-space:nowrap;">Jun 8, 2026</div>
       <div>
-        <div style="font-size:14px;font-weight:600;margin-bottom:4px;color:var(--text-muted);">3-model results reviewed &mdash; next phase TBD</div>
-        <div style="font-size:13px;color:var(--text-muted);">Check back to see which model won and how the rules evolve.</div>
+        <div style="font-size:14px;font-weight:600;margin-bottom:4px;">Experiment 1 concluded. Model A wins.</div>
+        <div style="font-size:13px;color:var(--text-muted);">83 days. 591 trades. Final: Model A +127.8% ($2,277), Model B +89.6% ($1,896), Model C 0% ($1,000 inconclusive). Full post-mortem published. Test 2 launches Friday Jun 13.</div>
       </div>
     </div>
+    <div style="padding:16px 20px;background:var(--bg3);display:flex;gap:16px;align-items:baseline;">
+      <div style="font-family:'Courier New',monospace;font-size:11px;color:var(--amber);white-space:nowrap;">Jun 13, 2026</div>
+      <div>
+        <div style="font-size:14px;font-weight:600;margin-bottom:4px;color:var(--amber);">Test 2 launches &mdash; The Crowd vs. two new challengers</div>
+        <div style="font-size:13px;color:var(--text-muted);">Model A (Control) defends. New challengers: Model D (tighter 75/25 gate) and Model E (crowd conviction + momentum confirmation). $1,000 each. Same rules. 30 days.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TEST 2 PREVIEW -->
+<div class="section">
+  <div class="section-title">Test 2 &middot; Launching Friday Jun 13</div>
+  <p style="font-size:14px;color:var(--text-muted);margin-bottom:24px;">Model A is the new control. Two challengers are trying to beat it. Same $1,000 start. Same 30-day window. Different hypotheses.</p>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
+
+    <div style="background:var(--bg2);border:1px solid var(--border);border-left:3px solid #4a9eff;border-radius:8px;padding:24px;">
+      <div style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:#4a9eff;margin-bottom:10px;">Model A &middot; Control</div>
+      <div style="font-weight:600;margin-bottom:10px;">The Crowd</div>
+      <ul style="font-size:13px;color:var(--text-muted);line-height:2;list-style:none;padding:0;">
+        <li>&#9656; YES when prob &ge;65%</li>
+        <li>&#9656; NO when prob &le;35%</li>
+        <li>&#9656; Resolves within 14 days</li>
+        <li>&#9656; $100 flat sizing</li>
+      </ul>
+      <div style="margin-top:14px;font-size:12px;color:var(--text-muted);font-style:italic;">Unchanged from Experiment 1. The benchmark to beat.</div>
+    </div>
+
+    <div style="background:var(--bg2);border:1px solid var(--border);border-left:3px solid var(--green);border-radius:8px;padding:24px;">
+      <div style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--green);margin-bottom:10px;">Model D &middot; Challenger</div>
+      <div style="font-weight:600;margin-bottom:10px;">The Sharp Crowd</div>
+      <ul style="font-size:13px;color:var(--text-muted);line-height:2;list-style:none;padding:0;">
+        <li>&#9656; YES when prob &ge;75%</li>
+        <li>&#9656; NO when prob &le;25%</li>
+        <li>&#9656; Resolves within 14 days</li>
+        <li>&#9656; $100 flat sizing</li>
+      </ul>
+      <div style="margin-top:14px;font-size:12px;color:var(--text-muted);font-style:italic;">The thesis: tighter conviction filters out noise. Fewer trades, better quality.</div>
+    </div>
+
+    <div style="background:var(--bg2);border:1px solid var(--border);border-left:3px solid var(--amber);border-radius:8px;padding:24px;">
+      <div style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--amber);margin-bottom:10px;">Model E &middot; Challenger</div>
+      <div style="font-weight:600;margin-bottom:10px;">The Momentum Crowd</div>
+      <ul style="font-size:13px;color:var(--text-muted);line-height:2;list-style:none;padding:0;">
+        <li>&#9656; Same 65/35 gate as Model A</li>
+        <li>&#9656; Also requires 3pt+ move today in trade direction</li>
+        <li>&#9656; Resolves within 14 days</li>
+        <li>&#9656; $100 flat sizing</li>
+      </ul>
+      <div style="margin-top:14px;font-size:12px;color:var(--text-muted);font-style:italic;">The thesis: crowd conviction plus fresh price movement beats stale conviction alone.</div>
+    </div>
+
   </div>
 </div>
 
@@ -446,23 +524,7 @@
       setTimeout(() => openVoteModal(key), 400);
     }
   }
-  function showVoteConfirm(key) {
-    const names = { a: 'Model A \u2014 The Crowd', b: 'Model B \u2014 The Contrarian', c: 'Model C \u2014 The Arb' };
-    const conf = document.getElementById('poll-confirm');
-    if (conf) {
-      conf.textContent = '\u2713 You picked ' + (names[key]||key) + '. Results revealed Apr 17 in the newsletter.';
-      conf.style.display = 'block';
-    }
-    const cols = { a: '#4a9eff', b: '#ff4d6d', c: '#f5a623' };
-    ['a','b','c'].forEach(k => {
-      const btn = document.getElementById('poll-' + k);
-      if (!btn) return;
-      const col = cols[k];
-      btn.style.opacity    = k === key ? '1' : '0.4';
-      btn.style.border     = k === key ? '2px solid ' + col : '2px solid ' + col + '44';
-      btn.style.background = k === key ? col + '18' : '';
-    });
-  }
+  function showVoteConfirm(key) { /* poll concluded \u2014 no-op */ }
 
   // ── Main load ─────────────────────────────────────────────────────────────
   async function loadPortfolio() {
@@ -532,17 +594,16 @@
         headers: { 'Content-Type': 'application/json' },
         body:    JSON.stringify({
           access_key: W3F_ACCESS_KEY,
-          subject:    'The Prob — Model vote: ' + model.toUpperCase(),
-          from_name:  'The Prob Poll',
+          subject:    'The Prob — Portfolio page subscribe',
+          from_name:  'The Prob Portfolio',
           email:      email,
-          model_vote: model.toUpperCase() + ' — ' + (MODEL_NAMES[model] || model),
         }),
       });
     } catch(e) { /* non-fatal */ }
 
     // 3. Confirm + mark subscribed so modal never shows again
     localStorage.setItem('theprob_poll_subscribed', '1');
-    msgEl.textContent = '\u2713 You\u2019re in. Results land in your inbox April 17.';
+    msgEl.textContent = '\u2713 You\u2019re in. Test 2 launch lands in your inbox Friday.';
     msgEl.style.color = '#00e5a0';
     if (emailEl) emailEl.style.display = 'none';
     btnEl.textContent = '\u2713 Done';
@@ -561,20 +622,19 @@
   loadPortfolio();
 </script>
 
-<!-- VOTE MODAL -->
+<!-- SUBSCRIBE NUDGE (replaces vote modal) -->
 <div class="vote-modal-overlay" id="vote-modal-overlay">
   <div class="vote-modal">
     <button class="vote-modal-close" onclick="closeVoteModal()">&#x2715;</button>
-    <div class="vote-modal-eyebrow">&#10003; Vote Locked</div>
-    <div class="vote-modal-title">Get the results in your inbox.</div>
+    <div class="vote-modal-eyebrow">Test 2 Launches Friday</div>
+    <div class="vote-modal-title">Follow the next experiment live.</div>
     <div class="vote-modal-body">
-      <span id="vote-modal-picked">You picked your model.</span>
-      We'll reveal the reader consensus and the 30-day results in the newsletter on April 17.
+      Get the full Test 2 launch breakdown in the newsletter, then watch the ledger update in real time.
     </div>
     <input type="hidden" id="vote-modal-model" value="">
     <div class="vote-modal-form">
       <input type="email" id="vote-modal-email" placeholder="your@email.com" />
-      <button id="vote-modal-btn" onclick="submitVoteEmail()">Get Results</button>
+      <button id="vote-modal-btn" onclick="submitVoteEmail()">Subscribe</button>
     </div>
     <div class="vote-modal-msg" id="vote-modal-msg"></div>
     <span class="vote-modal-skip" onclick="closeVoteModal()">No thanks, just show me the experiment</span>
