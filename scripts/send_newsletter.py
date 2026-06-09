@@ -36,7 +36,7 @@ from datetime import datetime, timezone, timedelta
 
 ANTHROPIC_API_KEY  = os.environ.get("ANTHROPIC_API_KEY", "")
 CLAUDE_MODEL       = "claude-haiku-4-5-20251001"
-SITE_URL           = "https://theprobnewsletter.com"
+SITE_URL           = "https://theprob.ai"
 OUTPUT_PATH        = "newsletter/latest.html"
 
 # Beehiiv API — set via GitHub secrets BEEHIIV_API_KEY and BEEHIIV_PUB_ID
@@ -407,7 +407,7 @@ def build_spread_section(spread_markets: list, max_items: int = 4) -> str:
       {rows}
     </table>
     <div style="font-size:11px !important;color:#546e85 !important;padding-bottom:14px !important;">
-      <a href="https://theprobnewsletter.com" style="color:#8ba3bc !important;">See all divergences on The Prob &#8594;</a>
+      <a href="https://theprob.ai" style="color:#8ba3bc !important;">See all divergences on The Prob &#8594;</a>
     </div>
   </td></tr>
   </table>
@@ -564,7 +564,7 @@ def build_html(markets: dict, news: dict, subject: str, with_footer: bool = True
             </tr>
           </table>
           <div style="margin-top:16px;font-family:'Courier New',monospace;font-size:10px;color:#8ba3bc !important;">
-            $100 paper trade &middot; tracked at <a href="{SITE_URL}/portfolio.html" style="color:#8ba3bc !important;text-decoration:underline;">theprobnewsletter.com/portfolio</a>
+            $100 paper trade &middot; tracked at <a href="{SITE_URL}/portfolio.html" style="color:#8ba3bc !important;text-decoration:underline;">theprob.ai/portfolio</a>
           </div>
         </td>
       </tr>

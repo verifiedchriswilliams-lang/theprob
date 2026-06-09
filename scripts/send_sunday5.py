@@ -27,7 +27,7 @@ from datetime import datetime, timezone, timedelta
 
 ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY", "")
 CLAUDE_MODEL      = "claude-haiku-4-5-20251001"
-SITE_URL          = "https://theprobnewsletter.com"
+SITE_URL          = "https://theprob.ai"
 
 # Chris's headshot — commit this file to the repo, then update this URL.
 # File should be committed to: images/chris-williams.jpg (square, min 200x200)
@@ -242,7 +242,7 @@ def story_card_html(number: str, story: dict, copy: dict) -> str:
 def build_header_html(date_str: str, edition: int, subtitle: str) -> str:
     return f"""
   <tr><td style="padding:24px 32px 20px;text-align:center;background:#0a0e14 !important;border-bottom:2px solid #1e2a38;">
-    <!-- Brand bar matching theprobnewsletter.com -->
+    <!-- Brand bar matching theprob.ai -->
     <div style="margin-bottom:24px;">
       <a href="{SITE_URL}" style="text-decoration:none;">
         <span class="brand-name" style="font-family:'Courier New',monospace;font-size:22px;font-weight:700;color:#00e5a0 !important;letter-spacing:-0.5px;">THE PROB</span>
@@ -279,7 +279,7 @@ def build_footer_html() -> str:
   <tr><td class="section-pad" style="padding:28px 32px;background:#0a0e14 !important;text-align:center;border-top:1px solid #1e2a38;">
     <div style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:#8ba3bc !important;margin-bottom:16px;">The Prob</div>
     <div style="font-size:12px;color:#8ba3bc !important;line-height:1.8;">
-      <a href="{SITE_URL}" style="color:#a8bfce !important;text-decoration:none;">theprobnewsletter.com</a>
+      <a href="{SITE_URL}" style="color:#a8bfce !important;text-decoration:none;">theprob.ai</a>
       &nbsp;&#183;&nbsp;
       <a href="{SITE_URL}/prediction-markets-101.html" style="color:#a8bfce !important;text-decoration:none;">Prediction Markets 101</a>
       &nbsp;&#183;&nbsp;

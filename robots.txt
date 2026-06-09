@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://theprobnewsletter.com/sitemap.xml
+Sitemap: https://theprob.ai/sitemap.xml

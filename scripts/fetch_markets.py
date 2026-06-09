@@ -1069,7 +1069,7 @@ def fetch_trending_topics() -> list[str]:
             f"{yesterday.year}/{yesterday.month:02d}/{yesterday.day:02d}"
         )
         r = requests.get(wiki_url, timeout=10,
-                         headers={"User-Agent": "TheProbNewsletter/1.0 (theprobnewsletter.com)"})
+                         headers={"User-Agent": "TheProbNewsletter/1.0 (theprob.ai)"})
         r.raise_for_status()
         articles = r.json().get("items", [{}])[0].get("articles", [])
         skip = {"Main_Page", "Special:", "Wikipedia:", "File:", "Portal:", "Help:", "Template:"}
