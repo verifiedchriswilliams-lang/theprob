@@ -12,9 +12,9 @@
       "ytd_return_pct": 117.8,
       "win_count": 382,
       "loss_count": 63,
-      "open_count": 63,
+      "open_count": 64,
       "start_date": "2026-03-17",
-      "last_updated": "2026-06-08",
+      "last_updated": "2026-06-09",
       "trades": [
         {
           "trade_id": "ea14c291",
@@ -9159,6 +9159,24 @@
           "exit_prob": null,
           "exit_date": null,
           "pnl": null
+        },
+        {
+          "trade_id": "16cb72b8",
+          "market_id": "mlb-sea-bal-2026-06-08",
+          "question": "Seattle Mariners vs. Baltimore Orioles",
+          "url": "https://polymarket.com/event/mlb-sea-bal-2026-06-08",
+          "source": "Polymarket",
+          "display_category": "Sports",
+          "entry_prob": 89.5,
+          "direction": "YES",
+          "amount": 100.0,
+          "entry_date": "2026-06-09",
+          "end_date_raw": "2026-06-15T22:35:00Z",
+          "end_date": "Jun 15",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
@@ -9173,7 +9191,7 @@
       "loss_count": 2,
       "open_count": 11,
       "start_date": "2026-03-17",
-      "last_updated": "2026-06-08",
+      "last_updated": "2026-06-09",
       "trades": [
         {
           "trade_id": "18b00e62",
@@ -10646,7 +10664,7 @@
       "loss_count": 0,
       "open_count": 6,
       "start_date": "2026-03-17",
-      "last_updated": "2026-06-08",
+      "last_updated": "2026-06-09",
       "trades": [
         {
           "trade_id": "d19bb1c5",
