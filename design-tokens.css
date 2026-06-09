@@ -1,0 +1,117 @@
+/* ============================================================
+   THE PROB — Design Tokens
+   Source of truth for the website redesign.
+   Direction: "The Clean Book" (editorial fintech)
+   Brand thesis: % = "What's the Probability"
+   ------------------------------------------------------------
+   Light is the default. Dark mode = <html data-theme="dark">.
+   Signal colors (YES green / NO red) are SEMANTIC — they never
+   change with the brand accent and must stay distinct from it.
+   ============================================================ */
+
+:root{
+  /* ---- Surfaces & ink (light) ---- */
+  --bg:            #FBFCFD;  /* page background            */
+  --surface:       #FFFFFF;  /* cards, inputs              */
+  --surface-2:     #F4F6F9;  /* insets, subtle fills       */
+  --surface-hover: #FFFFFF;  /* nav-item hover             */
+  --ink:           #0B1524;  /* primary text               */
+  --ink-2:         #5A6678;  /* secondary text             */
+  --ink-3:         #8A94A6;  /* tertiary / labels          */
+  --line:          #E7ECF2;  /* hairlines, dividers        */
+  --line-2:        #D6DEE8;  /* stronger borders, inputs   */
+
+  /* ---- Brand accent: ULTRAMARINE ----
+     A deep blue-violet. Distinct from the green/red signals.
+     Drives: logo chip, primary buttons, links, eyebrow,
+     the italic editorial highlight, focus rings.            */
+  --brand:      #3A2BD4;
+  --brand-soft: #ECEAFC;     /* tinted backgrounds         */
+  --brand-deep: #2A1DB6;     /* hover / pressed            */
+  --brand-rgb:  58,43,212;   /* for rgba() shadows/glows   */
+
+  /* ---- Signal colors (SEMANTIC — do not rebrand) ----
+     Borrowed from the markets themselves.                  */
+  --yes:       #0FB880;  --yes-soft: #E2F7EF;  /* YES / up   */
+  --no:        #F0476A;  --no-soft:  #FDE8EC;  /* NO / down  */
+  --amber:     #F5A524;                        /* watch/flag */
+
+  /* ---- Feature panels (intentionally dark in light mode):
+     The Prob's Take card, the "Why" band.                  */
+  --feature-bg: var(--ink);
+  --nav-bg:     rgba(251,252,253,.82);
+
+  /* ---- Elevation ---- */
+  --shadow:    0 1px 2px rgba(11,21,36,.04), 0 8px 24px rgba(11,21,36,.05);
+  --shadow-lg: 0 2px 8px rgba(11,21,36,.06), 0 24px 60px rgba(var(--brand-rgb),.10);
+
+  /* ---- Radius ---- */
+  --r-sm: 8px;   --r-md: 12px;  --r-lg: 16px;
+  --r-xl: 22px;  --r-pill: 999px;
+
+  /* ---- Spacing scale (4px base) ---- */
+  --sp-1: 4px;  --sp-2: 8px;   --sp-3: 12px;  --sp-4: 16px;
+  --sp-5: 20px; --sp-6: 24px;  --sp-8: 32px;  --sp-10: 40px;
+  --sp-12: 48px; --sp-16: 64px;
+
+  /* ---- Type families ---- */
+  --font-display: "Instrument Serif", Georgia, "Times New Roman", serif;
+  --font-sans:    "Instrument Sans", system-ui, -apple-system, sans-serif;
+  --font-mono:    "Geist Mono", "SF Mono", ui-monospace, monospace;
+
+  color-scheme: light;
+}
+
+/* ============================================================
+   DARK MODE
+   Brand lightens to PERIWINKLE so it pops on near-black and
+   stays clear of the signal greens/reds. Signals brighten too.
+   ============================================================ */
+[data-theme="dark"]{
+  --bg:            #0A0E17;
+  --surface:       #141B29;
+  --surface-2:     #1B2433;
+  --surface-hover: #1B2433;
+  --ink:           #EEF2F8;
+  --ink-2:         #9FACBF;
+  --ink-3:         #677488;
+  --line:          #212C3D;
+  --line-2:        #303D52;
+
+  --brand:      #8B7CFF;   /* lightened ultramarine          */
+  --brand-soft: rgba(139,124,255,.16);
+  --brand-deep: #A89AFF;
+  --brand-rgb:  139,124,255;
+
+  --yes: #2FD79B;  --yes-soft: rgba(47,215,155,.15);
+  --no:  #FF6385;  --no-soft:  rgba(255,99,133,.15);
+
+  --feature-bg: #101829;
+  --nav-bg:     rgba(10,14,23,.82);
+
+  --shadow:    0 1px 2px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.42);
+  --shadow-lg: 0 2px 8px rgba(0,0,0,.45), 0 30px 70px rgba(0,0,0,.55);
+
+  color-scheme: dark;
+}
+
+/* ============================================================
+   TYPE SCALE (use as a starting point)
+   display = Instrument Serif, weight 400, often italic for the
+   accent phrase. Numbers/odds = sans 700–800, tabular.
+   ============================================================ */
+/*
+  Display XL  clamp(46px,5.6vw,76px) / .98 / -.01em   serif 400
+  Display L   38px / 1.06 / -.005em                    serif 400
+  H2          27px / 1.1  / -.025em                    sans 800
+  H3          23px / 1.18 / -.02em                     sans 700
+  Body L      19px / 1.5                                sans 400
+  Body        16px / 1.5                                sans 400
+  Small       14.5px / 1.45                             sans 400/500
+  Mono label  11–12px / .08em tracking / UPPERCASE      mono 500
+  Odds hero   72px / .9 / -.04em   color:var(--yes/no)  sans 800 tnum
+  Odds tile   34px / -.03em                             sans 800 tnum
+*/
+
+/* Always enable tabular figures wherever numbers align */
+body{ font-feature-settings:"tnum"; }

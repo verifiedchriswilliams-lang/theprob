@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>(function(){var t=localStorage.getItem('prob_theme');if(!t){t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}if(t==='dark')document.documentElement.setAttribute('data-theme','dark');})();</script>
+<title>The Prob — 02 Clean Book</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%231F5BFF'/%3E%3Ctext x='32' y='46' font-family='Georgia,serif' font-weight='700' font-size='42' text-anchor='middle' fill='%23ffffff'%3E%25%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FBFCFD;
+  --surface:#FFFFFF;
+  --ink:#0B1524;
+  --ink-2:#5A6678;
+  --ink-3:#8A94A6;
+  --line:#E7ECF2;
+  --line-2:#D6DEE8;
+  --blue:#3A2BD4;
+  --blue-soft:#ECEAFC;
+  --blue-deep:#2A1DB6;
+  --blue-rgb:58,43,212;
+  --mint:#0FB880;
+  --mint-soft:#E2F7EF;
+  --rose:#F0476A;
+  --rose-soft:#FDE8EC;
+  --amber:#F5A524;
+  --feature-bg:var(--ink);
+  --surface-hover:#FFFFFF;
+  --nav-bg:rgba(251,252,253,.82);
+  color-scheme:light;
+  --shadow:0 1px 2px rgba(11,21,36,.04),0 8px 24px rgba(11,21,36,.05);
+  --shadow-lg:0 2px 8px rgba(11,21,36,.06),0 24px 60px rgba(var(--blue-rgb),.10);
+}
+[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#0A0E17;
+  --surface:#141B29;
+  --surface-2:#1B2433;
+  --ink:#EEF2F8;
+  --ink-2:#9FACBF;
+  --ink-3:#677488;
+  --line:#212C3D;
+  --line-2:#303D52;
+  --blue:#8B7CFF;
+  --blue-soft:rgba(139,124,255,.16);
+  --blue-deep:#A89AFF;
+  --blue-rgb:139,124,255;
+  --mint:#2FD79B;
+  --mint-soft:rgba(47,215,155,.15);
+  --rose:#FF6385;
+  --rose-soft:rgba(255,99,133,.15);
+  --feature-bg:#101829;
+  --surface-hover:#1B2433;
+  --nav-bg:rgba(10,14,23,.82);
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.42);
+  --shadow-lg:0 2px 8px rgba(0,0,0,.45),0 30px 70px rgba(0,0,0,.55);
+}
+html{transition:none}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{
+  background:var(--bg);color:var(--ink);
+  font-family:"Instrument Sans",system-ui,sans-serif;
+  font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased;
+  font-feature-settings:"tnum";
+}
+.wrap{max-width:1160px;margin:0 auto;padding:0 26px}
+.mono{font-family:"Geist Mono",monospace}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit}
+
+/* ===== nav ===== */
+.nav{position:sticky;top:0;z-index:50;background:var(--nav-bg);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;gap:28px;height:64px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:20px;letter-spacing:-.02em}
+.brand .mk{width:31px;height:31px;border-radius:9px;background:var(--blue);display:grid;place-items:center;color:#fff;font-weight:700;font-size:18px;box-shadow:0 2px 8px rgba(var(--blue-rgb),.35)}
+.navlinks{display:flex;gap:4px;margin-left:8px}
+.navlinks a{padding:8px 12px;border-radius:8px;font-size:14.5px;font-weight:500;color:var(--ink-2);transition:.15s}
+.navlinks a:hover{background:var(--surface-hover);color:var(--ink);box-shadow:var(--shadow)}
+.nav .right{margin-left:auto;display:flex;align-items:center;gap:12px}
+.btn{display:inline-flex;align-items:center;gap:8px;border-radius:10px;font-weight:600;font-size:14.5px;padding:10px 16px;cursor:pointer;transition:.15s;border:1px solid transparent}
+.btn-ghost{color:var(--ink-2)}
+.btn-ghost:hover{color:var(--ink)}
+.btn-pri{background:var(--blue);color:#fff;box-shadow:0 1px 2px rgba(var(--blue-rgb),.3),0 6px 16px rgba(var(--blue-rgb),.25)}
+.btn-pri:hover{background:var(--blue-deep);transform:translateY(-1px)}
+
+/* ===== hero ===== */
+.hero{padding:54px 0 36px}
+.hero .wrap{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.eyebrow .pct{background:var(--blue);color:#fff;font-weight:700;border-radius:5px;padding:1px 7px;font-size:13px;line-height:1.4;letter-spacing:0}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;font-family:"Geist Mono",monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);background:var(--blue-soft);padding:6px 12px 6px 7px;border-radius:999px;margin-bottom:22px}
+.eyebrow .live{width:7px;height:7px;border-radius:50%;background:var(--mint);box-shadow:0 0 0 0 rgba(15,184,128,.5);animation:pulse 2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(15,184,128,.5)}70%{box-shadow:0 0 0 6px rgba(15,184,128,0)}100%{box-shadow:0 0 0 0 rgba(15,184,128,0)}}
+.hero h1{font-family:"Instrument Serif",Georgia,serif;font-size:clamp(46px,5.6vw,76px);line-height:.98;letter-spacing:-.01em;font-weight:400;margin-bottom:20px;text-wrap:balance}
+.hero h1 em{font-style:italic;color:var(--blue);position:relative;white-space:nowrap}
+.hero p.sub{font-size:19px;color:var(--ink-2);max-width:40ch;margin-bottom:28px;line-height:1.5}
+.hform{display:flex;gap:10px;max-width:440px}
+.hform input{flex:1;border:1px solid var(--line-2);background:var(--surface);color:var(--ink);border-radius:12px;padding:14px 16px;font-size:15px;font-family:inherit;outline:none;transition:border-color .15s,box-shadow .15s}
+.hform input:focus{border-color:var(--blue);box-shadow:0 0 0 4px var(--blue-soft)}
+.hform .btn-pri{padding:14px 20px;white-space:nowrap}
+.trust{margin-top:16px;display:flex;align-items:center;gap:10px;font-size:13.5px;color:var(--ink-3)}
+.avatars{display:flex}
+.avatars span{width:26px;height:26px;border-radius:50%;border:2px solid var(--bg);margin-left:-8px;background:var(--line-2)}
+.avatars span:first-child{margin-left:0}
+
+/* hero market card */
+.mcard{background:var(--surface);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow-lg);overflow:hidden}
+.mcard .top{padding:20px 22px 0;display:flex;align-items:flex-start;justify-content:space-between;gap:14px}
+.mcard .badge{font-family:"Geist Mono",monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)}
+.plat-pill{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--ink-2);background:var(--bg);border:1px solid var(--line);padding:5px 10px;border-radius:999px}
+.plat-pill .d{width:7px;height:7px;border-radius:50%;background:var(--blue)}
+.mcard h3{padding:14px 22px 4px;font-size:23px;line-height:1.18;letter-spacing:-.02em;font-weight:700}
+.mcard .resolve{padding:0 22px 18px;font-size:13px;color:var(--ink-3);font-family:"Geist Mono",monospace}
+.odds-wrap{padding:0 22px 8px;display:flex;align-items:flex-end;justify-content:space-between}
+.odds-big{font-size:72px;font-weight:800;letter-spacing:-.04em;line-height:.9;color:var(--mint)}
+.odds-big small{font-size:30px}
+.odds-meta{text-align:right;padding-bottom:8px}
+.odds-meta .chg{font-family:"Geist Mono",monospace;font-weight:600;font-size:16px;color:var(--mint);white-space:nowrap}
+.odds-meta .lab{font-size:12px;color:var(--ink-3);font-family:"Geist Mono",monospace;white-space:nowrap;margin-top:2px}
+.yn-bar{margin:14px 22px 0;height:10px;border-radius:6px;background:var(--rose-soft);overflow:hidden;display:flex}
+.yn-bar i{display:block;height:100%;background:var(--mint);border-radius:6px}
+.yn-leg{margin:8px 22px 0;display:flex;justify-content:space-between;font-size:12.5px;font-family:"Geist Mono",monospace;color:var(--ink-2)}
+.yn-leg b{color:var(--ink)}
+.mcard .take{margin:18px 22px 22px;background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:14px 16px;font-size:14.5px;line-height:1.45;color:var(--ink)}
+.mcard .take b{color:var(--blue)}
+.mcard .stats3{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line)}
+.mcard .stats3 div{padding:14px 18px;border-right:1px solid var(--line)}
+.mcard .stats3 div:last-child{border-right:0}
+.mcard .stats3 .k{font-size:11px;color:var(--ink-3);font-family:"Geist Mono",monospace;letter-spacing:.04em;margin-bottom:3px}
+.mcard .stats3 .v{font-size:17px;font-weight:700;letter-spacing:-.01em}
+
+/* ===== section ===== */
+section.block{padding:34px 0}
+.shead{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:20px;gap:18px}
+.shead h2{font-size:27px;font-weight:800;letter-spacing:-.025em}
+.shead .sub{font-size:14.5px;color:var(--ink-2);margin-top:4px}
+.shead a.link{font-size:14px;font-weight:600;color:var(--blue);white-space:nowrap}
+.shead a.link:hover{text-decoration:underline}
+
+/* movers grid */
+.mgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.tile{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px;transition:.18s;cursor:pointer;position:relative;overflow:hidden}
+.tile:hover{box-shadow:var(--shadow-lg);transform:translateY(-2px);border-color:var(--line-2)}
+.tile .row1{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.tile .plat{font-size:11.5px;font-weight:600;color:var(--ink-3);font-family:"Geist Mono",monospace;letter-spacing:.04em;text-transform:uppercase}
+.chip{font-family:"Geist Mono",monospace;font-size:13px;font-weight:600;padding:4px 9px;border-radius:8px;display:inline-flex;align-items:center;gap:4px}
+.chip.up{color:#0a8a5f;background:var(--mint-soft)}
+.chip.down{color:#d23154;background:var(--rose-soft)}
+[data-theme="dark"] .chip.up{color:var(--mint)}
+[data-theme="dark"] .chip.down{color:var(--rose)}
+.tile h4{font-size:16.5px;font-weight:700;line-height:1.25;letter-spacing:-.01em;min-height:42px;margin-bottom:14px}
+.tile .botrow{display:flex;align-items:flex-end;justify-content:space-between}
+.tile .prob{font-size:34px;font-weight:800;letter-spacing:-.03em}
+.tile .vol{font-size:12.5px;color:var(--ink-3);font-family:"Geist Mono",monospace;text-align:right}
+.tile .vol b{display:block;color:var(--ink-2);font-size:13.5px}
+.tile .minibar{height:5px;border-radius:3px;background:var(--line);margin-top:12px;overflow:hidden}
+.tile .minibar i{display:block;height:100%;border-radius:3px}
+
+/* two-up: spread + take */
+.twoup{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:22px}
+.panel.dark{background:var(--feature-bg);color:#fff;border:0;position:relative;overflow:hidden}
+.panel.dark::before{content:"";position:absolute;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(var(--blue-rgb),.5),transparent 70%);top:-120px;right:-80px}
+.panel .ph{display:flex;align-items:center;gap:9px;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;font-family:"Geist Mono",monospace;margin-bottom:16px}
+.panel.dark .ph{color:#8fb0ff}
+.panel .ph .ico{width:22px;height:22px;border-radius:6px;background:var(--rose-soft);color:var(--rose);display:grid;place-items:center;font-size:12px}
+.spread-q{font-size:20px;font-weight:700;letter-spacing:-.02em;margin-bottom:18px;line-height:1.2}
+.spread-vs{display:flex;align-items:stretch;gap:10px;margin-bottom:16px}
+.spread-vs .s{flex:1;border:1px solid var(--line);border-radius:12px;padding:14px;text-align:center}
+.spread-vs .s .pl{font-size:12px;color:var(--ink-3);font-family:"Geist Mono",monospace;margin-bottom:6px}
+.spread-vs .s .pv{font-size:38px;font-weight:800;letter-spacing:-.03em}
+.spread-vs .gap{align-self:center;font-family:"Geist Mono",monospace;font-size:12px;font-weight:600;color:#fff;background:var(--blue);padding:6px 8px;border-radius:8px;white-space:nowrap}
+.spread-note{font-size:14.5px;color:var(--ink-2);line-height:1.45}
+.spread-note b{color:var(--ink)}
+.panel.dark h3{font-family:"Instrument Serif",Georgia,serif;font-size:30px;font-weight:400;letter-spacing:0;line-height:1.06;margin-bottom:14px;position:relative}
+.panel.dark h3 em{font-style:italic;color:#9fc0ff}
+.panel.dark p{font-size:15.5px;color:#b9c4d6;line-height:1.55;position:relative;margin-bottom:18px}
+.panel.dark .author{display:flex;align-items:center;gap:10px;position:relative}
+.panel.dark .author .sig{margin-left:auto;font-family:"Instrument Serif",Georgia,serif;font-style:italic;font-size:30px;color:var(--mint);line-height:1}
+.panel.dark .author .av{width:32px;height:32px;border-radius:50%;background:var(--blue);display:grid;place-items:center;font-weight:700;font-size:13px}
+.panel.dark .author .nm{font-size:13.5px}
+.panel.dark .author .nm b{display:block}
+.panel.dark .author .nm span{color:#8b97ab;font-size:12.5px}
+
+/* why band */
+.why{background:var(--feature-bg);color:#fff;border-radius:24px;padding:42px;margin:8px 0 0}
+.why h2{font-family:"Instrument Serif",Georgia,serif;font-size:38px;font-weight:400;letter-spacing:-.005em;margin-bottom:6px}
+.why .lead{color:#9fb0ff;font-family:"Geist Mono",monospace;font-size:13px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:28px}
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
+.why-item .n{font-family:"Geist Mono",monospace;color:var(--mint);font-size:13px;margin-bottom:12px}
+.why-item h4{font-size:18px;font-weight:700;margin-bottom:8px;letter-spacing:-.01em}
+.why-item p{font-size:14.5px;color:#aab6c8;line-height:1.5}
+
+/* big cta */
+.cta{text-align:center;padding:60px 0 30px}
+.cta h2{font-family:"Instrument Serif",Georgia,serif;font-size:clamp(40px,5.2vw,64px);font-weight:400;letter-spacing:-.005em;line-height:1.0;margin-bottom:14px;text-wrap:balance}
+.cta p{font-size:18px;color:var(--ink-2);margin-bottom:26px}
+.cta .hform{margin:0 auto}
+
+/* footer */
+footer{border-top:1px solid var(--line);margin-top:40px;padding:42px 0}
+.fgrid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:28px}
+.fbrand p{color:var(--ink-2);font-size:14.5px;margin-top:14px;max-width:34ch;line-height:1.5}
+.fcol h4{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-3);font-family:"Geist Mono",monospace;margin-bottom:12px}
+.fcol a{display:block;font-size:14.5px;color:var(--ink-2);padding:5px 0}
+.fcol a:hover{color:var(--blue)}
+.fbot{margin-top:30px;padding-top:20px;border-top:1px solid var(--line);font-size:12.5px;color:var(--ink-3);font-family:"Geist Mono",monospace}
+
+/* switcher */
+.switch{position:fixed;top:14px;right:16px;z-index:60;display:flex;gap:0;background:var(--surface);border:1px solid var(--line-2);border-radius:999px;padding:4px;font-family:"Geist Mono",monospace;box-shadow:var(--shadow)}
+.switch a{font-size:11px;padding:7px 11px;border-radius:999px;color:var(--ink-3)}
+.switch a.on{background:var(--blue);color:#fff}
+.switch a:hover{color:var(--ink)}
+.themebtn{width:38px;height:38px;border-radius:10px;border:1px solid var(--line-2);background:var(--surface);color:var(--ink-2);display:grid;place-items:center;cursor:pointer;transition:.15s;flex-shrink:0}
+.themebtn:hover{color:var(--ink);border-color:var(--ink-3)}
+.themebtn svg{width:18px;height:18px}
+.themebtn .moon{display:none}
+[data-theme="dark"] .themebtn .sun{display:none}
+[data-theme="dark"] .themebtn .moon{display:block}
+
+@media(max-width:920px){
+  .hero .wrap{grid-template-columns:1fr;gap:30px}
+  .mgrid{grid-template-columns:1fr 1fr}
+  .twoup{grid-template-columns:1fr}
+  .why-grid{grid-template-columns:1fr}
+  .fgrid{grid-template-columns:1fr 1fr}
+  .navlinks{display:none}
+}
+@media(max-width:560px){.mgrid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="switch">
+  <a href="index.html">SYS</a>
+  <a href="01-broadsheet.html">01</a>
+  <a class="on" href="02-clean.html">02</a>
+  <a href="03-terminal.html">03</a>
+</div>
+
+<nav class="nav">
+  <div class="wrap">
+    <a class="brand" href="#"><span class="mk">%</span>The Prob</a>
+    <div class="navlinks">
+      <a href="#">Business</a><a href="#">Culture</a><a href="#">News</a><a href="#">Politics</a><a href="#">Sports</a><a href="#">Tech</a>
+    </div>
+    <div class="right">
+      <button class="themebtn" id="themeBtn" aria-label="Toggle dark mode" title="Toggle theme">
+        <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2 12h2.5M19.5 12H22M4.2 19.8l1.8-1.8M18 6l1.8-1.8"/></svg>
+        <svg class="moon" viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+      <a class="btn btn-ghost" href="#">Sign in</a>
+      <a class="btn btn-pri" href="#">Get the brief</a>
+    </div>
+  </div>
+</nav>
+
+<!-- hero -->
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow"><span class="pct">%</span>What's the probability? &middot; daily intelligence</span>
+      <h1>The crowd already <em>placed its bets.</em> We tell you where.</h1>
+      <p class="sub">Every morning, the biggest movers and sharpest crowd signals from Polymarket and Kalshi. No market-speak. Just the odds that matter.</p>
+      <form class="hform" onsubmit="return false">
+        <input type="email" placeholder="you@email.com" aria-label="email">
+        <button class="btn btn-pri" type="submit">Send it daily</button>
+      </form>
+      <div class="trust">
+        <span class="avatars"><span></span><span></span><span></span><span></span></span>
+        24,000 readers who'd rather know the odds than guess.
+      </div>
+    </div>
+    <div class="mcard">
+      <div class="top">
+        <span class="badge">Market of the Day</span>
+        <span class="plat-pill"><span class="d"></span>Kalshi · Poly</span>
+      </div>
+      <h3>Will the Fed cut rates at the July meeting?</h3>
+      <div class="resolve">Resolves Jul 30 · Updated 7:02 AM ET</div>
+      <div class="odds-wrap">
+        <div class="odds-big">73<small>%</small></div>
+        <div class="odds-meta">
+          <div class="chg">▲ 4 pts</div>
+          <div class="lab">past 24h</div>
+        </div>
+      </div>
+      <div class="yn-bar"><i style="width:73%"></i></div>
+      <div class="yn-leg"><span><b>YES</b> 73%</span><span><b>NO</b> 27%</span></div>
+      <div class="take">Two weeks ago this sat at 49%. The jobs report whiffed, the crowd piled in, and Wall Street is still hedging. <b>The crowd already decided.</b></div>
+      <div class="stats3">
+        <div><div class="k">24h volume</div><div class="v">$4.2M</div></div>
+        <div><div class="k">Open interest</div><div class="v">$18.6M</div></div>
+        <div><div class="k">Traders</div><div class="v">9,140</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- movers -->
+<section class="block">
+  <div class="wrap">
+    <div class="shead">
+      <div>
+        <h2>Biggest movers</h2>
+        <div class="sub">Markets that swung hardest in the last 24 hours.</div>
+      </div>
+      <a class="link" href="#">All markets →</a>
+    </div>
+    <div class="mgrid" id="mgrid"></div>
+  </div>
+</section>
+
+<!-- spread + take -->
+<section class="block">
+  <div class="wrap">
+    <div class="twoup">
+      <div class="panel">
+        <div class="ph"><span class="ico">⚡</span>The Spread · crowd vs itself</div>
+        <div class="spread-q">US recession before 2027?</div>
+        <div class="spread-vs">
+          <div class="s"><div class="pl">POLYMARKET</div><div class="pv" style="color:var(--rose)">38%</div></div>
+          <div class="gap">11 pt<br>gap</div>
+          <div class="s"><div class="pl">KALSHI</div><div class="pv" style="color:var(--mint)">27%</div></div>
+        </div>
+        <div class="spread-note">Polymarket's crypto-native crowd is gloomier than Kalshi's. <b>When they disagree this hard, somebody's about to be wrong.</b></div>
+      </div>
+      <div class="panel dark">
+        <div class="ph">The Prob's Take</div>
+        <h3>GTA 6 just became a <em>2027 problem.</em></h3>
+        <p>The delay market jumped 22 points overnight to 61%. Rockstar hasn't said a word. The crowd reads silence as a slip, and the crowd is usually early. Watch the next trailer date like it's an earnings call.</p>
+        <div class="author"><span class="av">P</span><span class="nm"><b>The Prob Desk</b><span>7:02 AM ET &middot; 4 min read</span></span><span class="sig">%</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- why -->
+<section class="block">
+  <div class="wrap">
+    <div class="why">
+      <h2>Why read The Prob?</h2>
+      <div class="lead">Prediction markets, in plain English</div>
+      <div class="why-grid">
+        <div class="why-item"><div class="n">01 / SIGNAL</div><h4>Crowd wisdom, not punditry</h4><p>Thousands of people with real money on the line. That's not an opinion. It's a probability, and we surface it before the headlines catch up.</p></div>
+        <div class="why-item"><div class="n">02 / MOVEMENT</div><h4>The movers matter most</h4><p>A market flat for a week is noise. A market moving 10 points overnight is signal. We track the change, because that's where the information lives.</p></div>
+        <div class="why-item"><div class="n">03 / CLARITY</div><h4>Built for humans, not traders</h4><p>No Polymarket account required. We translate market activity into plain language so you can think clearly about what's actually likely.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- cta -->
+<section class="cta">
+  <div class="wrap">
+    <h2>Know the odds before 9 AM.</h2>
+    <p>The smartest money is already on the board. Get it in your inbox, free.</p>
+    <form class="hform" onsubmit="return false">
+      <input type="email" placeholder="you@email.com" aria-label="email">
+      <button class="btn btn-pri" type="submit">Send it daily</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="fgrid">
+      <div class="fbrand">
+        <a class="brand" href="#"><span class="mk">%</span>The Prob</a>
+        <p>Daily intelligence from the prediction markets. The crowd has already placed its bets. We tell you where.</p>
+      </div>
+      <div class="fcol"><h4>Navigate</h4><a href="#">Today's Markets</a><a href="#">Politics</a><a href="#">Business</a><a href="#">Tech</a><a href="#">Sports</a></div>
+      <div class="fcol"><h4>Sources</h4><a href="#">Polymarket ↗</a><a href="#">Kalshi ↗</a><a href="#">Markets 101</a><a href="#">Archive</a></div>
+      <div class="fcol"><h4>Company</h4><a href="#">About</a><a href="#">Contact</a><a href="#">Privacy</a></div>
+    </div>
+    <div class="fbot">© 2026 The Prob. Prediction markets intelligence. Not financial advice. Market data for informational purposes only.</div>
+  </div>
+</footer>
+
+<script>
+const movers=[
+  {q:"GTA 6 delayed into 2027",plat:"Polymarket",prob:61,chg:22,vol:"$2.1M"},
+  {q:"Newsom enters the 2028 race",plat:"Kalshi",prob:34,chg:18,vol:"$880K"},
+  {q:"OpenAI files to IPO in 2026",plat:"Polymarket",prob:29,chg:11,vol:"$1.4M"},
+  {q:"Bitcoin above $150K in 2026",plat:"Kalshi",prob:41,chg:-9,vol:"$5.7M"},
+  {q:"Gov shutdown before October",plat:"Polymarket",prob:27,chg:-14,vol:"$1.9M"},
+  {q:"Lakers win the 2026 title",plat:"Kalshi",prob:12,chg:6,vol:"$640K"},
+];
+document.getElementById("mgrid").innerHTML=movers.map(m=>{
+  const up=m.chg>=0;
+  const col=up?"var(--mint)":"var(--rose)";
+  return `<div class="tile">
+    <div class="row1">
+      <span class="plat">${m.plat}</span>
+      <span class="chip ${up?'up':'down'}">${up?'▲':'▼'} ${Math.abs(m.chg)} pts</span>
+    </div>
+    <h4>${m.q}</h4>
+    <div class="botrow">
+      <span class="prob">${m.prob}%</span>
+      <span class="vol">24h vol<b>${m.vol}</b></span>
+    </div>
+    <div class="minibar"><i style="width:${m.prob}%;background:${col}"></i></div>
+  </div>`;
+}).join("");
+
+/* theme toggle */
+(function(){
+  const btn=document.getElementById('themeBtn');
+  if(!btn) return;
+  btn.addEventListener('click',function(){
+    const dark=document.documentElement.getAttribute('data-theme')==='dark';
+    if(dark){document.documentElement.removeAttribute('data-theme');localStorage.setItem('prob_theme','light');}
+    else{document.documentElement.setAttribute('data-theme','dark');localStorage.setItem('prob_theme','dark');}
+  });
+})();
+</script>
+</body>
+</html>
