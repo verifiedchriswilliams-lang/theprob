@@ -39,7 +39,7 @@
     "event_volume_24h": 2023278.5732539983,
     "trends_bonus": 0.0,
     "held_since": "2026-06-09T12:37:24.068841+00:00",
-    "prob_take": "The crowd has $$38.7M on this at 37.5%, calling it a toss-up. Odds are up 15.4 pts today. Worth watching."
+    "prob_take": "The crowd has $38.7M on this at 37.5%, calling it a toss-up. Odds are up 15.4 pts today. Worth watching."
   },
   "trade": {
     "source": "Polymarket",
@@ -674,7 +674,7 @@
   ],
   "daily_take": {
     "headline": "Will the San Antonio Spurs win the 2026 NBA Finals?",
-    "deck": "The crowd has $$38.7M riding on this one. Odds are 37.5%, 15.4 points up today. Here's what the market is telling you.",
+    "deck": "The crowd has $38.7M riding on this one. Odds are 37.5%, 15.4 points up today. Here's what the market is telling you.",
     "category_label": "Market Watch \u00b7 Sports",
     "date": "Jun 9, 2026",
     "sidebar": [

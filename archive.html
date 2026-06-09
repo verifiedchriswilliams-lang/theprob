@@ -261,26 +261,33 @@ async function loadArchive() {
       return;
     }
 
-    // Group by "Month YYYY"
-    const groups = {};
+    // Group by "YYYY-MM" key for correct sort order, display as "Month YYYY"
+    const groupMap = {};
     index.forEach((entry, i) => {
-      const d     = new Date(entry.date + 'T12:00:00');
-      const label = d.toLocaleString('en-US', { month: 'long', year: 'numeric' });
-      if (!groups[label]) groups[label] = [];
-      groups[label].push({ ...entry, isLatest: i === 0 });
+      const key   = entry.date.slice(0, 7); // "YYYY-MM"
+      if (!groupMap[key]) groupMap[key] = [];
+      groupMap[key].push({ ...entry, isLatest: i === 0 });
     });
 
+    // Sort month keys descending (most recent first)
+    const sortedKeys = Object.keys(groupMap).sort().reverse();
+
     let html = '';
-    for (const [month, entries] of Object.entries(groups)) {
+    for (const key of sortedKeys) {
+      const entries  = groupMap[key];
+      const [yr, mo] = key.split('-');
+      const label    = new Date(parseInt(yr), parseInt(mo) - 1, 1)
+                         .toLocaleString('en-US', { month: 'long', year: 'numeric' });
       html += `<div class="month-group">
-        <div class="month-label">${month}</div>
+        <div class="month-label">${label}</div>
         <div class="archive-list">`;
       entries.forEach(e => {
-        const href    = e.isLatest ? 'newsletter/latest-email.html' : `newsletter/${e.date}.html`;
-        const badge   = e.isLatest ? '<span class="latest-badge">Latest</span>' : '';
-        const subject = e.subject || 'Daily edition';
+        const href       = e.isLatest ? 'newsletter/latest-email.html' : (e.url || `newsletter/${e.date}.html`);
+        const badge      = e.isLatest ? '<span class="latest-badge">Latest</span>' : '';
+        const subject    = e.subject || 'Daily edition';
+        const dateLabel  = e.display_date || e.date;
         html += `<a class="archive-row" href="${href}">
-          <span class="archive-date">${e.display_date}</span>
+          <span class="archive-date">${dateLabel}</span>
           <span class="archive-title">${subject} ${badge}</span>
           <span class="archive-arrow">&#8594;</span>
         </a>`;

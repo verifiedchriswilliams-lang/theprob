@@ -41,9 +41,9 @@
     /* NAV */
     .nav { background: var(--nav-bg); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); padding: 0 32px; display: flex; align-items: center; justify-content: space-between; height: 56px; position: sticky; top: 0; z-index: 100; }
     .nav-logo { display:flex; align-items:center; gap:8px; text-decoration:none; } .nav-logo-chip { width:28px; height:28px; border-radius:7px; background:var(--brand); display:grid; place-items:center; color:#fff; font-family:var(--font-mono); font-weight:700; font-size:16px; flex-shrink:0; } .nav-logo-text { font-family: var(--font-mono); font-size: 22px; font-weight: 700; color: var(--brand); letter-spacing: -0.5px; }
-    .nav-links { display: flex; gap: 24px; }
-    .nav-links a { font-size: 13px; color: var(--ink-2); }
-    .nav-links a:hover { color: var(--ink); text-decoration: none; }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-2); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--ink); }
     .nav-links a.active { color: var(--brand); }
 
     /* THEME TOGGLE */
@@ -172,13 +172,12 @@
 <nav class="nav">
   <a class="nav-logo" href="/"><span class="nav-logo-chip">%</span><span class="nav-logo-text">THE PROB</span></a>
   <div class="nav-links">
-    <a href="/">Home</a>
-    <a href="politics.html">Politics</a>
-    <a href="business.html">Business</a>
-    <a href="sports.html">Sports</a>
-    <a href="tech.html">Tech</a>
-    <a href="culture.html">Culture</a>
-    <a href="portfolio.html" class="active">Portfolio</a>
+    <a href="business.html">BUSINESS</a>
+    <a href="culture.html">CULTURE</a>
+    <a href="news.html">NEWS</a>
+    <a href="politics.html">POLITICS</a>
+    <a href="sports.html">SPORTS</a>
+    <a href="tech.html">TECH</a>
   </div>
   <button class="theme-toggle" onclick="toggleTheme()" id="theme-btn" aria-label="Toggle dark mode"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
 </nav>
@@ -187,7 +186,7 @@
 <div class="page-hero">
   <div class="page-eyebrow">Experiment 1 Concluded &middot; Mar 17 &ndash; Jun 8, 2026 &middot; 83 Days</div>
   <h1 class="page-title">Model A wins. Here's what we learned.</h1>
-  <p class="page-subtitle">3 models. 83 days. 591 trades. The Crowd beat The Contrarian by $381. The Arb never got off the ground. Full results and post-mortem below. Test 2 launches Friday.</p>
+  <p class="page-subtitle">3 models. 83 days. 591 trades. The Crowd beat The Contrarian by $381. The Arb never got off the ground. Full results and post-mortem below. Test 2 launches Jun 13.</p>
 
   <!-- FINAL SCOREBOARD -->
   <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px;" id="scoreboard">
@@ -347,13 +346,13 @@
       <div style="font-family:var(--font-mono);font-size:11px;color:var(--text-muted);white-space:nowrap;">Jun 8, 2026</div>
       <div>
         <div style="font-size:14px;font-weight:600;margin-bottom:4px;">Experiment 1 concluded. Model A wins.</div>
-        <div style="font-size:13px;color:var(--text-muted);">83 days. 591 trades. Final: Model A +127.8% ($2,277), Model B +89.6% ($1,896), Model C 0% ($1,000 inconclusive). Full post-mortem published. Test 2 launches Friday Jun 13.</div>
+        <div style="font-size:13px;color:var(--text-muted);">83 days. 591 trades. Final: Model A +127.8% ($2,277), Model B +89.6% ($1,896), Model C 0% ($1,000 inconclusive). Full post-mortem published. Test 2 launches Jun 13.</div>
       </div>
     </div>
     <div style="padding:16px 20px;background:var(--surface-2);display:flex;gap:16px;align-items:baseline;">
       <div style="font-family:var(--font-mono);font-size:11px;color:var(--amber);white-space:nowrap;">Jun 13, 2026</div>
       <div>
-        <div style="font-size:14px;font-weight:600;margin-bottom:4px;color:var(--amber);">Test 2 launches &mdash; The Crowd vs. two new challengers</div>
+        <div style="font-size:14px;font-weight:600;margin-bottom:4px;color:var(--amber);">Test 2 launches Jun 13 &mdash; The Crowd vs. two new challengers</div>
         <div style="font-size:13px;color:var(--text-muted);">Model A (Control) defends. New challengers: Model D (tighter 75/25 gate) and Model E (crowd conviction + momentum confirmation). $1,000 each. Same rules. 30 days.</div>
       </div>
     </div>
@@ -638,7 +637,7 @@
 
     // 3. Confirm + mark subscribed so modal never shows again
     localStorage.setItem('theprob_poll_subscribed', '1');
-    msgEl.textContent = '\u2713 You\u2019re in. Test 2 launch lands in your inbox Friday.';
+    msgEl.textContent = '\u2713 You\u2019re in. Test 2 launch lands in your inbox Jun 13.';
     msgEl.style.color = '#00e5a0';
     if (emailEl) emailEl.style.display = 'none';
     btnEl.textContent = '\u2713 Done';

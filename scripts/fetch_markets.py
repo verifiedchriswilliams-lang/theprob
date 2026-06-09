@@ -2140,7 +2140,7 @@ def generate_hero_take(hero: dict) -> dict:
                 f"Market: {q}\n"
                 f"Odds: {prob}%\n"
                 f"24h change: {'+' if change > 0 else ''}{change} points\n"
-                f"Volume: ${vol}\n"
+                f"Volume: {vol}\n"
                 f"Category: {cat}\n"
                 f"Source: {source}\n\n"
                 f"Framing guidance: {prob_framing}\n\n"
@@ -2191,7 +2191,7 @@ def generate_hero_take(hero: dict) -> dict:
             print(f"  [WARN] Hero take generation failed: {e}")
 
     # Fallback template
-    money_line    = f"${vol}" if vol else "real money"
+    money_line    = vol if vol else "real money"
     odds_word     = "likely" if prob > 65 else "unlikely" if prob < 35 else "a toss-up"
     dir_word      = f"up {change} pts" if change > 5 else f"down {abs(change)} pts" if change < -5 else "steady"
     s1 = f"The crowd has {money_line} on this at {prob}%, calling it {odds_word}."
