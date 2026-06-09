@@ -150,9 +150,11 @@
 
     .logo {
       display: flex;
-      align-items: baseline;
-      gap: 12px;
+      align-items: center;
+      gap: 10px;
     }
+    .logo-chip { width:30px; height:30px; border-radius:8px; background:var(--brand); display:grid; place-items:center; color:#fff; font-family:var(--font-mono); font-weight:700; font-size:17px; flex-shrink:0; }
+    .logo-wordmark { display:flex; align-items:baseline; gap:10px; }
     .logo-mark {
       font-family: var(--font-mono);
       font-size: 28px;
@@ -1122,9 +1124,10 @@
   <div class="nav-wrapper">
     <nav>
       <div class="logo">
-        <span class="logo-mark">THE PROB</span>
+        <span class="logo-chip">%</span>
+        <div class="logo-wordmark"><span class="logo-mark">THE PROB</span>
         <span class="logo-pipe">|</span>
-        <span class="logo-sub">What's the Probability?</span>
+        <span class="logo-sub">What's the Probability?</span></div>
       </div>
       <ul class="nav-links">
         <li><a href="business.html">Business</a></li>
@@ -1398,6 +1401,7 @@
   <footer>
     <div class="footer-brand">
       <div class="logo">
+        <span class="logo-chip">%</span>
         <span class="logo-mark">THE PROB</span>
       </div>
       <p>Daily intelligence from the prediction markets. The crowd has already placed its bets. We tell you where.</p>
