@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%233A2BD4'/%3E%3Ctext x='32' y='46' font-family='Georgia,serif' font-weight='700' font-size='42' text-anchor='middle' fill='%23ffffff'%3E%25%3C/text%3E%3C/svg%3E">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Prob Experiment 1 Results — Model A Wins. Here's What We Learned.</title>
@@ -11,115 +12,126 @@
   <meta property="og:description" content="Experiment 1 concluded. Model A (The Crowd) returned +127.8% in 83 days. Full post-mortem on all 3 models and what comes next.">
   <meta property="og:url" content="https://theprobnewsletter.com/portfolio.html">
   <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <!-- Design tokens: The Clean Book -->
+  <link rel="stylesheet" href="design-tokens.css">
   <style>
+    /* ── BACKWARD-COMPAT ALIASES ── */
     :root {
-      --bg:        #080b0f;
-      --bg2:       #0d1117;
-      --bg3:       #141b24;
-      --bg4:       #1e2a38;
-      --green:     #00e5a0;
-      --red:       #ff4d6d;
-      --amber:     #f5a623;
-      --blue:      #4da6ff;
-      --text:      #edf2f7;
-      --text-muted:#8ba3bc;
-      --border:    #1e2a38;
+      --bg2:       var(--surface);
+      --bg3:       var(--surface-2);
+      --bg4:       var(--line);
+      --border:    var(--line);
+      --text:      var(--ink);
+      --text-muted:var(--ink-2);
+      --green:     var(--yes);
+      --green-dim: #0a9f6e;
+      --red:       var(--no);
+      --blue:      var(--brand);
+      --amber:     #F5A524;
     }
+
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; line-height: 1.6; }
-    a { color: var(--green); text-decoration: none; }
+    body { background: var(--bg); color: var(--ink); font-family: var(--font-sans); line-height: 1.6; }
+    a { color: var(--brand); text-decoration: none; }
     a:hover { text-decoration: underline; }
 
     /* NAV */
-    .nav { background: var(--bg2); border-bottom: 1px solid var(--border); padding: 0 32px; display: flex; align-items: center; justify-content: space-between; height: 56px; position: sticky; top: 0; z-index: 100; }
-    .nav-logo { font-family: 'Courier New', monospace; font-size: 18px; font-weight: 700; color: var(--green); letter-spacing: -0.5px; }
+    .nav { background: var(--nav-bg); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); padding: 0 32px; display: flex; align-items: center; justify-content: space-between; height: 56px; position: sticky; top: 0; z-index: 100; }
+    .nav-logo { font-family: var(--font-mono); font-size: 18px; font-weight: 600; color: var(--brand); letter-spacing: -0.5px; }
     .nav-links { display: flex; gap: 24px; }
-    .nav-links a { font-size: 13px; color: var(--text-muted); }
-    .nav-links a:hover { color: var(--text); text-decoration: none; }
-    .nav-links a.active { color: var(--green); }
+    .nav-links a { font-size: 13px; color: var(--ink-2); }
+    .nav-links a:hover { color: var(--ink); text-decoration: none; }
+    .nav-links a.active { color: var(--brand); }
+
+    /* THEME TOGGLE */
+    .theme-toggle { background: none; border: 1px solid var(--line-2); border-radius: var(--r-pill); padding: 5px 12px; font-family: var(--font-mono); font-size: 12px; color: var(--ink-2); cursor: pointer; transition: border-color 0.2s, color 0.2s; line-height: 1; }
+    .theme-toggle:hover { border-color: var(--brand); color: var(--brand); }
 
     /* HERO STATS */
     .page-hero { max-width: 1100px; margin: 0 auto; padding: 48px 32px 32px; }
-    .page-eyebrow { font-family: 'Courier New', monospace; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--amber); margin-bottom: 12px; }
-    .page-title { font-family: Georgia, serif; font-size: 36px; font-weight: 700; line-height: 1.2; margin-bottom: 8px; }
-    .page-subtitle { font-size: 16px; color: var(--text-muted); margin-bottom: 40px; max-width: 580px; }
+    .page-eyebrow { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--brand); margin-bottom: 12px; }
+    .page-title { font-family: var(--font-display); font-size: 36px; font-weight: 400; line-height: 1.2; margin-bottom: 8px; }
+    .page-subtitle { font-size: 16px; color: var(--ink-2); margin-bottom: 40px; max-width: 580px; }
 
     .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 48px; }
-    .stat-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 8px; padding: 24px; }
-    .stat-label { font-family: 'Courier New', monospace; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 8px; }
-    .stat-value { font-family: 'Courier New', monospace; font-size: 32px; font-weight: 700; line-height: 1; }
-    .stat-value.green { color: var(--green); }
-    .stat-value.red   { color: var(--red); }
+    .stat-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-md); padding: 24px; box-shadow: var(--shadow); }
+    .stat-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink-2); margin-bottom: 8px; }
+    .stat-value { font-family: var(--font-mono); font-size: 32px; font-weight: 700; line-height: 1; font-feature-settings: "tnum"; }
+    .stat-value.green { color: var(--yes); }
+    .stat-value.red   { color: var(--no); }
     .stat-value.amber { color: var(--amber); }
-    .stat-sub { font-size: 12px; color: var(--text-muted); margin-top: 6px; }
+    .stat-sub { font-size: 12px; color: var(--ink-2); margin-top: 6px; }
 
-    /* BALANCE HISTORY */
+    /* SECTIONS */
     .section { max-width: 1100px; margin: 0 auto; padding: 0 32px 48px; }
-    .section-title { font-family: 'Courier New', monospace; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
+    .section-title { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
 
     /* TRADE TABLE */
     .trade-table { width: 100%; border-collapse: collapse; }
-    .trade-table th { font-family: 'Courier New', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--border); }
-    .trade-table td { padding: 14px 12px; border-bottom: 1px solid var(--border); font-size: 14px; vertical-align: middle; }
-    .trade-table tr:hover td { background: var(--bg3); }
+    .trade-table th { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-2); text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--line); }
+    .trade-table td { padding: 14px 12px; border-bottom: 1px solid var(--line); font-size: 14px; vertical-align: middle; }
+    .trade-table tr:hover td { background: var(--surface-2); }
     .trade-table tr.open td { opacity: 0.85; }
 
-    .direction-badge { display: inline-block; font-family: 'Courier New', monospace; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; padding: 3px 8px; border-radius: 3px; }
-    .direction-badge.yes { background: rgba(0,229,160,0.15); color: var(--green); }
-    .direction-badge.no  { background: rgba(255,77,109,0.15); color: var(--red); }
+    .direction-badge { display: inline-block; font-family: var(--font-mono); font-size: 10px; font-weight: 700; letter-spacing: 0.1em; padding: 3px 8px; border-radius: 3px; }
+    .direction-badge.yes { background: var(--yes-soft); color: var(--yes); }
+    .direction-badge.no  { background: var(--no-soft);  color: var(--no); }
 
-    .status-badge { display: inline-block; font-family: 'Courier New', monospace; font-size: 10px; letter-spacing: 0.1em; padding: 3px 8px; border-radius: 3px; }
-    .status-badge.open   { background: rgba(245,166,35,0.15); color: var(--amber); }
-    .status-badge.win    { background: rgba(0,229,160,0.15); color: var(--green); }
-    .status-badge.loss   { background: rgba(255,77,109,0.15); color: var(--red); }
+    .status-badge { display: inline-block; font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.1em; padding: 3px 8px; border-radius: 3px; }
+    .status-badge.open { background: rgba(245,165,36,.12); color: var(--amber); }
+    .status-badge.win  { background: var(--yes-soft); color: var(--yes); }
+    .status-badge.loss { background: var(--no-soft);  color: var(--no); }
 
-    .pnl-value { font-family: 'Courier New', monospace; font-weight: 700; }
-    .pnl-value.pos { color: var(--green); }
-    .pnl-value.neg { color: var(--red); }
-    .pnl-value.pending { color: var(--text-muted); }
+    .pnl-value { font-family: var(--font-mono); font-weight: 700; font-feature-settings: "tnum"; }
+    .pnl-value.pos { color: var(--yes); }
+    .pnl-value.neg { color: var(--no); }
+    .pnl-value.pending { color: var(--ink-2); }
 
-    .market-link { color: var(--text); font-weight: 500; }
-    .market-link:hover { color: var(--green); text-decoration: none; }
-    .market-source { font-size: 11px; color: var(--text-muted); margin-top: 2px; font-family: 'Courier New', monospace; }
+    .market-link { color: var(--ink); font-weight: 500; }
+    .market-link:hover { color: var(--brand); text-decoration: none; }
+    .market-source { font-size: 11px; color: var(--ink-2); margin-top: 2px; font-family: var(--font-mono); }
 
     /* EMPTY STATE */
-    .empty-state { text-align: center; padding: 64px 32px; color: var(--text-muted); }
+    .empty-state { text-align: center; padding: 64px 32px; color: var(--ink-2); }
     .empty-state .big { font-size: 48px; margin-bottom: 16px; }
     .empty-state p { font-size: 15px; max-width: 400px; margin: 0 auto; }
 
     /* HOW IT WORKS */
     .how-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-    .how-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 8px; padding: 24px; }
-    .how-num { font-family: 'Courier New', monospace; font-size: 28px; font-weight: 700; color: var(--border); margin-bottom: 12px; }
+    .how-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-md); padding: 24px; box-shadow: var(--shadow); }
+    .how-num { font-family: var(--font-mono); font-size: 28px; font-weight: 700; color: var(--line-2); margin-bottom: 12px; }
     .how-title { font-weight: 600; margin-bottom: 8px; }
-    .how-body { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
+    .how-body { font-size: 14px; color: var(--ink-2); line-height: 1.6; }
 
     /* VOTE MODAL */
-    .vote-modal-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.7); z-index:999; align-items:center; justify-content:center; }
+    .vote-modal-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:999; align-items:center; justify-content:center; }
     .vote-modal-overlay.open { display:flex; }
-    .vote-modal { background:var(--bg2); border:1px solid var(--border); border-radius:12px; padding:36px 32px; max-width:440px; width:90%; position:relative; }
-    .vote-modal-close { position:absolute; top:14px; right:18px; background:none; border:none; color:var(--text-muted); font-size:20px; cursor:pointer; line-height:1; }
-    .vote-modal-close:hover { color:var(--text); }
-    .vote-modal-eyebrow { font-family:'Courier New',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--green); margin-bottom:10px; }
-    .vote-modal-title { font-family:Georgia,serif; font-size:22px; font-weight:700; line-height:1.3; margin-bottom:10px; }
-    .vote-modal-body { font-size:14px; color:var(--text-muted); line-height:1.6; margin-bottom:24px; }
+    .vote-modal { background:var(--surface); border:1px solid var(--line); border-radius:var(--r-lg); padding:36px 32px; max-width:440px; width:90%; position:relative; box-shadow: var(--shadow-lg); }
+    .vote-modal-close { position:absolute; top:14px; right:18px; background:none; border:none; color:var(--ink-2); font-size:20px; cursor:pointer; line-height:1; }
+    .vote-modal-close:hover { color:var(--ink); }
+    .vote-modal-eyebrow { font-family:var(--font-mono); font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--brand); margin-bottom:10px; }
+    .vote-modal-title { font-family:var(--font-display); font-size:22px; font-weight:400; line-height:1.3; margin-bottom:10px; }
+    .vote-modal-body { font-size:14px; color:var(--ink-2); line-height:1.6; margin-bottom:24px; }
     .vote-modal-form { display:flex; gap:8px; }
-    .vote-modal-form input { flex:1; background:var(--bg3); border:1px solid var(--border); border-radius:6px; padding:10px 14px; font-size:14px; color:var(--text); outline:none; }
-    .vote-modal-form input:focus { border-color:var(--green); }
-    .vote-modal-form button { background:var(--green); color:#080b0f; border:none; border-radius:6px; padding:10px 18px; font-family:'Courier New',monospace; font-size:12px; font-weight:700; letter-spacing:0.08em; cursor:pointer; white-space:nowrap; }
-    .vote-modal-msg { font-family:'Courier New',monospace; font-size:12px; margin-top:10px; min-height:18px; }
-    .vote-modal-skip { display:block; text-align:center; margin-top:16px; font-family:'Courier New',monospace; font-size:11px; color:var(--text-muted); cursor:pointer; text-decoration:underline; }
-    .vote-modal-skip:hover { color:var(--text); }
+    .vote-modal-form input { flex:1; background:var(--surface-2); border:1px solid var(--line-2); border-radius:var(--r-sm); padding:10px 14px; font-size:14px; color:var(--ink); outline:none; }
+    .vote-modal-form input:focus { border-color:var(--brand); }
+    .vote-modal-form button { background:var(--brand); color:#fff; border:none; border-radius:var(--r-sm); padding:10px 18px; font-family:var(--font-mono); font-size:12px; font-weight:700; letter-spacing:0.08em; cursor:pointer; white-space:nowrap; }
+    .vote-modal-msg { font-family:var(--font-mono); font-size:12px; margin-top:10px; min-height:18px; }
+    .vote-modal-skip { display:block; text-align:center; margin-top:16px; font-family:var(--font-mono); font-size:11px; color:var(--ink-2); cursor:pointer; text-decoration:underline; }
+    .vote-modal-skip:hover { color:var(--ink); }
 
     /* DISCLAIMER */
     .disclaimer { max-width: 1100px; margin: 0 auto; padding: 0 32px 64px; }
-    .disclaimer p { font-size: 12px; color: var(--text-muted); line-height: 1.7; }
+    .disclaimer p { font-size: 12px; color: var(--ink-2); line-height: 1.7; }
 
     /* FOOTER */
-    footer { border-top: 1px solid var(--border); padding: 32px; text-align: center; }
-    footer p { font-size: 12px; color: var(--text-muted); }
-    footer a { color: var(--text-muted); }
-    footer a:hover { color: var(--green); }
+    footer { border-top: 1px solid var(--line); padding: 32px; text-align: center; }
+    footer p { font-size: 12px; color: var(--ink-2); }
+    footer a { color: var(--ink-2); }
+    footer a:hover { color: var(--brand); }
 
     @media (max-width: 768px) {
       .stats-grid { grid-template-columns: repeat(2, 1fr); }
@@ -131,6 +143,28 @@
       .experiment-grid { grid-template-columns: 1fr !important; }
     }
   </style>
+
+  <!-- Theme: default light, restore saved preference (no flash) -->
+  <script>
+    (function(){
+      var t = localStorage.getItem('prob_theme');
+      if (t === 'dark') document.documentElement.setAttribute('data-theme','dark');
+    })();
+    function toggleTheme(){
+      var html = document.documentElement;
+      var isDark = html.getAttribute('data-theme') === 'dark';
+      var btn = document.getElementById('theme-btn');
+      if (isDark) {
+        html.removeAttribute('data-theme');
+        localStorage.setItem('prob_theme','light');
+        if (btn) btn.textContent = '☾';
+      } else {
+        html.setAttribute('data-theme','dark');
+        localStorage.setItem('prob_theme','dark');
+        if (btn) btn.textContent = '☀';
+      }
+    }
+  </script>
 </head>
 <body>
 
@@ -146,6 +180,7 @@
     <a href="culture.html">Culture</a>
     <a href="portfolio.html" class="active">Portfolio</a>
   </div>
+  <button class="theme-toggle" onclick="toggleTheme()" id="theme-btn" aria-label="Toggle dark mode">&#x263e;</button>
 </nav>
 
 <!-- HERO -->
@@ -157,40 +192,40 @@
   <!-- FINAL SCOREBOARD -->
   <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px;" id="scoreboard">
 
-    <div style="background:var(--bg2);border:2px solid #4a9eff;border-top:3px solid #4a9eff;border-radius:8px;padding:24px;position:relative;">
-      <div style="position:absolute;top:14px;right:14px;font-family:'Courier New',monospace;font-size:9px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;background:#4a9eff;color:#080b0f;padding:3px 8px;border-radius:3px;">WINNER</div>
-      <div style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:#4a9eff;margin-bottom:6px;">Model A &middot; Final</div>
+    <div style="background:var(--surface);border:2px solid var(--brand);border-top:3px solid var(--brand);border-radius:8px;padding:24px;position:relative;">
+      <div style="position:absolute;top:14px;right:14px;font-family:var(--font-mono);font-size:9px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;background:var(--brand);color:var(--bg);padding:3px 8px;border-radius:3px;">WINNER</div>
+      <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--brand);margin-bottom:6px;">Model A &middot; Final</div>
       <div style="font-size:18px;font-weight:700;margin-bottom:4px;">The Crowd</div>
       <div style="font-size:12px;color:var(--text-muted);margin-bottom:16px;">Follow consensus: YES &ge;65%, NO &le;35%</div>
-      <div style="font-family:'Courier New',monospace;font-size:28px;font-weight:700;color:#4a9eff;" id="sb-a-bal">$2,277.60</div>
+      <div style="font-family:var(--font-mono);font-size:28px;font-weight:700;color:var(--brand);" id="sb-a-bal">$2,277.60</div>
       <div style="display:flex;gap:16px;margin-top:8px;">
-        <div><div style="font-size:11px;color:var(--text-muted);">Return</div><div style="font-family:'Courier New',monospace;font-size:14px;color:#4a9eff;" id="sb-a-ytd">+127.8%</div></div>
-        <div><div style="font-size:11px;color:var(--text-muted);">Record</div><div style="font-family:'Courier New',monospace;font-size:14px;color:var(--amber);" id="sb-a-rec">382&ndash;62</div></div>
-        <div><div style="font-size:11px;color:var(--text-muted);">Trades</div><div style="font-family:'Courier New',monospace;font-size:14px;" id="sb-a-open">505</div></div>
+        <div><div style="font-size:11px;color:var(--text-muted);">Return</div><div style="font-family:var(--font-mono);font-size:14px;color:var(--brand);" id="sb-a-ytd">+127.8%</div></div>
+        <div><div style="font-size:11px;color:var(--text-muted);">Record</div><div style="font-family:var(--font-mono);font-size:14px;color:var(--amber);" id="sb-a-rec">382&ndash;62</div></div>
+        <div><div style="font-size:11px;color:var(--text-muted);">Trades</div><div style="font-family:var(--font-mono);font-size:14px;" id="sb-a-open">505</div></div>
       </div>
     </div>
 
-    <div style="background:var(--bg2);border:1px solid var(--border);border-top:3px solid var(--red);border-radius:8px;padding:24px;">
-      <div style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--red);margin-bottom:6px;">Model B &middot; Final</div>
+    <div style="background:var(--surface);border:1px solid var(--line);border-top:3px solid var(--red);border-radius:8px;padding:24px;">
+      <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--red);margin-bottom:6px;">Model B &middot; Final</div>
       <div style="font-size:18px;font-weight:700;margin-bottom:4px;">The Contrarian</div>
       <div style="font-size:12px;color:var(--text-muted);margin-bottom:16px;">Fade longshots: always NO when crowd says &le;30%</div>
-      <div style="font-family:'Courier New',monospace;font-size:28px;font-weight:700;" id="sb-b-bal" class="green">$1,896.18</div>
+      <div style="font-family:var(--font-mono);font-size:28px;font-weight:700;" id="sb-b-bal" class="green">$1,896.18</div>
       <div style="display:flex;gap:16px;margin-top:8px;">
-        <div><div style="font-size:11px;color:var(--text-muted);">Return</div><div style="font-family:'Courier New',monospace;font-size:14px;" id="sb-b-ytd" class="green">+89.6%</div></div>
-        <div><div style="font-size:11px;color:var(--text-muted);">Record</div><div style="font-family:'Courier New',monospace;font-size:14px;color:var(--amber);" id="sb-b-rec">67&ndash;2</div></div>
-        <div><div style="font-size:11px;color:var(--text-muted);">Trades</div><div style="font-family:'Courier New',monospace;font-size:14px;" id="sb-b-open">80</div></div>
+        <div><div style="font-size:11px;color:var(--text-muted);">Return</div><div style="font-family:var(--font-mono);font-size:14px;" id="sb-b-ytd" class="green">+89.6%</div></div>
+        <div><div style="font-size:11px;color:var(--text-muted);">Record</div><div style="font-family:var(--font-mono);font-size:14px;color:var(--amber);" id="sb-b-rec">67&ndash;2</div></div>
+        <div><div style="font-size:11px;color:var(--text-muted);">Trades</div><div style="font-family:var(--font-mono);font-size:14px;" id="sb-b-open">80</div></div>
       </div>
     </div>
 
-    <div style="background:var(--bg2);border:1px solid var(--border);border-top:3px solid var(--border);border-radius:8px;padding:24px;opacity:0.7;">
-      <div style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-muted);margin-bottom:6px;">Model C &middot; Inconclusive</div>
+    <div style="background:var(--surface);border:1px solid var(--line);border-top:3px solid var(--border);border-radius:8px;padding:24px;opacity:0.7;">
+      <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-muted);margin-bottom:6px;">Model C &middot; Inconclusive</div>
       <div style="font-size:18px;font-weight:700;margin-bottom:4px;">The Arb</div>
       <div style="font-size:12px;color:var(--text-muted);margin-bottom:16px;">Trade Poly vs Kalshi gaps when they diverge &ge;10pts</div>
-      <div style="font-family:'Courier New',monospace;font-size:28px;font-weight:700;color:var(--text-muted);" id="sb-c-bal">$1,000.00</div>
+      <div style="font-family:var(--font-mono);font-size:28px;font-weight:700;color:var(--text-muted);" id="sb-c-bal">$1,000.00</div>
       <div style="display:flex;gap:16px;margin-top:8px;">
-        <div><div style="font-size:11px;color:var(--text-muted);">Return</div><div style="font-family:'Courier New',monospace;font-size:14px;color:var(--text-muted);" id="sb-c-ytd">0.0%</div></div>
-        <div><div style="font-size:11px;color:var(--text-muted);">Record</div><div style="font-family:'Courier New',monospace;font-size:14px;color:var(--text-muted);" id="sb-c-rec">0&ndash;0</div></div>
-        <div><div style="font-size:11px;color:var(--text-muted);">Trades</div><div style="font-family:'Courier New',monospace;font-size:14px;color:var(--text-muted);" id="sb-c-open">6</div></div>
+        <div><div style="font-size:11px;color:var(--text-muted);">Return</div><div style="font-family:var(--font-mono);font-size:14px;color:var(--text-muted);" id="sb-c-ytd">0.0%</div></div>
+        <div><div style="font-size:11px;color:var(--text-muted);">Record</div><div style="font-family:var(--font-mono);font-size:14px;color:var(--text-muted);" id="sb-c-rec">0&ndash;0</div></div>
+        <div><div style="font-size:11px;color:var(--text-muted);">Trades</div><div style="font-family:var(--font-mono);font-size:14px;color:var(--text-muted);" id="sb-c-open">6</div></div>
       </div>
     </div>
 
@@ -202,16 +237,16 @@
   <div class="section-title">Post-Mortem</div>
 
   <!-- Model A -->
-  <div style="border:1px solid #4a9eff44;border-left:3px solid #4a9eff;border-radius:8px;padding:24px;margin-bottom:16px;background:var(--bg2);">
+  <div style="border:1px solid var(--brand)44;border-left:3px solid var(--brand);border-radius:8px;padding:24px;margin-bottom:16px;background:var(--surface);">
     <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;">
-      <div style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:#4a9eff;">Model A &middot; The Crowd</div>
-      <div style="font-family:'Courier New',monospace;font-size:9px;font-weight:700;letter-spacing:0.12em;background:#4a9eff;color:#080b0f;padding:2px 7px;border-radius:3px;">WINNER</div>
+      <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--brand);">Model A &middot; The Crowd</div>
+      <div style="font-family:var(--font-mono);font-size:9px;font-weight:700;letter-spacing:0.12em;background:var(--brand);color:var(--bg);padding:2px 7px;border-radius:3px;">WINNER</div>
     </div>
     <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:18px;">
-      <div><div style="font-size:10px;color:var(--text-muted);margin-bottom:4px;">Final Balance</div><div style="font-family:'Courier New',monospace;font-size:18px;font-weight:700;color:#4a9eff;">$2,277.60</div></div>
-      <div><div style="font-size:10px;color:var(--text-muted);margin-bottom:4px;">Return</div><div style="font-family:'Courier New',monospace;font-size:18px;font-weight:700;color:var(--green);">+127.8%</div></div>
-      <div><div style="font-size:10px;color:var(--text-muted);margin-bottom:4px;">Win Rate</div><div style="font-family:'Courier New',monospace;font-size:18px;font-weight:700;">86.0%</div></div>
-      <div><div style="font-size:10px;color:var(--text-muted);margin-bottom:4px;">Trades</div><div style="font-family:'Courier New',monospace;font-size:18px;font-weight:700;">505</div></div>
+      <div><div style="font-size:10px;color:var(--text-muted);margin-bottom:4px;">Final Balance</div><div style="font-family:var(--font-mono);font-size:18px;font-weight:700;color:var(--brand);">$2,277.60</div></div>
+      <div><div style="font-size:10px;color:var(--text-muted);margin-bottom:4px;">Return</div><div style="font-family:var(--font-mono);font-size:18px;font-weight:700;color:var(--green);">+127.8%</div></div>
+      <div><div style="font-size:10px;color:var(--text-muted);margin-bottom:4px;">Win Rate</div><div style="font-family:var(--font-mono);font-size:18px;font-weight:700;">86.0%</div></div>
+      <div><div style="font-size:10px;color:var(--text-muted);margin-bottom:4px;">Trades</div><div style="font-family:var(--font-mono);font-size:18px;font-weight:700;">505</div></div>
     </div>
     <p style="font-size:14px;color:var(--text-muted);line-height:1.7;margin-bottom:10px;">The Crowd won because it traded volume. 505 trades across 83 days. 69% of them were sports markets, where conviction is cleanest: favorites at 83% average entry probability win 86% of the time. The math checks out.</p>
     <p style="font-size:14px;color:var(--text-muted);line-height:1.7;margin-bottom:10px;">The edge here is real but narrow. Average win was $19.57 on a $100 bet. The conviction gate (65/35) filters out the noise. What's left is a steady drip of small, high-probability wins, punctuated by occasional $100 losses when the favorite collapses.</p>
@@ -219,13 +254,13 @@
   </div>
 
   <!-- Model B -->
-  <div style="border:1px solid var(--border);border-left:3px solid var(--red);border-radius:8px;padding:24px;margin-bottom:16px;background:var(--bg2);">
-    <div style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--red);margin-bottom:14px;">Model B &middot; The Contrarian</div>
+  <div style="border:1px solid var(--line);border-left:3px solid var(--red);border-radius:8px;padding:24px;margin-bottom:16px;background:var(--surface);">
+    <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--red);margin-bottom:14px;">Model B &middot; The Contrarian</div>
     <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:18px;">
-      <div><div style="font-size:10px;color:var(--text-muted);margin-bottom:4px;">Final Balance</div><div style="font-family:'Courier New',monospace;font-size:18px;font-weight:700;">$1,896.18</div></div>
-      <div><div style="font-size:10px;color:var(--text-muted);margin-bottom:4px;">Return</div><div style="font-family:'Courier New',monospace;font-size:18px;font-weight:700;color:var(--green);">+89.6%</div></div>
-      <div><div style="font-size:10px;color:var(--text-muted);margin-bottom:4px;">Win Rate</div><div style="font-family:'Courier New',monospace;font-size:18px;font-weight:700;">97.1%</div></div>
-      <div><div style="font-size:10px;color:var(--text-muted);margin-bottom:4px;">Trades</div><div style="font-family:'Courier New',monospace;font-size:18px;font-weight:700;">80</div></div>
+      <div><div style="font-size:10px;color:var(--text-muted);margin-bottom:4px;">Final Balance</div><div style="font-family:var(--font-mono);font-size:18px;font-weight:700;">$1,896.18</div></div>
+      <div><div style="font-size:10px;color:var(--text-muted);margin-bottom:4px;">Return</div><div style="font-family:var(--font-mono);font-size:18px;font-weight:700;color:var(--green);">+89.6%</div></div>
+      <div><div style="font-size:10px;color:var(--text-muted);margin-bottom:4px;">Win Rate</div><div style="font-family:var(--font-mono);font-size:18px;font-weight:700;">97.1%</div></div>
+      <div><div style="font-size:10px;color:var(--text-muted);margin-bottom:4px;">Trades</div><div style="font-family:var(--font-mono);font-size:18px;font-weight:700;">80</div></div>
     </div>
     <p style="font-size:14px;color:var(--text-muted);line-height:1.7;margin-bottom:10px;">97% win rate sounds better than it is. At an average entry of 13.9% probability, Model B was risking $100 to win $16. Every trade. The two losses wiped out the gains from 12 wins each. That's the structural trap of fading longshots with flat sizing.</p>
     <p style="font-size:14px;color:var(--text-muted);line-height:1.7;margin-bottom:10px;">The thesis isn't wrong. Crowds do overprice unlikely events. But you need position sizing that reflects the actual edge, not a flat $100 regardless of odds. Betting $100 to win $16 at 13.9% probability has almost zero expected edge above breakeven.</p>
@@ -233,13 +268,13 @@
   </div>
 
   <!-- Model C -->
-  <div style="border:1px solid var(--border);border-left:3px solid var(--border);border-radius:8px;padding:24px;background:var(--bg2);opacity:0.75;">
-    <div style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-muted);margin-bottom:14px;">Model C &middot; The Arb &middot; Inconclusive</div>
+  <div style="border:1px solid var(--line);border-left:3px solid var(--border);border-radius:8px;padding:24px;background:var(--surface);opacity:0.75;">
+    <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-muted);margin-bottom:14px;">Model C &middot; The Arb &middot; Inconclusive</div>
     <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:18px;">
-      <div><div style="font-size:10px;color:var(--text-muted);margin-bottom:4px;">Final Balance</div><div style="font-family:'Courier New',monospace;font-size:18px;font-weight:700;color:var(--text-muted);">$1,000.00</div></div>
-      <div><div style="font-size:10px;color:var(--text-muted);margin-bottom:4px;">Return</div><div style="font-family:'Courier New',monospace;font-size:18px;font-weight:700;color:var(--text-muted);">0.0%</div></div>
-      <div><div style="font-size:10px;color:var(--text-muted);margin-bottom:4px;">Win Rate</div><div style="font-family:'Courier New',monospace;font-size:18px;font-weight:700;color:var(--text-muted);">N/A</div></div>
-      <div><div style="font-size:10px;color:var(--text-muted);margin-bottom:4px;">Trades</div><div style="font-family:'Courier New',monospace;font-size:18px;font-weight:700;color:var(--text-muted);">6</div></div>
+      <div><div style="font-size:10px;color:var(--text-muted);margin-bottom:4px;">Final Balance</div><div style="font-family:var(--font-mono);font-size:18px;font-weight:700;color:var(--text-muted);">$1,000.00</div></div>
+      <div><div style="font-size:10px;color:var(--text-muted);margin-bottom:4px;">Return</div><div style="font-family:var(--font-mono);font-size:18px;font-weight:700;color:var(--text-muted);">0.0%</div></div>
+      <div><div style="font-size:10px;color:var(--text-muted);margin-bottom:4px;">Win Rate</div><div style="font-family:var(--font-mono);font-size:18px;font-weight:700;color:var(--text-muted);">N/A</div></div>
+      <div><div style="font-size:10px;color:var(--text-muted);margin-bottom:4px;">Trades</div><div style="font-family:var(--font-mono);font-size:18px;font-weight:700;color:var(--text-muted);">6</div></div>
     </div>
     <p style="font-size:14px;color:var(--text-muted);line-height:1.7;margin-bottom:10px;">The Arb never had enough to work with. The strategy requires Polymarket and Kalshi to disagree on the same market by 10+ points. That happens, but rarely. The Spread surfaces 1 to 5 qualifying pairs per day on a good day, zero on most days.</p>
     <p style="font-size:14px;color:var(--text-muted);line-height:1.7;">6 trades placed, all still open, all in long-duration political markets that never approached resolution. The concept is valid. The data coverage wasn't there. Model C is inconclusive, not disproven. We'll revisit when Kalshi coverage improves.</p>
@@ -251,8 +286,8 @@
   <div class="section-title">Experiment 1 &middot; The 3 Models</div>
   <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:32px;">
 
-    <div style="background:var(--bg2);border:1px solid var(--border);border-left:3px solid #4a9eff;border-radius:8px;padding:24px;">
-      <div style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:#4a9eff;margin-bottom:10px;">Model A &middot; The Crowd</div>
+    <div style="background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--brand);border-radius:8px;padding:24px;">
+      <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--brand);margin-bottom:10px;">Model A &middot; The Crowd</div>
       <div style="font-weight:600;margin-bottom:10px;">Follow the conviction</div>
       <ul style="font-size:13px;color:var(--text-muted);line-height:2;list-style:none;padding:0;">
         <li>&#9656; Markets resolving within 14 days</li>
@@ -263,8 +298,8 @@
       <div style="margin-top:14px;font-size:12px;color:var(--text-muted);font-style:italic;">The thesis: smart money has already priced it in.</div>
     </div>
 
-    <div style="background:var(--bg2);border:1px solid var(--border);border-left:3px solid var(--red);border-radius:8px;padding:24px;">
-      <div style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--red);margin-bottom:10px;">Model B &middot; The Contrarian</div>
+    <div style="background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--red);border-radius:8px;padding:24px;">
+      <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--red);margin-bottom:10px;">Model B &middot; The Contrarian</div>
       <div style="font-weight:600;margin-bottom:10px;">Sell the longshots</div>
       <ul style="font-size:13px;color:var(--text-muted);line-height:2;list-style:none;padding:0;">
         <li>&#9656; Markets resolving within 14 days</li>
@@ -275,8 +310,8 @@
       <div style="margin-top:14px;font-size:12px;color:var(--text-muted);font-style:italic;">The thesis: crowds overprice unlikely events. Sell the expensive tickets.</div>
     </div>
 
-    <div style="background:var(--bg2);border:1px solid var(--border);border-left:3px solid var(--amber);border-radius:8px;padding:24px;">
-      <div style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--amber);margin-bottom:10px;">Model C &middot; The Arb</div>
+    <div style="background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--amber);border-radius:8px;padding:24px;">
+      <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--amber);margin-bottom:10px;">Model C &middot; The Arb</div>
       <div style="font-weight:600;margin-bottom:10px;">Trade the disagreement</div>
       <ul style="font-size:13px;color:var(--text-muted);line-height:2;list-style:none;padding:0;">
         <li>&#9656; Only when Poly and Kalshi gap &ge;10pts</li>
@@ -293,30 +328,30 @@
 <!-- EXPERIMENT LOG -->
 <div class="section">
   <div class="section-title">Experiment Log</div>
-  <div style="border:1px solid var(--border);border-radius:8px;overflow:hidden;">
+  <div style="border:1px solid var(--line);border-radius:8px;overflow:hidden;">
     <div style="padding:16px 20px;border-bottom:1px solid var(--border);display:flex;gap:16px;align-items:baseline;">
-      <div style="font-family:'Courier New',monospace;font-size:11px;color:var(--text-muted);white-space:nowrap;">Mar 11, 2026</div>
+      <div style="font-family:var(--font-mono);font-size:11px;color:var(--text-muted);white-space:nowrap;">Mar 11, 2026</div>
       <div>
         <div style="font-size:14px;font-weight:600;margin-bottom:4px;">Test 1 (single model) begins.</div>
         <div style="font-size:13px;color:var(--text-muted);">$1,000 starting balance. 65/35 conviction gate. Short-duration only (&le;14 days). Flat $100/trade.</div>
       </div>
     </div>
     <div style="padding:16px 20px;border-bottom:1px solid var(--border);display:flex;gap:16px;align-items:baseline;">
-      <div style="font-family:'Courier New',monospace;font-size:11px;color:var(--text-muted);white-space:nowrap;">Mar 17, 2026</div>
+      <div style="font-family:var(--font-mono);font-size:11px;color:var(--text-muted);white-space:nowrap;">Mar 17, 2026</div>
       <div>
         <div style="font-size:14px;font-weight:600;margin-bottom:4px;">3-model experiment launches.</div>
         <div style="font-size:13px;color:var(--text-muted);">Test 1 archived (1W/0L, +$6.50). Three models start simultaneously at $1,000 each: Model A (Crowd), Model B (Contrarian), Model C (Arb). Each follows a distinct strategy. Results reviewed Apr 17, 2026.</div>
       </div>
     </div>
     <div style="padding:16px 20px;border-bottom:1px solid var(--border);display:flex;gap:16px;align-items:baseline;">
-      <div style="font-family:'Courier New',monospace;font-size:11px;color:var(--text-muted);white-space:nowrap;">Jun 8, 2026</div>
+      <div style="font-family:var(--font-mono);font-size:11px;color:var(--text-muted);white-space:nowrap;">Jun 8, 2026</div>
       <div>
         <div style="font-size:14px;font-weight:600;margin-bottom:4px;">Experiment 1 concluded. Model A wins.</div>
         <div style="font-size:13px;color:var(--text-muted);">83 days. 591 trades. Final: Model A +127.8% ($2,277), Model B +89.6% ($1,896), Model C 0% ($1,000 inconclusive). Full post-mortem published. Test 2 launches Friday Jun 13.</div>
       </div>
     </div>
-    <div style="padding:16px 20px;background:var(--bg3);display:flex;gap:16px;align-items:baseline;">
-      <div style="font-family:'Courier New',monospace;font-size:11px;color:var(--amber);white-space:nowrap;">Jun 13, 2026</div>
+    <div style="padding:16px 20px;background:var(--surface-2);display:flex;gap:16px;align-items:baseline;">
+      <div style="font-family:var(--font-mono);font-size:11px;color:var(--amber);white-space:nowrap;">Jun 13, 2026</div>
       <div>
         <div style="font-size:14px;font-weight:600;margin-bottom:4px;color:var(--amber);">Test 2 launches &mdash; The Crowd vs. two new challengers</div>
         <div style="font-size:13px;color:var(--text-muted);">Model A (Control) defends. New challengers: Model D (tighter 75/25 gate) and Model E (crowd conviction + momentum confirmation). $1,000 each. Same rules. 30 days.</div>
@@ -331,8 +366,8 @@
   <p style="font-size:14px;color:var(--text-muted);margin-bottom:24px;">Model A is the new control. Two challengers are trying to beat it. Same $1,000 start. Same 30-day window. Different hypotheses.</p>
   <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
 
-    <div style="background:var(--bg2);border:1px solid var(--border);border-left:3px solid #4a9eff;border-radius:8px;padding:24px;">
-      <div style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:#4a9eff;margin-bottom:10px;">Model A &middot; Control</div>
+    <div style="background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--brand);border-radius:8px;padding:24px;">
+      <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--brand);margin-bottom:10px;">Model A &middot; Control</div>
       <div style="font-weight:600;margin-bottom:10px;">The Crowd</div>
       <ul style="font-size:13px;color:var(--text-muted);line-height:2;list-style:none;padding:0;">
         <li>&#9656; YES when prob &ge;65%</li>
@@ -343,8 +378,8 @@
       <div style="margin-top:14px;font-size:12px;color:var(--text-muted);font-style:italic;">Unchanged from Experiment 1. The benchmark to beat.</div>
     </div>
 
-    <div style="background:var(--bg2);border:1px solid var(--border);border-left:3px solid var(--green);border-radius:8px;padding:24px;">
-      <div style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--green);margin-bottom:10px;">Model D &middot; Challenger</div>
+    <div style="background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--green);border-radius:8px;padding:24px;">
+      <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--green);margin-bottom:10px;">Model D &middot; Challenger</div>
       <div style="font-weight:600;margin-bottom:10px;">The Sharp Crowd</div>
       <ul style="font-size:13px;color:var(--text-muted);line-height:2;list-style:none;padding:0;">
         <li>&#9656; YES when prob &ge;75%</li>
@@ -355,8 +390,8 @@
       <div style="margin-top:14px;font-size:12px;color:var(--text-muted);font-style:italic;">The thesis: tighter conviction filters out noise. Fewer trades, better quality.</div>
     </div>
 
-    <div style="background:var(--bg2);border:1px solid var(--border);border-left:3px solid var(--amber);border-radius:8px;padding:24px;">
-      <div style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--amber);margin-bottom:10px;">Model E &middot; Challenger</div>
+    <div style="background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--amber);border-radius:8px;padding:24px;">
+      <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--amber);margin-bottom:10px;">Model E &middot; Challenger</div>
       <div style="font-weight:600;margin-bottom:10px;">The Momentum Crowd</div>
       <ul style="font-size:13px;color:var(--text-muted);line-height:2;list-style:none;padding:0;">
         <li>&#9656; Same 65/35 gate as Model A</li>
@@ -375,9 +410,9 @@
   <div class="section-title">Full Trade Ledger</div>
   <!-- Model tabs -->
   <div style="display:flex;gap:8px;margin-bottom:20px;" id="ledger-tabs">
-    <button onclick="switchLedger('a')" id="tab-a" style="font-family:'Courier New',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;padding:8px 18px;border-radius:4px;cursor:pointer;border:1px solid #4a9eff;background:#4a9eff22;color:#4a9eff;">Model A &mdash; The Crowd</button>
-    <button onclick="switchLedger('b')" id="tab-b" style="font-family:'Courier New',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;padding:8px 18px;border-radius:4px;cursor:pointer;border:1px solid var(--border);background:transparent;color:var(--text-muted);">Model B &mdash; The Contrarian</button>
-    <button onclick="switchLedger('c')" id="tab-c" style="font-family:'Courier New',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;padding:8px 18px;border-radius:4px;cursor:pointer;border:1px solid var(--border);background:transparent;color:var(--text-muted);">Model C &mdash; The Arb</button>
+    <button onclick="switchLedger('a')" id="tab-a" style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;padding:8px 18px;border-radius:4px;cursor:pointer;border:1px solid var(--brand);background:var(--brand)22;color:var(--brand);">Model A &mdash; The Crowd</button>
+    <button onclick="switchLedger('b')" id="tab-b" style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;padding:8px 18px;border-radius:4px;cursor:pointer;border:1px solid var(--line);background:transparent;color:var(--text-muted);">Model B &mdash; The Contrarian</button>
+    <button onclick="switchLedger('c')" id="tab-c" style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;padding:8px 18px;border-radius:4px;cursor:pointer;border:1px solid var(--line);background:transparent;color:var(--text-muted);">Model C &mdash; The Arb</button>
   </div>
   <div id="trade-container">
     <div class="empty-state">
@@ -428,7 +463,7 @@
 
 <script>
   const MARKETS_URL = 'data/markets.json';
-  const TAB_COLORS  = { a: '#4a9eff', b: 'var(--red)', c: 'var(--amber)' };
+  const TAB_COLORS  = { a: 'var(--brand)', b: 'var(--red)', c: 'var(--amber)' };
   let allVariants   = {};
   let activeTab     = 'a';
 
@@ -482,13 +517,13 @@
       const tr = document.createElement('tr');
       if (!isClosed) tr.className = 'open';
       tr.innerHTML = `
-        <td style="font-family:'Courier New',monospace;font-size:12px;color:var(--text-muted)">${t.entry_date}</td>
+        <td style="font-family:var(--font-mono);font-size:12px;color:var(--text-muted)">${t.entry_date}</td>
         <td><a class="market-link" href="${t.url||'#'}" target="_blank">${truncate(t.question,65)}</a>
             <div class="market-source">${t.source||''}${t.display_category?' &middot; '+t.display_category:''}</div></td>
         <td><span class="direction-badge ${(t.direction||'').toLowerCase()}">${t.direction}</span></td>
-        <td style="font-family:'Courier New',monospace;font-size:13px;">${t.entry_prob}%</td>
-        <td style="font-family:'Courier New',monospace;font-size:12px;color:var(--text-muted)">${resolves}</td>
-        <td style="font-family:'Courier New',monospace;font-size:13px;color:var(--text-muted)">${t.exit_prob!=null?t.exit_prob+'%':'\u2014'}</td>
+        <td style="font-family:var(--font-mono);font-size:13px;">${t.entry_prob}%</td>
+        <td style="font-family:var(--font-mono);font-size:12px;color:var(--text-muted)">${resolves}</td>
+        <td style="font-family:var(--font-mono);font-size:13px;color:var(--text-muted)">${t.exit_prob!=null?t.exit_prob+'%':'\u2014'}</td>
         <td><span class="pnl-value ${pnlClass}">${pnlText}</span></td>
         <td><span class="status-badge ${stClass}">${stLabel}</span></td>`;
       tbody.appendChild(tr);

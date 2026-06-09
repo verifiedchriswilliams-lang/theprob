@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%233A2BD4'/%3E%3Ctext x='32' y='46' font-family='Georgia,serif' font-weight='700' font-size='42' text-anchor='middle' fill='%23ffffff'%3E%25%3C/text%3E%3C/svg%3E">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tech &amp; Crypto Prediction Market Odds | Polymarket &amp; Kalshi | The Prob</title>
@@ -39,15 +39,36 @@
     "isPartOf": { "@type": "WebSite", "name": "The Prob", "url": "https://theprobnewsletter.com/" }
   }
   </script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <!-- Design tokens: The Clean Book -->
+  <link rel="stylesheet" href="design-tokens.css">
   <style>
-    :root{--bg:#080b0f;--bg2:#0d1117;--bg3:#141b24;--border:#1e2a38;--border-bright:#2a3d54;--text:#edf2f7;--text-muted:#8ba3bc;--text-dim:#546e85;--green:#00e5a0;--green-dim:#00a870;--red:#ff4757;--amber:#f5a623;--blue:#4a9eff;--accent:#00e5a0;--mono:'Space Mono',monospace;--serif:'Libre Baskerville',Georgia,serif;--sans:'DM Sans',sans-serif;}
+        /* ── BACKWARD-COMPAT ALIASES ──────────────────────────────────────
+       All component CSS uses old var names. These map them to new tokens
+       so every existing style adopts the Clean Book without edits.    */
+    :root {
+      --bg2:          var(--surface);
+      --bg3:          var(--surface-2);
+      --bg4:          var(--line);
+      --border:       var(--line);
+      --border-bright:var(--line-2);
+      --text:         var(--ink);
+      --text-muted:   var(--ink-2);
+      --text-dim:     var(--ink-3);
+      --green:        var(--yes);
+      --green-dim:    #0a9f6e;
+      --red:          var(--no);
+      --blue:         var(--brand);
+      --accent:       var(--brand);
+      --mono:         var(--font-mono);
+      --serif:        var(--font-display);
+      --sans:         var(--font-sans);
+    }
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
     html{scroll-behavior:smooth;}
     body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:15px;line-height:1.6;overflow-x:hidden;}
-    body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");opacity:0.022;pointer-events:none;z-index:0;}
 
     /* ── TICKER BAR ── */
     .ticker-wrap {
@@ -107,7 +128,7 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(8,11,15,0.85);
+      background: var(--nav-bg);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
     }
@@ -115,7 +136,7 @@
     /* ── NAV ── */
     nav{display:flex;align-items:center;justify-content:space-between;padding:20px 48px;border-bottom:1px solid var(--border);background:transparent;}
     .logo{display:flex;align-items:baseline;gap:12px;}
-    .logo-mark{font-family:var(--mono);font-size:28px;font-weight:700;color:var(--accent);letter-spacing:-1px;}
+    .logo-mark{font-family:var(--font-mono);font-size:20px;font-weight:600;color:var(--brand);letter-spacing:-0.5px;}
     .logo-pipe{color:var(--border-bright);font-size:20px;}
     .logo-sub{font-family:var(--mono);font-size:10px;color:var(--text-muted);letter-spacing:0.15em;text-transform:uppercase;}
     .nav-links{display:flex;align-items:center;gap:32px;list-style:none;}
@@ -128,7 +149,7 @@
     .page-header{max-width:1280px;margin:0 auto;padding:60px 48px 40px;border-bottom:1px solid var(--border);animation:fadeUp 0.5s ease both;}
     .page-eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;display:flex;align-items:center;gap:10px;}
     .page-eyebrow::before{content:'';display:block;width:24px;height:1px;background:var(--accent);}
-    .page-headline{font-family:var(--serif);font-size:clamp(26px,3vw,42px);font-weight:700;line-height:1.15;color:var(--text);margin-bottom:14px;max-width:800px;}
+    .page-headline{font-family:var(--font-display);font-size:clamp(26px,3vw,42px);font-weight:400;line-height:1.15;color:var(--text);margin-bottom:14px;max-width:800px;}
     .page-sub{font-size:15px;color:var(--text-muted);line-height:1.7;max-width:640px;}
     .section{max-width:1280px;margin:0 auto;padding:48px;}
     .sources-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;}
@@ -165,18 +186,56 @@
     .filter-bar{display:flex;gap:8px;margin-bottom:28px;flex-wrap:wrap;}
     .filter-btn{font-family:var(--mono);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;padding:8px 18px;border:1px solid var(--border);border-radius:2px;background:transparent;color:var(--text-muted);cursor:pointer;transition:all 0.15s;}
     .filter-btn:hover{border-color:var(--border-bright);color:var(--text);}
-    .filter-btn.active{border-color:var(--accent);color:var(--accent);background:rgba(0,229,160,0.07);}
+    .filter-btn.active{border-color:var(--accent);color:var(--accent);background:var(--brand-soft);}
     @media (max-width:1024px){
             /* When ticker scrolls away, go nearly opaque */
       .nav-wrapper.is-stuck {
-        background: rgba(8,11,15,0.97) !important;
+        background: rgba(251,252,253,0.97) !important;
       }
-      nav{padding:16px 24px;} .nav-wrapper.is-stuck{background:rgba(8,11,15,0.97) !important;} .nav-links{display:none;} .mobile-nav{display:block;}
+      nav{padding:16px 24px;} .nav-wrapper.is-stuck{background:rgba(251,252,253,0.97) !important;}
+    [data-theme="dark"] .nav-wrapper.is-stuck{background:rgba(10,14,23,0.97) !important;} .nav-links{display:none;} .mobile-nav{display:block;}
       .page-header{padding:36px 20px 28px;} .section{padding:28px 20px;}
       .sources-grid{grid-template-columns:1fr;gap:28px;}
       footer{grid-template-columns:1fr;padding:28px 20px;}
     }
+  
+    /* ── THEME TOGGLE ── */
+    .theme-toggle {
+      background: none;
+      border: 1px solid var(--line-2);
+      border-radius: var(--r-pill);
+      padding: 5px 12px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--ink-2);
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s;
+      line-height: 1;
+    }
+    .theme-toggle:hover { border-color: var(--brand); color: var(--brand); }
   </style>
+
+  <!-- Theme: default light, restore saved preference (no flash) -->
+  <script>
+    (function(){
+      var t = localStorage.getItem('prob_theme');
+      if (t === 'dark') document.documentElement.setAttribute('data-theme','dark');
+    })();
+    function toggleTheme(){
+      var html = document.documentElement;
+      var isDark = html.getAttribute('data-theme') === 'dark';
+      var btn = document.getElementById('theme-btn');
+      if (isDark) {
+        html.removeAttribute('data-theme');
+        localStorage.setItem('prob_theme','light');
+        if (btn) btn.textContent = '\u263e';
+      } else {
+        html.setAttribute('data-theme','dark');
+        localStorage.setItem('prob_theme','dark');
+        if (btn) btn.textContent = '\u2600';
+      }
+    }
+  </script>
 </head>
 <body>
 
@@ -200,7 +259,8 @@
       <li><a href="sports.html">Sports</a></li>
       <li><a href="tech.html" style="color:var(--accent);">Tech</a></li>
     </ul>
-  </nav>
+        <button class="theme-toggle" onclick="toggleTheme()" id="theme-btn" aria-label="Toggle dark mode">&#x263e;</button>
+    </nav>
   <div class="mobile-nav">
     <a href="business.html">Business</a>
     <a href="culture.html">Culture</a>
