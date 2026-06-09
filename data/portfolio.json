@@ -12,9 +12,9 @@
       "ytd_return_pct": 117.8,
       "win_count": 382,
       "loss_count": 63,
-      "open_count": 63,
+      "open_count": 65,
       "start_date": "2026-03-17",
-      "last_updated": "2026-06-08",
+      "last_updated": "2026-06-09",
       "trades": [
         {
           "trade_id": "ea14c291",
@@ -9159,6 +9159,42 @@
           "exit_prob": null,
           "exit_date": null,
           "pnl": null
+        },
+        {
+          "trade_id": "16cb72b8",
+          "market_id": "mlb-sea-bal-2026-06-08",
+          "question": "Seattle Mariners vs. Baltimore Orioles",
+          "url": "https://polymarket.com/event/mlb-sea-bal-2026-06-08",
+          "source": "Polymarket",
+          "display_category": "Sports",
+          "entry_prob": 89.5,
+          "direction": "YES",
+          "amount": 100.0,
+          "entry_date": "2026-06-09",
+          "end_date_raw": "2026-06-15T22:35:00Z",
+          "end_date": "Jun 15",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
+        },
+        {
+          "trade_id": "b52a3de5",
+          "market_id": "will-a-claude-mythos-model-be-released-by-june-15-2026-454-267",
+          "question": "Will a Claude Mythos model be released by June 15, 2026?",
+          "url": "https://polymarket.com/event/claude-mythos-released-by",
+          "source": "Polymarket",
+          "display_category": "Technology",
+          "entry_prob": 91.8,
+          "direction": "YES",
+          "amount": 100.0,
+          "entry_date": "2026-06-09",
+          "end_date_raw": "2026-06-15T00:00:00Z",
+          "end_date": "Jun 15",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
@@ -9166,14 +9202,14 @@
       "name": "The Contrarian",
       "strategy": "Fade longshots: always NO when crowd says \u226430%",
       "thesis": "Crowds overprice long shots. Sell the overpriced tickets.",
-      "current_balance": 1902.0,
-      "total_pnl": 902.0,
-      "ytd_return_pct": 90.2,
-      "win_count": 68,
+      "current_balance": 1931.37,
+      "total_pnl": 931.37,
+      "ytd_return_pct": 93.1,
+      "win_count": 69,
       "loss_count": 2,
-      "open_count": 11,
+      "open_count": 10,
       "start_date": "2026-03-17",
-      "last_updated": "2026-06-08",
+      "last_updated": "2026-06-09",
       "trades": [
         {
           "trade_id": "18b00e62",
@@ -10466,10 +10502,10 @@
           "entry_date": "2026-05-24",
           "end_date_raw": "2026-06-07T00:00:00Z",
           "end_date": "Jun 7",
-          "status": "open",
-          "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "status": "closed",
+          "exit_prob": 4.0,
+          "exit_date": "2026-06-09",
+          "pnl": 29.37
         },
         {
           "trade_id": "ec489f1b",
@@ -10646,7 +10682,7 @@
       "loss_count": 0,
       "open_count": 6,
       "start_date": "2026-03-17",
-      "last_updated": "2026-06-08",
+      "last_updated": "2026-06-09",
       "trades": [
         {
           "trade_id": "d19bb1c5",
