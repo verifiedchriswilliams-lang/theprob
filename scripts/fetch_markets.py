@@ -54,7 +54,9 @@ HERO_MIN_24H_VOLUME    = 2_500       # Must have at least $2.5K trading activity
                                      # Blocks markets that had a big move weeks ago but are now dead
                                      # (e.g. Anduril IPO: $286K total, $20 today — not a live story).
 HERO_SPORTS_MIN_VOLUME      = 25_000_000  # Established sports events (NFL/NBA champions etc)
-HERO_SPORTS_MIN_VOLUME_24H  =     50_000  # OR: tournament-fresh markets with $50K+ traded today
+HERO_SPORTS_MIN_VOLUME_24H  =    500_000  # OR: only genuinely major events — NBA Finals/World Cup level.
+                                           # Raised from $50K: obscure matches (tennis, intl soccer)
+                                           # were qualifying via this shortcut ahead of NBA/BTC/politics.
 
 # Hero hold: don't replace the current hero unless it has held for this many hours
 # OR the challenger beats it by HERO_HOLD_SCORE_MARGIN pts. Prevents a good NBA Finals
@@ -75,7 +77,7 @@ HERO_MIN_CHANGE_PTS = 3.0
 # price is holding steady — that IS a buzzy market worth featuring.
 HERO_VOLUME_GATE           = 500_000  # $500K 24h volume qualifies for relaxed gate
 HERO_VOLUME_MIN_CHANGE     = 1.0      # only needs 1pt move if high-volume
-HERO_SPORTS_VOLUME_GATE    =  75_000  # sports markets trading $75K+ today are tournament-hot
+HERO_SPORTS_VOLUME_GATE    = 500_000  # sports markets trading $500K+ today get tournament bonus
 
 # Hero repeat penalty: applied per day a topic has appeared in hero_history.
 # Cumulative scaling forces genuine variety — a topic that won yesterday takes
