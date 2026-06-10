@@ -155,13 +155,14 @@
     }
     .logo-chip { width:30px; height:30px; border-radius:8px; background:var(--brand); display:grid; place-items:center; color:#fff; font-family:var(--font-mono); font-weight:700; font-size:17px; flex-shrink:0; }
     @media (max-width: 600px) {
+      .logo-mark { max-width:68px; white-space:normal; }
       .logo-chip { width:44px; height:44px; border-radius:9px; font-size:23px; }
-      .logo-lockup { gap:5px; }
+      .logo-lockup { gap:5px; align-items:center; }
       .theme-toggle { width:36px; height:36px; }
       .theme-toggle svg { width:16px; height:16px; }
     }
     .logo-wordmark { display:flex; align-items:center; gap:10px; }
-    .logo-lockup { display:inline-flex; align-items:center; gap:6px; flex-shrink:0; }
+    .logo-lockup { display:flex; align-items:center; gap:6px; }
     .logo-mark {
       font-family: var(--font-mono);
       font-size: 32px;
