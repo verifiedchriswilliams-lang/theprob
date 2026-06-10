@@ -6,32 +6,23 @@
   <title>The Prob &mdash; Newsletter Preview</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { background: #F2EEE9; font-family: 'Courier New', monospace; }
+    body { background: #080b0f; font-family: 'Courier New', monospace; }
     #preview-bar {
       position: fixed; top: 0; left: 0; right: 0; z-index: 9999;
-      background: #3A2BD4; border-bottom: 2px solid #2d22b0;
+      background: #0d1117; border-bottom: 2px solid #1e2a38;
       padding: 10px 20px; display: flex; align-items: center;
       justify-content: space-between; gap: 12px;
     }
     #subject-line {
-      font-size: 13px; color: #ffffff; flex: 1; overflow: hidden;
-      text-overflow: ellipsis; white-space: nowrap; font-weight: 600;
+      font-size: 12px; color: #8ba3bc; flex: 1; overflow: hidden;
+      text-overflow: ellipsis; white-space: nowrap;
     }
     #subject-label {
-      color: #a89fff; margin-right: 8px; font-size: 10px;
+      color: #546e85; margin-right: 8px; font-size: 10px;
       text-transform: uppercase; letter-spacing: 0.15em;
     }
-    #preheader-row {
-      background: #2d22b0; padding: 6px 20px;
-      font-family: 'Courier New', monospace; font-size: 11px;
-      color: #a89fff; display: flex; gap: 8px; align-items: center;
-    }
-    #preheader-label {
-      color: #7060cc; font-size: 10px; text-transform: uppercase;
-      letter-spacing: 0.15em; flex-shrink: 0;
-    }
     #copy-btn {
-      background: #ffffff; color: #3A2BD4; border: none; padding: 9px 18px;
+      background: #00e5a0; color: #080b0f; border: none; padding: 9px 18px;
       font-family: 'Courier New', monospace; font-size: 12px; font-weight: 700;
       letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer;
       white-space: nowrap; flex-shrink: 0; transition: opacity 0.15s;
@@ -47,22 +38,18 @@
     }
     #email-frame {
       display: block; width: 100%; border: none;
-      margin-top: 78px; height: calc(100vh - 78px);
+      margin-top: 46px; height: calc(100vh - 46px);
     }
   </style>
 </head>
 <body>
   <div id="preview-bar">
     <div id="subject-line">
-      <span id="subject-label">Subject</span>We moved. The crowd called it. Here's what happened.
+      <span id="subject-label">Subject</span>The crowd moved 5.3 pts down on this one
     </div>
     <span id="copy-feedback">Copied to clipboard!</span>
     <span id="note">no-footer version &rarr; paste into Beehiiv</span>
     <button id="copy-btn" onclick="copyHTML()">Copy Email HTML</button>
-  </div>
-  <div id="preheader-row">
-    <span id="preheader-label">Preview</span>
-    We're back. New domain, new design, and the portfolio experiment results are in. The Crowd won.
   </div>
   <iframe id="email-frame" src="latest-email.html" title="Newsletter Preview"
           onload="resizeFrame(this)"></iframe>
