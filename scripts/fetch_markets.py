@@ -14,7 +14,7 @@ import re
 import uuid
 import difflib
 import requests
-from datetime import datetime, timezone, timedelta
+from datetime import datetime, timezone, timedelta, date
 
 # ── HOUSE STYLE ──────────────────────────────────────────────────────────────
 # Rules for ALL generated copy on The Prob.
