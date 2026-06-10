@@ -2960,21 +2960,27 @@ def main():
     print("\nUpdating Portfolio...")
     portfolio = load_portfolio()
 
-    # Build market probability lookup once, shared across all variants
-    market_lookup: dict[str, float] = {}
-    for m in all_markets:
-        key = m.get("slug") or m.get("url", "")
-        if key:
-            market_lookup[key] = m.get("prob", None)
+    # Experiment 1 is frozen — no new trades or updates after June 9, 2026
+    EXPERIMENT_1_END = date(2026, 6, 9)
+    if now_utc.date() > EXPERIMENT_1_END:
+        print("  Experiment 1 locked (ended 2026-06-09). Portfolio frozen — no updates.")
+        save_portfolio(portfolio)
+    else:
+        # Build market probability lookup once, shared across all variants
+        market_lookup: dict[str, float] = {}
+        for m in all_markets:
+            key = m.get("slug") or m.get("url", "")
+            if key:
+                market_lookup[key] = m.get("prob", None)
 
-    portfolio["variants"]["a"] = update_portfolio_variant(
-        portfolio["variants"]["a"], trade_market_a, trade_direction_a, market_lookup, today_str, "A")
-    portfolio["variants"]["b"] = update_portfolio_variant(
-        portfolio["variants"]["b"], trade_market_b, trade_direction_b, market_lookup, today_str, "B")
-    portfolio["variants"]["c"] = update_portfolio_variant(
-        portfolio["variants"]["c"], trade_market_c, trade_direction_c, market_lookup, today_str, "C")
+        portfolio["variants"]["a"] = update_portfolio_variant(
+            portfolio["variants"]["a"], trade_market_a, trade_direction_a, market_lookup, today_str, "A")
+        portfolio["variants"]["b"] = update_portfolio_variant(
+            portfolio["variants"]["b"], trade_market_b, trade_direction_b, market_lookup, today_str, "B")
+        portfolio["variants"]["c"] = update_portfolio_variant(
+            portfolio["variants"]["c"], trade_market_c, trade_direction_c, market_lookup, today_str, "C")
 
-    save_portfolio(portfolio)
+        save_portfolio(portfolio)
     for k, label in [("a", "A-Crowd"), ("b", "B-Contrarian"), ("c", "C-Arb")]:
         v = portfolio["variants"][k]
         print(f"  [{label}] ${v['current_balance']:.2f} "
