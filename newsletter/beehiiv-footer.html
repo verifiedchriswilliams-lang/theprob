@@ -1,20 +1,82 @@
-<!-- PASTE THIS INTO BEEHIIV: Settings → Publication → Email → Custom Footer -->
-<table width="100%" cellpadding="0" cellspacing="0" style="background:#F2EEE9;border-top:3px solid #3A2BD4;">
-  <tr><td style="padding:24px 32px;text-align:center;">
-    <div style="font-family:'Courier New',Courier,monospace;font-size:16px;font-weight:700;color:#3A2BD4;letter-spacing:-0.5px;margin-bottom:6px;">THE PROB</div>
-    <div style="font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#888;margin-bottom:12px;">Prediction market intelligence, daily.</div>
-    <div style="font-family:Arial,Helvetica,sans-serif;font-size:12px;margin-bottom:16px;">
-      <a href="https://theprob.ai" style="color:#3A2BD4;text-decoration:none;">theprob.ai</a>
-      &nbsp;&middot;&nbsp;
-      <a href="https://theprob.ai/portfolio.html" style="color:#888;text-decoration:none;">Portfolio</a>
-      &nbsp;&middot;&nbsp;
-      <a href="https://theprob.ai/prediction-markets-101.html" style="color:#888;text-decoration:none;">Markets 101</a>
-    </div>
-    <div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;color:#aaa;line-height:1.8;">
-      You're receiving this because you subscribed to The Prob.<br>
-      <a href="{{unsubscribe_url}}" style="color:#aaa;">Unsubscribe</a>
-      &nbsp;&middot;&nbsp;
-      <a href="{{manage_preferences_url}}" style="color:#aaa;">Manage preferences</a>
-    </div>
-  </td></tr>
-</table>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #F2EEE9; font-family: 'Courier New', monospace; }
+  #preview-bar {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 9999;
+    background: #3A2BD4; border-bottom: 2px solid #2d22b0;
+    padding: 10px 20px; display: flex; align-items: center;
+    justify-content: space-between; gap: 12px;
+  }
+  #label { font-size: 12px; color: #d4ccff; font-weight: 600; }
+  #note { font-size: 10px; color: #a89fff; white-space: nowrap; }
+  #copy-btn {
+    background: #ffffff; color: #3A2BD4; border: none; padding: 9px 18px;
+    font-family: 'Courier New', monospace; font-size: 12px; font-weight: 700;
+    letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer;
+    white-space: nowrap; flex-shrink: 0; transition: opacity 0.15s;
+  }
+  #copy-btn:hover { opacity: 0.85; }
+  #copy-feedback { font-size: 11px; color: #a89fff; white-space: nowrap; opacity: 0; transition: opacity 0.3s; }
+  #preview { margin-top: 46px; padding: 40px 20px; }
+</style>
+</head>
+<body>
+  <div id="preview-bar">
+    <div id="label">Beehiiv Custom Footer</div>
+    <span id="copy-feedback">Copied!</span>
+    <span id="note">Settings → Publication → Email → Custom Footer</span>
+    <button id="copy-btn" onclick="copyFooter()">Copy Footer HTML</button>
+  </div>
+
+  <div id="preview">
+
+    <!-- FOOTER PREVIEW + SOURCE -->
+    <table id="footer-html" width="100%" cellpadding="0" cellspacing="0" style="background:#F2EEE9;border-top:3px solid #3A2BD4;max-width:600px;margin:0 auto;">
+      <tr><td style="padding:24px 32px;text-align:center;">
+        <div style="font-family:'Courier New',Courier,monospace;font-size:16px;font-weight:700;color:#3A2BD4;letter-spacing:-0.5px;margin-bottom:6px;">THE PROB</div>
+        <div style="font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#888;margin-bottom:12px;">Prediction market intelligence, daily.</div>
+        <div style="font-family:Arial,Helvetica,sans-serif;font-size:12px;margin-bottom:16px;">
+          <a href="https://theprob.ai" style="color:#3A2BD4;text-decoration:none;">theprob.ai</a>
+          &nbsp;&middot;&nbsp;
+          <a href="https://theprob.ai/portfolio.html" style="color:#888;text-decoration:none;">Portfolio</a>
+          &nbsp;&middot;&nbsp;
+          <a href="https://theprob.ai/prediction-markets-101.html" style="color:#888;text-decoration:none;">Markets 101</a>
+        </div>
+        <div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;color:#aaa;line-height:1.8;">
+          You're receiving this because you subscribed to The Prob.<br>
+          <a href="{{unsubscribe_url}}" style="color:#aaa;">Unsubscribe</a>
+          &nbsp;&middot;&nbsp;
+          <a href="{{manage_preferences_url}}" style="color:#aaa;">Manage preferences</a>
+        </div>
+      </td></tr>
+    </table>
+
+  </div>
+
+  <script>
+    function copyFooter() {
+      var btn = document.getElementById('copy-btn');
+      var fb  = document.getElementById('copy-feedback');
+      var html = document.getElementById('footer-html').outerHTML;
+      btn.disabled = true;
+      btn.textContent = 'Copying...';
+      navigator.clipboard.writeText(html).then(function() {
+        btn.textContent = 'Copied!';
+        btn.disabled = false;
+        fb.style.opacity = '1';
+        setTimeout(function() {
+          btn.textContent = 'Copy Footer HTML';
+          fb.style.opacity = '0';
+        }, 3000);
+      }).catch(function() {
+        btn.textContent = 'Error — retry';
+        btn.disabled = false;
+      });
+    }
+  </script>
+</body>
+</html>
