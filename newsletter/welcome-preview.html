@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Prob — Welcome Email Preview</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: #F2EEE9; font-family: 'Courier New', monospace; }
+    #preview-bar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 9999;
+      background: #3A2BD4; border-bottom: 2px solid #2d22b0;
+      padding: 10px 20px; display: flex; align-items: center;
+      justify-content: space-between; gap: 12px;
+    }
+    #label { font-size: 12px; color: #d4ccff; font-weight: 600; }
+    #note  { font-size: 10px; color: #a89fff; white-space: nowrap; }
+    #copy-btn {
+      background: #ffffff; color: #3A2BD4; border: none; padding: 9px 18px;
+      font-family: 'Courier New', monospace; font-size: 12px; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer;
+      white-space: nowrap; flex-shrink: 0; transition: opacity 0.15s;
+    }
+    #copy-btn:hover { opacity: 0.85; }
+    #copy-btn:disabled { opacity: 0.6; cursor: default; }
+    #copy-feedback { font-size: 11px; color: #00e5a0; white-space: nowrap; opacity: 0; transition: opacity 0.3s; }
+    #email-frame {
+      display: block; width: 100%; border: none;
+      margin-top: 46px; height: calc(100vh - 46px);
+    }
+  </style>
+</head>
+<body>
+  <div id="preview-bar">
+    <div id="label">Welcome Email Preview</div>
+    <span id="copy-feedback">Copied to clipboard!</span>
+    <span id="note">Settings → Emails → Preset Emails → Welcome Email</span>
+    <button id="copy-btn" onclick="copyHTML()">Copy Email HTML</button>
+  </div>
+  <iframe id="email-frame" src="welcome-email.html" title="Welcome Email Preview"
+          onload="resizeFrame(this)"></iframe>
+  <script>
+    function resizeFrame(f) {
+      try { f.style.height = f.contentDocument.body.scrollHeight + 'px'; } catch(e) {}
+    }
+    function copyHTML() {
+      var btn = document.getElementById('copy-btn');
+      var fb  = document.getElementById('copy-feedback');
+      btn.disabled = true;
+      btn.textContent = 'Fetching...';
+      fetch('welcome-email.html?t=' + Date.now())
+        .then(function(r) {
+          if (!r.ok) throw new Error('HTTP ' + r.status);
+          return r.text();
+        })
+        .then(function(text) {
+          return navigator.clipboard.writeText(text);
+        })
+        .then(function() {
+          btn.textContent = 'Copied!';
+          btn.disabled = false;
+          fb.style.opacity = '1';
+          setTimeout(function() {
+            btn.textContent = 'Copy Email HTML';
+            fb.style.opacity = '0';
+          }, 3000);
+        })
+        .catch(function(err) {
+          btn.textContent = 'Error — retry';
+          btn.disabled = false;
+          console.error('Copy failed:', err);
+          setTimeout(function() { btn.textContent = 'Copy Email HTML'; }, 3000);
+        });
+    }
+  </script>
+</body>
+</html>
