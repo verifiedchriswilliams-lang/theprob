@@ -11,11 +11,21 @@
   table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
   a { -webkit-tap-highlight-color: transparent; }
   a[x-apple-data-detectors] { color: inherit !important; text-decoration: none !important; }
+
   @media only screen and (max-width: 620px) {
-    .email-wrap  { width: 100% !important; max-width: 100% !important; }
-    .section-pad { padding: 20px 16px !important; }
-    .header-pad  { padding: 24px 16px 20px !important; }
-    .h1          { font-size: 26px !important; }
+    .email-wrap   { width: 100% !important; max-width: 100% !important; }
+    .section-pad  { padding: 24px 20px !important; }
+    .header-pad   { padding: 24px 20px 20px !important; }
+    .wordmark     { font-size: 28px !important; }
+    .h1           { font-size: 24px !important; line-height: 1.3 !important; }
+    .body-text    { font-size: 17px !important; line-height: 1.75 !important; }
+    .item-title   { font-size: 16px !important; }
+    .item-desc    { font-size: 15px !important; line-height: 1.65 !important; }
+    .quote-text   { font-size: 20px !important; }
+    .cta-text     { font-size: 17px !important; }
+    .cta-btn      { font-size: 14px !important; padding: 16px 24px !important; display: block !important; text-align: center !important; }
+    .footer-links { font-size: 14px !important; }
+    .footer-legal { font-size: 13px !important; line-height: 2 !important; }
   }
 </style>
 </head>
@@ -30,75 +40,75 @@
     <!-- HEADER -->
     <tr><td class="header-pad" style="background:#F2EEE9;padding:32px 32px 24px;border-bottom:3px solid #3A2BD4;">
       <a href="https://theprob.ai" style="text-decoration:none;">
-        <div style="font-family:'Courier New',Courier,monospace;font-size:32px;font-weight:700;color:#3A2BD4;letter-spacing:-1px;line-height:1;">THE PROB</div>
+        <div class="wordmark" style="font-family:'Courier New',Courier,monospace;font-size:32px;font-weight:700;color:#3A2BD4;letter-spacing:-1px;line-height:1;">THE PROB</div>
       </a>
-      <div style="font-family:Arial,Helvetica,sans-serif;font-size:10px;color:#555;letter-spacing:0.15em;text-transform:uppercase;margin-top:8px;">Prediction Market Intelligence</div>
+      <div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;color:#555;letter-spacing:0.15em;text-transform:uppercase;margin-top:8px;">Prediction Market Intelligence</div>
     </td></tr>
 
     <!-- WELCOME -->
     <tr><td class="section-pad" style="padding:32px 32px 28px;background:#ffffff;border-bottom:1px solid #ede9e3;">
-      <div style="font-family:'Courier New',Courier,monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#3A2BD4;margin-bottom:14px;">Welcome</div>
+      <div style="font-family:'Courier New',Courier,monospace;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#3A2BD4;margin-bottom:14px;">Welcome</div>
       <div class="h1" style="font-family:Georgia,'Times New Roman',serif;font-size:28px;font-weight:700;line-height:1.25;color:#121212;margin-bottom:20px;">The probability of you finding this newsletter was less than 0.0001%.</div>
-      <div style="font-family:Arial,Helvetica,sans-serif;font-size:15px;color:#444;line-height:1.7;margin-bottom:12px;">Which means you're already beating the odds. That's kind of the whole point of being here.</div>
-      <div style="font-family:Arial,Helvetica,sans-serif;font-size:15px;color:#444;line-height:1.7;margin-bottom:12px;">How you ended up in this particular corner of the internet, I'll never know. But since you're here, let's have some fun predicting the future together.</div>
-      <div style="font-family:Arial,Helvetica,sans-serif;font-size:15px;color:#121212;line-height:1.7;margin-bottom:20px;font-weight:600;">Welcome to The Prob.</div>
-      <div style="font-family:Georgia,'Times New Roman',serif;font-size:15px;color:#121212;font-style:italic;">— Chris</div>
+      <div class="body-text" style="font-family:Arial,Helvetica,sans-serif;font-size:15px;color:#444;line-height:1.7;margin-bottom:12px;">Which means you're already beating the odds. That's kind of the whole point of being here.</div>
+      <div class="body-text" style="font-family:Arial,Helvetica,sans-serif;font-size:15px;color:#444;line-height:1.7;margin-bottom:12px;">How you ended up in this particular corner of the internet, I'll never know. But since you're here, let's have some fun predicting the future together.</div>
+      <div class="body-text" style="font-family:Arial,Helvetica,sans-serif;font-size:15px;color:#121212;line-height:1.7;margin-bottom:20px;font-weight:600;">Welcome to The Prob.</div>
+      <div class="body-text" style="font-family:Georgia,'Times New Roman',serif;font-size:15px;color:#121212;font-style:italic;">— Chris</div>
     </td></tr>
 
     <!-- WHAT THIS IS -->
     <tr><td class="section-pad" style="padding:28px 32px;background:#F2EEE9;border-bottom:1px solid #ddd8d0;">
-      <div style="font-family:'Courier New',Courier,monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#3A2BD4;margin-bottom:14px;">What This Is</div>
-      <div style="font-family:Arial,Helvetica,sans-serif;font-size:15px;color:#444;line-height:1.7;margin-bottom:12px;">Every day, millions of dollars get wagered on prediction markets. Will there be a recession? Who wins the next election? Does Bitcoin hit $150K before July?</div>
-      <div style="font-family:Arial,Helvetica,sans-serif;font-size:15px;color:#444;line-height:1.7;margin-bottom:16px;">People put real money on these questions. When real money moves, it means something.</div>
-      <div style="font-family:Arial,Helvetica,sans-serif;font-size:15px;color:#121212;line-height:1.7;border-left:3px solid #3A2BD4;padding-left:16px;font-style:italic;">The crowd isn't always right. But it's usually faster than the headlines.</div>
+      <div style="font-family:'Courier New',Courier,monospace;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#3A2BD4;margin-bottom:14px;">What This Is</div>
+      <div class="body-text" style="font-family:Arial,Helvetica,sans-serif;font-size:15px;color:#444;line-height:1.7;margin-bottom:12px;">Every day, millions of dollars get wagered on prediction markets. Will there be a recession? Who wins the next election? Does Bitcoin hit $150K before July?</div>
+      <div class="body-text" style="font-family:Arial,Helvetica,sans-serif;font-size:15px;color:#444;line-height:1.7;margin-bottom:16px;">People put real money on these questions. When real money moves, it means something.</div>
+      <div class="body-text" style="font-family:Arial,Helvetica,sans-serif;font-size:15px;color:#121212;line-height:1.7;border-left:3px solid #3A2BD4;padding-left:16px;font-style:italic;">The crowd isn't always right. But it's usually faster than the headlines.</div>
     </td></tr>
 
     <!-- WHAT YOU GET -->
     <tr><td class="section-pad" style="padding:28px 32px;background:#ffffff;border-bottom:1px solid #ede9e3;">
-      <div style="font-family:'Courier New',Courier,monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#3A2BD4;margin-bottom:20px;">What Lands in Your Inbox</div>
+      <div style="font-family:'Courier New',Courier,monospace;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#3A2BD4;margin-bottom:20px;">What Lands in Your Inbox</div>
 
       <table width="100%" cellpadding="0" cellspacing="0" style="border-top:1px solid #ede9e3;">
         <tr><td style="padding:14px 0;border-bottom:1px solid #ede9e3;">
           <table width="100%" cellpadding="0" cellspacing="0"><tr>
-            <td width="20" style="vertical-align:top;padding-right:12px;padding-top:1px;">
-              <div style="font-family:'Courier New',Courier,monospace;font-size:13px;color:#3A2BD4;font-weight:700;">/</div>
+            <td width="20" style="vertical-align:top;padding-right:12px;padding-top:2px;">
+              <div style="font-family:'Courier New',Courier,monospace;font-size:14px;color:#3A2BD4;font-weight:700;">/</div>
             </td>
             <td>
-              <div style="font-family:Arial,Helvetica,sans-serif;font-size:14px;font-weight:700;color:#121212;margin-bottom:3px;">Market Intelligence</div>
-              <div style="font-family:Arial,Helvetica,sans-serif;font-size:13px;color:#666;line-height:1.6;">The most interesting things the crowd is betting on right now, with odds and our read on what it means.</div>
+              <div class="item-title" style="font-family:Arial,Helvetica,sans-serif;font-size:14px;font-weight:700;color:#121212;margin-bottom:4px;">Market Intelligence</div>
+              <div class="item-desc" style="font-family:Arial,Helvetica,sans-serif;font-size:13px;color:#666;line-height:1.6;">The most interesting things the crowd is betting on right now, with odds and our read on what it means.</div>
             </td>
           </tr></table>
         </td></tr>
         <tr><td style="padding:14px 0;border-bottom:1px solid #ede9e3;">
           <table width="100%" cellpadding="0" cellspacing="0"><tr>
-            <td width="20" style="vertical-align:top;padding-right:12px;padding-top:1px;">
-              <div style="font-family:'Courier New',Courier,monospace;font-size:13px;color:#3A2BD4;font-weight:700;">/</div>
+            <td width="20" style="vertical-align:top;padding-right:12px;padding-top:2px;">
+              <div style="font-family:'Courier New',Courier,monospace;font-size:14px;color:#3A2BD4;font-weight:700;">/</div>
             </td>
             <td>
-              <div style="font-family:Arial,Helvetica,sans-serif;font-size:14px;font-weight:700;color:#121212;margin-bottom:3px;">The News That Moves Markets</div>
-              <div style="font-family:Arial,Helvetica,sans-serif;font-size:13px;color:#666;line-height:1.6;">Stories filtered for signal, not noise. The stuff worth knowing before the rest of the internet figures it out.</div>
+              <div class="item-title" style="font-family:Arial,Helvetica,sans-serif;font-size:14px;font-weight:700;color:#121212;margin-bottom:4px;">The News That Moves Markets</div>
+              <div class="item-desc" style="font-family:Arial,Helvetica,sans-serif;font-size:13px;color:#666;line-height:1.6;">Stories filtered for signal, not noise. The stuff worth knowing before the rest of the internet figures it out.</div>
             </td>
           </tr></table>
         </td></tr>
         <tr><td style="padding:14px 0;border-bottom:1px solid #ede9e3;">
           <table width="100%" cellpadding="0" cellspacing="0"><tr>
-            <td width="20" style="vertical-align:top;padding-right:12px;padding-top:1px;">
-              <div style="font-family:'Courier New',Courier,monospace;font-size:13px;color:#3A2BD4;font-weight:700;">/</div>
+            <td width="20" style="vertical-align:top;padding-right:12px;padding-top:2px;">
+              <div style="font-family:'Courier New',Courier,monospace;font-size:14px;color:#3A2BD4;font-weight:700;">/</div>
             </td>
             <td>
-              <div style="font-family:Arial,Helvetica,sans-serif;font-size:14px;font-weight:700;color:#121212;margin-bottom:3px;">Portfolio Experiments</div>
-              <div style="font-family:Arial,Helvetica,sans-serif;font-size:13px;color:#666;line-height:1.6;">We run real paper-trading strategies against live markets and publish every result, win or loss. No spin.</div>
+              <div class="item-title" style="font-family:Arial,Helvetica,sans-serif;font-size:14px;font-weight:700;color:#121212;margin-bottom:4px;">Portfolio Experiments</div>
+              <div class="item-desc" style="font-family:Arial,Helvetica,sans-serif;font-size:13px;color:#666;line-height:1.6;">We run real paper-trading strategies against live markets and publish every result, win or loss. No spin.</div>
             </td>
           </tr></table>
         </td></tr>
         <tr><td style="padding:14px 0;">
           <table width="100%" cellpadding="0" cellspacing="0"><tr>
-            <td width="20" style="vertical-align:top;padding-right:12px;padding-top:1px;">
-              <div style="font-family:'Courier New',Courier,monospace;font-size:13px;color:#3A2BD4;font-weight:700;">/</div>
+            <td width="20" style="vertical-align:top;padding-right:12px;padding-top:2px;">
+              <div style="font-family:'Courier New',Courier,monospace;font-size:14px;color:#3A2BD4;font-weight:700;">/</div>
             </td>
             <td>
-              <div style="font-family:Arial,Helvetica,sans-serif;font-size:14px;font-weight:700;color:#121212;margin-bottom:3px;">The Builder's Take</div>
-              <div style="font-family:Arial,Helvetica,sans-serif;font-size:13px;color:#666;line-height:1.6;">What the data actually means. Not just the numbers. The interpretation, what to watch, and what the market might be missing.</div>
+              <div class="item-title" style="font-family:Arial,Helvetica,sans-serif;font-size:14px;font-weight:700;color:#121212;margin-bottom:4px;">The Builder's Take</div>
+              <div class="item-desc" style="font-family:Arial,Helvetica,sans-serif;font-size:13px;color:#666;line-height:1.6;">What the data actually means. Not just the numbers. The interpretation, what to watch, and what the market might be missing.</div>
             </td>
           </tr></table>
         </td></tr>
@@ -107,36 +117,36 @@
 
     <!-- PHILOSOPHY -->
     <tr><td class="section-pad" style="padding:28px 32px;background:#3A2BD4;border-bottom:1px solid #2d22b0;">
-      <div style="font-family:'Courier New',Courier,monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#a89fff;margin-bottom:14px;">The Philosophy</div>
-      <div style="font-family:Arial,Helvetica,sans-serif;font-size:15px;color:#d4ccff;line-height:1.7;margin-bottom:12px;">Polls get gamed. Pundits get it wrong. Experts have incentives you can't see.</div>
-      <div style="font-family:Arial,Helvetica,sans-serif;font-size:15px;color:#d4ccff;line-height:1.7;margin-bottom:12px;">But people betting their own money? That's a different signal. Not perfect. But honest in a way most forecasting isn't.</div>
-      <div style="font-family:Arial,Helvetica,sans-serif;font-size:15px;color:#ffffff;line-height:1.7;font-weight:600;">We read that signal and translate it for people who'd rather know the odds than guess.</div>
+      <div style="font-family:'Courier New',Courier,monospace;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#a89fff;margin-bottom:14px;">The Philosophy</div>
+      <div class="body-text" style="font-family:Arial,Helvetica,sans-serif;font-size:15px;color:#d4ccff;line-height:1.7;margin-bottom:12px;">Polls get gamed. Pundits get it wrong. Experts have incentives you can't see.</div>
+      <div class="body-text" style="font-family:Arial,Helvetica,sans-serif;font-size:15px;color:#d4ccff;line-height:1.7;margin-bottom:12px;">But people betting their own money? That's a different signal. Not perfect. But honest in a way most forecasting isn't.</div>
+      <div class="body-text" style="font-family:Arial,Helvetica,sans-serif;font-size:15px;color:#ffffff;line-height:1.7;font-weight:600;">We read that signal and translate it for people who'd rather know the odds than guess.</div>
     </td></tr>
 
     <!-- CTA -->
-    <tr><td style="padding:36px 32px;background:#ffffff;text-align:center;border-bottom:1px solid #ede9e3;">
-      <div style="font-family:Arial,Helvetica,sans-serif;font-size:15px;color:#444;line-height:1.7;margin-bottom:24px;">Your first issue is on its way. In the meantime, the full board is live.</div>
-      <a href="https://theprob.ai" style="display:inline-block;background:#3A2BD4;color:#ffffff;font-family:'Courier New',Courier,monospace;font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:14px 32px;text-decoration:none;">See What the Crowd Is Betting On &#8594;</a>
+    <tr><td class="section-pad" style="padding:36px 32px;background:#ffffff;text-align:center;border-bottom:1px solid #ede9e3;">
+      <div class="cta-text" style="font-family:Arial,Helvetica,sans-serif;font-size:15px;color:#444;line-height:1.7;margin-bottom:24px;">Your first issue is on its way. In the meantime, the full board is live.</div>
+      <a class="cta-btn" href="https://theprob.ai" style="display:inline-block;background:#3A2BD4;color:#ffffff;font-family:'Courier New',Courier,monospace;font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:14px 32px;text-decoration:none;">See What the Crowd Is Betting On &#8594;</a>
     </td></tr>
 
     <!-- QUOTE -->
-    <tr><td style="padding:28px 32px;background:#F2EEE9;text-align:center;border-bottom:1px solid #ddd8d0;">
-      <div style="font-family:Georgia,'Times New Roman',serif;font-size:18px;color:#121212;line-height:1.6;font-style:italic;">"The crowd doesn't spin. It bets."</div>
-      <div style="font-family:'Courier New',Courier,monospace;font-size:10px;color:#888;letter-spacing:0.15em;text-transform:uppercase;margin-top:10px;">THE PROB</div>
+    <tr><td class="section-pad" style="padding:28px 32px;background:#F2EEE9;text-align:center;border-bottom:1px solid #ddd8d0;">
+      <div class="quote-text" style="font-family:Georgia,'Times New Roman',serif;font-size:18px;color:#121212;line-height:1.6;font-style:italic;">"The crowd doesn't spin. It bets."</div>
+      <div style="font-family:'Courier New',Courier,monospace;font-size:11px;color:#888;letter-spacing:0.15em;text-transform:uppercase;margin-top:10px;">THE PROB</div>
     </td></tr>
 
     <!-- FOOTER -->
     <tr><td style="padding:24px 32px;border-top:3px solid #3A2BD4;background:#F2EEE9;text-align:center;">
       <div style="font-family:'Courier New',Courier,monospace;font-size:16px;font-weight:700;color:#3A2BD4;letter-spacing:-0.5px;margin-bottom:6px;">THE PROB</div>
       <div style="font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#888;margin-bottom:10px;">Prediction market intelligence, daily.</div>
-      <div style="font-family:Arial,Helvetica,sans-serif;font-size:12px;margin-bottom:14px;">
+      <div class="footer-links" style="font-family:Arial,Helvetica,sans-serif;font-size:12px;margin-bottom:14px;">
         <a href="https://theprob.ai" style="color:#3A2BD4;text-decoration:none;">theprob.ai</a>
         &nbsp;&middot;&nbsp;
         <a href="https://theprob.ai/portfolio.html" style="color:#888;text-decoration:none;">Portfolio</a>
         &nbsp;&middot;&nbsp;
         <a href="https://theprob.ai/prediction-markets-101.html" style="color:#888;text-decoration:none;">Markets 101</a>
       </div>
-      <div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;color:#aaa;line-height:1.8;">
+      <div class="footer-legal" style="font-family:Arial,Helvetica,sans-serif;font-size:11px;color:#aaa;line-height:1.8;">
         Not financial advice. For informational purposes only.<br>
         <a href="{{unsubscribe_url}}" style="color:#aaa;">Unsubscribe</a>
         &nbsp;&middot;&nbsp;
