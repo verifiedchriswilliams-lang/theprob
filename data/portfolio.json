@@ -12,9 +12,9 @@
       "ytd_return_pct": 101.2,
       "win_count": 384,
       "loss_count": 65,
-      "open_count": 65,
+      "open_count": 66,
       "start_date": "2026-03-17",
-      "last_updated": "2026-06-09",
+      "last_updated": "2026-06-10",
       "trades": [
         {
           "trade_id": "ea14c291",
@@ -9267,6 +9267,24 @@
           "exit_prob": null,
           "exit_date": null,
           "pnl": null
+        },
+        {
+          "trade_id": "69bb3930",
+          "market_id": "mlb-stl-nym-2026-06-09",
+          "question": "St. Louis Cardinals vs. New York Mets",
+          "url": "https://polymarket.com/event/mlb-stl-nym-2026-06-09",
+          "source": "Polymarket",
+          "display_category": "Sports",
+          "entry_prob": 88.5,
+          "direction": "YES",
+          "amount": 100.0,
+          "entry_date": "2026-06-10",
+          "end_date_raw": "2026-06-16T23:10:00Z",
+          "end_date": "Jun 16",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
@@ -9281,7 +9299,7 @@
       "loss_count": 2,
       "open_count": 9,
       "start_date": "2026-03-17",
-      "last_updated": "2026-06-09",
+      "last_updated": "2026-06-10",
       "trades": [
         {
           "trade_id": "18b00e62",
@@ -10754,7 +10772,7 @@
       "loss_count": 0,
       "open_count": 6,
       "start_date": "2026-03-17",
-      "last_updated": "2026-06-09",
+      "last_updated": "2026-06-10",
       "trades": [
         {
           "trade_id": "d19bb1c5",
