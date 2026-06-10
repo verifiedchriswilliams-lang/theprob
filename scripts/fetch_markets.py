@@ -1618,7 +1618,7 @@ def pick_hero(markets: list[dict], recent_topics: list[str] | None = None,
     pool = fresh_movers or soft_movers or deduped_candidates
 
     if not pool:
-        return None
+        return None, []
 
     winner = max(pool, key=hero_score)
 
@@ -1639,7 +1639,7 @@ def pick_hero(markets: list[dict], recent_topics: list[str] | None = None,
         print(f"    {'* ' if i == 0 else '  '}{m['question'][:60]}")
         print(f"       buzz={score_market(m):.1f}{penalty_str} = total={hero_score(m):.1f} | Δ={m['change_pts']}pts vol={m['volume_fmt']}")
 
-    return winner
+    return winner, top3
 
 # ── CATEGORY MAPPING ─────────────────────────────────────────────────────────
 
@@ -2793,7 +2793,7 @@ def main():
     else:
         print("  Trends bonus: no market matches (both sources may have failed)")
 
-    candidate_hero = pick_hero(all_markets, recent_topics=recent_hero_topics, recent_categories=recent_hero_categories)
+    candidate_hero, hero_top3 = pick_hero(all_markets, recent_topics=recent_hero_topics, recent_categories=recent_hero_categories)
 
     # 6-hour hero hold: keep the current hero unless it has been showing for >= HERO_HOLD_HOURS
     # OR the challenger beats it by HERO_HOLD_SCORE_MARGIN pts. This prevents a good NBA Finals
@@ -2933,6 +2933,15 @@ def main():
     else:
         hero_direction = "NO_PLAY"
 
+    # Generate takes for trending slots 2 and 3 (hero_top3[0] == hero, skip it)
+    for m in hero_top3[1:]:
+        try:
+            t = generate_hero_take(m)
+            m["prob_take"] = t["take"]
+        except Exception as e:
+            print(f"  [WARN] Hero take failed for trending slot: {e}")
+            m["prob_take"] = ""
+
     # ── Pick trades for all 3 portfolio variants ─────────────────────────────
     print("\nPicking trades (3 variants)...")
     today_str = now_utc.strftime("%Y-%m-%d")
@@ -3051,6 +3060,7 @@ def main():
         "updated":               updated_str,
         "updated_iso":           now_utc.isoformat(),
         "hero":                  hero,
+        "hero_trending":         hero_top3,      # top 3 markets for the trending carousel
         "trade":                 trade_market,   # today's portfolio trade (short-duration, ≤14 days)
         "hero_history":          hero_history_keys,
         "hero_category_history": hero_cat_history,

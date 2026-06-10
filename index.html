@@ -531,6 +531,25 @@
       text-transform: uppercase;
     }
 
+    /* ── TRENDING CAROUSEL ── */
+    .carousel-btn {
+      background: none; border: 1px solid var(--line); color: var(--ink-2);
+      width: 26px; height: 26px; border-radius: 50%; cursor: pointer;
+      font-size: 13px; line-height: 1; display: flex; align-items: center;
+      justify-content: center; transition: all 0.15s; padding: 0;
+    }
+    .carousel-btn:hover { border-color: var(--brand); color: var(--brand); }
+    .carousel-dots { display: flex; gap: 6px; align-items: center; }
+    .carousel-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--line); transition: background 0.2s, transform 0.2s;
+      cursor: pointer;
+    }
+    .carousel-dot.active { background: var(--brand); transform: scale(1.3); }
+    #carousel-track { overflow: hidden; }
+    .carousel-slide { display: none; }
+    .carousel-slide.active { display: block; }
+
     /* ── SECTION STRUCTURE ── */
     .section {
       max-width: 1280px;
@@ -1209,45 +1228,18 @@
         <p class="hero-trust" id="hero-msg">Free &nbsp;·&nbsp; <span>No spam, ever</span> &nbsp;·&nbsp; Unsubscribe anytime</p>
       </div>
 
+      <!-- TRENDING CAROUSEL -->
       <div class="hero-card" id="hero-card">
         <div class="hero-card-header">
           <span class="hero-card-label"><span class="live-dot"></span> Trending</span>
-          <span class="hero-card-source" id="hero-source">—</span>
-        </div>
-        <div class="hero-card-body">
-          <p class="hero-card-question" id="hero-question">Loading market data…</p>
-          <div class="prob-display">
-            <div class="prob-number" id="hero-prob">—</div>
-            <div>
-              <div class="prob-pct">%</div>
-              <div style="font-size:11px;font-weight:700;letter-spacing:2px;color:var(--yes);margin-top:4px;">YES</div>
-              <div class="prob-change" id="hero-change">—</div>
-            </div>
-          </div>
-          <div class="prob-bar-wrap">
-            <div class="prob-bar" id="hero-bar" style="width: 0%"></div>
-          </div>
-          <div class="card-meta">
-            <div class="card-meta-item">
-              <div class="card-meta-label">Volume</div>
-              <div class="card-meta-value" id="hero-volume">—</div>
-            </div>
-            <div class="card-meta-item">
-              <div class="card-meta-label">Resolves</div>
-              <div class="card-meta-value" id="hero-end-date">—</div>
-            </div>
-            <div class="card-meta-item">
-              <div class="card-meta-label">24h Change</div>
-              <div class="card-meta-value" id="hero-change-meta">—</div>
-            </div>
-            <div class="card-meta-item">
-              <div class="card-meta-label">Source</div>
-              <div class="card-meta-value" id="hero-source-meta">—</div>
-            </div>
+          <div style="display:flex;align-items:center;gap:10px;">
+            <button class="carousel-btn" id="carousel-prev" onclick="carouselStep(-1)" aria-label="Previous">&#8592;</button>
+            <div class="carousel-dots" id="carousel-dots"></div>
+            <button class="carousel-btn" id="carousel-next" onclick="carouselStep(1)" aria-label="Next">&#8594;</button>
           </div>
         </div>
-        <div class="hero-card-insight">
-          <p><strong>The Prob's take →</strong> <span id="hero-insight">The crowd has spoken. Check back soon for today's editorial take on this market.</span></p>
+        <div id="carousel-track">
+          <!-- slides injected by JS -->
         </div>
       </div>
     </div>
@@ -1582,42 +1574,115 @@ function renderTicker(markets) {
 
 // ── HERO CARD ─────────────────────────────────────────────────────────────────
 
-function renderHero(hero) {
-  if (!hero) return;
+// ── TRENDING CAROUSEL ─────────────────────────────────────────────────────────
+let _carouselMarkets = [];
+let _carouselIdx     = 0;
+let _carouselTimer   = null;
 
-  const dir = directionClass(hero.change_pts);
-
-  const sourceBadge = hero.source === 'Kalshi'
+function sourceBadgeHtml(source) {
+  return source === 'Kalshi'
     ? '<span style="background:#00A550;color:white;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700;letter-spacing:1px;">Kalshi</span>'
     : '<span style="background:#0066FF;color:white;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700;letter-spacing:1px;">Polymarket</span>';
-  document.getElementById('hero-source').innerHTML = sourceBadge;
-  document.getElementById('hero-source-meta').innerHTML = sourceBadge;
-  document.getElementById('hero-question').textContent   = hero.question;
-  document.getElementById('hero-prob').textContent       = hero.prob;
-  document.getElementById('hero-volume').textContent     = hero.volume_fmt;
-  document.getElementById('hero-end-date').textContent   = hero.end_date || '—';
+}
 
-  const changeEl = document.getElementById('hero-change');
-  changeEl.textContent  = changeArrow(hero.change_pts) + ' today';
-  changeEl.className    = `prob-change ${dir}`;
+function buildSlideHtml(m) {
+  const dir    = directionClass(m.change_pts);
+  const badge  = sourceBadgeHtml(m.source);
+  const change = changeArrow(m.change_pts);
+  const changeColor = dir === 'up' ? 'var(--yes)' : dir === 'down' ? 'var(--no)' : 'var(--amber)';
+  const take   = m.prob_take || 'Check back soon for today\'s take on this market.';
+  const url    = m.url || '#';
+  return `
+    <div class="carousel-slide" data-url="${url}">
+      <div class="hero-card-body" style="cursor:pointer" onclick="window.open('${url}','_blank')">
+        <p class="hero-card-question">${m.question}</p>
+        <div class="prob-display">
+          <div class="prob-number">${m.prob}</div>
+          <div>
+            <div class="prob-pct">%</div>
+            <div style="font-size:11px;font-weight:700;letter-spacing:2px;color:var(--yes);margin-top:4px;">YES</div>
+            <div class="prob-change ${dir}">${change} today</div>
+          </div>
+        </div>
+        <div class="prob-bar-wrap">
+          <div class="prob-bar" style="width:${m.prob}%"></div>
+        </div>
+        <div class="card-meta">
+          <div class="card-meta-item">
+            <div class="card-meta-label">Volume</div>
+            <div class="card-meta-value">${m.volume_fmt || '—'}</div>
+          </div>
+          <div class="card-meta-item">
+            <div class="card-meta-label">Resolves</div>
+            <div class="card-meta-value">${m.end_date || '—'}</div>
+          </div>
+          <div class="card-meta-item">
+            <div class="card-meta-label">24h Change</div>
+            <div class="card-meta-value" style="color:${changeColor}">${change}</div>
+          </div>
+          <div class="card-meta-item">
+            <div class="card-meta-label">Source</div>
+            <div class="card-meta-value">${badge}</div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-card-insight">
+        <p><strong>The Prob's take →</strong> <span>${take}</span></p>
+      </div>
+    </div>`;
+}
 
-  const changeMetaEl = document.getElementById('hero-change-meta');
-  changeMetaEl.textContent  = changeArrow(hero.change_pts);
-  changeMetaEl.style.color  = dir === 'up' ? 'var(--green)' : dir === 'down' ? 'var(--red)' : 'var(--amber)';
+function renderCarousel(markets) {
+  if (!markets || !markets.length) return;
+  _carouselMarkets = markets;
+  _carouselIdx     = 0;
 
-  const bar = document.getElementById('hero-bar');
-  setTimeout(() => { bar.style.width = `${hero.prob}%`; }, 100);
+  const track = document.getElementById('carousel-track');
+  const dots  = document.getElementById('carousel-dots');
+  if (!track || !dots) return;
 
+  track.innerHTML = markets.map(m => buildSlideHtml(m)).join('');
+  dots.innerHTML  = markets.map((_, i) =>
+    `<div class="carousel-dot${i === 0 ? ' active' : ''}" onclick="carouselGoTo(${i})"></div>`
+  ).join('');
+
+  // activate first slide
+  track.querySelectorAll('.carousel-slide')[0]?.classList.add('active');
+
+  // auto-rotate every 6 seconds, pause on hover
   const card = document.getElementById('hero-card');
-  if (hero.url) {
-    card.style.cursor = 'pointer';
-    card.addEventListener('click', () => window.open(hero.url, '_blank'));
-  }
+  startCarouselTimer();
+  card.addEventListener('mouseenter', stopCarouselTimer);
+  card.addEventListener('mouseleave', startCarouselTimer);
+}
 
-  const insightEl = document.getElementById('hero-insight');
-  if (insightEl && hero.prob_take) {
-    insightEl.textContent = hero.prob_take;
+function startCarouselTimer() {
+  stopCarouselTimer();
+  if (_carouselMarkets.length > 1) {
+    _carouselTimer = setInterval(() => carouselStep(1), 6000);
   }
+}
+function stopCarouselTimer() {
+  if (_carouselTimer) { clearInterval(_carouselTimer); _carouselTimer = null; }
+}
+
+function carouselGoTo(idx) {
+  const slides = document.querySelectorAll('.carousel-slide');
+  const dots   = document.querySelectorAll('.carousel-dot');
+  if (!slides.length) return;
+  slides[_carouselIdx]?.classList.remove('active');
+  dots[_carouselIdx]?.classList.remove('active');
+  _carouselIdx = (idx + slides.length) % slides.length;
+  slides[_carouselIdx]?.classList.add('active');
+  dots[_carouselIdx]?.classList.add('active');
+}
+
+function carouselStep(dir) { carouselGoTo(_carouselIdx + dir); }
+
+// Legacy single-hero fallback (used if hero_trending not in data)
+function renderHero(hero) {
+  if (!hero) return;
+  renderCarousel([hero]);
 }
 
 // ── MOVERS GRID ───────────────────────────────────────────────────────────────
@@ -1687,7 +1752,9 @@ async function loadMarkets() {
     const data = await res.json();
 
     renderTicker(data.ticker     || []);
-    renderHero(data.hero         || null);
+    const trending = data.hero_trending && data.hero_trending.length
+      ? data.hero_trending : (data.hero ? [data.hero] : []);
+    renderCarousel(trending);
     renderMovers(data.movers     || []);
     renderSpread(data.the_spread || []);
     renderDailyTake(data.daily_take || null);
