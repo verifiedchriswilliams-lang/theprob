@@ -1,4 +1,18 @@
 User-agent: *
 Allow: /
+Disallow: /newsletter/
+Disallow: /screenshots/
+Disallow: /brand-assets/
+Disallow: /data/
+Disallow: /scripts/
+
+# Allow crawling of all public HTML pages and assets
+Allow: /*.html
+Allow: /*.css
+Allow: /*.js
+Allow: /*.jpg
+Allow: /*.png
+Allow: /*.svg
+Allow: /*.json
 
 Sitemap: https://theprob.ai/sitemap.xml

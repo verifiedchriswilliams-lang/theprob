@@ -30,14 +30,69 @@
 
   <!-- Structured Data -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "name": "Prediction Markets 101 — How They Work | The Prob",
-    "url": "https://theprob.ai/prediction-markets-101.html",
-    "description": "A guide to prediction markets: how they work, how to read odds, and why they outperform traditional forecasting.",
-    "isPartOf": { "@type": "WebSite", "name": "The Prob", "url": "https://theprob.ai/" }
-  }
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Prediction Markets 101 — How They Work | The Prob",
+      "url": "https://theprob.ai/prediction-markets-101.html",
+      "description": "A no-BS guide to prediction markets. How Polymarket and Kalshi work, how to read odds, and why prediction markets beat polls and pundits.",
+      "isPartOf": { "@type": "WebSite", "name": "The Prob", "url": "https://theprob.ai/" },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://theprob.ai/" },
+          { "@type": "ListItem", "position": 2, "name": "Prediction Markets 101", "item": "https://theprob.ai/prediction-markets-101.html" }
+        ]
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is a prediction market?",
+          "acceptedAnswer": { "@type": "Answer", "text": "A prediction market is a platform where people buy and sell shares in the outcome of future events. The price of a share reflects the crowd's probability estimate. If a market is at 67%, it means the crowd believes there's a 67% chance the event resolves YES." }
+        },
+        {
+          "@type": "Question",
+          "name": "How do Polymarket and Kalshi work?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Polymarket uses USDC cryptocurrency on a decentralized platform. Kalshi is CFTC-regulated and accepts USD directly from US residents. Both allow you to buy YES or NO shares on the outcome of real-world events. Prices move as new information arrives and traders update their views." }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need to bet real money to follow prediction markets?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No. You can read the prices without placing a single bet. Most of what The Prob covers is the signal embedded in the prices, not a recommendation to trade. Think of it like checking stock prices without owning any stocks. The information is still useful." }
+        },
+        {
+          "@type": "Question",
+          "name": "What does it mean when a prediction market moves suddenly?",
+          "acceptedAnswer": { "@type": "Answer", "text": "It usually means new information hit. Earnings reports, polling data, an unexpected announcement, a regulatory decision. Sometimes it's a large trader repositioning. The question worth asking is: what do they know that I don't? Big moves on high-volume markets are rarely random." }
+        },
+        {
+          "@type": "Question",
+          "name": "Can prediction markets be manipulated?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes, though it's expensive and temporary. Thin markets (low volume) are more vulnerable. High-volume markets are harder to move without real capital, and any artificial price tends to be corrected quickly by other traders who spot the arbitrage. Manipulation is a real concern on smaller markets. On the major liquid ones, it's much harder to sustain." }
+        },
+        {
+          "@type": "Question",
+          "name": "Is Kalshi legal in the US?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Kalshi is CFTC-regulated and fully legal for US residents. Polymarket uses a decentralized structure and USDC, though US residents have historically faced restrictions. The regulatory landscape is evolving. Check each platform's terms of service for the most current guidance." }
+        },
+        {
+          "@type": "Question",
+          "name": "Why do prediction markets beat polls and expert forecasters?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Because real money is on the line. When people risk their own capital, they have a financial incentive to be right, not just opinionated. Studies consistently show that prediction markets outperform expert forecasters, polls, and models on a wide range of questions. They aggregate information from many sources and update instantly as new data arrives." }
+        },
+        {
+          "@type": "Question",
+          "name": "Where does The Prob get its prediction market data?",
+          "acceptedAnswer": { "@type": "Answer", "text": "The Prob pulls live market data directly from the Polymarket and Kalshi APIs every hour. Prices, volumes, and probability changes are sourced directly from the exchanges and updated continuously. What you see on this site reflects real market activity, not editorial estimates." }
+        }
+      ]
+    }
+  ]
   </script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -238,6 +293,8 @@
       <li><a href="politics.html">Politics</a></li>
       <li><a href="sports.html">Sports</a></li>
       <li><a href="tech.html">Tech</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="archive.html">Archive</a></li>
     </ul>
         <button class="theme-toggle" onclick="toggleTheme()" id="theme-btn" aria-label="Toggle dark mode"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
     </nav>
@@ -248,6 +305,8 @@
     <a href="politics.html">Politics</a>
     <a href="sports.html">Sports</a>
     <a href="tech.html">Tech</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="archive.html">Archive</a>
   </div>
   </div>
 

@@ -30,14 +30,23 @@
 
   <!-- Structured Data (JSON-LD) -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "name": "Prediction Market News — Polymarket & Kalshi | The Prob",
-    "url": "https://theprob.ai/news.html",
-    "description": "The latest news about Polymarket, Kalshi, and the prediction markets world.",
-    "isPartOf": { "@type": "WebSite", "name": "The Prob", "url": "https://theprob.ai/" }
-  }
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "Prediction Market News — Polymarket & Kalshi | The Prob",
+      "url": "https://theprob.ai/news.html",
+      "description": "The latest news about Polymarket, Kalshi, and the prediction markets world. Coverage of market moves, regulatory updates, and crowd forecasting — updated 4x daily.",
+      "isPartOf": { "@type": "WebSite", "name": "The Prob", "url": "https://theprob.ai/" },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://theprob.ai/" },
+          { "@type": "ListItem", "position": 2, "name": "Prediction Market News", "item": "https://theprob.ai/news.html" }
+        ]
+      }
+    }
+  ]
   </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -268,6 +277,8 @@
       <li><a href="politics.html">Politics</a></li>
       <li><a href="sports.html">Sports</a></li>
       <li><a href="tech.html">Tech</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="archive.html">Archive</a></li>
     </ul>
         <button class="theme-toggle" onclick="toggleTheme()" id="theme-btn" aria-label="Toggle dark mode"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
     </nav>
@@ -278,6 +289,8 @@
     <a href="politics.html">Politics</a>
     <a href="sports.html">Sports</a>
     <a href="tech.html">Tech</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="archive.html">Archive</a>
   </div>
   </div>
 
