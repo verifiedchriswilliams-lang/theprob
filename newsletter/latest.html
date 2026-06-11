@@ -51,8 +51,11 @@
     <span id="note">no-footer version &rarr; paste into Beehiiv</span>
     <button id="copy-btn" onclick="copyHTML()">Copy Email HTML</button>
   </div>
-  <iframe id="email-frame" src="latest-email.html" title="Newsletter Preview"
+  <iframe id="email-frame" title="Newsletter Preview"
           onload="resizeFrame(this)"></iframe>
+  <script>
+    document.getElementById('email-frame').src = 'latest-email.html?t=' + Date.now();
+  </script>
   <script>
     function resizeFrame(f) {
       try { f.style.height = f.contentDocument.body.scrollHeight + 'px'; }
