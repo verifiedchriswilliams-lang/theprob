@@ -685,7 +685,7 @@ def fetch_kalshi() -> list[dict]:
                                         else kalshi_category_from_question(question)) or "World"
                             # Spread in percentage points (for score_market liquidity signal)
                             spread = round((yes_ask_d - yes_bid_d) * 100, 2)
-                            open_interest_usd = float(m.get("open_interest_fp", 0) or 0) / 100
+                            open_interest_usd = float(m.get("open_interest_fp", 0) or 0)
                             results.append({
                                 "source":           "Kalshi",
                                 "question":         question,
@@ -852,7 +852,7 @@ def fetch_kalshi() -> list[dict]:
                                 "display_category": disp_cat,
                                 "tags":             [category.lower()],
                                 "spread":           spread,
-                                "open_interest":    float(m.get("open_interest_fp", 0) or 0) / 100,
+                                "open_interest":    float(m.get("open_interest_fp", 0) or 0),
                                 "kalshi_featured":  bool(m.get("featured", False)),
                             })
                             seen_tickers.add(ticker)
@@ -1855,11 +1855,10 @@ def pick_movers(markets: list[dict], exclude_slug: str = "") -> list[dict]:
         and (abs(m["change_pts"]) > 0 or m["source"] == "Kalshi")
         # Must have real activity today — filters markets with big historic moves but no
         # current trading (e.g. Anduril -22pts on $1K 24h, DHS funding -6pts on $1K 24h).
-        # Kalshi markets get a lower threshold ($200 min vs Polymarket's $2.5K) because
-        # their volumes are structurally smaller, but truly dead Kalshi markets ($80 24h)
-        # shouldn't appear in movers either.
+        # Kalshi markets get a lower threshold ($1K min vs Polymarket's $2.5K) because
+        # their volumes are structurally smaller than Polymarket.
         and (m.get("volume_24h", 0) >= HERO_MIN_24H_VOLUME or
-             (m["source"] == "Kalshi" and m.get("volume_24h", 0) >= 200))
+             (m["source"] == "Kalshi" and m.get("volume_24h", 0) >= 1_000))
     ]
     candidates.sort(key=score_market, reverse=True)
 
