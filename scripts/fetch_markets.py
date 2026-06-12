@@ -1479,13 +1479,14 @@ def get_topic_key(m: dict) -> str:
 
 def get_mover_anchor(m: dict) -> str:
     """
-    2-word topic anchor for movers dedup — coarser than get_topic_key so that
-    'Trump blockade of Strait of Hormuz' and 'Strait of Hormuz traffic returns'
-    collapse to the same anchor ('hormuz strait').
+    2-word topic anchor for movers dedup. Picks the two rarest/longest content
+    words so that 'Trump blockade of Strait of Hormuz' and 'Strait of Hormuz
+    traffic returns' both anchor on 'hormuz strait' rather than names.
     """
     q = m.get("question", "").lower()
     q = re.sub(r'\b20\d\d\b', '', q)
     q = re.sub(r'\$[\d,]+[kmb]?', '', q)
+    # Generic words that add no topic signal
     stopwords = {
         'will', 'would', 'can', 'does', 'is', 'are', 'has', 'have', 'did',
         'was', 'were', 'the', 'a', 'an', 'or', 'and', 'to', 'be', 'been',
@@ -1493,9 +1494,16 @@ def get_mover_anchor(m: dict) -> str:
         'this', 'not', 'any', 'all', 'win', 'wins', 'won', 'vs', 'end',
         'june', 'july', 'august', 'before', 'after', 'through', 'normal',
         'return', 'returns', 'traffic', 'announce', 'lifted', 'send', 'transit',
+        # Common actor names that obscure the real topic
+        'trump', 'donald', 'biden', 'harris', 'united', 'states', 'america',
+        # Action/event verbs that aren't the topic (the noun is)
+        'blockade', 'strike', 'invade', 'attack', 'confirm', 'announce',
+        'agree', 'sign', 'lift', 'impose', 'sanction', 'release',
     }
     words = [w.strip('?,.()') for w in q.split()
              if len(w.strip('?,.()')) > 3 and w.strip('?,.()') not in stopwords]
+    # Prefer longer words (more specific entity names) over shorter ones
+    words.sort(key=len, reverse=True)
     return ' '.join(sorted(words[:2]))
 
 
