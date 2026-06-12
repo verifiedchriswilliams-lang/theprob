@@ -265,6 +265,8 @@ display, log, commit, or transmit this file or its contents. See
 
 See VOICE.md. Sharp, confident, trader-focused. Lead with the number. "The crowd is telling you something." No hedging.
 
+**NEVER use em dashes** (— or `&mdash;`) in newsletter copy, email HTML, or any written content. Use a period and start a new sentence instead. This applies everywhere: hero copy, The Prob's Take, From Chris, movers, subject lines, all of it. No exceptions.
+
 ## Session Handoff — TODO
 
 ### Pending Next Session
