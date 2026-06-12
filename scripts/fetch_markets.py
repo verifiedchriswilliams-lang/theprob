@@ -680,7 +680,9 @@ def fetch_kalshi() -> list[dict]:
                                 change_pts = round((last_price_d - prev_price_d) * 100, 1)
                             # else: snapshot system computes real delta from kalshi_snapshot.json
 
-                            disp_cat = KALSHI_CATEGORY_MAP.get(category, category or "World")
+                            disp_cat = (KALSHI_CATEGORY_MAP.get(category)
+                                        if category
+                                        else kalshi_category_from_question(question)) or "World"
                             # Spread in percentage points (for score_market liquidity signal)
                             spread = round((yes_ask_d - yes_bid_d) * 100, 2)
                             open_interest_usd = float(m.get("open_interest_fp", 0) or 0) / 100
@@ -825,7 +827,9 @@ def fetch_kalshi() -> list[dict]:
                                              m.get("series_ticker") or
                                              ticker.rsplit("-", 1)[0])
                             category     = m.get("category", "") or ""
-                            disp_cat     = KALSHI_CATEGORY_MAP.get(category, category or "World")
+                            disp_cat     = (KALSHI_CATEGORY_MAP.get(category)
+                                            if category
+                                            else kalshi_category_from_question(question)) or "World"
 
                             spread         = round(abs(yes_ask_d - yes_bid_d) * 100, 2)
                             last_p         = float(m.get("last_price") or m.get("last_price_dollars", 0) or 0)
@@ -1645,9 +1649,55 @@ def pick_hero(markets: list[dict], recent_topics: list[str] | None = None,
 
 # ── CATEGORY MAPPING ─────────────────────────────────────────────────────────
 
+def kalshi_category_from_question(question: str) -> str:
+    """Keyword-based fallback for Kalshi markets with empty category strings."""
+    q = question.lower()
+    sports_kw = [
+        "nba", "nfl", "mlb", "nhl", "nba finals", "super bowl", "world series",
+        "wimbledon", "us open", "french open", "roland garros", "australian open",
+        "masters", "pga", "golf", "tennis", "soccer", "football", "basketball",
+        "baseball", "hockey", "mls", "premier league", "champions league", "la liga",
+        "bundesliga", "serie a", "ufc", "mma", "wrestling", "olympics", "world cup",
+        "copa", "euro ", "ncaa", "march madness", "playoffs", "championship",
+        "vs.", " vs ", "game ", "match ", "open:", "prix", "gp ", "formula",
+        "knicks", "lakers", "celtics", "warriors", "spurs", "nets", "bulls",
+        "patriots", "cowboys", "eagles", "chiefs", "packers", "yankees", "red sox",
+        "cubs", "dodgers", "mets", "braves", "astros", "thunder", "cavaliers",
+    ]
+    finance_kw = [
+        "ipo", "stock", "nasdaq", "s&p", "dow jones", "gdp", "recession",
+        "fed rate", "interest rate", "inflation", "bitcoin", "ethereum", "crypto",
+        "microstrategy", "spacex valuation", "market cap", "earnings", "revenue",
+        "merger", "acquisition", "bankruptcy", "sec", "treasury", "bonds",
+    ]
+    tech_kw = [
+        "ai model", "openai", "anthropic", "google", "microsoft", "apple", "meta",
+        "nvidia", "deepseek", "gpt", "chatgpt", "gemini", "claude", "llm",
+        "spacex", "starship", "starlink", "tesla", "neuralink", "robot",
+        "software", "chip", "semiconductor", "cybersecurity", "quantum",
+    ]
+    culture_kw = [
+        "oscar", "grammy", "emmy", "golden globe", "award", "movie", "film",
+        "tv show", "album", "song", "music", "celebrity", "kardashian",
+        "eurovision", "viral", "streaming", "netflix", "disney", "box office",
+    ]
+    for kw in sports_kw:
+        if kw in q:
+            return "Sports"
+    for kw in finance_kw:
+        if kw in q:
+            return "Finance"
+    for kw in tech_kw:
+        if kw in q:
+            return "Technology"
+    for kw in culture_kw:
+        if kw in q:
+            return "Culture"
+    return "World"
+
+
 KALSHI_CATEGORY_MAP = {
-    # Empty string is common in Kalshi API — treat as World
-    "":                       "World",
+    # Empty string handled by kalshi_category_from_question() — do not add "" here
     # Politics
     "Politics":               "Politics",
     "Elections":              "Politics",
@@ -1759,8 +1809,9 @@ def pick_movers(markets: list[dict], exclude_slug: str = "") -> list[dict]:
     ]
     candidates.sort(key=score_market, reverse=True)
 
-    # Deduplicate by event series
+    # Deduplicate by event series and topic — keeps only the best market per topic
     seen_series = {}
+    seen_topics: dict[str, dict] = {}
     deduped = []
     for c in candidates:
         slug = c.get("slug", "")
@@ -1774,10 +1825,13 @@ def pick_movers(markets: list[dict], exclude_slug: str = "") -> list[dict]:
             )
         if not series_key:
             series_key = " ".join(c["question"].lower().split()[:5])
-        if series_key not in seen_series:
-            seen_series[series_key] = True
-            c["display_category"] = c.get("display_category") or get_category_label(c)
-            deduped.append(c)
+        topic_key = get_topic_key(c)
+        if series_key in seen_series or topic_key in seen_topics:
+            continue
+        seen_series[series_key] = True
+        seen_topics[topic_key] = True
+        c["display_category"] = c.get("display_category") or get_category_label(c)
+        deduped.append(c)
 
     # Score floor: filter out markets with negative composite scores.
     # These are far-future Kalshi markets with tiny volume + no real movement
