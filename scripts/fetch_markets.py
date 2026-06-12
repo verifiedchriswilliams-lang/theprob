@@ -653,11 +653,11 @@ def fetch_kalshi() -> list[dict]:
                             if prob > 100 or prob < 0:
                                 continue
 
-                            # volume_fp / volume_24h_fp are fixed-point cents (divide by 100 → USD)
-                            volume_usd = float(m.get("volume_fp", 0) or 0) / 100
+                            # volume_fp / volume_24h_fp are already in USD (confirmed against website)
+                            volume_usd = float(m.get("volume_fp", 0) or 0)
                             if volume_usd < _min_vol:
                                 continue
-                            volume_24h_usd = float(m.get("volume_24h_fp", 0) or 0) / 100
+                            volume_24h_usd = float(m.get("volume_24h_fp", 0) or 0)
                             close_time = m.get("close_time", "") or ""
 
                             # Build question: combine event title + market subtitle if distinct
@@ -811,12 +811,8 @@ def fetch_kalshi() -> list[dict]:
                             if not (1 < prob < 99):
                                 continue
 
-                            volume_usd     = float(m.get("volume",     0) or 0) / 100
-                            volume_24h_usd = float(m.get("volume_24h", 0) or 0) / 100
-                            # /markets may store volume in cents (fp) or dollars
-                            if volume_usd > 1_000_000:
-                                volume_usd     /= 100   # was already in cents/fp
-                                volume_24h_usd /= 100
+                            volume_usd     = float(m.get("volume_fp",     0) or 0)
+                            volume_24h_usd = float(m.get("volume_24h_fp", 0) or 0)
 
                             subtitle    = m.get("subtitle", "") or m.get("title", "") or ""
                             event_title = m.get("event_title", "") or subtitle
