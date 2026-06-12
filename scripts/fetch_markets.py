@@ -746,6 +746,7 @@ def fetch_kalshi() -> list[dict]:
         ]
         for cat in KALSHI_API_CATEGORIES:
             before = len(markets)
+            time.sleep(1.5)  # respect Kalshi rate limits between category fetches
             markets += fetch_kalshi_page({"category": cat})
             added = len(markets) - before
             if added:
