@@ -213,7 +213,7 @@
 <div class="page-hero">
   <div class="page-eyebrow">Experiment 1 Concluded &middot; Mar 17 &ndash; Jun 8, 2026 &middot; 83 Days</div>
   <h1 class="page-title">Model A wins. Here's what we learned.</h1>
-  <p class="page-subtitle">3 models. 83 days. 600 trades. The Crowd beat The Contrarian by $65. The Arb never got off the ground. Full results and post-mortem below. Test 2 launches Jun 13.</p>
+  <p class="page-subtitle">3 models. 83 days. 600 trades. The Crowd beat The Contrarian by $65. The Arb never got off the ground. Full results and post-mortem below. Test 2 launches Jun 15.</p>
 
   <!-- FINAL SCOREBOARD -->
   <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px;" id="scoreboard">
@@ -373,13 +373,13 @@
       <div style="font-family:var(--font-mono);font-size:11px;color:var(--text-muted);white-space:nowrap;">Jun 8, 2026</div>
       <div>
         <div style="font-size:14px;font-weight:600;margin-bottom:4px;">Experiment 1 concluded. Model A wins.</div>
-        <div style="font-size:13px;color:var(--text-muted);">83 days. 600 trades. Final: Model A +99.6% ($1,996), Model B +93.1% ($1,931), Model C 0% ($1,000 inconclusive). Full post-mortem published. Test 2 launches Jun 13.</div>
+        <div style="font-size:13px;color:var(--text-muted);">83 days. 600 trades. Final: Model A +99.6% ($1,996), Model B +93.1% ($1,931), Model C 0% ($1,000 inconclusive). Full post-mortem published. Test 2 launches Jun 15.</div>
       </div>
     </div>
     <div style="padding:16px 20px;background:var(--surface-2);display:flex;gap:16px;align-items:baseline;">
-      <div style="font-family:var(--font-mono);font-size:11px;color:var(--amber);white-space:nowrap;">Jun 13, 2026</div>
+      <div style="font-family:var(--font-mono);font-size:11px;color:var(--amber);white-space:nowrap;">Jun 15, 2026</div>
       <div>
-        <div style="font-size:14px;font-weight:600;margin-bottom:4px;color:var(--amber);">Test 2 launches Jun 13 &mdash; The Crowd vs. two new challengers</div>
+        <div style="font-size:14px;font-weight:600;margin-bottom:4px;color:var(--amber);">Test 2 launches Jun 15. The Crowd vs. two new challengers</div>
         <div style="font-size:13px;color:var(--text-muted);">Model A (Control) defends. New challengers: Model D (tighter 75/25 gate) and Model E (crowd conviction + momentum confirmation). $1,000 each. Same rules. 30 days.</div>
       </div>
     </div>
@@ -388,7 +388,7 @@
 
 <!-- TEST 2 PREVIEW -->
 <div class="section">
-  <div class="section-title">Test 2 &middot; Launching Friday Jun 13</div>
+  <div class="section-title">Test 2 &middot; Launching Monday Jun 15</div>
   <p style="font-size:14px;color:var(--text-muted);margin-bottom:24px;">Model A is the new control. Two challengers are trying to beat it. Same $1,000 start. Same 30-day window. Different hypotheses.</p>
   <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
 
@@ -436,9 +436,9 @@
   <div class="section-title">Full Trade Ledger</div>
   <!-- Model tabs -->
   <div style="display:flex;gap:8px;margin-bottom:20px;" id="ledger-tabs">
-    <button onclick="switchLedger('a')" id="tab-a" style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;padding:8px 18px;border-radius:4px;cursor:pointer;border:1px solid var(--brand);background:var(--brand)22;color:var(--brand);">Model A &mdash; The Crowd</button>
-    <button onclick="switchLedger('b')" id="tab-b" style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;padding:8px 18px;border-radius:4px;cursor:pointer;border:1px solid var(--line);background:transparent;color:var(--text-muted);">Model B &mdash; The Contrarian</button>
-    <button onclick="switchLedger('c')" id="tab-c" style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;padding:8px 18px;border-radius:4px;cursor:pointer;border:1px solid var(--line);background:transparent;color:var(--text-muted);">Model C &mdash; The Arb</button>
+    <button onclick="switchLedger('a')" id="tab-a" style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;padding:8px 18px;border-radius:4px;cursor:pointer;border:1px solid var(--brand);background:var(--brand)22;color:var(--brand);">Model A. The Crowd</button>
+    <button onclick="switchLedger('b')" id="tab-b" style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;padding:8px 18px;border-radius:4px;cursor:pointer;border:1px solid var(--line);background:transparent;color:var(--text-muted);">Model B. The Contrarian</button>
+    <button onclick="switchLedger('c')" id="tab-c" style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;padding:8px 18px;border-radius:4px;cursor:pointer;border:1px solid var(--line);background:transparent;color:var(--text-muted);">Model C. The Arb</button>
   </div>
   <div id="trade-container">
     <div class="empty-state">
@@ -664,7 +664,7 @@
 
     // 3. Confirm + mark subscribed so modal never shows again
     localStorage.setItem('theprob_poll_subscribed', '1');
-    msgEl.textContent = '\u2713 You\u2019re in. Test 2 launch lands in your inbox Jun 13.';
+    msgEl.textContent = '\u2713 You\u2019re in. Test 2 launch lands in your inbox Jun 15.';
     msgEl.style.color = '#00e5a0';
     if (emailEl) emailEl.style.display = 'none';
     btnEl.textContent = '\u2713 Done';
