@@ -726,31 +726,14 @@ def fetch_kalshi() -> list[dict]:
         markets += fetch_kalshi_page()
         print(f"  Kalshi general fetch: {len(markets)} markets")
 
-        # 2. Category-specific fetches — Kalshi API uses granular subcategory strings,
-        # not broad parent labels. "Sports" returns almost nothing; "Basketball" returns
-        # all NBA/WNBA/college basketball markets. We fetch every subcategory explicitly.
-        KALSHI_API_CATEGORIES = [
-            # Sports subcategories (Kalshi has 2,000+ sports markets)
-            "Basketball", "Baseball", "Football", "Soccer", "Tennis", "Hockey",
-            "Golf", "MMA", "Cricket", "Esports", "Motorsport", "Boxing", "Rugby",
-            # Culture subcategories
-            "Movies", "Music", "Awards", "Television", "People", "Video Games",
-            "Love Island",
-            # Tech subcategories
-            "AI", "Big Tech & Business", "Space", "Education", "Energy",
-            "Medicine", "Physics & Math",
-            # Finance/Economics subcategories
-            "Finance", "Crypto", "Cryptocurrency", "Companies",
-            # Politics
-            "Elections", "Politics",
-        ]
-        for cat in KALSHI_API_CATEGORIES:
+        # 2. Category-specific fetches to ensure full coverage of non-World categories.
+        # These are the valid top-level category strings the Kalshi API accepts.
+        for cat in ["Sports", "Culture", "Crypto", "Technology"]:
             before = len(markets)
-            time.sleep(1.5)  # respect Kalshi rate limits between category fetches
             markets += fetch_kalshi_page({"category": cat})
             added = len(markets) - before
             if added:
-                print(f"  Kalshi '{cat}' fetch: +{added} markets")
+                print(f"  Kalshi {cat} fetch: +{added} markets")
 
         # 3. Near-term fetch — dedicated time-based query on the /markets endpoint.
         #
