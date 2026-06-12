@@ -726,13 +726,30 @@ def fetch_kalshi() -> list[dict]:
         markets += fetch_kalshi_page()
         print(f"  Kalshi general fetch: {len(markets)} markets")
 
-        # 2. Category-specific fetches to ensure full coverage
-        for cat in ["Sports", "Culture", "Crypto", "Technology"]:
+        # 2. Category-specific fetches — Kalshi API uses granular subcategory strings,
+        # not broad parent labels. "Sports" returns almost nothing; "Basketball" returns
+        # all NBA/WNBA/college basketball markets. We fetch every subcategory explicitly.
+        KALSHI_API_CATEGORIES = [
+            # Sports subcategories (Kalshi has 2,000+ sports markets)
+            "Basketball", "Baseball", "Football", "Soccer", "Tennis", "Hockey",
+            "Golf", "MMA", "Cricket", "Esports", "Motorsport", "Boxing", "Rugby",
+            # Culture subcategories
+            "Movies", "Music", "Awards", "Television", "People", "Video Games",
+            "Love Island",
+            # Tech subcategories
+            "AI", "Big Tech & Business", "Space", "Education", "Energy",
+            "Medicine", "Physics & Math",
+            # Finance/Economics subcategories
+            "Finance", "Crypto", "Cryptocurrency", "Companies",
+            # Politics
+            "Elections", "Politics",
+        ]
+        for cat in KALSHI_API_CATEGORIES:
             before = len(markets)
             markets += fetch_kalshi_page({"category": cat})
             added = len(markets) - before
             if added:
-                print(f"  Kalshi {cat} fetch: +{added} markets")
+                print(f"  Kalshi '{cat}' fetch: +{added} markets")
 
         # 3. Near-term fetch — dedicated time-based query on the /markets endpoint.
         #
@@ -1736,22 +1753,49 @@ KALSHI_CATEGORY_MAP = {
     "Finance":                "Finance",
     "Financials":             "Finance",
     "Companies":              "Finance",
-    # Tech
+    "Big Tech & Business":    "Finance",
+    # Tech — Kalshi API uses these subcategory strings
     "Technology":             "Technology",
     "Science and Technology": "Technology",
     "Tech & Science":         "Technology",
     "Tech and Science":       "Technology",
     "Science":                "Technology",
+    "AI":                     "Technology",
+    "Space":                  "Technology",
+    "Education":              "Technology",
+    "Energy":                 "Technology",
+    "Medicine":               "Technology",
+    "Physics & Math":         "Technology",
     # Crypto
     "Crypto":                 "Crypto",
     "Cryptocurrency":         "Crypto",
-    # Sports
+    # Sports — Kalshi uses sport-specific subcategories, not the parent "Sports"
     "Sports":                 "Sports",
-    # Culture
+    "Basketball":             "Sports",
+    "Baseball":               "Sports",
+    "Football":               "Sports",
+    "Soccer":                 "Sports",
+    "Tennis":                 "Sports",
+    "Hockey":                 "Sports",
+    "Golf":                   "Sports",
+    "MMA":                    "Sports",
+    "Cricket":                "Sports",
+    "Esports":                "Sports",
+    "Motorsport":             "Sports",
+    "Boxing":                 "Sports",
+    "Rugby":                  "Sports",
+    # Culture — Kalshi subcategories
     "Culture":                "Culture",
     "Entertainment":          "Culture",
     "Social":                 "Culture",
     "Mentions":               "Culture",
+    "Movies":                 "Culture",
+    "Music":                  "Culture",
+    "Awards":                 "Culture",
+    "Television":             "Culture",
+    "People":                 "Culture",
+    "Video Games":            "Culture",
+    "Love Island":            "Culture",
     # World/Other
     "Climate and Weather":    "World",
     "Climate":                "World",
