@@ -385,7 +385,8 @@ function signalBadge(signal){
 function getFiltered(markets, source, cats, mode){
   let list = markets
     .filter(m => m.source === source && matchesCats(m, cats))
-    .filter(m => (m.trading_signal || '') !== 'stale');
+    .filter(m => (m.trading_signal || '') !== 'stale')
+    .filter(m => !/^(yes |no )/i.test(m.question || ''));
   if(mode === 'knife'){
     list = list.filter(m => m.trading_signal === 'knife_edge');
     list.sort((a,b) => (b.volume||0) - (a.volume||0));
