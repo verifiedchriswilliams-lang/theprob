@@ -1,9 +1,9 @@
 name: Build and Send Daily Newsletter
 
 on:
-  schedule:
-    - cron: '50 10 * * 1-6'  # 6:50 AM EDT Mon-Sat — Sundays handled by send-sunday5.yml
-    # DST updated Mar 6 2026 — was '50 11 * * *' (EST/UTC-5), now '50 10 * * *' (EDT/UTC-4)
+  # schedule:
+  #   - cron: '50 10 * * 1-6'  # 6:50 AM EDT Mon-Sat — Sundays handled by send-sunday5.yml
+  #   # DST updated Mar 6 2026 — was '50 11 * * *' (EST/UTC-5), now '50 10 * * *' (EDT/UTC-4)
   workflow_dispatch:        # allow manual trigger for testing
 
 jobs:
