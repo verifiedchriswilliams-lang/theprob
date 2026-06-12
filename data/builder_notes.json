@@ -1,5 +1,5 @@
 {
   "last_updated": "2026-06-12",
-  "built_recently": "Launched a live Kalshi trading bot — real money, fully automated. The bot runs every hour via GitHub Actions, sizes trades dynamically (10% of balance, compounding as the account grows), and targets markets resolving within 7 days only. No year-long lockups. Duration is now the primary ranking signal: a 70% market closing tonight beats an 85% market closing next month. Starting balance: $89.62.",
-  "coming_next": "New markets experiment launches Monday, June 15 — tracking a fresh set of signals across a wider range of categories. More details this weekend."
+  "built_recently": "Launched a live Kalshi trading bot. Real money, fully automated. The bot runs every hour via GitHub Actions, sizes trades dynamically, and targets markets resolving within 7 days only. No year-long lockups. Duration is now the primary ranking signal.",
+  "coming_next": "New markets experiment launches Monday, June 15. Tracking a fresh set of signals across a wider range of categories. More details this weekend."
 }

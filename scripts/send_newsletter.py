@@ -164,22 +164,27 @@ def build_builder_section() -> str:
     if not built and not coming:
         return ""
     built_block = (
-        f'<p class="body-text" style="font-size:15px;color:#d0dde8 !important;line-height:1.8;margin:0 0 12px;">'
-        f'<span style="color:#edf2f7 !important;font-weight:700;">Recently:</span> {built}'
-        f'</p>'
+        '<div style="font-family:Arial,Helvetica,sans-serif;font-size:14px;color:#B0BDD0;'
+        'line-height:1.7;margin-bottom:12px;">'
+        '<span style="color:#EEF2F8;font-weight:700;">Recently:</span> ' + built
+        + '</div>'
     ) if built else ""
     coming_block = (
-        f'<p class="body-text" style="font-size:15px;color:#d0dde8 !important;line-height:1.8;margin:0 0 20px;">'
-        f'<span style="color:#edf2f7 !important;font-weight:700;">Next:</span> {coming}'
-        f'</p>'
+        '<div style="font-family:Arial,Helvetica,sans-serif;font-size:14px;color:#B0BDD0;'
+        'line-height:1.7;margin-bottom:16px;">'
+        '<span style="color:#EEF2F8;font-weight:700;">Next:</span> ' + coming
+        + '</div>'
     ) if coming else ""
-    return f"""
-  <tr><td class="section-pad" style="padding:28px 32px;border-bottom:1px solid #1e2a38;background:#0a0e14 !important;">
-    <div class="eyebrow" style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#f5a623 !important;margin-bottom:14px;">From Chris</div>
-    {built_block}
-    {coming_block}
-    <div style="font-family:'Courier New',monospace;font-size:12px;color:#8ba3bc !important;border-top:1px solid #1e2a38;padding-top:14px;">&mdash; Chris</div>
-  </td></tr>"""
+    return (
+        '  <tr><td style="padding:24px 24px 20px;background:#0B1524;border-bottom:1px solid #1E2A3A;">\n'
+        "    <div style=\"font-family:'Courier New',monospace;font-size:9px;letter-spacing:0.14em;"
+        'text-transform:uppercase;color:#3A2BD4;margin-bottom:14px;">% From Chris</div>\n'
+        '    ' + built_block + '\n'
+        '    ' + coming_block + '\n'
+        "    <div style=\"font-family:'Courier New',monospace;font-size:12px;color:#5A6678;"
+        'border-top:1px solid #1E2A3A;padding-top:14px;">Chris</div>\n'
+        '  </td></tr>'
+    )
 
 def truncate_summary(text: str, max_sentences: int = 2) -> str:
     """Cap news summaries at 2 sentences for mobile readability."""
@@ -223,7 +228,7 @@ def generate_subtitle(hero: dict, movers: list, daily_take: dict) -> str:
     )
     subtitle = claude(prompt, max_tokens=80)
     if not subtitle:
-        subtitle = f"The crowd's read on {date_str} — markets, movers, and what it means."
+        subtitle = f"The crowd's read on {date_str}. Markets, movers, and what it means."
     return subtitle
 
 
