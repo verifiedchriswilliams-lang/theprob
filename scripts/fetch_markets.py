@@ -1477,6 +1477,28 @@ def get_topic_key(m: dict) -> str:
     key_words = sorted(words[:4])  # 4-word cap keeps fingerprint coarse enough to catch near-synonyms
     return " ".join(key_words)
 
+def get_mover_anchor(m: dict) -> str:
+    """
+    2-word topic anchor for movers dedup — coarser than get_topic_key so that
+    'Trump blockade of Strait of Hormuz' and 'Strait of Hormuz traffic returns'
+    collapse to the same anchor ('hormuz strait').
+    """
+    q = m.get("question", "").lower()
+    q = re.sub(r'\b20\d\d\b', '', q)
+    q = re.sub(r'\$[\d,]+[kmb]?', '', q)
+    stopwords = {
+        'will', 'would', 'can', 'does', 'is', 'are', 'has', 'have', 'did',
+        'was', 'were', 'the', 'a', 'an', 'or', 'and', 'to', 'be', 'been',
+        'its', 'it', 'of', 'for', 'as', 'at', 'by', 'from', 'with', 'that',
+        'this', 'not', 'any', 'all', 'win', 'wins', 'won', 'vs', 'end',
+        'june', 'july', 'august', 'before', 'after', 'through', 'normal',
+        'return', 'returns', 'traffic', 'announce', 'lifted', 'send', 'transit',
+    }
+    words = [w.strip('?,.()') for w in q.split()
+             if len(w.strip('?,.()')) > 3 and w.strip('?,.()') not in stopwords]
+    return ' '.join(sorted(words[:2]))
+
+
 # ── HERO SELECTION ───────────────────────────────────────────────────────────
 
 def pick_hero(markets: list[dict], recent_topics: list[str] | None = None,
@@ -1809,9 +1831,9 @@ def pick_movers(markets: list[dict], exclude_slug: str = "") -> list[dict]:
     ]
     candidates.sort(key=score_market, reverse=True)
 
-    # Deduplicate by event series and topic — keeps only the best market per topic
-    seen_series = {}
-    seen_topics: dict[str, dict] = {}
+    # Deduplicate by event series and topic anchor
+    seen_series: dict[str, bool] = {}
+    seen_anchors: dict[str, bool] = {}
     deduped = []
     for c in candidates:
         slug = c.get("slug", "")
@@ -1825,11 +1847,12 @@ def pick_movers(markets: list[dict], exclude_slug: str = "") -> list[dict]:
             )
         if not series_key:
             series_key = " ".join(c["question"].lower().split()[:5])
-        topic_key = get_topic_key(c)
-        if series_key in seen_series or topic_key in seen_topics:
+        anchor = get_mover_anchor(c)
+        if series_key in seen_series or (anchor and anchor in seen_anchors):
             continue
         seen_series[series_key] = True
-        seen_topics[topic_key] = True
+        if anchor:
+            seen_anchors[anchor] = True
         c["display_category"] = c.get("display_category") or get_category_label(c)
         deduped.append(c)
 
