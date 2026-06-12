@@ -1,30 +1,28 @@
 [
   {
+    "date": "2026-06-12",
+    "subject": "SpaceX is going public. The crowd says $1.8T+.",
+    "url": "newsletter/2026-06-12.html"
+  },
+  {
     "date": "2026-06-11",
     "display_date": "Jun 11, 2026",
-    "subject": "The crowd moved 20.6 pts up on this one"
+    "subject": "Will the New York Knicks win the 2026 NBA Finals?"
   },
   {
     "date": "2026-06-10",
     "display_date": "Jun 10, 2026",
-    "subject": "The crowd moved 5.3 pts down on this one"
+    "subject": "Will Min Woo Lee win the 2026 TOUR Championship?"
   },
   {
     "date": "2026-06-09",
     "display_date": "Jun 9, 2026",
-    "subject": "The crowd moved 15.4 pts up on this one"
+    "subject": "Will the San Antonio Spurs win the 2026 NBA Finals?"
   },
   {
     "date": "2026-06-08",
     "display_date": "Jun 8, 2026",
-    "subject": "The crowd moved 16.5 pts down on this one"
-  },
-  {
-    "date": "2026-04-12",
-    "subject": "The Sunday 5: This Week in Prediction Markets",
-    "subtitle": "Five stories shaping the prediction markets conversation this week.",
-    "url": "https://theprobnewsletter.com/newsletter/2026-04-12-sunday5.html",
-    "type": "sunday5"
+    "subject": "Stuttgart Open: Alejandro Davidovich Fokina vs Mattia Bellucci"
   },
   {
     "date": "2026-06-06",
@@ -265,6 +263,13 @@
     "date": "2026-04-13",
     "display_date": "Apr 13, 2026",
     "subject": "Duckworth's odds just crashed 30pts. Here's why."
+  },
+  {
+    "date": "2026-04-12",
+    "subject": "The Sunday 5: This Week in Prediction Markets",
+    "subtitle": "Five stories shaping the prediction markets conversation this week.",
+    "url": "https://theprobnewsletter.com/newsletter/2026-04-12-sunday5.html",
+    "type": "sunday5"
   },
   {
     "date": "2026-04-11",

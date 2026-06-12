@@ -1523,13 +1523,15 @@ def pick_hero(markets: list[dict], recent_topics: list[str] | None = None,
             for i, topic in enumerate(recent_topics):
                 if key == topic:
                     penalty = HERO_REPEAT_PENALTY_PER_DAY[min(i, len(HERO_REPEAT_PENALTY_PER_DAY) - 1)]
-                    # Dominant story relief: if this market is the biggest story of the day
-                    # ($300K+ 24h volume AND 20+ pt move), cap the repeat penalty at 40pts.
-                    # Prevents a genuinely breaking story (Iran diplomacy, major election move)
-                    # from being permanently buried by history while low-volume esports or
-                    # obscure markets win hero by default.
+                    # Dominant story relief: cap repeat penalty for actively-traded markets.
+                    # Gate 1: high move AND volume (breaking news relief)
+                    # Gate 2: sports/finance with massive 24h volume ($500K+) even without a big move
+                    #   — the Knicks in the Finals is still the story even if odds held flat
                     if (m.get("volume_24h", 0) >= 300_000
                             and abs(m.get("change_pts", 0)) >= 20):
+                        penalty = min(penalty, 40.0)
+                    elif (m.get("volume_24h", 0) >= 500_000
+                          and m.get("display_category", "") in ("Sports", "Finance", "Politics")):
                         penalty = min(penalty, 40.0)
                     base -= penalty
                     break
@@ -1644,6 +1646,8 @@ def pick_hero(markets: list[dict], recent_topics: list[str] | None = None,
 # ── CATEGORY MAPPING ─────────────────────────────────────────────────────────
 
 KALSHI_CATEGORY_MAP = {
+    # Empty string is common in Kalshi API — treat as World
+    "":                       "World",
     # Politics
     "Politics":               "Politics",
     "Elections":              "Politics",
