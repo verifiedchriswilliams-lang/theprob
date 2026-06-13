@@ -269,6 +269,65 @@ def build_head_styles() -> str:
   a[x-apple-data-detectors] { color: inherit !important; text-decoration: none !important; }
 </style>"""
 
+# ── GAME NIGHT PROPS SECTION ─────────────────────────────────────────────────
+
+def build_game5_section(props: list) -> str:
+    """Render a 'Tonight's Prop Desk' section from a list of game5_props dicts."""
+    if not props:
+        return ""
+
+    rows = ""
+    for p in props:
+        prob    = p.get("prob", 50)
+        chg     = p.get("change_pts", 0)
+        chg_str = (("+" if chg > 0 else "") + str(chg) + " pts") if chg != 0 else "—"
+        chg_col = "#0FB880" if chg > 0 else ("#F0476A" if chg < 0 else "#8A94A6")
+        prob_col = color_prob(prob)
+        src_col  = "#a78bfa"  # sports purple
+        note     = p.get("note", "")
+        url      = p.get("url", "#")
+
+        rows += (
+            '<tr><td style="padding:12px 0;border-bottom:1px solid #E7ECF2;">'
+            '<table width="100%" cellpadding="0" cellspacing="0"><tr>'
+            # left: label + note
+            '<td style="vertical-align:top;padding-right:12px;">'
+            '<a href="' + url + '" style="text-decoration:none;">'
+            "<div style=\"font-family:'Instrument Serif',Georgia,'Times New Roman',serif;"
+            'font-size:15px;color:#0B1524;line-height:1.3;margin-bottom:3px;">'
+            + p.get("label", "") + '</div></a>'
+            + ('<div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;'
+               'color:#8A94A6;line-height:1.4;">' + note + '</div>' if note else '')
+            + '<div style="margin-top:4px;"><span style="font-family:Arial,Helvetica,sans-serif;'
+            'font-size:9px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;'
+            'color:#FFFFFF;background:' + src_col + ';padding:2px 6px;border-radius:3px;">'
+            + p.get("source", "") + '</span></div>'
+            '</td>'
+            # right: prob + change
+            '<td style="text-align:right;vertical-align:top;white-space:nowrap;">'
+            '<div style="font-family:Arial,Helvetica,sans-serif;font-size:22px;font-weight:700;'
+            'color:' + prob_col + ';line-height:1;">' + str(prob) + '%</div>'
+            "<div style=\"font-family:'Courier New',monospace;font-size:10px;color:" + chg_col
+            + ';margin-top:3px;">' + chg_str + '</div>'
+            '</td>'
+            '</tr></table>'
+            '</td></tr>'
+        )
+
+    return (
+        '  <tr><td style="padding:20px 24px 16px;background:#FFFFFF;border-bottom:1px solid #E7ECF2;">\n'
+        '    ' + _eyebrow("Tonight&#39;s Prop Desk &middot; NBA Finals Game 5") + '\n'
+        '    <table width="100%" cellpadding="0" cellspacing="0">\n'
+        + rows +
+        '    </table>\n'
+        '    <div style="margin-top:10px;">'
+        '<a href="https://kalshi.com/category/sports/basketball" '
+        'style="font-family:Arial,Helvetica,sans-serif;font-size:11px;color:#3A2BD4;'
+        'text-decoration:none;letter-spacing:0.05em;">View all game markets &#8594;</a></div>\n'
+        '  </td></tr>'
+    )
+
+
 # ── THE SPREAD SECTION ────────────────────────────────────────────────────────
 
 def build_spread_section(spread_markets: list, max_items: int = 4) -> str:
@@ -687,7 +746,8 @@ def build_html(markets, news, subject, with_footer=True):
 
     # ── ASSEMBLE ──
     builder_html = build_builder_section()
-    spread_html  = build_spread_section(markets.get("the_spread", []), max_items=4)
+    spread_html   = build_spread_section(markets.get("the_spread", []), max_items=4)
+    game5_html    = build_game5_section(markets.get("game5_props", []))
 
     # Re-skin spread section to Clean Book palette
     spread_html = (spread_html
@@ -703,7 +763,7 @@ def build_html(markets, news, subject, with_footer=True):
     )
 
     sections = [
-        header, hero_section, trade_section, movers_section,
+        header, hero_section, game5_html, trade_section, movers_section,
         spread_html, news_section, take_section,
         builder_html, cta_section,
     ]
