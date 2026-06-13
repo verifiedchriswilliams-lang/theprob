@@ -747,10 +747,11 @@ def fetch_kalshi() -> list[dict]:
         # markets chronologically (soonest-closing first), bypassing volume ranking.
         # This is the only reliable way to find near-term markets.
         try:
-            now_utc   = datetime.now(timezone.utc)
-            cutoff_7d = now_utc + timedelta(days=7)
-            # Kalshi /markets accepts max_close_time as an ISO timestamp string
-            cutoff_str = cutoff_7d.strftime("%Y-%m-%dT%H:%M:%SZ")
+            now_utc    = datetime.now(timezone.utc)
+            # 21 days: sports game markets (NBA, NHL, MLB) have close_time set
+            # ~15 days after game date for resolution, so 7 days misses tonight's games.
+            cutoff_21d = now_utc + timedelta(days=21)
+            cutoff_str = cutoff_21d.strftime("%Y-%m-%dT%H:%M:%SZ")
 
             added_nt   = 0
             nt_cursor  = None
@@ -869,7 +870,7 @@ def fetch_kalshi() -> list[dict]:
                     print(f"  [WARN] near-term /markets page {nt_pages}: {e_page}")
                     break
 
-            print(f"  Kalshi near-term (≤7d) via /markets endpoint: +{added_nt} markets")
+            print(f"  Kalshi near-term (≤21d) via /markets endpoint: +{added_nt} markets")
 
             # Diagnostic: log what we found within 7 days
             near_close = []
@@ -891,6 +892,104 @@ def fetch_kalshi() -> list[dict]:
 
         except Exception as e_nt:
             print(f"  [WARN] Kalshi near-term fetch error: {e_nt}")
+
+        # 4. Explicit sports game series fetch.
+        # Game markets (NBA, NHL, MLB, WC) have close_time set weeks out for
+        # resolution, so they survive the 21-day near-term filter above. But
+        # on game day they may not yet rank high enough in the volume-sorted
+        # general /events fetch. Pull them directly by series ticker so we
+        # never miss tonight's game.
+        SPORTS_GAME_SERIES = [
+            "KXNBAGAME",   # NBA game outcome
+            "KXNHLGAME",   # NHL game outcome
+            "KXMLBGAME",   # MLB game outcome
+            "KXWCGAME",    # FIFA World Cup game
+        ]
+        for series in SPORTS_GAME_SERIES:
+            try:
+                before_sg = len(markets)
+                sg_cursor = None
+                sg_pages  = 0
+                while sg_pages < 5:
+                    sg_params = {"series_ticker": series, "status": "open", "limit": 100}
+                    if sg_cursor:
+                        sg_params["cursor"] = sg_cursor
+                    kalshi_headers = make_kalshi_headers("GET", "/trade-api/v2/markets")
+                    sg_resp = requests.get(f"{KALSHI_BASE}/markets", params=sg_params,
+                                           headers=kalshi_headers, timeout=15)
+                    sg_resp.raise_for_status()
+                    sg_data    = sg_resp.json()
+                    sg_markets = sg_data.get("markets", [])
+                    if not sg_markets:
+                        break
+                    for m in sg_markets:
+                        try:
+                            ticker = m.get("ticker", "")
+                            if ticker in seen_tickers:
+                                continue
+                            volume_usd     = float(m.get("volume_fp", 0) or 0)
+                            volume_24h_usd = float(m.get("volume_24h_fp", 0) or 0)
+                            if volume_usd < KALSHI_MIN_VOL:
+                                continue
+                            yes_bid_d = float(m.get("yes_bid_dollars", 0) or 0)
+                            yes_ask_d = float(m.get("yes_ask_dollars", 0) or 0)
+                            last_d    = float(m.get("last_price_dollars", 0) or 0)
+                            if yes_bid_d > 0 or yes_ask_d > 0:
+                                prob = round((yes_bid_d + yes_ask_d) / 2 * 100, 1)
+                            elif last_d > 0:
+                                prob = round(last_d * 100, 1)
+                            else:
+                                continue
+                            if not (1 < prob < 99):
+                                continue
+                            close_time   = m.get("close_time", "") or ""
+                            subtitle     = m.get("subtitle", "") or m.get("yes_sub_title", "") or ""
+                            event_title  = m.get("event_title", "") or m.get("title", "") or subtitle
+                            question     = (f"{event_title}: {subtitle}"
+                                            if subtitle and subtitle.lower() != event_title.lower()
+                                            else event_title or ticker)
+                            ev_ticker    = m.get("event_ticker", "") or ticker.rsplit("-", 1)[0]
+                            category     = m.get("category", "") or "Sports"
+                            disp_cat     = (KALSHI_CATEGORY_MAP.get(category)
+                                            if category else "Sports") or "Sports"
+                            last_p  = float(m.get("last_price_dollars", 0) or 0)
+                            prev_p  = float(m.get("previous_yes_bid_dollars", 0) or 0)
+                            chg_pts = round((last_p - prev_p) * 100, 1) if last_p > 0 and prev_p > 0 else 0.0
+                            seen_tickers.add(ticker)
+                            markets.append({
+                                "source":           "Kalshi",
+                                "question":         question,
+                                "slug":             ticker,
+                                "url":              f"https://kalshi.com/markets/{series.lower()}",
+                                "prob":             prob,
+                                "change_pts":       chg_pts,
+                                "direction":        change_direction(chg_pts),
+                                "volume":           volume_usd,
+                                "volume_fmt":       fmt_volume(volume_usd),
+                                "volume_24h":       volume_24h_usd,
+                                "end_date":         fmt_date(close_time),
+                                "end_date_raw":     close_time,
+                                "liquidity":        volume_usd * 0.1,
+                                "category":         category,
+                                "is_sports":        True,
+                                "display_category": disp_cat,
+                                "tags":             ["sports"],
+                                "spread":           round(abs(yes_ask_d - yes_bid_d) * 100, 2),
+                                "open_interest":    float(m.get("open_interest_fp", 0) or 0),
+                                "kalshi_featured":  bool(m.get("featured", False)),
+                            })
+                        except Exception:
+                            continue
+                    sg_cursor = sg_data.get("cursor")
+                    if not sg_cursor:
+                        break
+                    sg_pages += 1
+                    time.sleep(0.15)
+                added_sg = len(markets) - before_sg
+                if added_sg:
+                    print(f"  Kalshi {series} game fetch: +{added_sg} markets")
+            except Exception as e_sg:
+                print(f"  [WARN] Kalshi {series} fetch: {e_sg}")
 
     except Exception as e:
         print(f"[WARN] Kalshi fetch failed: {e}")
