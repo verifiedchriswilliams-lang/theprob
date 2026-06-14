@@ -1,92 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Prob &mdash; Newsletter Preview</title>
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { background: #080b0f; font-family: 'Courier New', monospace; }
-    #preview-bar {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 9999;
-      background: #0d1117; border-bottom: 2px solid #1e2a38;
-      padding: 10px 20px; display: flex; align-items: center;
-      justify-content: space-between; gap: 12px;
-    }
-    #subject-line {
-      font-size: 12px; color: #8ba3bc; flex: 1; overflow: hidden;
-      text-overflow: ellipsis; white-space: nowrap;
-    }
-    #subject-label {
-      color: #546e85; margin-right: 8px; font-size: 10px;
-      text-transform: uppercase; letter-spacing: 0.15em;
-    }
-    #copy-btn {
-      background: #00e5a0; color: #080b0f; border: none; padding: 9px 18px;
-      font-family: 'Courier New', monospace; font-size: 12px; font-weight: 700;
-      letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer;
-      white-space: nowrap; flex-shrink: 0; transition: opacity 0.15s;
-    }
-    #copy-btn:hover { opacity: 0.85; }
-    #copy-btn:disabled { opacity: 0.6; cursor: default; }
-    #copy-feedback {
-      font-size: 11px; color: #00e5a0; white-space: nowrap;
-      opacity: 0; transition: opacity 0.3s;
-    }
-    #note {
-      font-size: 10px; color: #546e85; white-space: nowrap; flex-shrink: 0;
-    }
-    #email-frame {
-      display: block; width: 100%; border: none;
-      margin-top: 46px; height: calc(100vh - 46px);
-    }
-  </style>
+<meta charset="UTF-8">
+<title>Sunday 5 Preview</title>
+<style>
+  body{margin:0;background:#111;font-family:system-ui,sans-serif;}
+  .controls{position:fixed;top:16px;right:16px;z-index:999;display:flex;gap:8px;}
+  .btn{background:#00e5a0;color:#0a0e14;border:none;padding:10px 20px;border-radius:6px;
+        font-weight:700;font-size:13px;cursor:pointer;letter-spacing:0.05em;}
+  .btn:hover{background:#00c98a;}
+  .btn.copied{background:#f5a623;}
+  iframe{display:block;width:640px;max-width:100%;margin:0 auto;border:none;height:100vh;}
+</style>
 </head>
 <body>
-  <div id="preview-bar">
-    <div id="subject-line">
-      <span id="subject-label">Subject</span>The crowd moved 0.0 pts down on this one
-    </div>
-    <span id="copy-feedback">Copied to clipboard!</span>
-    <span id="note">no-footer version &rarr; paste into Beehiiv</span>
-    <button id="copy-btn" onclick="copyHTML()">Copy Email HTML</button>
-  </div>
-  <iframe id="email-frame" src="latest-email.html" title="Newsletter Preview"
-          onload="resizeFrame(this)"></iframe>
-  <script>
-    function resizeFrame(f) {
-      try { f.style.height = f.contentDocument.body.scrollHeight + 'px'; }
-      catch(e) {}
-    }
-    function copyHTML() {
-      var btn = document.getElementById('copy-btn');
-      var fb  = document.getElementById('copy-feedback');
-      btn.disabled = true;
-      btn.textContent = 'Fetching...';
-      fetch('latest-copy.html?t=' + Date.now())
-        .then(function(r) {
-          if (!r.ok) throw new Error('HTTP ' + r.status);
-          return r.text();
-        })
-        .then(function(text) {
-          return navigator.clipboard.writeText(text);
-        })
-        .then(function() {
-          btn.textContent = 'Copied!';
-          btn.disabled = false;
-          fb.style.opacity = '1';
-          setTimeout(function() {
-            btn.textContent = 'Copy Email HTML';
-            fb.style.opacity = '0';
-          }, 3000);
-        })
-        .catch(function(err) {
-          btn.textContent = 'Error — retry';
-          btn.disabled = false;
-          console.error('Copy failed:', err);
-          setTimeout(function() { btn.textContent = 'Copy Email HTML'; }, 3000);
-        });
-    }
-  </script>
+<div class="controls">
+  <button class="btn" onclick="copyEmail()" id="copyBtn">Copy Email HTML</button>
+</div>
+<iframe src="latest-email.html" id="preview"></iframe>
+<script>
+async function copyEmail(){
+  try{
+    const r=await fetch('latest-copy.html');
+    const t=await r.text();
+    await navigator.clipboard.writeText(t);
+    const b=document.getElementById('copyBtn');
+    b.textContent='Copied!';b.classList.add('copied');
+    setTimeout(()=>{b.textContent='Copy Email HTML';b.classList.remove('copied');},2500);
+  }catch(e){alert('Copy failed: '+e);}
+}
+</script>
 </body>
 </html>

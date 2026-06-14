@@ -1,5 +1,12 @@
 [
   {
+    "date": "2026-04-12",
+    "subject": "The Sunday 5: This Week in Prediction Markets",
+    "subtitle": "Five stories shaping the prediction markets conversation this week.",
+    "url": "https://theprob.ai/newsletter/2026-04-12-sunday5.html",
+    "type": "sunday5"
+  },
+  {
     "date": "2026-06-13",
     "display_date": "Jun 13, 2026",
     "subject": "The crowd moved 0.0 pts down on this one"
@@ -268,13 +275,6 @@
     "date": "2026-04-13",
     "display_date": "Apr 13, 2026",
     "subject": "Duckworth's odds just crashed 30pts. Here's why."
-  },
-  {
-    "date": "2026-04-12",
-    "subject": "The Sunday 5: This Week in Prediction Markets",
-    "subtitle": "Five stories shaping the prediction markets conversation this week.",
-    "url": "https://theprobnewsletter.com/newsletter/2026-04-12-sunday5.html",
-    "type": "sunday5"
   },
   {
     "date": "2026-04-11",
