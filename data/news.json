@@ -1,40 +1,76 @@
 {
-  "updated": "Jun 18, 2026 \u00b7 2:23 PM ET",
-  "updated_iso": "2026-06-18T19:23:30.942783+00:00",
+  "updated": "Jun 18, 2026 \u00b7 8:46 PM ET",
+  "updated_iso": "2026-06-19T01:46:12.443630+00:00",
   "homepage_count": 3,
   "articles": [
+    {
+      "title": "UFC Fight Night Kalshi Market: Kape vs. Horiguchi",
+      "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxOWjNSLTZoMFNpNm9xSDBmSFRSRm9JQTBodmFIaXIxTFE1VmNLTjB4THBkMkY1WTE0Yk1yZFctS0VmZW5ram92ejFBTU1nRlgxcmdoZWkySzNJUGgybFBOOG02eVpOejFnOHpKZGF2ZE9qMEs3UHcyUDFtcDdJYW4tTV9jZ2kwS2FPQkdYUGRyTXVBUlVzbjFIeTBsbEppdFE?oc=5",
+      "source": "Sports Illustrated",
+      "pub_iso": "2026-06-19T01:00:00+00:00",
+      "description": "",
+      "summary": "",
+      "pub_display": "Jun 19"
+    },
+    {
+      "title": "CFTC Not Ready for Prediction Market Social Cost, State AGs Say",
+      "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxOOVVwQXA3OUJOZU1YOWdrMFZTclltNWFjMXlaVGtaLVFyVzJVS05ER3A1M3RNMENRMEJheENYYUJ2RmhvYUpqUndJcVdwRFQ5WWpEakVxZjdSLTNSRFdYc3pnV0VORWI4SkhGLTRxc0RucUZOY0F1eHFSTUJ3MFRXdENtZzFVV3VIQ0phVEFpdF91ZHVPSlczRTZwQi1MbGNIQmtEWmhncW9FTjdlLXlaUDBxdw?oc=5",
+      "source": "Bloomberg.com",
+      "pub_iso": "2026-06-18T23:18:48+00:00",
+      "description": "",
+      "summary": "",
+      "pub_display": "Jun 18"
+    },
+    {
+      "title": "New $50 Polymarket referral code \u201cOREGON\u201d announced for Mexico vs. South Korea odds",
+      "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxPS1pwRGxGRFBkdElha2dONnB4SWdVM0tMWHM0MHJQemVjNnQxUmJQendqSF9IaTAwc2gtazBhWV9mY3JDSHRULWs3VkU4M3FaS245SkUwZElNZmtUdF9LRF9za2tuVzl1VlVSVFZBUjBkeXVsd3hqc004UW54Y0VWUS1kc251R2w0eTg2VDJVYlMwb1F6T2RPRW1zYzFQMU5FSEhnYTRTSnpJc1hxcDdVM053S1NrZ2F3SEZQeXlwU1ZoSWk2U3c?oc=5",
+      "source": "OregonLive.com",
+      "pub_iso": "2026-06-18T21:55:00+00:00",
+      "description": "",
+      "summary": "",
+      "pub_display": "Jun 18"
+    },
+    {
+      "title": "Wealthsimple Cracks Open Prediction Markets in Canada With Kalshi Deal",
+      "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxNMmJnLUVfbG1OLXFNLUttTy16ZHBsd3JGNnhzN3k0ZGxoNU9TcUFfVWhTSXllZmVPZ3Vwbm1GR3F3YXRLOHlPNktIR2JlX3pOblAtaXRxTUZiTUtGeWwtOTNMOEF3SklUeldZVi1ieHNxSkFNNVphQ2VYeldwcHVzUXNuUVhTR3JpVkJISk1GN0hQRmpmMVZRTlZKemZFdWpQV0dWTzdEREZXaDltNGRTLXhyN3NvUm9YbnluTUx5VTlmNUhDTkdhbg?oc=5",
+      "source": "Bloomberg.com",
+      "pub_iso": "2026-06-18T21:46:05+00:00",
+      "description": "",
+      "summary": "",
+      "pub_display": "Jun 18"
+    },
+    {
+      "title": "Kalshi Passes $2 Billion in Annualized Revenue, Holds Informal IPO Talks",
+      "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxQWi1HT0x4dlN3WDcyN3BSRWZ3b1dpTWtIWmhQMUZIMnkwZ3Yya2JYZFFkNzNybEJwcWxGaGFrc1Y2ZElEZmNUdFhSb0JqT2dpZ1dNd1J3ai1JMy1qR3FjM3AwQlJxdUtoV0dQZ3otdS0zcURiZURnNEVMSTlmejY1TWp2WXFpQWZuQUQ2THZQWk5mME9ZOXlJajVQaThDMXM?oc=5",
+      "source": "The Information",
+      "pub_iso": "2026-06-18T21:30:00+00:00",
+      "description": "",
+      "summary": "",
+      "pub_display": "Jun 18"
+    },
+    {
+      "title": "Judge sides with Nessel in Polymarket\u2019s complaint over sports gambling",
+      "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxOM25yeUpoVnVXQ1JKcWFPRDN6X1FWOXZtSjQzdV8tNEhuakR3WUNiSkhMYUl0YmxrTFBRcFNPMkZTaVp3M09hOUkxcVdCUmZtODgybVBpem5xWFItWEtmVHJfN254RHFyOTRNTzFxSWtrQVl2OXJNOWtTMl9vb1QzQW11WFBCeHotSWd1OVdTdndxVTBpU0lJWjU0bEZmaDEtODBFUGlTcHVwWmlGOVRNNVY1NNIBxwFBVV95cUxNdEJfUHM2UklBMWQ1MWNPMk5iMVRtTzdUWWh5ZEsyVEhhdUttdE9wR2gyT21ENjBmUlJhSzhVWVVRVW5FUTkwN1BOOGhDNmpnTGxVV0J1S1NBQlpfX3hnNWhOa01sRG1SQW1MWEkxdkVqRGdIU2hubXZSMjUybWF1RFhyR2k2ZWQ0N0R0ODVabGNQcWZjU0FKTnlIQlJnMTd4Z2t1YXVNTDdmR0lvOVh0aldtOVhfSTI3SmQ0Z1oyZzA1VGROeXFr?oc=5",
+      "source": "MLive.com",
+      "pub_iso": "2026-06-18T21:02:00+00:00",
+      "description": "",
+      "summary": "",
+      "pub_display": "Jun 18"
+    },
+    {
+      "title": "Steil pushes bill to ban lawmakers from political prediction markets",
+      "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxQOGs3MTBjTk5SMnJaWEJNUXhESnlkZ1l2Rmk4MFE2aFh6aUNzNG0wZDFpZlNvVUdyUUNLa01ud1ZSNVBQdldWRnVhaFlUSFRuNk5ydXlqNlktR2tqakhEMVliY2tRWmh2NnBzTkFnaXQyX0syMEdZamtwMDMtcmFzRXBlSFJJSU5IdG80TVhvQnpSdmFEeXptdmpCaVVpeXRPalFGY3MtcmV0QVRHcElv?oc=5",
+      "source": "Politico",
+      "pub_iso": "2026-06-18T19:47:20+00:00",
+      "description": "",
+      "summary": "",
+      "pub_display": "Jun 18"
+    },
     {
       "title": "Kalshi traders see greater than 50% odds the Fed will hike rates this year",
       "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxNa2Y4aU9WaHdPRGRGS1Mwc0JEWDBkSm9acEpDenhrSnhSSGR0VHVia2J2SjlaTzVpY2p0NWhMVF9leU1pODhwYzJFb2F2V3RKZ09lSFhKQ3VtNExuN0pjMm1HUXRLWVdWb05kWVFtMkFyOGhxMUhyNjM2NmNyS2ZnOExrWjgxUWxwSDJyYzVmVEtIZ3NVU0Y5bjY0NlVGNWdNOGtsTkVhbTQwTjljZVZSaEIzd29JNlFS0gG-AUFVX3lxTE1HS2NBbU9LQlNjd1dHUmlfYU94Y0h5dklhNHR5V0EyX3dzTzE1ZEVlTTg5Y3dWbzZUMDBERTdSVmVQamhZa1otUDlIOG9DYjRQT0szQmUxeDRsY05rZ3Q1YV82QkpvVWlUdFM3ZEpvdG5LbFhVZVJKTnQxM2o5a3BpVDV6NzM1MmFyb0F1RnNiZVdZTFA2SXJiVDRFV3BtaV84aTZRT1IwMHVkaHBDcElZYmdzYWR2MGRGRGNrR2c?oc=5",
       "source": "CNBC",
       "pub_iso": "2026-06-18T18:24:47+00:00",
-      "description": "",
-      "summary": "",
-      "pub_display": "Jun 18"
-    },
-    {
-      "title": "CME Sues U.S. Regulator to Stop Kalshi From Offering Popular \u2018Perp\u2019 Futures",
-      "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxQcldockhUX0RZYUlfeWxRMXAwZWpVQkYteHV2dDVRUXdVenlQUzg3Y1dkTkthMnZsODFya0FIcFFaVEUwWEFPZjA1OUVSeDFPWHJnemJKZTlGdU53elhiZWhxRWs4UnUzLVVaU2M1NDA3bWtjcm42Mjh3bGYxd28xNFd4WW5TZlI2UHdkZ2RGd2w0bzZKLUk1Z0NuUXktOTJ0TzJ6QVU5YV9fRnhRc29fYTZ3U0pvcUwwSjNQSA?oc=5",
-      "source": "WSJ",
-      "pub_iso": "2026-06-18T16:27:00+00:00",
-      "description": "",
-      "summary": "",
-      "pub_display": "Jun 18"
-    },
-    {
-      "title": "Polymarket and Dear Media Team for Weekly Podcast \u2018What Are the Odds?\u2019 (EXCLUSIVE)",
-      "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxQTnZ3ZVJMSXdqRnhPQVBycUNPeWJOTXpEOVRfRGNISWcwX2VodG5RaXVYcU9KQWg3RU4yU3pwTno2YTkxUTNYT1YwXzRfbEJSR0hoa3doUGhOVUFSc0ZJanFtaWdvZXlSajJMRVlxRmphYmI1cWxDb1lnaGlHcWFuMHQzSmlXYjRSV2FKMTZjTmhSVHVnTnBWRQ?oc=5",
-      "source": "Yahoo",
-      "pub_iso": "2026-06-18T15:38:42+00:00",
-      "description": "",
-      "summary": "",
-      "pub_display": "Jun 18"
-    },
-    {
-      "title": "GOP Rep. Steil pushes bill curbing members of Congress from prediction market betting",
-      "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxQTUJIRzhub0xBZEhLSGl6ZFp4Ql9Pa2JCdkRCVGR3Nm1LZFdNbGZLazBOdHdJYk0ySWZXTk5BN2Q5b01uRXhkb1pMUU5FQlFRbzBPMW5CXzVJTVl1VmJUNm5kcm9ITkM5WjVTUEtONXJKeU1vNS1wQWZKT2Nlc2h5OW5ZeW5pVi1tVGg2TDFWWTg3RHY2UWfSAZsBQVVfeXFMT1E3OUVwUC05MmhqZEFvY0ljXzFWSU9kYmdEbUN0UEtCYVBZdDV0azlUeFIyMDRJMGh0S1Y5NG1ZOGE3Mm9yOHBVdzJUQTZNdFNid1JUcENwQ2pXNHVaX2hnMDlyam1qcEdNamRPLTg5Tm5FcV9vTFFneFhKRVJzdl9PeXF3N0FkSWh3WldwLWZYUEtrZDEwVnlhWFU?oc=5",
-      "source": "CNBC",
-      "pub_iso": "2026-06-18T14:20:58+00:00",
       "description": "",
       "summary": "",
       "pub_display": "Jun 18"
@@ -47,24 +83,6 @@
       "description": "",
       "summary": "",
       "pub_display": "Jun 18"
-    },
-    {
-      "title": "Prediction markets are running up the score on sportsbooks at the World Cup",
-      "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxPZjljc1FTOE5fWUJIZlY2QzZVVjdXRWJ2NkZBT1UtVXQ4UTVUNXA3SVRrbkg2Y3dhMExUbHZ1VEc0Q0M2bGpOVkhRUEp0XzNPaE1keDFBWWpHdmtHUklZUUlZdGtzWHZ2TUhCdnBXdEw3MHFkd3p0ZnFKcjhyMmgzelBmSm5hT1YxQWNHcTJSZWx4el90dEZLM0lQQnE3WWtXTTQ2UjZkaG5qc3Q3Q0RwMHpOM3llTDVwM3RJRw?oc=5",
-      "source": "Business Insider",
-      "pub_iso": "2026-06-18T09:50:20+00:00",
-      "description": "",
-      "summary": "",
-      "pub_display": "Jun 18"
-    },
-    {
-      "title": "Kentucky targets prediction markets, puts red state in potential clash with Trump team",
-      "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxNUmI1a0pzeXJVeWxlTkN5RXJGdkxjUGlHSDhkZGUzbGpDVHZmYjhNV3hHSS15ZTY0SFdiTXJ5cG1UUmNtUFpFUklsR3ltTHVJWVgya0ZKZW1SVm5sQzY3ZDd0UHlSZlpBektTT0FPMVhJSmVMejlYSTVmSHJfVmJITEktOGdZdHIwRkZnLTNPdFpQNEVJeEJObV9CNkN6OEw3bUdRaWxXT1lNYjBhY19iT3EtZ2VyRk9URlI5WlZXZlU1UHhqM2cw?oc=5",
-      "source": "CoinDesk",
-      "pub_iso": "2026-06-17T21:30:10+00:00",
-      "description": "",
-      "summary": "",
-      "pub_display": "Jun 17"
     },
     {
       "title": "Polymarket Bets on Iran Deal Fuel Fresh Insider-Trading Fears",
@@ -85,31 +103,13 @@
       "pub_display": "Jun 17"
     },
     {
-      "title": "Kalshi & Polymarket Send Clear Message With USA vs. Australia World Cup Odds",
-      "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxQNFl0VlJQUkw3U1VRS2RQQ1hPdTl2eUFjM1B1aDhraTdKWDc0NUlZQkJodk4tSExHMnpuWHRhY3lwSUVUX1FIZVRTSkVRVTFOSWt2TU1vOWpQYWU1VTJoRlFhRTZfVm1uTURMUEVSb2FjNWYzMG9QeHVWRkVyeFVuLVcxank0TG5PV2RPdHh1cnV5ejhDa1pzMGRya3pSOUhoWXBGTzRQLXRIT3N2dVRhSTdrYUhWNTFhUUlVX2xXVmN0UQ?oc=5",
-      "source": "Sports Illustrated",
-      "pub_iso": "2026-06-17T16:19:31+00:00",
+      "title": "World Cup Exposes Growing Global Prediction Market Rift",
+      "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxNR3JiQ1hvcE0zckVyendPQmRtYk10YzI3bC1qTzZFSFh3blptbS1jWDFlQnZlQThZdEU3dDBUUFM1WkUyNnAzYW5ZNHNzM01hMFpMUkI0NV9tOU1Pd2FFOFZoT21BZ1FtRHk0MEgzMHRJaDNyeUV0REtxVnVrTkcyUXBmc3FsOTFiTmlib1pzRW9ZVWZ2MDJyUXlmYV81bklHai1hVHpLMjRGVXBlN2ZoRUxn?oc=5",
+      "source": "Bloomberg.com",
+      "pub_iso": "2026-06-17T01:08:00+00:00",
       "description": "",
       "summary": "",
       "pub_display": "Jun 17"
-    },
-    {
-      "title": "Kalshi Aims to Expand Perpetual Futures After $5.5 Billion Debut",
-      "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxOWndYY0Ixb3pFVzMzVjhoM3JDREFLZzdTSHRfYXdfRG41T3Z4Z3lWd0RGdTJtMk9hRF8xNnoxZEJ0dWtCQXhDRFQtUEl3UlNLMUF1TmcyeFVLTUtaTS0wNFk3ZGQ2QkZPMV8wdjljZE5zcmdiMXF6Z25lbHBNNGJDbVl4SnU2dlNuakRZNVhDWHZ4a3Z2V1k1cGgxTW1RQnJOZjJXbUltc1l3cG8yMFhlSks0U2k?oc=5",
-      "source": "Bloomberg.com",
-      "pub_iso": "2026-06-16T22:18:45+00:00",
-      "description": "",
-      "summary": "",
-      "pub_display": "Jun 16"
-    },
-    {
-      "title": "My Week Trying to Get Rich on Prediction Markets",
-      "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE9rNzhpY1I1Q0tNeUxDSzEzOXFqNkFnZG5rN3M4dnMxREFnUEFMZjB3cFVOOXpRRF9Fc0NWU1BHY3gzSVJhODNqTXR3MGtMejZpb0tMSlAzU2RreHhzMDRyR1JZZzF3T1JqUjgzRV8yR3A2NE0?oc=5",
-      "source": "The Free Press",
-      "pub_iso": "2026-06-16T19:47:02+00:00",
-      "description": "",
-      "summary": "",
-      "pub_display": "Jun 16"
     }
   ]
 }
