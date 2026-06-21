@@ -1,22 +1,49 @@
 {
-  "updated": "Jun 20, 2026 \u00b7 7:14 PM ET",
-  "updated_iso": "2026-06-21T00:14:20.105819+00:00",
+  "updated": "Jun 21, 2026 \u00b7 3:22 AM ET",
+  "updated_iso": "2026-06-21T08:22:26.154286+00:00",
   "homepage_count": 3,
   "articles": [
     {
-      "title": "Federal regulator\u2019s definition of \u2018gambling\u2019 vs \u2018gaming\u2019 at heart of proposed prediction market rule",
-      "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxPcjdXWmdrZjFwNWQwOXhiZWl0QS02Xzg3V1kxMmhUbWtYNDJ3WnBZX0tfNExtWk04aW9vcVVkVHZHeFZDWC1BMjBabjJDdi1yRWFoTnBPN3hObGpxUzhpZU9oMkV2ajNCUXNZbXR1T194aGVudDJXcEZMdG9PUGtoc2lIR1FpaF9qUG1OeHFCRjU2SXg1LXB5N2tmRmJZbWRob0l3REZwSFVxd2d4SGJsbWprZmk1OWJsRDVRbXJ3?oc=5",
-      "source": "ictnews.org",
-      "pub_iso": "2026-06-20T21:00:00+00:00",
+      "title": "CME Sues U.S. Regulator to Stop Kalshi From Offering Popular \u2018Perp\u2019 Futures",
+      "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxQcldockhUX0RZYUlfeWxRMXAwZWpVQkYteHV2dDVRUXdVenlQUzg3Y1dkTkthMnZsODFya0FIcFFaVEUwWEFPZjA1OUVSeDFPWHJnemJKZTlGdU53elhiZWhxRWs4UnUzLVVaU2M1NDA3bWtjcm42Mjh3bGYxd28xNFd4WW5TZlI2UHdkZ2RGd2w0bzZKLUk1Z0NuUXktOTJ0TzJ6QVU5YV9fRnhRc29fYTZ3U0pvcUwwSjNQSA?oc=5",
+      "source": "WSJ",
+      "pub_iso": "2026-06-21T08:20:19+00:00",
+      "description": "",
+      "summary": "",
+      "pub_display": "Jun 21"
+    },
+    {
+      "title": "The market for predictions is massive",
+      "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxOQVZMdWxDby05RTliby1KWWEyb2loaGZUNEMyZHA3M1FRWTZXUnpzYURzVzN4UVpBWEw5UjRlbWUtMFNkQ055ZEVOTVppR0xvVXlPalo3ckRRVm55dm5mZjNEU1FxUjRpbW43c1RhUm15ZktrNUdWUF8xTkVqZEVkeA?oc=5",
+      "source": "Morning Brew",
+      "pub_iso": "2026-06-21T04:35:18+00:00",
+      "description": "",
+      "summary": "",
+      "pub_display": "Jun 21"
+    },
+    {
+      "title": "They Looked Like They Were Getting Rich on Polymarket\u2014but None of It Was Real",
+      "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxNTVR5MHA0UHhoMUVyOGZfTFRLaUtpQ1AxTjBpeHBoeS1hTnZwMjB6d3VBQmhuVmsyS3FYVUdPTk0za09VOWE2VnVOdjduN245UXJtemRtalpVNGhCOHFiU0pybkVXWHVmZzBBbHUzRHZaVTB2d1A4SUxGV3RYZ05FV1lBUmRGMzluTmwzQzhkNlN4NWhK?oc=5",
+      "source": "WSJ",
+      "pub_iso": "2026-06-21T00:30:00+00:00",
+      "description": "",
+      "summary": "",
+      "pub_display": "Jun 21"
+    },
+    {
+      "title": "New $10 Kalshi Referral Code OREGONLIVE1 updated in CA, WA, or OR for MLB and UFC odds",
+      "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxQR3VLNGhjY3JZZVdaY0NhR1YtXzRYVWhhclhwMmJoZVRlVk0zVW9vaFhsT2gybUI5eUFPOGdYM2c4RWZCX1ZBWDhIRVpvQlpyM05DMFRVYjQ2MU5Ub2drOFV3TUd5UGNTVHFwYnJsMlZPRFlxaDMtSldLcFo2c1FfOU9tdWpUR0dEU1RFWXUyRE53NHZtbk0weGk5cDFyWW9mNmRPUHJrYkZBTVJMcWdlaXc1aE4yTURFcjJ5SFVsSEtZazVQOWU1QjBEZw?oc=5",
+      "source": "OregonLive.com",
+      "pub_iso": "2026-06-20T21:55:00+00:00",
       "description": "",
       "summary": "",
       "pub_display": "Jun 20"
     },
     {
-      "title": "CFTC proposal raises tribal sovereignty concerns in prediction market dispute",
-      "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxQb0RUQ09Wb1ZBQWZ2ODJqV0tKeTNuU290ZlJpNktKUE1ONFo0ZjlkcFp5eUZ3RnV3UXFzZFM1cmRPamxISl9qYzFEOWl0V1kxMlh3d0tTU1F3MUJhbjA2NDRGQURkN01fMVdvcWZZemhsQkZkTC00SjFxNEpWN1IwR1c5eVVWRFVJQ2NjQXJoVHZJZ2RHNTlodmdzRHJFekUxbFFyT3JDU3l4NE9Xa3kwNTd1eTRwcGd3QVAwR3N1NWRTb0xNNkJIZVVB?oc=5",
-      "source": "Tribal Business News",
-      "pub_iso": "2026-06-20T14:59:36+00:00",
+      "title": "Federal regulator\u2019s definition of \u2018gambling\u2019 vs \u2018gaming\u2019 at heart of proposed prediction market rule",
+      "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxPcjdXWmdrZjFwNWQwOXhiZWl0QS02Xzg3V1kxMmhUbWtYNDJ3WnBZX0tfNExtWk04aW9vcVVkVHZHeFZDWC1BMjBabjJDdi1yRWFoTnBPN3hObGpxUzhpZU9oMkV2ajNCUXNZbXR1T194aGVudDJXcEZMdG9PUGtoc2lIR1FpaF9qUG1OeHFCRjU2SXg1LXB5N2tmRmJZbWRob0l3REZwSFVxd2d4SGJsbWprZmk1OWJsRDVRbXJ3?oc=5",
+      "source": "ictnews.org",
+      "pub_iso": "2026-06-20T21:00:00+00:00",
       "description": "",
       "summary": "",
       "pub_display": "Jun 20"
@@ -31,13 +58,13 @@
       "pub_display": "Jun 20"
     },
     {
-      "title": "Kalshi vs Robinhood: Which One Wins in 2026",
-      "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTFBfZnp1LTQ2Q2cxU3RCREFWalotdzhzQnplTDF3c0JpSzdrcWEzR0NtWmVrZXd4cTFHeDdhYTNJQnFMWDRKUmhnRjViRVBQa0xOblpEREJsTWo3RUlDUkFMY1VobEtfRlZrWEUzVS1Selk?oc=5",
-      "source": "SailGP",
-      "pub_iso": "2026-06-20T00:50:05+00:00",
+      "title": "USA vs Turkiye Kalshi Odds Already Favorable Before Australia Kickoff",
+      "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxNUkI4YXk2MzA3M3pJbHBtOVgtMTV4eENZbVg2c1pqNXZiRmlnemFkWVI5c0VIVnZjRm9EUU83amlhNlFDc1FDaXU5Q1NXQWJla0hJRnZudjFHeG1CdmpsRjJhaVotRFAybXMyc3NHZ2NoSjFRZHJKVzEzMFAzZ0pPN3N5Z1FrZmpESlVPamZVVklienhpNmU0eUJLcmVYOFZkQXNZZFVUSW1NQV9zMXE2bmx2Q2R3aHlKbmkwUg?oc=5",
+      "source": "Sports Illustrated",
+      "pub_iso": "2026-06-19T19:00:00+00:00",
       "description": "",
       "summary": "",
-      "pub_display": "Jun 20"
+      "pub_display": "Jun 19"
     },
     {
       "title": "Charles Schwab working with Cboe to enter prediction market, WSJ reports",
@@ -83,33 +110,6 @@
       "description": "",
       "summary": "",
       "pub_display": "Jun 19"
-    },
-    {
-      "title": "Prediction Market Philosophers Got What They Wanted. They\u2019re Not Happy About It",
-      "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxQOXpOQlJWdXdRTERwMXI0MGt4UGJtLXNJSXpEVnNyYld6dmtUbnJJRkZxMnpRNmVPS3JMSXl0T1Q1Q3ZGeDZHTmpSTGxkb2VhRnJWeVpkRVdlLS00dFNHcXdNT19UbzUxaFhTdHh0eDRDNUxicTJHUjk2SE5JcnM5MXpBZ0JtLWc?oc=5",
-      "source": "WIRED",
-      "pub_iso": "2026-06-19T09:30:00+00:00",
-      "description": "",
-      "summary": "",
-      "pub_display": "Jun 19"
-    },
-    {
-      "title": "A Viral Knicks Moment, Brought to You by a Prediction Market",
-      "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTFBnMzI0RE9vamhrUHBRdTIwUkJORzdmY09OT3BRQVlHdzZTSXFuSFl1aXZHSkhveVFHTEZ0Z19fdlZGSEtiM2FCODZkNk9UdDRMTDFldGdPaEp3VHBIUVZVbFptMlloeUNGdmtfRHlQa2F3dVFiZndrT0dUZUxFQQ?oc=5",
-      "source": "The New York Times",
-      "pub_iso": "2026-06-19T07:00:27+00:00",
-      "description": "",
-      "summary": "",
-      "pub_display": "Jun 19"
-    },
-    {
-      "title": "Kalshi Passes $2 Billion in Annualized Revenue, Holds Informal IPO Talks",
-      "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxQWi1HT0x4dlN3WDcyN3BSRWZ3b1dpTWtIWmhQMUZIMnkwZ3Yya2JYZFFkNzNybEJwcWxGaGFrc1Y2ZElEZmNUdFhSb0JqT2dpZ1dNd1J3ai1JMy1qR3FjM3AwQlJxdUtoV0dQZ3otdS0zcURiZURnNEVMSTlmejY1TWp2WXFpQWZuQUQ2THZQWk5mME9ZOXlJajVQaThDMXM?oc=5",
-      "source": "The Information",
-      "pub_iso": "2026-06-18T21:30:00+00:00",
-      "description": "",
-      "summary": "",
-      "pub_display": "Jun 18"
     }
   ]
 }
