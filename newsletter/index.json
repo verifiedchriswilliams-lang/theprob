@@ -1,5 +1,12 @@
 [
   {
+    "date": "2026-04-12",
+    "subject": "The Sunday 5: This Week in Prediction Markets",
+    "subtitle": "Five stories shaping the prediction markets conversation this week.",
+    "url": "https://theprob.ai/newsletter/2026-04-12-sunday5.html",
+    "type": "sunday5"
+  },
+  {
     "date": "2026-06-27",
     "display_date": "Jun 27, 2026",
     "subject": "The crowd moved 6.8 pts down on this one"
@@ -28,13 +35,6 @@
     "date": "2026-06-22",
     "display_date": "Jun 22, 2026",
     "subject": "The crowd moved 4.0 pts down on this one"
-  },
-  {
-    "date": "2026-04-12",
-    "subject": "The Sunday 5: This Week in Prediction Markets",
-    "subtitle": "Five stories shaping the prediction markets conversation this week.",
-    "url": "https://theprob.ai/newsletter/2026-04-12-sunday5.html",
-    "type": "sunday5"
   },
   {
     "date": "2026-06-20",
