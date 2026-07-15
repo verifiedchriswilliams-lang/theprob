@@ -1,13 +1,67 @@
 {
-  "updated": "Jul 15, 2026 \u00b7 7:19 AM ET",
-  "updated_iso": "2026-07-15T12:19:26.879668+00:00",
+  "updated": "Jul 15, 2026 \u00b7 1:01 PM ET",
+  "updated_iso": "2026-07-15T18:01:34.110013+00:00",
   "homepage_count": 3,
   "articles": [
     {
-      "title": "Google Bans Prediction Markets Product Ads Michigan & New York; Expands Shopping Ads & Free Listings",
-      "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxPQWpyTEROeGwwRFRGNXRoNGx1MEQ5c2ptZkR1RDhROVo1dmhrNHpCa2FOTTkwLVBTR0h6MUUwQlUwMkh2cHhmT2JHaVpkS0RvOGZuMVFpMzlxRWhQN1ZTaGFncjdsVng5UlJtVTdoNktmcDZMWE1uMnRuY284a3F4OW9VNER4bmRuWWVpU1dfUm9DVUtwUHNCc2tlUjhyWU5nWnhEcURucUZsM0hqb3N5S2ZQWWtQY1Yw?oc=5",
-      "source": "Search Engine Roundtable",
-      "pub_iso": "2026-07-15T11:05:00+00:00",
+      "title": "Opinion | What Californians could lose betting on life through prediction markets",
+      "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNV0h2QzVQb0pMM2tjb1hVUXdWUENoeWUydExtZkpnbzJtWE1VM0xMNkNpaWw5QzZmZ0luaElwbmVJRW10UnZKal9yZHpKM09Hd0JfWEdXS0pwU203MWhTVFRZSl9XYWsxbVJjcXhoVUJEdGpibWhTUy15OTUyZHBrdHdNVG5OMVdPQ2lNNEF3?oc=5",
+      "source": "CalMatters",
+      "pub_iso": "2026-07-15T17:45:00+00:00",
+      "description": "",
+      "summary": "",
+      "pub_display": "Jul 15"
+    },
+    {
+      "title": "Polymarket odds jump to 74% on Stripe acquiring part of PayPal after $53B bid (PYPL:NASDAQ)",
+      "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxOUGZ3akFUVExZMm16Und5UVpPRzFSeTlLbjQ2ellmZlAtYXVTcmI3M0lNWFc3eHNlUGx4eHZERUdjVUhTd0hTS3NYenF2UFlNLVZoOU1VcVZaSWVYbUo1UTE5MnpqcG5ua0tSSG44UDVnTnF0ZTVqQmk3TUJBZnpIcFJIVlVKR3p2SmlWZ2w0MFFQUXNPRTZRVDBXTEdBWU13WlVoODFoTWhOMFBQZElVX1dqQQ?oc=5",
+      "source": "Seeking Alpha",
+      "pub_iso": "2026-07-15T16:44:40+00:00",
+      "description": "",
+      "summary": "",
+      "pub_display": "Jul 15"
+    },
+    {
+      "title": "Why Robinhood Could See a Prediction Markets Earnings Boost",
+      "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxPRmJLV0tNMllPZzZvVEdpZW5mSWkycHlEelNoeTJXUjAzamdqR00wNVZMODZkV0dYR2x4aUd0S1BSQndNREIzb2xhNFlyWDQzYnBySWJoc3Y2VUNtMkhyQ3ZZLUxFTU5RWExXOWlXcjJ2YWl1ZDNjTzRoTWVwcWFldXlCajh5OW92WW5WMHZxZmUxTWZjUXVYUjZCQXo2NWlM?oc=5",
+      "source": "Yahoo Finance",
+      "pub_iso": "2026-07-15T16:20:00+00:00",
+      "description": "",
+      "summary": "",
+      "pub_display": "Jul 15"
+    },
+    {
+      "title": "Closing the loophole: Prediction markets disguised as financial derivatives",
+      "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxNRmcyTmoxdDNDejhxamt4R2oweTRZVllsblBORWhOTW56QkJ2OHZ4eUhfR2xRbWNWaXdHNGFOYnZDSFBZMldOUmIwVDZ5eWlxcFA5d1FlQzhNcjRZVlpLVU1CdGEyb1UzVnJmdVo4UDdaVWF6RTJSN1NuNUJpM3lodVFfcXRPVVNOSEtiZNIBkgFBVV95cUxQZE8zOG1EdWpxaks1U1hQR0ZPWDF4YVk4Z3Q2TnJUNnhQUE0xMEl3SHdUMFprSm5FeWpLdTJhUndXekZsaElvNURqMHFyRmlYb2ZrdmZtTk10WGpBZTM5ZXBmaVJfMWFrTXc4UkxMdVNwSWRlUXlUYktpSjd0RUFLZ1NKd0NGMko3NjNWN1JHTzdjZw?oc=5",
+      "source": "The Hill",
+      "pub_iso": "2026-07-15T16:00:00+00:00",
+      "description": "",
+      "summary": "",
+      "pub_display": "Jul 15"
+    },
+    {
+      "title": "The dark side of prediction markets is getting even darker",
+      "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxOdHVRd21TREMtRDVUZkhKMldqemxfMkZucndOdnY3dURta09xZE5pb3RNVlBvRnVwY1cwLTBoWVc3VnpCTGlWM1RhUjh1cjZtb1JwQ251OEh1MVUzUklxLTBWOHdzWkVxWEszb2pER1A3NFpPaXUzV0UtQ29HamhoZkxvYUxyMzNJa0dYQ1VpY9IBlAFBVV95cUxNUEdtNW9xeGlPX1hWOUtIdUtWdmNEVmN0QnJVQmtqQmlHSHU4cEVvNzBFTFY0ZThselIwQmkxZWVCZFpPQVdFSTlIVDAtUmlyNmR6RUhlWmREZHVBV2lSSDlaaWFnMGlnQlZMWWtqRU5qX3NnV21ENi1IYXNrTHdERHp1dzFNMGtUZ3ZFZHlKWVk4R3hP?oc=5",
+      "source": "The Hill",
+      "pub_iso": "2026-07-15T15:00:00+00:00",
+      "description": "",
+      "summary": "",
+      "pub_display": "Jul 15"
+    },
+    {
+      "title": "Polymarket upgrades $50 invite code \u201cCUSE\u201d in NY, GA for World Cup Semifinal, England-Argentina",
+      "url": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxPSldRNXlmSnFBRXhYQ2I0T1JVNS1xX0NLRUJqcFdFWUZrNVFnWl8xb21lQWh3Um1rVjZJNXI3SHdTTFdOWFpJVF9fbnZUWlVUX2ZfalZWOFg4QWgxd1NGTEJMV2xjR0pxTkZYdzBnXzBGMzNsV3FnczlXalFxVk90RERfRFlsWW8tdTBJSzNkRW94cUo2amZKbzJXaEtxbEVQdVhLbW5fZTVkN0k1cGh2S3lNY0NjLUVVb19yTms1MnE1RWNvYWYxR3E2QmRIOWtUUFE?oc=5",
+      "source": "Syracuse.com",
+      "pub_iso": "2026-07-15T13:45:00+00:00",
+      "description": "",
+      "summary": "",
+      "pub_display": "Jul 15"
+    },
+    {
+      "title": "Seinfeld Episode Or Prediction Market?",
+      "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxPd3ZxWGpCRjlkZjlfVmVZQ2xtcDVwZ1FtNW9URW0zSFROS1JaRVQzMTFpQkxTbVo1RFNoSzl2MTZYT2V2V0w5RmoxZFM3am9wbkpDbXFROWpXdkhqTTdEUF9Yc0dVa0FRNVdfMXU5NGlvN0lGdVZLdjNpMk9kd1FTT2ZpVQ?oc=5",
+      "source": "Event Horizon | Dustin Gouker",
+      "pub_iso": "2026-07-15T11:04:38+00:00",
       "description": "",
       "summary": "",
       "pub_display": "Jul 15"
@@ -31,15 +85,6 @@
       "pub_display": "Jul 15"
     },
     {
-      "title": "Czech Republic orders ISPs to block Polymarket over gambling violations",
-      "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE9uM01DOVU1aGNxTWhxQTNha096NnpuUlYxaDkxeWdZQzNiaF9WUVNrYmFnNXQ4U0w3VUNYR2pWd1Rsc2FUM2RJeHFzMXlheW84SURGQXN1c01xUG5TamlPQ0EtSUJZX2xmMDBLRzNiLUxrbTV6ZTNLMw?oc=5",
-      "source": "Crypto Briefing",
-      "pub_iso": "2026-07-15T09:55:08+00:00",
-      "description": "",
-      "summary": "",
-      "pub_display": "Jul 15"
-    },
-    {
       "title": "The CFTC\u2019s Word Games Legalizing Gambling",
       "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxPUUpXcWpQcU0wVUFlcTBDanA0bEVxc0pVZF81UF9PMXdNU2lPbnRWM20zdWI2QlhzVXNObkZHQUVUMGlOWXlvUFJCMnhaV1VmajRjaTY1Q1FvbzY5QW9taFN5N3M2eUFuY1VIVkJYM1VjNnkwczMwZHJzSlZ2VUM0aHpWSFlCVUU1WmFXekpXcTlEOTlXeFdGRUtpbFNvei0ySUZTREtQZkhPQQ?oc=5",
       "source": "The American Prospect",
@@ -50,63 +95,18 @@
     },
     {
       "title": "One-Man CFTC Speeds Up Rulemaking on Prediction Markets, Crypto",
-      "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxOaUxPZzZHak8tQTV4ZXJKZklJNEZXWjFVVnFoQlUxaG5ERTVsS2I5X2FQeU8tT0tXQXU2TUE1YzNWVEZ0d1o0dzFjeVFkYjBBcFdMMGRWTklITWNzRGpldlNMNlVmN2NkQU9tNEFBUGE5QnRWRGN3WFdvT2tEZm1OUmJsd29oc2Yxby0xU19wYXJRV0QwQ29CSnVMQ01rUC1MVGFMNXJlQVZrV2M?oc=5",
-      "source": "Bloomberg Law News",
+      "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxQQjM1cUV1dlo4OU5uYURPLXp6dk5ESEo3bklpOGhmQm5qaDhhT2lad0t2NUFhS0xWUGtIbFBoa2ppQXNHSUlxQ1BjTXl2T05ad3pTZEg0UU4weGczRVpqMEpmbTlOOV8ySklNVzlxRGNmcm5HeVFIYWZDcnhFbHFnOUoyNmM5X0txWjQzdUVaMEhMTm44R2pvUHpJelUwTVp1Q2MwVDljdlFMQ1RfaDBobnNxMDV1Z1NzeVpON2lmN0U?oc=5",
+      "source": "news.bloombergtax.com",
       "pub_iso": "2026-07-15T09:00:00+00:00",
       "description": "",
       "summary": "",
       "pub_display": "Jul 15"
     },
     {
-      "title": "North Carolina becomes first state to tax prediction markets with new state budget",
-      "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxPdWVWNzJEMWdpT2ZNR0RCa1lxcUpTYWNCaFJTcE9ENEJDSG1waENHMWp2d1QxQmduYzhxQS1lQWZMbEJTRFF3TmFtU3NvcXcxOWV0NTM1amJGYkdxR3FoOUZXUXZQWnluc1YxLWw2NUdpR1FNVzhEdzgzNm9jWmFjb080MzNJbWZJZFc1cllDSUd2ODRGbjRWWEg1OVppcDFFQ0w1N04yNExiTXd3OWlxSXV5MU5IN1l1VTNxWlIwS29jTWIyMUJ3dDNYNEM?oc=5",
-      "source": "Port City Daily",
-      "pub_iso": "2026-07-14T22:30:54+00:00",
-      "description": "",
-      "summary": "",
-      "pub_display": "Jul 14"
-    },
-    {
-      "title": "Are sports prediction markets legal? Status of Kalshi and Polymarket in all 50 states",
-      "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTE0yLUp4NkJfVE04WUoxdGxnejRNUG8yckl3R3duYmJzVzdsRkhCVUo0S2lfWklaVmZjUlU5YldrenpteEFOZTVaNlBkd0NuU0VIX25WSlQtTmd0NXdrX3ZUNjhYY3pHclkzTURaUGRLd1hoRHpaUXZ6NGxMQWd5QQ?oc=5",
-      "source": "CBS Sports",
-      "pub_iso": "2026-07-14T21:45:09+00:00",
-      "description": "",
-      "summary": "",
-      "pub_display": "Jul 14"
-    },
-    {
-      "title": "U.S. CFTC moves to stop Kalshi from canceling trades as ordered by Michigan court",
-      "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxQeTNIODRscUtnZGRFWDRzOTNzdVVTUnowVDEwd0tuZ2YybXlRb0d6eGtpTXdQb3lvU1VEQVlRX3J0akF1eDJvNXZVMUg2alJoT3RnYzZRRzY4NU5VMmhSbGF5TG5yRWRJWk9ESS1ueGpPLXUxNjYxZHBSOF9TeEtUMDlMRFdldndYSlFaeXFyTkh2SnNCRWdjemJmc05MTGZMRUd0TzFBazNZSkFJSWtoWHA4eWdsdk5rS21neTFOQUk?oc=5",
-      "source": "CoinDesk",
-      "pub_iso": "2026-07-14T20:51:54+00:00",
-      "description": "",
-      "summary": "",
-      "pub_display": "Jul 14"
-    },
-    {
       "title": "Five Civilized Tribes call for federal action on prediction markets",
       "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxOc010MS1SWUdqSTFaUjhoR25DWVI0R240cnlIV1hwUHZtaFRlay16czNaVVktQ2dqUzBIZG1RZEhNZXJrdnU4dVRSbWFSZWhTbUF6WjNsckxvTk9ReWdrdTdQdW9mRWhka1NUcDYzbnA3YUNhZVFoYjJhNDhyemFvN0RNbXlFU1c5dHJmRjFHMGNDRWctdXpHVlZuVVhLbEQ3bmUtakg2OHU2UmZ6Z2VzVA?oc=5",
       "source": "News On 6",
       "pub_iso": "2026-07-14T19:22:57+00:00",
-      "description": "",
-      "summary": "",
-      "pub_display": "Jul 14"
-    },
-    {
-      "title": "ChatGPT is now citing Kalshi data.",
-      "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE1BTk90QTYwUmF6d1ZaTWFZNE5SQWFfZ3AtWm56X0ZlbmFMWDB0eTg4VVNENTVvcUtNZGN0VnNIRTZ5RFUtSTcxek5jbC1GXzRMSFZpVVpCaXAwMExYT0xXYXdCYUhBbHg3Q2FGenQ3WG52eGFvY3VHdVdn?oc=5",
-      "source": "The Verge",
-      "pub_iso": "2026-07-14T16:19:11+00:00",
-      "description": "",
-      "summary": "",
-      "pub_display": "Jul 14"
-    },
-    {
-      "title": "Forkast Launches ATLAS Agents for Prediction Markets",
-      "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxPWmpOeHhnVmhYWGlkNk5kYUtaYUNLX2Z3VjA2ME1fQ1NqQmdyQXFtd3lhcXhoNlBHNWZnRFJSbFUyaUp5ajNWLWdJc0dNa2ZHVHhoVlVtVmpMZzU2cnM2dWZTeHM0bVhSSnNOZF91SFlZZko2WVJ1VXg3U1pteXllZjlXSk5SZTlwYUpYWnN1VDJIQQ?oc=5",
-      "source": "The Block",
-      "pub_iso": "2026-07-14T15:01:02+00:00",
       "description": "",
       "summary": "",
       "pub_display": "Jul 14"
