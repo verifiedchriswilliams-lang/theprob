@@ -1,58 +1,13 @@
 {
-  "updated": "Aug 12, 2026 \u00b7 6:51 AM ET",
-  "updated_iso": "2026-08-12T11:51:22.793435+00:00",
+  "updated": "Aug 12, 2026 \u00b7 12:54 PM ET",
+  "updated_iso": "2026-08-12T17:54:00.183153+00:00",
   "homepage_count": 3,
   "articles": [
     {
-      "title": "Prediction markets are going mainstream \u2014 advisors need a clear answer ready",
-      "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxNMmNUYnNGZ2hfOFlJZjRtb0Y5VDZGZjJUZEt2a0pHRll0ZmtBTlg0Y29VSV9Damp3VUU3WTA3ZGE3dXg3M1NuTW1MU09nSnFNd2xLZmhuY2pOc1R0elNjYXZkVjBTN2ZyaDlkSXdKemNfQkxwYUs5M2hySkVucEZISUJ3?oc=5",
-      "source": "InvestmentNews",
-      "pub_iso": "2026-08-12T11:35:16+00:00",
-      "description": "",
-      "summary": "",
-      "pub_display": "Aug 12"
-    },
-    {
-      "title": "Polymarket let users bet on wildfires. Lawmakers warn that could spur arson.",
-      "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxQdlhJTUoxTVVjd09JR0ZHbWE4SFR3eVNXcFB4Y0ZJc3B1V1VYX0RiejY2NE45NzZJUW9lemJYMGlGaWVwYUxEYkFNMS1tMUpQSGhSb29KSk1uaFVEQlJEYVpzWFdxWEZXNGdfUTByNGlScWNDckVNS0tTUDlaclF4NHRUZGJmSGFGcFpSZVcycURCbjFRSmtNQXRUWVYteHo5RHpqRDRoNUVoaG83Z1hWSDdNZVlvN0kxUFRKTHhB?oc=5",
-      "source": "The Washington Post",
-      "pub_iso": "2026-08-12T11:32:43+00:00",
-      "description": "",
-      "summary": "",
-      "pub_display": "Aug 12"
-    },
-    {
-      "title": "MEMX Files to List Prediction Market-Style Bets on Earnings",
-      "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxPUHBjZzFjLXU0TUlrelFSWkk4bHQtelpFWnRReW1uSFR2YURVcEs4S05YMFpOWmN2U3BKZXFheXlTN2d5bmtDNGZFYzRKWnlKMWdBSWh3S1hKZXBTeHhGR192QncycEpvQ01sdXJLMWlmY3BvYllseS0xNXpwSWJ5d09RYlk4Wmg0djhFazJQdDFUWEc3ZXlYT1U2VzlqTzZ1cUlfdG9OQ1NzVEFtdTk0?oc=5",
-      "source": "Bloomberg.com",
-      "pub_iso": "2026-08-12T10:30:00+00:00",
-      "description": "",
-      "summary": "",
-      "pub_display": "Aug 12"
-    },
-    {
-      "title": "NYC Council probes Polymarket over alleged predatory marketing practices",
-      "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxOcWdXbjAyb3RDeThQTDNwc241RllLTGhoQXExVFQwVDhYTlFjbjlwcTJvMWthcUQ5U3FLeDlWVm9GN25uY3BvUnJOLU5mNndCTkFVeFFJdUhqWlcxLTlSaVBaWF90NzRfN1VoUklubE95YzEtSExKc3FVemh5eWJwNkp4d3A2VVg1ekN2R1otSWJ0Ry1QWTMxMmkwLU1fdHhQNm5ETEtfbm1GSnhJZ0pkNTRBdXFXYmVQRk1FVWpyZVhRbDA?oc=5",
-      "source": "Reuters",
-      "pub_iso": "2026-08-12T10:16:39+00:00",
-      "description": "",
-      "summary": "",
-      "pub_display": "Aug 12"
-    },
-    {
-      "title": "New York City Launches Sweeping Investigation Into Polymarket and Kalshi",
-      "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxPWFRWNmFhWm1NSU1rOVJ2dWxCM1o3NEtKMGh0ODByV3daZWdFUjJWaDlrcjVIek5rY0FUbTJuVWFtalBuSHJRTGU2OURjbU1oclJLYzFvd0lFbXpXNGdPbDQyTUhvTzlVNm5NWElrYmlRUFNDWXNrdXhVSkNRajhNMUVLMlJsTHBySHQydEViS1g0Tk5kTGt3RGFtQkY5cUJvaHpwZ3pxZW43M3ZCREdR?oc=5",
-      "source": "WSJ",
-      "pub_iso": "2026-08-12T10:00:00+00:00",
-      "description": "",
-      "summary": "",
-      "pub_display": "Aug 12"
-    },
-    {
-      "title": "As Americans bet on elections, L.A. officials weigh how to safeguard voters",
-      "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxOMlE2cmZSd2VaNVNTMV9ENmN3MnVRbk41V2w2R3BQSXp2RmxONWJkVlBRX3ZtU19UWU5lSHpJSDRubElvUGdmanVwclk3T1RTTjdRR0JocGczV3Q5ZUUtNVlNWnFnbXlnLUtvcVFBOGdqVDJKZmJzOG5qeGxtamI2MEVMOEY4bWt4bkVOMDd5SDBHZ2E5NVBGWkU5MWJOajFDTnYyWWNUWkh1LTdxVmZZU0hYcFR2Q0ZLNWpUbDVTWQ?oc=5",
-      "source": "Los Angeles Times",
-      "pub_iso": "2026-08-12T10:00:00+00:00",
+      "title": "This Jeopardy! Champion Is Leading Kalshi\u2019s Perpetual Futures Business",
+      "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxQRlZPc1F0dDRPSHZ2YVFQVEVST2hldENHMVlqM3k0aWtaRHpxU19MNHlnc2NZRldUXzlUQ2J1NmJhcTY3alk3QTlVZm5PdloxN2RJS2pPN3ctb0VVZUZ1TDItWldITFNaX2I3VllrZFBENHVXR243enFYTFo4T3Y0YVBfZjdwT1BfUjZieDdzSDRnLUEtSlE?oc=5",
+      "source": "barrons.com",
+      "pub_iso": "2026-08-12T15:10:00+00:00",
       "description": "",
       "summary": "",
       "pub_display": "Aug 12"
@@ -74,6 +29,15 @@
       "description": "",
       "summary": "",
       "pub_display": "Aug 12"
+    },
+    {
+      "title": "Kalshi Tops $4 Billion In Annualized Revenue as it Seeks $40 Billion Valuation",
+      "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxPaEcydFE0dk94ajBQMHVFaUVFenRRSFBHcWRyZjRqZjRhN2g3X0o0ZEQ0Unlac3g0dlgxYWJEWFlGZUxCS1NnNGxLVzdJaU1Lc2VITzdKS19Vbm1NNUNqQU1UZkFoSTRrYUdiTVZBRXNLdTlrSW5HMlE4dE53dmVIc1M2ci1NS1JyTFJqMjR4X0h0V0NvbVhucWcxU3BCbE50V3JTVDh4Z3A5dnM?oc=5",
+      "source": "The Information",
+      "pub_iso": "2026-08-11T21:25:00+00:00",
+      "description": "",
+      "summary": "",
+      "pub_display": "Aug 11"
     },
     {
       "title": "Prediction markets face pushback at Saratoga gaming conference",
@@ -105,11 +69,47 @@
     {
       "title": "Kalshi\u2019s 30-year-old CEO says most business advice is \u2018trash\u2019\u2014he doesn\u2019t read management books or listen to podcasts: \u2018I\u2019m gonna make it up as I go\u2019",
       "url": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxOSTcxa1gwM1Vwd0UxVHZnNG1ac0o4TWFMLUM2aFNaOUNHSUtrN3V3VUFyYVJTM0JZWGxJZzNVdmNqUzhQQUJ6bmxWR0NHblpkZUU1QzFzQ0xKRTF4dlVjbTBXTFMyV25vY0F4aUhUaXU2WFNBT0szdkJoS3RRZ2w2dTNaNG93QTVNdGZHcmVpMTRodzVseDg4ellYMG1td3BVWDJiVjduMmJQZDdEZFp0YUpFb3lhWkhxWGpfRUJraktXQUFfZVlmRnRxWlQzelhZejlMWW5PQi02Y1BGNk5ib3Rxb3dCMVpU?oc=5",
-      "source": "Fortune",
+      "source": "fortune.com",
       "pub_iso": "2026-08-11T15:11:00+00:00",
       "description": "",
       "summary": "",
       "pub_display": "Aug 11"
+    },
+    {
+      "title": "NFL picks: Here's what prediction markets say about Browns starting QB, Colston Loveland, Falcons starting Tua",
+      "url": "https://news.google.com/rss/articles/CBMi4wFBVV95cUxPck9ZcHBPdmctRlVvY1JRejFRRlhkZXR6XzhKU3dWMFpMN2ZmQnBOMU5IcnQyV2NDYmw2RzVIYUxnZGREczRFcWZpVkNJS1VmTGpwSVoxcWVlZHNMWmhVb1FQT0dHNUhCdGlEdGZSdkVqcmtSWHZ2T2MzNDhEUGFLb1V1QW1uX3ZzMS1Ba3A0NEVYMDlqUm91dGxsR2FTMlJWZFFUVHh4eFB0U1haNEh6SHp4U2lWUW51Y2FiaHJLR3JFb3lkeXNHTU5NUG0yR2FkckdCR1pRUXdSQTJ2VWZhTTI0OA?oc=5",
+      "source": "CBS Sports",
+      "pub_iso": "2026-08-11T14:54:10+00:00",
+      "description": "",
+      "summary": "",
+      "pub_display": "Aug 11"
+    },
+    {
+      "title": "Understand Prediction Markets Before They Come For You",
+      "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxOam5POEw4X2dGSDVBOGFYRHphUmNGbkxNbE95N0x1U0R5SU9aYkw4emRxcm9mNzEwRm9Ycm5rQmRZb2NJVF9iMnBLNjFNU0ZuRGxFeVRSYV9QWUhoWl9VQmxISHVzSXJYU2lkbV9MRHNBZGFRZnpkU3BFVW1XMFh0N0FjMUdMZmRELTU3bTdNOFZQX1Rab2Y1aU4yajBnLWFwaUE?oc=5",
+      "source": "kiplinger.com",
+      "pub_iso": "2026-08-11T13:10:00+00:00",
+      "description": "",
+      "summary": "",
+      "pub_display": "Aug 11"
+    },
+    {
+      "title": "Prediction Markets for Texas Senate Election After Latest Poll",
+      "url": "https://news.google.com/rss/articles/CBMi5AFBVV95cUxQX3E2UzJUTkhwS200cDJOV2g5REVGYjBFSHhLWjNXZ1hRRGxrSXBLZWpNODFySmVCLXdtN3paUnFxMWlfQzFMTU9YM2xaTjZLTFVxU3F0MGJQUWxzejdySTJwdzFGYU8yX1JPck0yYUs4RGJhUk9USHBQdVhhcEtYdV9uMVhGeHI5T2IzME9kMUpSNlNSWllWWWpvYUhUckxGU2UxcXprRE85UEJTeXhCSGthTUw2X2Jxd1dtcl9IUW5XVWYwRnZaSFdsbWZoOTk4NjF6aHFIMGdvT29MQ1QtZDZTbms?oc=5",
+      "source": "Federal News Network",
+      "pub_iso": "2026-08-10T17:30:21+00:00",
+      "description": "",
+      "summary": "",
+      "pub_display": "Aug 10"
+    },
+    {
+      "title": "Tallahassee mayor race hits prediction markets; Ausley leads odds",
+      "url": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxPZW83UGF0NnVLWldrU3I5Tnk2QzBZSl9yQVVfeXg0TDR4Q1o0bWx6RHd1ellFMXdCN2JuajRpZEdKRS0yc0w5cURfOVBBN0FaZUxLbjVOX3FqQUtSUVhuWk9fRWtZckhoZHoyNU43MzlFMlJjZ3A5SWxzeFRZd3BJQXZjR0VPdDVyWENoRWVNYXBCdHRFZks4ek1hZEw3QU1NRzI1QWdoajRaX3JnOHpLZzFfc2RHU3l1UVZiRHZUS1ctV0taVXJqQ3FVc3ZINURaeVhmMV9sMHViN2kwTEUw?oc=5",
+      "source": "Tallahassee Democrat",
+      "pub_iso": "2026-08-10T09:04:00+00:00",
+      "description": "",
+      "summary": "",
+      "pub_display": "Aug 10"
     }
   ]
 }
