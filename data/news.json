@@ -1,22 +1,13 @@
 {
-  "updated": "Sep 9, 2026 \u00b7 7:56 PM ET",
-  "updated_iso": "2026-09-10T00:56:24.839810+00:00",
+  "updated": "Sep 10, 2026 \u00b7 3:32 AM ET",
+  "updated_iso": "2026-09-10T08:32:48.089539+00:00",
   "homepage_count": 3,
   "articles": [
-    {
-      "title": "What are the popular bets being made on Kalshi during GOP midterm convention?",
-      "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxOckRfZmxQZmluQWg5djBKeXdrVkZLZkFBTC15dU9NQ3BsbkVkSHZtdzNXNUp2dnBOUXJRMjJJaEFNNDloNDREQ21lUU51bE4yaHlrcmNCeUxRMFpkUUIzdkFrZ1UzVW1sMGRjRzgtNnBJck9XWGxJQkFvTVhyOUhCdTl6cU5QM2FlQl9EOUFhakJreUxjNnJvWHJnaHZLYTRjZjRfRU9VUWU5Zw?oc=5",
-      "source": "Dallas News",
-      "pub_iso": "2026-09-09T22:18:07+00:00",
-      "description": "",
-      "summary": "",
-      "pub_display": "Sep 9"
-    },
     {
       "title": "Utah may crack down on Kalshi after emergency injunction rejected",
       "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxPS19KUXp5UmNDWGZqaDFMS1RPTWFGMm9PblNIUkJrdnJRU2p3ak9uUXV4c180MXRjYk4wbDNub3ZqclAwLWhvdmF2TWZEOHBicnNWV1dpUXhQOWczaXh4RV9ZZnFnWG5hMXBzVmdTd19laWJnTUxPZkNXSmdpWUZSUHdSTmlwOVNBaFJldVRGdWhmd3NGVHlwZFFUalF0V21saENHbkY3RQ?oc=5",
       "source": "FOX 13 News Utah",
-      "pub_iso": "2026-09-09T21:54:37+00:00",
+      "pub_iso": "2026-09-09T22:00:54+00:00",
       "description": "",
       "summary": "",
       "pub_display": "Sep 9"
@@ -26,6 +17,15 @@
       "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxNcFZqQmI3aXQ1TkRQOWQ1eXVIVlFEMVI2VXFvc2ZuWXRqR3pHRkdGUWxrckVOTGI4QlIxdmFEZmNaSU9uZ1g5a0dEaE92eGNaUjhFY28yMVQxRFlST2tMSmY0eWlUZ1RHajJacVB0SXhhUUFpYU0wSFM1XzdzSE9tT3hlVlRNbFUzTU1NNTlva1ZWUGJ5WHJtYVRiYS1ZMWRBWjNRNkFpbWxoRWROWGZlQ21keWZNTzd2eE5VYjdn?oc=5",
       "source": "Reuters",
       "pub_iso": "2026-09-09T17:49:43+00:00",
+      "description": "",
+      "summary": "",
+      "pub_display": "Sep 9"
+    },
+    {
+      "title": "This NFL Season Is \u2018Do or Die\u2019 for Prediction Markets",
+      "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOY29lMlJrdlRMMHk2M05TUkFzVG42VXNnYm5pdS1QUVpFYTVvSG9YaTlON0pwcXE4dndPVzJuX1BfdWFHaXZ3RVN5RlhYa3RkLUJJZXdXWUlHR2NyTW1hMkVkOGtzQUltX2ZPUHZGejRqTEx6aFdqbVZGVFZZZFJHNWFpMnc3aVVVTjh2SkJB?oc=5",
+      "source": "Barron's",
+      "pub_iso": "2026-09-09T17:05:00+00:00",
       "description": "",
       "summary": "",
       "pub_display": "Sep 9"
@@ -49,10 +49,19 @@
       "pub_display": "Sep 9"
     },
     {
+      "title": "DoubleZero adds Kalshi election data to low-latency trading network",
+      "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxOUl9fam51RUZ0MkxjaTlIa1dZVWlHRjhOUldLdnJPaWcyeFBzRXZjZWNwTk9MNzJubVl4U245QkpfUXlXZ2JSU0RFS28wV05Rd3ZRRWZRc3ZUU1lwYmYxNzBuTG56ZGdVUFVNdWVlUDZMVl9KbElQbnNXeDY0a0cybGgxaEhudjVOZHU5NjBjaF8yT3ZiVlE2ZE5YVUIySVpwb3R3SVJSblFFcUk?oc=5",
+      "source": "CoinDesk",
+      "pub_iso": "2026-09-09T14:46:18+00:00",
+      "description": "",
+      "summary": "",
+      "pub_display": "Sep 9"
+    },
+    {
       "title": "World XYZ Opens Solana Prediction Market to 1M-Person Waitlist, With Chainlink Powering Resolution",
       "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxPRndMQXgteE9ZU3oxRk83YjlTc0p5WHdRNUNEQUR2Q2hXQlFaWnp0R0lUMzU3TmNyMkgwUm9lNDhWZFlRSFBuWGhPckdNS2EzbWViVW04a3lnTjdSS3NaV0l2TWVQZ2IxYWdaejdycEpWcUxyODBwb3Q1UlFPZXd2cXlITnRwTXhuR2F6aFNNQzI0bGxzd2RIZUVnT1JCUGdtVVlzVHNMcWNENF9FSE1sM3ZIeVl1UFJBenkzSTEyZmNCMjdOMXhsQnl5bjE?oc=5",
       "source": "The Defiant",
-      "pub_iso": "2026-09-09T13:03:17+00:00",
+      "pub_iso": "2026-09-09T13:26:57+00:00",
       "description": "",
       "summary": "",
       "pub_display": "Sep 9"
@@ -85,28 +94,19 @@
       "pub_display": "Sep 9"
     },
     {
-      "title": "2026's elections could test how skyrocketing trading on prediction markets affects races and results",
-      "url": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxPTUtENmtkTm5UNjlqUE5qeks0TmFxUnl1R1lIZlFXNnlycUdndWVHVF9jNlZEd2swVkVMR2FIRkVhS01rXzZQYmJUcEoyMngxVlpIUF9ITHpEUVRDekJtekdEMkNXZWhEcFU2ZHBrbmJVSm45bW9tazNVR3VOTXBIZndmQlExMmJRWXYxSTNxTUNrYnd0b3hQRVBBMlNHcHEwSlc3Q1VlODRyZHEyQU5hTnpTcDlUTHpJRVhRSzMzYW05Mm81ZEVJZ3NvUFNJUjdVc2x3?oc=5",
-      "source": "PBS",
-      "pub_iso": "2026-09-08T21:48:12+00:00",
+      "title": "New Mexico tribe and pueblos wrap up case that Kalshi sports betting hurts their sovereignty",
+      "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxOYnNGcjdmSDdGUVNtNk45UjZoam4zYXh2eEQ5Yk1FbWpYQTBOQ1NHUTcwOG5oY25qTWp1b09VUzhDeC1pVFNidV9NOXdlTXNQSE1fRlJhdmdnSkpBek1BSGdRcS1NbEpDVWJCY0hHa2VMRG1rN2l1NUoyMzZiNGxsckhVVFVMMGdmNVVpZ1JISEtaMEdqNTlEVWhqUWVQY1BHWDZXWnNQU2dQQmt2VmlRQkdqR3NhQjV1dnlfM3FHdHNGRjA?oc=5",
+      "source": "Source New Mexico",
+      "pub_iso": "2026-09-08T18:14:04+00:00",
       "description": "",
       "summary": "",
       "pub_display": "Sep 8"
     },
     {
-      "title": "Robinhood expands prediction-market push with Crypto.com, OG.com tie-up",
-      "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxQYl9BaXFxZ2RZcTJiNEN5bi1TSy1sOWtPS1NwQ1ZCUHo2UEhGdE9mMVp5UjY1SnNMbDcybXlZLUdqaXRGRGZuSFVCZUN4SEZFYXVxN1BnemVIYlhDal83bHpMaGN4ZUZJSnBSeFNmSU1rQTVzR3g0WFZxNXU5cnBjeGxNWXBGdXIyUXpFbEhKeDFnWmtPTk01RnlnQUVCLUFsYkJsQmx2WWE3cjlSQ2JJUWlMS3BzbkJCcURKQTR3?oc=5",
-      "source": "Reuters",
-      "pub_iso": "2026-09-08T15:32:28+00:00",
-      "description": "",
-      "summary": "",
-      "pub_display": "Sep 8"
-    },
-    {
-      "title": "Gambling on the Climate Crisis",
-      "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTFBkUGJ6NW4wcGVvbTZiZXoyTnJnTG1Hclh5SVV0N0gyOGRfSWJJV2lGU25vNzhhTUx4X2UyQlkwdUFmT3R3YkY3Ul9KR2hsRnFPN21sdE9peHllN1dQaEotUjhKVk9IZ0hIS3ZESDQ1Zm16SHpOc0ZOTkpMNA?oc=5",
-      "source": "CounterPunch.org",
-      "pub_iso": "2026-09-08T05:49:43+00:00",
+      "title": "BETR LAUNCHES \"BETR 2.0\" SUPER APP WITH PREDICTION MARKETS AND NEW FLAGSHIP CAMPAIGN FEATURING JEREMY PIVEN, ADRIAN GRENIER, JAKE PAUL, LONZO BALL AND GELO BALL",
+      "url": "https://news.google.com/rss/articles/CBMitgJBVV95cUxObFlEYmhHcW95VThDSndsbWRvbk9sUjZmTk5PNWZNWVpkY2cxU3ZZUUs0YWR1dGI5U3hxdkMtRzc3SVN3R2RMbkRybHpSWFVRLXdheE5mODJaaWF2QmVVa0lwckZTZVgxUHE1NzA5MWszVWhfS1FzN1RQZTMzbXFNa3FUWU5aNXg0WFMwMUg1YVJDdU1iS3o2NjNWTGpsNGJvU21EOW5YUlRaZ3FXUU5wZWNvM2JfVTFyaUVKYUttWm16TlZUWXVETTk4N1E3eEJtWFlqemlxejVYTEpXZFY2VU16Y0dUNS1KNks5T3BhVU5rUlhIOE42X1hlWm8wN1FOaVhoSTFzVUt4M3B5eWJYT05BSVJPZDlVRXRiTVd2aUJqU0t3WmhHOU5ScFR2NXFqLUpKM3N3?oc=5",
+      "source": "PR Newswire",
+      "pub_iso": "2026-09-08T16:10:00+00:00",
       "description": "",
       "summary": "",
       "pub_display": "Sep 8"
