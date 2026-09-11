@@ -1,13 +1,58 @@
 {
-  "updated": "Sep 11, 2026 \u00b7 9:55 AM ET",
-  "updated_iso": "2026-09-11T14:55:36.072905+00:00",
+  "updated": "Sep 11, 2026 \u00b7 2:23 PM ET",
+  "updated_iso": "2026-09-11T19:23:41.410763+00:00",
   "homepage_count": 3,
   "articles": [
     {
       "title": "What Are Kalshi and Polymarket?",
       "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxNSG50dzl4RW1pamVaWm52ajdPdy1nc0VPVHNMN3FjLTlZRWxxMko5Qy0yY0hsVW5QWlIxRVUxcjNPMVRUV1cxTk1ZLURGSTUtZnhoYXQta2dRZ25kQUJGSHozYUdvZTNRQUc1Q0hBbXRDMEYzRjFDbFNwZGJXc2hmYjFlWWs5QQ?oc=5",
       "source": "The New York Times",
-      "pub_iso": "2026-09-11T14:35:46+00:00",
+      "pub_iso": "2026-09-11T18:07:35+00:00",
+      "description": "",
+      "summary": "",
+      "pub_display": "Sep 11"
+    },
+    {
+      "title": "Exclusive | Cluster of Polymarket Accounts Won Big on Companies Audited by KPMG",
+      "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxOVHFQbTRUTktpOUZtREhxUnRqaWlwMkU1aTBUeGJjbnYyRlRjRVVwUERUenN3Y3lETjdxeGhoTFI1Y3BEQk5UcnhVMkNjeUYzVHVTLXVYZTZLVUlLZFRWM3FOZkhacFl2RTVDVE5wRzNiZURRSnRCN1c3Qy14bl9RRG11UU5iZUphYjRxYUZyTkpUbDhtQnVzaDFhTkE0T01ZTTFBMTBWNTJxb3R1QXR3Y1Rmdw?oc=5",
+      "source": "WSJ",
+      "pub_iso": "2026-09-11T17:13:00+00:00",
+      "description": "",
+      "summary": "",
+      "pub_display": "Sep 11"
+    },
+    {
+      "title": "Ex-Reality Star Sues Kalshi Over Enforcement on Election Markets",
+      "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxQd3c1R0lGRHJLZU1PcWpJdWpYOF9jdGFfaDBzSG5tVlJZWmhBV0dfTXBpTkpWdEZBRjRGWUhCSmRreDdGNTJNeWpsUE9KalVQTEVFWmNjU29GaVhDeEhxTWdKR0QyaFRiSGx1Uk80TGVIbUpUTHJXaDlYSGpZQzAteHBiTzFQYnEyR1gwbXFDakFHN0VWakJCVFFZVV9VUm11RXNDRTIxMS1lTXQ0UEE?oc=5",
+      "source": "Bloomberg Law News",
+      "pub_iso": "2026-09-11T16:54:00+00:00",
+      "description": "",
+      "summary": "",
+      "pub_display": "Sep 11"
+    },
+    {
+      "title": "Betting on the NFL With Kalshi? You Might Be Trading Against FanDuel.",
+      "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxNRktfUnc3SmhhaDlWXzlIZWp4ejNOZFl3bXJJUTBSblhCNzRPcWFRcGtoQjc2M0REQWpVZ1ktNEVwWlU4RzlneDFqYlBWcDVud0tobVRkQ3liYnZJLUc4bFJuU1JueDJLV1RpT3NHX0FqQUlaN0NHOWNDYzhTVkJ2ZmMyaGxtYW5FM3hzSw?oc=5",
+      "source": "Barron's",
+      "pub_iso": "2026-09-11T16:51:00+00:00",
+      "description": "",
+      "summary": "",
+      "pub_display": "Sep 11"
+    },
+    {
+      "title": "Top Polymarket US trending CFB markets and prices to watch in Week 2",
+      "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxNYkx6aHhTR1JvcktDeFo3cWVXRXl3TjBiOEUzRGFtbl9IS3d2T21IUFFVYnA2WUEwNW5qb2ViRUpEQmZ2bDd5YmJvTHRzZFc3d0lQX0xGMjRDNEoyUVhKTjBqdXlCVTRpT3RTWjBvUlRsdEdrYU5rZXZuZmJhQ2IxbVlJZGRZdmlsWF9aemU4dEZpOHBBSzRwdDJPVXZxYWJFVUhRVko5MnRYSERIWnlBM29QZUhNV19hZUNRS1pvYWVRNVk?oc=5",
+      "source": "PennLive.com",
+      "pub_iso": "2026-09-11T16:00:00+00:00",
+      "description": "",
+      "summary": "",
+      "pub_display": "Sep 11"
+    },
+    {
+      "title": "Cantor Making Predictions Push for Firms, Brandon Lutnick Says",
+      "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxPVHlwRUJ5SzFCSlFGOVNUM3F6MzlreGtjMjl0bktoUEdUMndJdUhwVHV5cmNONVJaUkUzTDlXeDN0VEVhVHdRUl9KaW41NV9MV25QMXRkWHhSQzZtN0psT05NU0paN3d1Q0ZoRzM4anZZZ1pYY2x6aG5SYzNzUTNiVzlfWlp5UHBnX3JjdDkwdFRuajZvNFdmQWpjVWxNRGFiamJRWEV0all0TnBxaXNIeXF3?oc=5",
+      "source": "Bloomberg.com",
+      "pub_iso": "2026-09-11T15:29:28+00:00",
       "description": "",
       "summary": "",
       "pub_display": "Sep 11"
@@ -65,51 +110,6 @@
       "description": "",
       "summary": "",
       "pub_display": "Sep 11"
-    },
-    {
-      "title": "Prediction markets bring dangerous brand of gambling to football",
-      "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxQOThaZ0Z5cDdaVjVRdTk3cFN1UnpRY3pNcVhxRl9pLVNJOGtSeXFpYU0xTGZ0ZVZuTC1ERVBLdWJyRy1sc0dBTkVGZXA5dEJDbWhyMFpMWGYzWDdSOUFpLUh3ekIyQUdSck95R1dIZ2FOdjBmM201di1EVXVETHFsNFZyYzY5eVRXRXdQZldMREVOUlgxcjhZNEFJQmNsWXhSZkJOcXRmeE1jVXpNS0RiNmViNA?oc=5",
-      "source": "expressnews.com",
-      "pub_iso": "2026-09-11T09:04:42+00:00",
-      "description": "",
-      "summary": "",
-      "pub_display": "Sep 11"
-    },
-    {
-      "title": "Connecticut officials issue cease-and-desist letters to prediction markets",
-      "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxOUzg1dV8wRElmQXdOeWxRelRXSFVicFFCMEtHcFU4cGlhREVMUDZIdGFZSGhfNmFSdVhNUDdZRGJhalpua2p2N1VUU3VJQ1pkQm84NG1pWDNQdVk2d0RuYnJYMm9CYndrQ2VZc2doaG1VTmF1cGE4UjdmVmZfQ1FGcmhZVzRScW1fN2dFWWltVTRsaTYzVUxQY2R2V2xxV0xnWVFtY1J5SUNTbWd2dEYw0gG3AUFVX3lxTFAyOEJTVkhRTHlFZk0wMXpXejQ3eFQzT1VXOUt3VzRFcXlkOEwxR0hjRFJxOGdtdERZNHZ5Wjh0VUFKU3BQdmZ5bWhXd3NKVmRlWjFxOVdaM0VTcDdrQUk4d3J6UXhnWnF2cHFKT0E4ZGRTbElLUXR4bEJ5QkoyYm5pYXdJS0l5LU8zSVpOcGo3LWlXYkhvS2RHNE9VVU9RRWRJazhoUXdpZ2IycHNCa05oVDd4cDZVcw?oc=5",
-      "source": "NBC Connecticut",
-      "pub_iso": "2026-09-10T22:21:42+00:00",
-      "description": "",
-      "summary": "",
-      "pub_display": "Sep 10"
-    },
-    {
-      "title": "Riot Games Discussed Polymarket, Kalshi Sponsorships for Esports",
-      "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQLURBc0JrLU5fYUxBVk9qR3R4eGRENDNUNVlsdE8xdzZsSFRJdWc0MTlUTXVTOWduR3QxMmNsa3Y3cEt5a212N2hyZV9sUGp3WDJPV3NDSTZEaGJxM3lmbzNLelRtSVpmNXdKQmlYZUZ1RVh5cDFUZElObVVFYUxTTTd0ZUh4UHBoaUstUEQ3VGFoUG1PTkh5WjBTeDhFTG5nc3RlcXQyS0ZGMGw4eTJuRkEzSEY?oc=5",
-      "source": "Bloomberg.com",
-      "pub_iso": "2026-09-10T20:40:10+00:00",
-      "description": "",
-      "summary": "",
-      "pub_display": "Sep 10"
-    },
-    {
-      "title": "Should You Invest in Prediction Markets?",
-      "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxPLU9oMGVMSC16d0xlNFdVb1NtUlhOaDBJejVpVXhMbE1ReWw3em55cWVyU2xPRXNRaEo3aVp3ODhZMDBPT29UWEdZbEJ4VFVoM2R5cFowUGZtYzZoWlhRQlF0YU12MDQ5ZWhVNUFxbURuVGIwX0IwYl9tdmVEMjJZcXNsVVM4TzB6R0Zqd0s0X3FjSk8zUWFua3NSZUJ4aVluOVBCSjhIYw?oc=5",
-      "source": "The Dispatch",
-      "pub_iso": "2026-09-10T19:04:10+00:00",
-      "description": "",
-      "summary": "",
-      "pub_display": "Sep 10"
-    },
-    {
-      "title": "CPI Data Prediction Market Preview: Traders Brace for a Razor-Thin Call",
-      "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxPOV9XX0hFNjdaR2oxSzZTYzU0TGZqZDA5RkplT2ZrSG1pRHdqZUhDbDU3Nk9SYVRuTldQekw0NzN1WldVazRyNnVuMXNIVU9kbFVLbjJsbUowTU8tTGJHVkRrSEFBZ0dNaDd6Zjh0TlBuQVBCSXlJZ2RXNmJZd3ozT2pIaHRpRnlqeWkyckk2Q0tSNTNFcDlRakNERmxMTEJW?oc=5",
-      "source": "Yahoo Finance",
-      "pub_iso": "2026-09-10T17:05:49+00:00",
-      "description": "",
-      "summary": "",
-      "pub_display": "Sep 10"
     }
   ]
 }
