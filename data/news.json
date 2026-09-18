@@ -1,40 +1,85 @@
 {
-  "updated": "Sep 18, 2026 \u00b7 3:38 AM ET",
-  "updated_iso": "2026-09-18T08:38:21.581864+00:00",
+  "updated": "Sep 18, 2026 \u00b7 9:52 AM ET",
+  "updated_iso": "2026-09-18T14:52:31.675814+00:00",
   "homepage_count": 3,
   "articles": [
+    {
+      "title": "CFTC Makes It Easier to Put Prediction Markets in More Apps",
+      "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxQNkE0c2x6RXN4QXJRb0F1cUNzZ0t3LTFpVWROWHM5R09SeHJZNEJsZThmM0V2ZTljOG1MRHRrbGFNUXVDbzZxYlg1RG9lRmZvVVVublZCNHBPOV8yak5sTzhXU1BXdXJMaThfU0NjR3pYTmhoQnowLUg0RnZ0ZXdDQXppR0ZrUUxWOVVsZUF4VEFOWDJUWEhMbWN3UUhUMU0?oc=5",
+      "source": "finance.yahoo.com",
+      "pub_iso": "2026-09-18T13:59:44+00:00",
+      "description": "",
+      "summary": "",
+      "pub_display": "Sep 18"
+    },
+    {
+      "title": "Yankees vs. Dbacks predictions: Polymarket prices, picks and player props for Friday",
+      "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxNSlZQSkRzNjV4MURobm94RC1abzlEWG1STUNWQm9Bc3pMMS1BTzBEckIwZllCY1BzTnZpZzlxN29xWVpVVldjMUxXOXc4Vko1ejFjYnA3TzhtZEdWalQybDZyck5qcFdsaFEtNm1ubnppUjhaR3FRYV9OLUZiVVBmaHFxUTZTaVJidUNTMkxJV0NDYk1majh3QWcxLVo4VXEzVFlyNk5BU0R6Z2YydWxIT04yNGpyVFhnN3prNWxZbFZTcFZhclE?oc=5",
+      "source": "Syracuse.com",
+      "pub_iso": "2026-09-18T13:15:00+00:00",
+      "description": "",
+      "summary": "",
+      "pub_display": "Sep 18"
+    },
+    {
+      "title": "Tunica-Biloxi Launches First Tribal Prediction Market App",
+      "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPNHQ0WllDTFg0OGZEdXAya0k5VzRWMW41RjN4cHBNV2ZZLVBDVU14ZzBYcXRMS3NFdl9LanpjalVkZ1h2T0I0UTVRLXNFVWFyTlZUcERBR1NKSkxFSmxnSHZUT09sMUs2R3ZrNUxobFhuMlZqZWFYTDMyU1BsTWN6SWRxUW5mMzREV3RfX3BXTmt5OV9CTHlIck9MZHV5LUxzdUE?oc=5",
+      "source": "Kalshi News",
+      "pub_iso": "2026-09-18T12:58:01+00:00",
+      "description": "",
+      "summary": "",
+      "pub_display": "Sep 18"
+    },
+    {
+      "title": "A New Prediction Market, Run by a Tribe and Powered by Kalshi",
+      "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxOQWMxODduTmpNVmFVaWFnQ2JEYzlERjM4bThkUERNVTFjSnhZMkh0Y2JiMTE1U1VVRXY3cndldjQ5YVdpWDdWNUZwX09JdDZvOW1XN3VmTnZHOUZEZjVfeWVubWtTSzh0LVV1aE81MVpmUVgtUWNtNkNQTHFJVmdrelJDM3RPaXRGZ0ZtNGhPbldKZw?oc=5",
+      "source": "The New York Times",
+      "pub_iso": "2026-09-18T12:22:23+00:00",
+      "description": "",
+      "summary": "",
+      "pub_display": "Sep 18"
+    },
+    {
+      "title": "Robinhood\u2019s CEO Says Prediction Markets Are Starting a \u2018Supercycle That Could Drive Trillions In Annual Volume\u2019 After 12 Billion Contracts Traded in 2025",
+      "url": "https://news.google.com/rss/articles/CBMinwJBVV95cUxPb2JBcXNaY0dnZGtEbk9fYTNZb3VwMHNCVURFcVNwaU41cGljX0pNbmJVZlFPdGwwNW5wcnRaMnFPVkFDb29aZDdpaGRTcU9DSTdtVXVSM2UxYWRiN2JUd09sWkFBYWlsZVBOdFREcVVoYTQ3QnZobU5hWk5PaE1BekdsZjJnV3laci1EbVNVa0lYek9RRHdtaTYxWFBKLW4zS1Y5dU5LbWlCdDRiSXdFR1U5WXVBUi1qaDFqLTcxSldjMnBodzFWV1kta1J0UkdFdndyazR3aGx3OElhbDdGcGRUNTExVVRZaVdCT1FoWTdnR2VkSjREYzRiS3U5Z0tfZTdXSFBNLW9VWjZfVEhmSTh5bS16eFhsend4OERDaw?oc=5",
+      "source": "Barchart.com",
+      "pub_iso": "2026-09-18T11:25:02+00:00",
+      "description": "",
+      "summary": "",
+      "pub_display": "Sep 18"
+    },
+    {
+      "title": "When will Mike Norvell leave Florida State? Kalshi Market Says It\u2019s Coming Soon",
+      "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxPMC1xWXhxeEhPaFNGOWFqMkI2ZGtjZlI0T3I4dEhPcjU0WDljaDdfeTlzMEU1OHlOSjNyVHo0MkI5S1k4bjZTcDRUZGxpdG5BNXp0YWJxbXRIaHFoU3hGa1dMZTBuNS14NXAzS04wYzNwRzBadWF2T2NUSUZFQmxIU3pzdjQzLTJxLXYwOHo3TjR5QlZ2dTBBQ2hGNVA1T2gtY3czNnNPNmhKMW9NTkJlVm16cnVZbE54Q1pka1VhX21UNHUxb1ZXOQ?oc=5",
+      "source": "Sports Illustrated",
+      "pub_iso": "2026-09-18T11:00:04+00:00",
+      "description": "",
+      "summary": "",
+      "pub_display": "Sep 18"
+    },
+    {
+      "title": "The tech providers behind the prediction markets boom",
+      "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxPNGN6Q3NQLW9CZFJfSFFCV1pBRmRFR3gxelM1aUthMXRZUlBPX2I3N09yRHpLbmM1YktxU1F3T3lWTFZ1c2FLM1JLZGkyNm5kRGtXeXJHMTFQYW1TaFA0WmhsMTlqVmxxOTM1VWo4RWZvSVhQaEhwb19KR0NrUndsUGxidnU3Mm9UNGg3Z0xWVmpLalRN?oc=5",
+      "source": "iGaming Business",
+      "pub_iso": "2026-09-18T09:18:23+00:00",
+      "description": "",
+      "summary": "",
+      "pub_display": "Sep 18"
+    },
+    {
+      "title": "Kalshi, Polymarket face possible regulation with appeal aimed at SCOTUS",
+      "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE9WdWZkbnhBa0w1MzQwTXo0NGg0R0hQZ1BsUGd6YVdFZzZvRTAyT19xbnRyUHdCZWl0MDlla3ZZcjRKb3laZHY3NksxVS1tcFVQTE1wN3hVYW5MUC1FbG9SenpyZmxYMVZPTkdfNTZscVdKemV3V1g0?oc=5",
+      "source": "Mashable",
+      "pub_iso": "2026-09-18T08:03:26+00:00",
+      "description": "",
+      "summary": "",
+      "pub_display": "Sep 18"
+    },
     {
       "title": "Breakingviews - COMMENTARY: Prediction markets will overcome big binary risks",
       "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxOcGd3c2tBcDdrbTBXeDJYeXhXR2VhalduWkt3bUFMaXBSUm95cVZRZ1NybHhKNElfMHVWQ2tlV01xczRmVTFUZ19qUUhFdDVuRGxLX3R2SmgtNEZ0aldycGNPMUhpeUNPVlo5cXEyc3hhanBwcjV6eFpxLUNRcExOOFhLR3BZTF9hOHBYb0w0RlE1dWgyakNlRVp4OEpYcVFBMWRKdmlGMkJZdUY5bUNN?oc=5",
       "source": "Reuters",
       "pub_iso": "2026-09-18T05:00:00+00:00",
-      "description": "",
-      "summary": "",
-      "pub_display": "Sep 18"
-    },
-    {
-      "title": "South Korea Refers 18 Polymarket Users to Prosecutors Over $12.7 Million in Prediction Market Bets",
-      "url": "https://news.google.com/rss/articles/CBMizwFBVV95cUxObEs5OEZYTzRQRnZGRlRCcmFyTnpKb3RGcG0xM1N5aUtpM1ZFazB1b3pYOGdOSlh1UGN5azc5Mlhrc3RNU1o5QlhldndYcmZCZG5QTDVROW9zcXUzZEFBN2VmZURfOTBWZjFtUDRLWmxPOFlfVEJRV3hjT1NGWGRlTDloQW4wMnVTeldfVkl3TUxMTUJPeU5tOU0teGdfQWd0MFVtdkpVUUpIb3M5SjZ4ZVdwXzVSSjUyN0R2LXJWNXpFc2c4dEZrRkc3QTJFZmM?oc=5",
-      "source": "blockhead.co",
-      "pub_iso": "2026-09-18T04:17:09+00:00",
-      "description": "",
-      "summary": "",
-      "pub_display": "Sep 18"
-    },
-    {
-      "title": "Polymarket upgrades $50 Thursday Night Football invite code \u201cOREGON\u201d for Bills-Lions live odds",
-      "url": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxNWkJGYVY5dHBwTEVlSkw3SzdiNlg1enZaQ2Jxcmw1dVR6UE0yWFpXZlhlZnhHbW9uaEdxN2RNTTlLOGJrNkRfSU9VbF9TdlhhQ3pJR0Z4clNxOHdFTS1DWEpqSmRwOGx4VU8xQTk4UlJIYnctSnVLNUM0R0t4dUJ2alJHOVVLazNJR1Izdk9tVF9mTllwVmdIZnFTQnUtdHFxLTNMVk03c3BRN1RydTNqQnJJM2FGb3RncVZ0ZDhBNC1FSWNNM2dDVXVJZEp0TURsODR0RlB3?oc=5",
-      "source": "OregonLive.com",
-      "pub_iso": "2026-09-18T01:45:00+00:00",
-      "description": "",
-      "summary": "",
-      "pub_display": "Sep 18"
-    },
-    {
-      "title": "Is Polymarket Legal in Pennsylvania (Updated September 2026)",
-      "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE1iRlBENWJtVWxOakZ6WFVyQVpWRjlOSXpFYXVkek0yRXZ1dkRzblA0aWhaRUVDTFNDOC05eUFyYy11eGRwWFY1WXRHUnNETE0yNEtldmxWWjhCY2J3eGVyTEsyb1RSaEFSaVctQjhn?oc=5",
-      "source": "SailGP",
-      "pub_iso": "2026-09-18T00:22:38+00:00",
       "description": "",
       "summary": "",
       "pub_display": "Sep 18"
@@ -49,67 +94,22 @@
       "pub_display": "Sep 17"
     },
     {
-      "title": "BMLL, Kalshi Expand Access to Prediction Market Data",
-      "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxObDN5MkZHdThzb2tEM2J5ZnZabTR5elhkalRrMXNUN0NnVlY1NDVVSUlIcEh0U1pldGVBU1RUck9PLUk0ajc0cy1zTWhsbzlvdk5iZ0txM3VMeEdtczN1ZnVUc0dETFBBcU5JMUVka1R6RGZqV0J2dTdmZTVvbi1jN25YUUFrQTgxZWpCV0VhV1podHlyRS1ma2dudw?oc=5",
-      "source": "marketsmedia.com",
-      "pub_iso": "2026-09-17T15:39:21+00:00",
+      "title": "What Kalshi prediction markets say about Red Sox\u2019s AL Pennant and World Series chances",
+      "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxPeEZqR1JYTHZ4R1lzSXpKRkF3UzRHZUJueVZkcnhlLV9GNllSN1ZYOWRBSmNHR1RVT1JKY3Y2cG9zSnJjMXQ4VnJsRVV1ekdKd0dscEh6UjQ4MW1wWEt6SlF6UEtwbS1OQUlYZEJhMmZCdzhtZERtaFRiWUZRNGlKbkMzRTlYWTdCLVFPU20yNEZJcVNkSnRPaVZGYWFna2dlMVZpMQ?oc=5",
+      "source": "MassLive",
+      "pub_iso": "2026-09-17T14:15:00+00:00",
       "description": "",
       "summary": "",
       "pub_display": "Sep 17"
     },
     {
-      "title": "Best Super Bowl Prediction Markets: Odds & Bonuses from Polymarket, Kalshi & More",
-      "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxQa0oyUEw2UFNlbS1MVVg4QjA3M3ZMWWJpamJlbWNXYkFFZmR2Q0VSemhuRXJYbmRycE1GeGpJOW9rbG9xM2xOMkZ0djc1b1RXaEloR2g3d0Ezb0NTaUp0UWVRbFNTNE5QQW93Z3pJQjRYLU1HZ0t2ZUM1eWVHUHpzaHJkTFZtaThQRnQ2TzN2TWJxejJHUHM3Y0pJY2w5RXVSVGdwbEh3ckNfa2NDUnRN?oc=5",
-      "source": "USA Today",
+      "title": "Kalshi Referral Code ACTION Unlocks $25 for Lions vs. Bills Predictions",
+      "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxNMC1TV25idlZ0MnQxcHJuSXdWQ3dNcHY5SWphZ2tnVk4zanRabW43SGhPanQ3bW9EMUJaS2lySHNJdXpwODZSSGhRcGI5RGdXUHVUMU8tQ2hicHVvTGlzRDhlaDFyOGF5V2JWZXBqQzMxLUx4SldRUTByeFJpSHpBa095dC14VVl3bE5VbnRNMjhxck81V0hqZTRiTjdwQkRmWWU1MW4zby1ZbDA?oc=5",
+      "source": "Action Network",
       "pub_iso": "2026-09-17T13:57:00+00:00",
       "description": "",
       "summary": "",
       "pub_display": "Sep 17"
-    },
-    {
-      "title": "Fed Hikes 25 Basis Points, Projects Another Hike in 2026: Do Prediction Markets Agree?",
-      "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxQOE05aW1nUzUxbHFHN3I0YU1TY05VYjdBYzU3S21RTlNNNzA5aEhfeVhuazJNLXFaRWpLVTlsTTdJR2txZmVIX3ltdlBwclY3b2NYSWM0WWYxeFFLYTF5bGQzcE11dHRieHMzcGIyTEUwLWEyMTR6M1cwa1lGaW15akJXaHlfQmUteDJNLWxXNllLaWlm?oc=5",
-      "source": "Yahoo Finance",
-      "pub_iso": "2026-09-16T19:15:36+00:00",
-      "description": "",
-      "summary": "",
-      "pub_display": "Sep 16"
-    },
-    {
-      "title": "Prediction market CEO says Sydney Sweeney was 'driving' visuals in controversial ads - ABC News",
-      "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxQblhUZndWbjJnamRxdm8xRFZ1ZXNFaXdBQW9DN0cwX0pJY1pxQnQ5T1Jjc1JCUGR5aWRqRVVKMWZlN2ZqLWhGQkM1LWVGeWxZQkctSzZLZ2dvYXVyRXlMQUNhQXJXTXBEODBkLVQ4dkp6MjVlWHBCZFg2Tkl4TUFxR2Ixa2xlQmRVVEtvdWNQWW5HdnFfaWdyRk5UTGx2V2JVTEdvMGZLejV5RnZQVEwyTzZQNzJwVFFx0gG-AUFVX3lxTE1LYWx6V0o3dHFhRERMVUd4amdDVXdiQjQxU09LaVNYN19BbUo1eWZ3bU93NkZqdGZqTTJUcE5KUnROd1E4ZjBRRzdwU2c5enpYRnVKSlpOQ1VwTnNSMndnZzFWd2l6dDFsa3N0WXpmdFVteWNEdS0zZk0wcEZqUkhvZVozajdWcmZYZi1feGRPSmNvNXc4SkFSWXJYZ3JBZk5oM2Vua2pZX3JlWHZNci1ZOVVFVUFjVHdQOHhPZFE?oc=5",
-      "source": "Breaking News, Latest News and Videos",
-      "pub_iso": "2026-09-16T17:49:19+00:00",
-      "description": "",
-      "summary": "",
-      "pub_display": "Sep 16"
-    },
-    {
-      "title": "Senate is still a toss-up, but Democrats now have slight edge, prediction market traders think",
-      "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxQY2xtMDB3Wm9lOTJKa1VXcVdHNTZzQXVqbjVyak03TnEzZXlQMlRaRDVHcERtZTVzMTFUU2xhTS15QUw1V0RFVmJXNGw5NndKZkYzSUVhZm1zaUZreHZwSjRkczJ3N3JwUnRQVVVUT0s4aHQyeVpIUnhNV0xUQnpMd1FjUkNnSXRxa09KRzFqZUQ3RnpXX1F2alJGWlFac0dxUDhweTZWa9IBrAFBVV95cUxNa1ZDV0JhcUdHUjZxOThGYjlqVUFJWEI0eEpGLTFXdGJWZUN3VldzMVBHeUp6OEV0bmtQeDd5NjZlUnVOTzVBbDlXQUM1RnRMcEhXXzhacTRFQWFNYkR3Q2QxNkFTdkdMS09sS01OLXZJaXd6cTNGZTAwTDdaTFlLbndZZktPUTh0UUlBZDFZSC1leGFqSXpRdUF0QTYyeV9OZWFMOE9za0VxZmRp?oc=5",
-      "source": "cnbc.com",
-      "pub_iso": "2026-09-16T14:51:36+00:00",
-      "description": "",
-      "summary": "",
-      "pub_display": "Sep 16"
-    },
-    {
-      "title": "Polymarket\u2019s Next Bet? It Can Also Be a Media Company",
-      "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxNMmRRUDhIc21TVzN3VnpEZERYdGw3dmVlWk1hcjJURGdlRFUtUnVldWt5LWo3WGFqVWZnOTI4czBNTkthUF9Kd2dsUGl1Q2RNZVFvRkVpYnBSbnI5bW1hSWlRVFJCcTluUEJlZGNGLVNYd3JHblB2UjZQT21GUzVPeHQ5dmVodw?oc=5",
-      "source": "WIRED",
-      "pub_iso": "2026-09-16T09:00:00+00:00",
-      "description": "",
-      "summary": "",
-      "pub_display": "Sep 16"
-    },
-    {
-      "title": "Will Bitcoin Hit $50,000 or $100,000 First? Kalshi Traders Put It at 17 to 83",
-      "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxOQkttc0FSUjVPTUJHVlF4N2VyWlNIcXlkejN4TTI2VUR4Wkxpc1lqaG5VT1hTck5jckF1V3BUZFJiS2M4aGVnSW5WeC1MV3RiVm85ZjQwQmViQzB1bmI4S0dTZnRhZjM2RWVua1FSR180QjR4MGxtQXNpOTN6ajlleXF0M2xPRlNHSWwwSW50dlpIMDZoQVRveVNPWC1EYXZGNk5MdzYyMFhRcnJzb3pMdll0MERRYXZBVWttWUNsYWVqNnRwQnlUdnI5Yw?oc=5",
-      "source": "24/7 Wall St.",
-      "pub_iso": "2026-09-15T20:58:00+00:00",
-      "description": "",
-      "summary": "",
-      "pub_display": "Sep 15"
     }
   ]
 }
