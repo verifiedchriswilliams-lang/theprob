@@ -10847,6 +10847,48 @@
           "pnl": 0.0
         }
       ]
+    },
+    "a2": {
+      "name": "The Crowd (Control)",
+      "strategy": "Follow consensus: YES \u226565%, NO \u226435%",
+      "thesis": "Unchanged from Experiment 1. The benchmark to beat.",
+      "current_balance": 1000.0,
+      "total_pnl": 0.0,
+      "ytd_return_pct": 0.0,
+      "win_count": 0,
+      "loss_count": 0,
+      "open_count": 0,
+      "start_date": "2026-10-01",
+      "last_updated": "2026-10-01",
+      "trades": []
+    },
+    "d": {
+      "name": "The Sharp Crowd",
+      "strategy": "Tighter gate: YES \u226575%, NO \u226425%",
+      "thesis": "Stricter conviction filters noise. Fewer trades, higher quality.",
+      "current_balance": 1000.0,
+      "total_pnl": 0.0,
+      "ytd_return_pct": 0.0,
+      "win_count": 0,
+      "loss_count": 0,
+      "open_count": 0,
+      "start_date": "2026-10-01",
+      "last_updated": "2026-10-01",
+      "trades": []
+    },
+    "e": {
+      "name": "The Momentum Crowd",
+      "strategy": "65/35 gate + crowd must be moving 3pts+ in trade direction",
+      "thesis": "Conviction plus fresh momentum beats stale conviction alone.",
+      "current_balance": 1000.0,
+      "total_pnl": 0.0,
+      "ytd_return_pct": 0.0,
+      "win_count": 0,
+      "loss_count": 0,
+      "open_count": 0,
+      "start_date": "2026-10-01",
+      "last_updated": "2026-10-01",
+      "trades": []
     }
   },
   "legacy_test_1": {
@@ -11058,5 +11100,32 @@
         "note": "Left open when 3-model experiment launched"
       }
     ]
+  },
+  "experiment_1_test_2": {
+    "note": "Experiment 1 Test 2 (Mar 17 - Jun 8, 2026): 83 days, 3 models.",
+    "model_a": {
+      "final_balance": 1995.94,
+      "total_pnl": 995.94,
+      "win_count": 383,
+      "loss_count": 65,
+      "ytd_return_pct": 99.6
+    },
+    "model_b": {
+      "final_balance": 1931.37,
+      "total_pnl": 931.37,
+      "win_count": 69,
+      "loss_count": 2,
+      "ytd_return_pct": 93.1
+    },
+    "model_c": {
+      "final_balance": 1000.0,
+      "total_pnl": 0.0,
+      "win_count": 0,
+      "loss_count": 0,
+      "ytd_return_pct": 0.0
+    },
+    "winner": "Model A (The Crowd)",
+    "start_date": "2026-03-17",
+    "end_date": "2026-06-08"
   }
 }

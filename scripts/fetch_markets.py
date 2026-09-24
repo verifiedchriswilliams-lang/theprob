@@ -2624,6 +2624,136 @@ def pick_trade_c(spread_markets: list[dict], all_markets: list[dict],
     return None, "NO_PLAY"
 
 
+def pick_trade_d(markets: list[dict], exclude_slugs: set | None = None) -> dict | None:
+    """
+    Model D — The Sharp Crowd.
+    Tighter conviction gate: YES >= 75%, NO <= 25%.
+    Thesis: stricter filtering removes noise and improves return-per-trade.
+    Fewer trades, higher quality. Same 14-day window as Model A.
+    """
+    today   = datetime.now(timezone.utc).date()
+    cutoff  = today + timedelta(days=TRADE_MAX_DAYS)
+    exclude = exclude_slugs or set()
+
+    candidates = []
+    for m in markets:
+        end_raw = m.get("end_date_raw")
+        if not end_raw:
+            continue
+        try:
+            end_date = datetime.fromisoformat(str(end_raw).replace("Z", "+00:00")).date()
+        except (ValueError, AttributeError):
+            continue
+        if end_date <= today or end_date > cutoff:
+            continue
+
+        prob = m.get("prob", 50)
+        if not (prob >= 75 or prob <= 25):   # tighter than Model A's 65/35
+            continue
+
+        if is_effectively_resolved(m) or is_junk_market(m) or is_range_bucket_market(m):
+            continue
+        if (m.get("slug") or m.get("url", "")) in exclude:
+            continue
+        if (is_sports_market(m)
+                and m.get("volume", 0) < HERO_SPORTS_MIN_VOLUME
+                and m.get("volume_24h", 0) < HERO_SPORTS_MIN_VOLUME_24H):
+            continue
+
+        candidates.append(m)
+
+    if not candidates:
+        return None
+
+    def trade_score(m: dict) -> float:
+        prob       = m.get("prob", 50)
+        conviction = abs(prob - 50) / 50
+        activity   = math.log10(m.get("volume_24h", 1) + 1)
+        movement   = abs(m.get("change_pts", 0)) * 0.5
+        return conviction * 3 + activity + movement
+
+    winner = max(candidates, key=trade_score)
+    days_left = (datetime.fromisoformat(
+        str(winner.get("end_date_raw", "")).replace("Z", "+00:00")
+    ).date() - today).days
+    print(f"  [D] Trade pick: '{winner['question'][:55]}' "
+          f"prob={winner['prob']}% | resolves in {days_left}d")
+    return winner
+
+
+def pick_trade_e(markets: list[dict], exclude_slugs: set | None = None) -> dict | None:
+    """
+    Model E — The Momentum Crowd.
+    Same 65/35 gate as Model A, but also requires today's crowd is moving
+    in the trade direction (change_pts >= +3 for YES, <= -3 for NO).
+    Thesis: crowd conviction plus fresh price movement beats stale conviction alone.
+    """
+    today   = datetime.now(timezone.utc).date()
+    cutoff  = today + timedelta(days=TRADE_MAX_DAYS)
+    exclude = exclude_slugs or set()
+
+    candidates = []
+    for m in markets:
+        end_raw = m.get("end_date_raw")
+        if not end_raw:
+            continue
+        try:
+            end_date = datetime.fromisoformat(str(end_raw).replace("Z", "+00:00")).date()
+        except (ValueError, AttributeError):
+            continue
+        if end_date <= today or end_date > cutoff:
+            continue
+
+        prob    = m.get("prob", 50)
+        change  = m.get("change_pts", 0)
+
+        # Same base gate as Model A
+        if prob >= 65:
+            if change < 3:     # must have moved UP at least 3pts today
+                continue
+            direction = "YES"
+        elif prob <= 35:
+            if change > -3:    # must have moved DOWN at least 3pts today
+                continue
+            direction = "NO"
+        else:
+            continue
+
+        if is_effectively_resolved(m) or is_junk_market(m) or is_range_bucket_market(m):
+            continue
+        if (m.get("slug") or m.get("url", "")) in exclude:
+            continue
+        if (is_sports_market(m)
+                and m.get("volume", 0) < HERO_SPORTS_MIN_VOLUME
+                and m.get("volume_24h", 0) < HERO_SPORTS_MIN_VOLUME_24H):
+            continue
+
+        candidates.append((m, direction))
+
+    if not candidates:
+        return None
+
+    def trade_score(pair: tuple) -> float:
+        m = pair[0]
+        prob       = m.get("prob", 50)
+        conviction = abs(prob - 50) / 50
+        activity   = math.log10(m.get("volume_24h", 1) + 1)
+        momentum   = abs(m.get("change_pts", 0)) * 1.0   # weight momentum more than A
+        return conviction * 3 + activity + momentum
+
+    winner_pair = max(candidates, key=trade_score)
+    winner, direction = winner_pair
+    days_left = (datetime.fromisoformat(
+        str(winner.get("end_date_raw", "")).replace("Z", "+00:00")
+    ).date() - today).days
+    print(f"  [E] Trade pick: '{winner['question'][:55]}' "
+          f"prob={winner['prob']}% chg={winner.get('change_pts',0):+}pts | resolves in {days_left}d | direction={direction}")
+    # Store resolved direction on the market dict so the caller can read it
+    winner = dict(winner)
+    winner["_resolved_direction"] = direction
+    return winner
+
+
 def _blank_variant(name: str, strategy: str, thesis: str, start_date: str) -> dict:
     return {
         "name":             name,
@@ -2655,6 +2785,9 @@ def load_portfolio() -> dict:
                 "a": _blank_variant("The Crowd",       "Follow consensus: YES \u226565%, NO \u226435%",         "Smart money is already priced in. Ride the conviction.", "2026-03-17"),
                 "b": _blank_variant("The Contrarian",  "Fade longshots: always NO when crowd says \u226430%",   "Crowds overprice long shots. Sell the overpriced tickets.", "2026-03-17"),
                 "c": _blank_variant("The Arb",         "Trade Poly vs Kalshi gaps: bet the lagging platform when gap \u226510pts", "When two liquid markets disagree by 10+ points, one is wrong.", "2026-03-17"),
+                "a2": _blank_variant("The Crowd (Control)", "Follow consensus: YES \u226565%, NO \u226435%",     "Unchanged from Experiment 1. The benchmark to beat.", "2026-10-01"),
+                "d":  _blank_variant("The Sharp Crowd",     "Tighter gate: YES \u226575%, NO \u226425%",         "Stricter conviction filters noise. Fewer trades, higher quality.", "2026-10-01"),
+                "e":  _blank_variant("The Momentum Crowd",  "65/35 gate + crowd must be moving 3pts+ in trade direction", "Conviction plus fresh momentum beats stale conviction alone.", "2026-10-01"),
             },
             "legacy_test_1": {"note": "Migrated from v1 automatically.", "trades": data.get("trades", [])},
         }
@@ -2667,6 +2800,9 @@ def load_portfolio() -> dict:
             "a": _blank_variant("The Crowd",       "Follow consensus: YES \u226565%, NO \u226435%",         "Smart money is already priced in. Ride the conviction.", today),
             "b": _blank_variant("The Contrarian",  "Fade longshots: always NO when crowd says \u226430%",   "Crowds overprice long shots. Sell the overpriced tickets.", today),
             "c": _blank_variant("The Arb",         "Trade Poly vs Kalshi gaps: bet the lagging platform when gap \u226510pts", "When two liquid markets disagree by 10+ points, one is wrong.", today),
+            "a2": _blank_variant("The Crowd (Control)", "Follow consensus: YES \u226565%, NO \u226435%",     "Unchanged from Experiment 1. The benchmark to beat.", "2026-10-01"),
+            "d":  _blank_variant("The Sharp Crowd",     "Tighter gate: YES \u226575%, NO \u226425%",         "Stricter conviction filters noise. Fewer trades, higher quality.", "2026-10-01"),
+            "e":  _blank_variant("The Momentum Crowd",  "65/35 gate + crowd must be moving 3pts+ in trade direction", "Conviction plus fresh momentum beats stale conviction alone.", "2026-10-01"),
         },
     }
 
@@ -2699,6 +2835,21 @@ def update_portfolio_variant(variant: dict, trade_market: dict | None, trade_dir
         elif current_prob <= 5:
             resolved = True
             win = (trade["direction"] == "NO")
+        else:
+            # Force-close on expiry: if end_date_raw has passed, settle at current prob
+            end_raw = trade.get("end_date_raw", "")
+            if end_raw:
+                try:
+                    end_dt = datetime.fromisoformat(str(end_raw).replace("Z", "+00:00"))
+                    if end_dt < datetime.now(timezone.utc):
+                        resolved = True
+                        # Majority-probability determines outcome
+                        if trade["direction"] == "YES":
+                            win = current_prob >= 50
+                        else:
+                            win = current_prob < 50
+                except Exception:
+                    pass
 
         if resolved:
             ep  = trade["entry_prob"] / 100.0
@@ -3178,35 +3329,91 @@ def main():
     # Model C — The Arb: bet the lagging platform on Poly/Kalshi divergences
     trade_market_c, trade_direction_c = pick_trade_c(spread_markets, all_markets, exclude_slugs=excl)
 
+    # ── Pick trades for Experiment 2 variants (D and E) ─────────────────────
+    trade_market_d = pick_trade_d(all_markets, exclude_slugs=excl)
+    if trade_market_d:
+        tp = trade_market_d.get("prob", 50)
+        trade_direction_d = "YES" if tp >= 75 else "NO"
+        print(f"  [D] direction: {trade_direction_d} (prob {tp}%)")
+    else:
+        trade_direction_d = "NO_PLAY"
+        print("  [D] NO_PLAY — no qualifying high-conviction market today")
+
+    trade_market_e = pick_trade_e(all_markets, exclude_slugs=excl)
+    if trade_market_e:
+        trade_direction_e = trade_market_e.pop("_resolved_direction", "NO_PLAY")
+        print(f"  [E] direction: {trade_direction_e}")
+    else:
+        trade_direction_e = "NO_PLAY"
+        print("  [E] NO_PLAY — no qualifying momentum market today")
+
     # ── Update portfolio (close resolved, open new trades) ────────────────────
     print("\nUpdating Portfolio...")
     portfolio = load_portfolio()
 
-    # Experiment 1 is frozen — no new trades or updates after June 9, 2026
-    EXPERIMENT_1_END = date(2026, 6, 9)
-    if now_utc.date() > EXPERIMENT_1_END:
-        print("  Experiment 1 locked (ended 2026-06-09). Portfolio frozen — no updates.")
-        save_portfolio(portfolio)
-    else:
-        # Build market probability lookup once, shared across all variants
-        market_lookup: dict[str, float] = {}
-        for m in all_markets:
-            key = m.get("slug") or m.get("url", "")
-            if key:
-                market_lookup[key] = m.get("prob", None)
+    today_date = now_utc.date()
+    EXPERIMENT_1_END   = date(2026, 6, 9)
+    EXPERIMENT_2_START = date(2026, 10, 1)
+    EXPERIMENT_2_END   = date(2026, 10, 31)
+    # Grace window: allow open trades to resolve up to 14 days after experiment ends
+    EXPERIMENT_2_GRACE = EXPERIMENT_2_END + timedelta(days=14)
 
+    # Build market probability lookup once, shared across all variants
+    market_lookup: dict[str, float] = {}
+    for m in all_markets:
+        key = m.get("slug") or m.get("url", "")
+        if key:
+            market_lookup[key] = m.get("prob", None)
+
+    # Experiment 1 (A/B/C) — frozen after June 9
+    if today_date <= EXPERIMENT_1_END:
         portfolio["variants"]["a"] = update_portfolio_variant(
             portfolio["variants"]["a"], trade_market_a, trade_direction_a, market_lookup, today_str, "A")
         portfolio["variants"]["b"] = update_portfolio_variant(
             portfolio["variants"]["b"], trade_market_b, trade_direction_b, market_lookup, today_str, "B")
         portfolio["variants"]["c"] = update_portfolio_variant(
             portfolio["variants"]["c"], trade_market_c, trade_direction_c, market_lookup, today_str, "C")
+        print("  Experiment 1 variants updated.")
+    else:
+        print("  Experiment 1 locked (ended 2026-06-09). A/B/C frozen.")
 
-        save_portfolio(portfolio)
-    for k, label in [("a", "A-Crowd"), ("b", "B-Contrarian"), ("c", "C-Arb")]:
+    # Experiment 2 (A/D/E) — active Oct 1–31; grace window closes open trades through Nov 14
+    if EXPERIMENT_2_START <= today_date <= EXPERIMENT_2_GRACE:
+        # After Oct 31: pass NO_PLAY to stop new trades, but keep closing open ones
+        allow_new = today_date <= EXPERIMENT_2_END
+        portfolio["variants"]["a2"] = update_portfolio_variant(
+            portfolio["variants"]["a2"],
+            trade_market_a if allow_new else None,
+            trade_direction_a if allow_new else "NO_PLAY",
+            market_lookup, today_str, "A2")
+        portfolio["variants"]["d"] = update_portfolio_variant(
+            portfolio["variants"]["d"],
+            trade_market_d if allow_new else None,
+            trade_direction_d if allow_new else "NO_PLAY",
+            market_lookup, today_str, "D")
+        portfolio["variants"]["e"] = update_portfolio_variant(
+            portfolio["variants"]["e"],
+            trade_market_e if allow_new else None,
+            trade_direction_e if allow_new else "NO_PLAY",
+            market_lookup, today_str, "E")
+        if not allow_new:
+            print("  Experiment 2: Oct 31 passed — no new trades. Closing open positions only.")
+        else:
+            print("  Experiment 2 variants updated.")
+    elif today_date < EXPERIMENT_2_START:
+        print(f"  Experiment 2 not started yet. Launches {EXPERIMENT_2_START}.")
+    else:
+        print("  Experiment 2 grace window closed. All variants frozen.")
+
+    save_portfolio(portfolio)
+
+    for k, label in [("a", "A-Crowd"), ("b", "B-Contrarian"), ("c", "C-Arb"),
+                     ("a2", "A2-Control"), ("d", "D-Sharp"), ("e", "E-Momentum")]:
+        if k not in portfolio.get("variants", {}):
+            continue
         v = portfolio["variants"][k]
         print(f"  [{label}] ${v['current_balance']:.2f} "
-              f"({v['ytd_return_pct']:+.1f}% YTD) | "
+              f"({v['ytd_return_pct']:+.1f}%) | "
               f"W{v['win_count']}/L{v['loss_count']} | {v['open_count']} open")
 
     # Expose today's trade_market for newsletter (use Model A as the "featured" trade)
