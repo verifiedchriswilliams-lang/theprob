@@ -377,21 +377,34 @@
       </div>
     </div>
     <div style="padding:16px 20px;background:var(--surface-2);display:flex;gap:16px;align-items:baseline;">
-      <div style="font-family:var(--font-mono);font-size:11px;color:var(--amber);white-space:nowrap;">Jun 15, 2026</div>
+      <div style="font-family:var(--font-mono);font-size:11px;color:var(--amber);white-space:nowrap;">Oct 1, 2026</div>
       <div>
-        <div style="font-size:14px;font-weight:600;margin-bottom:4px;color:var(--amber);">Test 2 launches Jun 15. The Crowd vs. two new challengers</div>
-        <div style="font-size:13px;color:var(--text-muted);">Model A (Control) defends. New challengers: Model D (tighter 75/25 gate) and Model E (crowd conviction + momentum confirmation). $1,000 each. Same rules. 30 days.</div>
+        <div style="font-size:14px;font-weight:600;margin-bottom:4px;color:var(--amber);">Experiment 2 launches Oct 1. The Crowd defends against two new challengers.</div>
+        <div style="font-size:13px;color:var(--text-muted);">Model A (Control) defends. New challengers: Model D (tighter 75/25 gate) and Model E (65/35 + momentum confirmation). $1,000 each. 31 days. New trades stop Oct 31.</div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- TEST 2 PREVIEW -->
-<div class="section">
-  <div class="section-title">Test 2 &middot; Launching Monday Jun 15</div>
-  <p style="font-size:14px;color:var(--text-muted);margin-bottom:24px;">Model A is the new control. Two challengers are trying to beat it. Same $1,000 start. Same 30-day window. Different hypotheses.</p>
-  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
+<!-- EXPERIMENT 2 -->
+<div class="section" id="experiment-2">
+  <div class="section-title">Experiment 2 &middot; October 2026</div>
 
+  <!-- Countdown (hidden once live) -->
+  <div id="exp2-countdown" style="background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:24px;margin-bottom:24px;text-align:center;">
+    <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--brand);margin-bottom:10px;">Experiment 2 starts in</div>
+    <div id="countdown-display" style="font-size:36px;font-weight:700;letter-spacing:-0.02em;color:var(--text);margin-bottom:6px;">--d --h --m</div>
+    <div style="font-size:13px;color:var(--text-muted);">October 1, 2026 &middot; All three models start simultaneously at $1,000 each.</div>
+  </div>
+
+  <!-- Live scoreboard (hidden until Oct 1) -->
+  <div id="exp2-live" style="display:none;margin-bottom:24px;">
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;" id="exp2-scoreboards"></div>
+    <div style="font-family:var(--font-mono);font-size:10px;color:var(--text-muted);margin-top:10px;text-align:right;">Updated hourly &middot; New trades stop Oct 31 &middot; Open positions resolve by Nov 14</div>
+  </div>
+
+  <!-- Model rules (always visible) -->
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
     <div style="background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--brand);border-radius:8px;padding:24px;">
       <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--brand);margin-bottom:10px;">Model A &middot; Control</div>
       <div style="font-weight:600;margin-bottom:10px;">The Crowd</div>
@@ -401,9 +414,8 @@
         <li>&#9656; Resolves within 14 days</li>
         <li>&#9656; $100 flat sizing</li>
       </ul>
-      <div style="margin-top:14px;font-size:12px;color:var(--text-muted);font-style:italic;">Unchanged from Experiment 1. The benchmark to beat.</div>
+      <div style="margin-top:14px;font-size:12px;color:var(--text-muted);font-style:italic;">Unchanged from Experiment 1. Returned +99.6%. The benchmark to beat.</div>
     </div>
-
     <div style="background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--green);border-radius:8px;padding:24px;">
       <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--green);margin-bottom:10px;">Model D &middot; Challenger</div>
       <div style="font-weight:600;margin-bottom:10px;">The Sharp Crowd</div>
@@ -413,21 +425,19 @@
         <li>&#9656; Resolves within 14 days</li>
         <li>&#9656; $100 flat sizing</li>
       </ul>
-      <div style="margin-top:14px;font-size:12px;color:var(--text-muted);font-style:italic;">The thesis: tighter conviction filters out noise. Fewer trades, better quality.</div>
+      <div style="margin-top:14px;font-size:12px;color:var(--text-muted);font-style:italic;">Tighter conviction filters noise. Fewer trades, higher quality.</div>
     </div>
-
     <div style="background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--amber);border-radius:8px;padding:24px;">
       <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--amber);margin-bottom:10px;">Model E &middot; Challenger</div>
       <div style="font-weight:600;margin-bottom:10px;">The Momentum Crowd</div>
       <ul style="font-size:13px;color:var(--text-muted);line-height:2;list-style:none;padding:0;">
         <li>&#9656; Same 65/35 gate as Model A</li>
-        <li>&#9656; Also requires 3pt+ move today in trade direction</li>
+        <li>&#9656; Also requires 3pt+ move in trade direction</li>
         <li>&#9656; Resolves within 14 days</li>
         <li>&#9656; $100 flat sizing</li>
       </ul>
-      <div style="margin-top:14px;font-size:12px;color:var(--text-muted);font-style:italic;">The thesis: crowd conviction plus fresh price movement beats stale conviction alone.</div>
+      <div style="margin-top:14px;font-size:12px;color:var(--text-muted);font-style:italic;">Crowd conviction plus fresh momentum beats stale conviction alone.</div>
     </div>
-
   </div>
 </div>
 
@@ -435,10 +445,17 @@
 <div class="section">
   <div class="section-title">Full Trade Ledger</div>
   <!-- Model tabs -->
-  <div style="display:flex;gap:8px;margin-bottom:20px;" id="ledger-tabs">
-    <button onclick="switchLedger('a')" id="tab-a" style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;padding:8px 18px;border-radius:4px;cursor:pointer;border:1px solid var(--brand);background:var(--brand)22;color:var(--brand);">Model A. The Crowd</button>
-    <button onclick="switchLedger('b')" id="tab-b" style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;padding:8px 18px;border-radius:4px;cursor:pointer;border:1px solid var(--line);background:transparent;color:var(--text-muted);">Model B. The Contrarian</button>
-    <button onclick="switchLedger('c')" id="tab-c" style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;padding:8px 18px;border-radius:4px;cursor:pointer;border:1px solid var(--line);background:transparent;color:var(--text-muted);">Model C. The Arb</button>
+  <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px;">Experiment 2 &middot; Oct 2026</div>
+  <div style="display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap;" id="ledger-tabs">
+    <button onclick="switchLedger('a2')" id="tab-a2" style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;padding:8px 18px;border-radius:4px;cursor:pointer;border:1px solid var(--brand);background:var(--brand)22;color:var(--brand);">A &middot; The Crowd</button>
+    <button onclick="switchLedger('d')" id="tab-d" style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;padding:8px 18px;border-radius:4px;cursor:pointer;border:1px solid var(--line);background:transparent;color:var(--text-muted);">D &middot; Sharp Crowd</button>
+    <button onclick="switchLedger('e')" id="tab-e" style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;padding:8px 18px;border-radius:4px;cursor:pointer;border:1px solid var(--line);background:transparent;color:var(--text-muted);">E &middot; Momentum</button>
+  </div>
+  <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-muted);margin-top:16px;margin-bottom:8px;">Experiment 1 Archive &middot; Mar&ndash;Jun 2026</div>
+  <div style="display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap;">
+    <button onclick="switchLedger('a')" id="tab-a" style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;padding:8px 18px;border-radius:4px;cursor:pointer;border:1px solid var(--line);background:transparent;color:var(--text-muted);">A &middot; The Crowd</button>
+    <button onclick="switchLedger('b')" id="tab-b" style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;padding:8px 18px;border-radius:4px;cursor:pointer;border:1px solid var(--line);background:transparent;color:var(--text-muted);">B &middot; Contrarian</button>
+    <button onclick="switchLedger('c')" id="tab-c" style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;padding:8px 18px;border-radius:4px;cursor:pointer;border:1px solid var(--line);background:transparent;color:var(--text-muted);">C &middot; The Arb</button>
   </div>
   <div id="trade-container">
     <div class="empty-state">
@@ -489,7 +506,10 @@
 
 <script>
   const MARKETS_URL = 'data/markets.json';
-  const TAB_COLORS  = { a: 'var(--brand)', b: 'var(--red)', c: 'var(--amber)' };
+  const TAB_COLORS  = { a: 'var(--brand)', b: 'var(--red)', c: 'var(--amber)', a2: 'var(--brand)', d: '#7C5CBF', e: '#1A8A6E' };
+  const EXP2_KEYS   = ['a2', 'd', 'e'];
+  const EXP2_NAMES  = { a2: 'The Crowd', d: 'Sharp Crowd', e: 'Momentum' };
+  const EXP2_LAUNCH = new Date('2026-10-01T00:00:00-04:00');
   let allVariants   = {};
   let activeTab     = 'a';
 
@@ -560,16 +580,68 @@
 
   function switchLedger(key) {
     activeTab = key;
-    ['a','b','c'].forEach(k => {
+    const tabGroup = EXP2_KEYS.includes(key) ? EXP2_KEYS : ['a','b','c'];
+    tabGroup.forEach(k => {
       const btn = document.getElementById('tab-' + k);
       if (!btn) return;
       const isActive = k === key;
       const col = TAB_COLORS[k];
-      btn.style.border    = isActive ? '1px solid ' + col : '1px solid var(--border)';
+      btn.style.border     = isActive ? '1px solid ' + col : '1px solid var(--border)';
       btn.style.background = isActive ? col + '22' : 'transparent';
-      btn.style.color     = isActive ? col : 'var(--text-muted)';
+      btn.style.color      = isActive ? col : 'var(--text-muted)';
     });
     renderTradeTable(allVariants[key]);
+  }
+
+  function renderExp2Scoreboards(variants) {
+    const container = document.getElementById('exp2-scoreboards');
+    if (!container) return;
+    container.innerHTML = '';
+    EXP2_KEYS.forEach(k => {
+      const v = variants[k];
+      const bal = v ? (v.current_balance ?? 1000) : 1000;
+      const ytd = v ? (v.ytd_return_pct ?? 0) : 0;
+      const wins = v ? (v.win_count ?? 0) : 0;
+      const losses = v ? (v.loss_count ?? 0) : 0;
+      const open = v ? (v.open_count ?? 0) : 0;
+      const col = TAB_COLORS[k];
+      const balColor = bal >= 1000 ? 'var(--green)' : 'var(--red)';
+      const ytdColor = ytd >= 0 ? 'var(--green)' : 'var(--red)';
+      const card = document.createElement('div');
+      card.style.cssText = 'background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:20px;';
+      card.innerHTML = `
+        <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:${col};margin-bottom:12px;">${k.toUpperCase()} &middot; ${EXP2_NAMES[k]}</div>
+        <div style="font-size:28px;font-weight:700;color:${balColor};letter-spacing:-0.02em;margin-bottom:4px;">${fmtBal(bal)}</div>
+        <div style="font-family:var(--font-mono);font-size:13px;color:${ytdColor};margin-bottom:12px;">${fmtYtd(ytd)}</div>
+        <div style="display:flex;gap:16px;font-family:var(--font-mono);font-size:11px;color:var(--text-muted);">
+          <span>${fmtRec(wins,losses)} W-L</span>
+          <span>${open} open</span>
+        </div>`;
+      container.appendChild(card);
+    });
+  }
+
+  function startCountdown() {
+    const countdownEl = document.getElementById('exp2-countdown');
+    const liveEl      = document.getElementById('exp2-live');
+    const displayEl   = document.getElementById('countdown-display');
+    if (!countdownEl || !liveEl || !displayEl) return;
+
+    function tick() {
+      const now  = Date.now();
+      const diff = EXP2_LAUNCH.getTime() - now;
+      if (diff <= 0) {
+        countdownEl.style.display = 'none';
+        liveEl.style.display = 'block';
+        return;
+      }
+      const days  = Math.floor(diff / 86400000);
+      const hours = Math.floor((diff % 86400000) / 3600000);
+      const mins  = Math.floor((diff % 3600000) / 60000);
+      displayEl.textContent = days + 'd ' + hours + 'h ' + mins + 'm';
+    }
+    tick();
+    setInterval(tick, 30000);
   }
 
   // ── Poll (localStorage) ───────────────────────────────────────────────────
@@ -597,6 +669,7 @@
       allVariants = vars;
       updateScoreboard(vars);
       renderTradeTable(vars[activeTab]);
+      renderExp2Scoreboards(vars);
     } catch(e) {
       console.error('Portfolio load error:', e);
     }
@@ -680,6 +753,7 @@
   });
 
   initPoll();
+  startCountdown();
   loadPortfolio();
 </script>
 
