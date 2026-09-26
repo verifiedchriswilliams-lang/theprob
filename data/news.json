@@ -1,8 +1,17 @@
 {
-  "updated": "Sep 26, 2026 \u00b7 3:57 AM ET",
-  "updated_iso": "2026-09-26T08:57:44.302143+00:00",
+  "updated": "Sep 26, 2026 \u00b7 9:55 AM ET",
+  "updated_iso": "2026-09-26T14:55:36.322288+00:00",
   "homepage_count": 3,
   "articles": [
+    {
+      "title": "Data projections expect offensive fireworks: What Polymarket shows for Texas-Tennessee",
+      "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxNVkRnczMtZWpFY2t5UUNvcFZJTlNCQnhnN1J1ZmJGLXhNaTFhUGo5dU9aSTBxb0lLZXU2WUNYSFFvaUFlRE1QVUJud1FvcHltenJWRVYzaVppakdzaURQTGZEaURucmhFWWV4elhDU25KWW03UE02emM0MUVaNVRjNExRSkNISzFjNDhnaXBSNkpPV2lGMmpxbHpEWW54SGx0V1RTck5JQkdDbkQ4aUZJbTlKWTVyMkVZZnNzc0ZBckp1SWRXRElHTlkya1Q?oc=5",
+      "source": "Cleveland.com",
+      "pub_iso": "2026-09-26T14:15:00+00:00",
+      "description": "",
+      "summary": "",
+      "pub_display": "Sep 26"
+    },
     {
       "title": "US appeals court rules against Kalshi, says states can regulate prediction markets",
       "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxOQWZXVWk2TzhjZzVySHppeGZuYlJOd3FjeHc0dnZ3Zk1NcnZYc3JZSTRiNTlRazZyR1FrWlh2UmI4VmFhaXhVS2RrcDlTNW05enVRbmNMaDRLSy1UWjc1b2Jkc0Fud2UxY2JleVRYWld1cjN1VU1yY0UtSVN6TjBBaTRvRkpFY3BkaU9ERjFHN3BfWWRNNC1ReFI2bFR6bXFxRzJxWi15RjRLVFNrMjI5M2t2VS1qOTBxT0J6R1d0LWxZOERK?oc=5",
@@ -24,17 +33,8 @@
     {
       "title": "Inside Kalshi CEO Tarek Mansour's testy relationship with Indian casinos -- and how it could pose an existential threat: 'Lying little twerp'",
       "url": "https://news.google.com/rss/articles/CBMihAJBVV95cUxOcmw4YjdoVkEtRVBSbDc4N19wUHJHQlNFWkJocklORmJ1V3hEQklVc040OWVfaFBxeGRnSWlTSXh6dlhHVlZKUmFWSE9wbFphRWt5X1FVbzNEcENvQWEzaUNxeUNCV0FtSUJtRGJRQVBkS1ZkR0VjeXdRRjJPd1BzS0ZCa2oxYTN6LWh5NzJacGNZN0p1WEFnTE4zUHF6Q1pVS0I0TUtjVEh6YVJaLUR3WGkzSXZsaXhLLU15cnVVeFhPdzl5bFA4Z1JxVlZ6UzhKTHZnWHpRMHQ1RWVlNTI2Y2dBazFnYlFySC03Mk9QWUlDbk9JaXhKMjBTVHlIQU1JS0dWeA?oc=5",
-      "source": "New York Post",
+      "source": "nypost.com",
       "pub_iso": "2026-09-25T10:00:00+00:00",
-      "description": "",
-      "summary": "",
-      "pub_display": "Sep 25"
-    },
-    {
-      "title": "The worst bet in America isn't Kalshi or Polymarket. It's hiding in plain sight",
-      "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxNSmFxR2VXU1lWOUkyUkcwb2ZSaEllcktlNHVOV2FrUDNBeXZkQ1lYRllQZnQ5bWtHTC1JQURtUFkydFdtMnRPN1ZLUVZSalU0Zmhsc3Y3N2tXWDBvWnBaRzJZdTBvQkFZMDc0azlMS1J2M2ttazdnVGFvcHJsRnJzODZlMTBmZzdXbG5xZmwyS3Baa3dsY0HSAZsBQVVfeXFMTlZCVEs4aFNkWWFDX0MzZW4zanN3VXNhRG5kUHN2RE9TSHliMXZpMjBNVzhPb2xYb1FsWGwxSkMxM0xjTXdxX0xiaUdsZmRNYTI0OWdVMTJCQks3VktWNkd2NzRsMTFialEyT0M4d21HSkJNQzFVaEVZS1RaVU9CT2dkb3lmS0xGZG5yMVJucVNNdlhGUGpMTzFmUWc?oc=5",
-      "source": "Fox News",
-      "pub_iso": "2026-09-25T09:00:27+00:00",
       "description": "",
       "summary": "",
       "pub_display": "Sep 25"
@@ -49,6 +49,24 @@
       "pub_display": "Sep 24"
     },
     {
+      "title": "New York Attorney General Letitia James files suit against Polymarket - ABC News",
+      "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxNRDRYRGg5eGNuOUIwZ1hfeEVUa2pwMXdDR2RPSkxSSEduVGNGZnczWmdsXzEzQXVvWmhUSGpINnVjYXk1Qy1rMUEtUzI1NkVUQklkR0tuMHVGbmVMNWRFRl9md2FDUTdTSHczWkltMkpLdUxIMEFOOTM1SnFGd3c1RnZfZmh5b1pyMFk4bmZjM0pybXo5RUNN0gGcAUFVX3lxTE84TmJaTG1HZkN0Z0R0MS1EYXpjb01hWVN6OUJZdUlaZ1F4b0dDUXhJbVVmc1NDOFl3WWh2cG9Scnl0WTVUMnBMUnRndk5tdmszWW5jVzNGNjl1ZjlORWRTMy1LWDF3RUlsUU1INU1wcDJHeGZ2N053RVJYeGJvOU9hQVhoWEdZZ1RqVGVUN0NSLWhaVG90aVpHMXdUNQ?oc=5",
+      "source": "Breaking News, Latest News and Videos",
+      "pub_iso": "2026-09-24T15:23:27+00:00",
+      "description": "",
+      "summary": "",
+      "pub_display": "Sep 24"
+    },
+    {
+      "title": "Costco Earnings Prediction Market Preview: What Will CEO Ron Vachris Say?",
+      "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQSzZnYkhZWFA0eER0ZzRHMDZGVVF0OVIzWlNFdTBCTDQ2RDJqMWVPWE9tVzJEV0J4SjNSbzIxNnp6cThnZ0RxYVBuM2hQWUtqWWpobF9fMWt2QU8zRmd0UmkyMlhBZ0hlaVpvUlNJWU9rdzB0bnlucG42SjktLXpaVFUzT0N6VlRMWkExWk1PRHdUejZWbjJZcl9vdXR6ZWRNa0FmVk1MV0xMdw?oc=5",
+      "source": "finance.yahoo.com",
+      "pub_iso": "2026-09-24T14:58:43+00:00",
+      "description": "",
+      "summary": "",
+      "pub_display": "Sep 24"
+    },
+    {
       "title": "Small businesses roll the dice on Kalshi to manage their risks",
       "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTFBsLXN5eWNmMDlYVi1LMW9SZ0RWWFF3ZFBWdzJxUGRib3JLdjQ0QmNPTkNERHVwc25oRnJ2aDU5STh1VE1idklkMVZEUUZ6dU1KOUMzU1hDdXlQOFR6aWl0U3RuaDh4MVRZLTdwZzVuUGdBcTRZU2g5dzZ0QkM?oc=5",
       "source": "CBS News",
@@ -58,8 +76,8 @@
       "pub_display": "Sep 24"
     },
     {
-      "title": "The \u2018first prediction-market election\u2019 scrambles the midterms | CNN Politics",
-      "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxOYmJhUkFXSU9oTEFyYTloeDRqYXpJQWRFUl9oTDNkNDFpZmdPQUdlTXlRR2sxbWtKd0c2THpwV0RtMFFyckJwS1d4cGpnSGllVUtGVWZ2Q1k0a1F1dWNTMHJTYVRNbl90RGFJcF93RndGUnN0R3Rna0Zncjc1LUZJMVhhRi1ocWtDUzVEenRGNDdLODZHQWJnVjZJZXVxMVU?oc=5",
+      "title": "The \u2018first prediction-market election\u2019 scrambles the midterms",
+      "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxOaEQzRzl4cHVYcUtFTDRVX0lEMnlPdWx1ZHV0ZzMzMnBYTkRQMWRTX0lwQXYwckJtWWwtNDZXNzdwelhMZGVsNTlGekROUlYtNnVCVl9hdWZVeXo0YmhKT1ozY1hFOExqVHdWaEN1OXJ2UXVqRU9EZ2RVM2NtUXdkMlpzcGxGdk5McUJuWGlXNzlrWGc4T3hGcWNn?oc=5",
       "source": "CNN",
       "pub_iso": "2026-09-24T09:00:30+00:00",
       "description": "",
@@ -74,24 +92,6 @@
       "description": "",
       "summary": "",
       "pub_display": "Sep 24"
-    },
-    {
-      "title": "Kalshi reportedly gave Trump Jr. a $300K stake when it was worth $2B. Now at $22B, it wants to allow borrowed-money bets",
-      "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxQX0l6NEtGTDJJMVdjZXNoTzUwZnBVZE5hRUNxMzBBcS12V2FJVUF5THIzZ2xGNXVnbXBCNi1DdFNJVnc3ZGVReUhZd0JWWXltc2RDNW9obTROWUxzcDZoYTlhdWtER0VHZ2doVU9PZEFVY3lKZEJHY2pRejl4aXZOVDd2T3hSNWVfaU5IZVh0X2RJUHI5anBKQjJNOExxUQ?oc=5",
-      "source": "Yahoo Finance",
-      "pub_iso": "2026-09-23T21:00:00+00:00",
-      "description": "",
-      "summary": "",
-      "pub_display": "Sep 23"
-    },
-    {
-      "title": "Kalshi Levers the Predictions",
-      "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxNQmtjS3h2RTRwQkU3eGlOV0JuLURiTFpjX0VmNXVSMTFlOW1qMnItdjY1Z2JMLUtYbDRacWxQMXh3aG5ZeFk1RlhvWi1CUGQzMTB6QjdkeTZJbm5JTGNxM3ZwSmhfS0ZRWFM5TFg3X1VvS2RiRU50alREU2YwSVdDTUpJVzFVZkhXWk5YQ1BYUQ?oc=5",
-      "source": "Bloomberg.com",
-      "pub_iso": "2026-09-23T18:34:06+00:00",
-      "description": "",
-      "summary": "",
-      "pub_display": "Sep 23"
     }
   ]
 }
