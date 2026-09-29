@@ -1,13 +1,31 @@
 {
-  "updated": "Sep 28, 2026 \u00b7 5:22 PM ET",
-  "updated_iso": "2026-09-28T22:22:44.428308+00:00",
+  "updated": "Sep 28, 2026 \u00b7 9:31 PM ET",
+  "updated_iso": "2026-09-29T02:31:54.832954+00:00",
   "homepage_count": 3,
   "articles": [
+    {
+      "title": "Prediction Market Volume Nears $20B as Polymarket US Takes Bigger Share",
+      "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxNZElxTGJRWXZ0WnltaU5xcFVhUEJSd1ZwTmJ3dlRIbno0dnV0VWxPbExHT0ZLejZxVU05ZkxNaFJQYnRhcEhCYlhPZ1I0LVBXdE9DS0VlalZ5N0xMZEhReHJJazh4MU5ieHZFZ2hrUEF2aWM5Q195cXo0TjBPWVJVT2VyUWl2RFhfaWhFLXRrQmVzbmVKNjFDczRaNko5QQ?oc=5",
+      "source": "DeFi Rate",
+      "pub_iso": "2026-09-29T02:00:25+00:00",
+      "description": "",
+      "summary": "",
+      "pub_display": "Sep 29"
+    },
     {
       "title": "Is Carney a Nobel Peace Prize contender? Here's what one prediction market says",
       "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxPa0VYYzJxLXNhM1hnNUxaY1RoRi1lSjFqNjRQNnBIVkgtaXhkNExyYWtFZkRqZUdkQWxqRmtzMmN3MC1ubWRXamI0NW9ldzdkRHYtenB0c0tBMjA3MmVUTFdzcjVBZTA3N081MHg1c1pXREx0MDlpc1NFV2pEYUdSQmpock1ZOW42czduMmVHZi02WmxLOWd6dVNsVzlnNkVkN1NTbnNTcEVONzA?oc=5",
       "source": "National Post",
       "pub_iso": "2026-09-28T19:57:18+00:00",
+      "description": "",
+      "summary": "",
+      "pub_display": "Sep 28"
+    },
+    {
+      "title": "Kalshi Loses Sixth Circuit Appeal, Clearing Way For More State Bans",
+      "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxNcW9MTHRSNGRhVHlPOVN4VEpsVTFvWXZiNVhyLTh3S3BLSzN4YWdQQVJkcm0wMEdiWWFxYW1HSmxXNFBBbGdFV2FXVXZRNzR5bWVqbWd6ZlNmZGp3VUo3RzRqNklkaTFuYl82YVVxWDNVY1BueDJ2bGxOLThNLWZSQmR0Vi1xRmt0RExzQVBqZ0Jsc1NyUHFQdF9uRUhaQ1I2Y3A3OFNfTGUtSDc3?oc=5",
+      "source": "Legal Sports Report",
+      "pub_iso": "2026-09-28T19:04:24+00:00",
       "description": "",
       "summary": "",
       "pub_display": "Sep 28"
@@ -31,15 +49,6 @@
       "pub_display": "Sep 28"
     },
     {
-      "title": "Massive Flip on Kalshi Heisman Odds Between Jeremiah Smith, Darian Mensah and Trinidad Chambliss",
-      "url": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxPVHMzMlV3YlFqREF2R1otWjc4Q09LdnA1TkVWN3NBR1N6TWg0WFRRYV9HRm1XYUczeU5PQVY1bGZWVUp0ZnlOLU1Mc1ZjOTViQlc4NEE4czZtLTZxYlBUVjFCNWFvR1BHTTgzdnlVTmRBSTdCSG5HM0xFTVVESllheGxpMjRXOVVOejJXTzVBTFBXdzNPZzNBenh6RFZqcGxjckVseUNYWXdvT2U0RjJUN3pNaGJhYk9wWlRUaUplSDNLdDlLMGItYzA2V0xlMWdQYTZhV0xsZDhwbHZ0VHNn?oc=5",
-      "source": "Sports Illustrated",
-      "pub_iso": "2026-09-28T15:25:06+00:00",
-      "description": "",
-      "summary": "",
-      "pub_display": "Sep 28"
-    },
-    {
       "title": "S&P Dow Jones Indices eyes bets on prediction markets",
       "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxOMGx6OG5BSnFfd3luX20zamVoMkZjbzBwWnc2VFp6Rm43WlEzeEwyeDhVM0R5bzg2eEp1WC14ejVVSDV2eC1wT3FxWVdTbkFqZlR4R2lVT25TZExLZGV4SmhUbWV3LWZRRVUtUjN4MWNVcjZCRWZCdmxWa1B3NjM5UUFYb3VTbExXcC16cUdXRU9HRFRHMVNB?oc=5",
       "source": "ETF Stream",
@@ -51,20 +60,38 @@
     {
       "title": "Fraudsters Are Using Polymarket to Extract Money From Stolen Debit Cards",
       "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTFBGVGJ6X1lfeW5ZMnE2b3A2Um5EaEdJdGQ3bE5hMmttZU9rZTI2RGwxSHZSVElEQ0tzZzBrRUpPeFVTMHVubkx2bTMtS0dEVU9yWUlscFRYeENNWWZENzJDMjRmdWJtaHdwRjVYYWpOdVE3NlhOWjNkZl9RRFQ?oc=5",
-      "source": "futurism.com",
+      "source": "Futurism",
       "pub_iso": "2026-09-26T17:01:00+00:00",
       "description": "",
       "summary": "",
       "pub_display": "Sep 26"
     },
     {
-      "title": "New York, Polymarket sue each other over whether prediction markets are illegal gambling",
-      "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxOaHBKRzNuRV9UcDlISEg4M2tsZURmLThPQW1ZbDMtRG91aDVLeWJJT2xsenpqbi11dENjOVp6TmpXWllXNTVmT1FFczRmY1U5YkVXVUZ6bTRIVUlSRWk5MnNDWWJobnoyU2dqSHAzR1pMaTJyR2NQa1QwQlBmX2pnUEx1ZG9oTGo2U3FDekFDYlJrVVltVG9TMmVleXNaNk5aLVVVS0VBSHk?oc=5",
-      "source": "Reuters",
-      "pub_iso": "2026-09-24T14:28:00+00:00",
+      "title": "Appeals court rules that states can regulate Kalshi\u2019s sports prediction markets, dealing another legal blow to platforms",
+      "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxPTTNOZ0M4eHBEV0c2eEVoQVdOUXh1M1dQUmhwN2pES21TaGJnQVlvT3pNdU54LWpZbTY4WkdXT2VXTFdXNUExcVk4c2x4N1dtQ0RrdlJqR3FMUjlSN0dwTUNmd1BuTEpmMEVxMFF1VjBVTDNhRzlJbmh5SWVnbTdUTUtjMDhQSmhKSUNpUXBDT0NfLXUzd0IxbFhXdlpzMFZaMzdvbNIBqgFBVV95cUxQMWRUSUw5eUFIY3M0WGNOcDBhQ0dOeFJ0UHYxNkF2LWo1Wk9fSnBEY2Z3b0RoN3pBdFJ2ZTB6RmY4MWcycGRZbWR6bGNrV0V4dU42NFU2QUJRbzdsQ1JGOHp6RmphVVMwanB4a29XQmJNWEVaTEw0SWQyd3pucUtYUHJ0QURpaHlVNWpWVUF5N0s4UWRiVTJ4bXRrdkZyVnltdGwxcmh3LXdpZw?oc=5",
+      "source": "CNBC",
+      "pub_iso": "2026-09-25T21:06:24+00:00",
       "description": "",
       "summary": "",
-      "pub_display": "Sep 24"
+      "pub_display": "Sep 25"
+    },
+    {
+      "title": "New York sues Polymarket for running \u2018illegal gambling operation\u2019 - The Athletic",
+      "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxNTW5BWndGelVTWTU4QjRBSUthMkNWYm9WQUJITlNvU1MxdmZwMWlSZG9Hd2ZubE42YVdWUmxPRDUwUWRMd0VHeTJSd1o4WTBQRTkzMWpwWDR6ODIydl9oSmxxVUQ5c1NsWWVLaFZSVl8wM1ZCM09qRHcta2RvSVBRWGkyZWJrQzNTZktqR1JBY1kzQm4yYVhCMndqbndZLTZxZWpRd01najRIWVplNWZtZXBJNVg?oc=5",
+      "source": "The New York Times",
+      "pub_iso": "2026-09-25T06:56:05+00:00",
+      "description": "",
+      "summary": "",
+      "pub_display": "Sep 25"
+    },
+    {
+      "title": "The Facts Behind Kalshi\u2019s Perpetuals Volume",
+      "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE5FRWFNVU9DcVVWTFdoM0RsUkZLZWVJbUo3VnhuUkc5VWplSFJJdjJBLV9PRkt5VUJ4VGZ0Vmp5NnhqRktBMThZeF9xcHhZSFJxZGU1OWhJN3RyVWhqaHpOaV9Tb1VIdk80SmhlS2FaY3M0ZnRvMnE0ZQ?oc=5",
+      "source": "Kalshi News",
+      "pub_iso": "2026-09-22T15:16:41+00:00",
+      "description": "",
+      "summary": "",
+      "pub_display": "Sep 22"
     }
   ]
 }
