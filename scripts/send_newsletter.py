@@ -39,9 +39,10 @@ CLAUDE_MODEL       = "claude-haiku-4-5-20251001"
 SITE_URL           = "https://theprob.ai"
 OUTPUT_PATH        = "newsletter/latest.html"
 
-# Beehiiv API — set via GitHub secrets BEEHIIV_API_KEY and BEEHIIV_PUB_ID
-BEEHIIV_API_KEY = os.environ.get("BEEHIIV_API_KEY", "")
-BEEHIIV_PUB_ID  = os.environ.get("BEEHIIV_PUB_ID", "")
+# Resend — set via GitHub secrets RESEND_API_KEY and SUBSCRIBER_LIST
+RESEND_API_KEY   = os.environ.get("RESEND_API_KEY", "")
+SUBSCRIBER_LIST  = os.environ.get("SUBSCRIBER_LIST", "")  # JSON array of email strings
+FROM_ADDRESS     = "The Prob <newsletter@theprob.ai>"
 
 HOUSE_STYLE_SYSTEM = (
     "You write for The Prob, a prediction markets newsletter. "
@@ -736,7 +737,7 @@ def build_html(markets, news, subject, with_footer=True):
         '      </div>\n'
         '      <div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;'
         'color:#8A94A6;margin-top:12px;">\n'
-        '        <a href="{{unsubscribe_url}}" style="color:#8A94A6;">Unsubscribe</a>\n'
+        '        <a href="mailto:newsletter@theprob.ai?subject=Unsubscribe" style="color:#8A94A6;">Unsubscribe</a>\n'
         '        &nbsp;&middot;&nbsp;\n'
         '        <a href="' + SITE_URL + '" style="color:#8A94A6;">View online</a>\n'
         '      </div>\n'
@@ -979,50 +980,61 @@ def save_newsletter(subject: str, html_full: str, html_no_ftr: str, subtitle: st
         print(f"  [ERROR] Could not save newsletter: {e}")
         return False
 
-# ── BEEHIIV API ──────────────────────────────────────────────────────────────
+# ── RESEND API ───────────────────────────────────────────────────────────────
 
-def post_to_beehiiv(subject: str, html: str) -> bool:
+def send_via_resend(subject: str, html: str) -> bool:
     """
-    POST the newsletter to Beehiiv via the Send API, scheduled 10 minutes
-    from now. Workflow runs at 6:50am ET → email sends at 7:00am ET.
-
-    Requires env vars: BEEHIIV_API_KEY, BEEHIIV_PUB_ID
-    API ref: https://developers.beehiiv.com/api-reference/posts/create
+    Send the newsletter to all subscribers via Resend.
+    Requires env vars: RESEND_API_KEY, SUBSCRIBER_LIST (JSON array of emails).
     """
-    if not BEEHIIV_API_KEY or not BEEHIIV_PUB_ID:
-        print("  [INFO] BEEHIIV_API_KEY or BEEHIIV_PUB_ID not set — skipping API post")
+    if not RESEND_API_KEY:
+        print("  [INFO] RESEND_API_KEY not set — skipping send")
         return False
 
-    url = f"https://api.beehiiv.com/v2/publications/{BEEHIIV_PUB_ID}/posts"
+    if not SUBSCRIBER_LIST:
+        print("  [INFO] SUBSCRIBER_LIST not set — skipping send")
+        return False
+
     try:
-        r = requests.post(
-            url,
-            headers={
-                "Authorization":  f"Bearer {BEEHIIV_API_KEY}",
-                "Content-Type":   "application/json",
-            },
-            json={
-                "title":          subject,
-                "body_content":   html,
-                "status":         "draft",
-            },
-            timeout=30,
-        )
-        r.raise_for_status()
-        data    = r.json()
-        post_id = data.get("data", {}).get("id", "unknown")
-        print(f"  ✓ Beehiiv draft created — id={post_id} — open Beehiiv and click Send")
-        return True
-    except requests.exceptions.HTTPError as e:
-        print(f"  [ERROR] Beehiiv API HTTP error: {e}")
-        try:
-            print(f"  Response: {e.response.text[:500]}")
-        except Exception:
-            pass
-        return False
+        subscribers = json.loads(SUBSCRIBER_LIST)
     except Exception as e:
-        print(f"  [ERROR] Beehiiv API call failed: {e}")
+        print(f"  [ERROR] Could not parse SUBSCRIBER_LIST: {e}")
         return False
+
+    if not subscribers:
+        print("  [INFO] SUBSCRIBER_LIST is empty — skipping send")
+        return False
+
+    print(f"  Sending to {len(subscribers)} subscribers via Resend...")
+    sent = 0
+    failed = 0
+    for email in subscribers:
+        try:
+            r = requests.post(
+                "https://api.resend.com/emails",
+                headers={
+                    "Authorization": f"Bearer {RESEND_API_KEY}",
+                    "Content-Type":  "application/json",
+                },
+                json={
+                    "from":    FROM_ADDRESS,
+                    "to":      [email],
+                    "subject": subject,
+                    "html":    html,
+                    "headers": {
+                        "List-Unsubscribe": "<mailto:newsletter@theprob.ai?subject=Unsubscribe>",
+                    },
+                },
+                timeout=30,
+            )
+            r.raise_for_status()
+            sent += 1
+        except Exception as e:
+            print(f"  [WARN] Failed to send to {email}: {e}")
+            failed += 1
+
+    print(f"  ✓ Resend: {sent} sent, {failed} failed")
+    return sent > 0
 
 
 # ── MAIN ─────────────────────────────────────────────────────────────────────
@@ -1061,14 +1073,14 @@ def main():
     print("\nSaving newsletter...")
     success = save_newsletter(subject, html_full, html_no_ftr, subtitle)
 
-    print("\nPosting to Beehiiv...")
-    posted = post_to_beehiiv(subject, html_no_ftr)
+    print("\nSending via Resend...")
+    sent = send_via_resend(subject, html_full)
 
-    if success and posted:
-        print("\n✓ Newsletter draft created in Beehiiv — open dashboard and click Send")
+    if success and sent:
+        print("\n✓ Newsletter sent via Resend and saved to newsletter/latest.html")
     elif success:
         print("\n✓ Newsletter saved to newsletter/latest.html")
-        print("  Beehiiv API not configured — paste manually to send")
+        print("  Resend not configured — email not sent")
     else:
         print("\n✗ Save failed")
 
