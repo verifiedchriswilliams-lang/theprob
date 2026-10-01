@@ -10857,7 +10857,7 @@
       "ytd_return_pct": 0.0,
       "win_count": 0,
       "loss_count": 0,
-      "open_count": 3,
+      "open_count": 4,
       "start_date": "2026-10-01",
       "last_updated": "2026-10-01",
       "trades": [
@@ -10914,6 +10914,24 @@
           "exit_prob": null,
           "exit_date": null,
           "pnl": null
+        },
+        {
+          "trade_id": "7612f3fc",
+          "market_id": "cs2-faze-nemi1-2026-10-01",
+          "question": "Counter-Strike: FaZe vs Nemiga (BO3) - Stake Ranked Episode 4 Playoffs",
+          "url": "https://polymarket.com/event/cs2-faze-nemi1-2026-10-01",
+          "source": "Polymarket",
+          "display_category": "Sports",
+          "entry_prob": 71.5,
+          "direction": "YES",
+          "amount": 100.0,
+          "entry_date": "2026-10-01",
+          "end_date_raw": "2026-10-02T01:20:00Z",
+          "end_date": "Oct 2",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
@@ -10926,7 +10944,7 @@
       "ytd_return_pct": 0.0,
       "win_count": 0,
       "loss_count": 0,
-      "open_count": 2,
+      "open_count": 3,
       "start_date": "2026-10-01",
       "last_updated": "2026-10-01",
       "trades": [
@@ -10965,6 +10983,24 @@
           "exit_prob": null,
           "exit_date": null,
           "pnl": null
+        },
+        {
+          "trade_id": "173c372a",
+          "market_id": "brazil-first-round-vote-share-flavio-bolsonaro-39-plus",
+          "question": "Will Fl\u00e1vio Bolsonaro win 39% or more of the valid vote in the first round of the 2026 Brazilian presidential election?",
+          "url": "https://polymarket.com/event/brazil-presidential-election-first-round-flavio-bolsonaro-vote-share",
+          "source": "Polymarket",
+          "display_category": "Politics",
+          "entry_prob": 90.5,
+          "direction": "YES",
+          "amount": 100.0,
+          "entry_date": "2026-10-01",
+          "end_date_raw": "2026-10-04T23:59:00Z",
+          "end_date": "Oct 4",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
@@ -10977,7 +11013,7 @@
       "ytd_return_pct": 0.0,
       "win_count": 0,
       "loss_count": 0,
-      "open_count": 2,
+      "open_count": 3,
       "start_date": "2026-10-01",
       "last_updated": "2026-10-01",
       "trades": [
@@ -11012,6 +11048,24 @@
           "entry_date": "2026-10-01",
           "end_date_raw": "2026-10-05T03:59:00Z",
           "end_date": "Oct 5",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
+        },
+        {
+          "trade_id": "0b58bb3a",
+          "market_id": "cs2-faze-nemi1-2026-10-01",
+          "question": "Counter-Strike: FaZe vs Nemiga (BO3) - Stake Ranked Episode 4 Playoffs",
+          "url": "https://polymarket.com/event/cs2-faze-nemi1-2026-10-01",
+          "source": "Polymarket",
+          "display_category": "Sports",
+          "entry_prob": 71.5,
+          "direction": "YES",
+          "amount": 100.0,
+          "entry_date": "2026-10-01",
+          "end_date_raw": "2026-10-02T01:20:00Z",
+          "end_date": "Oct 2",
           "status": "open",
           "exit_prob": null,
           "exit_date": null,
