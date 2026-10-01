@@ -1,9 +1,9 @@
 name: Build and Send Sunday 5 Newsletter
 
 on:
-  schedule:
-    - cron: '50 10 * * 0'  # 6:50 AM EDT (UTC-4) every Sunday — same send time as daily newsletter
-  workflow_dispatch:        # allow manual trigger for testing / sending today's edition
+  # schedule:
+  #   - cron: '50 10 * * 0'  # 6:50 AM EDT Sundays — PAUSED until Resend send is verified
+  workflow_dispatch:        # manual trigger only until send is confirmed working
 
 jobs:
   build-sunday5:
