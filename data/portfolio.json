@@ -10857,7 +10857,7 @@
       "ytd_return_pct": 0.0,
       "win_count": 0,
       "loss_count": 0,
-      "open_count": 6,
+      "open_count": 7,
       "start_date": "2026-10-01",
       "last_updated": "2026-10-02",
       "trades": [
@@ -10968,6 +10968,24 @@
           "exit_prob": null,
           "exit_date": null,
           "pnl": null
+        },
+        {
+          "trade_id": "68204840",
+          "market_id": "will-lula-win-the-most-votes-in-the-first-round-of-the-2026-brazil-presidential-election",
+          "question": "Will Lula win the most votes in the first round of the 2026 Brazil presidential election?",
+          "url": "https://polymarket.com/event/brazil-presidential-election-first-round-winner",
+          "source": "Polymarket",
+          "display_category": "Politics",
+          "entry_prob": 75.5,
+          "direction": "YES",
+          "amount": 100.0,
+          "entry_date": "2026-10-02",
+          "end_date_raw": "2026-10-05T03:59:00Z",
+          "end_date": "Oct 5",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
@@ -10980,7 +10998,7 @@
       "ytd_return_pct": 0.0,
       "win_count": 0,
       "loss_count": 0,
-      "open_count": 6,
+      "open_count": 7,
       "start_date": "2026-10-01",
       "last_updated": "2026-10-02",
       "trades": [
@@ -11091,6 +11109,24 @@
           "exit_prob": null,
           "exit_date": null,
           "pnl": null
+        },
+        {
+          "trade_id": "9663c6b9",
+          "market_id": "will-lula-win-the-most-votes-in-the-first-round-of-the-2026-brazil-presidential-election",
+          "question": "Will Lula win the most votes in the first round of the 2026 Brazil presidential election?",
+          "url": "https://polymarket.com/event/brazil-presidential-election-first-round-winner",
+          "source": "Polymarket",
+          "display_category": "Politics",
+          "entry_prob": 75.5,
+          "direction": "YES",
+          "amount": 100.0,
+          "entry_date": "2026-10-02",
+          "end_date_raw": "2026-10-05T03:59:00Z",
+          "end_date": "Oct 5",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
@@ -11103,7 +11139,7 @@
       "ytd_return_pct": 0.0,
       "win_count": 0,
       "loss_count": 0,
-      "open_count": 5,
+      "open_count": 6,
       "start_date": "2026-10-01",
       "last_updated": "2026-10-02",
       "trades": [
@@ -11188,6 +11224,24 @@
           "display_category": "Politics",
           "entry_prob": 27.1,
           "direction": "NO",
+          "amount": 100.0,
+          "entry_date": "2026-10-02",
+          "end_date_raw": "2026-10-05T03:59:00Z",
+          "end_date": "Oct 5",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
+        },
+        {
+          "trade_id": "caa908ac",
+          "market_id": "will-lula-win-the-most-votes-in-the-first-round-of-the-2026-brazil-presidential-election",
+          "question": "Will Lula win the most votes in the first round of the 2026 Brazil presidential election?",
+          "url": "https://polymarket.com/event/brazil-presidential-election-first-round-winner",
+          "source": "Polymarket",
+          "display_category": "Politics",
+          "entry_prob": 75.5,
+          "direction": "YES",
           "amount": 100.0,
           "entry_date": "2026-10-02",
           "end_date_raw": "2026-10-05T03:59:00Z",
