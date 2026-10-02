@@ -10857,9 +10857,9 @@
       "ytd_return_pct": 0.0,
       "win_count": 0,
       "loss_count": 0,
-      "open_count": 4,
+      "open_count": 5,
       "start_date": "2026-10-01",
-      "last_updated": "2026-10-01",
+      "last_updated": "2026-10-02",
       "trades": [
         {
           "trade_id": "37c7b925",
@@ -10932,6 +10932,24 @@
           "exit_prob": null,
           "exit_date": null,
           "pnl": null
+        },
+        {
+          "trade_id": "30e43f41",
+          "market_id": "will-russia-target-kyiv-on-october-12-2026",
+          "question": "Will Russia target Kyiv on October 12, 2026?",
+          "url": "https://polymarket.com/event/will-russia-target-kyiv-on-october-2026",
+          "source": "Polymarket",
+          "display_category": "Politics",
+          "entry_prob": 87.0,
+          "direction": "YES",
+          "amount": 100.0,
+          "entry_date": "2026-10-02",
+          "end_date_raw": "2026-10-13T03:59:00Z",
+          "end_date": "Oct 13",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
@@ -10944,9 +10962,9 @@
       "ytd_return_pct": 0.0,
       "win_count": 0,
       "loss_count": 0,
-      "open_count": 3,
+      "open_count": 4,
       "start_date": "2026-10-01",
-      "last_updated": "2026-10-01",
+      "last_updated": "2026-10-02",
       "trades": [
         {
           "trade_id": "35713c79",
@@ -11001,6 +11019,24 @@
           "exit_prob": null,
           "exit_date": null,
           "pnl": null
+        },
+        {
+          "trade_id": "8b11d863",
+          "market_id": "will-russia-target-kyiv-on-october-12-2026",
+          "question": "Will Russia target Kyiv on October 12, 2026?",
+          "url": "https://polymarket.com/event/will-russia-target-kyiv-on-october-2026",
+          "source": "Polymarket",
+          "display_category": "Politics",
+          "entry_prob": 87.0,
+          "direction": "YES",
+          "amount": 100.0,
+          "entry_date": "2026-10-02",
+          "end_date_raw": "2026-10-13T03:59:00Z",
+          "end_date": "Oct 13",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
@@ -11013,9 +11049,9 @@
       "ytd_return_pct": 0.0,
       "win_count": 0,
       "loss_count": 0,
-      "open_count": 3,
+      "open_count": 4,
       "start_date": "2026-10-01",
-      "last_updated": "2026-10-01",
+      "last_updated": "2026-10-02",
       "trades": [
         {
           "trade_id": "49f5c75f",
@@ -11066,6 +11102,24 @@
           "entry_date": "2026-10-01",
           "end_date_raw": "2026-10-02T01:20:00Z",
           "end_date": "Oct 2",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
+        },
+        {
+          "trade_id": "10ae9590",
+          "market_id": "will-russia-target-kyiv-on-october-12-2026",
+          "question": "Will Russia target Kyiv on October 12, 2026?",
+          "url": "https://polymarket.com/event/will-russia-target-kyiv-on-october-2026",
+          "source": "Polymarket",
+          "display_category": "Politics",
+          "entry_prob": 87.0,
+          "direction": "YES",
+          "amount": 100.0,
+          "entry_date": "2026-10-02",
+          "end_date_raw": "2026-10-13T03:59:00Z",
+          "end_date": "Oct 13",
           "status": "open",
           "exit_prob": null,
           "exit_date": null,
