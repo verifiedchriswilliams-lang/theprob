@@ -10857,9 +10857,9 @@
       "ytd_return_pct": 0.0,
       "win_count": 0,
       "loss_count": 0,
-      "open_count": 7,
+      "open_count": 8,
       "start_date": "2026-10-01",
-      "last_updated": "2026-10-02",
+      "last_updated": "2026-10-03",
       "trades": [
         {
           "trade_id": "37c7b925",
@@ -10986,6 +10986,24 @@
           "exit_prob": null,
           "exit_date": null,
           "pnl": null
+        },
+        {
+          "trade_id": "fa2d2f67",
+          "market_id": "will-bia-kicis-win-the-second-most-votes-in-the-2026-federal-district-senate-election",
+          "question": "Will Bia Kicis win the second-most votes in the 2026 Federal District Senate election?",
+          "url": "https://polymarket.com/event/federal-district-senate-election-2nd-place",
+          "source": "Polymarket",
+          "display_category": "Politics",
+          "entry_prob": 76.6,
+          "direction": "YES",
+          "amount": 100.0,
+          "entry_date": "2026-10-03",
+          "end_date_raw": "2026-10-05T03:59:00Z",
+          "end_date": "Oct 5",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
@@ -11000,7 +11018,7 @@
       "loss_count": 0,
       "open_count": 7,
       "start_date": "2026-10-01",
-      "last_updated": "2026-10-02",
+      "last_updated": "2026-10-03",
       "trades": [
         {
           "trade_id": "35713c79",
@@ -11139,9 +11157,9 @@
       "ytd_return_pct": 0.0,
       "win_count": 0,
       "loss_count": 0,
-      "open_count": 6,
+      "open_count": 7,
       "start_date": "2026-10-01",
-      "last_updated": "2026-10-02",
+      "last_updated": "2026-10-03",
       "trades": [
         {
           "trade_id": "49f5c75f",
@@ -11246,6 +11264,24 @@
           "entry_date": "2026-10-02",
           "end_date_raw": "2026-10-05T03:59:00Z",
           "end_date": "Oct 5",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
+        },
+        {
+          "trade_id": "ca04842b",
+          "market_id": "us-x-iran-ceasefire-continues-through-october-15",
+          "question": "US x Iran ceasefire continues through October 15?",
+          "url": "https://polymarket.com/event/us-iran-ceasefire-continues-throughptptpt",
+          "source": "Polymarket",
+          "display_category": "Politics",
+          "entry_prob": 81.5,
+          "direction": "YES",
+          "amount": 100.0,
+          "entry_date": "2026-10-03",
+          "end_date_raw": "2026-10-16T03:59:00Z",
+          "end_date": "Oct 16",
           "status": "open",
           "exit_prob": null,
           "exit_date": null,
