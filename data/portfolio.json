@@ -10857,7 +10857,7 @@
       "ytd_return_pct": 0.0,
       "win_count": 0,
       "loss_count": 0,
-      "open_count": 10,
+      "open_count": 11,
       "start_date": "2026-10-01",
       "last_updated": "2026-10-04",
       "trades": [
@@ -11040,6 +11040,24 @@
           "exit_prob": null,
           "exit_date": null,
           "pnl": null
+        },
+        {
+          "trade_id": "da00acc2",
+          "market_id": "gemini-4pt0-released-by-october-15-2026",
+          "question": "Gemini 4.0 released by October 15, 2026?",
+          "url": "https://polymarket.com/event/gemini-4pt0-released-by-june-30-2026",
+          "source": "Polymarket",
+          "display_category": "Technology",
+          "entry_prob": 69.5,
+          "direction": "YES",
+          "amount": 100.0,
+          "entry_date": "2026-10-04",
+          "end_date_raw": "2026-10-16T03:59:00Z",
+          "end_date": "Oct 16",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
@@ -11052,7 +11070,7 @@
       "ytd_return_pct": 2.5,
       "win_count": 2,
       "loss_count": 0,
-      "open_count": 8,
+      "open_count": 9,
       "start_date": "2026-10-01",
       "last_updated": "2026-10-04",
       "trades": [
@@ -11235,6 +11253,24 @@
           "exit_prob": null,
           "exit_date": null,
           "pnl": null
+        },
+        {
+          "trade_id": "5375bde7",
+          "market_id": "will-sergio-moro-win-the-governor-of-parana-election-20260608205122817",
+          "question": "Will Sergio Moro win the Governor of Paran\u00e1 election?",
+          "url": "https://polymarket.com/event/parana-governor-election-winner-20260608205118343",
+          "source": "Polymarket",
+          "display_category": "Politics",
+          "entry_prob": 80.5,
+          "direction": "YES",
+          "amount": 100.0,
+          "entry_date": "2026-10-04",
+          "end_date_raw": "2026-10-05T03:59:00Z",
+          "end_date": "Oct 5",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
@@ -11242,10 +11278,10 @@
       "name": "The Momentum Crowd",
       "strategy": "65/35 gate + crowd must be moving 3pts+ in trade direction",
       "thesis": "Conviction plus fresh momentum beats stale conviction alone.",
-      "current_balance": 1021.89,
-      "total_pnl": 21.89,
-      "ytd_return_pct": 2.2,
-      "win_count": 2,
+      "current_balance": 1030.0,
+      "total_pnl": 30.0,
+      "ytd_return_pct": 3.0,
+      "win_count": 3,
       "loss_count": 0,
       "open_count": 8,
       "start_date": "2026-10-01",
@@ -11408,10 +11444,10 @@
           "entry_date": "2026-10-03",
           "end_date_raw": "2026-10-05T03:59:00Z",
           "end_date": "Oct 5",
-          "status": "open",
-          "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "status": "closed",
+          "exit_prob": 95.2,
+          "exit_date": "2026-10-04",
+          "pnl": 8.11
         },
         {
           "trade_id": "f1088642",
@@ -11426,6 +11462,24 @@
           "entry_date": "2026-10-03",
           "end_date_raw": "2026-10-05T03:59:00Z",
           "end_date": "Oct 5",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
+        },
+        {
+          "trade_id": "ab9acbae",
+          "market_id": "gemini-4pt0-released-by-october-15-2026",
+          "question": "Gemini 4.0 released by October 15, 2026?",
+          "url": "https://polymarket.com/event/gemini-4pt0-released-by-june-30-2026",
+          "source": "Polymarket",
+          "display_category": "Technology",
+          "entry_prob": 69.5,
+          "direction": "YES",
+          "amount": 100.0,
+          "entry_date": "2026-10-04",
+          "end_date_raw": "2026-10-16T03:59:00Z",
+          "end_date": "Oct 16",
           "status": "open",
           "exit_prob": null,
           "exit_date": null,
