@@ -11047,12 +11047,12 @@
       "name": "The Sharp Crowd",
       "strategy": "Tighter gate: YES \u226575%, NO \u226425%",
       "thesis": "Stricter conviction filters noise. Fewer trades, higher quality.",
-      "current_balance": 1000.0,
-      "total_pnl": 0.0,
-      "ytd_return_pct": 0.0,
-      "win_count": 0,
+      "current_balance": 1025.44,
+      "total_pnl": 25.44,
+      "ytd_return_pct": 2.5,
+      "win_count": 2,
       "loss_count": 0,
-      "open_count": 10,
+      "open_count": 8,
       "start_date": "2026-10-01",
       "last_updated": "2026-10-04",
       "trades": [
@@ -11069,10 +11069,10 @@
           "entry_date": "2026-10-01",
           "end_date_raw": "2026-10-05T03:59:00Z",
           "end_date": "Oct 5",
-          "status": "open",
-          "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "status": "closed",
+          "exit_prob": 97.0,
+          "exit_date": "2026-10-04",
+          "pnl": 14.94
         },
         {
           "trade_id": "d0545481",
@@ -11105,10 +11105,10 @@
           "entry_date": "2026-10-01",
           "end_date_raw": "2026-10-04T23:59:00Z",
           "end_date": "Oct 4",
-          "status": "open",
-          "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "status": "closed",
+          "exit_prob": 97.6,
+          "exit_date": "2026-10-04",
+          "pnl": 10.5
         },
         {
           "trade_id": "8b11d863",
@@ -11242,12 +11242,12 @@
       "name": "The Momentum Crowd",
       "strategy": "65/35 gate + crowd must be moving 3pts+ in trade direction",
       "thesis": "Conviction plus fresh momentum beats stale conviction alone.",
-      "current_balance": 1000.0,
-      "total_pnl": 0.0,
-      "ytd_return_pct": 0.0,
-      "win_count": 0,
+      "current_balance": 1021.89,
+      "total_pnl": 21.89,
+      "ytd_return_pct": 2.2,
+      "win_count": 2,
       "loss_count": 0,
-      "open_count": 10,
+      "open_count": 8,
       "start_date": "2026-10-01",
       "last_updated": "2026-10-04",
       "trades": [
@@ -11264,10 +11264,10 @@
           "entry_date": "2026-10-01",
           "end_date_raw": "2026-10-05T03:59:00Z",
           "end_date": "Oct 5",
-          "status": "open",
-          "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "status": "closed",
+          "exit_prob": 97.0,
+          "exit_date": "2026-10-04",
+          "pnl": 14.94
         },
         {
           "trade_id": "37d0e167",
@@ -11390,10 +11390,10 @@
           "entry_date": "2026-10-03",
           "end_date_raw": "2026-10-08T03:59:00Z",
           "end_date": "Oct 8",
-          "status": "open",
-          "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "status": "closed",
+          "exit_prob": 95.5,
+          "exit_date": "2026-10-04",
+          "pnl": 6.95
         },
         {
           "trade_id": "33272758",
