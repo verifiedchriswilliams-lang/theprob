@@ -10852,12 +10852,12 @@
       "name": "The Crowd (Control)",
       "strategy": "Follow consensus: YES \u226565%, NO \u226435%",
       "thesis": "Unchanged from Experiment 1. The benchmark to beat.",
-      "current_balance": 774.46,
-      "total_pnl": -225.54,
-      "ytd_return_pct": -22.6,
+      "current_balance": 574.46,
+      "total_pnl": -425.54,
+      "ytd_return_pct": -42.6,
       "win_count": 3,
-      "loss_count": 3,
-      "open_count": 5,
+      "loss_count": 5,
+      "open_count": 4,
       "start_date": "2026-10-01",
       "last_updated": "2026-10-05",
       "trades": [
@@ -10892,10 +10892,10 @@
           "entry_date": "2026-10-01",
           "end_date_raw": "2026-10-05T03:59:00Z",
           "end_date": "Oct 5",
-          "status": "open",
-          "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "status": "closed",
+          "exit_prob": 7.9,
+          "exit_date": "2026-10-05",
+          "pnl": -100.0
         },
         {
           "trade_id": "b5e7db9a",
@@ -10910,10 +10910,10 @@
           "entry_date": "2026-10-01",
           "end_date_raw": "2026-10-05T03:59:00Z",
           "end_date": "Oct 5",
-          "status": "open",
-          "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "status": "closed",
+          "exit_prob": 91.1,
+          "exit_date": "2026-10-05",
+          "pnl": -100.0
         },
         {
           "trade_id": "7612f3fc",
@@ -11058,6 +11058,24 @@
           "exit_prob": null,
           "exit_date": null,
           "pnl": null
+        },
+        {
+          "trade_id": "40cf2bf6",
+          "market_id": "us-x-iran-ceasefire-continues-through-october-15",
+          "question": "US x Iran ceasefire continues through October 15?",
+          "url": "https://polymarket.com/event/us-iran-ceasefire-continues-throughptptpt",
+          "source": "Polymarket",
+          "display_category": "Politics",
+          "entry_prob": 88.5,
+          "direction": "YES",
+          "amount": 100.0,
+          "entry_date": "2026-10-05",
+          "end_date_raw": "2026-10-16T03:59:00Z",
+          "end_date": "Oct 16",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
@@ -11065,12 +11083,12 @@
       "name": "The Sharp Crowd",
       "strategy": "Tighter gate: YES \u226575%, NO \u226425%",
       "thesis": "Stricter conviction filters noise. Fewer trades, higher quality.",
-      "current_balance": 814.78,
-      "total_pnl": -185.22,
-      "ytd_return_pct": -18.5,
-      "win_count": 6,
+      "current_balance": 822.54,
+      "total_pnl": -177.46,
+      "ytd_return_pct": -17.7,
+      "win_count": 7,
       "loss_count": 3,
-      "open_count": 4,
+      "open_count": 3,
       "start_date": "2026-10-01",
       "last_updated": "2026-10-05",
       "trades": [
@@ -11285,10 +11303,10 @@
           "entry_date": "2026-10-04",
           "end_date_raw": "2026-10-05T03:59:00Z",
           "end_date": "Oct 5",
-          "status": "open",
-          "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "status": "closed",
+          "exit_prob": 91.1,
+          "exit_date": "2026-10-05",
+          "pnl": 7.76
         },
         {
           "trade_id": "89f2d116",
@@ -11314,12 +11332,12 @@
       "name": "The Momentum Crowd",
       "strategy": "65/35 gate + crowd must be moving 3pts+ in trade direction",
       "thesis": "Conviction plus fresh momentum beats stale conviction alone.",
-      "current_balance": 893.05,
-      "total_pnl": -106.95,
-      "ytd_return_pct": -10.7,
-      "win_count": 5,
+      "current_balance": 900.81,
+      "total_pnl": -99.19,
+      "ytd_return_pct": -9.9,
+      "win_count": 6,
       "loss_count": 2,
-      "open_count": 5,
+      "open_count": 4,
       "start_date": "2026-10-01",
       "last_updated": "2026-10-05",
       "trades": [
@@ -11534,10 +11552,10 @@
           "entry_date": "2026-10-04",
           "end_date_raw": "2026-10-05T03:59:00Z",
           "end_date": "Oct 5",
-          "status": "open",
-          "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "status": "closed",
+          "exit_prob": 91.1,
+          "exit_date": "2026-10-05",
+          "pnl": 7.76
         }
       ]
     }
