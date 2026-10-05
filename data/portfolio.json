@@ -10857,7 +10857,7 @@
       "ytd_return_pct": -42.6,
       "win_count": 3,
       "loss_count": 5,
-      "open_count": 5,
+      "open_count": 6,
       "start_date": "2026-10-01",
       "last_updated": "2026-10-05",
       "trades": [
@@ -11094,6 +11094,24 @@
           "exit_prob": null,
           "exit_date": null,
           "pnl": null
+        },
+        {
+          "trade_id": "74a07dd3",
+          "market_id": "KXMLBGAME-26OCT051700CWSCLE-CWS",
+          "question": "Chicago WS wins: Chicago WS",
+          "url": "https://kalshi.com/markets/kxmlbgame",
+          "source": "Kalshi",
+          "display_category": "Sports",
+          "entry_prob": 92.5,
+          "direction": "YES",
+          "amount": 100.0,
+          "entry_date": "2026-10-05",
+          "end_date_raw": "2026-10-08T21:00:00Z",
+          "end_date": "Oct 8",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
@@ -11106,7 +11124,7 @@
       "ytd_return_pct": -17.7,
       "win_count": 7,
       "loss_count": 3,
-      "open_count": 4,
+      "open_count": 5,
       "start_date": "2026-10-01",
       "last_updated": "2026-10-05",
       "trades": [
@@ -11361,6 +11379,24 @@
           "exit_prob": null,
           "exit_date": null,
           "pnl": null
+        },
+        {
+          "trade_id": "9926d113",
+          "market_id": "KXMLBGAME-26OCT051700CWSCLE-CWS",
+          "question": "Chicago WS wins: Chicago WS",
+          "url": "https://kalshi.com/markets/kxmlbgame",
+          "source": "Kalshi",
+          "display_category": "Sports",
+          "entry_prob": 92.5,
+          "direction": "YES",
+          "amount": 100.0,
+          "entry_date": "2026-10-05",
+          "end_date_raw": "2026-10-08T21:00:00Z",
+          "end_date": "Oct 8",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
@@ -11373,7 +11409,7 @@
       "ytd_return_pct": -9.9,
       "win_count": 6,
       "loss_count": 2,
-      "open_count": 5,
+      "open_count": 6,
       "start_date": "2026-10-01",
       "last_updated": "2026-10-05",
       "trades": [
@@ -11606,6 +11642,24 @@
           "entry_date": "2026-10-05",
           "end_date_raw": "2026-10-16T03:59:00Z",
           "end_date": "Oct 16",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
+        },
+        {
+          "trade_id": "153a820f",
+          "market_id": "mlb-cws-cle-2026-10-05",
+          "question": "Chicago White Sox vs. Cleveland Guardians",
+          "url": "https://polymarket.com/event/mlb-cws-cle-2026-10-05",
+          "source": "Polymarket",
+          "display_category": "Sports",
+          "entry_prob": 93.5,
+          "direction": "YES",
+          "amount": 100.0,
+          "entry_date": "2026-10-05",
+          "end_date_raw": "2026-10-12T21:00:00Z",
+          "end_date": "Oct 12",
           "status": "open",
           "exit_prob": null,
           "exit_date": null,
