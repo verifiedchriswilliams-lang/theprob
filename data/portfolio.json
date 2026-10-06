@@ -10859,7 +10859,7 @@
       "loss_count": 5,
       "open_count": 6,
       "start_date": "2026-10-01",
-      "last_updated": "2026-10-05",
+      "last_updated": "2026-10-06",
       "trades": [
         {
           "trade_id": "37c7b925",
@@ -11124,9 +11124,9 @@
       "ytd_return_pct": -17.7,
       "win_count": 7,
       "loss_count": 3,
-      "open_count": 5,
+      "open_count": 6,
       "start_date": "2026-10-01",
-      "last_updated": "2026-10-05",
+      "last_updated": "2026-10-06",
       "trades": [
         {
           "trade_id": "35713c79",
@@ -11397,6 +11397,24 @@
           "exit_prob": null,
           "exit_date": null,
           "pnl": null
+        },
+        {
+          "trade_id": "e274dd44",
+          "market_id": "israel-military-action-against-lebanon-on-october-15",
+          "question": "Israel military action against Lebanon on October 15?",
+          "url": "https://polymarket.com/event/israel-military-action-against-lebanon-on-october-2026",
+          "source": "Polymarket",
+          "display_category": "Politics",
+          "entry_prob": 77.0,
+          "direction": "YES",
+          "amount": 100.0,
+          "entry_date": "2026-10-06",
+          "end_date_raw": "2026-10-16T03:59:00Z",
+          "end_date": "Oct 16",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
@@ -11404,14 +11422,14 @@
       "name": "The Momentum Crowd",
       "strategy": "65/35 gate + crowd must be moving 3pts+ in trade direction",
       "thesis": "Conviction plus fresh momentum beats stale conviction alone.",
-      "current_balance": 900.81,
-      "total_pnl": -99.19,
-      "ytd_return_pct": -9.9,
-      "win_count": 6,
+      "current_balance": 907.76,
+      "total_pnl": -92.24,
+      "ytd_return_pct": -9.2,
+      "win_count": 7,
       "loss_count": 2,
       "open_count": 6,
       "start_date": "2026-10-01",
-      "last_updated": "2026-10-05",
+      "last_updated": "2026-10-06",
       "trades": [
         {
           "trade_id": "49f5c75f",
@@ -11660,6 +11678,24 @@
           "entry_date": "2026-10-05",
           "end_date_raw": "2026-10-12T21:00:00Z",
           "end_date": "Oct 12",
+          "status": "closed",
+          "exit_prob": 100.0,
+          "exit_date": "2026-10-06",
+          "pnl": 6.95
+        },
+        {
+          "trade_id": "8bf19028",
+          "market_id": "saudi-arabia-military-action-against-yemen-on-october-6",
+          "question": "Saudi Arabia military action against Yemen on October 6?",
+          "url": "https://polymarket.com/event/saudi-arabia-military-action-against-yemen-on-october-2026",
+          "source": "Polymarket",
+          "display_category": "Politics",
+          "entry_prob": 81.0,
+          "direction": "YES",
+          "amount": 100.0,
+          "entry_date": "2026-10-06",
+          "end_date_raw": "2026-10-07T03:59:00Z",
+          "end_date": "Oct 7",
           "status": "open",
           "exit_prob": null,
           "exit_date": null,
