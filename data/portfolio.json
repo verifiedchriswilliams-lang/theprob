@@ -10857,7 +10857,7 @@
       "ytd_return_pct": -41.4,
       "win_count": 4,
       "loss_count": 5,
-      "open_count": 8,
+      "open_count": 9,
       "start_date": "2026-10-01",
       "last_updated": "2026-10-07",
       "trades": [
@@ -11166,6 +11166,24 @@
           "exit_prob": null,
           "exit_date": null,
           "pnl": null
+        },
+        {
+          "trade_id": "3bda283e",
+          "market_id": "us-x-iran-ceasefire-continues-through-october-12",
+          "question": "US x Iran ceasefire continues through October 12?",
+          "url": "https://polymarket.com/event/us-iran-ceasefire-continues-throughptptpt",
+          "source": "Polymarket",
+          "display_category": "Politics",
+          "entry_prob": 93.5,
+          "direction": "YES",
+          "amount": 100.0,
+          "entry_date": "2026-10-07",
+          "end_date_raw": "2026-10-13T03:59:00Z",
+          "end_date": "Oct 13",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
@@ -11178,7 +11196,7 @@
       "ytd_return_pct": -16.6,
       "win_count": 8,
       "loss_count": 3,
-      "open_count": 8,
+      "open_count": 9,
       "start_date": "2026-10-01",
       "last_updated": "2026-10-07",
       "trades": [
@@ -11519,6 +11537,24 @@
           "entry_date": "2026-10-07",
           "end_date_raw": "2026-10-16T03:59:00Z",
           "end_date": "Oct 16",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
+        },
+        {
+          "trade_id": "e19e2185",
+          "market_id": "us-x-iran-ceasefire-continues-through-october-12",
+          "question": "US x Iran ceasefire continues through October 12?",
+          "url": "https://polymarket.com/event/us-iran-ceasefire-continues-throughptptpt",
+          "source": "Polymarket",
+          "display_category": "Politics",
+          "entry_prob": 93.5,
+          "direction": "YES",
+          "amount": 100.0,
+          "entry_date": "2026-10-07",
+          "end_date_raw": "2026-10-13T03:59:00Z",
+          "end_date": "Oct 13",
           "status": "open",
           "exit_prob": null,
           "exit_date": null,
