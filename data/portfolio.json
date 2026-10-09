@@ -10857,7 +10857,7 @@
       "ytd_return_pct": -40.0,
       "win_count": 6,
       "loss_count": 5,
-      "open_count": 10,
+      "open_count": 11,
       "start_date": "2026-10-01",
       "last_updated": "2026-10-09",
       "trades": [
@@ -11238,6 +11238,24 @@
           "exit_prob": null,
           "exit_date": null,
           "pnl": null
+        },
+        {
+          "trade_id": "df698d0d",
+          "market_id": "atp-khachan-fery-2026-10-09",
+          "question": "Shanghai Rolex Masters: Karen Khachanov vs Arthur Fery",
+          "url": "https://polymarket.com/event/atp-khachan-fery-2026-10-09",
+          "source": "Polymarket",
+          "display_category": "Sports",
+          "entry_prob": 24.5,
+          "direction": "NO",
+          "amount": 100.0,
+          "entry_date": "2026-10-09",
+          "end_date_raw": "2026-10-17T02:00:00Z",
+          "end_date": "Oct 17",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
@@ -11250,7 +11268,7 @@
       "ytd_return_pct": -15.2,
       "win_count": 10,
       "loss_count": 3,
-      "open_count": 10,
+      "open_count": 11,
       "start_date": "2026-10-01",
       "last_updated": "2026-10-09",
       "trades": [
@@ -11667,6 +11685,24 @@
           "exit_prob": null,
           "exit_date": null,
           "pnl": null
+        },
+        {
+          "trade_id": "a597462c",
+          "market_id": "atp-khachan-fery-2026-10-09",
+          "question": "Shanghai Rolex Masters: Karen Khachanov vs Arthur Fery",
+          "url": "https://polymarket.com/event/atp-khachan-fery-2026-10-09",
+          "source": "Polymarket",
+          "display_category": "Sports",
+          "entry_prob": 24.5,
+          "direction": "NO",
+          "amount": 100.0,
+          "entry_date": "2026-10-09",
+          "end_date_raw": "2026-10-17T02:00:00Z",
+          "end_date": "Oct 17",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
@@ -11679,7 +11715,7 @@
       "ytd_return_pct": -8.1,
       "win_count": 8,
       "loss_count": 2,
-      "open_count": 10,
+      "open_count": 11,
       "start_date": "2026-10-01",
       "last_updated": "2026-10-09",
       "trades": [
@@ -12038,6 +12074,24 @@
           "entry_date": "2026-10-09",
           "end_date_raw": "2026-10-11T02:30:00Z",
           "end_date": "Oct 11",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
+        },
+        {
+          "trade_id": "880190bc",
+          "market_id": "atp-khachan-fery-2026-10-09",
+          "question": "Shanghai Rolex Masters: Karen Khachanov vs Arthur Fery",
+          "url": "https://polymarket.com/event/atp-khachan-fery-2026-10-09",
+          "source": "Polymarket",
+          "display_category": "Sports",
+          "entry_prob": 24.5,
+          "direction": "NO",
+          "amount": 100.0,
+          "entry_date": "2026-10-09",
+          "end_date_raw": "2026-10-17T02:00:00Z",
+          "end_date": "Oct 17",
           "status": "open",
           "exit_prob": null,
           "exit_date": null,
