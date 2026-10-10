@@ -11281,12 +11281,12 @@
       "name": "The Sharp Crowd",
       "strategy": "Tighter gate: YES \u226575%, NO \u226425%",
       "thesis": "Stricter conviction filters noise. Fewer trades, higher quality.",
-      "current_balance": 853.76,
-      "total_pnl": -146.24,
-      "ytd_return_pct": -14.6,
-      "win_count": 11,
+      "current_balance": 860.71,
+      "total_pnl": -139.29,
+      "ytd_return_pct": -13.9,
+      "win_count": 12,
       "loss_count": 3,
-      "open_count": 11,
+      "open_count": 10,
       "start_date": "2026-10-01",
       "last_updated": "2026-10-10",
       "trades": [
@@ -11537,10 +11537,10 @@
           "entry_date": "2026-10-05",
           "end_date_raw": "2026-10-15T23:59:00Z",
           "end_date": "Oct 15",
-          "status": "open",
-          "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "status": "closed",
+          "exit_prob": 2.1,
+          "exit_date": "2026-10-10",
+          "pnl": 6.95
         },
         {
           "trade_id": "9926d113",
