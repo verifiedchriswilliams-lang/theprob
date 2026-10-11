@@ -10857,7 +10857,7 @@
       "ytd_return_pct": -38.4,
       "win_count": 8,
       "loss_count": 5,
-      "open_count": 11,
+      "open_count": 12,
       "start_date": "2026-10-01",
       "last_updated": "2026-10-11",
       "trades": [
@@ -11292,6 +11292,24 @@
           "exit_prob": null,
           "exit_date": null,
           "pnl": null
+        },
+        {
+          "trade_id": "993cb3d0",
+          "market_id": "will-ilija-srdanovic-be-the-next-prime-minister-of-serbia-20260629223938652",
+          "question": "Will Ilija Srdanovi\u0107 be the next prime minister of Serbia?",
+          "url": "https://polymarket.com/event/next-prime-minister-of-serbia-20260629223938642",
+          "source": "Polymarket",
+          "display_category": "Politics",
+          "entry_prob": 22.5,
+          "direction": "NO",
+          "amount": 100.0,
+          "entry_date": "2026-10-11",
+          "end_date_raw": "2026-10-25T23:59:00Z",
+          "end_date": "Oct 25",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
@@ -11304,7 +11322,7 @@
       "ytd_return_pct": -12.9,
       "win_count": 13,
       "loss_count": 3,
-      "open_count": 10,
+      "open_count": 11,
       "start_date": "2026-10-01",
       "last_updated": "2026-10-11",
       "trades": [
@@ -11775,6 +11793,24 @@
           "exit_prob": null,
           "exit_date": null,
           "pnl": null
+        },
+        {
+          "trade_id": "997f9fd0",
+          "market_id": "will-ilija-srdanovic-be-the-next-prime-minister-of-serbia-20260629223938652",
+          "question": "Will Ilija Srdanovi\u0107 be the next prime minister of Serbia?",
+          "url": "https://polymarket.com/event/next-prime-minister-of-serbia-20260629223938642",
+          "source": "Polymarket",
+          "display_category": "Politics",
+          "entry_prob": 22.5,
+          "direction": "NO",
+          "amount": 100.0,
+          "entry_date": "2026-10-11",
+          "end_date_raw": "2026-10-25T23:59:00Z",
+          "end_date": "Oct 25",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
@@ -11787,7 +11823,7 @@
       "ytd_return_pct": -7.0,
       "win_count": 9,
       "loss_count": 2,
-      "open_count": 11,
+      "open_count": 12,
       "start_date": "2026-10-01",
       "last_updated": "2026-10-11",
       "trades": [
@@ -12182,6 +12218,24 @@
           "entry_date": "2026-10-11",
           "end_date_raw": "2026-10-16T03:59:00Z",
           "end_date": "Oct 16",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
+        },
+        {
+          "trade_id": "1c731720",
+          "market_id": "will-ilija-srdanovic-be-the-next-prime-minister-of-serbia-20260629223938652",
+          "question": "Will Ilija Srdanovi\u0107 be the next prime minister of Serbia?",
+          "url": "https://polymarket.com/event/next-prime-minister-of-serbia-20260629223938642",
+          "source": "Polymarket",
+          "display_category": "Politics",
+          "entry_prob": 22.5,
+          "direction": "NO",
+          "amount": 100.0,
+          "entry_date": "2026-10-11",
+          "end_date_raw": "2026-10-25T23:59:00Z",
+          "end_date": "Oct 25",
           "status": "open",
           "exit_prob": null,
           "exit_date": null,
