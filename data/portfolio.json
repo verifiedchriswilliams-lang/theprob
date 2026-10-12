@@ -10852,10 +10852,10 @@
       "name": "The Crowd (Control)",
       "strategy": "Follow consensus: YES \u226565%, NO \u226435%",
       "thesis": "Unchanged from Experiment 1. The benchmark to beat.",
-      "current_balance": 616.18,
-      "total_pnl": -383.82,
-      "ytd_return_pct": -38.4,
-      "win_count": 8,
+      "current_balance": 631.12,
+      "total_pnl": -368.88,
+      "ytd_return_pct": -36.9,
+      "win_count": 9,
       "loss_count": 5,
       "open_count": 13,
       "start_date": "2026-10-01",
@@ -10946,10 +10946,10 @@
           "entry_date": "2026-10-02",
           "end_date_raw": "2026-10-13T03:59:00Z",
           "end_date": "Oct 13",
-          "status": "open",
-          "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "status": "closed",
+          "exit_prob": 100.0,
+          "exit_date": "2026-10-12",
+          "pnl": 14.94
         },
         {
           "trade_id": "d8dab237",
@@ -11328,6 +11328,24 @@
           "exit_prob": null,
           "exit_date": null,
           "pnl": null
+        },
+        {
+          "trade_id": "cbb8d10c",
+          "market_id": "us-x-yemen-ceasefire-continues-through-october-15",
+          "question": "US x Yemen ceasefire continues through October 15?",
+          "url": "https://polymarket.com/event/us-yemen-ceasefire-continues-throughptptpt",
+          "source": "Polymarket",
+          "display_category": "Politics",
+          "entry_prob": 93.5,
+          "direction": "YES",
+          "amount": 100.0,
+          "entry_date": "2026-10-12",
+          "end_date_raw": "2026-10-15T23:59:00Z",
+          "end_date": "Oct 15",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
@@ -11335,10 +11353,10 @@
       "name": "The Sharp Crowd",
       "strategy": "Tighter gate: YES \u226575%, NO \u226425%",
       "thesis": "Stricter conviction filters noise. Fewer trades, higher quality.",
-      "current_balance": 871.21,
-      "total_pnl": -128.79,
-      "ytd_return_pct": -12.9,
-      "win_count": 13,
+      "current_balance": 886.15,
+      "total_pnl": -113.85,
+      "ytd_return_pct": -11.4,
+      "win_count": 14,
       "loss_count": 3,
       "open_count": 11,
       "start_date": "2026-10-01",
@@ -11411,10 +11429,10 @@
           "entry_date": "2026-10-02",
           "end_date_raw": "2026-10-13T03:59:00Z",
           "end_date": "Oct 13",
-          "status": "open",
-          "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "status": "closed",
+          "exit_prob": 100.0,
+          "exit_date": "2026-10-12",
+          "pnl": 14.94
         },
         {
           "trade_id": "ff15bf33",
@@ -11829,6 +11847,24 @@
           "exit_prob": null,
           "exit_date": null,
           "pnl": null
+        },
+        {
+          "trade_id": "15ff7be1",
+          "market_id": "us-x-yemen-ceasefire-continues-through-october-15",
+          "question": "US x Yemen ceasefire continues through October 15?",
+          "url": "https://polymarket.com/event/us-yemen-ceasefire-continues-throughptptpt",
+          "source": "Polymarket",
+          "display_category": "Politics",
+          "entry_prob": 93.5,
+          "direction": "YES",
+          "amount": 100.0,
+          "entry_date": "2026-10-12",
+          "end_date_raw": "2026-10-15T23:59:00Z",
+          "end_date": "Oct 15",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
@@ -11836,12 +11872,12 @@
       "name": "The Momentum Crowd",
       "strategy": "65/35 gate + crowd must be moving 3pts+ in trade direction",
       "thesis": "Conviction plus fresh momentum beats stale conviction alone.",
-      "current_balance": 929.99,
-      "total_pnl": -70.01,
-      "ytd_return_pct": -7.0,
-      "win_count": 9,
+      "current_balance": 944.93,
+      "total_pnl": -55.07,
+      "ytd_return_pct": -5.5,
+      "win_count": 10,
       "loss_count": 2,
-      "open_count": 13,
+      "open_count": 12,
       "start_date": "2026-10-01",
       "last_updated": "2026-10-12",
       "trades": [
@@ -11912,10 +11948,10 @@
           "entry_date": "2026-10-02",
           "end_date_raw": "2026-10-13T03:59:00Z",
           "end_date": "Oct 13",
-          "status": "open",
-          "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "status": "closed",
+          "exit_prob": 100.0,
+          "exit_date": "2026-10-12",
+          "pnl": 14.94
         },
         {
           "trade_id": "cd8177dc",
