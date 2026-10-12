@@ -10857,9 +10857,9 @@
       "ytd_return_pct": -38.4,
       "win_count": 8,
       "loss_count": 5,
-      "open_count": 12,
+      "open_count": 13,
       "start_date": "2026-10-01",
-      "last_updated": "2026-10-11",
+      "last_updated": "2026-10-12",
       "trades": [
         {
           "trade_id": "37c7b925",
@@ -11310,6 +11310,24 @@
           "exit_prob": null,
           "exit_date": null,
           "pnl": null
+        },
+        {
+          "trade_id": "0ff23467",
+          "market_id": "KXMLBGAME-26OCT112000LADMIL-LAD",
+          "question": "Los Angeles D wins: Los Angeles D",
+          "url": "https://kalshi.com/markets/kxmlbgame",
+          "source": "Kalshi",
+          "display_category": "Sports",
+          "entry_prob": 32.5,
+          "direction": "NO",
+          "amount": 100.0,
+          "entry_date": "2026-10-12",
+          "end_date_raw": "2026-10-15T00:00:00Z",
+          "end_date": "Oct 15",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
@@ -11324,7 +11342,7 @@
       "loss_count": 3,
       "open_count": 11,
       "start_date": "2026-10-01",
-      "last_updated": "2026-10-11",
+      "last_updated": "2026-10-12",
       "trades": [
         {
           "trade_id": "35713c79",
@@ -11823,9 +11841,9 @@
       "ytd_return_pct": -7.0,
       "win_count": 9,
       "loss_count": 2,
-      "open_count": 12,
+      "open_count": 13,
       "start_date": "2026-10-01",
-      "last_updated": "2026-10-11",
+      "last_updated": "2026-10-12",
       "trades": [
         {
           "trade_id": "49f5c75f",
@@ -12236,6 +12254,24 @@
           "entry_date": "2026-10-11",
           "end_date_raw": "2026-10-25T23:59:00Z",
           "end_date": "Oct 25",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
+        },
+        {
+          "trade_id": "11abcec6",
+          "market_id": "KXMLBGAME-26OCT112000LADMIL-LAD",
+          "question": "Los Angeles D wins: Los Angeles D",
+          "url": "https://kalshi.com/markets/kxmlbgame",
+          "source": "Kalshi",
+          "display_category": "Sports",
+          "entry_prob": 32.5,
+          "direction": "NO",
+          "amount": 100.0,
+          "entry_date": "2026-10-12",
+          "end_date_raw": "2026-10-15T00:00:00Z",
+          "end_date": "Oct 15",
           "status": "open",
           "exit_prob": null,
           "exit_date": null,
