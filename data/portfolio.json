@@ -10857,9 +10857,9 @@
       "ytd_return_pct": -32.8,
       "win_count": 12,
       "loss_count": 5,
-      "open_count": 14,
+      "open_count": 15,
       "start_date": "2026-10-01",
-      "last_updated": "2026-10-13",
+      "last_updated": "2026-10-14",
       "trades": [
         {
           "trade_id": "37c7b925",
@@ -11418,6 +11418,24 @@
           "exit_prob": null,
           "exit_date": null,
           "pnl": null
+        },
+        {
+          "trade_id": "aa740cbc",
+          "market_id": "KXMLBGAME-26OCT132000CLETB-TB",
+          "question": "Tampa Bay wins: Tampa Bay",
+          "url": "https://kalshi.com/markets/kxmlbgame",
+          "source": "Kalshi",
+          "display_category": "Sports",
+          "entry_prob": 90.5,
+          "direction": "YES",
+          "amount": 100.0,
+          "entry_date": "2026-10-14",
+          "end_date_raw": "2026-10-17T00:00:00Z",
+          "end_date": "Oct 17",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
@@ -11430,9 +11448,9 @@
       "ytd_return_pct": -7.2,
       "win_count": 17,
       "loss_count": 3,
-      "open_count": 11,
+      "open_count": 12,
       "start_date": "2026-10-01",
-      "last_updated": "2026-10-13",
+      "last_updated": "2026-10-14",
       "trades": [
         {
           "trade_id": "35713c79",
@@ -11991,6 +12009,24 @@
           "exit_prob": null,
           "exit_date": null,
           "pnl": null
+        },
+        {
+          "trade_id": "6baaba51",
+          "market_id": "KXMLBGAME-26OCT132000CLETB-TB",
+          "question": "Tampa Bay wins: Tampa Bay",
+          "url": "https://kalshi.com/markets/kxmlbgame",
+          "source": "Kalshi",
+          "display_category": "Sports",
+          "entry_prob": 90.5,
+          "direction": "YES",
+          "amount": 100.0,
+          "entry_date": "2026-10-14",
+          "end_date_raw": "2026-10-17T00:00:00Z",
+          "end_date": "Oct 17",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
@@ -12003,9 +12039,9 @@
       "ytd_return_pct": -1.2,
       "win_count": 12,
       "loss_count": 2,
-      "open_count": 14,
+      "open_count": 15,
       "start_date": "2026-10-01",
-      "last_updated": "2026-10-13",
+      "last_updated": "2026-10-14",
       "trades": [
         {
           "trade_id": "49f5c75f",
@@ -12506,6 +12542,24 @@
           "entry_date": "2026-10-13",
           "end_date_raw": "2026-10-27T03:59:00Z",
           "end_date": "Oct 27",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
+        },
+        {
+          "trade_id": "3a957073",
+          "market_id": "KXMLBGAME-26OCT132000CLETB-TB",
+          "question": "Tampa Bay wins: Tampa Bay",
+          "url": "https://kalshi.com/markets/kxmlbgame",
+          "source": "Kalshi",
+          "display_category": "Sports",
+          "entry_prob": 90.5,
+          "direction": "YES",
+          "amount": 100.0,
+          "entry_date": "2026-10-14",
+          "end_date_raw": "2026-10-17T00:00:00Z",
+          "end_date": "Oct 17",
           "status": "open",
           "exit_prob": null,
           "exit_date": null,
