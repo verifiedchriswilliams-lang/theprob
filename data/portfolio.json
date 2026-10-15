@@ -10857,7 +10857,7 @@
       "ytd_return_pct": -32.8,
       "win_count": 12,
       "loss_count": 5,
-      "open_count": 17,
+      "open_count": 18,
       "start_date": "2026-10-01",
       "last_updated": "2026-10-15",
       "trades": [
@@ -11472,6 +11472,24 @@
           "exit_prob": null,
           "exit_date": null,
           "pnl": null
+        },
+        {
+          "trade_id": "03a04130",
+          "market_id": "KXZACHARIAOUT-26OCT-26OCT24",
+          "question": "Katie Zacharia out as White House Press Secretary?: Will Katie Zacharia be out as White House Press Secretary before Oct 24, 2026?",
+          "url": "https://kalshi.com/markets/kxzachariaout",
+          "source": "Kalshi",
+          "display_category": "Politics",
+          "entry_prob": 6.5,
+          "direction": "NO",
+          "amount": 100.0,
+          "entry_date": "2026-10-15",
+          "end_date_raw": "2026-10-24T03:59:00Z",
+          "end_date": "Oct 24",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
@@ -11484,7 +11502,7 @@
       "ytd_return_pct": -6.3,
       "win_count": 18,
       "loss_count": 3,
-      "open_count": 14,
+      "open_count": 15,
       "start_date": "2026-10-01",
       "last_updated": "2026-10-15",
       "trades": [
@@ -12117,6 +12135,24 @@
           "exit_prob": 3.5,
           "exit_date": "2026-10-14",
           "pnl": 9.29
+        },
+        {
+          "trade_id": "9d38aded",
+          "market_id": "KXZACHARIAOUT-26OCT-26OCT24",
+          "question": "Katie Zacharia out as White House Press Secretary?: Will Katie Zacharia be out as White House Press Secretary before Oct 24, 2026?",
+          "url": "https://kalshi.com/markets/kxzachariaout",
+          "source": "Kalshi",
+          "display_category": "Politics",
+          "entry_prob": 6.5,
+          "direction": "NO",
+          "amount": 100.0,
+          "entry_date": "2026-10-15",
+          "end_date_raw": "2026-10-24T03:59:00Z",
+          "end_date": "Oct 24",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
@@ -12129,7 +12165,7 @@
       "ytd_return_pct": -1.2,
       "win_count": 12,
       "loss_count": 2,
-      "open_count": 17,
+      "open_count": 18,
       "start_date": "2026-10-01",
       "last_updated": "2026-10-15",
       "trades": [
@@ -12684,6 +12720,24 @@
           "direction": "NO",
           "amount": 100.0,
           "entry_date": "2026-10-14",
+          "end_date_raw": "2026-10-28T03:59:00Z",
+          "end_date": "Oct 28",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
+        },
+        {
+          "trade_id": "11108496",
+          "market_id": "will-benjamin-netanyahu-be-the-next-prime-minister-of-israel",
+          "question": "Will Benjamin Netanyahu be the next Prime Minister of Israel?",
+          "url": "https://polymarket.com/event/who-will-be-the-next-prime-minister-of-israel-after-the-next-election",
+          "source": "Polymarket",
+          "display_category": "Politics",
+          "entry_prob": 27.5,
+          "direction": "NO",
+          "amount": 100.0,
+          "entry_date": "2026-10-15",
           "end_date_raw": "2026-10-28T03:59:00Z",
           "end_date": "Oct 28",
           "status": "open",
