@@ -10857,7 +10857,7 @@
       "ytd_return_pct": -39.7,
       "win_count": 15,
       "loss_count": 6,
-      "open_count": 22,
+      "open_count": 23,
       "start_date": "2026-10-01",
       "last_updated": "2026-10-17",
       "trades": [
@@ -11634,6 +11634,24 @@
           "exit_prob": null,
           "exit_date": null,
           "pnl": null
+        },
+        {
+          "trade_id": "7c23b3d9",
+          "market_id": "KXZACHARIAOUT-26OCT-26OCT20",
+          "question": "Katie Zacharia out as White House Press Secretary?: Will Katie Zacharia be out as White House Press Secretary before Oct 20, 2026?",
+          "url": "https://kalshi.com/markets/kxzachariaout",
+          "source": "Kalshi",
+          "display_category": "Politics",
+          "entry_prob": 93.5,
+          "direction": "YES",
+          "amount": 100.0,
+          "entry_date": "2026-10-17",
+          "end_date_raw": "2026-10-20T03:59:00Z",
+          "end_date": "Oct 20",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
@@ -11646,7 +11664,7 @@
       "ytd_return_pct": -13.1,
       "win_count": 21,
       "loss_count": 4,
-      "open_count": 18,
+      "open_count": 19,
       "start_date": "2026-10-01",
       "last_updated": "2026-10-17",
       "trades": [
@@ -12419,6 +12437,24 @@
           "entry_date": "2026-10-17",
           "end_date_raw": "2026-10-31T23:59:00Z",
           "end_date": "Oct 31",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
+        },
+        {
+          "trade_id": "7f70d09e",
+          "market_id": "KXZACHARIAOUT-26OCT-26OCT20",
+          "question": "Katie Zacharia out as White House Press Secretary?: Will Katie Zacharia be out as White House Press Secretary before Oct 20, 2026?",
+          "url": "https://kalshi.com/markets/kxzachariaout",
+          "source": "Kalshi",
+          "display_category": "Politics",
+          "entry_prob": 93.5,
+          "direction": "YES",
+          "amount": 100.0,
+          "entry_date": "2026-10-17",
+          "end_date_raw": "2026-10-20T03:59:00Z",
+          "end_date": "Oct 20",
           "status": "open",
           "exit_prob": null,
           "exit_date": null,
