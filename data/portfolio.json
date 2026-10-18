@@ -10857,9 +10857,9 @@
       "ytd_return_pct": -39.7,
       "win_count": 15,
       "loss_count": 6,
-      "open_count": 25,
+      "open_count": 26,
       "start_date": "2026-10-01",
-      "last_updated": "2026-10-17",
+      "last_updated": "2026-10-18",
       "trades": [
         {
           "trade_id": "37c7b925",
@@ -11688,6 +11688,24 @@
           "exit_prob": null,
           "exit_date": null,
           "pnl": null
+        },
+        {
+          "trade_id": "e8c3455c",
+          "market_id": "us-iran-hormuz-agreement-by-october-31",
+          "question": "US-Iran Hormuz Agreement by October 31?",
+          "url": "https://polymarket.com/event/us-iran-hormuz-agreement-byptptpt-20260803235957575",
+          "source": "Polymarket",
+          "display_category": "Politics",
+          "entry_prob": 8.0,
+          "direction": "NO",
+          "amount": 100.0,
+          "entry_date": "2026-10-18",
+          "end_date_raw": "2026-11-01T03:59:00Z",
+          "end_date": "Nov 1",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
@@ -11700,9 +11718,9 @@
       "ytd_return_pct": -12.4,
       "win_count": 22,
       "loss_count": 4,
-      "open_count": 19,
+      "open_count": 20,
       "start_date": "2026-10-01",
-      "last_updated": "2026-10-17",
+      "last_updated": "2026-10-18",
       "trades": [
         {
           "trade_id": "35713c79",
@@ -12513,6 +12531,24 @@
           "exit_prob": null,
           "exit_date": null,
           "pnl": null
+        },
+        {
+          "trade_id": "8980fee6",
+          "market_id": "us-iran-hormuz-agreement-by-october-31",
+          "question": "US-Iran Hormuz Agreement by October 31?",
+          "url": "https://polymarket.com/event/us-iran-hormuz-agreement-byptptpt-20260803235957575",
+          "source": "Polymarket",
+          "display_category": "Politics",
+          "entry_prob": 8.0,
+          "direction": "NO",
+          "amount": 100.0,
+          "entry_date": "2026-10-18",
+          "end_date_raw": "2026-11-01T03:59:00Z",
+          "end_date": "Nov 1",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
@@ -12525,9 +12561,9 @@
       "ytd_return_pct": 2.0,
       "win_count": 15,
       "loss_count": 2,
-      "open_count": 22,
+      "open_count": 23,
       "start_date": "2026-10-01",
-      "last_updated": "2026-10-17",
+      "last_updated": "2026-10-18",
       "trades": [
         {
           "trade_id": "49f5c75f",
@@ -13226,6 +13262,24 @@
           "entry_date": "2026-10-17",
           "end_date_raw": "2026-10-18T03:59:00Z",
           "end_date": "Oct 18",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
+        },
+        {
+          "trade_id": "4bd42416",
+          "market_id": "us-x-iran-ceasefire-continues-through-october-31-20260917",
+          "question": "US x Iran ceasefire continues through October 31?",
+          "url": "https://polymarket.com/event/us-iran-ceasefire-continues-throughptptpt",
+          "source": "Polymarket",
+          "display_category": "Politics",
+          "entry_prob": 81.5,
+          "direction": "YES",
+          "amount": 100.0,
+          "entry_date": "2026-10-18",
+          "end_date_raw": "2026-10-31T23:59:00Z",
+          "end_date": "Oct 31",
           "status": "open",
           "exit_prob": null,
           "exit_date": null,
