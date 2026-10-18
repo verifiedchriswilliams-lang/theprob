@@ -10857,7 +10857,7 @@
       "ytd_return_pct": -35.9,
       "win_count": 17,
       "loss_count": 6,
-      "open_count": 25,
+      "open_count": 26,
       "start_date": "2026-10-01",
       "last_updated": "2026-10-18",
       "trades": [
@@ -11724,6 +11724,24 @@
           "exit_prob": null,
           "exit_date": null,
           "pnl": null
+        },
+        {
+          "trade_id": "f14cbd4b",
+          "market_id": "will-student-list-students-win-win-the-most-seats-in-the-2026-serbian-parliamentary-election",
+          "question": "Will Student List \u2013 Students Win win the most seats in the 2026 Serbian parliamentary election?",
+          "url": "https://polymarket.com/event/serbia-parliamentary-election-winner-2026",
+          "source": "Polymarket",
+          "display_category": "Politics",
+          "entry_prob": 31.5,
+          "direction": "NO",
+          "amount": 100.0,
+          "entry_date": "2026-10-18",
+          "end_date_raw": "2026-10-25T23:59:00Z",
+          "end_date": "Oct 25",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
@@ -11736,7 +11754,7 @@
       "ytd_return_pct": -8.7,
       "win_count": 24,
       "loss_count": 4,
-      "open_count": 20,
+      "open_count": 21,
       "start_date": "2026-10-01",
       "last_updated": "2026-10-18",
       "trades": [
@@ -12603,6 +12621,24 @@
           "exit_prob": null,
           "exit_date": null,
           "pnl": null
+        },
+        {
+          "trade_id": "bc4659d5",
+          "market_id": "us-x-iran-ceasefire-continues-through-october-24",
+          "question": "US x Iran ceasefire continues through October 24?",
+          "url": "https://polymarket.com/event/us-iran-ceasefire-continues-throughptptpt",
+          "source": "Polymarket",
+          "display_category": "Politics",
+          "entry_prob": 91.5,
+          "direction": "YES",
+          "amount": 100.0,
+          "entry_date": "2026-10-18",
+          "end_date_raw": "2026-10-25T03:59:00Z",
+          "end_date": "Oct 25",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
@@ -12615,7 +12651,7 @@
       "ytd_return_pct": 4.8,
       "win_count": 16,
       "loss_count": 2,
-      "open_count": 23,
+      "open_count": 24,
       "start_date": "2026-10-01",
       "last_updated": "2026-10-18",
       "trades": [
@@ -13348,6 +13384,24 @@
           "display_category": "Politics",
           "entry_prob": 67.5,
           "direction": "YES",
+          "amount": 100.0,
+          "entry_date": "2026-10-18",
+          "end_date_raw": "2026-10-25T23:59:00Z",
+          "end_date": "Oct 25",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
+        },
+        {
+          "trade_id": "3456ae4f",
+          "market_id": "will-student-list-students-win-win-the-most-seats-in-the-2026-serbian-parliamentary-election",
+          "question": "Will Student List \u2013 Students Win win the most seats in the 2026 Serbian parliamentary election?",
+          "url": "https://polymarket.com/event/serbia-parliamentary-election-winner-2026",
+          "source": "Polymarket",
+          "display_category": "Politics",
+          "entry_prob": 31.5,
+          "direction": "NO",
           "amount": 100.0,
           "entry_date": "2026-10-18",
           "end_date_raw": "2026-10-25T23:59:00Z",
