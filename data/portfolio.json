@@ -10857,7 +10857,7 @@
       "ytd_return_pct": -34.5,
       "win_count": 18,
       "loss_count": 6,
-      "open_count": 27,
+      "open_count": 28,
       "start_date": "2026-10-01",
       "last_updated": "2026-10-19",
       "trades": [
@@ -11778,6 +11778,24 @@
           "exit_prob": null,
           "exit_date": null,
           "pnl": null
+        },
+        {
+          "trade_id": "cce54f88",
+          "market_id": "will-together-win-the-third-most-seats-israel-2026",
+          "question": "Will Together win the third-most seats in the 2026 Israeli legislative election?",
+          "url": "https://polymarket.com/event/israeli-legislative-election-3rd-place",
+          "source": "Polymarket",
+          "display_category": "Politics",
+          "entry_prob": 68.5,
+          "direction": "YES",
+          "amount": 100.0,
+          "entry_date": "2026-10-19",
+          "end_date_raw": "2026-10-28T03:59:00Z",
+          "end_date": "Oct 28",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
@@ -11790,7 +11808,7 @@
       "ytd_return_pct": -7.2,
       "win_count": 25,
       "loss_count": 4,
-      "open_count": 22,
+      "open_count": 23,
       "start_date": "2026-10-01",
       "last_updated": "2026-10-19",
       "trades": [
@@ -12711,6 +12729,24 @@
           "exit_prob": null,
           "exit_date": null,
           "pnl": null
+        },
+        {
+          "trade_id": "0764ec53",
+          "market_id": "will-flavio-bolsonaro-win-the-most-votes-in-the-second-round-of-the-brazil-presidential-election-from-amapa",
+          "question": "Will Flavio Bolsonaro win the most votes in the second round of the Brazil presidential election from Amap\u00e1?",
+          "url": "https://polymarket.com/event/brazil-presidential-election-second-round-1st-place-in-amapa",
+          "source": "Polymarket",
+          "display_category": "Politics",
+          "entry_prob": 76.5,
+          "direction": "YES",
+          "amount": 100.0,
+          "entry_date": "2026-10-19",
+          "end_date_raw": "2026-10-26T03:59:00Z",
+          "end_date": "Oct 26",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
@@ -12723,7 +12759,7 @@
       "ytd_return_pct": 8.6,
       "win_count": 18,
       "loss_count": 2,
-      "open_count": 24,
+      "open_count": 25,
       "start_date": "2026-10-01",
       "last_updated": "2026-10-19",
       "trades": [
@@ -13510,6 +13546,24 @@
           "display_category": "Politics",
           "entry_prob": 19.5,
           "direction": "NO",
+          "amount": 100.0,
+          "entry_date": "2026-10-19",
+          "end_date_raw": "2026-10-26T03:59:00Z",
+          "end_date": "Oct 26",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
+        },
+        {
+          "trade_id": "3b81e828",
+          "market_id": "will-flavio-bolsonaro-win-the-most-votes-in-the-second-round-of-the-brazil-presidential-election-from-amapa",
+          "question": "Will Flavio Bolsonaro win the most votes in the second round of the Brazil presidential election from Amap\u00e1?",
+          "url": "https://polymarket.com/event/brazil-presidential-election-second-round-1st-place-in-amapa",
+          "source": "Polymarket",
+          "display_category": "Politics",
+          "entry_prob": 76.5,
+          "direction": "YES",
           "amount": 100.0,
           "entry_date": "2026-10-19",
           "end_date_raw": "2026-10-26T03:59:00Z",
