@@ -10857,7 +10857,7 @@
       "ytd_return_pct": -34.5,
       "win_count": 18,
       "loss_count": 6,
-      "open_count": 29,
+      "open_count": 30,
       "start_date": "2026-10-01",
       "last_updated": "2026-10-19",
       "trades": [
@@ -11814,6 +11814,24 @@
           "exit_prob": null,
           "exit_date": null,
           "pnl": null
+        },
+        {
+          "trade_id": "0be1f63b",
+          "market_id": "KXAIMILLENNIUM-28-26NOV01",
+          "question": "When will an AI lab solve another Millennium Prize Problem?: Will any AI lab solve a Millennium Prize Problem before Nov 1, 2026?",
+          "url": "https://kalshi.com/markets/kxaimillennium",
+          "source": "Kalshi",
+          "display_category": "Technology",
+          "entry_prob": 6.5,
+          "direction": "NO",
+          "amount": 100.0,
+          "entry_date": "2026-10-19",
+          "end_date_raw": "2026-11-01T03:59:00Z",
+          "end_date": "Nov 1",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
@@ -11826,7 +11844,7 @@
       "ytd_return_pct": -6.0,
       "win_count": 27,
       "loss_count": 4,
-      "open_count": 23,
+      "open_count": 24,
       "start_date": "2026-10-01",
       "last_updated": "2026-10-19",
       "trades": [
@@ -12801,6 +12819,24 @@
           "exit_prob": null,
           "exit_date": null,
           "pnl": null
+        },
+        {
+          "trade_id": "80db514a",
+          "market_id": "KXAIMILLENNIUM-28-26NOV01",
+          "question": "When will an AI lab solve another Millennium Prize Problem?: Will any AI lab solve a Millennium Prize Problem before Nov 1, 2026?",
+          "url": "https://kalshi.com/markets/kxaimillennium",
+          "source": "Kalshi",
+          "display_category": "Technology",
+          "entry_prob": 6.5,
+          "direction": "NO",
+          "amount": 100.0,
+          "entry_date": "2026-10-19",
+          "end_date_raw": "2026-11-01T03:59:00Z",
+          "end_date": "Nov 1",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
@@ -12813,7 +12849,7 @@
       "ytd_return_pct": 8.6,
       "win_count": 18,
       "loss_count": 2,
-      "open_count": 26,
+      "open_count": 27,
       "start_date": "2026-10-01",
       "last_updated": "2026-10-19",
       "trades": [
@@ -13640,6 +13676,24 @@
           "entry_date": "2026-10-19",
           "end_date_raw": "2026-11-02T04:59:00Z",
           "end_date": "Nov 2",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
+        },
+        {
+          "trade_id": "43a09d5f",
+          "market_id": "KXAIMILLENNIUM-28-26NOV01",
+          "question": "When will an AI lab solve another Millennium Prize Problem?: Will any AI lab solve a Millennium Prize Problem before Nov 1, 2026?",
+          "url": "https://kalshi.com/markets/kxaimillennium",
+          "source": "Kalshi",
+          "display_category": "Technology",
+          "entry_prob": 6.5,
+          "direction": "NO",
+          "amount": 100.0,
+          "entry_date": "2026-10-19",
+          "end_date_raw": "2026-11-01T03:59:00Z",
+          "end_date": "Nov 1",
           "status": "open",
           "exit_prob": null,
           "exit_date": null,
