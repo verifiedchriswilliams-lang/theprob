@@ -10857,7 +10857,7 @@
       "ytd_return_pct": -34.5,
       "win_count": 18,
       "loss_count": 6,
-      "open_count": 28,
+      "open_count": 29,
       "start_date": "2026-10-01",
       "last_updated": "2026-10-19",
       "trades": [
@@ -11796,6 +11796,24 @@
           "exit_prob": null,
           "exit_date": null,
           "pnl": null
+        },
+        {
+          "trade_id": "09a6007e",
+          "market_id": "us-x-iran-ceasefire-continues-through-october-22",
+          "question": "US x Iran ceasefire continues through October 22?",
+          "url": "https://polymarket.com/event/us-iran-ceasefire-continues-throughptptpt",
+          "source": "Polymarket",
+          "display_category": "Politics",
+          "entry_prob": 90.6,
+          "direction": "YES",
+          "amount": 100.0,
+          "entry_date": "2026-10-19",
+          "end_date_raw": "2026-10-23T03:59:00Z",
+          "end_date": "Oct 23",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
@@ -11803,12 +11821,12 @@
       "name": "The Sharp Crowd",
       "strategy": "Tighter gate: YES \u226575%, NO \u226425%",
       "thesis": "Stricter conviction filters noise. Fewer trades, higher quality.",
-      "current_balance": 927.76,
-      "total_pnl": -72.24,
-      "ytd_return_pct": -7.2,
-      "win_count": 25,
+      "current_balance": 939.74,
+      "total_pnl": -60.26,
+      "ytd_return_pct": -6.0,
+      "win_count": 27,
       "loss_count": 4,
-      "open_count": 24,
+      "open_count": 23,
       "start_date": "2026-10-01",
       "last_updated": "2026-10-19",
       "trades": [
@@ -12653,10 +12671,10 @@
           "entry_date": "2026-10-18",
           "end_date_raw": "2026-11-01T03:59:00Z",
           "end_date": "Nov 1",
-          "status": "open",
-          "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "status": "closed",
+          "exit_prob": 4.9,
+          "exit_date": "2026-10-19",
+          "pnl": 6.16
         },
         {
           "trade_id": "768d1765",
@@ -12671,10 +12689,10 @@
           "entry_date": "2026-10-18",
           "end_date_raw": "2026-10-31T23:59:00Z",
           "end_date": "Oct 31",
-          "status": "open",
-          "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "status": "closed",
+          "exit_prob": 95.5,
+          "exit_date": "2026-10-19",
+          "pnl": 5.82
         },
         {
           "trade_id": "bc4659d5",
@@ -12765,6 +12783,24 @@
           "exit_prob": null,
           "exit_date": null,
           "pnl": null
+        },
+        {
+          "trade_id": "561f9d14",
+          "market_id": "us-x-iran-ceasefire-continues-through-october-22",
+          "question": "US x Iran ceasefire continues through October 22?",
+          "url": "https://polymarket.com/event/us-iran-ceasefire-continues-throughptptpt",
+          "source": "Polymarket",
+          "display_category": "Politics",
+          "entry_prob": 90.6,
+          "direction": "YES",
+          "amount": 100.0,
+          "entry_date": "2026-10-19",
+          "end_date_raw": "2026-10-23T03:59:00Z",
+          "end_date": "Oct 23",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
@@ -12777,7 +12813,7 @@
       "ytd_return_pct": 8.6,
       "win_count": 18,
       "loss_count": 2,
-      "open_count": 25,
+      "open_count": 26,
       "start_date": "2026-10-01",
       "last_updated": "2026-10-19",
       "trades": [
@@ -13586,6 +13622,24 @@
           "entry_date": "2026-10-19",
           "end_date_raw": "2026-10-26T03:59:00Z",
           "end_date": "Oct 26",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
+        },
+        {
+          "trade_id": "c56678ff",
+          "market_id": "KXCABLEAVE-26MAY22-26NOV",
+          "question": "When will a member of Trump's Cabinet leave?: Before Nov 2026",
+          "url": "https://kalshi.com/markets/kxcableave",
+          "source": "Kalshi",
+          "display_category": "Politics",
+          "entry_prob": 12.5,
+          "direction": "NO",
+          "amount": 100.0,
+          "entry_date": "2026-10-19",
+          "end_date_raw": "2026-11-02T04:59:00Z",
+          "end_date": "Nov 2",
           "status": "open",
           "exit_prob": null,
           "exit_date": null,
