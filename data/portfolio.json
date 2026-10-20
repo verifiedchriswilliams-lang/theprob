@@ -10857,7 +10857,7 @@
       "ytd_return_pct": -34.5,
       "win_count": 18,
       "loss_count": 6,
-      "open_count": 31,
+      "open_count": 32,
       "start_date": "2026-10-01",
       "last_updated": "2026-10-20",
       "trades": [
@@ -11850,6 +11850,24 @@
           "exit_prob": null,
           "exit_date": null,
           "pnl": null
+        },
+        {
+          "trade_id": "6aff1d4f",
+          "market_id": "france-declares-state-of-emergency-by-october-31-2026",
+          "question": "France declares state of emergency by October 31, 2026?",
+          "url": "https://polymarket.com/event/france-declares-state-of-emergency-byptptpt",
+          "source": "Polymarket",
+          "display_category": "Politics",
+          "entry_prob": 5.5,
+          "direction": "NO",
+          "amount": 100.0,
+          "entry_date": "2026-10-20",
+          "end_date_raw": "2026-11-01T03:59:00Z",
+          "end_date": "Nov 1",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
@@ -11862,7 +11880,7 @@
       "ytd_return_pct": -6.0,
       "win_count": 27,
       "loss_count": 4,
-      "open_count": 25,
+      "open_count": 26,
       "start_date": "2026-10-01",
       "last_updated": "2026-10-20",
       "trades": [
@@ -12873,6 +12891,24 @@
           "exit_prob": null,
           "exit_date": null,
           "pnl": null
+        },
+        {
+          "trade_id": "77f39225",
+          "market_id": "france-declares-state-of-emergency-by-october-31-2026",
+          "question": "France declares state of emergency by October 31, 2026?",
+          "url": "https://polymarket.com/event/france-declares-state-of-emergency-byptptpt",
+          "source": "Polymarket",
+          "display_category": "Politics",
+          "entry_prob": 5.5,
+          "direction": "NO",
+          "amount": 100.0,
+          "entry_date": "2026-10-20",
+          "end_date_raw": "2026-11-01T03:59:00Z",
+          "end_date": "Nov 1",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
@@ -12885,7 +12921,7 @@
       "ytd_return_pct": 8.6,
       "win_count": 18,
       "loss_count": 2,
-      "open_count": 29,
+      "open_count": 30,
       "start_date": "2026-10-01",
       "last_updated": "2026-10-20",
       "trades": [
@@ -13766,6 +13802,24 @@
           "entry_date": "2026-10-20",
           "end_date_raw": "2026-10-28T03:59:00Z",
           "end_date": "Oct 28",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
+        },
+        {
+          "trade_id": "76611545",
+          "market_id": "france-declares-state-of-emergency-by-october-31-2026",
+          "question": "France declares state of emergency by October 31, 2026?",
+          "url": "https://polymarket.com/event/france-declares-state-of-emergency-byptptpt",
+          "source": "Polymarket",
+          "display_category": "Politics",
+          "entry_prob": 5.5,
+          "direction": "NO",
+          "amount": 100.0,
+          "entry_date": "2026-10-20",
+          "end_date_raw": "2026-11-01T03:59:00Z",
+          "end_date": "Nov 1",
           "status": "open",
           "exit_prob": null,
           "exit_date": null,
