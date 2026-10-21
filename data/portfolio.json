@@ -10857,7 +10857,7 @@
       "ytd_return_pct": -33.4,
       "win_count": 19,
       "loss_count": 6,
-      "open_count": 33,
+      "open_count": 34,
       "start_date": "2026-10-01",
       "last_updated": "2026-10-21",
       "trades": [
@@ -11904,6 +11904,24 @@
           "exit_prob": null,
           "exit_date": null,
           "pnl": null
+        },
+        {
+          "trade_id": "8e05dd53",
+          "market_id": "will-conservative-win-the-most-seats-in-the-2026-british-columbia-general-election",
+          "question": "Will Conservative win the most seats in the 2026 British Columbia general election?",
+          "url": "https://polymarket.com/event/british-columbia-general-election-winner",
+          "source": "Polymarket",
+          "display_category": "Politics",
+          "entry_prob": 89.5,
+          "direction": "YES",
+          "amount": 100.0,
+          "entry_date": "2026-10-21",
+          "end_date_raw": "2026-10-24T23:59:00Z",
+          "end_date": "Oct 24",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
@@ -11916,7 +11934,7 @@
       "ytd_return_pct": -5.0,
       "win_count": 28,
       "loss_count": 4,
-      "open_count": 26,
+      "open_count": 27,
       "start_date": "2026-10-01",
       "last_updated": "2026-10-21",
       "trades": [
@@ -12963,6 +12981,24 @@
           "exit_prob": null,
           "exit_date": null,
           "pnl": null
+        },
+        {
+          "trade_id": "003950a4",
+          "market_id": "will-conservative-win-the-most-seats-in-the-2026-british-columbia-general-election",
+          "question": "Will Conservative win the most seats in the 2026 British Columbia general election?",
+          "url": "https://polymarket.com/event/british-columbia-general-election-winner",
+          "source": "Polymarket",
+          "display_category": "Politics",
+          "entry_prob": 89.5,
+          "direction": "YES",
+          "amount": 100.0,
+          "entry_date": "2026-10-21",
+          "end_date_raw": "2026-10-24T23:59:00Z",
+          "end_date": "Oct 24",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
@@ -12975,7 +13011,7 @@
       "ytd_return_pct": 8.6,
       "win_count": 18,
       "loss_count": 2,
-      "open_count": 31,
+      "open_count": 32,
       "start_date": "2026-10-01",
       "last_updated": "2026-10-21",
       "trades": [
@@ -13892,6 +13928,24 @@
           "entry_date": "2026-10-21",
           "end_date_raw": "2026-10-22T23:00:00Z",
           "end_date": "Oct 22",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
+        },
+        {
+          "trade_id": "5cb8e810",
+          "market_id": "will-conservative-win-the-most-seats-in-the-2026-british-columbia-general-election",
+          "question": "Will Conservative win the most seats in the 2026 British Columbia general election?",
+          "url": "https://polymarket.com/event/british-columbia-general-election-winner",
+          "source": "Polymarket",
+          "display_category": "Politics",
+          "entry_prob": 89.5,
+          "direction": "YES",
+          "amount": 100.0,
+          "entry_date": "2026-10-21",
+          "end_date_raw": "2026-10-24T23:59:00Z",
+          "end_date": "Oct 24",
           "status": "open",
           "exit_prob": null,
           "exit_date": null,
