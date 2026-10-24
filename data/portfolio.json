@@ -10857,9 +10857,9 @@
       "ytd_return_pct": -27.8,
       "win_count": 21,
       "loss_count": 6,
-      "open_count": 37,
+      "open_count": 38,
       "start_date": "2026-10-01",
-      "last_updated": "2026-10-23",
+      "last_updated": "2026-10-24",
       "trades": [
         {
           "trade_id": "37c7b925",
@@ -12012,6 +12012,24 @@
           "exit_prob": null,
           "exit_date": null,
           "pnl": null
+        },
+        {
+          "trade_id": "1a566ddc",
+          "market_id": "KXNBAGAME-26OCT23ATLCHA-ATL",
+          "question": "Atlanta wins: Atlanta",
+          "url": "https://kalshi.com/markets/kxnbagame",
+          "source": "Kalshi",
+          "display_category": "Sports",
+          "entry_prob": 94.5,
+          "direction": "YES",
+          "amount": 100.0,
+          "entry_date": "2026-10-24",
+          "end_date_raw": "2026-10-25T23:00:00Z",
+          "end_date": "Oct 25",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
@@ -12024,9 +12042,9 @@
       "ytd_return_pct": -2.9,
       "win_count": 30,
       "loss_count": 4,
-      "open_count": 29,
+      "open_count": 30,
       "start_date": "2026-10-01",
-      "last_updated": "2026-10-23",
+      "last_updated": "2026-10-24",
       "trades": [
         {
           "trade_id": "35713c79",
@@ -13161,6 +13179,24 @@
           "exit_prob": null,
           "exit_date": null,
           "pnl": null
+        },
+        {
+          "trade_id": "059e6070",
+          "market_id": "KXNBAGAME-26OCT23ATLCHA-ATL",
+          "question": "Atlanta wins: Atlanta",
+          "url": "https://kalshi.com/markets/kxnbagame",
+          "source": "Kalshi",
+          "display_category": "Sports",
+          "entry_prob": 94.5,
+          "direction": "YES",
+          "amount": 100.0,
+          "entry_date": "2026-10-24",
+          "end_date_raw": "2026-10-25T23:00:00Z",
+          "end_date": "Oct 25",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
@@ -13173,9 +13209,9 @@
       "ytd_return_pct": 14.2,
       "win_count": 20,
       "loss_count": 2,
-      "open_count": 36,
+      "open_count": 37,
       "start_date": "2026-10-01",
-      "last_updated": "2026-10-23",
+      "last_updated": "2026-10-24",
       "trades": [
         {
           "trade_id": "49f5c75f",
@@ -14215,6 +14251,24 @@
           "amount": 100.0,
           "entry_date": "2026-10-23",
           "end_date_raw": "2026-10-25T20:00:00Z",
+          "end_date": "Oct 25",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
+        },
+        {
+          "trade_id": "407d6830",
+          "market_id": "KXNBAGAME-26OCT23ATLCHA-ATL",
+          "question": "Atlanta wins: Atlanta",
+          "url": "https://kalshi.com/markets/kxnbagame",
+          "source": "Kalshi",
+          "display_category": "Sports",
+          "entry_prob": 94.5,
+          "direction": "YES",
+          "amount": 100.0,
+          "entry_date": "2026-10-24",
+          "end_date_raw": "2026-10-25T23:00:00Z",
           "end_date": "Oct 25",
           "status": "open",
           "exit_prob": null,
