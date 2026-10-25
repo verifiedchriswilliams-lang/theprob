@@ -10852,12 +10852,12 @@
       "name": "The Crowd (Control)",
       "strategy": "Follow consensus: YES \u226565%, NO \u226435%",
       "thesis": "Unchanged from Experiment 1. The benchmark to beat.",
-      "current_balance": 802.21,
-      "total_pnl": -197.79,
-      "ytd_return_pct": -19.8,
+      "current_balance": 602.21,
+      "total_pnl": -397.79,
+      "ytd_return_pct": -39.8,
       "win_count": 26,
-      "loss_count": 6,
-      "open_count": 39,
+      "loss_count": 8,
+      "open_count": 38,
       "start_date": "2026-10-01",
       "last_updated": "2026-10-25",
       "trades": [
@@ -11720,10 +11720,10 @@
           "entry_date": "2026-10-18",
           "end_date_raw": "2026-10-25T23:59:00Z",
           "end_date": "Oct 25",
-          "status": "open",
-          "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "status": "closed",
+          "exit_prob": 1.1,
+          "exit_date": "2026-10-25",
+          "pnl": -100.0
         },
         {
           "trade_id": "f14cbd4b",
@@ -11738,10 +11738,10 @@
           "entry_date": "2026-10-18",
           "end_date_raw": "2026-10-25T23:59:00Z",
           "end_date": "Oct 25",
-          "status": "open",
-          "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "status": "closed",
+          "exit_prob": 98.7,
+          "exit_date": "2026-10-25",
+          "pnl": -100.0
         },
         {
           "trade_id": "bd9bc7f8",
@@ -12138,6 +12138,24 @@
           "exit_prob": null,
           "exit_date": null,
           "pnl": null
+        },
+        {
+          "trade_id": "a889f527",
+          "market_id": "will-iliana-iotova-win-the-next-bulgarian-presidential-election",
+          "question": "Will Iliana Iotova win the next Bulgarian presidential election?",
+          "url": "https://polymarket.com/event/bulgaria-presidential-election",
+          "source": "Polymarket",
+          "display_category": "Politics",
+          "entry_prob": 66.0,
+          "direction": "YES",
+          "amount": 100.0,
+          "entry_date": "2026-10-25",
+          "end_date_raw": "2026-10-26T03:59:00Z",
+          "end_date": "Oct 26",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
@@ -12150,7 +12168,7 @@
       "ytd_return_pct": -3.6,
       "win_count": 37,
       "loss_count": 5,
-      "open_count": 26,
+      "open_count": 27,
       "start_date": "2026-10-01",
       "last_updated": "2026-10-25",
       "trades": [
@@ -13377,6 +13395,24 @@
           "exit_prob": 2.2,
           "exit_date": "2026-10-25",
           "pnl": 19.05
+        },
+        {
+          "trade_id": "2afbc05c",
+          "market_id": "will-lula-win-the-most-votes-in-the-second-round-of-the-brazil-presidential-election-from-amazonas",
+          "question": "Will Lula win the most votes in the second round of the Brazil presidential election from Amazonas?",
+          "url": "https://polymarket.com/event/brazil-presidential-election-second-round-1st-place-in-amazonas",
+          "source": "Polymarket",
+          "display_category": "Politics",
+          "entry_prob": 80.5,
+          "direction": "YES",
+          "amount": 100.0,
+          "entry_date": "2026-10-25",
+          "end_date_raw": "2026-10-26T03:59:00Z",
+          "end_date": "Oct 26",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
@@ -13384,12 +13420,12 @@
       "name": "The Momentum Crowd",
       "strategy": "65/35 gate + crowd must be moving 3pts+ in trade direction",
       "thesis": "Conviction plus fresh momentum beats stale conviction alone.",
-      "current_balance": 1213.87,
-      "total_pnl": 213.87,
-      "ytd_return_pct": 21.4,
+      "current_balance": 1013.87,
+      "total_pnl": 13.87,
+      "ytd_return_pct": 1.4,
       "win_count": 24,
-      "loss_count": 2,
-      "open_count": 38,
+      "loss_count": 4,
+      "open_count": 37,
       "start_date": "2026-10-01",
       "last_updated": "2026-10-25",
       "trades": [
@@ -14126,10 +14162,10 @@
           "entry_date": "2026-10-18",
           "end_date_raw": "2026-10-25T23:59:00Z",
           "end_date": "Oct 25",
-          "status": "open",
-          "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "status": "closed",
+          "exit_prob": 1.1,
+          "exit_date": "2026-10-25",
+          "pnl": -100.0
         },
         {
           "trade_id": "3456ae4f",
@@ -14144,10 +14180,10 @@
           "entry_date": "2026-10-18",
           "end_date_raw": "2026-10-25T23:59:00Z",
           "end_date": "Oct 25",
-          "status": "open",
-          "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "status": "closed",
+          "exit_prob": 98.7,
+          "exit_date": "2026-10-25",
+          "pnl": -100.0
         },
         {
           "trade_id": "da087240",
@@ -14544,6 +14580,24 @@
           "exit_prob": 2.2,
           "exit_date": "2026-10-25",
           "pnl": 19.05
+        },
+        {
+          "trade_id": "96879dea",
+          "market_id": "will-flavio-bolsonaro-win-brazil-gadi-eizenkot-become-israeli-pm-and-democrats-win-the-us-senate",
+          "question": "Will Fl\u00e1vio Bolsonaro win Brazil, Gadi Eizenkot become Israeli PM, and Democrats win the US Senate?",
+          "url": "https://polymarket.com/event/fall-elections-three-way-brazil-israel-us-senate-combo",
+          "source": "Polymarket",
+          "display_category": "Politics",
+          "entry_prob": 26.0,
+          "direction": "NO",
+          "amount": 100.0,
+          "entry_date": "2026-10-25",
+          "end_date_raw": "2026-11-05T04:59:00Z",
+          "end_date": "Nov 5",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     }
