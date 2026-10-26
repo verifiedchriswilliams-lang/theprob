@@ -10852,14 +10852,14 @@
       "name": "The Crowd (Control)",
       "strategy": "Follow consensus: YES \u226565%, NO \u226435%",
       "thesis": "Unchanged from Experiment 1. The benchmark to beat.",
-      "current_balance": 402.21,
-      "total_pnl": -597.79,
-      "ytd_return_pct": -59.8,
-      "win_count": 26,
+      "current_balance": 431.24,
+      "total_pnl": -568.76,
+      "ytd_return_pct": -56.9,
+      "win_count": 27,
       "loss_count": 10,
-      "open_count": 37,
+      "open_count": 36,
       "start_date": "2026-10-01",
-      "last_updated": "2026-10-25",
+      "last_updated": "2026-10-26",
       "trades": [
         {
           "trade_id": "37c7b925",
@@ -11306,10 +11306,10 @@
           "entry_date": "2026-10-11",
           "end_date_raw": "2026-10-25T23:59:00Z",
           "end_date": "Oct 25",
-          "status": "open",
-          "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "status": "closed",
+          "exit_prob": 25.0,
+          "exit_date": "2026-10-26",
+          "pnl": 29.03
         },
         {
           "trade_id": "0ff23467",
@@ -12181,14 +12181,14 @@
       "name": "The Sharp Crowd",
       "strategy": "Tighter gate: YES \u226575%, NO \u226425%",
       "thesis": "Stricter conviction filters noise. Fewer trades, higher quality.",
-      "current_balance": 788.48,
-      "total_pnl": -211.52,
-      "ytd_return_pct": -21.2,
-      "win_count": 38,
+      "current_balance": 817.51,
+      "total_pnl": -182.49,
+      "ytd_return_pct": -18.2,
+      "win_count": 39,
       "loss_count": 7,
-      "open_count": 25,
+      "open_count": 24,
       "start_date": "2026-10-01",
-      "last_updated": "2026-10-25",
+      "last_updated": "2026-10-26",
       "trades": [
         {
           "trade_id": "35713c79",
@@ -12671,10 +12671,10 @@
           "entry_date": "2026-10-11",
           "end_date_raw": "2026-10-25T23:59:00Z",
           "end_date": "Oct 25",
-          "status": "open",
-          "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "status": "closed",
+          "exit_prob": 25.0,
+          "exit_date": "2026-10-26",
+          "pnl": 29.03
         },
         {
           "trade_id": "15ff7be1",
@@ -13456,14 +13456,14 @@
       "name": "The Momentum Crowd",
       "strategy": "65/35 gate + crowd must be moving 3pts+ in trade direction",
       "thesis": "Conviction plus fresh momentum beats stale conviction alone.",
-      "current_balance": 849.01,
-      "total_pnl": -150.99,
-      "ytd_return_pct": -15.1,
-      "win_count": 25,
+      "current_balance": 878.04,
+      "total_pnl": -121.96,
+      "ytd_return_pct": -12.2,
+      "win_count": 26,
       "loss_count": 6,
-      "open_count": 35,
+      "open_count": 34,
       "start_date": "2026-10-01",
-      "last_updated": "2026-10-25",
+      "last_updated": "2026-10-26",
       "trades": [
         {
           "trade_id": "49f5c75f",
@@ -13874,10 +13874,10 @@
           "entry_date": "2026-10-11",
           "end_date_raw": "2026-10-25T23:59:00Z",
           "end_date": "Oct 25",
-          "status": "open",
-          "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "status": "closed",
+          "exit_prob": 25.0,
+          "exit_date": "2026-10-26",
+          "pnl": 29.03
         },
         {
           "trade_id": "11abcec6",
