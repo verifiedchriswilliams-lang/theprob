@@ -1,115 +1,88 @@
 {
-  "updated": "Oct 26, 2026 \u00b7 4:32 AM ET",
-  "updated_iso": "2026-10-26T09:32:25.225935+00:00",
+  "updated": "Oct 26, 2026 \u00b7 12:12 PM ET",
+  "updated_iso": "2026-10-26T17:12:14.839872+00:00",
   "homepage_count": 3,
   "articles": [
     {
-      "title": "Why the midterms could be a defining moment for prediction markets",
+      "title": "Prediction market traders say an Anthropic IPO is near-certain this year after company filed with SEC",
+      "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxNZ3d5ZlRZUUJlSHhDVDF0cG5aa2lyS01JOUFGU055VFl4YjFyX0w3Wkh2aF8tTFJzdEE4RjRxWkltWmZ5Qk9XalMyR1RWY2JtLW1DZC1ZRjBmSm9UVWgxQndZTXNkdkFQcEFpOV9nMXNMQ1lTYUVsUVNUU0R3Q2dqdkRSdjVUSlhDN1AweDRWZGc5Nm0ydnBBSmV2MTfSAaIBQVVfeXFMTkd2eFlnNlNqVUxsM1locWpXSVBqLXI2Z2pSRERGRkJuOEVoS2NodTNLVk5rd3g5M0R2U3ZqeTR6UGtNSl80X01lR1RBdUhLRlEwOGYtV0l0Rm1CQllQWDVxMUNtaU95NXVhUlRZNjY4RnJlckdVSGg4OW1Fc2xCNUo5NHJYT1BPMDhRci1Ha0NCQ19ISFAzS0hOLV9KbjJnQnZ3?oc=5",
+      "source": "CNBC",
+      "pub_iso": "2026-10-26T16:51:52+00:00",
+      "description": "",
+      "summary": "",
+      "pub_display": "Oct 26"
+    },
+    {
+      "title": "Polymarket US logs record 74 million trades in October",
+      "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE0wUkFZT19SaTV2SVJDYXdKRUNOXzBWWkRrRWVUMngwQm1FbGZXaUFkOVRhZFBKdF9lQWFGTzk5LXp0THRLRFVzOEtnaUhWWWJTMlc5eG81TnFhcXd3R1BZQ2l6YXVtVUhSNEZJbEIwc0pYQW1JLUhQc3NQdDRjTUk?oc=5",
+      "source": "Crypto Briefing",
+      "pub_iso": "2026-10-26T16:43:34+00:00",
+      "description": "",
+      "summary": "",
+      "pub_display": "Oct 26"
+    },
+    {
+      "title": "US CFTC, NBA agree to cooperate over basketball and prediction markets",
+      "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxNRUpwWFJGWXloMTBrUXEydE5jejMtVUVRMXFiZXBud2hwQjROU0U5cUk4NjVTbHhMcFU2Y3A5YjV3ME1SZGVTbno4TnpqSmUzUXFhakhmb00zZWg5NS15VWxNZG5EMlp6YU5kZ210SnVLVjRVODRxYmtmcHNwb2RwdnFrNXNzVHVmMjdjN2lZTUFzV1VDUXl1YlU4aUdRSFpxTFlMdUt2ZG5JQQ?oc=5",
+      "source": "Reuters",
+      "pub_iso": "2026-10-26T15:37:22+00:00",
+      "description": "",
+      "summary": "",
+      "pub_display": "Oct 26"
+    },
+    {
+      "title": "Brazil\u2019s Election Upset Tests Prediction Markets\u2019 Pitch to Brokers",
+      "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQanppaW9CUUoyRlRRaDBicl9ScEdJQWJpOElUcmluenNaTWNLbkZWTTBmTzV4U3Z5QWo2N1R1T0VKa096Mml2YWFrYldQV3gwWEp5a2dzem5hNDVwbFhZN1d0QTJQc1hjMGZXeW53Z2Nza0xzMFNRVG5KTUppaGtRXzlnQWFZbkNXNDdvRTFnQmQzQWlBX2RlU2ZOYzVlTndfZzQ3b3hVTDFXdw?oc=5",
+      "source": "Finance Magnates",
+      "pub_iso": "2026-10-26T15:20:00+00:00",
+      "description": "",
+      "summary": "",
+      "pub_display": "Oct 26"
+    },
+    {
+      "title": "How Accurate Are Prediction Markets? Case Study of 9 Markets",
+      "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxOMEFDWUxWRDJiR3phd2NJMzI3QUd1WW4wX1JvNjB4TklhWHdNREJlT1lXMnk4NUVLNjRIT3pYdXRVMVgzeXN1MkhUYS1jSjhyRmx1Z3RJRmlrcEFGLUcyQ19teG5KVWVhcEpqZ1A1cDNXNHVRTXFSNm1MdUJsai1zRW1Nc19oS0VldnBTYmlWaU5LVUtXSzVfSVRQUQ?oc=5",
+      "source": "Action Network",
+      "pub_iso": "2026-10-26T15:13:00+00:00",
+      "description": "",
+      "summary": "",
+      "pub_display": "Oct 26"
+    },
+    {
+      "title": "Florida Prediction Market Apps: Best Prediction Markets in FL",
+      "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxObmlQNFJVaXlTb25wNVE1b1dHaEgzV2JPLUh2aDZYeUhjdmRsaTZoTFItVDVPU05hNFBJbzRBOTVZSzhQeTRvQTRYRVlTblIxdUZZLWw0N3pfa1o2d0REUlZBa3Q0d0p3cGhubjhhWlh3eHNvUG5oeUNKd3RGV0ZyNWhvNDhjSUlUck1QOXNJRXhXSnpLWjltQmFvMHIzSy10VUJqOA?oc=5",
+      "source": "RotoWire",
+      "pub_iso": "2026-10-26T15:03:00+00:00",
+      "description": "",
+      "summary": "",
+      "pub_display": "Oct 26"
+    },
+    {
+      "title": "Bernstein Sees Robinhood Prediction Markets Reaching $1.7 Billion in Revenue by 2028, Topping Crypto",
+      "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxPRHNpWHJvTEVnZjZFWHZBTTB5RUx0WjZmYWR4VnNER1RYdGI4ZVVtcGNIeGlNWmxRclhGLW1lUU9YR1owdzBRWXFKZi1NaFhSYW9JNmpSc2w5OE1SeGZhOVY4bTQxSnBRSDctcHM1R28xTGxNMzFQdDBwNDJ4TkstZTNPb1l3Z1R0ODlRTXhiZ2t0Wjhrdl9QdkFhYWExM2VaVUw5LWpUNFJydGVo?oc=5",
+      "source": "Yahoo Finance",
+      "pub_iso": "2026-10-26T13:48:00+00:00",
+      "description": "",
+      "summary": "",
+      "pub_display": "Oct 26"
+    },
+    {
+      "title": "Prediction markets gain role in risk transfer",
+      "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNNmdRcXJIZlVYNE5zbkVRMlJXd3FqbWplZXhlMm43eTFYbTRIN09NZFQtamVXeFNFYjJQNkQ2OHdqWjQ5OGdyQTJXNHgyRV9qZk1KNzY2TW1LQk5fMkJWWWlpUGZBWDJ0MldYZmZZVmdmVjdNR0M1QTdsdnJneExyeS0wYThnbm8?oc=5",
+      "source": "Business Insurance",
+      "pub_iso": "2026-10-26T13:02:33+00:00",
+      "description": "",
+      "summary": "",
+      "pub_display": "Oct 26"
+    },
+    {
+      "title": "Prediction markets' credibility 'on the line' in midterms",
       "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxOZXZlZHY5R2R4U2xZY1FPOVNiOW5UWFlqeEtyQS1NNmxQUm5ZRlR6a3JNNExOZ2xuNS10b2ExemQzNmRDMmJWVTc1YlNmQ016dE5Ga1ZGTDVRakNsajRJc1l2MTg3MjFoeGszUXZoaFhLVzE4am5remxHakZKMWVVVXFrOV9yYmlUeFFyZXRHVzZadzZQMy1LZTI5TQ?oc=5",
       "source": "Politico",
       "pub_iso": "2026-10-26T08:45:00+00:00",
       "description": "",
       "summary": "",
       "pub_display": "Oct 26"
-    },
-    {
-      "title": "Bets on Alito Show Supreme Court Tangled in Prediction Markets",
-      "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxOUXVWN1daMTI0WEdBSnl2S08xVWZ0VFpYMHFWWVRsMmdlbkJJYkRKM0JvWjRzNDNGSU5ETDdJbjJSc3VWYWVPNGNWSGpwLUMwR0M5QVVQRkJyeDd6Xy0xY0c4SW5jbXBYQW1MSWF0NXdHUnJrMHQzd0JtMG83YTdGRzF4Z0VuZEVYbnhUT2xOTE01R0JJSGFqTE02RE14YUoy?oc=5",
-      "source": "Bloomberg Law News",
-      "pub_iso": "2026-10-26T08:45:00+00:00",
-      "description": "",
-      "summary": "",
-      "pub_display": "Oct 26"
-    },
-    {
-      "title": "Looking for your next parlay? Soon, you can bet on Penn\u2019s acceptance rate",
-      "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxPUDdyTF9fdFVFYU5hUnh6VEtSTFdrVGxIRE0yQXF3dWp5b1d6ODJSY1JoZXdVR1lESUtOTTNGclhlbFpOSmxkY0pyTEdMQkFvRWItYWdiZVE5eDM0M19nZmFNcUJ5d0VQOVJwV0o1b0VyaFhWUGhPdExDek1mdjE1TDVn?oc=5",
-      "source": "The Daily Pennsylvanian",
-      "pub_iso": "2026-10-26T03:35:01+00:00",
-      "description": "",
-      "summary": "",
-      "pub_display": "Oct 26"
-    },
-    {
-      "title": "Let\u2019s talk shop about every Senate race",
-      "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE83ZzE3V3E2YjlQOFpnTVhuVWd0dHhFQlRjSjZXN0o1UExrYXBVdGxGRk1obnJjaV94a2JBZ0p2cXdBbG5fWUZpQi1EUXZVRmRXZGRWUmEzVy1VTm5xXzB6d1FDVk5pQlJOX3pNR01BVQ?oc=5",
-      "source": "Silver Bulletin",
-      "pub_iso": "2026-10-25T20:31:55+00:00",
-      "description": "",
-      "summary": "",
-      "pub_display": "Oct 25"
-    },
-    {
-      "title": "Hegseth warns prediction market bets warp military judgment, endanger troops",
-      "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxNZ2wyX01HTGN2WERqUElnTy1NWnAxanhDemY2NWpqTExoaDQ1a0QySU9iWjJETExOYjhJbW1wUzk4Sl8waU1BQUtCT3JDejdTSk1HMTI2dkN1UWx6cEtYSmI4SlltOTcyckJPVGVnRGlHc19qcnZpSzFkSnhwdnh0ZUY4N2hjRndGU2YwUWRPd1FIUjVjZGZ5eWhoalJyYnYwMlJNU185V0N4UlViU2R0endmYlg3bUZ4cXVVbVU2a2E?oc=5",
-      "source": "Ars Technica",
-      "pub_iso": "2026-10-23T20:28:43+00:00",
-      "description": "",
-      "summary": "",
-      "pub_display": "Oct 23"
-    },
-    {
-      "title": "Kalshi Courts Wall Street in Bid to Be the \u2018Inflation Exchange\u2019 With CPI Futures",
-      "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxQazRCOHdwbnp4ZW5wZnNfUTJKaG0ybzVnblpka3lDb1ZjTno2X2hCRExkRnVoX2RncHV5SVFFWXZ1Q1lrR0hpdU05LWZnUTJaaEJ4VjFGT0toNk1QaFNUUjN0ODg2MWkxOW9tVFZzUDZaTF9ZU1RCYXUtbmNYMWRZWGYtR1FXa21zemg1c0hKdW9yb1NKa0t5OFpkN2d0UllWYTc0VXd1RUhYY0JSSUppbGxBTVFUd1VnTlpVUWNZN19qb1h0N1hyZw?oc=5",
-      "source": "Bloomberg.com",
-      "pub_iso": "2026-10-23T17:15:41+00:00",
-      "description": "",
-      "summary": "",
-      "pub_display": "Oct 23"
-    },
-    {
-      "title": "Hegseth issues stern warning to Pentagon staff",
-      "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxNaDljR1hhcXF4Vzl5cmtnWXp6OXBWR0JNMzRnSmFLcHREeUNsbzFOU0ViS2ZyTHZLSUpTRXpOcFQ5U0c5OU94Q3NpT2piS3dRS2k1SGc0NkR6Y3hoN2NVd0FoMnVzTG5sTWx3dE9mSWpjQVZfRWsySXBYRUdSWFRzeFl1M0NBNlVKbDRQVmxQYw?oc=5",
-      "source": "TheStreet",
-      "pub_iso": "2026-10-23T16:12:38+00:00",
-      "description": "",
-      "summary": "",
-      "pub_display": "Oct 23"
-    },
-    {
-      "title": "Acton, Brown victory odds hit new record highs in prediction markets",
-      "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxPV1MyVjRmdnh3VjZZd2RxMGZIOUlFQndLWVYyWDZJWjFfejJ4Nkp1R3hEU3owRkZKV2ZwOXYtbV9IZU1ESVRMUUFFeXhwZElJT2pQdGdpRjFFREJUblV2dFJvX2pQcFEwd3Izc1JZY210cGJMYWdVYTZsVENpZk9VbHc0NHI4RUJ5Ql9OaGhSNWJ1ZmxZbDY0VkI1OGpiX3o3djhVLUI3ZWl6SU4yTElTZ9IBxAFBVV95cUxOazhtaC1RLWFRYVdvZlpwMEROVFlibEsweElVRk80bFJ4T0xvQ2g0TDNtcDYxOEVKMkhPUjZaeDFiMjRhblppYml2TFZNQk9YZEVGcnVUNTlQd0VfUm85QjA4U2NvRlB1NnQySFNrdndhajA1ODJ5NW5zeV9wajBodGhGeHMtMElzU3dzUFJ6VXVGWk9NRjB4WjJ5TTkyTjJiMk9IclVLdnltUE9SSTJ6bFBaNFQ0Wm94eFltc18wYUx0azJr?oc=5",
-      "source": "Cleveland.com",
-      "pub_iso": "2026-10-23T15:39:00+00:00",
-      "description": "",
-      "summary": "",
-      "pub_display": "Oct 23"
-    },
-    {
-      "title": "Robinhood sees surge in bitcoin, gold prediction markets as traders move beyond sports",
-      "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxOMTlaVVRSa0plR0ZjQkk5am1ReDkyS25leVdEcEhfRGF5amdldmF2ZWgxaGZ2ejJNc0pEZGVsOFJrWmFLN0JDVmRMOFN5OHlrWXlQRkdlMmZWeHVwdkNTRVpIbzB0bkRNS3FlaVdtdUJzN29iaHR6Ynp4RUZ5QWVTT3VaRGNpUk1LblZBM0hOU3RzMXdtTnpyTUx0UUhMNWFKd2RlaEc5dFR0VENhbXdDSTNTZ1k4T3ZWejVBMDBaTXd3bC1IY1V6WQ?oc=5",
-      "source": "CoinDesk",
-      "pub_iso": "2026-10-23T14:00:02+00:00",
-      "description": "",
-      "summary": "",
-      "pub_display": "Oct 23"
-    },
-    {
-      "title": "How Prediction Markets Upstaged Election Polls",
-      "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxQeGZsRWFCekptaTRva2k0aTRoQkxOem9WN1dlR1I0Y1pYdTh5WjI5WVB5UUdLUWo5UzVfV2Jickt6QURnZ0dnWF9RSmVaOXNZVWlaRUdlSmM4Nll5UHJwdHQ3Q19Xay1iS1EyVF8xSUhmQ0NRT3NMd3JOeUNrQ3VIdWJFZmw4M05tU0tyWUl0N255Q3lGTC1BX0ZDN3R2UQ?oc=5",
-      "source": "Bloomberg.com",
-      "pub_iso": "2026-10-23T09:00:11+00:00",
-      "description": "",
-      "summary": "",
-      "pub_display": "Oct 23"
-    },
-    {
-      "title": "Polymarket stops users from wagering on possible felony charges for Cornell students accused of rape",
-      "url": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxNM1pfX2FrQ1dUbDJJMTBxd2NoNGtkR0ZJZUpYZFl3ZkhYenBXMk4tUEZJanpBVy1GeHdHWUdHV01ZRVNmTjlUdWlRSTVvcF9UWDdScVJSaElGU21aSjB2MlNVVlY4ZXlrT3YzUmF6NTVPUUdDRFNWMG13SUhuNXBaNHJlYktVNEsyQ3piRWg4YUtyM3BrQ1Fyb2YzZHUxS3FFb3pKYndOU0pBZVpSLXIxN1kzYkxMU1ViVlNLLWJSX0VIci1nVF9hR2ppaGJrNWZ3a094dnozUUhuZEVhWkh2TFRLMGs0S0tk?oc=5",
-      "source": "PBS",
-      "pub_iso": "2026-10-20T21:09:07+00:00",
-      "description": "",
-      "summary": "",
-      "pub_display": "Oct 20"
-    },
-    {
-      "title": "Gadi Eisenkot favored to win over Benjamin Netanyahu in Polymarket bets",
-      "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFBYYUx1VG1ScHdJTzN0TVNPT1pzVlh3M21ZZDNYcjZIZ1VUdkQ0ajk3M1pFVVdZRVAxajA3b0lsekEzbGw5aVJJU3hYeHZjTmtLanRQSlEwZ2wxUUtqcU5LUDlZdlNmM3l2?oc=5",
-      "source": "The Jerusalem Post",
-      "pub_iso": "2026-10-19T00:26:44+00:00",
-      "description": "",
-      "summary": "",
-      "pub_display": "Oct 19"
     }
   ]
 }
