@@ -10852,12 +10852,12 @@
       "name": "The Crowd (Control)",
       "strategy": "Follow consensus: YES \u226565%, NO \u226435%",
       "thesis": "Unchanged from Experiment 1. The benchmark to beat.",
-      "current_balance": 431.24,
-      "total_pnl": -568.76,
-      "ytd_return_pct": -56.9,
-      "win_count": 27,
+      "current_balance": 529.82,
+      "total_pnl": -470.18,
+      "ytd_return_pct": -47.0,
+      "win_count": 29,
       "loss_count": 10,
-      "open_count": 36,
+      "open_count": 34,
       "start_date": "2026-10-01",
       "last_updated": "2026-10-26",
       "trades": [
@@ -12134,10 +12134,10 @@
           "entry_date": "2026-10-25",
           "end_date_raw": "2026-10-26T03:59:00Z",
           "end_date": "Oct 26",
-          "status": "open",
-          "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "status": "closed",
+          "exit_prob": 34.0,
+          "exit_date": "2026-10-26",
+          "pnl": 47.06
         },
         {
           "trade_id": "a889f527",
@@ -12152,10 +12152,10 @@
           "entry_date": "2026-10-25",
           "end_date_raw": "2026-10-26T03:59:00Z",
           "end_date": "Oct 26",
-          "status": "open",
-          "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "status": "closed",
+          "exit_prob": 66.5,
+          "exit_date": "2026-10-26",
+          "pnl": 51.52
         },
         {
           "trade_id": "a19401f9",
