@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 80" width="520" height="80">
+  <!-- % mark box -->
+  <rect x="0" y="8" width="64" height="64" rx="13" fill="#3A2BD4"/>
+  <text x="32" y="46" dominant-baseline="central" text-anchor="middle"
+        font-family="Georgia, serif" font-size="40" font-weight="700" fill="#ffffff">%</text>
+  <!-- wordmark -->
+  <text x="84" y="56" font-family="'Instrument Serif', Georgia, serif"
+        font-size="52" font-weight="400" fill="#0B1524" letter-spacing="-1">The Prob</text>
+</svg>
