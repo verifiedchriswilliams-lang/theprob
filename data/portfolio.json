@@ -10852,11 +10852,11 @@
       "name": "The Crowd (Control)",
       "strategy": "Follow consensus: YES \u226565%, NO \u226435%",
       "thesis": "Unchanged from Experiment 1. The benchmark to beat.",
-      "current_balance": 574.77,
-      "total_pnl": -425.23,
-      "ytd_return_pct": -42.5,
+      "current_balance": 474.77,
+      "total_pnl": -525.23,
+      "ytd_return_pct": -52.5,
       "win_count": 31,
-      "loss_count": 10,
+      "loss_count": 11,
       "open_count": 36,
       "start_date": "2026-10-01",
       "last_updated": "2026-10-27",
@@ -11468,10 +11468,10 @@
           "entry_date": "2026-10-14",
           "end_date_raw": "2026-10-28T03:59:00Z",
           "end_date": "Oct 28",
-          "status": "open",
-          "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "status": "closed",
+          "exit_prob": 95.5,
+          "exit_date": "2026-10-27",
+          "pnl": -100.0
         },
         {
           "trade_id": "03a04130",
@@ -12246,6 +12246,24 @@
           "exit_prob": null,
           "exit_date": null,
           "pnl": null
+        },
+        {
+          "trade_id": "1c591bef",
+          "market_id": "will-yashar-win-the-second-most-seats-israel-2026",
+          "question": "Will Yashar win the second-most seats in the 2026 Israeli legislative election?",
+          "url": "https://polymarket.com/event/israeli-legislative-election-2nd-place",
+          "source": "Polymarket",
+          "display_category": "Politics",
+          "entry_prob": 91.5,
+          "direction": "YES",
+          "amount": 100.0,
+          "entry_date": "2026-10-27",
+          "end_date_raw": "2026-10-28T03:59:00Z",
+          "end_date": "Oct 28",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
@@ -12258,7 +12276,7 @@
       "ytd_return_pct": -13.8,
       "win_count": 41,
       "loss_count": 7,
-      "open_count": 25,
+      "open_count": 26,
       "start_date": "2026-10-01",
       "last_updated": "2026-10-27",
       "trades": [
@@ -13575,6 +13593,24 @@
           "exit_prob": null,
           "exit_date": null,
           "pnl": null
+        },
+        {
+          "trade_id": "b962ba20",
+          "market_id": "will-yashar-win-the-second-most-seats-israel-2026",
+          "question": "Will Yashar win the second-most seats in the 2026 Israeli legislative election?",
+          "url": "https://polymarket.com/event/israeli-legislative-election-2nd-place",
+          "source": "Polymarket",
+          "display_category": "Politics",
+          "entry_prob": 91.5,
+          "direction": "YES",
+          "amount": 100.0,
+          "entry_date": "2026-10-27",
+          "end_date_raw": "2026-10-28T03:59:00Z",
+          "end_date": "Oct 28",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
@@ -13582,12 +13618,12 @@
       "name": "The Momentum Crowd",
       "strategy": "65/35 gate + crowd must be moving 3pts+ in trade direction",
       "thesis": "Conviction plus fresh momentum beats stale conviction alone.",
-      "current_balance": 914.73,
-      "total_pnl": -85.27,
-      "ytd_return_pct": -8.5,
+      "current_balance": 714.73,
+      "total_pnl": -285.27,
+      "ytd_return_pct": -28.5,
       "win_count": 29,
-      "loss_count": 6,
-      "open_count": 35,
+      "loss_count": 8,
+      "open_count": 34,
       "start_date": "2026-10-01",
       "last_updated": "2026-10-27",
       "trades": [
@@ -14144,10 +14180,10 @@
           "entry_date": "2026-10-14",
           "end_date_raw": "2026-10-28T03:59:00Z",
           "end_date": "Oct 28",
-          "status": "open",
-          "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "status": "closed",
+          "exit_prob": 95.5,
+          "exit_date": "2026-10-27",
+          "pnl": -100.0
         },
         {
           "trade_id": "11108496",
@@ -14468,10 +14504,10 @@
           "entry_date": "2026-10-20",
           "end_date_raw": "2026-10-28T03:59:00Z",
           "end_date": "Oct 28",
-          "status": "open",
-          "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "status": "closed",
+          "exit_prob": 5.0,
+          "exit_date": "2026-10-27",
+          "pnl": -100.0
         },
         {
           "trade_id": "76611545",
@@ -14846,6 +14882,24 @@
           "entry_date": "2026-10-27",
           "end_date_raw": "2026-10-31T20:59:00Z",
           "end_date": "Oct 31",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
+        },
+        {
+          "trade_id": "78c1e852",
+          "market_id": "will-yashar-win-the-second-most-seats-israel-2026",
+          "question": "Will Yashar win the second-most seats in the 2026 Israeli legislative election?",
+          "url": "https://polymarket.com/event/israeli-legislative-election-2nd-place",
+          "source": "Polymarket",
+          "display_category": "Politics",
+          "entry_prob": 91.5,
+          "direction": "YES",
+          "amount": 100.0,
+          "entry_date": "2026-10-27",
+          "end_date_raw": "2026-10-28T03:59:00Z",
+          "end_date": "Oct 28",
           "status": "open",
           "exit_prob": null,
           "exit_date": null,
