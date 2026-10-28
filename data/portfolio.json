@@ -10857,7 +10857,7 @@
       "ytd_return_pct": -64.2,
       "win_count": 35,
       "loss_count": 13,
-      "open_count": 33,
+      "open_count": 34,
       "start_date": "2026-10-01",
       "last_updated": "2026-10-28",
       "trades": [
@@ -12318,6 +12318,24 @@
           "exit_prob": null,
           "exit_date": null,
           "pnl": null
+        },
+        {
+          "trade_id": "47d4809b",
+          "market_id": "over-40m-committed-to-the-1w-public-sale",
+          "question": "Will commitments to the 1W public sale exceed $40M?",
+          "url": "https://polymarket.com/event/total-commitments-for-the-1win-1w-public-sale",
+          "source": "Polymarket",
+          "display_category": "Crypto",
+          "entry_prob": 68.0,
+          "direction": "YES",
+          "amount": 100.0,
+          "entry_date": "2026-10-28",
+          "end_date_raw": "2026-11-03T04:59:00Z",
+          "end_date": "Nov 3",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
@@ -12330,7 +12348,7 @@
       "ytd_return_pct": -9.5,
       "win_count": 44,
       "loss_count": 7,
-      "open_count": 25,
+      "open_count": 26,
       "start_date": "2026-10-01",
       "last_updated": "2026-10-28",
       "trades": [
@@ -13701,6 +13719,24 @@
           "exit_prob": null,
           "exit_date": null,
           "pnl": null
+        },
+        {
+          "trade_id": "cd50a1e0",
+          "market_id": "over-20m-committed-to-the-1w-public-sale",
+          "question": "Will commitments to the 1W public sale exceed $20M?",
+          "url": "https://polymarket.com/event/total-commitments-for-the-1win-1w-public-sale",
+          "source": "Polymarket",
+          "display_category": "Crypto",
+          "entry_prob": 92.5,
+          "direction": "YES",
+          "amount": 100.0,
+          "entry_date": "2026-10-28",
+          "end_date_raw": "2026-11-03T04:59:00Z",
+          "end_date": "Nov 3",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
@@ -13713,7 +13749,7 @@
       "ytd_return_pct": -29.3,
       "win_count": 34,
       "loss_count": 9,
-      "open_count": 31,
+      "open_count": 32,
       "start_date": "2026-10-01",
       "last_updated": "2026-10-28",
       "trades": [
@@ -15044,6 +15080,24 @@
           "entry_date": "2026-10-28",
           "end_date_raw": "2026-11-05T04:59:00Z",
           "end_date": "Nov 5",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
+        },
+        {
+          "trade_id": "2b39f9e7",
+          "market_id": "over-40m-committed-to-the-1w-public-sale",
+          "question": "Will commitments to the 1W public sale exceed $40M?",
+          "url": "https://polymarket.com/event/total-commitments-for-the-1win-1w-public-sale",
+          "source": "Polymarket",
+          "display_category": "Crypto",
+          "entry_prob": 68.0,
+          "direction": "YES",
+          "amount": 100.0,
+          "entry_date": "2026-10-28",
+          "end_date_raw": "2026-11-03T04:59:00Z",
+          "end_date": "Nov 3",
           "status": "open",
           "exit_prob": null,
           "exit_date": null,
