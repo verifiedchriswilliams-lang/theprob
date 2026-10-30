@@ -10857,9 +10857,9 @@
       "ytd_return_pct": -63.2,
       "win_count": 36,
       "loss_count": 13,
-      "open_count": 37,
+      "open_count": 38,
       "start_date": "2026-10-01",
-      "last_updated": "2026-10-29",
+      "last_updated": "2026-10-30",
       "trades": [
         {
           "trade_id": "37c7b925",
@@ -12408,6 +12408,24 @@
           "exit_prob": null,
           "exit_date": null,
           "pnl": null
+        },
+        {
+          "trade_id": "8f32c185",
+          "market_id": "us-x-iran-ceasefire-continues-through-november-4",
+          "question": "US x Iran ceasefire continues through November 4?",
+          "url": "https://polymarket.com/event/us-iran-ceasefire-continues-throughptptpt",
+          "source": "Polymarket",
+          "display_category": "Politics",
+          "entry_prob": 71.0,
+          "direction": "YES",
+          "amount": 100.0,
+          "entry_date": "2026-10-30",
+          "end_date_raw": "2026-11-05T04:59:00Z",
+          "end_date": "Nov 5",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
@@ -12422,7 +12440,7 @@
       "loss_count": 7,
       "open_count": 28,
       "start_date": "2026-10-01",
-      "last_updated": "2026-10-29",
+      "last_updated": "2026-10-30",
       "trades": [
         {
           "trade_id": "35713c79",
@@ -13875,9 +13893,9 @@
       "ytd_return_pct": -28.2,
       "win_count": 35,
       "loss_count": 9,
-      "open_count": 35,
+      "open_count": 36,
       "start_date": "2026-10-01",
-      "last_updated": "2026-10-29",
+      "last_updated": "2026-10-30",
       "trades": [
         {
           "trade_id": "49f5c75f",
@@ -15296,6 +15314,24 @@
           "entry_date": "2026-10-29",
           "end_date_raw": "2026-10-30T02:05:00Z",
           "end_date": "Oct 30",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
+        },
+        {
+          "trade_id": "7b83132b",
+          "market_id": "KXNBAGAME-26OCT29CLEATL-CLE",
+          "question": "Cleveland wins: Cleveland",
+          "url": "https://kalshi.com/markets/kxnbagame",
+          "source": "Kalshi",
+          "display_category": "Sports",
+          "entry_prob": 32.5,
+          "direction": "NO",
+          "amount": 100.0,
+          "entry_date": "2026-10-30",
+          "end_date_raw": "2026-10-31T23:00:00Z",
+          "end_date": "Oct 31",
           "status": "open",
           "exit_prob": null,
           "exit_date": null,
