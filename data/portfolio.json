@@ -10857,7 +10857,7 @@
       "ytd_return_pct": -56.5,
       "win_count": 38,
       "loss_count": 13,
-      "open_count": 36,
+      "open_count": 37,
       "start_date": "2026-10-01",
       "last_updated": "2026-10-31",
       "trades": [
@@ -12426,6 +12426,24 @@
           "exit_prob": null,
           "exit_date": null,
           "pnl": null
+        },
+        {
+          "trade_id": "a96235e1",
+          "market_id": "will-the-republicans-win-the-nebraska-senate-race-in-2026",
+          "question": "Will the Republicans win the Nebraska Senate race in 2026?",
+          "url": "https://polymarket.com/event/nebraska-senate-election-winner",
+          "source": "Polymarket",
+          "display_category": "Politics",
+          "entry_prob": 77.5,
+          "direction": "YES",
+          "amount": 100.0,
+          "entry_date": "2026-10-31",
+          "end_date_raw": "2026-11-04T04:59:00Z",
+          "end_date": "Nov 4",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
@@ -12433,10 +12451,10 @@
       "name": "The Sharp Crowd",
       "strategy": "Tighter gate: YES \u226575%, NO \u226425%",
       "thesis": "Stricter conviction filters noise. Fewer trades, higher quality.",
-      "current_balance": 955.27,
-      "total_pnl": -44.73,
-      "ytd_return_pct": -4.5,
-      "win_count": 47,
+      "current_balance": 963.38,
+      "total_pnl": -36.62,
+      "ytd_return_pct": -3.7,
+      "win_count": 48,
       "loss_count": 7,
       "open_count": 27,
       "start_date": "2026-10-01",
@@ -13571,10 +13589,10 @@
           "entry_date": "2026-10-23",
           "end_date_raw": "2026-11-04T04:59:00Z",
           "end_date": "Nov 4",
-          "status": "open",
-          "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "status": "closed",
+          "exit_prob": 4.5,
+          "exit_date": "2026-10-31",
+          "pnl": 8.11
         },
         {
           "trade_id": "059e6070",
@@ -13899,6 +13917,24 @@
           "exit_prob": null,
           "exit_date": null,
           "pnl": null
+        },
+        {
+          "trade_id": "b6a32131",
+          "market_id": "will-the-republicans-win-the-nebraska-senate-race-in-2026",
+          "question": "Will the Republicans win the Nebraska Senate race in 2026?",
+          "url": "https://polymarket.com/event/nebraska-senate-election-winner",
+          "source": "Polymarket",
+          "display_category": "Politics",
+          "entry_prob": 77.5,
+          "direction": "YES",
+          "amount": 100.0,
+          "entry_date": "2026-10-31",
+          "end_date_raw": "2026-11-04T04:59:00Z",
+          "end_date": "Nov 4",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
         }
       ]
     },
@@ -13911,7 +13947,7 @@
       "ytd_return_pct": -21.6,
       "win_count": 37,
       "loss_count": 9,
-      "open_count": 36,
+      "open_count": 37,
       "start_date": "2026-10-01",
       "last_updated": "2026-10-31",
       "trades": [
@@ -15386,6 +15422,24 @@
           "entry_date": "2026-10-31",
           "end_date_raw": "2026-11-05T04:59:00Z",
           "end_date": "Nov 5",
+          "status": "open",
+          "exit_prob": null,
+          "exit_date": null,
+          "pnl": null
+        },
+        {
+          "trade_id": "89d055a1",
+          "market_id": "will-the-republicans-win-the-nebraska-senate-race-in-2026",
+          "question": "Will the Republicans win the Nebraska Senate race in 2026?",
+          "url": "https://polymarket.com/event/nebraska-senate-election-winner",
+          "source": "Polymarket",
+          "display_category": "Politics",
+          "entry_prob": 77.5,
+          "direction": "YES",
+          "amount": 100.0,
+          "entry_date": "2026-10-31",
+          "end_date_raw": "2026-11-04T04:59:00Z",
+          "end_date": "Nov 4",
           "status": "open",
           "exit_prob": null,
           "exit_date": null,
