@@ -1,31 +1,31 @@
 {
-  "updated": "Oct 31, 2026 \u00b7 9:00 PM ET",
-  "updated_iso": "2026-11-01T02:00:46.049170+00:00",
+  "updated": "Nov 1, 2026 \u00b7 5:56 AM ET",
+  "updated_iso": "2026-11-01T10:56:19.792042+00:00",
   "homepage_count": 3,
   "articles": [
     {
+      "title": "Kalshi, Polymarket users trade $1.1M on Maryland elections, despite betting ban",
+      "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxNNFhDRm5nUG43c3N4eTJMMWpjaEhoTUd2dFJnaU1jWXBCaldreWJKOFZZN1QwdlpnZmNENTh4aEppcndmR0ZVNFpuUnlOR184djE5aXRweTBxWEduaE54clloZ3BPTmNycHRUVlpBV21BdjJXYlY4dXUwZjBEdHVsREk5Um12QjhhZzZ4VjNrY0EtZGU1ZFMxVUpkTkt2Y0o4NEhhYXF3NnI1ajdJXzgzZlY4dGc2REFM?oc=5",
+      "source": "Baltimore Sun",
+      "pub_iso": "2026-11-01T09:09:24+00:00",
+      "description": "",
+      "summary": "",
+      "pub_display": "Nov 1"
+    },
+    {
+      "title": "Hackers Steal About $2.7 Million From Polymarket Traders via Hijacked DebugBear Script",
+      "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE9pdkJSNjJ2ZnRLcDQxMy1jT3RybjhvU1RrNjFTVmhZWko4Zno4eVVCUlk1dmxQQU5takFhaEdxbEprUzFhV2VPT29oRjNsZjdnYWpfMjZ1cUFXTHpSR2NVZWU1Rkg4ZFRHVGltNnJ4S2ZpUC11UU5MU0JPNk9qWW8?oc=5",
+      "source": "The Hacker News",
+      "pub_iso": "2026-11-01T07:25:00+00:00",
+      "description": "",
+      "summary": "",
+      "pub_display": "Nov 1"
+    },
+    {
       "title": "Betting Odds Look More Certain Than Polls, But Don\u2019t Let That Confuse You",
       "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxNVVNheUR1SGxUSy14Y2RSQnVjYlNCVzNxd1cwWUxUbzg4U1VQZ1BaV2JnbkpQdFdsc1FuSVZ1MlZzemg1TFhpOVJwbC15LUUtanJCRjg2bFpUWC1SX1E1VTJWU1ltTkpqa1B0ZWhPQU1hX19WQng2cC1lTzlwV01VYlN1SFphQkpEMmpDRnpjR0pwcWVLdlU3NDFoMnZvNW5iQ1FzSDI0OC1yY1l0VFhVMklLLUJUQjBGWnc?oc=5",
-      "source": "Bloomberg.com",
+      "source": "Bloomberg",
       "pub_iso": "2026-10-31T21:41:20+00:00",
-      "description": "",
-      "summary": "",
-      "pub_display": "Oct 31"
-    },
-    {
-      "title": "New $25 Polymarket referral code \u201cOREGON\u201d enhanced for Northwestern-Oregon",
-      "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxOREZPd2pPcGxMWENwMUQxTFhWQ1JBUDZIV003U1FvVlM2cHRqOU44d3NVNVN5M0RqUFhxV1ZLdjY0VGdPSVhtT1Vjc1pBdVJBUWwyVzJKWlBvNHl5UnJQNXgwTERKR0dXT2xIYkVnc25XZTlnXzZVdDNqWEFYWmp5b1VHRHh1TG0tRXAtN19sbVNzZUNYZVlSdzNaUVQzR0Q3LTVQN0JCWjQtMGJXaUZhSXBrV0s0LWZROGJv?oc=5",
-      "source": "OregonLive.com",
-      "pub_iso": "2026-10-31T16:45:00+00:00",
-      "description": "",
-      "summary": "",
-      "pub_display": "Oct 31"
-    },
-    {
-      "title": "DraftKings Is Up 10% in a Month. Are Prediction Markets Really a \u201cGreater Opportunity Than Threat\u201d?",
-      "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxOckJnTlk2dlQtMmtQR0ctRnEtc2w3MjNVVjMzQlRnSE5XUm1QNjkybF91M0JkcnNLYTBQYjE5dy1DU0xfbFRfZHlQd3ROVnFUQ3E2cHBmQWFEYm9zaDROc3ZBZDlCa2V5RjdZVnlVYTlsZllHVG92YXJwYkEwVXdsODlSOU9WV3hFMktBVmxIMG9rd1lONmFzaHRhSzRPOW5UYUh6ZUhn?oc=5",
-      "source": "Yahoo Finance",
-      "pub_iso": "2026-10-31T14:30:13+00:00",
       "description": "",
       "summary": "",
       "pub_display": "Oct 31"
@@ -40,6 +40,24 @@
       "pub_display": "Oct 31"
     },
     {
+      "title": "Aries Launches Prediction Markets Through ForecastEx",
+      "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxQcFZXbjIzcEtyQy1LYzJUbG5VZUtGWnNvcURrM1pDemwxZERYNTk0U0dXeVdDalBtZXpVRnA4WVBRYV9nRU0yaldGRlQyWFlXeUt3MEVZR2lJWkg4TFhPZTNPazR1aHFSSG9SUUltN18tcGdmRWxKdU5VVHBWYTZEYWdPNW5vWDdmODZid2ZwZ1ZrWlhPNnBUOEZ4QnR5amdhZWhVSEVXZ2M5OUVUcmtJTU5rbw?oc=5",
+      "source": "Morningstar",
+      "pub_iso": "2026-10-30T18:18:00+00:00",
+      "description": "",
+      "summary": "",
+      "pub_display": "Oct 30"
+    },
+    {
+      "title": "Polymarket and Kalshi Face a Major Accuracy Test: The Midterms",
+      "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxOMVUxYU9ScVpxRTJkZVZRRkNENi1ScVA5TWJrVC1PanhmakUwV19ONFl4a211dXlCR0ZpY0pUVGZhQVZLOUJPSlZhdHpEdHR5MF95SlU2Q3VuWGEtdWl3ckNDemlEQnNvQmNoOXVhVmJXaUJ2S2FhZjY3dzZSSldMenpISGw0cDJ5OVdteFZTMA?oc=5",
+      "source": "The New York Times",
+      "pub_iso": "2026-10-30T15:10:13+00:00",
+      "description": "",
+      "summary": "",
+      "pub_display": "Oct 30"
+    },
+    {
       "title": "Gamble on democracy: Inside suspicious election-contracts trading on prediction markets",
       "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxNSE1XYS1jX0RSSHNCUnRERXZDcFJwOFV4TmZFS2hUZ1ZBa1JDZTltaVlhX0RwSnlfa2t5bXc0ZFBXQ253dG9ocnBBSTI5S3g4elFxOXBsamY4ZlhtNW15YnF5TnJIeHBwUXNiMVpIOE9NX1dWcl84QzlzWnFzV2Z5bWpBYnI4eWV1Rmo1Y1cxTHdhanBpdDJFOVdyRll1VFF2V0tmWE9CZTFRdVRUOV9zOTdEY1dxckNxWmRoNmZicUZ3Z9IBxwFBVV95cUxPcGp3UEtnMjQ4ZmhXcUh4enR5VUJYeVBYNDc0a0NyQldjSjNTLUVRekhWSVZNcmFUbFJveWxyNjZyUjlvbGxnV1VOU0tsT3poeTlTYkpqZmdScVRHdzYyYjRyazFUaEo3YzlNME1JVWtuYXhXRXVXZVpWY1dOOWN2YkNwU1pnQ0dDTUNidzBFNXhEZnlpSmFVNnptSUhwNmEyS0ZxV1dUNkNNWDhlMXRfd2hhekNLSFo2Uk1lSmpKcmQxLWNVWnhJ?oc=5",
       "source": "CNBC",
@@ -47,6 +65,24 @@
       "description": "",
       "summary": "",
       "pub_display": "Oct 30"
+    },
+    {
+      "title": "Kalshi: Gambling by a Different Name",
+      "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTFBzTVUyTUlVbktWeEVNbnlSNU5uX0V2QmdQblBqc3JRdjdDaFJzRU83UHhyVEszN2ZnVEs2d1ZiZ1RqczM2bmQzVmR5bmlERmd4UDQ1SlFlc3l1RUl4Tjh5eTd2SHVxQVNoRk5N?oc=5",
+      "source": "BreakPoint.org",
+      "pub_iso": "2026-10-30T08:06:56+00:00",
+      "description": "",
+      "summary": "",
+      "pub_display": "Oct 30"
+    },
+    {
+      "title": "Polymarket suspends trading after third-party breach leads to user losses",
+      "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxNbEdMengtVTZGcU5JNmJBOGxsbFdDZnFZMmdNMXBvV1ROVmRiY2JrWjdIWTVXdWc1RGNrUkVBZ0ZYWG1QQWVuZjUteTlMSWdYUV9hdzdZbGMzcVJjZ2xWaGt5T3dCUFRERWZMbzN5SEZlZXl2RWI5cVNTOVlYd0RVR0dpZ05VNEs1eFptV1o4clhRU043MHBJQldjejg1Z0w5dU5FeTI1WVFuX1RkZi1kQ08wOGx1dUZW?oc=5",
+      "source": "CoinDesk",
+      "pub_iso": "2026-10-29T20:14:09+00:00",
+      "description": "",
+      "summary": "",
+      "pub_display": "Oct 29"
     },
     {
       "title": "Kalshi raises $1 billion at $40 billion valuation as it expands beyond prediction markets",
@@ -58,13 +94,22 @@
       "pub_display": "Oct 29"
     },
     {
-      "title": "What prediction market legal battles could mean for Florida users",
-      "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxQWlhfcHJXY2phZ2FMaWtHeXhRYllUSTR1SEJrazUwenA4MTl3REJmRWdMdFRqaFNaODhoWHlMdHYyb3VoX0xtSm9saG1Ma2YtWE5QbEdqSDZKMmt1X09YaW51MDFabXBlRG5UcGRrVkR5aG80ak1qeENQTVY1ZXdYOW9FWDlINEczQnNtdWh2UjhTT3FiN0xNdDA5UTlLQmNCclpnVWlON3ZVUjdxLWowcg?oc=5",
-      "source": "Bay News 9",
-      "pub_iso": "2026-10-28T20:34:00+00:00",
+      "title": "SEC Eyes Manipulation, Insider Risk in Prediction Markets",
+      "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQeUJOaThueVhxN1BYeDhFT1RyU1AyNUxYSk9jWEdKMEhNUHZyQkdRNG54QWdtNWowNS1QaVp3YzExWE9PamQ0UC1LRkdGZndtRHEtTU93ZnV1bGE0eG1tMTF0Ql9NY3M5bl8xcEMwci1LblFjeURsbldkZHdCNWxCejZUTXFmaWVXSjhjanlsUFRRZGo0Z05ZckZQZUFiSm9rV3c?oc=5",
+      "source": "Yahoo Finance",
+      "pub_iso": "2026-10-29T15:45:00+00:00",
       "description": "",
       "summary": "",
-      "pub_display": "Oct 28"
+      "pub_display": "Oct 29"
+    },
+    {
+      "title": "Prediction market bets set the tone for Anthropic's much-awaited IPO",
+      "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQZ3hmM3czNEdSNnpYeVB5eGZpZVB5QzJSa3ZNdDVsVVd4WHVZTkhyMjFpM3J1czNvMFprVU1NZmN3cDJmT1FTN0ZCRXFkYzI4TFVpbkZ0alFuY2l1QmhXWmJ3V1duQVhaSThlSjY3djh6empxXzM3VGIxQmVsMUFXSGdEVjRZMW1EeXZnU2Q3cHRITE5XWElQbG4zOERNUW44WXd0RkdYVDdQc0xERGdPdWRn?oc=5",
+      "source": "Reuters",
+      "pub_iso": "2026-10-29T14:10:53+00:00",
+      "description": "",
+      "summary": "",
+      "pub_display": "Oct 29"
     }
   ]
 }
