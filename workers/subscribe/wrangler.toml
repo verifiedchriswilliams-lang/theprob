@@ -1,0 +1,7 @@
+name = "theprob-subscribe"
+main = "index.js"
+compatibility_date = "2024-01-01"
+
+[vars]
+# Secrets are set via: wrangler secret put RESEND_API_KEY
+# and: wrangler secret put RESEND_AUDIENCE_ID
