@@ -183,12 +183,13 @@ def story_card_html(number: int, story: dict, copy: dict) -> str:
   <tr><td style="padding:0;border-bottom:1px solid rgba(11,14,20,.08);">
     <table width="100%" cellpadding="0" cellspacing="0" border="0">
       <tr><td style="height:3px;background:{accent};font-size:0;line-height:0;">&nbsp;</td></tr>
-      <tr><td style="padding:28px 32px 28px;">
+      <tr><td style="padding:28px 32px 0;">
+        <!-- Number + headline row -->
         <table width="100%" cellpadding="0" cellspacing="0" border="0">
           <tr>
-            <td style="vertical-align:top;width:48px;padding-right:16px;">
+            <td style="vertical-align:top;width:52px;padding-right:14px;">
               <div style="font-family:'Courier New',monospace;font-size:36px;font-weight:700;
-                          color:{accent};line-height:1;">{number:02d}</div>
+                          color:{accent};line-height:1.1;">{number:02d}</div>
             </td>
             <td style="vertical-align:top;">
               <div style="font-family:'Manrope','Helvetica Neue',Arial,sans-serif;font-size:10px;
@@ -196,28 +197,31 @@ def story_card_html(number: int, story: dict, copy: dict) -> str:
                 {source}{(' &nbsp;·&nbsp; ' + pub) if pub else ''}
               </div>
               <div style="font-family:'Georgia','Times New Roman',serif;font-size:18px;font-weight:700;
-                          color:#0B0E14;line-height:1.35;margin-bottom:12px;">
+                          color:#0B0E14;line-height:1.35;">
                 <a href="{url}" style="color:#0B0E14;text-decoration:none;">{title}</a>
               </div>
-              <p style="font-family:'Manrope','Helvetica Neue',Arial,sans-serif;font-size:14px;
-                        color:#3D4551;line-height:1.8;margin:0 0 16px;">{summary}</p>
-              <div style="margin-bottom:16px;">
-                <div style="font-family:'Courier New',monospace;font-size:9px;letter-spacing:0.14em;
-                            text-transform:uppercase;color:#8A93A0;margin-bottom:8px;">What You Need to Know</div>
-                <ul style="margin:0;padding-left:18px;list-style:disc;">
-                  {bullet_items}
-                </ul>
-              </div>
-              <table width="100%" cellpadding="0" cellspacing="0" border="0">
-                <tr><td style="background:rgba(0,119,182,.08);padding:12px 16px;border-radius:6px;">
-                  <div style="font-family:'Courier New',monospace;font-size:9px;letter-spacing:0.14em;
-                              text-transform:uppercase;color:#0077B6;margin-bottom:6px;">% The Prob's Take</div>
-                  <p style="font-family:'Georgia','Times New Roman',serif;font-size:14px;font-style:italic;
-                            color:#0B0E14;line-height:1.6;margin:0;">{take}</p>
-                </td></tr>
-              </table>
             </td>
           </tr>
+        </table>
+      </td></tr>
+      <!-- Body content spans full card width -->
+      <tr><td style="padding:16px 32px 28px;">
+        <p style="font-family:'Manrope','Helvetica Neue',Arial,sans-serif;font-size:14px;
+                  color:#3D4551;line-height:1.8;margin:0 0 16px;">{summary}</p>
+        <div style="margin-bottom:16px;">
+          <div style="font-family:'Courier New',monospace;font-size:9px;letter-spacing:0.14em;
+                      text-transform:uppercase;color:#8A93A0;margin-bottom:8px;">What You Need to Know</div>
+          <ul style="margin:0;padding-left:18px;list-style:disc;">
+            {bullet_items}
+          </ul>
+        </div>
+        <table width="100%" cellpadding="0" cellspacing="0" border="0">
+          <tr><td style="background:rgba(0,119,182,.08);padding:12px 16px;border-radius:6px;">
+            <div style="font-family:'Courier New',monospace;font-size:9px;letter-spacing:0.14em;
+                        text-transform:uppercase;color:#0077B6;margin-bottom:6px;">% The Prob's Take</div>
+            <p style="font-family:'Georgia','Times New Roman',serif;font-size:14px;font-style:italic;
+                      color:#0B0E14;line-height:1.6;margin:0;">{take}</p>
+          </td></tr>
         </table>
       </td></tr>
     </table>
