@@ -1,13 +1,13 @@
 {
-  "updated": "Nov 18, 2026 \u00b7 2:17 PM ET",
-  "updated_iso": "2026-11-18T19:17:15.549737+00:00",
+  "updated": "Nov 18, 2026 \u00b7 4:28 PM ET",
+  "updated_iso": "2026-11-18T21:28:37.489180+00:00",
   "homepage_count": 3,
   "articles": [
     {
-      "title": "Kalshi Turns to Compute Desk in Renewed Push for GPU Futures",
-      "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxOUlpta2dGMVNUOFRsZGJpVU83Tkg5WFg2WFdFX1lZQldnamdnSVZSa05LVjcyS3d5STRHZV95c2JtclRycUEzR09YS3YxVzlfVnFLV0pQU3BNTTlwWjBUZWpIQllEYWNUeEFYclJuVlRtMFFxNElPcXFMamRYZmJSdk92aXdOU1VwNm9IbFNRUVNQcXV3VE1JMFNTTk9JSXhQVGhfaF9hRUlPV2xDZll3UQ?oc=5",
-      "source": "Bloomberg.com",
-      "pub_iso": "2026-11-18T17:58:19+00:00",
+      "title": "NBA adds Novig as its fourth prediction market partner - The Athletic",
+      "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxOdlpHQlR6Ulh0Y1NwUlctcEpEb0RZM2Nrc3FGV255M0NYTWFCOEprWkxJRUNNNmlXSEotaFRHMW5NYk5NVElSRVNVRENhd3NtWkFIdTRhV0lXdzBmUEs1cG5hTWpLSmtSQ2JkNVhvTGpnbDljdXFXbUVfbVhkSFM0QnlwVE9saTJzcXNjVXNqTXJmWXRqYXg4?oc=5",
+      "source": "The New York Times",
+      "pub_iso": "2026-11-18T19:23:57+00:00",
       "description": "",
       "summary": "",
       "pub_display": "Nov 18"
@@ -76,10 +76,19 @@
       "pub_display": "Nov 17"
     },
     {
-      "title": "Kalshi Halts Bets That Are Based on Trump\u2019s Remarks",
-      "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxObTJwVnQtcURlUjhOeXZZUXhXLWJhb25rSzVZOUQ1RDdLbXg3d010bUY2blZtYjVyd0ZpNkdPZy0tZmJxQW51b1lWYU0zTGp6ZUlCdmdHN0lYQjB3S2NjOFJUWXhBVXRJWC1CZldIc3l0RnQwVWkxWkFtNnpUMEpNYTJMcUs2dEhFd2NPX0FMcEFJcDdDWkx6bXlBaUFidw?oc=5",
-      "source": "WSJ",
-      "pub_iso": "2026-11-17T18:29:05+00:00",
+      "title": "Kalshi halts trading on Trump's speeches",
+      "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNN091UW9IYzBpOGFoclY5azdjN3VpbGtOUTBGelJSdzVwbEJmTTF3Z0l0OFZqTUpUWFpheWx5elVlME1MUWpNVTBnX1V3REFFVkxSMVhkSE1vdlNrSUFOWF9ObVNLdW9LN0h6bGRaMjhmai1pNTVocFZHRHdCRndxQUFZZDhuWm8?oc=5",
+      "source": "Politico",
+      "pub_iso": "2026-11-17T19:17:00+00:00",
+      "description": "",
+      "summary": "",
+      "pub_display": "Nov 17"
+    },
+    {
+      "title": "Kalshi takes down controversial Trump 'mention' markets at CFTC's request",
+      "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxQNzlabGl0UTl6T0hGcF8xMHQ5ZmRlaWpPUk1KV3AyeC1OZS1Bdm9MTC1XQk9aWHgwOWQtTTBqMjgxejhPU0JsOFZOMVVDQU0zMGxfZUNrWEprdGJHbkNscGhhOXl2U1UySVJucFBVNUZmVnRYNDZPcFR3N2hFWFZIWF930gGHAUFVX3lxTFBBbHA1dTZFeHJ5MFdOUVJQRWdzM0hEVU1rMjZMMzNFc2JSWWRmNEJlT1lHdC1iZmJKZEpYNjRQRzh1dDk1OGFRUExQZjUwNkM1ZUlVWnh5NFpnd09IWjdTSXdrdjZKdmZ2WmdtZW9SN2xaekRlTDJRel94U1BkWEx1M3lNUkRGYw?oc=5",
+      "source": "CNBC",
+      "pub_iso": "2026-11-17T16:00:50+00:00",
       "description": "",
       "summary": "",
       "pub_display": "Nov 17"
@@ -101,15 +110,6 @@
       "description": "",
       "summary": "",
       "pub_display": "Nov 17"
-    },
-    {
-      "title": "If Democrats Are Going to Investigate Trump, They Should Start Here",
-      "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxPODI0UzdVOFhHaU9makJPLWpPMmlkNXY3aHd6NDJ1a1lGT3VnRm5BcHZxY0padHJLOEdpZzllQmxFb1QxNUdnM0NMcXc4MWY0ZjB6WlBJSUluTEdmVnJ5dk0ybXdZajM4M0pyYllIOHlCajE2N0xXbXNiRnFtUG9Jbl9TU1pDTzI2MU1OeXJEQ0FpbFFrNjY0TkRB?oc=5",
-      "source": "Slate",
-      "pub_iso": "2026-11-16T22:43:00+00:00",
-      "description": "",
-      "summary": "",
-      "pub_display": "Nov 16"
     }
   ]
 }
