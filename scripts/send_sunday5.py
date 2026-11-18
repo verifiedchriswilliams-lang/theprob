@@ -1,21 +1,11 @@
 #!/usr/bin/env python3
 """
 send_sunday5.py
-Builds The Prob's Sunday 5 newsletter — a weekly editorial on the biggest
-stories IN the prediction markets space (not the markets themselves).
+Builds and sends The Prob's Sunday 5 newsletter.
 
-Format per story:
-  - Headline
-  - 2-sentence summary in The Prob voice
-  - 3 bullets: what you need to know
-  - The Prob's Take
-
-Reads: data/sunday5_stories.json  (manually curated each Sunday)
-Writes: newsletter/latest.html, latest-email.html, latest-copy.html,
-        newsletter/YYYY-MM-DD.html, newsletter/index.json
-
-Run manually each Sunday morning:
-  python scripts/send_sunday5.py
+Auto-selects the 5 most important prediction-market stories from
+data/weekly_stories.json (accumulated Mon-Sat by fetch_news.py).
+Sends via Resend Audiences API. Writes newsletter/latest*.html + archive.
 """
 
 import os
@@ -25,15 +15,14 @@ from datetime import datetime, timezone, timedelta
 
 # ── CONFIG ────────────────────────────────────────────────────────────────────
 
-ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY", "")
-CLAUDE_MODEL      = "claude-haiku-4-5-20251001"
-SITE_URL          = "https://theprob.ai"
+ANTHROPIC_API_KEY  = os.environ.get("ANTHROPIC_API_KEY", "")
+RESEND_API_KEY     = os.environ.get("RESEND_API_KEY", "")
+RESEND_AUDIENCE_ID = os.environ.get("RESEND_AUDIENCE_ID", "")
+CLAUDE_MODEL       = "claude-haiku-4-5-20251001"
+FROM_ADDRESS       = "The Prob <newsletter@theprob.ai>"
+SITE_URL           = "https://theprob.ai"
 
-# Chris's headshot — commit this file to the repo, then update this URL.
-# File should be committed to: images/chris-williams.jpg (square, min 200x200)
-CHRIS_PHOTO_URL = f"{SITE_URL}/images/chris-williams.jpg"
-
-HOUSE_STYLE_SYSTEM = (
+HOUSE_STYLE = (
     "You write for The Prob, a prediction markets newsletter. "
     "Voice: sharp, confident, dry wit, slightly irreverent. Like The Hustle meets a trading desk. "
     "Intelligent but not academic. Opinionated but not arrogant. "
@@ -43,7 +32,7 @@ HOUSE_STYLE_SYSTEM = (
     "Undetectable as AI. Write like a sharp human who finds this genuinely interesting."
 )
 
-# ── CLAUDE API ────────────────────────────────────────────────────────────────
+# ── CLAUDE ────────────────────────────────────────────────────────────────────
 
 def claude(prompt: str, max_tokens: int = 300) -> str:
     if not ANTHROPIC_API_KEY:
@@ -59,308 +48,381 @@ def claude(prompt: str, max_tokens: int = 300) -> str:
             json={
                 "model":      CLAUDE_MODEL,
                 "max_tokens": max_tokens,
-                "system":     HOUSE_STYLE_SYSTEM,
+                "system":     HOUSE_STYLE,
                 "messages":   [{"role": "user", "content": prompt}],
             },
             timeout=30,
         )
         r.raise_for_status()
         text = r.json()["content"][0]["text"].strip()
-        # Hard-strip em dashes just in case
-        return text.replace("\u2014", ",").replace(" -- ", ", ")
+        return text.replace("—", ",").replace(" -- ", ", ")
     except Exception as e:
         print(f"  [WARN] Claude call failed: {e}")
         return ""
 
+# ── STORY SELECTION ───────────────────────────────────────────────────────────
+
+def select_top_stories(weekly: list) -> list:
+    """Ask Claude to rank the week's articles and return the top 5."""
+    if len(weekly) <= 5:
+        return weekly[:5]
+
+    catalog = "\n".join(
+        f"{i+1}. [{a['source']}] {a['title']} | {a.get('pub_display','')}"
+        for i, a in enumerate(weekly)
+    )
+    prompt = (
+        f"Here are this week's prediction markets news articles:\n{catalog}\n\n"
+        "Pick the 5 most important for a weekly newsletter aimed at prediction market traders. "
+        "Criteria: genuine news value, impact on prediction markets, reader interest. "
+        "Avoid duplicates covering the same event. Favor variety across topics. "
+        "Return ONLY 5 line numbers, one per line, like:\n3\n7\n12\n5\n9\nNothing else."
+    )
+    result = claude(prompt, max_tokens=30)
+    indices = []
+    for line in result.strip().split("\n"):
+        try:
+            idx = int(line.strip()) - 1
+            if 0 <= idx < len(weekly) and idx not in indices:
+                indices.append(idx)
+        except ValueError:
+            pass
+
+    if len(indices) < 5:
+        # Fill with remaining articles not already picked
+        for i in range(len(weekly)):
+            if i not in indices:
+                indices.append(i)
+            if len(indices) == 5:
+                break
+
+    return [weekly[i] for i in indices[:5]]
+
+
 # ── COPY GENERATION ───────────────────────────────────────────────────────────
 
 def generate_story_copy(story: dict) -> dict:
-    """
-    For a given story dict, call Claude to produce:
-      - summary: 2-sentence Prob-voice summary
-      - bullets: list of 3 sharp bullet strings
-      - take: The Prob's Take (2 sentences max)
-    Falls back to raw_summary if Claude unavailable.
-    """
-    headline    = story.get("headline", "")
-    raw         = story.get("raw_summary", "")
-    source      = story.get("source", "")
+    title   = story.get("title", "")
+    summary = story.get("summary", "")
+    source  = story.get("source", "")
 
-    # Summary
     summary_prompt = (
-        f"Source: {source}\n"
-        f"Headline: {headline}\n"
-        f"Background: {raw}\n\n"
+        f"Source: {source}\nHeadline: {title}\nBackground: {summary}\n\n"
         "Write a 2-sentence summary for The Prob newsletter. "
         "Sentence 1: what happened. Sentence 2: why it matters for prediction market readers. "
-        "No em dashes. No hedging. Under 50 words total. Just the two sentences, nothing else."
+        "No em dashes. Under 50 words total. Just the two sentences, nothing else."
     )
-    summary = claude(summary_prompt, max_tokens=120) or raw
+    polished_summary = claude(summary_prompt, max_tokens=120) or summary
 
-    # Bullets
     bullets_prompt = (
-        f"Headline: {headline}\n"
-        f"Background: {raw}\n\n"
+        f"Headline: {title}\nBackground: {summary}\n\n"
         "Write exactly 3 bullet points for a prediction markets newsletter. "
         "Each bullet: one sharp sentence, max 18 words. Start each with a strong verb or number. "
         "No em dashes. No bullet symbols, just the text. "
         "Return them as 3 lines, one per line, nothing else."
     )
     bullets_raw = claude(bullets_prompt, max_tokens=150) or ""
-    bullets = [b.strip().lstrip("-•*").strip() for b in bullets_raw.strip().split("\n") if b.strip()][:3]
+    bullets = [b.strip().lstrip("-*").strip() for b in bullets_raw.strip().split("\n") if b.strip()][:3]
     if len(bullets) < 3:
-        bullets += ["Watch regulatory responses closely over the next 30 days."] * (3 - len(bullets))
+        bullets += ["Watch how this develops over the next two weeks."] * (3 - len(bullets))
 
-    # The Prob's Take
     take_prompt = (
-        f"Headline: {headline}\n"
-        f"Background: {raw}\n\n"
+        f"Headline: {title}\nBackground: {summary}\n\n"
         "Write The Prob's Take: 1-2 sentences, max 40 words. "
-        "This is the editorial opinion for prediction market traders. "
-        "What does a sharp bettor need to know or do with this information? "
+        "Editorial opinion for prediction market traders. What does a sharp bettor need to know? "
         "No em dashes. No hedging. Be direct. Just the take, nothing else."
     )
     take = claude(take_prompt, max_tokens=100) or "Watch this space. The crowd will price it before the press does."
 
-    return {
-        "summary": summary,
-        "bullets": bullets,
-        "take":    take,
-    }
+    return {"summary": polished_summary, "bullets": bullets, "take": take}
 
 
 def generate_subject(stories: list) -> str:
-    headlines = "\n".join(f"- {s.get('headline', '')}" for s in stories)
+    headlines = "\n".join(f"- {s.get('title','')}" for s in stories)
     prompt = (
         f"This week's 5 prediction markets stories:\n{headlines}\n\n"
         "Write ONE punchy email subject line for The Prob's Sunday 5 newsletter. "
-        "Angle: what's the most provocative or surprising thing in this list? "
-        "Lead with the tension or the stakes. Max 55 characters. "
+        "Lead with the most provocative or surprising story. Max 55 characters. "
         "No em dashes. No 'The Prob:' or 'Sunday 5:' prefix. No quotes. "
         "Just the subject line, nothing else."
     )
-    subj = claude(prompt, max_tokens=70)
-    if not subj:
-        subj = "The Sunday 5: This Week in Prediction Markets"
-    return subj
+    return claude(prompt, max_tokens=70) or "The Sunday 5: This Week in Prediction Markets"
 
 
 def generate_subtitle(stories: list) -> str:
-    headlines = " | ".join(s.get("headline", "")[:45] for s in stories[:3])
+    headlines = " | ".join(s.get("title", "")[:40] for s in stories[:3])
     prompt = (
-        f"This week's top prediction markets stories: {headlines}\n\n"
-        "Write ONE short inbox preview line for The Prob's Sunday 5 newsletter. "
-        "This appears under the subject line in Gmail/Apple Mail. Max 85 characters. "
-        "Make it feel urgent and specific to this week's actual stories. "
-        "No em dashes. No quotes. No generic filler. Just the preview text, nothing else."
+        f"Top stories: {headlines}\n\n"
+        "Write ONE short inbox preview line for The Prob's Sunday 5. "
+        "Max 85 characters. Specific to this week. No em dashes. No quotes. Just the preview text."
     )
-    sub = claude(prompt, max_tokens=90)
-    if not sub:
-        sub = "Five stories shaping the prediction markets conversation this week."
-    return sub
-
-# ── HTML HELPERS ──────────────────────────────────────────────────────────────
-
-def build_head_styles() -> str:
-    return """
-<style type="text/css">
-  /* ── Mobile ── */
-  @media only screen and (max-width:600px){
-    .outer-table{width:100%!important;}
-    .section-pad{padding:20px 16px!important;}
-    /* Story numbers stay bold on mobile */
-    .story-num{font-size:30px!important;}
-    /* Headlines readable on phone */
-    .story-headline{font-size:17px!important;line-height:1.4!important;}
-    /* Body copy comfortable on small screen */
-    .body-text{font-size:16px!important;line-height:1.85!important;}
-    /* Take text */
-    .take-text{font-size:15px!important;line-height:1.75!important;}
-    /* Labels — minimum 12px, never smaller */
-    .label-text{font-size:12px!important;letter-spacing:0.1em!important;}
-    /* Intro paragraph */
-    .intro-text{font-size:16px!important;line-height:1.85!important;}
-    /* Subtitle / preview row */
-    .subtitle-text{font-size:16px!important;}
-    /* Bullet list items */
-    .bullet-item{font-size:15px!important;line-height:1.75!important;}
-    /* Brand bar */
-    .brand-name{font-size:20px!important;}
-    .brand-tag{font-size:11px!important;}
-  }
-  /* ── Dark mode lock ── */
-  @media (prefers-color-scheme:dark){
-    body,div,td{background-color:#0a0e14!important;color:#d0dde8!important;}
-  }
-</style>"""
+    return claude(prompt, max_tokens=90) or "Five stories shaping the prediction markets conversation this week."
 
 
-def story_card_html(number: str, story: dict, copy: dict) -> str:
-    headline = story.get("headline", "")
-    source   = story.get("source", "")
-    url      = story.get("url", "#")
-    summary  = copy.get("summary", "")
-    bullets  = copy.get("bullets", [])
-    take     = copy.get("take", "")
-    signal   = story.get("market_signal", None)
+# ── HTML ──────────────────────────────────────────────────────────────────────
+
+def story_card_html(number: int, story: dict, copy: dict) -> str:
+    title   = story.get("title", "")
+    source  = story.get("source", "")
+    url     = story.get("url", "#")
+    pub     = story.get("pub_display", "")
+    summary = copy["summary"]
+    bullets = copy["bullets"]
+    take    = copy["take"]
 
     bullet_items = "".join(
-        f'<li class="bullet-item" style="margin-bottom:8px;color:#d0dde8 !important;font-size:14px;line-height:1.7;">{b}</li>'
+        f'<li style="margin-bottom:8px;font-family:\'Manrope\',\'Helvetica Neue\',Arial,sans-serif;'
+        f'font-size:14px;color:#3D4551;line-height:1.7;">{b}</li>'
         for b in bullets
     )
 
-    signal_block = ""
-    if signal:
-        signal_block = f"""
-      <div style="background:#1a2535 !important;border-left:3px solid #f5a623;padding:10px 14px;margin:14px 0 0;border-radius:0 4px 4px 0;">
-        <span style="font-family:'Courier New',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:#f5a623 !important;display:block;margin-bottom:4px;">The Prob Notes</span>
-        <span style="font-size:13px;color:#d0dde8 !important;line-height:1.6;">{signal}</span>
-      </div>"""
+    accent_colors = ["#0077B6", "#00B4D8", "#023E8A", "#48CAE4", "#90E0EF"]
+    accent = accent_colors[(number - 1) % len(accent_colors)]
 
     return f"""
-  <tr><td class="section-pad" style="padding:28px 32px;border-bottom:1px solid #1e2a38;">
-    <div class="story-num" style="font-family:'Courier New',monospace;font-size:38px;font-weight:700;color:#00e5a0 !important;line-height:1;margin-bottom:6px;">{number}</div>
-    <div class="label-text" style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:#a8bfce !important;margin:0 0 10px;">via {source}</div>
-    <div class="story-headline" style="font-size:18px;font-weight:700;color:#edf2f7 !important;line-height:1.35;margin-bottom:12px;">
-      <a href="{url}" style="color:#edf2f7 !important;text-decoration:none;">{headline}</a>
-    </div>
-    <p class="body-text" style="font-size:15px;color:#d0dde8 !important;line-height:1.8;margin:0 0 16px;">{summary}</p>
-    <div style="margin-bottom:16px;">
-      <div class="label-text" style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:#a8bfce !important;margin-bottom:8px;">What You Need to Know</div>
-      <ul style="margin:0;padding-left:18px;list-style:disc;">
-        {bullet_items}
-      </ul>
-    </div>
-    <div style="background:#0f1825 !important;border:1px solid #1e2a38;border-left:3px solid #00e5a0;padding:12px 16px;border-radius:0 4px 4px 0;">
-      <div style="font-family:'Courier New',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:#00e5a0 !important;margin-bottom:6px;">The Prob's Take</div>
-      <p class="take-text" style="font-size:14px;color:#d0dde8 !important;line-height:1.7;margin:0;">{take}</p>
-    </div>
-    {signal_block}
+  <tr><td style="padding:0;border-bottom:1px solid rgba(11,14,20,.08);">
+    <table width="100%" cellpadding="0" cellspacing="0" border="0">
+      <tr><td style="height:3px;background:{accent};font-size:0;line-height:0;">&nbsp;</td></tr>
+      <tr><td style="padding:28px 32px 28px;">
+        <table width="100%" cellpadding="0" cellspacing="0" border="0">
+          <tr>
+            <td style="vertical-align:top;width:48px;padding-right:16px;">
+              <div style="font-family:'Courier New',monospace;font-size:36px;font-weight:700;
+                          color:{accent};line-height:1;">{number:02d}</div>
+            </td>
+            <td style="vertical-align:top;">
+              <div style="font-family:'Manrope','Helvetica Neue',Arial,sans-serif;font-size:10px;
+                          letter-spacing:0.14em;text-transform:uppercase;color:#8A93A0;margin-bottom:6px;">
+                {source}{(' &nbsp;·&nbsp; ' + pub) if pub else ''}
+              </div>
+              <div style="font-family:'Georgia','Times New Roman',serif;font-size:18px;font-weight:700;
+                          color:#0B0E14;line-height:1.35;margin-bottom:12px;">
+                <a href="{url}" style="color:#0B0E14;text-decoration:none;">{title}</a>
+              </div>
+              <p style="font-family:'Manrope','Helvetica Neue',Arial,sans-serif;font-size:14px;
+                        color:#3D4551;line-height:1.8;margin:0 0 16px;">{summary}</p>
+              <div style="margin-bottom:16px;">
+                <div style="font-family:'Courier New',monospace;font-size:9px;letter-spacing:0.14em;
+                            text-transform:uppercase;color:#8A93A0;margin-bottom:8px;">What You Need to Know</div>
+                <ul style="margin:0;padding-left:18px;list-style:disc;">
+                  {bullet_items}
+                </ul>
+              </div>
+              <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr><td style="background:rgba(0,119,182,.08);padding:12px 16px;border-radius:6px;">
+                  <div style="font-family:'Courier New',monospace;font-size:9px;letter-spacing:0.14em;
+                              text-transform:uppercase;color:#0077B6;margin-bottom:6px;">% The Prob's Take</div>
+                  <p style="font-family:'Georgia','Times New Roman',serif;font-size:14px;font-style:italic;
+                            color:#0B0E14;line-height:1.6;margin:0;">{take}</p>
+                </td></tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </td></tr>
+    </table>
   </td></tr>"""
 
 
-def build_header_html(date_str: str, edition: int, subtitle: str) -> str:
-    return f"""
-  <tr><td style="padding:24px 32px 20px;text-align:center;background:#0a0e14 !important;border-bottom:2px solid #1e2a38;">
-    <!-- Brand bar matching theprob.ai -->
-    <div style="margin-bottom:24px;">
-      <a href="{SITE_URL}" style="text-decoration:none;">
-        <span class="brand-name" style="font-family:'Courier New',monospace;font-size:22px;font-weight:700;color:#00e5a0 !important;letter-spacing:-0.5px;">THE PROB</span>
-        <span style="font-family:'Courier New',monospace;font-size:16px;color:#4a6880 !important;margin:0 8px;">|</span>
-        <span class="brand-tag" style="font-family:'Courier New',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#a8bfce !important;">What's the Probability?</span>
-      </a>
-    </div>
-
-    <!-- Photo bubble -->
-    <div style="width:80px;height:80px;border-radius:50%;overflow:hidden;margin:0 auto 10px;border:2px solid #00e5a0;background:#1e2a38;">
-      <img src="{CHRIS_PHOTO_URL}" alt="-usernamedchris" width="80" height="80"
-           style="width:80px;height:80px;border-radius:50%;object-fit:cover;display:block;"
-           onerror="this.style.display='none'">
-    </div>
-    <div style="font-family:'Courier New',monospace;font-size:11px;color:#00e5a0 !important;margin-bottom:20px;letter-spacing:0.05em;">-usernamedchris</div>
-
-    <!-- Sunday 5 title -->
-    <div style="font-family:'Courier New',monospace;font-size:11px;letter-spacing:0.25em;text-transform:uppercase;color:#f5a623 !important;margin-bottom:8px;">Sunday Edition</div>
-    <div style="font-size:30px;font-weight:700;color:#edf2f7 !important;line-height:1.15;margin-bottom:8px;">The Sunday 5</div>
-    <div style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:#8ba3bc !important;margin-bottom:18px;">{date_str} &nbsp;&#183;&nbsp; Edition #{edition:02d}</div>
-
-    <!-- Two-sentence intro -->
-    <div class="intro-text" style="font-size:15px;color:#c8dae6 !important;line-height:1.8;max-width:420px;margin:0 auto 6px;">
-      Every Sunday, I hand-pick the 5 most important stories from the prediction markets world and tell you why they matter. These are the headlines shaping where smart money is moving next.
-    </div>
-  </td></tr>
-  <tr><td style="padding:14px 32px 18px;background:#0d1117 !important;text-align:center;border-bottom:1px solid #1e2a38;">
-    <div class="subtitle-text" style="font-size:15px;color:#edf2f7 !important;font-style:italic;">{subtitle}</div>
-  </td></tr>"""
-
-
-def build_footer_html() -> str:
-    return f"""
-  <tr><td class="section-pad" style="padding:28px 32px;background:#0a0e14 !important;text-align:center;border-top:1px solid #1e2a38;">
-    <div style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:#8ba3bc !important;margin-bottom:16px;">The Prob</div>
-    <div style="font-size:12px;color:#8ba3bc !important;line-height:1.8;">
-      <a href="{SITE_URL}" style="color:#a8bfce !important;text-decoration:none;">theprob.ai</a>
-      &nbsp;&#183;&nbsp;
-      <a href="{SITE_URL}/prediction-markets-101.html" style="color:#a8bfce !important;text-decoration:none;">Prediction Markets 101</a>
-      &nbsp;&#183;&nbsp;
-      <a href="{SITE_URL}/archive.html" style="color:#a8bfce !important;text-decoration:none;">Archive</a>
-      &nbsp;&#183;&nbsp;
-      <a href="{SITE_URL}/contact.html" style="color:#a8bfce !important;text-decoration:none;">Contact</a>
-    </div>
-    <div style="font-size:11px;color:#8ba3bc !important;margin-top:14px;line-height:1.7;">
-      Prediction markets data from Polymarket and Kalshi.<br>
-      Not financial advice. Trade at your own risk.
-    </div>
-  </td></tr>"""
-
-
-def build_full_html(header: str, story_cards: str, footer: str, subject: str, subtitle: str) -> str:
-    styles = build_head_styles()
+def build_email_html(stories: list, enriched: list, subject: str, subtitle: str, date_fmt: str, edition: int) -> str:
+    story_cards = "".join(
+        story_card_html(i + 1, story, copy) for i, (story, copy) in enumerate(enriched)
+    )
+    top_sources = ", ".join(dict.fromkeys(s.get("source","") for s in stories[:3]))
     return f"""<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="color-scheme" content="dark">
 <title>{subject}</title>
-{styles}
+<style>
+@media only screen and (max-width:600px){{
+  .outer{{width:100%!important;}}
+  .pad{{padding:20px 16px!important;}}
+}}
+</style>
 </head>
-<body style="margin:0;padding:0;background:#0a0e14 !important;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;">
+<body style="margin:0;padding:16px 0;background:#F8F9FA;font-family:'Manrope','Helvetica Neue',Arial,sans-serif;">
 <div style="display:none;max-height:0;overflow:hidden;">{subtitle}</div>
 <!--[if mso]><center><table width="600"><tr><td><![endif]-->
-<table class="outer-table" align="center" width="600" cellpadding="0" cellspacing="0" border="0"
-       style="max-width:600px;width:100%;background:#0a0e14 !important;border-radius:8px;overflow:hidden;">
-  {header}
+<table class="outer" align="center" width="600" cellpadding="0" cellspacing="0" border="0"
+       style="max-width:600px;width:100%;background:#FFFFFF;border-radius:8px;
+              border:1px solid rgba(11,14,20,.08);overflow:hidden;">
+
+  <!-- HEADER -->
+  <tr><td class="pad" style="padding:28px 32px 24px;border-bottom:1px solid rgba(11,14,20,.08);">
+    <table width="100%" cellpadding="0" cellspacing="0" border="0">
+      <tr>
+        <td>
+          <a href="{SITE_URL}" style="text-decoration:none;">
+            <span style="font-family:'Courier New',monospace;font-size:13px;font-weight:700;
+                         letter-spacing:0.18em;text-transform:uppercase;color:#0B0E14;">THEPROB.AI</span>
+          </a>
+        </td>
+        <td style="text-align:right;">
+          <span style="font-family:'Manrope','Helvetica Neue',Arial,sans-serif;font-size:11px;
+                       color:#8A93A0;">{date_fmt} &nbsp;·&nbsp; Edition #{edition:02d}</span>
+        </td>
+      </tr>
+    </table>
+  </td></tr>
+
+  <!-- SUNDAY 5 HERO -->
+  <tr><td class="pad" style="padding:32px 32px 24px;background:#FFFFFF;border-bottom:1px solid rgba(11,14,20,.08);text-align:center;">
+    <div style="font-family:'Courier New',monospace;font-size:9px;letter-spacing:0.2em;
+                text-transform:uppercase;color:#0077B6;margin-bottom:10px;">
+      <span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:#0077B6;
+                   vertical-align:middle;margin-right:5px;"></span>Sunday Edition
+    </div>
+    <div style="font-family:'Georgia','Times New Roman',serif;font-size:36px;font-weight:700;
+                color:#0B0E14;line-height:1.1;margin-bottom:8px;">The Sunday 5</div>
+    <div style="font-family:'Manrope','Helvetica Neue',Arial,sans-serif;font-size:13px;
+                color:#8A93A0;margin-bottom:20px;">The 5 biggest prediction markets stories of the week</div>
+    <div style="font-family:'Manrope','Helvetica Neue',Arial,sans-serif;font-size:14px;
+                color:#3D4551;line-height:1.75;max-width:440px;margin:0 auto;">
+      {subtitle}
+    </div>
+  </td></tr>
+
+  <!-- STORY CARDS -->
   {story_cards}
-  {footer}
+
+  <!-- FOOTER -->
+  <tr><td class="pad" style="padding:24px 32px;background:#F8F9FA;text-align:center;
+                              border-top:1px solid rgba(11,14,20,.08);">
+    <div style="font-family:'Manrope','Helvetica Neue',Arial,sans-serif;font-size:12px;
+                color:#8A93A0;line-height:1.8;margin-bottom:12px;">
+      <a href="{SITE_URL}" style="color:#8A93A0;text-decoration:none;">theprob.ai</a>
+      &nbsp;·&nbsp;
+      <a href="{SITE_URL}/prediction-markets-101.html" style="color:#8A93A0;text-decoration:none;">PM 101</a>
+      &nbsp;·&nbsp;
+      <a href="{SITE_URL}/archive.html" style="color:#8A93A0;text-decoration:none;">Archive</a>
+    </div>
+    <div style="font-family:'Manrope','Helvetica Neue',Arial,sans-serif;font-size:11px;
+                color:#C4C9D1;line-height:1.7;">
+      Prediction markets data from Polymarket and Kalshi. Not financial advice.<br>
+      <a href="mailto:newsletter@theprob.ai?subject=Unsubscribe" style="color:#C4C9D1;">Unsubscribe</a>
+    </div>
+  </td></tr>
+
 </table>
 <!--[if mso]></td></tr></table></center><![endif]-->
 </body>
 </html>"""
 
 
-# ── PREVIEW WRAPPER ───────────────────────────────────────────────────────────
-
-def build_preview_html(email_html: str) -> str:
-    """Wraps the email HTML in a browser preview page with a Copy button."""
-    escaped = email_html.replace("`", "\\`").replace("${", "\\${")
-    return f"""<!DOCTYPE html>
+def build_preview_html() -> str:
+    return """<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <title>Sunday 5 Preview</title>
 <style>
-  body{{margin:0;background:#111;font-family:system-ui,sans-serif;}}
-  .controls{{position:fixed;top:16px;right:16px;z-index:999;display:flex;gap:8px;}}
-  .btn{{background:#00e5a0;color:#0a0e14;border:none;padding:10px 20px;border-radius:6px;
-        font-weight:700;font-size:13px;cursor:pointer;letter-spacing:0.05em;}}
-  .btn:hover{{background:#00c98a;}}
-  .btn.copied{{background:#f5a623;}}
-  iframe{{display:block;width:640px;max-width:100%;margin:0 auto;border:none;height:100vh;}}
+  *{{box-sizing:border-box;margin:0;padding:0;}}
+  body{{background:#07090E;font-family:'Courier New',monospace;}}
+  #preview-bar{{position:fixed;top:0;left:0;right:0;z-index:9999;background:#07090E;
+    border-bottom:2px solid #141B2D;padding:10px 20px;display:flex;align-items:center;
+    justify-content:space-between;gap:12px;}}
+  #subject-label{{color:#64748B;margin-right:8px;font-size:10px;text-transform:uppercase;letter-spacing:0.15em;}}
+  #subject-line{{font-size:12px;color:#94A3B8;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}}
+  #copy-btn{{background:#00e5a0;color:#07090E;border:none;padding:9px 18px;font-family:'Courier New',monospace;
+    font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;
+    white-space:nowrap;flex-shrink:0;}}
+  #copy-btn:hover{{opacity:0.85;}}
+  #email-frame{{display:block;width:100%;border:none;margin-top:46px;height:calc(100vh - 46px);}}
 </style>
 </head>
 <body>
-<div class="controls">
-  <button class="btn" onclick="copyEmail()" id="copyBtn">Copy Email HTML</button>
+<div id="preview-bar">
+  <div id="subject-line">
+    <span id="subject-label">Subject</span>
+    <span id="subj-text">Loading...</span>
+  </div>
+  <button id="copy-btn" onclick="copyHTML()">Copy Email HTML</button>
 </div>
-<iframe src="latest-email.html" id="preview"></iframe>
+<iframe id="email-frame" src="latest-email.html" title="Sunday 5 Preview"></iframe>
 <script>
-async function copyEmail(){{
-  try{{
-    const r=await fetch('latest-copy.html');
-    const t=await r.text();
-    await navigator.clipboard.writeText(t);
-    const b=document.getElementById('copyBtn');
-    b.textContent='Copied!';b.classList.add('copied');
-    setTimeout(()=>{{b.textContent='Copy Email HTML';b.classList.remove('copied');}},2500);
-  }}catch(e){{alert('Copy failed: '+e);}}
-}}
+fetch('latest-subject.txt').then(r=>r.text()).then(t=>{document.getElementById('subj-text').textContent=t.trim();});
+function copyHTML(){
+  var btn=document.getElementById('copy-btn');
+  btn.disabled=true; btn.textContent='Fetching...';
+  fetch('latest-copy.html?t='+Date.now())
+    .then(r=>r.text()).then(t=>navigator.clipboard.writeText(t))
+    .then(()=>{btn.textContent='Copied!'; setTimeout(()=>{btn.textContent='Copy Email HTML';btn.disabled=false;},3000);})
+    .catch(()=>{btn.textContent='Error'; btn.disabled=false;});
+}
 </script>
 </body>
 </html>"""
 
 
-# ── INDEX JSON ────────────────────────────────────────────────────────────────
+# ── RESEND ────────────────────────────────────────────────────────────────────
+
+def fetch_audience_contacts() -> list:
+    if not RESEND_API_KEY or not RESEND_AUDIENCE_ID:
+        return []
+    contacts = []
+    cursor = None
+    while True:
+        url = f"https://api.resend.com/audiences/{RESEND_AUDIENCE_ID}/contacts"
+        if cursor:
+            url += f"?cursor={cursor}"
+        try:
+            r = requests.get(url, headers={"Authorization": f"Bearer {RESEND_API_KEY}"}, timeout=15)
+            r.raise_for_status()
+            data = r.json()
+            for c in data.get("data", []):
+                if not c.get("unsubscribed", False):
+                    contacts.append(c["email"])
+            if data.get("has_more") and data.get("next"):
+                cursor = data["next"]
+            else:
+                break
+        except Exception as e:
+            print(f"  [WARN] Could not fetch contacts: {e}")
+            break
+    return contacts
+
+
+def send_via_resend(subject: str, html: str) -> bool:
+    if not RESEND_API_KEY:
+        print("  [INFO] RESEND_API_KEY not set — skipping send")
+        return False
+    if not RESEND_AUDIENCE_ID:
+        print("  [INFO] RESEND_AUDIENCE_ID not set — skipping send")
+        return False
+
+    subscribers = fetch_audience_contacts()
+    if not subscribers:
+        print("  [INFO] No subscribers in audience — skipping send")
+        return False
+
+    print(f"  Sending Sunday 5 to {len(subscribers)} subscribers via Resend...")
+    sent = failed = 0
+    for email in subscribers:
+        try:
+            r = requests.post(
+                "https://api.resend.com/emails",
+                headers={"Authorization": f"Bearer {RESEND_API_KEY}", "Content-Type": "application/json"},
+                json={
+                    "from":    FROM_ADDRESS,
+                    "to":      [email],
+                    "subject": subject,
+                    "html":    html,
+                    "headers": {"List-Unsubscribe": "<mailto:newsletter@theprob.ai?subject=Unsubscribe>"},
+                },
+                timeout=30,
+            )
+            r.raise_for_status()
+            sent += 1
+        except Exception as e:
+            print(f"  [WARN] Failed to send to {email}: {e}")
+            failed += 1
+    print(f"  Sunday 5 Resend: {sent} sent, {failed} failed")
+    return sent > 0
+
+
+# ── INDEX ─────────────────────────────────────────────────────────────────────
 
 def update_index(date_str: str, subject: str, subtitle: str, archive_path: str):
     index_path = "newsletter/index.json"
@@ -369,46 +431,52 @@ def update_index(date_str: str, subject: str, subtitle: str, archive_path: str):
             index = json.load(f)
     except Exception:
         index = []
-
-    entry = {
-        "date":     date_str,
-        "subject":  subject,
-        "subtitle": subtitle,
-        "url":      f"{SITE_URL}/{archive_path}",
-        "type":     "sunday5",
-    }
-
-    # Deduplicate by date
+    entry = {"date": date_str, "subject": subject, "subtitle": subtitle,
+             "url": f"{SITE_URL}/{archive_path}", "type": "sunday5"}
     index = [e for e in index if e.get("date") != date_str]
     index.insert(0, entry)
-
     with open(index_path, "w") as f:
         json.dump(index, f, indent=2)
-    print(f"  Index:   {index_path}  ({len(index)} editions)")
+    print(f"  Index: {len(index)} editions")
 
 
 # ── MAIN ──────────────────────────────────────────────────────────────────────
 
 def main():
-    print("Loading Sunday 5 stories...")
+    now_utc  = datetime.now(timezone.utc)
+    date_str = now_utc.strftime("%Y-%m-%d")
+    date_fmt = now_utc.strftime("%B %-d, %Y")
 
-    with open("data/sunday5_stories.json") as f:
-        data = json.load(f)
+    print("Loading weekly story accumulator...")
+    try:
+        with open("data/weekly_stories.json") as f:
+            weekly = json.load(f)
+    except FileNotFoundError:
+        print("  [WARN] data/weekly_stories.json not found — falling back to data/news.json")
+        with open("data/news.json") as f:
+            d = json.load(f)
+        weekly = [{"url": a["url"], "title": a["title"], "source": a["source"],
+                   "summary": a.get("summary",""), "pub_iso": a.get("pub_iso",""),
+                   "pub_display": a.get("pub_display","")} for a in d.get("articles",[])]
 
-    stories = data.get("stories", [])
-    edition = data.get("edition", 1)
-    date_str = data.get("date", datetime.now(timezone.utc).strftime("%Y-%m-%d"))
+    print(f"  {len(weekly)} articles in accumulator")
 
-    now_et   = datetime.now(timezone.utc) + timedelta(hours=-4)  # EDT
-    date_fmt = datetime.fromisoformat(date_str).strftime("%B %-d, %Y")
+    # Determine edition number from index
+    try:
+        with open("newsletter/index.json") as f:
+            idx = json.load(f)
+        edition = sum(1 for e in idx if e.get("type") == "sunday5") + 1
+    except Exception:
+        edition = 1
 
-    print(f"  Stories: {len(stories)}")
-    print(f"  Edition: #{edition:02d} | {date_str}")
+    print("\nSelecting top 5 stories via Claude...")
+    stories = select_top_stories(weekly)
+    for i, s in enumerate(stories, 1):
+        print(f"  {i}. [{s['source']}] {s['title'][:60]}...")
 
-    print("\nGenerating copy via Claude API...")
+    print("\nGenerating copy via Claude...")
     enriched = []
     for s in stories:
-        print(f"  {s['number']} {s['source']}: {s['headline'][:55]}...")
         copy = generate_story_copy(s)
         enriched.append((s, copy))
 
@@ -418,23 +486,15 @@ def main():
     print(f"  Subtitle: {subtitle}")
 
     print("\nBuilding HTML...")
-    header = build_header_html(date_fmt, edition, subtitle)
-    story_cards = "".join(story_card_html(s["number"], s, copy) for s, copy in enriched)
-    footer = build_footer_html()
-
-    email_html   = build_full_html(header, story_cards, footer, subject, subtitle)
-    preview_html = build_preview_html(email_html)
-
-    # Strip footer for the copy-to-Beehiiv version
-    copy_html = email_html
+    email_html   = build_email_html(stories, enriched, subject, subtitle, date_fmt, edition)
+    preview_html = build_preview_html()
 
     archive_path = f"newsletter/{date_str}-sunday5.html"
-
     os.makedirs("newsletter", exist_ok=True)
     with open("newsletter/latest-email.html", "w") as f:
         f.write(email_html)
     with open("newsletter/latest-copy.html", "w") as f:
-        f.write(copy_html)
+        f.write(email_html)
     with open("newsletter/latest.html", "w") as f:
         f.write(preview_html)
     with open(archive_path, "w") as f:
@@ -443,15 +503,17 @@ def main():
         f.write(subject)
 
     update_index(date_str, subject, subtitle, archive_path)
-
-    print(f"\nSaving newsletter...")
-    print(f"  Preview: newsletter/latest.html")
-    print(f"  Email:   newsletter/latest-email.html")
-    print(f"  Copy:    newsletter/latest-copy.html  (paste into Beehiiv)")
     print(f"  Archive: {archive_path}")
-    print(f"  Subject: newsletter/latest-subject.txt")
-    print(f"\nTo send: open {SITE_URL}/newsletter/latest.html -> Copy Email HTML -> paste into Beehiiv")
-    print(f"NOTE: Commit images/chris-williams.jpg to the repo for the photo bubble to appear.")
+
+    print("\nSending via Resend...")
+    send_via_resend(subject, email_html)
+
+    # Clear the weekly accumulator after Sunday send
+    with open("data/weekly_stories.json", "w") as f:
+        json.dump([], f, indent=2)
+    print("  Weekly accumulator cleared for next week.")
+
+    print(f"\nDone. Subject: {subject}")
 
 
 if __name__ == "__main__":

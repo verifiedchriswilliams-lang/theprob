@@ -443,5 +443,43 @@ def main():
     print(f"\n✓ Wrote data/news.json ({len(articles)} articles)")
     print(f"  Updated: {updated_str}")
 
+    # Accumulate articles into weekly_stories.json for Sunday 5 auto-selection.
+    # Keeps up to 50 unique articles from the past 7 days; Sunday 5 picks the top 5.
+    weekly_path = "data/weekly_stories.json"
+    try:
+        with open(weekly_path) as f:
+            weekly = json.load(f)
+    except Exception:
+        weekly = []
+
+    existing_urls = {w["url"] for w in weekly}
+    cutoff = now_utc - timedelta(days=7)
+    for a in articles:
+        if a["url"] not in existing_urls:
+            weekly.append({
+                "url":        a["url"],
+                "title":      a["title"],
+                "source":     a["source"],
+                "summary":    a.get("summary", ""),
+                "pub_iso":    a.get("pub_iso", ""),
+                "pub_display": a.get("pub_display", ""),
+            })
+            existing_urls.add(a["url"])
+
+    # Drop articles older than 7 days
+    def _iso(s):
+        try:
+            return datetime.fromisoformat(s.replace("Z", "+00:00"))
+        except Exception:
+            return now_utc - timedelta(days=8)
+
+    weekly = [w for w in weekly if _iso(w.get("pub_iso", "")) >= cutoff]
+    weekly = weekly[-50:]  # Cap at 50
+
+    with open(weekly_path, "w") as f:
+        json.dump(weekly, f, indent=2)
+
+    print(f"  Weekly accumulator: {len(weekly)} articles → data/weekly_stories.json")
+
 if __name__ == "__main__":
     main()
