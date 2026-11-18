@@ -1,6 +1,6 @@
 {
-  "updated": "Nov 18, 2026 \u00b7 4:28 PM ET",
-  "updated_iso": "2026-11-18T21:28:37.489180+00:00",
+  "updated": "Nov 18, 2026 \u00b7 4:41 PM ET",
+  "updated_iso": "2026-11-18T21:41:44.368185+00:00",
   "homepage_count": 3,
   "articles": [
     {
@@ -9,7 +9,25 @@
       "source": "The New York Times",
       "pub_iso": "2026-11-18T19:23:57+00:00",
       "description": "",
-      "summary": "",
+      "summary": "The NBA just brought Novig on as its fourth official prediction market partner, expanding the league's betting infrastructure beyond traditional sportsbooks. This signals serious mainstream acceptance of prediction markets and probably means more sports leagues will follow suit once they see the data flow and engagement these platforms generate.",
+      "pub_display": "Nov 18"
+    },
+    {
+      "title": "Trump admin orders Kalshi to halt wagers on what words Trump will say",
+      "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxOZUZVZ3QwcWs1OFJWSURoWkdrSlAxVEdPY28yVlVTZ1p1OHFpMzBlMzhzOU1sZnROWDFuaWp0S3FXTVdqTnFoQmNDX1B6VHUyelphajZvWXFuTkZUWkNZZU1YVndkT1hySVRNZTRPM1hJLW1ZdjYzOW5EUHZpX2ZvMHVfNDdTMzNmdzNsYUE2ZUNlX3lfTDJYNmE0dFA4WHpJVHNZN0JvZ25IU05QejRxNUZjWFc?oc=5",
+      "source": "Ars Technica",
+      "pub_iso": "2026-11-18T18:46:08+00:00",
+      "description": "",
+      "summary": "The Trump administration ordered Kalshi, a leading prediction market platform, to stop offering contracts that bet on specific words or phrases the president will use in speeches or statements. It's the most direct regulatory attack yet on prediction markets and signals the administration views certain types of political wagering as off-limits.",
+      "pub_display": "Nov 18"
+    },
+    {
+      "title": "Kalshi Turns to Compute Desk in Renewed Push for GPU Futures",
+      "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxOUlpta2dGMVNUOFRsZGJpVU83Tkg5WFg2WFdFX1lZQldnamdnSVZSa05LVjcyS3d5STRHZV95c2JtclRycUEzR09YS3YxVzlfVnFLV0pQU3BNTTlwWjBUZWpIQllEYWNUeEFYclJuVlRtMFFxNElPcXFMamRYZmJSdk92aXdOU1VwNm9IbFNRUVNQcXV3VE1JMFNTTk9JSXhQVGhfaF9hRUlPV2xDZll3UQ?oc=5",
+      "source": "Bloomberg.com",
+      "pub_iso": "2026-11-18T17:58:19+00:00",
+      "description": "",
+      "summary": "Kalshi, the regulated futures exchange, is partnering with Compute Desk to launch GPU futures contracts that let traders bet on graphics processor prices and availability. This fills a gap in the prediction market ecosystem since GPU costs directly move crypto mining profitability, AI infrastructure spend, and semiconductor supply chain bets.",
       "pub_display": "Nov 18"
     },
     {
@@ -18,7 +36,7 @@
       "source": "Fortune",
       "pub_iso": "2026-11-18T17:29:00+00:00",
       "description": "",
-      "summary": "",
+      "summary": "Prediction markets are pricing Anthropic's eventual IPO valuation, giving us real-time crowd estimates on what the AI darling might be worth when it goes public. For bettors, these prices reveal where smart money actually sits versus the hype cycle, and they tend to be eerily accurate when it matters.",
       "pub_display": "Nov 18"
     },
     {
@@ -27,7 +45,7 @@
       "source": "Front Office Sports",
       "pub_iso": "2026-11-18T17:27:24+00:00",
       "description": "",
-      "summary": "",
+      "summary": "Kyle Kuzma is calling out the NFL's ban on players investing in prediction markets, arguing the league's restrictions are outdated and nonsensical. If the association's loudest star players keep pushing back, the NFL could eventually crack under pressure and open up another $500M+ addressable market of high-net-worth degenerates looking to park money somewhere.",
       "pub_display": "Nov 18"
     },
     {
@@ -36,7 +54,7 @@
       "source": "Crypto Briefing",
       "pub_iso": "2026-11-18T17:11:19+00:00",
       "description": "",
-      "summary": "",
+      "summary": "Polymarket is launching a US version with 15-minute expiration contracts on energy commodities, letting traders bet on oil and gas price movements with the kind of speed you'd normally find in crypto or stock options. Speed-based trading creates the conditions for more sophisticated players to arbitrage inefficiencies and volatility, which probably means tighter spreads and deeper liquidity for everyone else willing to place a bet.",
       "pub_display": "Nov 18"
     },
     {
@@ -45,7 +63,7 @@
       "source": "Barchart.com",
       "pub_iso": "2026-11-18T16:26:59+00:00",
       "description": "",
-      "summary": "",
+      "summary": "Meta is building its own prediction markets app, which means the company that owns Facebook and Instagram is finally getting serious about monetizing amateur forecasters. If they nail the execution, they're about to become the dominant player in a space that's been fragmented between Polymarket, PredictIt, and a bunch of sketchy offshore sites.",
       "pub_display": "Nov 18"
     },
     {
@@ -54,7 +72,16 @@
       "source": "Reason Foundation",
       "pub_iso": "2026-11-18T11:00:00+00:00",
       "description": "",
-      "summary": "",
+      "summary": "Prediction markets are already diverging from traditional polls on 2026 midterm outcomes, with bettors pricing in scenarios that pollsters haven't caught up to yet. If markets keep outperforming polls like they did in recent cycles, that's a giant middle finger to the entire polling industry and a validation that real money beats random samples every time.",
+      "pub_display": "Nov 18"
+    },
+    {
+      "title": "Kalshi bets on Martha Stewart to clean up its image",
+      "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxORjdxOFRSNTd0LVVOektaaXIwR2phbzltVGZkX29sMDkxdjlHUXBsUWI1bnVqVXVlTGdhcGFxWWNBcUxIaG04MjA0SzN1VWlTNUxESGxsZnRJaFYtQjVUYTRnLTBnc3g5QXROU1lESXE0TVNkOUtFa1FjZXFrRHhmTmZGZmhaZEhnZlBtblB5U2k?oc=5",
+      "source": "Morning Brew",
+      "pub_iso": "2026-11-18T05:55:15+00:00",
+      "description": "",
+      "summary": "Kalshi, the prediction market platform that got nuked by regulators last year, is apparently trying to rebrand itself by partnering with Martha Stewart, betting her homemaking empire cachet can rehabilitate its image. If it works, it signals that prediction markets are finally shedding their casino stigma and moving toward mainstream legitimacy, which would actually matter for whether these platforms survive the next regulatory wave.",
       "pub_display": "Nov 18"
     },
     {
@@ -63,7 +90,7 @@
       "source": "CoinDesk",
       "pub_iso": "2026-11-18T00:46:00+00:00",
       "description": "",
-      "summary": "",
+      "summary": "The CFTC's incoming leadership is questioning whether prediction markets actually benefit the public, even as the agency fights legal battles over its authority to regulate them. If skepticism at the top sticks, don't expect aggressive enforcement against gray-market platforms anytime soon.",
       "pub_display": "Nov 18"
     },
     {
@@ -72,7 +99,7 @@
       "source": "Reuters",
       "pub_iso": "2026-11-17T23:27:00+00:00",
       "description": "",
-      "summary": "",
+      "summary": "Kalshi, the leading US prediction market platform, failed to block Maryland from enforcing state gambling regulations against its operations. The loss opens the door for other states to regulate prediction markets as gambling rather than financial derivatives, potentially fragmenting the market and forcing operators to pick which jurisdictions they'll serve.",
       "pub_display": "Nov 17"
     },
     {
@@ -81,34 +108,7 @@
       "source": "Politico",
       "pub_iso": "2026-11-17T19:17:00+00:00",
       "description": "",
-      "summary": "",
-      "pub_display": "Nov 17"
-    },
-    {
-      "title": "Kalshi takes down controversial Trump 'mention' markets at CFTC's request",
-      "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxQNzlabGl0UTl6T0hGcF8xMHQ5ZmRlaWpPUk1KV3AyeC1OZS1Bdm9MTC1XQk9aWHgwOWQtTTBqMjgxejhPU0JsOFZOMVVDQU0zMGxfZUNrWEprdGJHbkNscGhhOXl2U1UySVJucFBVNUZmVnRYNDZPcFR3N2hFWFZIWF930gGHAUFVX3lxTFBBbHA1dTZFeHJ5MFdOUVJQRWdzM0hEVU1rMjZMMzNFc2JSWWRmNEJlT1lHdC1iZmJKZEpYNjRQRzh1dDk1OGFRUExQZjUwNkM1ZUlVWnh5NFpnd09IWjdTSXdrdjZKdmZ2WmdtZW9SN2xaekRlTDJRel94U1BkWEx1M3lNUkRGYw?oc=5",
-      "source": "CNBC",
-      "pub_iso": "2026-11-17T16:00:50+00:00",
-      "description": "",
-      "summary": "",
-      "pub_display": "Nov 17"
-    },
-    {
-      "title": "A Kalshi Ad With Martha Stewart Warns Against Insider Trading",
-      "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxNaHpBcl9ITGROQ1BQOExma252bmdrUGt3ZWlLMllKUkhOLXA1UUFlbzZ1U1ljbFlJOFgya1lyUFZLX1Zyd09qalcxS28wanVZaldieXBDNkU5aW4tVkFNZDdSQTBBQzZ0TzZYSzFFOXVlN1JRTzJMeVJtdmxrcC0zbVRCV21vNWsxUmc?oc=5",
-      "source": "The New York Times",
-      "pub_iso": "2026-11-17T13:00:18+00:00",
-      "description": "",
-      "summary": "",
-      "pub_display": "Nov 17"
-    },
-    {
-      "title": "Prediction Markets Think Jensen Huang Could Get His Job Back",
-      "url": "https://news.google.com/rss/articles/CBMi-wFBVV95cUxQUFdiZVI5X1RaaXJBWkN4SnhHUnFHSGl3R0Q0LS01ZEYzclVxR0dhMG5UcmNDZ0h3aS1ybVRTV1JXTGtEbFJQc3pPS2hYWVo1RjVLTW54RWpqeGpkQ21sY0FnaFgyOFg0ekx2WDZlbmZ5bTBlNUE5bDRlWkJBdWszdzQxbk5sSTNxelpkUWxNV2oyWW5MM0pQS19Eb2t5ZkpESmlvZE94VUFLZWV2SmY3bTNXbk95d25iQzRTZkZXX1JtdzJKYnZNN0xsNWpicHZNcFFVbi1qbVRONVZ2TkkzR21aMmNIWXRoak1EQU5kU3l5WVJPOHYzZWZzWQ?oc=5",
-      "source": "WSJ",
-      "pub_iso": "2026-11-17T01:13:00+00:00",
-      "description": "",
-      "summary": "",
+      "summary": "Kalshi, the regulated prediction market platform, stopped accepting bets on whether Trump will give specific speeches, likely due to regulatory pressure or concerns about market manipulation. This signals that even approved prediction markets face hard limits on what they can actually trade, which matters if you're betting there.",
       "pub_display": "Nov 17"
     }
   ]
