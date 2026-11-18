@@ -39,10 +39,10 @@ CLAUDE_MODEL       = "claude-haiku-4-5-20251001"
 SITE_URL           = "https://theprob.ai"
 OUTPUT_PATH        = "newsletter/latest.html"
 
-# Resend — set via GitHub secrets RESEND_API_KEY and SUBSCRIBER_LIST
-RESEND_API_KEY   = os.environ.get("RESEND_API_KEY", "")
-SUBSCRIBER_LIST  = os.environ.get("SUBSCRIBER_LIST", "")  # JSON array of email strings
-FROM_ADDRESS     = "The Prob <newsletter@theprob.ai>"
+# Resend — set via GitHub secrets RESEND_API_KEY and RESEND_AUDIENCE_ID
+RESEND_API_KEY    = os.environ.get("RESEND_API_KEY", "")
+RESEND_AUDIENCE_ID = os.environ.get("RESEND_AUDIENCE_ID", "")
+FROM_ADDRESS      = "The Prob <newsletter@theprob.ai>"
 
 HOUSE_STYLE_SYSTEM = (
     "You write for The Prob, a prediction markets newsletter. "
@@ -164,26 +164,36 @@ def build_builder_section() -> str:
     coming  = notes.get("coming_next", "")
     if not built and not coming:
         return ""
+    # Collapse if stale (older than 7 days)
+    last_updated_str = notes.get("last_updated", "")
+    if last_updated_str:
+        try:
+            last_updated = datetime.strptime(last_updated_str, "%Y-%m-%d").replace(tzinfo=timezone.utc)
+            now_utc = datetime.now(timezone.utc)
+            if (now_utc - last_updated).days > 7:
+                return ""
+        except ValueError:
+            pass
     built_block = (
-        '<div style="font-family:Arial,Helvetica,sans-serif;font-size:14px;color:#B0BDD0;'
+        '<div style="font-family:Arial,Helvetica,sans-serif;font-size:14px;color:#4A5568;'
         'line-height:1.7;margin-bottom:12px;">'
-        '<span style="color:#F8F9FA;font-weight:700;">Recently:</span> ' + built
+        '<span style="color:#0B0E14;font-weight:700;">Recently:</span> ' + built
         + '</div>'
     ) if built else ""
     coming_block = (
-        '<div style="font-family:Arial,Helvetica,sans-serif;font-size:14px;color:#B0BDD0;'
+        '<div style="font-family:Arial,Helvetica,sans-serif;font-size:14px;color:#4A5568;'
         'line-height:1.7;margin-bottom:16px;">'
-        '<span style="color:#F8F9FA;font-weight:700;">Next:</span> ' + coming
+        '<span style="color:#0B0E14;font-weight:700;">Next:</span> ' + coming
         + '</div>'
     ) if coming else ""
     return (
-        '  <tr><td style="padding:24px 24px 20px;background:#0E131F;border-bottom:1px solid #141B2D;">\n'
+        '  <tr><td style="padding:24px 24px 20px;background:#E6F4FB;border-bottom:1px solid #E8ECF0;">\n'
         "    <div style=\"font-family:'Courier New',monospace;font-size:9px;letter-spacing:0.14em;"
         'text-transform:uppercase;color:#0077B6;margin-bottom:14px;">% From Chris</div>\n'
         '    ' + built_block + '\n'
         '    ' + coming_block + '\n'
         "    <div style=\"font-family:'Courier New',monospace;font-size:12px;color:#4A5568;"
-        'border-top:1px solid #141B2D;padding-top:14px;">Chris</div>\n'
+        'border-top:1px solid #E8ECF0;padding-top:14px;">Chris</div>\n'
         '  </td></tr>'
     )
 
@@ -233,22 +243,50 @@ def generate_subtitle(hero: dict, movers: list, daily_take: dict) -> str:
     return subtitle
 
 
-def generate_subject(hero: dict, daily_take: dict) -> str:
+def generate_subject(hero: dict, daily_take: dict, movers: list = None, articles: list = None) -> str:
     q      = hero.get("question", "")
     prob   = hero.get("prob", 50)
     change = hero.get("change_pts", 0)
     take_headline = daily_take.get("headline", "") if daily_take else ""
+
+    # Gather extra signals to give Claude more hooks to work with
+    top_mover_line = ""
+    if movers:
+        m = movers[0]
+        mc = m.get("change_pts", 0)
+        top_mover_line = f"Biggest mover today: {m.get('question','')} ({'+' if mc>0 else ''}{mc} pts)\n"
+
+    news_line = ""
+    if articles:
+        news_line = f"Top news headline: {articles[0].get('title','')}\n"
+
+    chg_str = f"{'+' if change > 0 else ''}{change} pts"
+
     prompt = (
-        f"Today's top prediction market: {q}\n"
-        f"Current odds: {prob}%\n"
-        f"24h change: {'+' if change > 0 else ''}{change} points\n"
-        f"Editorial headline: {take_headline}\n\n"
-        "Write ONE email subject line for The Prob newsletter. "
-        "Max 60 characters. Make it feel urgent and specific. "
-        "Include the odds or the move if it fits naturally. "
-        "No em dashes. No quotes. No 'The Prob:' prefix. Just the subject line."
+        f"You write subject lines for The Prob, a prediction markets newsletter.\n\n"
+        f"TODAY'S DATA:\n"
+        f"- Top market: {q}\n"
+        f"- Current probability: {prob}%\n"
+        f"- 24h swing: {chg_str}\n"
+        + (f"- Editorial take: {take_headline}\n" if take_headline else "")
+        + top_mover_line
+        + news_line
+        + "\n"
+        "GOAL: Write ONE subject line that gets opened. Max 55 characters.\n\n"
+        "FORMATS THAT WORK (pick whichever fits the data best):\n"
+        '- Specific odds + stakes: "The crowd says 73%. Here\'s why that matters."\n'
+        '- Sharp move: "Down 18 pts overnight. The crowd just changed its mind."\n'
+        '- Counterintuitive read: "Everyone thinks this is 90%. The smart money disagrees."\n'
+        '- News hook: "After today\'s headlines, the odds shifted hard."\n'
+        '- Low-probability tension: "Only 12%. But $2M says it happens."\n'
+        '- Simple provocation: "The crowd is pricing this wrong."\n\n'
+        "RULES:\n"
+        "- No em dashes. No quotes around the subject. No 'The Prob:' prefix.\n"
+        "- Do not start with 'I' or 'We'.\n"
+        "- Sound like insider intel, not a headline writer.\n"
+        "- Output ONLY the subject line. Nothing else."
     )
-    subject = claude(prompt, max_tokens=60)
+    subject = claude(prompt, max_tokens=80)
     if not subject:
         direction = "up" if change > 0 else "down"
         subject = f"The crowd moved {abs(change)} pts {direction} on this one"
@@ -423,7 +461,7 @@ def _eyebrow(label):
 def build_html(markets, news, subject, with_footer=True):
     hero       = markets.get("hero", {})
     trade      = markets.get("trade") or {}
-    movers     = markets.get("movers", [])[:5]
+    movers     = [m for m in markets.get("movers", []) if abs(m.get("change_pts", 0)) >= 5][:5]
     daily_take = markets.get("daily_take", {})
     articles   = news.get("articles", [])[:3]
 
@@ -495,55 +533,94 @@ def build_html(markets, news, subject, with_footer=True):
 
     # ── HERO ──
     hero_chg_str = f"{chg_sign}{hero_change} pts today"
-    hero_take_html = ""
+    # Prob bar width (capped 2–98%)
+    bar_pct = max(2, min(98, hero_prob))
+
+    # Take as card footer (brand-soft bg, matches .hero-card-insight on the website)
+    hero_take_footer = ""
     if hero_take:
-        hero_take_html = (
-            '<table width="100%" cellpadding="0" cellspacing="0" style="margin-top:16px;">'
-            '<tr><td style="background:#0E131F;padding:14px 18px;border-radius:8px;">'
-            "<div style=\"font-family:'Courier New',monospace;font-size:9px;letter-spacing:0.14em;"
-            "text-transform:uppercase;color:#0077B6;margin-bottom:6px;\">% The Prob's Take</div>"
-            "<div style=\"font-family:'Instrument Serif',Georgia,'Times New Roman',serif;"
-            'font-size:14px;font-style:italic;color:#F8F9FA;line-height:1.6;">'
-            + hero_take + '</div>'
-            '</td></tr></table>'
+        hero_take_footer = (
+            '  <tr><td style="padding:16px 24px;background:rgba(0,119,182,.08);'
+            'border-top:1px solid rgba(11,14,20,.08);">\n'
+            "    <p style=\"font-family:'Instrument Serif',Georgia,'Times New Roman',serif;"
+            'font-size:13px;font-style:italic;color:#4A5568;line-height:1.6;margin:0;">'
+            "<strong style=\"color:#0077B6;font-style:normal;font-family:'Courier New',monospace;"
+            "font-size:10px;letter-spacing:0.1em;text-transform:uppercase;\">% The Prob's Take</strong>"
+            '<br>' + hero_take + '</p>\n'
+            '  </td></tr>'
         )
 
-    hero_eyebrow = _eyebrow("Market of the Day &middot; " + hero_source)
     hero_section = (
-        '  <tr><td style="padding:24px 24px 20px;background:#FFFFFF;border-bottom:1px solid #E8ECF0;">\n'
-        '    ' + hero_eyebrow + '\n'
-        "    <div style=\"font-family:'Instrument Serif',Georgia,'Times New Roman',serif;"
-        'font-size:24px;font-weight:400;line-height:1.3;color:#0B0E14;margin-bottom:14px;">\n'
-        '      <a href="' + hero_url + '" style="color:#0B0E14;text-decoration:none;">'
-        + hero_q + '</a>\n'
-        '    </div>\n'
-        '    <div style="background:#E6F4FB;border-radius:8px;padding:16px 20px;margin-bottom:16px;">\n'
-        "      <div style=\"font-family:'Courier New',monospace;font-size:9px;color:#718096;"
-        'letter-spacing:0.1em;text-transform:uppercase;margin-bottom:6px;">Probability</div>\n'
-        '      <div style="font-family:Arial,Helvetica,sans-serif;font-size:44px;font-weight:700;'
-        'color:' + prob_col + ';line-height:1;">' + str(hero_prob) + '%</div>\n'
-        "      <div style=\"font-family:'Courier New',monospace;font-size:12px;color:" + chg_col
-        + ';margin-top:6px;">' + arrow(hero_change) + ' ' + hero_chg_str + '</div>\n'
-        '    </div>\n'
-        '    <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:14px;"><tr>\n'
-        '      <td style="padding-right:16px;">\n'
-        "        <div style=\"font-family:'Courier New',monospace;font-size:9px;color:#718096;"
-        'letter-spacing:0.1em;text-transform:uppercase;margin-bottom:4px;">Volume</div>\n'
-        '        <div style="font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:700;'
-        'color:#0B0E14;">' + hero_vol + '</div>\n'
-        '      </td>\n'
+        # Card wrapper — matches .hero-card: white bg, border, 16px radius, shadow
+        '  <tr><td style="padding:20px 24px;background:#F8F9FA;">\n'
+        '  <table width="100%" cellpadding="0" cellspacing="0" style="background:#FFFFFF;'
+        'border:1px solid rgba(11,14,20,.08);border-radius:16px;overflow:hidden;'
+        'box-shadow:0 12px 32px -4px rgba(11,14,20,.08),0 4px 12px -2px rgba(11,14,20,.04);">\n'
+        # Card header — "Trending" label with live dot + source
+        '  <tr><td style="padding:16px 24px;border-bottom:1px solid rgba(11,14,20,.08);">\n'
+        '    <table width="100%" cellpadding="0" cellspacing="0"><tr>\n'
         '      <td>\n'
-        "        <div style=\"font-family:'Courier New',monospace;font-size:9px;color:#718096;"
-        'letter-spacing:0.1em;text-transform:uppercase;margin-bottom:4px;">Resolves</div>\n'
-        '        <div style="font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:700;'
-        'color:#0B0E14;">' + (hero_end or "TBD") + '</div>\n'
+        "        <span style=\"font-family:'Courier New',monospace;font-size:10px;"
+        'letter-spacing:0.15em;text-transform:uppercase;color:#718096;'
+        'display:inline-flex;align-items:center;gap:8px;">'
+        '<span style="display:inline-block;width:6px;height:6px;border-radius:50%;'
+        'background:#059669;"></span> Trending</span>\n'
+        '      </td>\n'
+        "      <td style=\"text-align:right;font-family:'Courier New',monospace;"
+        'font-size:10px;color:#718096;">' + hero_source + '</td>\n'
+        '    </tr></table>\n'
+        '  </td></tr>\n'
+        # Card body
+        '  <tr><td style="padding:24px;">\n'
+        # Question
+        "    <div style=\"font-family:'Instrument Serif',Georgia,'Times New Roman',serif;"
+        'font-size:18px;line-height:1.4;color:#0B0E14;margin-bottom:20px;">'
+        '<a href="' + hero_url + '" style="color:#0B0E14;text-decoration:none;">'
+        + hero_q + '</a></div>\n'
+        # Prob display: big number + % + YES/change stacked to its right
+        '    <div style="margin-bottom:20px;">\n'
+        '    <table cellpadding="0" cellspacing="0"><tr>\n'
+        '      <td style="vertical-align:bottom;padding-right:16px;">\n'
+        '        <div style="font-family:Arial,Helvetica,sans-serif;font-size:64px;'
+        'font-weight:800;color:' + prob_col + ';line-height:1;letter-spacing:-2px;'
+        'font-feature-settings:\'tnum\';">' + str(hero_prob) + '</div>\n'
+        '      </td>\n'
+        '      <td style="vertical-align:bottom;padding-bottom:6px;">\n'
+        '        <div style="font-family:Arial,Helvetica,sans-serif;font-size:24px;'
+        'font-weight:700;color:' + prob_col + ';line-height:1;margin-bottom:6px;">%</div>\n'
+        "        <div style=\"font-family:'Courier New',monospace;font-size:13px;color:"
+        + chg_col + ';margin-bottom:4px;">' + arrow(hero_change) + ' ' + hero_chg_str + '</div>\n'
         '      </td>\n'
         '    </tr></table>\n'
-        '    <a href="' + hero_url + '" style="display:inline-block;background:#0077B6;color:#ffffff;'
-        "font-family:'Courier New',monospace;font-size:10px;font-weight:600;letter-spacing:0.12em;"
-        'text-transform:uppercase;padding:10px 20px;text-decoration:none;border-radius:4px;">'
-        'View Market &#8594;</a>\n'
-        '    ' + hero_take_html + '\n'
+        '    </div>\n'
+        # Prob bar
+        '    <div style="height:6px;background:#F1F3F5;border-radius:9999px;margin-bottom:20px;overflow:hidden;">\n'
+        '      <div style="height:100%;width:' + str(bar_pct) + '%;'
+        'background:linear-gradient(to right,rgba(5,150,105,.3),' + prob_col + ');'
+        'border-radius:9999px;"></div>\n'
+        '    </div>\n'
+        # Meta 2x2 tiles
+        '    <table width="100%" cellpadding="0" cellspacing="0"><tr>\n'
+        '      <td style="width:50%;padding-right:4px;">\n'
+        '        <div style="background:#F1F3F5;padding:12px 14px;border-radius:8px;">\n'
+        "          <div style=\"font-family:'Courier New',monospace;font-size:9px;"
+        'letter-spacing:0.15em;text-transform:uppercase;color:#718096;margin-bottom:4px;">Volume</div>\n'
+        "          <div style=\"font-family:'Courier New',monospace;font-size:14px;"
+        'color:#0B0E14;font-weight:600;font-feature-settings:\'tnum\';">' + hero_vol + '</div>\n'
+        '        </div>\n'
+        '      </td>\n'
+        '      <td style="width:50%;padding-left:4px;">\n'
+        '        <div style="background:#F1F3F5;padding:12px 14px;border-radius:8px;">\n'
+        "          <div style=\"font-family:'Courier New',monospace;font-size:9px;"
+        'letter-spacing:0.15em;text-transform:uppercase;color:#718096;margin-bottom:4px;">Resolves</div>\n'
+        "          <div style=\"font-family:'Courier New',monospace;font-size:14px;"
+        'color:#0B0E14;font-weight:600;font-feature-settings:\'tnum\';">' + (hero_end or "TBD") + '</div>\n'
+        '        </div>\n'
+        '      </td>\n'
+        '    </tr></table>\n'
+        '  </td></tr>\n'
+        + hero_take_footer
+        + '  </table>\n'
         '  </td></tr>'
     )
 
@@ -563,7 +640,7 @@ def build_html(markets, news, subject, with_footer=True):
         ca     = arrow(t_chg)
         trade_eyebrow = _eyebrow("Today's Trade")
         trade_section = (
-            '  <tr><td style="padding:24px 24px 20px;background:#F1F3F5;border-bottom:1px solid #E8ECF0;">\n'
+            '  <tr><td style="padding:20px 24px;background:#F8F9FA;border-bottom:1px solid rgba(11,14,20,.08);">\n'
             '    ' + trade_eyebrow + '\n'
             '    <div style="background:#FFFFFF;border:1px solid #E8ECF0;border-top:3px solid #0077B6;'
             'border-radius:0 0 8px 8px;padding:16px 20px;">\n'
@@ -602,46 +679,68 @@ def build_html(markets, news, subject, with_footer=True):
         )
 
     # ── MOVERS ──
-    mover_rows = ""
-    for i, m in enumerate(movers):
+    mover_cards = ""
+    for m in movers:
         p      = m.get("prob", 50)
         c      = m.get("change_pts", 0)
-        bg     = "#FFFFFF" if i % 2 == 0 else "#F1F3F5"
-        border = "border-bottom:1px solid #E8ECF0;" if i < len(movers)-1 else ""
-        mover_rows += (
-            '      <tr style="background:' + bg + ';">\n'
-            '        <td style="padding:12px 14px;vertical-align:top;' + border + '">\n'
-            '          <div style="font-family:Arial,Helvetica,sans-serif;font-size:13px;'
-            'color:#0B0E14;line-height:1.45;margin-bottom:4px;">'
+        p_col  = color_prob(p)
+        c_col  = change_color(c)
+        # 3px top-accent color: green for up, red for down
+        accent = "#059669" if c > 0 else "#E11D48"
+        bar_w  = max(2, min(98, p))
+        mover_cards += (
+            '    <table width="100%" cellpadding="0" cellspacing="0" style="background:#FFFFFF;'
+            'border:1px solid rgba(11,14,20,.08);border-radius:12px;overflow:hidden;'
+            'box-shadow:0 4px 20px -2px rgba(11,14,20,.05),0 2px 6px -1px rgba(11,14,20,.03);'
+            'margin-bottom:8px;">\n'
+            # 3px accent bar at top
+            '      <tr><td style="height:3px;background:' + accent + ';padding:0;line-height:0;">&nbsp;</td></tr>\n'
+            '      <tr><td style="padding:16px 20px;">\n'
+            # Source
+            "        <div style=\"font-family:'Courier New',monospace;font-size:9px;"
+            'letter-spacing:0.15em;text-transform:uppercase;color:#718096;margin-bottom:8px;">'
+            + m.get("source", "").upper() + '</div>\n'
+            # Question
+            "        <div style=\"font-family:'Instrument Serif',Georgia,'Times New Roman',serif;"
+            'font-size:15px;line-height:1.4;color:#0B0E14;margin-bottom:14px;">'
             '<a href="' + m.get("url", SITE_URL) + '" style="color:#0B0E14;text-decoration:none;">'
             + m.get("question", "") + '</a></div>\n'
-            "          <div style=\"font-family:'Courier New',monospace;font-size:9px;color:#718096;\">"
-            + m.get("source", "") + '</div>\n'
-            '        </td>\n'
-            '        <td style="padding:12px 14px;text-align:right;vertical-align:top;'
-            'white-space:nowrap;' + border + 'width:72px;">\n'
-            '          <div style="font-family:Arial,Helvetica,sans-serif;font-size:16px;'
-            'font-weight:700;color:' + color_prob(p) + ';">' + str(p) + '%</div>\n'
-            "          <div style=\"font-family:'Courier New',monospace;font-size:10px;color:"
-            + change_color(c) + ';">' + arrow(c) + ' ' + str(abs(c)) + ' pts</div>\n'
-            '        </td>\n'
-            '      </tr>\n'
+            # Stats row: big prob left, change right
+            '        <table width="100%" cellpadding="0" cellspacing="0"><tr>\n'
+            '          <td>\n'
+            '            <div style="font-family:Arial,Helvetica,sans-serif;font-size:28px;'
+            'font-weight:800;color:' + p_col + ';line-height:1;font-feature-settings:\'tnum\';">'
+            + str(p) + '%</div>\n'
+            '          </td>\n'
+            '          <td style="text-align:right;">\n'
+            "            <div style=\"font-family:'Courier New',monospace;font-size:12px;color:"
+            + c_col + ';margin-bottom:4px;">' + arrow(c) + ' ' + f"{abs(c):.1f}" + ' pts</div>\n'
+            "            <div style=\"font-family:'Courier New',monospace;font-size:10px;color:#718096;\">"
+            + m.get("volume_fmt", "") + '</div>\n'
+            '          </td>\n'
+            '        </tr></table>\n'
+            # Prob bar
+            '        <div style="height:3px;background:#F1F3F5;border-radius:9999px;margin-top:14px;overflow:hidden;">\n'
+            '          <div style="height:100%;width:' + str(bar_w) + '%;background:' + p_col
+            + ';border-radius:9999px;"></div>\n'
+            '        </div>\n'
+            '      </td></tr>\n'
+            '    </table>\n'
         )
 
-    movers_eyebrow = _eyebrow("Today's Movers")
-    movers_section = (
-        '  <tr><td style="padding:24px 24px 20px;background:#FFFFFF;border-bottom:1px solid #E8ECF0;">\n'
-        '    ' + movers_eyebrow + '\n'
-        '    <table width="100%" cellpadding="0" cellspacing="0"'
-        ' style="border:1px solid #E8ECF0;border-radius:8px;">\n'
-        + mover_rows
-        + '    </table>\n'
-        '    <div style="margin-top:12px;">'
-        '<a href="' + SITE_URL + '" style="font-family:\'Courier New\',monospace;'
-        'font-size:10px;color:#0077B6;text-decoration:none;letter-spacing:0.1em;'
-        'text-transform:uppercase;">See all markets &#8594;</a></div>\n'
-        '  </td></tr>'
-    )
+    movers_eyebrow = _eyebrow("Today's Biggest Movers")
+    movers_section = ""
+    if movers:
+        movers_section = (
+            '  <tr><td style="padding:20px 24px;background:#F8F9FA;border-bottom:1px solid rgba(11,14,20,.08);">\n'
+            '    ' + movers_eyebrow + '\n'
+            + mover_cards
+            + '    <div style="margin-top:4px;">'
+            '<a href="' + SITE_URL + '" style="font-family:\'Courier New\',monospace;'
+            'font-size:10px;color:#0077B6;text-decoration:none;letter-spacing:0.1em;'
+            'text-transform:uppercase;">See all markets &#8594;</a></div>\n'
+            '  </td></tr>'
+        )
 
     # ── NEWS ──
     news_rows = ""
@@ -653,9 +752,9 @@ def build_html(markets, news, subject, with_footer=True):
             'color:#4A5568;line-height:1.65;">' + summary + '</div>\n'
         ) if summary else ""
         news_rows += (
-            '    <tr><td style="padding:14px 0;' + border + '">\n'
+            '    <tr><td style="padding:16px 20px;' + border + '">\n'
             "      <div style=\"font-family:'Courier New',monospace;font-size:9px;"
-            'color:#718096;margin-bottom:6px;">'
+            'letter-spacing:0.12em;text-transform:uppercase;color:#718096;margin-bottom:6px;">'
             + a.get("source", "").upper() + ' &middot; ' + a.get("pub_display", "") + '</div>\n'
             "      <div style=\"font-family:'Instrument Serif',Georgia,'Times New Roman',serif;"
             'font-size:16px;color:#0B0E14;line-height:1.35;margin-bottom:6px;">'
@@ -667,9 +766,10 @@ def build_html(markets, news, subject, with_footer=True):
 
     news_eyebrow = _eyebrow("What People Are Writing About")
     news_section = (
-        '  <tr><td style="padding:24px 24px 20px;background:#F1F3F5;border-bottom:1px solid #E8ECF0;">\n'
+        '  <tr><td style="padding:20px 24px;background:#F8F9FA;border-bottom:1px solid rgba(11,14,20,.08);">\n'
         '    ' + news_eyebrow + '\n'
-        '    <table width="100%" cellpadding="0" cellspacing="0">\n'
+        '    <table width="100%" cellpadding="0" cellspacing="0" style="background:#FFFFFF;'
+        'border:1px solid rgba(11,14,20,.08);border-radius:12px;overflow:hidden;padding:0;">\n'
         + news_rows
         + '    </table>\n'
         '  </td></tr>'
@@ -684,7 +784,7 @@ def build_html(markets, news, subject, with_footer=True):
         t_url      = daily_take.get("hero_url", SITE_URL)
         take_eyebrow = _eyebrow("The Prob's Take &middot; " + t_cat)
         take_section = (
-            '  <tr><td style="padding:24px 24px 20px;background:#FFFFFF;border-bottom:1px solid #E8ECF0;">\n'
+            '  <tr><td style="padding:20px 24px;background:#F8F9FA;border-bottom:1px solid rgba(11,14,20,.08);">\n'
             '    ' + take_eyebrow + '\n'
             "    <div style=\"font-family:'Instrument Serif',Georgia,'Times New Roman',serif;"
             'font-size:22px;font-weight:400;line-height:1.3;color:#0B0E14;margin-bottom:12px;">'
@@ -783,10 +883,10 @@ def build_html(markets, news, subject, with_footer=True):
 
     body_html = (
         preheader
-        + '\n<table width="100%" cellpadding="0" cellspacing="0" style="background:#FBFCFD;">\n'
+        + '\n<table width="100%" cellpadding="0" cellspacing="0" style="background:#F8F9FA;">\n'
         + '<tr><td align="center" style="padding:0;">\n'
         + '<table width="100%" cellpadding="0" cellspacing="0"'
-        + ' style="max-width:600px;margin:0 auto;background:#FFFFFF;border:1px solid #E8ECF0;">\n\n'
+        + ' style="max-width:600px;margin:0 auto;background:#F8F9FA;">\n\n'
         + inner
         + '\n\n</table>\n</td></tr>\n</table>'
     )
@@ -982,27 +1082,45 @@ def save_newsletter(subject: str, html_full: str, html_no_ftr: str, subtitle: st
 
 # ── RESEND API ───────────────────────────────────────────────────────────────
 
+def fetch_audience_contacts() -> list:
+    """Fetch all subscribed contacts from the Resend audience."""
+    if not RESEND_API_KEY or not RESEND_AUDIENCE_ID:
+        return []
+    contacts = []
+    cursor = None
+    while True:
+        url = f"https://api.resend.com/audiences/{RESEND_AUDIENCE_ID}/contacts"
+        if cursor:
+            url += f"?cursor={cursor}"
+        try:
+            r = requests.get(url, headers={"Authorization": f"Bearer {RESEND_API_KEY}"}, timeout=15)
+            r.raise_for_status()
+            data = r.json()
+            for c in data.get("data", []):
+                if not c.get("unsubscribed", False):
+                    contacts.append(c["email"])
+            if data.get("has_more") and data.get("next"):
+                cursor = data["next"]
+            else:
+                break
+        except Exception as e:
+            print(f"  [WARN] Could not fetch contacts: {e}")
+            break
+    return contacts
+
+
 def send_via_resend(subject: str, html: str) -> bool:
-    """
-    Send the newsletter to all subscribers via Resend.
-    Requires env vars: RESEND_API_KEY, SUBSCRIBER_LIST (JSON array of emails).
-    """
+    """Send the newsletter to all subscribed contacts in the Resend audience."""
     if not RESEND_API_KEY:
         print("  [INFO] RESEND_API_KEY not set — skipping send")
         return False
-
-    if not SUBSCRIBER_LIST:
-        print("  [INFO] SUBSCRIBER_LIST not set — skipping send")
+    if not RESEND_AUDIENCE_ID:
+        print("  [INFO] RESEND_AUDIENCE_ID not set — skipping send")
         return False
 
-    try:
-        subscribers = json.loads(SUBSCRIBER_LIST)
-    except Exception as e:
-        print(f"  [ERROR] Could not parse SUBSCRIBER_LIST: {e}")
-        return False
-
+    subscribers = fetch_audience_contacts()
     if not subscribers:
-        print("  [INFO] SUBSCRIBER_LIST is empty — skipping send")
+        print("  [INFO] No subscribers in audience — skipping send")
         return False
 
     print(f"  Sending to {len(subscribers)} subscribers via Resend...")
@@ -1060,7 +1178,8 @@ def main():
     print(f"  News:    {len(news.get('articles', []))}")
 
     print("\nGenerating subject line and subtitle...")
-    subject  = generate_subject(hero, daily_take)
+    filtered_movers = [m for m in markets.get("movers", []) if abs(m.get("change_pts", 0)) >= 5][:5]
+    subject  = generate_subject(hero, daily_take, movers=filtered_movers, articles=news.get("articles", [])[:3])
     subtitle = generate_subtitle(hero, markets.get("movers", []), daily_take)
     print(f"  Subject:  {subject}")
     print(f"  Subtitle: {subtitle}")
