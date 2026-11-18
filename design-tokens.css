@@ -1,7 +1,7 @@
 /* ============================================================
    THE PROB — Design Tokens
    Source of truth for the website redesign.
-   Direction: "The Clean Book" (editorial fintech)
+   Direction: "2030 Spatial Financial Intelligence" (Stitch)
    Brand thesis: % = "What's the Probability"
    ------------------------------------------------------------
    Light is the default. Dark mode = <html data-theme="dark">.
@@ -11,43 +11,44 @@
 
 :root{
   /* ---- Surfaces & ink (light) ---- */
-  --bg:            #FBFCFD;  /* page background            */
+  --bg:            #F8F9FA;  /* page background            */
   --surface:       #FFFFFF;  /* cards, inputs              */
-  --surface-2:     #F4F6F9;  /* insets, subtle fills       */
+  --surface-2:     #F1F3F5;  /* insets, subtle fills       */
   --surface-hover: #FFFFFF;  /* nav-item hover             */
-  --ink:           #0B1524;  /* primary text               */
-  --ink-2:         #5A6678;  /* secondary text             */
-  --ink-3:         #8A94A6;  /* tertiary / labels          */
-  --line:          #E7ECF2;  /* hairlines, dividers        */
-  --line-2:        #D6DEE8;  /* stronger borders, inputs   */
+  --ink:           #0B0E14;  /* primary text               */
+  --ink-2:         #4A5568;  /* secondary text             */
+  --ink-3:         #718096;  /* tertiary / labels          */
+  --line:          rgba(11,14,20,.08);  /* hairlines        */
+  --line-2:        rgba(11,14,20,.16);  /* stronger borders */
 
-  /* ---- Brand accent: ULTRAMARINE ----
-     A deep blue-violet. Distinct from the green/red signals.
+  /* ---- Brand accent: HIGH-CONTRAST COBALT ----
+     Cobalt in light mode for accessibility + conviction.
+     Distinct from the green/red market signals.
      Drives: logo chip, primary buttons, links, eyebrow,
      the italic editorial highlight, focus rings.            */
-  --brand:      #3A2BD4;
-  --brand-soft: #ECEAFC;     /* tinted backgrounds         */
-  --brand-deep: #2A1DB6;     /* hover / pressed            */
-  --brand-rgb:  58,43,212;   /* for rgba() shadows/glows   */
+  --brand:      #0077B6;
+  --brand-soft: rgba(0,119,182,.08);  /* tinted backgrounds */
+  --brand-deep: #005F94;              /* hover / pressed    */
+  --brand-rgb:  0,119,182;            /* for rgba() glows   */
 
   /* ---- Signal colors (SEMANTIC — do not rebrand) ----
      Borrowed from the markets themselves.                  */
-  --yes:       #0FB880;  --yes-soft: #E2F7EF;  /* YES / up   */
-  --no:        #F0476A;  --no-soft:  #FDE8EC;  /* NO / down  */
-  --amber:     #F5A524;                        /* watch/flag */
+  --yes:       #059669;  --yes-soft: rgba(5,150,105,.10);   /* YES / up   */
+  --no:        #E11D48;  --no-soft:  rgba(225,29,72,.10);   /* NO / down  */
+  --amber:     #D97706;                                     /* watch/flag */
 
   /* ---- Feature panels (intentionally dark in light mode):
      The Prob's Take card, the "Why" band.                  */
   --feature-bg: var(--ink);
-  --nav-bg:     rgba(251,252,253,.82);
+  --nav-bg:     rgba(255,255,255,.85);
 
   /* ---- Elevation ---- */
-  --shadow:    0 1px 2px rgba(11,21,36,.04), 0 8px 24px rgba(11,21,36,.05);
-  --shadow-lg: 0 2px 8px rgba(11,21,36,.06), 0 24px 60px rgba(var(--brand-rgb),.10);
+  --shadow:    0 4px 20px -2px rgba(11,14,20,.05), 0 2px 6px -1px rgba(11,14,20,.03);
+  --shadow-lg: 0 12px 32px -4px rgba(11,14,20,.08), 0 4px 12px -2px rgba(11,14,20,.04);
 
   /* ---- Radius ---- */
   --r-sm: 8px;   --r-md: 12px;  --r-lg: 16px;
-  --r-xl: 22px;  --r-pill: 999px;
+  --r-xl: 24px;  --r-pill: 9999px;
 
   /* ---- Spacing scale (4px base) ---- */
   --sp-1: 4px;  --sp-2: 8px;   --sp-3: 12px;  --sp-4: 16px;
@@ -63,34 +64,36 @@
 }
 
 /* ============================================================
-   DARK MODE
-   Brand lightens to PERIWINKLE so it pops on near-black and
-   stays clear of the signal greens/reds. Signals brighten too.
+   DARK MODE — 2030 Spatial Intelligence
+   Brand shifts to luminous electric cyan for OLED fidelity.
+   Deep obsidian surfaces with frosted glass elevation.
+   Signals go neon for data clarity at a glance.
    ============================================================ */
 [data-theme="dark"]{
-  --bg:            #0A0E17;
-  --surface:       #141B29;
-  --surface-2:     #1B2433;
-  --surface-hover: #1B2433;
-  --ink:           #EEF2F8;
-  --ink-2:         #9FACBF;
-  --ink-3:         #677488;
-  --line:          #212C3D;
-  --line-2:        #303D52;
+  --bg:            #07090E;
+  --surface:       #0E131F;
+  --surface-2:     #141B2D;
+  --surface-hover: #141B2D;
+  --ink:           #F8F9FA;
+  --ink-2:         #94A3B8;
+  --ink-3:         #64748B;
+  --line:          rgba(255,255,255,.08);
+  --line-2:        rgba(255,255,255,.16);
 
-  --brand:      #8B7CFF;   /* lightened ultramarine          */
-  --brand-soft: rgba(139,124,255,.16);
-  --brand-deep: #A89AFF;
-  --brand-rgb:  139,124,255;
+  --brand:      #00B4D8;   /* luminous electric cyan         */
+  --brand-soft: rgba(0,180,216,.12);
+  --brand-deep: #0096C7;
+  --brand-rgb:  0,180,216;
 
-  --yes: #2FD79B;  --yes-soft: rgba(47,215,155,.15);
-  --no:  #FF6385;  --no-soft:  rgba(255,99,133,.15);
+  --yes: #00F5A0;  --yes-soft: rgba(0,245,160,.12);
+  --no:  #FF453A;  --no-soft:  rgba(255,69,58,.12);
+  --amber: #F59E0B;
 
-  --feature-bg: #101829;
-  --nav-bg:     rgba(10,14,23,.82);
+  --feature-bg: #07090E;
+  --nav-bg:     rgba(7,9,14,.80);
 
-  --shadow:    0 1px 2px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.42);
-  --shadow-lg: 0 2px 8px rgba(0,0,0,.45), 0 30px 70px rgba(0,0,0,.55);
+  --shadow:    0 4px 24px -2px rgba(0,0,0,.45), 0 0 0 1px rgba(255,255,255,.06);
+  --shadow-lg: 0 16px 40px -4px rgba(0,0,0,.60), 0 0 0 1px rgba(255,255,255,.08);
 
   color-scheme: dark;
 }
