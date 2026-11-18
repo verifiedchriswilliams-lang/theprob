@@ -131,9 +131,9 @@ def claude(prompt: str, max_tokens: int = 200) -> str:
         return ""
 
 def color_prob(prob: float) -> str:
-    if prob >= 65:  return "#0FB880"
-    if prob <= 35:  return "#F0476A"
-    return "#5A6678"
+    if prob >= 65:  return "#059669"
+    if prob <= 35:  return "#E11D48"
+    return "#4A5568"
 
 def arrow(change: float) -> str:
     if change > 0:  return "&#9650;"
@@ -141,13 +141,13 @@ def arrow(change: float) -> str:
     return "&ndash;"
 
 def change_color(change: float) -> str:
-    if change > 0:  return "#0FB880"
-    if change < 0:  return "#F0476A"
-    return "#8A94A6"
+    if change > 0:  return "#059669"
+    if change < 0:  return "#E11D48"
+    return "#718096"
 
 def category_chip(cat: str) -> str:
     """Colored category pill for movers table."""
-    color = CATEGORY_COLORS.get(cat, "#8ba3bc")
+    color = CATEGORY_COLORS.get(cat, "#94A3B8")
     return (
         f'<span style="display:inline-block;background:{color}22;'
         f'color:{color} !important;border:1px solid {color}55;'
@@ -167,23 +167,23 @@ def build_builder_section() -> str:
     built_block = (
         '<div style="font-family:Arial,Helvetica,sans-serif;font-size:14px;color:#B0BDD0;'
         'line-height:1.7;margin-bottom:12px;">'
-        '<span style="color:#EEF2F8;font-weight:700;">Recently:</span> ' + built
+        '<span style="color:#F8F9FA;font-weight:700;">Recently:</span> ' + built
         + '</div>'
     ) if built else ""
     coming_block = (
         '<div style="font-family:Arial,Helvetica,sans-serif;font-size:14px;color:#B0BDD0;'
         'line-height:1.7;margin-bottom:16px;">'
-        '<span style="color:#EEF2F8;font-weight:700;">Next:</span> ' + coming
+        '<span style="color:#F8F9FA;font-weight:700;">Next:</span> ' + coming
         + '</div>'
     ) if coming else ""
     return (
-        '  <tr><td style="padding:24px 24px 20px;background:#0B1524;border-bottom:1px solid #1E2A3A;">\n'
+        '  <tr><td style="padding:24px 24px 20px;background:#0E131F;border-bottom:1px solid #141B2D;">\n'
         "    <div style=\"font-family:'Courier New',monospace;font-size:9px;letter-spacing:0.14em;"
-        'text-transform:uppercase;color:#3A2BD4;margin-bottom:14px;">% From Chris</div>\n'
+        'text-transform:uppercase;color:#0077B6;margin-bottom:14px;">% From Chris</div>\n'
         '    ' + built_block + '\n'
         '    ' + coming_block + '\n'
-        "    <div style=\"font-family:'Courier New',monospace;font-size:12px;color:#5A6678;"
-        'border-top:1px solid #1E2A3A;padding-top:14px;">Chris</div>\n'
+        "    <div style=\"font-family:'Courier New',monospace;font-size:12px;color:#4A5568;"
+        'border-top:1px solid #141B2D;padding-top:14px;">Chris</div>\n'
         '  </td></tr>'
     )
 
@@ -282,23 +282,23 @@ def build_game5_section(props: list) -> str:
         prob    = p.get("prob", 50)
         chg     = p.get("change_pts", 0)
         chg_str = (("+" if chg > 0 else "") + str(chg) + " pts") if chg != 0 else "—"
-        chg_col = "#0FB880" if chg > 0 else ("#F0476A" if chg < 0 else "#8A94A6")
+        chg_col = "#059669" if chg > 0 else ("#E11D48" if chg < 0 else "#718096")
         prob_col = color_prob(prob)
         src_col  = "#a78bfa"  # sports purple
         note     = p.get("note", "")
         url      = p.get("url", "#")
 
         rows += (
-            '<tr><td style="padding:12px 0;border-bottom:1px solid #E7ECF2;">'
+            '<tr><td style="padding:12px 0;border-bottom:1px solid #E8ECF0;">'
             '<table width="100%" cellpadding="0" cellspacing="0"><tr>'
             # left: label + note
             '<td style="vertical-align:top;padding-right:12px;">'
             '<a href="' + url + '" style="text-decoration:none;">'
             "<div style=\"font-family:'Instrument Serif',Georgia,'Times New Roman',serif;"
-            'font-size:15px;color:#0B1524;line-height:1.3;margin-bottom:3px;">'
+            'font-size:15px;color:#0B0E14;line-height:1.3;margin-bottom:3px;">'
             + p.get("label", "") + '</div></a>'
             + ('<div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;'
-               'color:#8A94A6;line-height:1.4;">' + note + '</div>' if note else '')
+               'color:#718096;line-height:1.4;">' + note + '</div>' if note else '')
             + '<div style="margin-top:4px;"><span style="font-family:Arial,Helvetica,sans-serif;'
             'font-size:9px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;'
             'color:#FFFFFF;background:' + src_col + ';padding:2px 6px;border-radius:3px;">'
@@ -316,14 +316,14 @@ def build_game5_section(props: list) -> str:
         )
 
     return (
-        '  <tr><td style="padding:20px 24px 16px;background:#FFFFFF;border-bottom:1px solid #E7ECF2;">\n'
+        '  <tr><td style="padding:20px 24px 16px;background:#FFFFFF;border-bottom:1px solid #E8ECF0;">\n'
         '    ' + _eyebrow("Tonight&#39;s Prop Desk &middot; NBA Finals Game 5") + '\n'
         '    <table width="100%" cellpadding="0" cellspacing="0">\n'
         + rows +
         '    </table>\n'
         '    <div style="margin-top:10px;">'
         '<a href="https://kalshi.com/category/sports/basketball" '
-        'style="font-family:Arial,Helvetica,sans-serif;font-size:11px;color:#3A2BD4;'
+        'style="font-family:Arial,Helvetica,sans-serif;font-size:11px;color:#0077B6;'
         'text-decoration:none;letter-spacing:0.05em;">View all game markets &#8594;</a></div>\n'
         '  </td></tr>'
     )
@@ -375,16 +375,16 @@ def build_spread_section(spread_markets: list, max_items: int = 4) -> str:
 
         rows += f"""
     <tr><td style="padding:0 0 8px 0 !important;">
-      <table width="100%" cellpadding="0" cellspacing="0" style="background:#0d1117 !important;border:1px solid #1e2a38 !important;border-radius:8px !important;">
+      <table width="100%" cellpadding="0" cellspacing="0" style="background:#07090E !important;border:1px solid #141B2D !important;border-radius:8px !important;">
       <tr><td style="padding:12px 14px 10px !important;">
-        <div style="font-size:13px !important;font-weight:600 !important;color:#edf2f7 !important;line-height:1.35 !important;margin-bottom:8px !important;">{title}</div>
+        <div style="font-size:13px !important;font-weight:600 !important;color:#F8F9FA !important;line-height:1.35 !important;margin-bottom:8px !important;">{title}</div>
         <div style="display:flex !important;align-items:center !important;gap:8px !important;flex-wrap:wrap !important;margin-bottom:6px !important;">
           {p_open}<span style="display:inline-block !important;background:rgba(139,92,246,.2) !important;color:#a78bfa !important;border:1px solid rgba(139,92,246,.3) !important;border-radius:999px !important;padding:3px 10px !important;font-size:12px !important;font-weight:700 !important;">Poly&nbsp;{poly_p}%</span>{p_close}
-          <span style="color:#546e85 !important;font-size:11px !important;">&#8596;</span>
+          <span style="color:#64748B !important;font-size:11px !important;">&#8596;</span>
           {k_open}<span style="display:inline-block !important;background:rgba(59,130,246,.2) !important;color:#93c5fd !important;border:1px solid rgba(59,130,246,.3) !important;border-radius:999px !important;padding:3px 10px !important;font-size:12px !important;font-weight:700 !important;">Kalshi&nbsp;{kal_p}%</span>{k_close}
           <span style="display:inline-block !important;background:rgba(245,166,35,.15) !important;color:#f5a623 !important;border:1px solid rgba(245,166,35,.3) !important;border-radius:999px !important;padding:3px 8px !important;font-size:11px !important;font-weight:700 !important;">&#9889; {gap} pts</span>
         </div>
-        <div style="font-size:11px !important;color:#546e85 !important;">Vol: {vol}{oi_str}</div>
+        <div style="font-size:11px !important;color:#64748B !important;">Vol: {vol}{oi_str}</div>
       </td></tr>
       </table>
     </td></tr>"""
@@ -392,16 +392,16 @@ def build_spread_section(spread_markets: list, max_items: int = 4) -> str:
     return f"""
   <!-- THE SPREAD -->
   <tr><td style="padding:20px 0 0 !important;">
-  <table width="100%" cellpadding="0" cellspacing="0" style="background:#080b0f !important;border:2px solid #1e2a38 !important;border-radius:10px !important;padding:0 !important;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background:#07090E !important;border:2px solid #141B2D !important;border-radius:10px !important;padding:0 !important;">
   <tr><td style="padding:18px 20px 6px !important;">
-    <div style="font-family:'Space Mono',monospace !important;font-size:10px !important;letter-spacing:0.2em !important;text-transform:uppercase !important;color:#8ba3bc !important;margin-bottom:4px !important;">&#9889; The Spread</div>
-    <div style="font-size:16px !important;font-weight:700 !important;color:#edf2f7 !important;margin-bottom:4px !important;">The crowd disagrees with itself</div>
-    <div style="font-size:12px !important;color:#546e85 !important;margin-bottom:14px !important;">Polymarket vs Kalshi &bull; 8pt+ gap &bull; one of them is wrong</div>
+    <div style="font-family:'Space Mono',monospace !important;font-size:10px !important;letter-spacing:0.2em !important;text-transform:uppercase !important;color:#94A3B8 !important;margin-bottom:4px !important;">&#9889; The Spread</div>
+    <div style="font-size:16px !important;font-weight:700 !important;color:#F8F9FA !important;margin-bottom:4px !important;">The crowd disagrees with itself</div>
+    <div style="font-size:12px !important;color:#64748B !important;margin-bottom:14px !important;">Polymarket vs Kalshi &bull; 8pt+ gap &bull; one of them is wrong</div>
     <table width="100%" cellpadding="0" cellspacing="0">
       {rows}
     </table>
-    <div style="font-size:11px !important;color:#546e85 !important;padding-bottom:14px !important;">
-      <a href="https://theprob.ai" style="color:#8ba3bc !important;">See all divergences on The Prob &#8594;</a>
+    <div style="font-size:11px !important;color:#64748B !important;padding-bottom:14px !important;">
+      <a href="https://theprob.ai" style="color:#94A3B8 !important;">See all divergences on The Prob &#8594;</a>
     </div>
   </td></tr>
   </table>
@@ -413,7 +413,7 @@ def build_spread_section(spread_markets: list, max_items: int = 4) -> str:
 def _eyebrow(label):
     return (
         '<div style="margin-bottom:14px;">'
-        '<span style="display:inline-block;background:#ECEAFC;color:#3A2BD4;'
+        '<span style="display:inline-block;background:#E6F4FB;color:#0077B6;'
         "font-family:'Courier New',monospace;font-size:9px;font-weight:600;"
         'letter-spacing:0.12em;text-transform:uppercase;padding:4px 10px;border-radius:999px;">'
         '% ' + label + '</span></div>'
@@ -447,7 +447,7 @@ def build_html(markets, news, subject, with_footer=True):
     def _v(k): return variants.get(k, {})
     def _ret(k):
         ytd = _v(k).get("ytd_return_pct", 0.0)
-        col = "#0FB880" if ytd >= 0 else "#F0476A"
+        col = "#059669" if ytd >= 0 else "#E11D48"
         sgn = "+" if ytd >= 0 else ""
         return '<span style="color:' + col + ';font-weight:700;">' + sgn + f"{ytd:.1f}%" + '</span>'
     any_trades = any((_v(k).get("win_count",0)+_v(k).get("loss_count",0))>0 for k in "abc")
@@ -455,38 +455,38 @@ def build_html(markets, news, subject, with_footer=True):
         port_line = (
             "A:" + _ret("a") + " &nbsp; B:" + _ret("b") + " &nbsp; C:" + _ret("c")
             + " &nbsp;&middot;&nbsp; <a href='" + SITE_URL + "/portfolio.html'"
-            + " style='color:#3A2BD4;text-decoration:none;'>portfolio &#8599;</a>"
+            + " style='color:#0077B6;text-decoration:none;'>portfolio &#8599;</a>"
         )
     else:
         port_line = (
             "<a href='" + SITE_URL + "/portfolio.html'"
-            + " style='color:#3A2BD4;text-decoration:none;'>3 models running &#8599;</a>"
+            + " style='color:#0077B6;text-decoration:none;'>3 models running &#8599;</a>"
         )
 
     # ── HEADER ──
     header = (
-        '  <tr><td style="background:#FFFFFF;padding:24px 24px 20px;border-bottom:3px solid #3A2BD4;">\n'
+        '  <tr><td style="background:#FFFFFF;padding:24px 24px 20px;border-bottom:3px solid #0077B6;">\n'
         '    <table width="100%" cellpadding="0" cellspacing="0"><tr>\n'
         '      <td style="vertical-align:middle;">\n'
         '        <a href="' + SITE_URL + '" style="text-decoration:none;">\n'
         '          <table cellpadding="0" cellspacing="0"><tr>\n'
         '            <td style="vertical-align:middle;">\n'
-        '              <div style="width:32px;height:32px;background:#3A2BD4;border-radius:8px;'
+        '              <div style="width:32px;height:32px;background:#0077B6;border-radius:8px;'
         'text-align:center;line-height:32px;display:inline-block;">\n'
         '                <span style="font-family:Georgia,serif;font-size:20px;font-weight:700;color:#fff;">%</span>\n'
         '              </div>\n'
         '            </td>\n'
         '            <td style="vertical-align:middle;padding-left:8px;">\n'
         "              <span style=\"font-family:'Instrument Serif',Georgia,'Times New Roman',serif;"
-        'font-size:26px;font-weight:400;color:#0B1524;letter-spacing:-0.5px;line-height:1;">The Prob</span>\n'
+        'font-size:26px;font-weight:400;color:#0B0E14;letter-spacing:-0.5px;line-height:1;">The Prob</span>\n'
         '            </td>\n'
         '          </tr></table>\n'
         '        </a>\n'
         '      </td>\n'
         '      <td style="text-align:right;vertical-align:middle;">\n'
-        "        <div style=\"font-family:'Courier New',monospace;font-size:9px;color:#8A94A6;"
+        "        <div style=\"font-family:'Courier New',monospace;font-size:9px;color:#718096;"
         'letter-spacing:0.12em;text-transform:uppercase;">' + date_str + '</div>\n'
-        '        <div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;color:#5A6678;margin-top:4px;">'
+        '        <div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;color:#4A5568;margin-top:4px;">'
         + port_line + '</div>\n'
         '      </td>\n'
         '    </tr></table>\n'
@@ -499,26 +499,26 @@ def build_html(markets, news, subject, with_footer=True):
     if hero_take:
         hero_take_html = (
             '<table width="100%" cellpadding="0" cellspacing="0" style="margin-top:16px;">'
-            '<tr><td style="background:#0B1524;padding:14px 18px;border-radius:8px;">'
+            '<tr><td style="background:#0E131F;padding:14px 18px;border-radius:8px;">'
             "<div style=\"font-family:'Courier New',monospace;font-size:9px;letter-spacing:0.14em;"
-            "text-transform:uppercase;color:#3A2BD4;margin-bottom:6px;\">% The Prob's Take</div>"
+            "text-transform:uppercase;color:#0077B6;margin-bottom:6px;\">% The Prob's Take</div>"
             "<div style=\"font-family:'Instrument Serif',Georgia,'Times New Roman',serif;"
-            'font-size:14px;font-style:italic;color:#EEF2F8;line-height:1.6;">'
+            'font-size:14px;font-style:italic;color:#F8F9FA;line-height:1.6;">'
             + hero_take + '</div>'
             '</td></tr></table>'
         )
 
     hero_eyebrow = _eyebrow("Market of the Day &middot; " + hero_source)
     hero_section = (
-        '  <tr><td style="padding:24px 24px 20px;background:#FFFFFF;border-bottom:1px solid #E7ECF2;">\n'
+        '  <tr><td style="padding:24px 24px 20px;background:#FFFFFF;border-bottom:1px solid #E8ECF0;">\n'
         '    ' + hero_eyebrow + '\n'
         "    <div style=\"font-family:'Instrument Serif',Georgia,'Times New Roman',serif;"
-        'font-size:24px;font-weight:400;line-height:1.3;color:#0B1524;margin-bottom:14px;">\n'
-        '      <a href="' + hero_url + '" style="color:#0B1524;text-decoration:none;">'
+        'font-size:24px;font-weight:400;line-height:1.3;color:#0B0E14;margin-bottom:14px;">\n'
+        '      <a href="' + hero_url + '" style="color:#0B0E14;text-decoration:none;">'
         + hero_q + '</a>\n'
         '    </div>\n'
-        '    <div style="background:#ECEAFC;border-radius:8px;padding:16px 20px;margin-bottom:16px;">\n'
-        "      <div style=\"font-family:'Courier New',monospace;font-size:9px;color:#8A94A6;"
+        '    <div style="background:#E6F4FB;border-radius:8px;padding:16px 20px;margin-bottom:16px;">\n'
+        "      <div style=\"font-family:'Courier New',monospace;font-size:9px;color:#718096;"
         'letter-spacing:0.1em;text-transform:uppercase;margin-bottom:6px;">Probability</div>\n'
         '      <div style="font-family:Arial,Helvetica,sans-serif;font-size:44px;font-weight:700;'
         'color:' + prob_col + ';line-height:1;">' + str(hero_prob) + '%</div>\n'
@@ -527,19 +527,19 @@ def build_html(markets, news, subject, with_footer=True):
         '    </div>\n'
         '    <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:14px;"><tr>\n'
         '      <td style="padding-right:16px;">\n'
-        "        <div style=\"font-family:'Courier New',monospace;font-size:9px;color:#8A94A6;"
+        "        <div style=\"font-family:'Courier New',monospace;font-size:9px;color:#718096;"
         'letter-spacing:0.1em;text-transform:uppercase;margin-bottom:4px;">Volume</div>\n'
         '        <div style="font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:700;'
-        'color:#0B1524;">' + hero_vol + '</div>\n'
+        'color:#0B0E14;">' + hero_vol + '</div>\n'
         '      </td>\n'
         '      <td>\n'
-        "        <div style=\"font-family:'Courier New',monospace;font-size:9px;color:#8A94A6;"
+        "        <div style=\"font-family:'Courier New',monospace;font-size:9px;color:#718096;"
         'letter-spacing:0.1em;text-transform:uppercase;margin-bottom:4px;">Resolves</div>\n'
         '        <div style="font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:700;'
-        'color:#0B1524;">' + (hero_end or "TBD") + '</div>\n'
+        'color:#0B0E14;">' + (hero_end or "TBD") + '</div>\n'
         '      </td>\n'
         '    </tr></table>\n'
-        '    <a href="' + hero_url + '" style="display:inline-block;background:#3A2BD4;color:#ffffff;'
+        '    <a href="' + hero_url + '" style="display:inline-block;background:#0077B6;color:#ffffff;'
         "font-family:'Courier New',monospace;font-size:10px;font-weight:600;letter-spacing:0.12em;"
         'text-transform:uppercase;padding:10px 20px;text-decoration:none;border-radius:4px;">'
         'View Market &#8594;</a>\n'
@@ -558,44 +558,44 @@ def build_html(markets, news, subject, with_footer=True):
         t_src  = trade.get("source", "")
         t_chg  = trade.get("change_pts", 0)
         t_col  = color_prob(t_prob)
-        d_col  = "#0FB880" if t_dir == "YES" else "#F0476A"
+        d_col  = "#059669" if t_dir == "YES" else "#E11D48"
         cc     = change_color(t_chg)
         ca     = arrow(t_chg)
         trade_eyebrow = _eyebrow("Today's Trade")
         trade_section = (
-            '  <tr><td style="padding:24px 24px 20px;background:#F4F6F9;border-bottom:1px solid #E7ECF2;">\n'
+            '  <tr><td style="padding:24px 24px 20px;background:#F1F3F5;border-bottom:1px solid #E8ECF0;">\n'
             '    ' + trade_eyebrow + '\n'
-            '    <div style="background:#FFFFFF;border:1px solid #E7ECF2;border-top:3px solid #3A2BD4;'
+            '    <div style="background:#FFFFFF;border:1px solid #E8ECF0;border-top:3px solid #0077B6;'
             'border-radius:0 0 8px 8px;padding:16px 20px;">\n'
-            "      <div style=\"font-family:'Courier New',monospace;font-size:9px;color:#8A94A6;"
+            "      <div style=\"font-family:'Courier New',monospace;font-size:9px;color:#718096;"
             'letter-spacing:0.1em;text-transform:uppercase;margin-bottom:8px;">'
             + t_src + ' &middot; Closes ' + t_end + '</div>\n'
             '      <div style="font-family:Arial,Helvetica,sans-serif;font-size:14px;font-weight:600;'
-            'color:#0B1524;line-height:1.4;margin-bottom:14px;">'
-            '<a href="' + t_url + '" style="color:#0B1524;text-decoration:none;">' + t_q + '</a></div>\n'
+            'color:#0B0E14;line-height:1.4;margin-bottom:14px;">'
+            '<a href="' + t_url + '" style="color:#0B0E14;text-decoration:none;">' + t_q + '</a></div>\n'
             '      <table cellpadding="0" cellspacing="0"><tr>\n'
             '        <td style="padding-right:24px;">\n'
-            "          <div style=\"font-family:'Courier New',monospace;font-size:9px;color:#8A94A6;"
+            "          <div style=\"font-family:'Courier New',monospace;font-size:9px;color:#718096;"
             'text-transform:uppercase;letter-spacing:0.1em;margin-bottom:4px;">Probability</div>\n'
             '          <div style="font-family:Arial,Helvetica,sans-serif;font-size:26px;font-weight:700;'
             'color:' + t_col + ';">' + str(t_prob) + '%</div>\n'
             '        </td>\n'
             '        <td style="padding-right:24px;">\n'
-            "          <div style=\"font-family:'Courier New',monospace;font-size:9px;color:#8A94A6;"
+            "          <div style=\"font-family:'Courier New',monospace;font-size:9px;color:#718096;"
             'text-transform:uppercase;letter-spacing:0.1em;margin-bottom:4px;">24h Move</div>\n'
             '          <div style="font-family:Arial,Helvetica,sans-serif;font-size:18px;font-weight:700;'
             'color:' + cc + ';">' + ca + ' ' + f"{abs(t_chg):.1f}" + 'pts</div>\n'
             '        </td>\n'
             '        <td>\n'
-            "          <div style=\"font-family:'Courier New',monospace;font-size:9px;color:#8A94A6;"
+            "          <div style=\"font-family:'Courier New',monospace;font-size:9px;color:#718096;"
             'text-transform:uppercase;letter-spacing:0.1em;margin-bottom:4px;">The Prob plays</div>\n'
             '          <div style="font-family:Arial,Helvetica,sans-serif;font-size:26px;font-weight:700;'
             'color:' + d_col + ';">' + t_dir + '</div>\n'
             '        </td>\n'
             '      </tr></table>\n'
-            '      <div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;color:#8A94A6;'
+            '      <div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;color:#718096;'
             'margin-top:12px;">$100 paper trade &middot; '
-            '<a href="' + SITE_URL + '/portfolio.html" style="color:#3A2BD4;text-decoration:none;">'
+            '<a href="' + SITE_URL + '/portfolio.html" style="color:#0077B6;text-decoration:none;">'
             'tracked at theprob.ai/portfolio</a></div>\n'
             '    </div>\n'
             '  </td></tr>'
@@ -606,16 +606,16 @@ def build_html(markets, news, subject, with_footer=True):
     for i, m in enumerate(movers):
         p      = m.get("prob", 50)
         c      = m.get("change_pts", 0)
-        bg     = "#FFFFFF" if i % 2 == 0 else "#F4F6F9"
-        border = "border-bottom:1px solid #E7ECF2;" if i < len(movers)-1 else ""
+        bg     = "#FFFFFF" if i % 2 == 0 else "#F1F3F5"
+        border = "border-bottom:1px solid #E8ECF0;" if i < len(movers)-1 else ""
         mover_rows += (
             '      <tr style="background:' + bg + ';">\n'
             '        <td style="padding:12px 14px;vertical-align:top;' + border + '">\n'
             '          <div style="font-family:Arial,Helvetica,sans-serif;font-size:13px;'
-            'color:#0B1524;line-height:1.45;margin-bottom:4px;">'
-            '<a href="' + m.get("url", SITE_URL) + '" style="color:#0B1524;text-decoration:none;">'
+            'color:#0B0E14;line-height:1.45;margin-bottom:4px;">'
+            '<a href="' + m.get("url", SITE_URL) + '" style="color:#0B0E14;text-decoration:none;">'
             + m.get("question", "") + '</a></div>\n'
-            "          <div style=\"font-family:'Courier New',monospace;font-size:9px;color:#8A94A6;\">"
+            "          <div style=\"font-family:'Courier New',monospace;font-size:9px;color:#718096;\">"
             + m.get("source", "") + '</div>\n'
             '        </td>\n'
             '        <td style="padding:12px 14px;text-align:right;vertical-align:top;'
@@ -630,15 +630,15 @@ def build_html(markets, news, subject, with_footer=True):
 
     movers_eyebrow = _eyebrow("Today's Movers")
     movers_section = (
-        '  <tr><td style="padding:24px 24px 20px;background:#FFFFFF;border-bottom:1px solid #E7ECF2;">\n'
+        '  <tr><td style="padding:24px 24px 20px;background:#FFFFFF;border-bottom:1px solid #E8ECF0;">\n'
         '    ' + movers_eyebrow + '\n'
         '    <table width="100%" cellpadding="0" cellspacing="0"'
-        ' style="border:1px solid #E7ECF2;border-radius:8px;">\n'
+        ' style="border:1px solid #E8ECF0;border-radius:8px;">\n'
         + mover_rows
         + '    </table>\n'
         '    <div style="margin-top:12px;">'
         '<a href="' + SITE_URL + '" style="font-family:\'Courier New\',monospace;'
-        'font-size:10px;color:#3A2BD4;text-decoration:none;letter-spacing:0.1em;'
+        'font-size:10px;color:#0077B6;text-decoration:none;letter-spacing:0.1em;'
         'text-transform:uppercase;">See all markets &#8594;</a></div>\n'
         '  </td></tr>'
     )
@@ -646,20 +646,20 @@ def build_html(markets, news, subject, with_footer=True):
     # ── NEWS ──
     news_rows = ""
     for i, a in enumerate(articles):
-        border  = "border-bottom:1px solid #E7ECF2;" if i < len(articles)-1 else ""
+        border  = "border-bottom:1px solid #E8ECF0;" if i < len(articles)-1 else ""
         summary = truncate_summary(a.get("summary", ""))
         summary_html = (
             '      <div style="font-family:Arial,Helvetica,sans-serif;font-size:13px;'
-            'color:#5A6678;line-height:1.65;">' + summary + '</div>\n'
+            'color:#4A5568;line-height:1.65;">' + summary + '</div>\n'
         ) if summary else ""
         news_rows += (
             '    <tr><td style="padding:14px 0;' + border + '">\n'
             "      <div style=\"font-family:'Courier New',monospace;font-size:9px;"
-            'color:#8A94A6;margin-bottom:6px;">'
+            'color:#718096;margin-bottom:6px;">'
             + a.get("source", "").upper() + ' &middot; ' + a.get("pub_display", "") + '</div>\n'
             "      <div style=\"font-family:'Instrument Serif',Georgia,'Times New Roman',serif;"
-            'font-size:16px;color:#0B1524;line-height:1.35;margin-bottom:6px;">'
-            '<a href="' + a.get("url", SITE_URL) + '" style="color:#0B1524;text-decoration:none;">'
+            'font-size:16px;color:#0B0E14;line-height:1.35;margin-bottom:6px;">'
+            '<a href="' + a.get("url", SITE_URL) + '" style="color:#0B0E14;text-decoration:none;">'
             + a.get("title", "") + '</a></div>\n'
             + summary_html
             + '    </td></tr>\n'
@@ -667,7 +667,7 @@ def build_html(markets, news, subject, with_footer=True):
 
     news_eyebrow = _eyebrow("What People Are Writing About")
     news_section = (
-        '  <tr><td style="padding:24px 24px 20px;background:#F4F6F9;border-bottom:1px solid #E7ECF2;">\n'
+        '  <tr><td style="padding:24px 24px 20px;background:#F1F3F5;border-bottom:1px solid #E8ECF0;">\n'
         '    ' + news_eyebrow + '\n'
         '    <table width="100%" cellpadding="0" cellspacing="0">\n'
         + news_rows
@@ -684,25 +684,25 @@ def build_html(markets, news, subject, with_footer=True):
         t_url      = daily_take.get("hero_url", SITE_URL)
         take_eyebrow = _eyebrow("The Prob's Take &middot; " + t_cat)
         take_section = (
-            '  <tr><td style="padding:24px 24px 20px;background:#FFFFFF;border-bottom:1px solid #E7ECF2;">\n'
+            '  <tr><td style="padding:24px 24px 20px;background:#FFFFFF;border-bottom:1px solid #E8ECF0;">\n'
             '    ' + take_eyebrow + '\n'
             "    <div style=\"font-family:'Instrument Serif',Georgia,'Times New Roman',serif;"
-            'font-size:22px;font-weight:400;line-height:1.3;color:#0B1524;margin-bottom:12px;">'
-            '<a href="' + t_url + '" style="color:#0B1524;text-decoration:none;">'
+            'font-size:22px;font-weight:400;line-height:1.3;color:#0B0E14;margin-bottom:12px;">'
+            '<a href="' + t_url + '" style="color:#0B0E14;text-decoration:none;">'
             + t_headline + '</a></div>\n'
             '    <div style="font-family:Arial,Helvetica,sans-serif;font-size:14px;'
-            'color:#5A6678;line-height:1.75;">' + t_deck + '</div>\n'
+            'color:#4A5568;line-height:1.75;">' + t_deck + '</div>\n'
             '  </td></tr>'
         )
 
     # ── CTA ──
     cta_section = (
-        '  <tr><td style="padding:28px 24px;background:#3A2BD4;text-align:center;">\n'
+        '  <tr><td style="padding:28px 24px;background:#0077B6;text-align:center;">\n'
         "    <div style=\"font-family:'Instrument Serif',Georgia,'Times New Roman',serif;"
         'font-size:18px;font-style:italic;color:#ffffff;margin-bottom:16px;">'
         '"The crowd doesn\'t spin. <em>It bets.</em>"</div>\n'
         '    <a href="' + SITE_URL + '" style="display:inline-block;background:#ffffff;'
-        "color:#3A2BD4;font-family:'Courier New',monospace;font-size:10px;font-weight:600;"
+        "color:#0077B6;font-family:'Courier New',monospace;font-size:10px;font-weight:600;"
         'letter-spacing:0.12em;text-transform:uppercase;padding:12px 28px;'
         "text-decoration:none;border-radius:4px;\">See Today's Full Board &#8594;</a>\n"
         '  </td></tr>'
@@ -710,36 +710,36 @@ def build_html(markets, news, subject, with_footer=True):
 
     # ── FOOTER (full-HTML version only) ──
     footer_section = (
-        '  <tr><td style="padding:20px 24px;background:#FFFFFF;border-top:1px solid #E7ECF2;text-align:center;">\n'
+        '  <tr><td style="padding:20px 24px;background:#FFFFFF;border-top:1px solid #E8ECF0;text-align:center;">\n'
         '    <table width="100%" cellpadding="0" cellspacing="0"><tr><td style="text-align:center;">\n'
         '      <table cellpadding="0" cellspacing="0" align="center" style="margin-bottom:8px;"><tr>\n'
         '        <td style="vertical-align:middle;">\n'
-        '          <div style="width:20px;height:20px;background:#3A2BD4;border-radius:5px;'
+        '          <div style="width:20px;height:20px;background:#0077B6;border-radius:5px;'
         'text-align:center;line-height:20px;">\n'
         '            <span style="font-family:Georgia,serif;font-size:13px;font-weight:700;color:#fff;">%</span>\n'
         '          </div>\n'
         '        </td>\n'
         '        <td style="vertical-align:middle;padding-left:6px;">\n'
         "          <span style=\"font-family:'Instrument Serif',Georgia,'Times New Roman',serif;"
-        'font-size:16px;color:#0B1524;">The Prob</span>\n'
+        'font-size:16px;color:#0B0E14;">The Prob</span>\n'
         '        </td>\n'
         '      </tr></table>\n'
         '      <div style="font-family:Arial,Helvetica,sans-serif;font-size:12px;'
-        'color:#8A94A6;margin-bottom:8px;">Prediction market intelligence, daily.</div>\n'
+        'color:#718096;margin-bottom:8px;">Prediction market intelligence, daily.</div>\n'
         '      <div style="font-family:Arial,Helvetica,sans-serif;font-size:12px;'
-        'color:#8A94A6;margin-bottom:10px;">Not financial advice. For informational purposes only.</div>\n'
+        'color:#718096;margin-bottom:10px;">Not financial advice. For informational purposes only.</div>\n'
         '      <div style="font-family:Arial,Helvetica,sans-serif;font-size:12px;">\n'
-        '        <a href="' + SITE_URL + '" style="color:#3A2BD4;text-decoration:none;">theprob.ai</a>\n'
+        '        <a href="' + SITE_URL + '" style="color:#0077B6;text-decoration:none;">theprob.ai</a>\n'
         '        &nbsp;&middot;&nbsp;\n'
-        '        <a href="' + SITE_URL + '/portfolio.html" style="color:#8A94A6;text-decoration:none;">Portfolio</a>\n'
+        '        <a href="' + SITE_URL + '/portfolio.html" style="color:#718096;text-decoration:none;">Portfolio</a>\n'
         '        &nbsp;&middot;&nbsp;\n'
-        '        <a href="' + SITE_URL + '/prediction-markets-101.html" style="color:#8A94A6;text-decoration:none;">Markets 101</a>\n'
+        '        <a href="' + SITE_URL + '/prediction-markets-101.html" style="color:#718096;text-decoration:none;">Markets 101</a>\n'
         '      </div>\n'
         '      <div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;'
-        'color:#8A94A6;margin-top:12px;">\n'
-        '        <a href="mailto:newsletter@theprob.ai?subject=Unsubscribe" style="color:#8A94A6;">Unsubscribe</a>\n'
+        'color:#718096;margin-top:12px;">\n'
+        '        <a href="mailto:newsletter@theprob.ai?subject=Unsubscribe" style="color:#718096;">Unsubscribe</a>\n'
         '        &nbsp;&middot;&nbsp;\n'
-        '        <a href="' + SITE_URL + '" style="color:#8A94A6;">View online</a>\n'
+        '        <a href="' + SITE_URL + '" style="color:#718096;">View online</a>\n'
         '      </div>\n'
         '    </td></tr></table>\n'
         '  </td></tr>'
@@ -752,14 +752,14 @@ def build_html(markets, news, subject, with_footer=True):
 
     # Re-skin spread section to Clean Book palette
     spread_html = (spread_html
-        .replace("background:#080b0f", "background:#FFFFFF")
-        .replace("background:#0d1117", "background:#F4F6F9")
-        .replace("#1e2a38", "#E7ECF2")
-        .replace("color:#edf2f7", "color:#0B1524")
-        .replace("color:#d0dde8", "color:#5A6678")
-        .replace("color:#8ba3bc", "color:#8A94A6")
-        .replace("color:#00e5a0", "color:#0FB880")
-        .replace("color:#ff4757", "color:#F0476A")
+        .replace("background:#07090E", "background:#FFFFFF")
+        .replace("background:#07090E", "background:#F1F3F5")
+        .replace("#141B2D", "#E8ECF0")
+        .replace("color:#F8F9FA", "color:#0B0E14")
+        .replace("color:#d0dde8", "color:#4A5568")
+        .replace("color:#94A3B8", "color:#718096")
+        .replace("color:#00e5a0", "color:#059669")
+        .replace("color:#ff4757", "color:#E11D48")
         .replace("color:#f59e0b", "color:#F5A524")
     )
 
@@ -786,7 +786,7 @@ def build_html(markets, news, subject, with_footer=True):
         + '\n<table width="100%" cellpadding="0" cellspacing="0" style="background:#FBFCFD;">\n'
         + '<tr><td align="center" style="padding:0;">\n'
         + '<table width="100%" cellpadding="0" cellspacing="0"'
-        + ' style="max-width:600px;margin:0 auto;background:#FFFFFF;border:1px solid #E7ECF2;">\n\n'
+        + ' style="max-width:600px;margin:0 auto;background:#FFFFFF;border:1px solid #E8ECF0;">\n\n'
         + inner
         + '\n\n</table>\n</td></tr>\n</table>'
     )
@@ -833,23 +833,23 @@ def build_preview_page(subject: str) -> str:
   <title>The Prob &mdash; Newsletter Preview</title>
   <style>
     * {{ box-sizing: border-box; margin: 0; padding: 0; }}
-    body {{ background: #080b0f; font-family: 'Courier New', monospace; }}
+    body {{ background: #07090E; font-family: 'Courier New', monospace; }}
     #preview-bar {{
       position: fixed; top: 0; left: 0; right: 0; z-index: 9999;
-      background: #0d1117; border-bottom: 2px solid #1e2a38;
+      background: #07090E; border-bottom: 2px solid #141B2D;
       padding: 10px 20px; display: flex; align-items: center;
       justify-content: space-between; gap: 12px;
     }}
     #subject-line {{
-      font-size: 12px; color: #8ba3bc; flex: 1; overflow: hidden;
+      font-size: 12px; color: #94A3B8; flex: 1; overflow: hidden;
       text-overflow: ellipsis; white-space: nowrap;
     }}
     #subject-label {{
-      color: #546e85; margin-right: 8px; font-size: 10px;
+      color: #64748B; margin-right: 8px; font-size: 10px;
       text-transform: uppercase; letter-spacing: 0.15em;
     }}
     #copy-btn {{
-      background: #00e5a0; color: #080b0f; border: none; padding: 9px 18px;
+      background: #00e5a0; color: #07090E; border: none; padding: 9px 18px;
       font-family: 'Courier New', monospace; font-size: 12px; font-weight: 700;
       letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer;
       white-space: nowrap; flex-shrink: 0; transition: opacity 0.15s;
@@ -861,7 +861,7 @@ def build_preview_page(subject: str) -> str:
       opacity: 0; transition: opacity 0.3s;
     }}
     #note {{
-      font-size: 10px; color: #546e85; white-space: nowrap; flex-shrink: 0;
+      font-size: 10px; color: #64748B; white-space: nowrap; flex-shrink: 0;
     }}
     #email-frame {{
       display: block; width: 100%; border: none;
