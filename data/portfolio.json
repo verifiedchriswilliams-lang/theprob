@@ -15792,5 +15792,23 @@
     "winner": "Model A (The Crowd)",
     "start_date": "2026-03-17",
     "end_date": "2026-06-08"
+  },
+  "experiment_2": {
+    "note": "Experiment 2 (Dec 1 - Dec 31, 2026): 30-day live run. Model A defends vs new challengers.",
+    "status": "pending",
+    "start_date": "2026-12-01",
+    "end_date": "2026-12-31",
+    "starting_balance": 1000.0,
+    "model_a": {
+      "name": "The Crowd",
+      "description": "Follow crowd conviction on Kalshi. Bet YES >= 65%, NO <= 35%, close <= 7 days.",
+      "current_balance": 1000.0,
+      "total_pnl": 0.0,
+      "win_count": 0,
+      "loss_count": 0,
+      "ytd_return_pct": 0.0,
+      "trades": []
+    },
+    "winner": null
   }
 }

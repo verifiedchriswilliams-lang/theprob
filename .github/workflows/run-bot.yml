@@ -1,9 +1,11 @@
 name: Run Trading Bot
 
 on:
-  schedule:
-    # 5 minutes past each hour — after fetch-markets (runs at :00) has fresh data
-    - cron: '5 * * * *'
+  # Schedule disabled until Experiment 2 launches Dec 1, 2026.
+  # Kalshi elections API (403 Forbidden) must be resolved before re-enabling.
+  # Uncomment the lines below on Dec 1 after confirming API key scope:
+  # schedule:
+  #   - cron: '5 * * * *'
   workflow_dispatch:
     inputs:
       dry_run:

@@ -458,6 +458,53 @@ def _eyebrow(label):
     )
 
 
+def build_dec1_countdown() -> str:
+    """Banner counting down to Dec 1 full subscriber launch + new portfolio experiment."""
+    from datetime import date, timezone
+    today = date.today()
+    launch = date(2026, 12, 1)
+    days_left = (launch - today).days
+
+    if days_left <= 0:
+        return ""   # Dec 1 has arrived — stop showing the banner
+
+    if days_left == 1:
+        label = "Tomorrow"
+        sub = "Full subscriber launch and new portfolio experiment begin tomorrow."
+    else:
+        label = f"{days_left} days"
+        sub = f"Full subscriber launch and new portfolio experiment begin Dec 1."
+
+    return (
+        '  <tr><td style="padding:0 24px 20px;">\n'
+        '    <table width="100%" cellpadding="0" cellspacing="0" style="'
+        'background:#FFF8E7;border:1px solid #F5A524;border-radius:6px;overflow:hidden;">\n'
+        '      <tr><td style="padding:16px 20px;">\n'
+        '        <table width="100%" cellpadding="0" cellspacing="0"><tr>\n'
+        '          <td style="vertical-align:middle;">\n'
+        "            <div style=\"font-family:'Courier New',monospace;font-size:9px;"
+        'font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:#92400E;'
+        'margin-bottom:4px;">Launching Dec 1</div>\n'
+        "            <div style=\"font-family:'Instrument Serif',Georgia,'Times New Roman',serif;"
+        'font-size:16px;font-weight:700;color:#78350F;">'
+        + sub
+        + '</div>\n'
+        '          </td>\n'
+        '          <td style="vertical-align:middle;text-align:right;padding-left:16px;white-space:nowrap;">\n'
+        "            <div style=\"font-family:'Courier New',monospace;font-size:30px;"
+        'font-weight:700;color:#F5A524;line-height:1;">'
+        + label
+        + '</div>\n'
+        "            <div style=\"font-family:'Courier New',monospace;font-size:9px;"
+        'letter-spacing:0.12em;text-transform:uppercase;color:#92400E;margin-top:2px;">to go</div>\n'
+        '          </td>\n'
+        '        </tr></table>\n'
+        '      </td></tr>\n'
+        '    </table>\n'
+        '  </td></tr>'
+    )
+
+
 def build_html(markets, news, subject, with_footer=True):
     hero       = markets.get("hero", {})
     trade      = markets.get("trade") or {}
@@ -795,6 +842,9 @@ def build_html(markets, news, subject, with_footer=True):
             '  </td></tr>'
         )
 
+    # ── DEC 1 COUNTDOWN ──
+    countdown_section = build_dec1_countdown()
+
     # ── CTA ──
     cta_section = (
         '  <tr><td style="padding:28px 24px;background:#0077B6;text-align:center;">\n'
@@ -866,7 +916,7 @@ def build_html(markets, news, subject, with_footer=True):
     sections = [
         header, hero_section, game5_html, trade_section, movers_section,
         spread_html, news_section, take_section,
-        builder_html, cta_section,
+        builder_html, countdown_section, cta_section,
     ]
     if with_footer:
         sections.append(footer_section)
