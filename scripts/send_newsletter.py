@@ -824,7 +824,7 @@ def build_html(markets, news, subject, with_footer=True):
             + '    </td></tr>\n'
         )
 
-    news_eyebrow = _eyebrow("Prediction Market News")
+    news_eyebrow = _eyebrow("The Daily Brief")
     news_section = (
         '  <tr><td style="padding:20px 24px;background:#F8F9FA;border-bottom:1px solid rgba(11,14,20,.08);">\n'
         '    ' + news_eyebrow + '\n'
@@ -842,7 +842,7 @@ def build_html(markets, news, subject, with_footer=True):
         t_deck     = daily_take.get("deck", "")
         t_cat      = daily_take.get("category_label", "")
         t_url      = daily_take.get("hero_url", SITE_URL)
-        take_eyebrow = _eyebrow("The Prob's Take &middot; " + t_cat)
+        take_eyebrow = _eyebrow("Featured &middot; The Prob&#39;s Daily Take")
         take_section = (
             '  <tr><td style="padding:20px 24px;background:#F8F9FA;border-bottom:1px solid rgba(11,14,20,.08);">\n'
             '    ' + take_eyebrow + '\n'
