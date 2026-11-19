@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+<title id="title">Volume is not liquidity</title><desc id="desc">Conceptual distinction</desc>
+<rect width="1200" height="675" fill="#121110"/>
+<circle cx="1080" cy="95" r="180" fill="#1b1916"/>
+<text x="76" y="86" fill="#efebe3" font-family="Arial,sans-serif" font-size="30" font-weight="700">Volume is not liquidity</text>
+<text x="76" y="126" fill="#aaa39a" font-family="Arial,sans-serif" font-size="19">Conceptual distinction</text>
+<text x="140" y="240" fill="#D8A85C" font-family="Arial,sans-serif" font-size="24" font-weight="700">HISTORICAL VOLUME</text><text x="140" y="310" fill="#efebe3" font-family="Arial,sans-serif" font-size="23" font-weight="400">How much traded over time</text><text x="690" y="240" fill="#D8A85C" font-family="Arial,sans-serif" font-size="24" font-weight="700">CURRENT LIQUIDITY</text><text x="690" y="310" fill="#efebe3" font-family="Arial,sans-serif" font-size="23" font-weight="400">How much can trade near price</text><line x1="590" y1="190" x2="590" y2="460" stroke="#6f675d" stroke-width="2"/>
+<text x="76" y="625" fill="#8c857c" font-family="Arial,sans-serif" font-size="16">THE PROB  ·  ILLUSTRATIVE EXAMPLE</text>
+</svg>

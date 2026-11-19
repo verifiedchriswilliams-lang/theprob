@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+<title id="title">How markets aggregate information</title><desc id="desc">Simplified forecasting cycle</desc>
+<rect width="1200" height="675" fill="#121110"/>
+<circle cx="1080" cy="95" r="180" fill="#1b1916"/>
+<text x="76" y="86" fill="#efebe3" font-family="Arial,sans-serif" font-size="30" font-weight="700">How markets aggregate information</text>
+<text x="76" y="126" fill="#aaa39a" font-family="Arial,sans-serif" font-size="19">Simplified forecasting cycle</text>
+<text x="100" y="300" fill="#efebe3" font-family="Arial,sans-serif" font-size="21" font-weight="400">INFORMATION</text><text x="370" y="300" fill="#efebe3" font-family="Arial,sans-serif" font-size="21" font-weight="400">TRADING</text><text x="650" y="300" fill="#efebe3" font-family="Arial,sans-serif" font-size="21" font-weight="400">PRICE</text><text x="930" y="300" fill="#efebe3" font-family="Arial,sans-serif" font-size="21" font-weight="400">OUTCOME</text><line x1="250" y1="290" x2="340" y2="290" stroke="#D8A85C" stroke-width="4"/><line x1="520" y1="290" x2="620" y2="290" stroke="#D8A85C" stroke-width="4"/><line x1="780" y1="290" x2="900" y2="290" stroke="#D8A85C" stroke-width="4"/>
+<text x="76" y="625" fill="#8c857c" font-family="Arial,sans-serif" font-size="16">THE PROB  ·  ILLUSTRATIVE EXAMPLE</text>
+</svg>

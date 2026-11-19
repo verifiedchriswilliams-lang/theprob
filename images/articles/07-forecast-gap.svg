@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+<title id="title">Official forecast vs. internal market</title><desc id="desc">Hypothetical disagreement</desc>
+<rect width="1200" height="675" fill="#121110"/>
+<circle cx="1080" cy="95" r="180" fill="#1b1916"/>
+<text x="76" y="86" fill="#efebe3" font-family="Arial,sans-serif" font-size="30" font-weight="700">Official forecast vs. internal market</text>
+<text x="76" y="126" fill="#aaa39a" font-family="Arial,sans-serif" font-size="19">Hypothetical disagreement</text>
+<text x="140" y="245" fill="#efebe3" font-family="Arial,sans-serif" font-size="22" font-weight="400">OFFICIAL FORECAST</text><text x="140" y="320" fill="#D8A85C" font-family="Arial,sans-serif" font-size="48" font-weight="700">90%</text><text x="700" y="245" fill="#efebe3" font-family="Arial,sans-serif" font-size="22" font-weight="400">INTERNAL MARKET</text><text x="700" y="320" fill="#efebe3" font-family="Arial,sans-serif" font-size="48" font-weight="400">55%</text><text x="140" y="420" fill="#aaa39a" font-family="Arial,sans-serif" font-size="20" font-weight="400">A gap is a question to investigate, not proof either side is right.</text>
+<text x="76" y="625" fill="#8c857c" font-family="Arial,sans-serif" font-size="16">THE PROB  ·  ILLUSTRATIVE EXAMPLE</text>
+</svg>

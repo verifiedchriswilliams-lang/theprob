@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+<title id="title">A changing cross-platform spread</title><desc id="desc">Hypothetical price paths</desc>
+<rect width="1200" height="675" fill="#121110"/>
+<circle cx="1080" cy="95" r="180" fill="#1b1916"/>
+<text x="76" y="86" fill="#efebe3" font-family="Arial,sans-serif" font-size="30" font-weight="700">A changing cross-platform spread</text>
+<text x="76" y="126" fill="#aaa39a" font-family="Arial,sans-serif" font-size="19">Hypothetical price paths</text>
+<line x1="120" y1="500" x2="1080" y2="500" stroke="#6f675d" stroke-width="2"/><line x1="120" y1="190" x2="120" y2="500" stroke="#6f675d" stroke-width="2"/><polyline points="120,430 300,390 480,360 660,290 840,270 1080,220" fill="none" stroke="#D8A85C" stroke-width="6"/><polyline points="120,450 300,420 480,410 660,390 840,350 1080,340" fill="none" stroke="#efebe3" stroke-width="5"/><text x="820" y="185" fill="#D8A85C" font-family="Arial,sans-serif" font-size="18" font-weight="400">MARKET A</text><text x="820" y="220" fill="#efebe3" font-family="Arial,sans-serif" font-size="18" font-weight="400">MARKET B</text>
+<text x="76" y="625" fill="#8c857c" font-family="Arial,sans-serif" font-size="16">THE PROB  ·  ILLUSTRATIVE EXAMPLE</text>
+</svg>

@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 1000'%3E%3Crect width='1000' height='1000' rx='230' fill='%230077B6'/%3E%3Cg fill='%23F2EFE8' fill-rule='evenodd'%3E%3Cpath d='M 320,150 a 170,170 0 1,0 0,340 a 170,170 0 1,0 0,-340 M 320,235 a 85,85 0 1,1 0,170 a 85,85 0 1,1 0,-170 Z'/%3E%3Cpath d='M 680,510 a 170,170 0 1,0 0,340 a 170,170 0 1,0 0,-340 M 680,595 a 85,85 0 1,1 0,170 a 85,85 0 1,1 0,-170 Z'/%3E%3Cpath d='M 205,795 L 253,843 L 795,301 L 747,253 Z'/%3E%3C/g%3E%3C/svg%3E">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How to Read Prediction Market Odds | The Prob</title>
+
+  <meta name="description" content="Prediction market odds are simpler than they look. Here's how to read YES and NO prices, interpret probability moves, and know when to trust the number.">
+  <link rel="canonical" href="https://theprob.ai/how-to-read-prediction-market-odds.html">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="The Prob">
+  <meta property="og:title" content="How to Read Prediction Market Odds | The Prob">
+  <meta property="og:description" content="Prediction market odds are simpler than they look. Here's how to read YES and NO prices, interpret probability moves, and know when to trust the number.">
+  <meta property="og:url" content="https://theprob.ai/how-to-read-prediction-market-odds.html">
+  <meta property="og:image" content="https://theprob.ai/theprob_og_1200x630.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@theprob">
+  <meta name="twitter:title" content="How to Read Prediction Market Odds | The Prob">
+  <meta name="twitter:description" content="Prediction market odds are simpler than they look. Here's how to read YES and NO prices, interpret probability moves, and know when to trust the number.">
+  <meta name="twitter:image" content="https://theprob.ai/theprob_og_1200x630.jpg">
+
+  <script type="application/ld+json">
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "How to Read Prediction Market Odds",
+      "url": "https://theprob.ai/how-to-read-prediction-market-odds.html",
+      "datePublished": "2026-11-25",
+      "dateModified": "2026-11-25",
+      "publisher": {
+        "@type": "Organization",
+        "name": "The Prob",
+        "url": "https://theprob.ai",
+        "logo": { "@type": "ImageObject", "url": "https://theprob.ai/favicon.svg" }
+      },
+      "isPartOf": { "@type": "WebSite", "name": "The Prob", "url": "https://theprob.ai/" }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://theprob.ai/" },
+        { "@type": "ListItem", "position": 2, "name": "Prediction Markets 101", "item": "https://theprob.ai/prediction-markets-101.html" },
+        { "@type": "ListItem", "position": 3, "name": "How to Read Prediction Market Odds", "item": "https://theprob.ai/how-to-read-prediction-market-odds.html" }
+      ]
+    }
+  ]
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="design-tokens.css">
+  <style>
+    :root {
+      --bg2: var(--surface); --bg3: var(--surface-2); --bg4: var(--line);
+      --border: var(--line); --border-bright: var(--line-2);
+      --text: var(--ink); --text-muted: var(--ink-2); --text-dim: var(--ink-3);
+      --green: var(--yes); --red: var(--no); --blue: var(--brand);
+      --accent: var(--brand); --mono: var(--font-mono);
+      --serif: var(--font-display); --sans: var(--font-sans);
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:15px;line-height:1.6;overflow-x:hidden;}
+    .nav-wrapper{position:sticky;top:0;z-index:100;background:var(--nav-bg);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);}
+    nav{display:flex;align-items:center;justify-content:space-between;padding:20px 48px;border-bottom:1px solid var(--border);}
+    .logo{display:flex;align-items:center;gap:10px;}
+    .logo-chip{width:36px;height:36px;border-radius:9px;background:var(--brand);display:grid;place-items:center;padding:7px;flex-shrink:0;overflow:hidden;box-shadow:0 2px 8px rgba(var(--brand-rgb),.3)}
+    .logo-wordmark{display:flex;align-items:center;gap:10px;}.logo-lockup{display:flex;align-items:center;gap:6px;}.logo-br{display:none;}
+    .logo-mark{font-family:var(--font-sans);font-size:32px;font-weight:700;color:var(--brand);letter-spacing:-0.5px;word-spacing:-6px;line-height:1;}
+    .logo-pipe{color:var(--border-bright);font-size:20px;}
+    .logo-sub{font-family:var(--mono);font-size:10px;color:var(--text-muted);letter-spacing:0.15em;text-transform:uppercase;}
+    .nav-links{display:flex;align-items:center;gap:32px;list-style:none;}
+    .nav-links a{font-family:var(--mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);text-decoration:none;transition:color 0.2s;}
+    .nav-links a:hover{color:var(--text);}
+    .mobile-nav{display:none;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;background:var(--bg2);border-bottom:1px solid var(--border);white-space:nowrap;}
+    .mobile-nav::-webkit-scrollbar{display:none;}
+    .mobile-nav a{display:inline-block;font-family:var(--mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);text-decoration:none;padding:11px 18px;border-right:1px solid var(--border);transition:color 0.2s;}
+    .mobile-nav a:hover{color:var(--accent);}
+    .theme-toggle{background:none;border:1px solid var(--line-2);border-radius:var(--r-pill);padding:6px 10px;font-family:var(--font-mono);font-size:18px;color:var(--ink-2);cursor:pointer;transition:border-color 0.2s,color 0.2s;line-height:1;}
+    .theme-toggle:hover{border-color:var(--brand);color:var(--brand);}
+
+    /* Article layout */
+    .breadcrumb{max-width:860px;margin:0 auto;padding:20px 48px 0;font-family:var(--mono);font-size:11px;color:var(--text-dim);}
+    .breadcrumb a{color:var(--text-dim);text-decoration:none;transition:color 0.2s;}
+    .breadcrumb a:hover{color:var(--accent);}
+    .breadcrumb span{margin:0 6px;}
+    .page-header{max-width:860px;margin:0 auto;padding:32px 48px 48px;border-bottom:1px solid var(--border);animation:fadeUp 0.5s ease both;}
+    .page-eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;display:flex;align-items:center;gap:10px;}
+    .page-eyebrow::before{content:'';display:block;width:24px;height:1px;background:var(--accent);}
+    .page-headline{font-family:var(--serif);font-size:clamp(28px,3vw,46px);font-weight:700;line-height:1.12;color:var(--text);margin-bottom:18px;}
+    .page-sub{font-size:16px;color:var(--text-muted);line-height:1.75;max-width:640px;margin-bottom:16px;}
+    .pub-date{font-family:var(--mono);font-size:11px;color:var(--text-dim);letter-spacing:0.08em;}
+    .article{max-width:860px;margin:0 auto;padding:0 48px 64px;}
+    .content-section{padding:48px 0 0;border-bottom:1px solid var(--border);}
+    .content-section:last-child{border-bottom:none;}
+    .section-heading{font-family:var(--serif);font-size:clamp(20px,2vw,26px);font-weight:700;line-height:1.2;color:var(--text);margin-bottom:16px;}
+    .body-text{font-size:15px;color:var(--text-muted);line-height:1.8;margin-bottom:16px;}
+    .body-text:last-child{margin-bottom:0;}
+    strong{color:var(--text);font-weight:600;}
+    .callout{background:var(--bg2);border-left:3px solid var(--accent);padding:20px 24px;margin:24px 0;}
+    .callout p{font-size:14px;color:var(--text-muted);line-height:1.7;margin:0;}
+    .compare-table{width:100%;border-collapse:collapse;margin:24px 0;font-size:13px;}
+    .compare-table th{font-family:var(--mono);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-dim);padding:12px 16px;text-align:left;border-bottom:2px solid var(--border);}
+    .compare-table td{padding:14px 16px;border-bottom:1px solid var(--border);color:var(--text-muted);vertical-align:top;}
+    .compare-table tr:last-child td{border-bottom:none;}
+    .compare-table .row-label{color:var(--text);font-weight:500;}
+    .faq-item{border-bottom:1px solid var(--border);padding:24px 0;}
+    .faq-item:last-child{border-bottom:none;}
+    .faq-q{font-family:var(--serif);font-size:16px;font-weight:700;color:var(--text);margin-bottom:10px;line-height:1.35;}
+    .faq-a{font-size:14px;color:var(--text-muted);line-height:1.75;}
+    .svg-figure{margin:32px 0;text-align:center;}
+    .svg-figure img{width:100%;max-width:600px;display:block;margin:0 auto;}
+    .svg-caption{font-family:var(--mono);font-size:11px;color:var(--text-dim);margin-top:10px;text-align:center;}
+    .cta-block{background:var(--bg2);border:1px solid var(--border);border-left:3px solid var(--accent);padding:36px 40px;margin:56px 0 0;text-align:center;}
+    .cta-eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;}
+    .cta-heading{font-family:var(--serif);font-size:22px;font-weight:700;color:var(--text);margin-bottom:10px;}
+    .cta-sub{font-size:14px;color:var(--text-muted);margin-bottom:24px;line-height:1.6;}
+    .subscribe-form{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;}
+    .subscribe-form input{font-family:var(--mono);font-size:13px;background:var(--bg3);border:1px solid var(--border);color:var(--text);padding:10px 16px;width:260px;outline:none;}
+    .subscribe-form input:focus{border-color:var(--accent);}
+    .subscribe-form button{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;background:var(--accent);color:#fff;border:none;padding:10px 22px;cursor:pointer;transition:opacity 0.2s;}
+    .subscribe-form button:hover{opacity:0.85;}
+    footer{border-top:1px solid var(--border);padding:48px;max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr 1fr;gap:40px;align-items:start;}
+    .footer-brand .logo-mark{font-size:18px;}
+    .footer-brand p{font-size:13px;color:var(--text-muted);margin-top:12px;line-height:1.6;max-width:260px;}
+    .footer-links h4{font-family:var(--mono);font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-dim);margin-bottom:16px;}
+    .footer-links ul{list-style:none;}.footer-links li{margin-bottom:8px;}
+    .footer-links a{font-size:13px;color:var(--text-muted);text-decoration:none;transition:color 0.2s;}
+    .footer-links a:hover{color:var(--accent);}
+    .footer-copy{font-family:var(--mono);font-size:10px;color:var(--text-dim);grid-column:1/-1;border-top:1px solid var(--border);padding-top:24px;display:flex;justify-content:space-between;}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+    @media(max-width:1024px){nav{padding:16px 24px;}.nav-links{display:none;}.mobile-nav{display:block;}.breadcrumb,.page-header,.article{padding-left:20px;padding-right:20px;}footer{grid-template-columns:1fr;padding:32px 20px;}.footer-copy{flex-direction:column;gap:8px;}.subscribe-form input{width:100%;}}
+    @media(max-width:600px){.logo-br{display:block;}.logo-chip{width:48px;height:48px;border-radius:12px;padding:9px;}.theme-toggle{width:36px;height:36px;}}
+  </style>
+  <script>(function(){var t=localStorage.getItem('prob_theme');if(t==='dark')document.documentElement.setAttribute('data-theme','dark');})();function toggleTheme(){var html=document.documentElement;var isDark=html.getAttribute('data-theme')==='dark';var btn=document.getElementById('theme-btn');if(isDark){html.removeAttribute('data-theme');localStorage.setItem('prob_theme','light');if(btn)btn.textContent='☾';}else{html.setAttribute('data-theme','dark');localStorage.setItem('prob_theme','dark');if(btn)btn.textContent='☀';}}</script>
+</head>
+<body>
+
+<div class="nav-wrapper">
+  <nav>
+    <div class="logo">
+      <a href="index.html" style="text-decoration:none;display:flex;align-items:center;gap:10px;"><div class="logo-lockup"><span class="logo-mark">THE<br class="logo-br"> PROB</span><span class="logo-chip"><svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="width:100%;height:100%;display:block;"><g fill="#F2EFE8" fill-rule="evenodd"><path d="M 320,150 a 170,170 0 1,0 0,340 a 170,170 0 1,0 0,-340 M 320,235 a 85,85 0 1,1 0,170 a 85,85 0 1,1 0,-170 Z"/><path d="M 680,510 a 170,170 0 1,0 0,340 a 170,170 0 1,0 0,-340 M 680,595 a 85,85 0 1,1 0,170 a 85,85 0 1,1 0,-170 Z"/><path d="M 205,795 L 253,843 L 795,301 L 747,253 Z"/></g></svg></span></div></a>
+      <span class="logo-pipe">|</span>
+      <span class="logo-sub">What's the Probability?</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="business.html">Business</a></li>
+      <li><a href="culture.html">Culture</a></li>
+      <li><a href="news.html">News</a></li>
+      <li><a href="politics.html">Politics</a></li>
+      <li><a href="sports.html">Sports</a></li>
+      <li><a href="tech.html">Tech</a></li>
+      <li><a href="archive.html">Archive</a></li>
+    </ul>
+    <button class="theme-toggle" onclick="toggleTheme()" id="theme-btn" aria-label="Toggle dark mode"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="18" height="18"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
+  </nav>
+  <div class="mobile-nav">
+    <a href="business.html">Business</a>
+    <a href="culture.html">Culture</a>
+    <a href="news.html">News</a>
+    <a href="politics.html">Politics</a>
+    <a href="sports.html">Sports</a>
+    <a href="tech.html">Tech</a>
+    <a href="archive.html">Archive</a>
+  </div>
+</div>
+
+<div class="breadcrumb">
+  <a href="index.html">Home</a><span>›</span>
+  <a href="prediction-markets-101.html">Prediction Markets 101</a><span>›</span>
+  How to Read Prediction Market Odds
+</div>
+
+<div class="page-header">
+  <div class="page-eyebrow">How-To Guide</div>
+  <h1 class="page-headline">73%. Here's what that number actually means.</h1>
+  <p class="page-sub">Prediction market odds look like percentages. They're not quite that simple. Here's how to read them, what moves them, and when to trust them.</p>
+  <div class="pub-date">Published November 25, 2026</div>
+</div>
+
+<div class="article">
+
+  <div class="content-section">
+    <h2 class="section-heading">What a prediction market price actually says</h2>
+    <p class="body-text">A prediction market lets you buy and sell contracts tied to future events. The most common version is binary: a YES contract pays $1 if the event happens, $0 if it doesn't. The market price is the price at which buyers and sellers agree to trade.</p>
+    <p class="body-text">A YES contract trading at $0.73 implies roughly 73% odds. Not because someone calculated it. Because that's what the market is currently willing to transact at.</p>
+    <p class="body-text">That distinction matters. The price is not an authoritative probability handed down from above. It's the equilibrium of buyers and sellers under whatever conditions exist right now. For everything else you need to know about how these markets work, start with the <a href="prediction-markets-101.html" style="color:var(--accent);">Prediction Markets 101 guide</a>.</p>
+
+    <div class="svg-figure">
+      <img src="images/articles/01-odds-scale.svg" alt="Scale showing prediction market YES prices from 5% to 95% and their implied probabilities" loading="lazy">
+      <div class="svg-caption">Illustrative example. YES price implies probability before fees and spreads.</div>
+    </div>
+
+    <table class="compare-table">
+      <thead><tr><th>YES price</th><th>Implied probability</th><th>Gross profit if YES</th></tr></thead>
+      <tbody>
+        <tr><td class="row-label">$0.05</td><td>5%</td><td>$0.95 per contract</td></tr>
+        <tr><td class="row-label">$0.20</td><td>20%</td><td>$0.80 per contract</td></tr>
+        <tr><td class="row-label">$0.50</td><td>50%</td><td>$0.50 per contract</td></tr>
+        <tr><td class="row-label">$0.73</td><td>73%</td><td>$0.27 per contract</td></tr>
+        <tr><td class="row-label">$0.90</td><td>90%</td><td>$0.10 per contract</td></tr>
+      </tbody>
+    </table>
+    <p class="body-text">Buy YES at $0.73. If the event resolves YES, you receive $1. Profit: 27 cents per contract before fees. If it resolves NO, you lose the 73 cents. That's the whole trade.</p>
+  </div>
+
+  <div class="content-section">
+    <h2 class="section-heading">YES and NO</h2>
+    <p class="body-text">YES means the defined event occurs. NO means it doesn't. In a simple binary market, YES and NO prices add up to roughly $1. Not exactly, because fees, spreads, and order-book mechanics get in the way. But roughly.</p>
+    <p class="body-text">The exact definitions live in the contract rules, not the headline. "Will Company X acquire Company Y before December 31?" and "Will Company X announce an acquisition of Company Y before December 31?" sound similar. They are not the same contract. Read the fine print before you read the probability.</p>
+
+    <div class="svg-figure">
+      <img src="images/articles/01-contract-payout.svg" alt="Diagram showing YES and NO contract payout structure for a binary prediction market" loading="lazy">
+      <div class="svg-caption">Illustrative payout structure. Actual payouts depend on platform fees and contract rules.</div>
+    </div>
+  </div>
+
+  <div class="content-section">
+    <h2 class="section-heading">Reading price movements</h2>
+    <p class="body-text">A market moves from 42% to 57%. That's a 15-percentage-point increase. Not a 15% increase. The crowd changed its pricing. The number does not, by itself, tell you why.</p>
+    <p class="body-text">New data, a public announcement, a large trader repositioning, or a thin order book absorbing a moderate buy can all produce that move. The percentage shift is the headline. The story is what happened around it.</p>
+    <p class="body-text">A sudden 20-point move on a high-volume market usually means someone knows something. The same move on a thin market might mean someone bought 50 contracts.</p>
+
+    <div class="svg-figure">
+      <img src="images/articles/01-probability-move.svg" alt="Chart showing how a prediction market probability shifts from 42% to 57% over time" loading="lazy">
+      <div class="svg-caption">Illustrative probability move. Context determines whether a shift is signal or noise.</div>
+    </div>
+  </div>
+
+  <div class="content-section">
+    <h2 class="section-heading">Volume and liquidity: the context behind the number</h2>
+    <p class="body-text">72% in a deep, active market tells you something. 72% in a market with 3 trades and a 10-point bid-ask spread tells you almost nothing.</p>
+    <p class="body-text"><strong>Volume</strong> is the total amount traded over a period. <strong>Liquidity</strong> is how easily you can buy or sell right now without moving the price. They are related but not the same. A market can have high historical volume and no depth today.</p>
+    <p class="body-text">The bid-ask spread is the gap between what buyers will pay and what sellers will accept. A wide spread means higher trading costs. It also means the displayed midpoint might not be executable at any meaningful size. For a full breakdown on this, see the guide on <a href="prediction-market-liquidity.html" style="color:var(--accent);">prediction market liquidity</a>.</p>
+
+    <div class="callout">
+      <p><strong>Quick check before trusting a market price:</strong> Is the spread narrow? Is the market actively trading today? Did this move come with meaningful volume behind it? Are other comparable markets moving in the same direction?</p>
+    </div>
+  </div>
+
+  <div class="content-section">
+    <h2 class="section-heading">What 90% actually means</h2>
+    <p class="body-text">90% means the market is pricing the event as highly likely. It does not mean certain. It means: if you ran this exact scenario 100 times with these exact conditions, you'd expect it to resolve YES roughly 90 times.</p>
+    <p class="body-text">That's calibration. And you can't evaluate it from a single outcome. A 90% market that loses was not necessarily wrong. A 60% market that wins was not necessarily lucky. For a deeper look at whether these prices hold up over time, read the article on <a href="are-prediction-markets-accurate.html" style="color:var(--accent);">prediction market accuracy</a>.</p>
+    <p class="body-text">One data point is not evidence. A 90% isn't a guarantee. It's a price. Treat it accordingly.</p>
+  </div>
+
+  <div class="content-section">
+    <h2 class="section-heading">Frequently asked questions</h2>
+
+    <div class="faq-item">
+      <div class="faq-q">What does a 70% prediction market probability mean?</div>
+      <div class="faq-a">The YES contract is trading around $0.70. The market is pricing the event at roughly 70% odds, subject to fees and trading conditions. It's not a guarantee. It's what buyers and sellers currently agree on.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Are prediction market odds the same as betting odds?</div>
+      <div class="faq-a">Related but different. A sportsbook publishes odds that build in a margin. Prediction markets express prices as tradable contracts. The implied probabilities can look similar, but the mechanics behind them are not the same.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Can prediction market probabilities change?</div>
+      <div class="faq-a">Yes, continuously. Prices update as participants trade in response to new information, changing expectations, and market conditions. A major news event can shift a price by 20 points in minutes.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Does higher volume mean more accurate odds?</div>
+      <div class="faq-a">Not automatically. Volume improves price discovery and makes the market harder to push around with a small trade. But it doesn't guarantee the crowd is right. High-volume markets have been wrong before.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Do I have to trade to use prediction market data?</div>
+      <div class="faq-a">No. The prices are public information. Reading them doesn't require placing a position. The Prob follows these numbers so you don't have to monitor 50 exchanges yourself.</div>
+    </div>
+  </div>
+
+  <div class="cta-block">
+    <div class="cta-eyebrow">The Prob Newsletter</div>
+    <div class="cta-heading">Get the daily signal, not the noise.</div>
+    <div class="cta-sub">Prediction market moves, cross-platform spreads, and The Prob's daily take. Free, every morning.</div>
+    <form class="subscribe-form" onsubmit="submitEmail(event)">
+      <input type="email" placeholder="your@email.com" required aria-label="Email address">
+      <button type="submit">Subscribe</button>
+    </form>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-brand">
+    <div class="logo-mark" style="font-family:var(--font-sans);font-size:18px;font-weight:700;color:var(--brand);">THE PROB</div>
+    <p>Prediction market intelligence for people who'd rather know the odds than guess.</p>
+  </div>
+  <div class="footer-links">
+    <h4>Markets</h4>
+    <ul>
+      <li><a href="business.html">Business</a></li>
+      <li><a href="politics.html">Politics</a></li>
+      <li><a href="sports.html">Sports</a></li>
+      <li><a href="tech.html">Tech</a></li>
+    </ul>
+  </div>
+  <div class="footer-links">
+    <h4>Learn</h4>
+    <ul>
+      <li><a href="prediction-markets-101.html">Prediction Markets 101</a></li>
+      <li><a href="how-to-read-prediction-market-odds.html">How to Read Odds</a></li>
+      <li><a href="are-prediction-markets-accurate.html">Are They Accurate?</a></li>
+      <li><a href="portfolio.html">The Prob Portfolio</a></li>
+      <li><a href="archive.html">Newsletter Archive</a></li>
+    </ul>
+  </div>
+  <div class="footer-copy">
+    <span>© 2026 The Prob. Not financial advice.</span>
+    <span><a href="contact.html" style="color:inherit;text-decoration:none;">Contact</a></span>
+  </div>
+</footer>
+
+<script>
+  const WORKER_URL = 'https://theprob-subscribe.verifiedchriswilliams.workers.dev';
+  async function submitEmail(e) {
+    e.preventDefault();
+    const input = e.target.querySelector('input[type="email"]');
+    const btn = e.target.querySelector('button');
+    const email = input.value.trim();
+    if (!email) return;
+    btn.textContent = 'Subscribing...';
+    btn.disabled = true;
+    try {
+      await fetch(WORKER_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email }) });
+      btn.textContent = 'You\'re in.';
+      input.value = '';
+    } catch(err) {
+      btn.textContent = 'Try again';
+      btn.disabled = false;
+    }
+  }
+</script>
+</body>
+</html>

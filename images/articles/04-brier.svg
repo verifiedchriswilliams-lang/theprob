@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+<title id="title">Brier score examples</title><desc id="desc">Lower score is better; hypothetical YES outcome</desc>
+<rect width="1200" height="675" fill="#121110"/>
+<circle cx="1080" cy="95" r="180" fill="#1b1916"/>
+<text x="76" y="86" fill="#efebe3" font-family="Arial,sans-serif" font-size="30" font-weight="700">Brier score examples</text>
+<text x="76" y="126" fill="#aaa39a" font-family="Arial,sans-serif" font-size="19">Lower score is better; hypothetical YES outcome</text>
+<text x="140" y="240" fill="#efebe3" font-family="Arial,sans-serif" font-size="26" font-weight="400">80% forecast</text><text x="720" y="240" fill="#D8A85C" font-family="Arial,sans-serif" font-size="32" font-weight="700">0.04</text><text x="140" y="320" fill="#efebe3" font-family="Arial,sans-serif" font-size="26" font-weight="400">50% forecast</text><text x="720" y="320" fill="#efebe3" font-family="Arial,sans-serif" font-size="32" font-weight="400">0.25</text><text x="140" y="400" fill="#efebe3" font-family="Arial,sans-serif" font-size="26" font-weight="400">20% forecast</text><text x="720" y="400" fill="#efebe3" font-family="Arial,sans-serif" font-size="32" font-weight="400">0.64</text>
+<text x="76" y="625" fill="#8c857c" font-family="Arial,sans-serif" font-size="16">THE PROB  ·  ILLUSTRATIVE EXAMPLE</text>
+</svg>

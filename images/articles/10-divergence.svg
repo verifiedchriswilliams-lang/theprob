@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+<title id="title">When polls and markets diverge</title><desc id="desc">Hypothetical independent series</desc>
+<rect width="1200" height="675" fill="#121110"/>
+<circle cx="1080" cy="95" r="180" fill="#1b1916"/>
+<text x="76" y="86" fill="#efebe3" font-family="Arial,sans-serif" font-size="30" font-weight="700">When polls and markets diverge</text>
+<text x="76" y="126" fill="#aaa39a" font-family="Arial,sans-serif" font-size="19">Hypothetical independent series</text>
+<line x1="120" y1="500" x2="1080" y2="500" stroke="#6f675d" stroke-width="2"/><line x1="120" y1="190" x2="120" y2="500" stroke="#6f675d" stroke-width="2"/><polyline points="120,420 300,390 480,370 660,350 840,340 1080,320" fill="none" stroke="#D8A85C" stroke-width="6"/><polyline points="120,440 300,420 480,390 660,320 840,300 1080,260" fill="none" stroke="#efebe3" stroke-width="5"/><text x="830" y="185" fill="#D8A85C" font-family="Arial,sans-serif" font-size="18" font-weight="400">POLL</text><text x="830" y="220" fill="#efebe3" font-family="Arial,sans-serif" font-size="18" font-weight="400">MARKET</text>
+<text x="76" y="625" fill="#8c857c" font-family="Arial,sans-serif" font-size="16">THE PROB  ·  ILLUSTRATIVE EXAMPLE</text>
+</svg>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+<title id="title">A probability move</title><desc id="desc">Hypothetical movement from 42% to 57%</desc>
+<rect width="1200" height="675" fill="#121110"/>
+<circle cx="1080" cy="95" r="180" fill="#1b1916"/>
+<text x="76" y="86" fill="#efebe3" font-family="Arial,sans-serif" font-size="30" font-weight="700">A probability move</text>
+<text x="76" y="126" fill="#aaa39a" font-family="Arial,sans-serif" font-size="19">Hypothetical movement from 42% to 57%</text>
+<line x1="120" y1="500" x2="1080" y2="500" stroke="#6f675d" stroke-width="2"/><line x1="120" y1="200" x2="120" y2="500" stroke="#6f675d" stroke-width="2"/><polyline points="120,430 260,415 400,390 540,410 680,330 820,310 960,250 1080,220" fill="none" stroke="#D8A85C" stroke-width="7"/><text x="130" y="555" fill="#efebe3" font-family="Arial,sans-serif" font-size="24" font-weight="400">42%</text><text x="1010" y="190" fill="#D8A85C" font-family="Arial,sans-serif" font-size="28" font-weight="700">57%</text>
+<text x="76" y="625" fill="#8c857c" font-family="Arial,sans-serif" font-size="16">THE PROB  ·  ILLUSTRATIVE EXAMPLE</text>
+</svg>

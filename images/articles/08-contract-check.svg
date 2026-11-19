@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+<title id="title">Arbitrage contract checklist</title><desc id="desc">Verify all terms before comparing</desc>
+<rect width="1200" height="675" fill="#121110"/>
+<circle cx="1080" cy="95" r="180" fill="#1b1916"/>
+<text x="76" y="86" fill="#efebe3" font-family="Arial,sans-serif" font-size="30" font-weight="700">Arbitrage contract checklist</text>
+<text x="76" y="126" fill="#aaa39a" font-family="Arial,sans-serif" font-size="19">Verify all terms before comparing</text>
+<text x="110" y="250" fill="#efebe3" font-family="Arial,sans-serif" font-size="22" font-weight="400">QUESTION</text><text x="350" y="250" fill="#efebe3" font-family="Arial,sans-serif" font-size="22" font-weight="400">DEADLINE</text><text x="600" y="250" fill="#efebe3" font-family="Arial,sans-serif" font-size="22" font-weight="400">SOURCE</text><text x="850" y="250" fill="#efebe3" font-family="Arial,sans-serif" font-size="22" font-weight="400">PAYOUT</text><line x1="100" y1="310" x2="1080" y2="310" stroke="#D8A85C" stroke-width="4"/><text x="110" y="380" fill="#aaa39a" font-family="Arial,sans-serif" font-size="21" font-weight="400">Equivalent?</text><text x="350" y="380" fill="#aaa39a" font-family="Arial,sans-serif" font-size="21" font-weight="400">Equivalent?</text><text x="600" y="380" fill="#aaa39a" font-family="Arial,sans-serif" font-size="21" font-weight="400">Equivalent?</text><text x="850" y="380" fill="#aaa39a" font-family="Arial,sans-serif" font-size="21" font-weight="400">Equivalent?</text>
+<text x="76" y="625" fill="#8c857c" font-family="Arial,sans-serif" font-size="16">THE PROB  ·  ILLUSTRATIVE EXAMPLE</text>
+</svg>

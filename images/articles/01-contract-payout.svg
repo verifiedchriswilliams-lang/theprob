@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+<title id="title">How a binary contract pays</title><desc id="desc">Hypothetical 73-cent YES contract</desc>
+<rect width="1200" height="675" fill="#121110"/>
+<circle cx="1080" cy="95" r="180" fill="#1b1916"/>
+<text x="76" y="86" fill="#efebe3" font-family="Arial,sans-serif" font-size="30" font-weight="700">How a binary contract pays</text>
+<text x="76" y="126" fill="#aaa39a" font-family="Arial,sans-serif" font-size="19">Hypothetical 73-cent YES contract</text>
+<text x="110" y="230" fill="#D8A85C" font-family="Arial,sans-serif" font-size="22" font-weight="700">BUY YES</text><text x="110" y="285" fill="#efebe3" font-family="Arial,sans-serif" font-size="34" font-weight="400">$0.73 cost</text><text x="110" y="385" fill="#aaa39a" font-family="Arial,sans-serif" font-size="18" font-weight="400">EVENT HAPPENS</text><text x="110" y="435" fill="#D8A85C" font-family="Arial,sans-serif" font-size="34" font-weight="700">$1.00 payout</text><text x="650" y="385" fill="#aaa39a" font-family="Arial,sans-serif" font-size="18" font-weight="400">EVENT DOES NOT HAPPEN</text><text x="650" y="435" fill="#efebe3" font-family="Arial,sans-serif" font-size="34" font-weight="400">$0.00 payout</text><line x1="570" y1="190" x2="570" y2="500" stroke="#6f675d" stroke-width="2"/>
+<text x="76" y="625" fill="#8c857c" font-family="Arial,sans-serif" font-size="16">THE PROB  ·  ILLUSTRATIVE EXAMPLE</text>
+</svg>

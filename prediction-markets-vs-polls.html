@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 1000'%3E%3Crect width='1000' height='1000' rx='230' fill='%230077B6'/%3E%3Cg fill='%23F2EFE8' fill-rule='evenodd'%3E%3Cpath d='M 320,150 a 170,170 0 1,0 0,340 a 170,170 0 1,0 0,-340 M 320,235 a 85,85 0 1,1 0,170 a 85,85 0 1,1 0,-170 Z'/%3E%3Cpath d='M 680,510 a 170,170 0 1,0 0,340 a 170,170 0 1,0 0,-340 M 680,595 a 85,85 0 1,1 0,170 a 85,85 0 1,1 0,-170 Z'/%3E%3Cpath d='M 205,795 L 253,843 L 795,301 L 747,253 Z'/%3E%3C/g%3E%3C/svg%3E">
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prediction Markets vs. Polls: Which Is More Accurate? | The Prob</title>
+  <meta name="description" content="Polls measure stated preferences. Prediction markets measure financial commitments. They ask different questions, and they disagree in predictable ways. Here's how to use both.">
+  <link rel="canonical" href="https://theprob.ai/prediction-markets-vs-polls.html">
+  <meta property="og:type" content="article"><meta property="og:site_name" content="The Prob"><meta property="og:title" content="Prediction Markets vs. Polls | The Prob"><meta property="og:description" content="Polls measure stated preferences. Prediction markets measure financial commitments. They disagree in predictable ways."><meta property="og:url" content="https://theprob.ai/prediction-markets-vs-polls.html"><meta property="og:image" content="https://theprob.ai/theprob_og_1200x630.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content="@theprob"><meta name="twitter:title" content="Prediction Markets vs. Polls | The Prob"><meta name="twitter:description" content="They ask different questions and disagree in predictable ways."><meta name="twitter:image" content="https://theprob.ai/theprob_og_1200x630.jpg">
+  <script type="application/ld+json">[{"@context":"https://schema.org","@type":"Article","headline":"Prediction Markets vs. Polls: Which Is More Accurate?","url":"https://theprob.ai/prediction-markets-vs-polls.html","datePublished":"2026-12-15","dateModified":"2026-12-15","publisher":{"@type":"Organization","name":"The Prob","url":"https://theprob.ai","logo":{"@type":"ImageObject","url":"https://theprob.ai/favicon.svg"}},"isPartOf":{"@type":"WebSite","name":"The Prob","url":"https://theprob.ai/"}},{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://theprob.ai/"},{"@type":"ListItem","position":2,"name":"Prediction Markets 101","item":"https://theprob.ai/prediction-markets-101.html"},{"@type":"ListItem","position":3,"name":"Prediction Markets vs. Polls","item":"https://theprob.ai/prediction-markets-vs-polls.html"}]}]</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="design-tokens.css">
+  <style>:root{--bg2:var(--surface);--bg3:var(--surface-2);--border:var(--line);--border-bright:var(--line-2);--text:var(--ink);--text-muted:var(--ink-2);--text-dim:var(--ink-3);--green:var(--yes);--red:var(--no);--accent:var(--brand);--mono:var(--font-mono);--serif:var(--font-display);--sans:var(--font-sans);}*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}html{scroll-behavior:smooth;}body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:15px;line-height:1.6;overflow-x:hidden;}.nav-wrapper{position:sticky;top:0;z-index:100;background:var(--nav-bg);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);}nav{display:flex;align-items:center;justify-content:space-between;padding:20px 48px;border-bottom:1px solid var(--border);}.logo{display:flex;align-items:center;gap:10px;}.logo-chip{width:36px;height:36px;border-radius:9px;background:var(--brand);display:grid;place-items:center;padding:7px;flex-shrink:0;overflow:hidden;box-shadow:0 2px 8px rgba(var(--brand-rgb),.3)}.logo-lockup{display:flex;align-items:center;gap:6px;}.logo-br{display:none;}.logo-mark{font-family:var(--font-sans);font-size:32px;font-weight:700;color:var(--brand);letter-spacing:-0.5px;word-spacing:-6px;line-height:1;}.logo-pipe{color:var(--border-bright);font-size:20px;}.logo-sub{font-family:var(--mono);font-size:10px;color:var(--text-muted);letter-spacing:0.15em;text-transform:uppercase;}.nav-links{display:flex;align-items:center;gap:32px;list-style:none;}.nav-links a{font-family:var(--mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);text-decoration:none;transition:color 0.2s;}.nav-links a:hover{color:var(--text);}.mobile-nav{display:none;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;background:var(--bg2);border-bottom:1px solid var(--border);white-space:nowrap;}.mobile-nav::-webkit-scrollbar{display:none;}.mobile-nav a{display:inline-block;font-family:var(--mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);text-decoration:none;padding:11px 18px;border-right:1px solid var(--border);transition:color 0.2s;}.mobile-nav a:hover{color:var(--accent);}.theme-toggle{background:none;border:1px solid var(--line-2);border-radius:var(--r-pill);padding:6px 10px;font-size:18px;color:var(--ink-2);cursor:pointer;transition:border-color 0.2s,color 0.2s;line-height:1;}.theme-toggle:hover{border-color:var(--brand);color:var(--brand);}.breadcrumb{max-width:860px;margin:0 auto;padding:20px 48px 0;font-family:var(--mono);font-size:11px;color:var(--text-dim);}.breadcrumb a{color:var(--text-dim);text-decoration:none;}.breadcrumb a:hover{color:var(--accent);}.breadcrumb span{margin:0 6px;}.page-header{max-width:860px;margin:0 auto;padding:32px 48px 48px;border-bottom:1px solid var(--border);animation:fadeUp 0.5s ease both;}.page-eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;display:flex;align-items:center;gap:10px;}.page-eyebrow::before{content:'';display:block;width:24px;height:1px;background:var(--accent);}.page-headline{font-family:var(--serif);font-size:clamp(28px,3vw,46px);font-weight:700;line-height:1.12;color:var(--text);margin-bottom:18px;}.page-sub{font-size:16px;color:var(--text-muted);line-height:1.75;max-width:640px;margin-bottom:16px;}.pub-date{font-family:var(--mono);font-size:11px;color:var(--text-dim);letter-spacing:0.08em;}.article{max-width:860px;margin:0 auto;padding:0 48px 64px;}.content-section{padding:48px 0 0;border-bottom:1px solid var(--border);}.content-section:last-child{border-bottom:none;}.section-heading{font-family:var(--serif);font-size:clamp(20px,2vw,26px);font-weight:700;line-height:1.2;color:var(--text);margin-bottom:16px;}.body-text{font-size:15px;color:var(--text-muted);line-height:1.8;margin-bottom:16px;}.body-text:last-child{margin-bottom:0;}strong{color:var(--text);font-weight:600;}.callout{background:var(--bg2);border-left:3px solid var(--accent);padding:20px 24px;margin:24px 0;}.callout p{font-size:14px;color:var(--text-muted);line-height:1.7;margin:0;}.compare-table{width:100%;border-collapse:collapse;margin:24px 0;font-size:13px;}.compare-table th{font-family:var(--mono);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-dim);padding:12px 16px;text-align:left;border-bottom:2px solid var(--border);}.compare-table td{padding:14px 16px;border-bottom:1px solid var(--border);color:var(--text-muted);vertical-align:top;}.compare-table tr:last-child td{border-bottom:none;}.compare-table .row-label{color:var(--text);font-weight:500;}.faq-item{border-bottom:1px solid var(--border);padding:24px 0;}.faq-item:last-child{border-bottom:none;}.faq-q{font-family:var(--serif);font-size:16px;font-weight:700;color:var(--text);margin-bottom:10px;line-height:1.35;}.faq-a{font-size:14px;color:var(--text-muted);line-height:1.75;}.svg-figure{margin:32px 0;text-align:center;}.svg-figure img{width:100%;max-width:600px;display:block;margin:0 auto;}.svg-caption{font-family:var(--mono);font-size:11px;color:var(--text-dim);margin-top:10px;text-align:center;}.cta-block{background:var(--bg2);border:1px solid var(--border);border-left:3px solid var(--accent);padding:36px 40px;margin:56px 0 0;text-align:center;}.cta-eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;}.cta-heading{font-family:var(--serif);font-size:22px;font-weight:700;color:var(--text);margin-bottom:10px;}.cta-sub{font-size:14px;color:var(--text-muted);margin-bottom:24px;line-height:1.6;}.subscribe-form{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;}.subscribe-form input{font-family:var(--mono);font-size:13px;background:var(--bg3);border:1px solid var(--border);color:var(--text);padding:10px 16px;width:260px;outline:none;}.subscribe-form input:focus{border-color:var(--accent);}.subscribe-form button{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;background:var(--accent);color:#fff;border:none;padding:10px 22px;cursor:pointer;transition:opacity 0.2s;}.subscribe-form button:hover{opacity:0.85;}footer{border-top:1px solid var(--border);padding:48px;max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr 1fr;gap:40px;align-items:start;}.footer-brand p{font-size:13px;color:var(--text-muted);margin-top:12px;line-height:1.6;max-width:260px;}.footer-links h4{font-family:var(--mono);font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-dim);margin-bottom:16px;}.footer-links ul{list-style:none;}.footer-links li{margin-bottom:8px;}.footer-links a{font-size:13px;color:var(--text-muted);text-decoration:none;transition:color 0.2s;}.footer-links a:hover{color:var(--accent);}.footer-copy{font-family:var(--mono);font-size:10px;color:var(--text-dim);grid-column:1/-1;border-top:1px solid var(--border);padding-top:24px;display:flex;justify-content:space-between;}@keyframes fadeUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}@media(max-width:1024px){nav{padding:16px 24px;}.nav-links{display:none;}.mobile-nav{display:block;}.breadcrumb,.page-header,.article{padding-left:20px;padding-right:20px;}footer{grid-template-columns:1fr;padding:32px 20px;}.footer-copy{flex-direction:column;gap:8px;}.subscribe-form input{width:100%;}}@media(max-width:600px){.logo-br{display:block;}.logo-chip{width:48px;height:48px;border-radius:12px;padding:9px;}.theme-toggle{width:36px;height:36px;}}</style>
+  <script>(function(){var t=localStorage.getItem('prob_theme');if(t==='dark')document.documentElement.setAttribute('data-theme','dark');})();function toggleTheme(){var html=document.documentElement;var isDark=html.getAttribute('data-theme')==='dark';var btn=document.getElementById('theme-btn');if(isDark){html.removeAttribute('data-theme');localStorage.setItem('prob_theme','light');if(btn)btn.textContent='☾';}else{html.setAttribute('data-theme','dark');localStorage.setItem('prob_theme','dark');if(btn)btn.textContent='☀';}}</script>
+</head>
+<body>
+<div class="nav-wrapper">
+  <nav>
+    <div class="logo"><a href="index.html" style="text-decoration:none;display:flex;align-items:center;gap:10px;"><div class="logo-lockup"><span class="logo-mark">THE<br class="logo-br"> PROB</span><span class="logo-chip"><svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="width:100%;height:100%;display:block;"><g fill="#F2EFE8" fill-rule="evenodd"><path d="M 320,150 a 170,170 0 1,0 0,340 a 170,170 0 1,0 0,-340 M 320,235 a 85,85 0 1,1 0,170 a 85,85 0 1,1 0,-170 Z"/><path d="M 680,510 a 170,170 0 1,0 0,340 a 170,170 0 1,0 0,-340 M 680,595 a 85,85 0 1,1 0,170 a 85,85 0 1,1 0,-170 Z"/><path d="M 205,795 L 253,843 L 795,301 L 747,253 Z"/></g></svg></span></div></a><span class="logo-pipe">|</span><span class="logo-sub">What's the Probability?</span></div>
+    <ul class="nav-links"><li><a href="business.html">Business</a></li><li><a href="culture.html">Culture</a></li><li><a href="news.html">News</a></li><li><a href="politics.html">Politics</a></li><li><a href="sports.html">Sports</a></li><li><a href="tech.html">Tech</a></li><li><a href="archive.html">Archive</a></li></ul>
+    <button class="theme-toggle" onclick="toggleTheme()" id="theme-btn" aria-label="Toggle dark mode"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="18" height="18"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
+  </nav>
+  <div class="mobile-nav"><a href="business.html">Business</a><a href="culture.html">Culture</a><a href="news.html">News</a><a href="politics.html">Politics</a><a href="sports.html">Sports</a><a href="tech.html">Tech</a><a href="archive.html">Archive</a></div>
+</div>
+
+<div class="breadcrumb"><a href="index.html">Home</a><span>›</span><a href="prediction-markets-101.html">Prediction Markets 101</a><span>›</span>Prediction Markets vs. Polls</div>
+
+<div class="page-header">
+  <div class="page-eyebrow">Forecasting Methods</div>
+  <h1 class="page-headline">A poll asks what you think. A market asks what you're willing to bet. They're not the same question.</h1>
+  <p class="page-sub">Polls and prediction markets both try to anticipate election outcomes. They measure different things. When they diverge, that's worth paying attention to.</p>
+  <div class="pub-date">Published December 15, 2026</div>
+</div>
+
+<div class="article">
+
+  <div class="content-section">
+    <h2 class="section-heading">What each method actually measures</h2>
+    <p class="body-text">A poll asks respondents what they think will happen, or how they plan to vote. It measures stated intentions and preferences at a moment in time. The respondent has no financial stake in being right.</p>
+    <p class="body-text">A prediction market asks participants to put money behind their belief. The price reflects the aggregate financial commitment of people who each face real gain or loss based on accuracy. The incentive to be right is explicit.</p>
+    <p class="body-text">That difference in incentive structure doesn't make one method universally better. It makes them different tools, each with specific failure modes. For background on how prediction markets work, see <a href="are-prediction-markets-accurate.html" style="color:var(--accent);">are prediction markets accurate</a>.</p>
+  </div>
+
+  <div class="content-section">
+    <h2 class="section-heading">What polls get right</h2>
+    <p class="body-text">Polls directly measure voter preferences. A well-designed poll with appropriate sampling, weighting, and question design can accurately reflect what a population intends to do. When polls systematically miss, it's usually a methodological failure (bad sampling frame, nonresponse bias, herding by pollsters) rather than an inherent weakness of the measurement approach.</p>
+    <p class="body-text">Polls also capture information that markets can't directly access: how respondents feel about candidates, their certainty about voting, their demographic context. That granular data is useful for modeling even when the topline number misses.</p>
+
+    <div class="svg-figure">
+      <img src="images/articles/10-poll-vs-market.svg" alt="Diagram comparing the information sources and incentive structures of polls versus prediction markets" loading="lazy">
+      <div class="svg-caption">Illustrative. Polls measure stated preferences; prediction markets aggregate financially-backed beliefs.</div>
+    </div>
+  </div>
+
+  <div class="content-section">
+    <h2 class="section-heading">What markets get right</h2>
+    <p class="body-text">Markets can aggregate information beyond what polls capture. A trader with strong priors about electoral mechanics, turnout modeling, or late-breaking information can express that view through price. If a large body of informed traders consistently disagree with polls, that divergence is a signal.</p>
+    <p class="body-text">Markets also update continuously. A poll from 3 weeks before an election reflects opinion at that moment. A market price from the morning of election day reflects the most current information set available to its participants.</p>
+
+    <div class="svg-figure">
+      <img src="images/articles/10-divergence.svg" alt="Chart showing hypothetical divergence between poll averages and prediction market prices over time leading to an election" loading="lazy">
+      <div class="svg-caption">Illustrative. When polls and markets diverge over time, the direction of that divergence is a signal worth examining.</div>
+    </div>
+  </div>
+
+  <div class="content-section">
+    <h2 class="section-heading">When they disagree</h2>
+    <p class="body-text">The interesting cases are when polls and markets give different signals. In recent US elections, prediction markets have often priced candidates at higher probabilities than poll averages implied. Some of that reflects genuine additional information. Some may reflect participant biases in market populations (wealthier, more politically engaged, potentially skewed in other ways).</p>
+    <p class="body-text">Neither source wins every time. Using both together, and paying attention to what specifically is driving the divergence, is more useful than committing to one method.</p>
+
+    <div class="svg-figure">
+      <img src="images/articles/10-combined-forecast.svg" alt="Diagram showing how combining poll data with prediction market prices can improve election forecasting" loading="lazy">
+      <div class="svg-caption">Illustrative. A combined signal using polls and market prices typically carries more information than either alone.</div>
+    </div>
+  </div>
+
+  <div class="content-section">
+    <h2 class="section-heading">The practical read</h2>
+    <p class="body-text">When a prediction market and a poll average agree, that's a relatively robust consensus. When they diverge by more than a few points, ask why. Is the market reflecting genuinely different information, or is it pricing in biases and herding among a non-representative participant pool? Is the poll aggregating a large, recent, well-sampled dataset, or a few outlier surveys?</p>
+    <p class="body-text">The Prob tracks politics markets live. For current numbers, see <a href="politics.html" style="color:var(--accent);">The Prob's politics section</a>.</p>
+  </div>
+
+  <div class="content-section">
+    <h2 class="section-heading">Frequently asked questions</h2>
+    <div class="faq-item">
+      <div class="faq-q">Are prediction markets more accurate than polls?</div>
+      <div class="faq-a">In some settings, yes. In others, no. Neither wins universally. Markets tend to have an edge when incorporating late-breaking information or non-public signals. Polls have an edge when measuring voter intent directly in well-sampled surveys.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Why do prediction markets often show higher odds than polls suggest?</div>
+      <div class="faq-a">Multiple reasons. Market participants may genuinely have better information. Market populations may also be systematically skewed in ways that bias their probability assessments. Both effects can operate simultaneously.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What does it mean when polls and markets diverge significantly?</div>
+      <div class="faq-a">It means the two measurement approaches are reflecting different information sets. The right response is to investigate the divergence, not to automatically trust one over the other.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Can I use both polls and markets to forecast better?</div>
+      <div class="faq-a">Yes. Combining information sources reduces reliance on any single method's failure modes. FiveThirtyEight's model, for instance, historically incorporated prediction market signals alongside polling averages.</div>
+    </div>
+  </div>
+
+  <div class="cta-block">
+    <div class="cta-eyebrow">The Prob Newsletter</div>
+    <div class="cta-heading">Market odds. Poll averages. The gap between them.</div>
+    <div class="cta-sub">The Prob covers both and explains what the divergence means. Free, every morning.</div>
+    <form class="subscribe-form" onsubmit="submitEmail(event)"><input type="email" placeholder="your@email.com" required aria-label="Email address"><button type="submit">Subscribe</button></form>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-brand"><div style="font-family:var(--font-sans);font-size:18px;font-weight:700;color:var(--brand);">THE PROB</div><p>Prediction market intelligence for people who'd rather know the odds than guess.</p></div>
+  <div class="footer-links"><h4>Markets</h4><ul><li><a href="politics.html">Politics</a></li><li><a href="business.html">Business</a></li><li><a href="sports.html">Sports</a></li><li><a href="tech.html">Tech</a></li></ul></div>
+  <div class="footer-links"><h4>Learn</h4><ul><li><a href="prediction-markets-101.html">Prediction Markets 101</a></li><li><a href="are-prediction-markets-accurate.html">Accuracy</a></li><li><a href="how-to-read-prediction-market-odds.html">How to Read Odds</a></li><li><a href="archive.html">Newsletter Archive</a></li></ul></div>
+  <div class="footer-copy"><span>© 2026 The Prob. Not financial advice.</span><span><a href="contact.html" style="color:inherit;text-decoration:none;">Contact</a></span></div>
+</footer>
+<script>const WORKER_URL='https://theprob-subscribe.verifiedchriswilliams.workers.dev';async function submitEmail(e){e.preventDefault();const input=e.target.querySelector('input[type="email"]');const btn=e.target.querySelector('button');const email=input.value.trim();if(!email)return;btn.textContent='Subscribing...';btn.disabled=true;try{await fetch(WORKER_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email})});btn.textContent="You're in.";input.value='';}catch(err){btn.textContent='Try again';btn.disabled=false;}}</script>
+</body>
+</html>

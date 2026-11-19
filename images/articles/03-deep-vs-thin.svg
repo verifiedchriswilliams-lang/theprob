@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+<title id="title">Deep market vs. thin market</title><desc id="desc">Conceptual order-book depth comparison</desc>
+<rect width="1200" height="675" fill="#121110"/>
+<circle cx="1080" cy="95" r="180" fill="#1b1916"/>
+<text x="76" y="86" fill="#efebe3" font-family="Arial,sans-serif" font-size="30" font-weight="700">Deep market vs. thin market</text>
+<text x="76" y="126" fill="#aaa39a" font-family="Arial,sans-serif" font-size="19">Conceptual order-book depth comparison</text>
+<text x="120" y="230" fill="#D8A85C" font-family="Arial,sans-serif" font-size="24" font-weight="700">DEEP MARKET</text><rect x="120" y="270" width="420" height="24" fill="#D8A85C" opacity="0.9"/><rect x="120" y="312" width="360" height="24" fill="#D8A85C" opacity="0.75"/><rect x="120" y="354" width="300" height="24" fill="#D8A85C" opacity="0.6000000000000001"/><rect x="120" y="396" width="250" height="24" fill="#D8A85C" opacity="0.45000000000000007"/><text x="690" y="230" fill="#D8A85C" font-family="Arial,sans-serif" font-size="24" font-weight="700">THIN MARKET</text><rect x="690" y="270" width="120" height="24" fill="#D8A85C" opacity="0.9"/><rect x="690" y="312" width="75" height="24" fill="#D8A85C" opacity="0.75"/><rect x="690" y="354" width="42" height="24" fill="#D8A85C" opacity="0.6000000000000001"/><rect x="690" y="396" width="20" height="24" fill="#D8A85C" opacity="0.45000000000000007"/>
+<text x="76" y="625" fill="#8c857c" font-family="Arial,sans-serif" font-size="16">THE PROB  ·  ILLUSTRATIVE EXAMPLE</text>
+</svg>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+<title id="title">Anatomy of an order book</title><desc id="desc">Illustrative YES bids and asks</desc>
+<rect width="1200" height="675" fill="#121110"/>
+<circle cx="1080" cy="95" r="180" fill="#1b1916"/>
+<text x="76" y="86" fill="#efebe3" font-family="Arial,sans-serif" font-size="30" font-weight="700">Anatomy of an order book</text>
+<text x="76" y="126" fill="#aaa39a" font-family="Arial,sans-serif" font-size="19">Illustrative YES bids and asks</text>
+<text x="150" y="205" fill="#D8A85C" font-family="Arial,sans-serif" font-size="24" font-weight="700">BIDS</text><text x="720" y="205" fill="#D8A85C" font-family="Arial,sans-serif" font-size="24" font-weight="700">ASKS</text><text x="150" y="275" fill="#efebe3" font-family="Arial,sans-serif" font-size="24" font-weight="400">$0.48  ·  1,000</text><text x="150" y="335" fill="#efebe3" font-family="Arial,sans-serif" font-size="24" font-weight="400">$0.47  ·  2,500</text><text x="150" y="395" fill="#efebe3" font-family="Arial,sans-serif" font-size="24" font-weight="400">$0.46  ·  5,000</text><text x="720" y="275" fill="#efebe3" font-family="Arial,sans-serif" font-size="24" font-weight="400">$0.52  ·  900</text><text x="720" y="335" fill="#efebe3" font-family="Arial,sans-serif" font-size="24" font-weight="400">$0.53  ·  2,000</text><text x="720" y="395" fill="#efebe3" font-family="Arial,sans-serif" font-size="24" font-weight="400">$0.54  ·  4,000</text><line x1="600" y1="220" x2="600" y2="460" stroke="#D8A85C" stroke-width="4"/><text x="480" y="500" fill="#D8A85C" font-family="Arial,sans-serif" font-size="22" font-weight="700">4¢ SPREAD</text>
+<text x="76" y="625" fill="#8c857c" font-family="Arial,sans-serif" font-size="16">THE PROB  ·  ILLUSTRATIVE EXAMPLE</text>
+</svg>

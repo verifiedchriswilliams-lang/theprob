@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+<title id="title">Forecast calibration</title><desc id="desc">Illustrative calibration relationship</desc>
+<rect width="1200" height="675" fill="#121110"/>
+<circle cx="1080" cy="95" r="180" fill="#1b1916"/>
+<text x="76" y="86" fill="#efebe3" font-family="Arial,sans-serif" font-size="30" font-weight="700">Forecast calibration</text>
+<text x="76" y="126" fill="#aaa39a" font-family="Arial,sans-serif" font-size="19">Illustrative calibration relationship</text>
+<line x1="150" y1="500" x2="1050" y2="500" stroke="#6f675d" stroke-width="2"/><line x1="150" y1="180" x2="150" y2="500" stroke="#6f675d" stroke-width="2"/><line x1="150" y1="500" x2="1000" y2="200" stroke="#D8A85C" stroke-width="6"/><text x="155" y="545" fill="#aaa39a" font-family="Arial,sans-serif" font-size="18" font-weight="400">LOWER FORECAST</text><text x="850" y="545" fill="#aaa39a" font-family="Arial,sans-serif" font-size="18" font-weight="400">HIGHER FORECAST</text><text x="430" y="240" fill="#D8A85C" font-family="Arial,sans-serif" font-size="22" font-weight="700">PERFECT CALIBRATION</text>
+<text x="76" y="625" fill="#8c857c" font-family="Arial,sans-serif" font-size="16">THE PROB  ·  ILLUSTRATIVE EXAMPLE</text>
+</svg>
