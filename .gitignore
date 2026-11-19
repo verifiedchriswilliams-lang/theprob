@@ -1,3 +1,5 @@
 kalshi_trading_key.pem
 .claude/
 scripts/__pycache__/
+newsletter/
+workers/subscribe/.wrangler/
