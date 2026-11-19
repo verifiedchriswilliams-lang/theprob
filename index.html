@@ -1221,7 +1221,7 @@
         </p>
         <div class="signup-form" id="signup">
           <input type="email" id="hero-email" placeholder="your@email.com" />
-          <button onclick="submitToBeehiiv('hero-email', 'hero-btn', 'hero-msg')" id="hero-btn">Send It Daily</button>
+          <button onclick="submitEmail('hero-email', 'hero-btn', 'hero-msg')" id="hero-btn">Send It Daily</button>
         </div>
         <p class="hero-trust" id="hero-msg">Free &nbsp;·&nbsp; <span>No spam, ever</span> &nbsp;·&nbsp; Unsubscribe anytime</p>
       </div>
@@ -1359,7 +1359,7 @@
         <p>Join readers who'd rather know the odds than guess.</p>
         <div class="brief-form">
           <input type="email" id="brief-email" placeholder="your@email.com" />
-          <button onclick="submitToBeehiiv('brief-email', 'brief-btn', 'brief-msg')" id="brief-btn">Get the Brief</button>
+          <button onclick="submitEmail('brief-email', 'brief-btn', 'brief-msg')" id="brief-btn">Get the Brief</button>
         </div>
         <p style="font-family:var(--font-mono);font-size:10px;color:var(--ink-3);margin-top:8px;" id="brief-msg"></p>
       </div>
@@ -1491,14 +1491,12 @@
   </footer>
 
 
-<script async src="https://subscribe-forms.beehiiv.com/embed.js"></script>
-
 <script>
 // ── RESEND SIGNUP ─────────────────────────────────────────────────────────────
 
 const WORKER_URL = 'https://theprob-subscribe.verifiedchriswilliams.workers.dev';
 
-async function submitToBeehiiv(emailId, btnId, msgId) {
+async function submitEmail(emailId, btnId, msgId) {
   const emailEl = document.getElementById(emailId);
   const btnEl   = document.getElementById(btnId);
   const msgEl   = document.getElementById(msgId);
