@@ -688,28 +688,6 @@
     });
   }
 
-  function startCountdown() {
-    const countdownEl = document.getElementById('exp2-countdown');
-    const liveEl      = document.getElementById('exp2-live');
-    const displayEl   = document.getElementById('countdown-display');
-    if (!countdownEl || !liveEl || !displayEl) return;
-
-    function tick() {
-      const now  = Date.now();
-      const diff = EXP2_LAUNCH.getTime() - now;
-      if (diff <= 0) {
-        countdownEl.style.display = 'none';
-        liveEl.style.display = 'block';
-        return;
-      }
-      const days  = Math.floor(diff / 86400000);
-      const hours = Math.floor((diff % 86400000) / 3600000);
-      const mins  = Math.floor((diff % 3600000) / 60000);
-      displayEl.textContent = days + 'd ' + hours + 'h ' + mins + 'm';
-    }
-    tick();
-    setInterval(tick, 30000);
-  }
 
   // ── Poll (localStorage) ───────────────────────────────────────────────────
   function initPoll() {
@@ -820,7 +798,6 @@
   });
 
   initPoll();
-  startCountdown();
   loadPortfolio();
 </script>
 

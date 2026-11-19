@@ -9250,7 +9250,9 @@
           "exit_date": "2026-06-09",
           "pnl": 0.0
         }
-      ]
+      ],
+      "end_date": "2026-06-09",
+      "experiment": 1
     },
     "b": {
       "name": "The Contrarian",
@@ -10723,7 +10725,9 @@
           "exit_date": "2026-06-09",
           "pnl": 0.0
         }
-      ]
+      ],
+      "end_date": "2026-06-09",
+      "experiment": 1
     },
     "c": {
       "name": "The Arb",
@@ -10846,7 +10850,9 @@
           "exit_date": "2026-06-09",
           "pnl": 0.0
         }
-      ]
+      ],
+      "end_date": "2026-06-09",
+      "experiment": 1
     },
     "a2": {
       "name": "The Crowd (Control)",

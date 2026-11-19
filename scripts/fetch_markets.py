@@ -2624,6 +2624,115 @@ def pick_trade_c(spread_markets: list[dict], all_markets: list[dict],
     return None, "NO_PLAY"
 
 
+def pick_trade_exp3_b(markets: list[dict], exclude_slugs: set | None = None) -> dict | None:
+    """
+    Experiment 3 Model B — The Contrarian.
+    Fade consensus: YES when crowd says NO (prob <= 35%), NO when crowd says YES (prob >= 65%).
+    Thesis: the crowd overcorrects. Bet against high conviction.
+    """
+    today   = datetime.now(timezone.utc).date()
+    cutoff  = today + timedelta(days=TRADE_MAX_DAYS)
+    exclude = exclude_slugs or set()
+
+    candidates = []
+    for m in markets:
+        end_raw = m.get("end_date_raw")
+        if not end_raw:
+            continue
+        try:
+            end_date = datetime.fromisoformat(str(end_raw).replace("Z", "+00:00")).date()
+        except (ValueError, AttributeError):
+            continue
+        if end_date <= today or end_date > cutoff:
+            continue
+
+        prob = m.get("prob", 50)
+        if not (prob <= 35 or prob >= 65):
+            continue
+
+        if is_effectively_resolved(m) or is_junk_market(m) or is_range_bucket_market(m):
+            continue
+        if (m.get("slug") or m.get("url", "")) in exclude:
+            continue
+        if (is_sports_market(m)
+                and m.get("volume", 0) < HERO_SPORTS_MIN_VOLUME
+                and m.get("volume_24h", 0) < HERO_SPORTS_MIN_VOLUME_24H):
+            continue
+
+        candidates.append(m)
+
+    if not candidates:
+        return None
+
+    winner = max(candidates, key=lambda m: m.get("volume", 0))
+    days_left = (datetime.fromisoformat(
+        str(winner.get("end_date_raw", "")).replace("Z", "+00:00")
+    ).date() - today).days
+    tp = winner['prob']
+    direction = "YES" if tp <= 35 else "NO"
+    print(f"  [exp3_b] Trade pick: '{winner['question'][:55]}' "
+          f"prob={tp}% | resolves in {days_left}d | direction={direction} (fade)")
+    return winner
+
+
+def pick_trade_exp3_c(markets: list[dict], exclude_slugs: set | None = None) -> dict | None:
+    """
+    Experiment 3 Model C — The Sharp Crowd.
+    Follow consensus (65/35 gate) but only on high-volume markets (volume > 50K).
+    Thesis: more money means smarter signals. Only trust markets the crowd has actually read.
+    """
+    today   = datetime.now(timezone.utc).date()
+    cutoff  = today + timedelta(days=TRADE_MAX_DAYS)
+    exclude = exclude_slugs or set()
+    MIN_VOLUME = 50_000
+
+    candidates = []
+    for m in markets:
+        end_raw = m.get("end_date_raw")
+        if not end_raw:
+            continue
+        try:
+            end_date = datetime.fromisoformat(str(end_raw).replace("Z", "+00:00")).date()
+        except (ValueError, AttributeError):
+            continue
+        if end_date <= today or end_date > cutoff:
+            continue
+
+        prob = m.get("prob", 50)
+        if not (prob >= 65 or prob <= 35):
+            continue
+
+        if m.get("volume", 0) < MIN_VOLUME:
+            continue
+
+        if is_effectively_resolved(m) or is_junk_market(m) or is_range_bucket_market(m):
+            continue
+        if (m.get("slug") or m.get("url", "")) in exclude:
+            continue
+
+        candidates.append(m)
+
+    if not candidates:
+        return None
+
+    def trade_score(m: dict) -> float:
+        prob       = m.get("prob", 50)
+        conviction = abs(prob - 50) / 50
+        activity   = math.log10(m.get("volume_24h", 1) + 1)
+        movement   = abs(m.get("change_pts", 0)) * 0.5
+        return conviction * 3 + activity + movement
+
+    winner = max(candidates, key=trade_score)
+    days_left = (datetime.fromisoformat(
+        str(winner.get("end_date_raw", "")).replace("Z", "+00:00")
+    ).date() - today).days
+    tp = winner['prob']
+    direction = "YES" if tp >= 65 else "NO"
+    print(f"  [exp3_c] Trade pick: '{winner['question'][:55]}' "
+          f"prob={tp}% vol={winner.get('volume',0):,} | resolves in {days_left}d | direction={direction}")
+    return winner
+
+
 def pick_trade_d(markets: list[dict], exclude_slugs: set | None = None) -> dict | None:
     """
     Model D — The Sharp Crowd.
@@ -3364,6 +3473,37 @@ def main():
         trade_direction_e = "NO_PLAY"
         print("  [E] NO_PLAY — no qualifying momentum market today")
 
+    # ── Pick trades for Experiment 3 variants (exp3_a, exp3_b, exp3_c) ───────
+    # exp3_a: same as Model A (follow consensus 65/35)
+    trade_market_exp3_a = pick_trade(all_markets, exclude_slugs=excl)
+    if trade_market_exp3_a:
+        tp = trade_market_exp3_a.get("prob", 50)
+        trade_direction_exp3_a = "YES" if tp >= 65 else "NO"
+        print(f"  [exp3_a] direction: {trade_direction_exp3_a} (prob {tp}%)")
+    else:
+        trade_direction_exp3_a = "NO_PLAY"
+        print("  [exp3_a] NO_PLAY — no qualifying market today")
+
+    # exp3_b: fade consensus (YES when prob <= 35%, NO when prob >= 65%)
+    trade_market_exp3_b = pick_trade_exp3_b(all_markets, exclude_slugs=excl)
+    if trade_market_exp3_b:
+        tp = trade_market_exp3_b.get("prob", 50)
+        trade_direction_exp3_b = "YES" if tp <= 35 else "NO"
+        print(f"  [exp3_b] direction: {trade_direction_exp3_b} (prob {tp}%)")
+    else:
+        trade_direction_exp3_b = "NO_PLAY"
+        print("  [exp3_b] NO_PLAY — no qualifying fade market today")
+
+    # exp3_c: follow consensus only on high-volume markets (volume > 50K)
+    trade_market_exp3_c = pick_trade_exp3_c(all_markets, exclude_slugs=excl)
+    if trade_market_exp3_c:
+        tp = trade_market_exp3_c.get("prob", 50)
+        trade_direction_exp3_c = "YES" if tp >= 65 else "NO"
+        print(f"  [exp3_c] direction: {trade_direction_exp3_c} (prob {tp}%)")
+    else:
+        trade_direction_exp3_c = "NO_PLAY"
+        print("  [exp3_c] NO_PLAY — no qualifying high-volume market today")
+
     # ── Update portfolio (close resolved, open new trades) ────────────────────
     print("\nUpdating Portfolio...")
     portfolio = load_portfolio()
@@ -3374,6 +3514,9 @@ def main():
     EXPERIMENT_2_END   = date(2026, 10, 31)
     # Grace window: allow open trades to resolve up to 14 days after experiment ends
     EXPERIMENT_2_GRACE = EXPERIMENT_2_END + timedelta(days=14)
+    EXPERIMENT_3_START = date(2026, 12, 1)
+    EXPERIMENT_3_END   = date(2026, 12, 31)
+    EXPERIMENT_3_GRACE = EXPERIMENT_3_END + timedelta(days=14)
 
     # Build market probability lookup once, shared across all variants
     market_lookup: dict[str, float] = {}
@@ -3422,10 +3565,38 @@ def main():
     else:
         print("  Experiment 2 grace window closed. All variants frozen.")
 
+    # Experiment 3 (exp3_a/b/c) — active Dec 1–31; grace window through Jan 14 2027
+    if EXPERIMENT_3_START <= today_date <= EXPERIMENT_3_GRACE:
+        allow_new = today_date <= EXPERIMENT_3_END
+        portfolio["variants"]["exp3_a"] = update_portfolio_variant(
+            portfolio["variants"]["exp3_a"],
+            trade_market_exp3_a if allow_new else None,
+            trade_direction_exp3_a if allow_new else "NO_PLAY",
+            market_lookup, today_str, "exp3_a")
+        portfolio["variants"]["exp3_b"] = update_portfolio_variant(
+            portfolio["variants"]["exp3_b"],
+            trade_market_exp3_b if allow_new else None,
+            trade_direction_exp3_b if allow_new else "NO_PLAY",
+            market_lookup, today_str, "exp3_b")
+        portfolio["variants"]["exp3_c"] = update_portfolio_variant(
+            portfolio["variants"]["exp3_c"],
+            trade_market_exp3_c if allow_new else None,
+            trade_direction_exp3_c if allow_new else "NO_PLAY",
+            market_lookup, today_str, "exp3_c")
+        if not allow_new:
+            print("  Experiment 3: Dec 31 passed — no new trades. Closing open positions only.")
+        else:
+            print("  Experiment 3 variants updated.")
+    elif today_date < EXPERIMENT_3_START:
+        print(f"  Experiment 3 not started yet. Launches {EXPERIMENT_3_START}.")
+    else:
+        print("  Experiment 3 grace window closed. All variants frozen.")
+
     save_portfolio(portfolio)
 
     for k, label in [("a", "A-Crowd"), ("b", "B-Contrarian"), ("c", "C-Arb"),
-                     ("a2", "A2-Control"), ("d", "D-Sharp"), ("e", "E-Momentum")]:
+                     ("a2", "A2-Control"), ("d", "D-Sharp"), ("e", "E-Momentum"),
+                     ("exp3_a", "3A-Crowd"), ("exp3_b", "3B-Contrarian"), ("exp3_c", "3C-SharpCrowd")]:
         if k not in portfolio.get("variants", {}):
             continue
         v = portfolio["variants"][k]

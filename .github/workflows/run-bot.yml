@@ -1,9 +1,9 @@
 name: Run Trading Bot
 
 on:
-  # Schedule disabled until Experiment 2 launches Dec 1, 2026.
+  # Live trading bot disabled (paper portfolio only — no real trades).
   # Kalshi elections API (403 Forbidden) must be resolved before re-enabling.
-  # Uncomment the lines below on Dec 1 after confirming API key scope:
+  # Uncomment the lines below if/when live trading is authorized:
   # schedule:
   #   - cron: '5 * * * *'
   workflow_dispatch:

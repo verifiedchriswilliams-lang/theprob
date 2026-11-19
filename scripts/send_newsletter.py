@@ -684,60 +684,6 @@ def build_html(markets, news, subject, with_footer=True):
         '  </td></tr>'
     )
 
-    # ── TODAY'S TRADE ──
-    trade_section = ""
-    if trade:
-        t_prob = trade.get("prob", 50)
-        t_dir  = "YES" if t_prob >= 65 else "NO"
-        t_q    = trade.get("question", "")
-        t_end  = trade.get("end_date", "")
-        t_url  = trade.get("url", SITE_URL)
-        t_src  = trade.get("source", "")
-        t_chg  = trade.get("change_pts", 0)
-        t_col  = color_prob(t_prob)
-        d_col  = "#059669" if t_dir == "YES" else "#E11D48"
-        cc     = change_color(t_chg)
-        ca     = arrow(t_chg)
-        trade_eyebrow = _eyebrow("Today's Trade")
-        trade_section = (
-            '  <tr><td style="padding:20px 24px;background:#F8F9FA;border-bottom:1px solid rgba(11,14,20,.08);">\n'
-            '    ' + trade_eyebrow + '\n'
-            '    <div style="background:#FFFFFF;border:1px solid #E8ECF0;border-top:3px solid #0077B6;'
-            'border-radius:0 0 8px 8px;padding:16px 20px;">\n'
-            "      <div style=\"font-family:'Courier New',monospace;font-size:9px;color:#718096;"
-            'letter-spacing:0.1em;text-transform:uppercase;margin-bottom:8px;">'
-            + t_src + ' &middot; Closes ' + t_end + '</div>\n'
-            '      <div style="font-family:Arial,Helvetica,sans-serif;font-size:14px;font-weight:600;'
-            'color:#0B0E14;line-height:1.4;margin-bottom:14px;">'
-            '<a href="' + t_url + '" style="color:#0B0E14;text-decoration:none;">' + t_q + '</a></div>\n'
-            '      <table cellpadding="0" cellspacing="0"><tr>\n'
-            '        <td style="padding-right:24px;">\n'
-            "          <div style=\"font-family:'Courier New',monospace;font-size:9px;color:#718096;"
-            'text-transform:uppercase;letter-spacing:0.1em;margin-bottom:4px;">Probability</div>\n'
-            '          <div style="font-family:Arial,Helvetica,sans-serif;font-size:26px;font-weight:700;'
-            'color:' + t_col + ';">' + str(t_prob) + '%</div>\n'
-            '        </td>\n'
-            '        <td style="padding-right:24px;">\n'
-            "          <div style=\"font-family:'Courier New',monospace;font-size:9px;color:#718096;"
-            'text-transform:uppercase;letter-spacing:0.1em;margin-bottom:4px;">24h Move</div>\n'
-            '          <div style="font-family:Arial,Helvetica,sans-serif;font-size:18px;font-weight:700;'
-            'color:' + cc + ';">' + ca + ' ' + f"{abs(t_chg):.1f}" + 'pts</div>\n'
-            '        </td>\n'
-            '        <td>\n'
-            "          <div style=\"font-family:'Courier New',monospace;font-size:9px;color:#718096;"
-            'text-transform:uppercase;letter-spacing:0.1em;margin-bottom:4px;">The Prob plays</div>\n'
-            '          <div style="font-family:Arial,Helvetica,sans-serif;font-size:26px;font-weight:700;'
-            'color:' + d_col + ';">' + t_dir + '</div>\n'
-            '        </td>\n'
-            '      </tr></table>\n'
-            '      <div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;color:#718096;'
-            'margin-top:12px;">$100 paper trade &middot; '
-            '<a href="' + SITE_URL + '/portfolio.html" style="color:#0077B6;text-decoration:none;">'
-            'tracked at theprob.ai/portfolio</a></div>\n'
-            '    </div>\n'
-            '  </td></tr>'
-        )
-
     # ── MOVERS ──
     mover_cards = ""
     for m in movers:
