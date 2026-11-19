@@ -14,7 +14,7 @@
       "loss_count": 65,
       "open_count": 0,
       "start_date": "2026-03-17",
-      "last_updated": "2026-06-09",
+      "last_updated": "2026-11-19",
       "trades": [
         {
           "trade_id": "ea14c291",
@@ -9263,7 +9263,7 @@
       "loss_count": 2,
       "open_count": 0,
       "start_date": "2026-03-17",
-      "last_updated": "2026-06-09",
+      "last_updated": "2026-11-19",
       "trades": [
         {
           "trade_id": "18b00e62",
@@ -10736,7 +10736,7 @@
       "loss_count": 0,
       "open_count": 0,
       "start_date": "2026-03-17",
-      "last_updated": "2026-06-09",
+      "last_updated": "2026-11-19",
       "trades": [
         {
           "trade_id": "d19bb1c5",
@@ -10857,9 +10857,9 @@
       "ytd_return_pct": -66.4,
       "win_count": 42,
       "loss_count": 15,
-      "open_count": 33,
+      "open_count": 0,
       "start_date": "2026-10-01",
-      "last_updated": "2026-11-14",
+      "last_updated": "2026-11-19",
       "trades": [
         {
           "trade_id": "37c7b925",
@@ -10928,10 +10928,10 @@
           "entry_date": "2026-10-01",
           "end_date_raw": "2026-10-02T01:20:00Z",
           "end_date": "Oct 2",
-          "status": "open",
+          "status": "closed",
           "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "exit_date": "2026-11-19",
+          "pnl": 0.0
         },
         {
           "trade_id": "30e43f41",
@@ -11054,10 +11054,10 @@
           "entry_date": "2026-10-04",
           "end_date_raw": "2026-10-16T03:59:00Z",
           "end_date": "Oct 16",
-          "status": "open",
+          "status": "closed",
           "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "exit_date": "2026-11-19",
+          "pnl": 0.0
         },
         {
           "trade_id": "40cf2bf6",
@@ -11090,10 +11090,10 @@
           "entry_date": "2026-10-05",
           "end_date_raw": "2026-10-16T03:59:00Z",
           "end_date": "Oct 16",
-          "status": "open",
+          "status": "closed",
           "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "exit_date": "2026-11-19",
+          "pnl": 0.0
         },
         {
           "trade_id": "74a07dd3",
@@ -11108,10 +11108,10 @@
           "entry_date": "2026-10-05",
           "end_date_raw": "2026-10-08T21:00:00Z",
           "end_date": "Oct 8",
-          "status": "open",
+          "status": "closed",
           "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "exit_date": "2026-11-19",
+          "pnl": 0.0
         },
         {
           "trade_id": "15c7b967",
@@ -11144,10 +11144,10 @@
           "entry_date": "2026-10-07",
           "end_date_raw": "2026-10-10T01:30:00Z",
           "end_date": "Oct 10",
-          "status": "open",
+          "status": "closed",
           "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "exit_date": "2026-11-19",
+          "pnl": 0.0
         },
         {
           "trade_id": "301befd4",
@@ -11198,10 +11198,10 @@
           "entry_date": "2026-10-08",
           "end_date_raw": "2026-10-11T02:00:00Z",
           "end_date": "Oct 11",
-          "status": "open",
+          "status": "closed",
           "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "exit_date": "2026-11-19",
+          "pnl": 0.0
         },
         {
           "trade_id": "59cb7508",
@@ -11234,10 +11234,10 @@
           "entry_date": "2026-10-09",
           "end_date_raw": "2026-10-11T02:30:00Z",
           "end_date": "Oct 11",
-          "status": "open",
+          "status": "closed",
           "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "exit_date": "2026-11-19",
+          "pnl": 0.0
         },
         {
           "trade_id": "df698d0d",
@@ -11252,10 +11252,10 @@
           "entry_date": "2026-10-09",
           "end_date_raw": "2026-10-17T02:00:00Z",
           "end_date": "Oct 17",
-          "status": "open",
+          "status": "closed",
           "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "exit_date": "2026-11-19",
+          "pnl": 0.0
         },
         {
           "trade_id": "3c8ce7d7",
@@ -11288,10 +11288,10 @@
           "entry_date": "2026-10-11",
           "end_date_raw": "2026-10-16T03:59:00Z",
           "end_date": "Oct 16",
-          "status": "open",
+          "status": "closed",
           "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "exit_date": "2026-11-19",
+          "pnl": 0.0
         },
         {
           "trade_id": "993cb3d0",
@@ -11324,10 +11324,10 @@
           "entry_date": "2026-10-12",
           "end_date_raw": "2026-10-15T00:00:00Z",
           "end_date": "Oct 15",
-          "status": "open",
+          "status": "closed",
           "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "exit_date": "2026-11-19",
+          "pnl": 0.0
         },
         {
           "trade_id": "cbb8d10c",
@@ -11360,10 +11360,10 @@
           "entry_date": "2026-10-13",
           "end_date_raw": "2026-10-16T00:00:00Z",
           "end_date": "Oct 16",
-          "status": "open",
+          "status": "closed",
           "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "exit_date": "2026-11-19",
+          "pnl": 0.0
         },
         {
           "trade_id": "daa1d15d",
@@ -11396,10 +11396,10 @@
           "entry_date": "2026-10-13",
           "end_date_raw": "2026-10-27T03:59:00Z",
           "end_date": "Oct 27",
-          "status": "open",
+          "status": "closed",
           "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "exit_date": "2026-11-19",
+          "pnl": 0.0
         },
         {
           "trade_id": "44baa7e9",
@@ -11414,10 +11414,10 @@
           "entry_date": "2026-10-13",
           "end_date_raw": "2026-10-27T03:59:00Z",
           "end_date": "Oct 27",
-          "status": "open",
+          "status": "closed",
           "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "exit_date": "2026-11-19",
+          "pnl": 0.0
         },
         {
           "trade_id": "aa740cbc",
@@ -11432,10 +11432,10 @@
           "entry_date": "2026-10-14",
           "end_date_raw": "2026-10-17T00:00:00Z",
           "end_date": "Oct 17",
-          "status": "open",
+          "status": "closed",
           "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "exit_date": "2026-11-19",
+          "pnl": 0.0
         },
         {
           "trade_id": "55504321",
@@ -11522,10 +11522,10 @@
           "entry_date": "2026-10-15",
           "end_date_raw": "2026-10-18T22:00:00Z",
           "end_date": "Oct 18",
-          "status": "open",
+          "status": "closed",
           "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "exit_date": "2026-11-19",
+          "pnl": 0.0
         },
         {
           "trade_id": "c717b3ac",
@@ -11576,10 +11576,10 @@
           "entry_date": "2026-10-16",
           "end_date_raw": "2026-10-23T02:00:00Z",
           "end_date": "Oct 23",
-          "status": "open",
+          "status": "closed",
           "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "exit_date": "2026-11-19",
+          "pnl": 0.0
         },
         {
           "trade_id": "4616afe6",
@@ -11630,10 +11630,10 @@
           "entry_date": "2026-10-17",
           "end_date_raw": "2026-10-18T23:00:00Z",
           "end_date": "Oct 18",
-          "status": "open",
+          "status": "closed",
           "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "exit_date": "2026-11-19",
+          "pnl": 0.0
         },
         {
           "trade_id": "7c23b3d9",
@@ -11648,10 +11648,10 @@
           "entry_date": "2026-10-17",
           "end_date_raw": "2026-10-20T03:59:00Z",
           "end_date": "Oct 20",
-          "status": "open",
+          "status": "closed",
           "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "exit_date": "2026-11-19",
+          "pnl": 0.0
         },
         {
           "trade_id": "f245bd72",
@@ -11846,10 +11846,10 @@
           "entry_date": "2026-10-20",
           "end_date_raw": "2026-10-22T01:00:00Z",
           "end_date": "Oct 22",
-          "status": "open",
+          "status": "closed",
           "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "exit_date": "2026-11-19",
+          "pnl": 0.0
         },
         {
           "trade_id": "6aff1d4f",
@@ -11900,10 +11900,10 @@
           "entry_date": "2026-10-21",
           "end_date_raw": "2026-10-22T23:00:00Z",
           "end_date": "Oct 22",
-          "status": "open",
+          "status": "closed",
           "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "exit_date": "2026-11-19",
+          "pnl": 0.0
         },
         {
           "trade_id": "8e05dd53",
@@ -11936,10 +11936,10 @@
           "entry_date": "2026-10-22",
           "end_date_raw": "2026-10-24T00:00:00Z",
           "end_date": "Oct 24",
-          "status": "open",
+          "status": "closed",
           "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "exit_date": "2026-11-19",
+          "pnl": 0.0
         },
         {
           "trade_id": "20a90a16",
@@ -11990,10 +11990,10 @@
           "entry_date": "2026-10-23",
           "end_date_raw": "2026-11-04T04:59:00Z",
           "end_date": "Nov 4",
-          "status": "open",
+          "status": "closed",
           "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "exit_date": "2026-11-19",
+          "pnl": 0.0
         },
         {
           "trade_id": "ba67c438",
@@ -12008,10 +12008,10 @@
           "entry_date": "2026-10-23",
           "end_date_raw": "2026-10-25T20:00:00Z",
           "end_date": "Oct 25",
-          "status": "open",
+          "status": "closed",
           "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "exit_date": "2026-11-19",
+          "pnl": 0.0
         },
         {
           "trade_id": "1a566ddc",
@@ -12026,10 +12026,10 @@
           "entry_date": "2026-10-24",
           "end_date_raw": "2026-10-25T23:00:00Z",
           "end_date": "Oct 25",
-          "status": "open",
+          "status": "closed",
           "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "exit_date": "2026-11-19",
+          "pnl": 0.0
         },
         {
           "trade_id": "7c207139",
@@ -12062,10 +12062,10 @@
           "entry_date": "2026-10-24",
           "end_date_raw": "2026-10-25T03:59:59.999Z",
           "end_date": "Oct 25",
-          "status": "open",
+          "status": "closed",
           "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "exit_date": "2026-11-19",
+          "pnl": 0.0
         },
         {
           "trade_id": "b4ffe318",
@@ -12080,10 +12080,10 @@
           "entry_date": "2026-10-25",
           "end_date_raw": "2026-10-28T00:00:00Z",
           "end_date": "Oct 28",
-          "status": "open",
+          "status": "closed",
           "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "exit_date": "2026-11-19",
+          "pnl": 0.0
         },
         {
           "trade_id": "c91c2f62",
@@ -12170,10 +12170,10 @@
           "entry_date": "2026-10-25",
           "end_date_raw": "2026-10-27T23:00:00Z",
           "end_date": "Oct 27",
-          "status": "open",
+          "status": "closed",
           "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "exit_date": "2026-11-19",
+          "pnl": 0.0
         },
         {
           "trade_id": "446e97ba",
@@ -12188,10 +12188,10 @@
           "entry_date": "2026-10-26",
           "end_date_raw": "2026-10-27T03:00:00Z",
           "end_date": "Oct 27",
-          "status": "open",
+          "status": "closed",
           "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "exit_date": "2026-11-19",
+          "pnl": 0.0
         },
         {
           "trade_id": "3da81bb4",
@@ -12206,10 +12206,10 @@
           "entry_date": "2026-10-27",
           "end_date_raw": "2026-10-30T00:00:00Z",
           "end_date": "Oct 30",
-          "status": "open",
+          "status": "closed",
           "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "exit_date": "2026-11-19",
+          "pnl": 0.0
         },
         {
           "trade_id": "f5c6eec5",
@@ -12242,10 +12242,10 @@
           "entry_date": "2026-10-27",
           "end_date_raw": "2026-10-31T20:59:00Z",
           "end_date": "Oct 31",
-          "status": "open",
+          "status": "closed",
           "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "exit_date": "2026-11-19",
+          "pnl": 0.0
         },
         {
           "trade_id": "1c591bef",
@@ -12278,10 +12278,10 @@
           "entry_date": "2026-10-28",
           "end_date_raw": "2026-10-31T00:00:00Z",
           "end_date": "Oct 31",
-          "status": "open",
+          "status": "closed",
           "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "exit_date": "2026-11-19",
+          "pnl": 0.0
         },
         {
           "trade_id": "27aff04f",
@@ -12314,10 +12314,10 @@
           "entry_date": "2026-10-28",
           "end_date_raw": "2026-11-05T04:59:00Z",
           "end_date": "Nov 5",
-          "status": "open",
+          "status": "closed",
           "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "exit_date": "2026-11-19",
+          "pnl": 0.0
         },
         {
           "trade_id": "47d4809b",
@@ -12350,10 +12350,10 @@
           "entry_date": "2026-10-29",
           "end_date_raw": "2026-10-31T00:00:00Z",
           "end_date": "Oct 31",
-          "status": "open",
+          "status": "closed",
           "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "exit_date": "2026-11-19",
+          "pnl": 0.0
         },
         {
           "trade_id": "338d5b56",
@@ -12481,7 +12481,9 @@
           "exit_date": "2026-11-04",
           "pnl": 24.22
         }
-      ]
+      ],
+      "experiment": 2,
+      "end_date": "2026-10-31"
     },
     "d": {
       "name": "The Sharp Crowd",
@@ -12492,9 +12494,9 @@
       "ytd_return_pct": -13.5,
       "win_count": 52,
       "loss_count": 9,
-      "open_count": 23,
+      "open_count": 0,
       "start_date": "2026-10-01",
-      "last_updated": "2026-11-14",
+      "last_updated": "2026-11-19",
       "trades": [
         {
           "trade_id": "35713c79",
@@ -12761,10 +12763,10 @@
           "entry_date": "2026-10-05",
           "end_date_raw": "2026-10-08T21:00:00Z",
           "end_date": "Oct 8",
-          "status": "open",
+          "status": "closed",
           "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "exit_date": "2026-11-19",
+          "pnl": 0.0
         },
         {
           "trade_id": "e274dd44",
@@ -12779,10 +12781,10 @@
           "entry_date": "2026-10-06",
           "end_date_raw": "2026-10-16T03:59:00Z",
           "end_date": "Oct 16",
-          "status": "open",
+          "status": "closed",
           "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "exit_date": "2026-11-19",
+          "pnl": 0.0
         },
         {
           "trade_id": "1491508b",
@@ -12815,10 +12817,10 @@
           "entry_date": "2026-10-07",
           "end_date_raw": "2026-10-10T01:30:00Z",
           "end_date": "Oct 10",
-          "status": "open",
+          "status": "closed",
           "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "exit_date": "2026-11-19",
+          "pnl": 0.0
         },
         {
           "trade_id": "e908e3f5",
@@ -12833,10 +12835,10 @@
           "entry_date": "2026-10-07",
           "end_date_raw": "2026-10-16T03:59:00Z",
           "end_date": "Oct 16",
-          "status": "open",
+          "status": "closed",
           "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "exit_date": "2026-11-19",
+          "pnl": 0.0
         },
         {
           "trade_id": "e19e2185",
@@ -12869,10 +12871,10 @@
           "entry_date": "2026-10-08",
           "end_date_raw": "2026-10-11T02:00:00Z",
           "end_date": "Oct 11",
-          "status": "open",
+          "status": "closed",
           "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "exit_date": "2026-11-19",
+          "pnl": 0.0
         },
         {
           "trade_id": "f4243021",
@@ -12905,10 +12907,10 @@
           "entry_date": "2026-10-09",
           "end_date_raw": "2026-10-11T02:30:00Z",
           "end_date": "Oct 11",
-          "status": "open",
+          "status": "closed",
           "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "exit_date": "2026-11-19",
+          "pnl": 0.0
         },
         {
           "trade_id": "a597462c",
@@ -12923,10 +12925,10 @@
           "entry_date": "2026-10-09",
           "end_date_raw": "2026-10-17T02:00:00Z",
           "end_date": "Oct 17",
-          "status": "open",
+          "status": "closed",
           "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "exit_date": "2026-11-19",
+          "pnl": 0.0
         },
         {
           "trade_id": "f62e1b5e",
@@ -12959,10 +12961,10 @@
           "entry_date": "2026-10-11",
           "end_date_raw": "2026-10-16T03:59:00Z",
           "end_date": "Oct 16",
-          "status": "open",
+          "status": "closed",
           "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "exit_date": "2026-11-19",
+          "pnl": 0.0
         },
         {
           "trade_id": "997f9fd0",
@@ -13013,10 +13015,10 @@
           "entry_date": "2026-10-13",
           "end_date_raw": "2026-10-16T00:00:00Z",
           "end_date": "Oct 16",
-          "status": "open",
+          "status": "closed",
           "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "exit_date": "2026-11-19",
+          "pnl": 0.0
         },
         {
           "trade_id": "b1552d19",
@@ -13067,10 +13069,10 @@
           "entry_date": "2026-10-14",
           "end_date_raw": "2026-10-17T00:00:00Z",
           "end_date": "Oct 17",
-          "status": "open",
+          "status": "closed",
           "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "exit_date": "2026-11-19",
+          "pnl": 0.0
         },
         {
           "trade_id": "0425af23",
@@ -13103,10 +13105,10 @@
           "entry_date": "2026-10-14",
           "end_date_raw": "2026-10-27T03:59:00Z",
           "end_date": "Oct 27",
-          "status": "open",
+          "status": "closed",
           "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "exit_date": "2026-11-19",
+          "pnl": 0.0
         },
         {
           "trade_id": "e575f27b",
@@ -13193,10 +13195,10 @@
           "entry_date": "2026-10-16",
           "end_date_raw": "2026-10-23T02:00:00Z",
           "end_date": "Oct 23",
-          "status": "open",
+          "status": "closed",
           "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "exit_date": "2026-11-19",
+          "pnl": 0.0
         },
         {
           "trade_id": "2d490d28",
@@ -13247,10 +13249,10 @@
           "entry_date": "2026-10-17",
           "end_date_raw": "2026-10-18T23:00:00Z",
           "end_date": "Oct 18",
-          "status": "open",
+          "status": "closed",
           "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "exit_date": "2026-11-19",
+          "pnl": 0.0
         },
         {
           "trade_id": "a63e1653",
@@ -13283,10 +13285,10 @@
           "entry_date": "2026-10-17",
           "end_date_raw": "2026-10-20T03:59:00Z",
           "end_date": "Oct 20",
-          "status": "open",
+          "status": "closed",
           "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "exit_date": "2026-11-19",
+          "pnl": 0.0
         },
         {
           "trade_id": "2a5b54de",
@@ -13499,10 +13501,10 @@
           "entry_date": "2026-10-20",
           "end_date_raw": "2026-10-22T01:00:00Z",
           "end_date": "Oct 22",
-          "status": "open",
+          "status": "closed",
           "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "exit_date": "2026-11-19",
+          "pnl": 0.0
         },
         {
           "trade_id": "77f39225",
@@ -13571,10 +13573,10 @@
           "entry_date": "2026-10-22",
           "end_date_raw": "2026-10-24T00:00:00Z",
           "end_date": "Oct 24",
-          "status": "open",
+          "status": "closed",
           "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "exit_date": "2026-11-19",
+          "pnl": 0.0
         },
         {
           "trade_id": "12d30946",
@@ -13643,10 +13645,10 @@
           "entry_date": "2026-10-24",
           "end_date_raw": "2026-10-25T23:00:00Z",
           "end_date": "Oct 25",
-          "status": "open",
+          "status": "closed",
           "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "exit_date": "2026-11-19",
+          "pnl": 0.0
         },
         {
           "trade_id": "616c6e77",
@@ -13751,10 +13753,10 @@
           "entry_date": "2026-10-25",
           "end_date_raw": "2026-10-27T23:00:00Z",
           "end_date": "Oct 27",
-          "status": "open",
+          "status": "closed",
           "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "exit_date": "2026-11-19",
+          "pnl": 0.0
         },
         {
           "trade_id": "57096a06",
@@ -13769,10 +13771,10 @@
           "entry_date": "2026-10-26",
           "end_date_raw": "2026-10-27T03:00:00Z",
           "end_date": "Oct 27",
-          "status": "open",
+          "status": "closed",
           "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "exit_date": "2026-11-19",
+          "pnl": 0.0
         },
         {
           "trade_id": "1eada4c3",
@@ -13787,10 +13789,10 @@
           "entry_date": "2026-10-27",
           "end_date_raw": "2026-10-29T00:00:00Z",
           "end_date": "Oct 29",
-          "status": "open",
+          "status": "closed",
           "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "exit_date": "2026-11-19",
+          "pnl": 0.0
         },
         {
           "trade_id": "b7db08ae",
@@ -13805,10 +13807,10 @@
           "entry_date": "2026-10-27",
           "end_date_raw": "2026-10-31T20:59:00Z",
           "end_date": "Oct 31",
-          "status": "open",
+          "status": "closed",
           "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "exit_date": "2026-11-19",
+          "pnl": 0.0
         },
         {
           "trade_id": "b962ba20",
@@ -13859,10 +13861,10 @@
           "entry_date": "2026-10-28",
           "end_date_raw": "2026-11-05T04:59:00Z",
           "end_date": "Nov 5",
-          "status": "open",
+          "status": "closed",
           "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "exit_date": "2026-11-19",
+          "pnl": 0.0
         },
         {
           "trade_id": "cd50a1e0",
@@ -13895,10 +13897,10 @@
           "entry_date": "2026-10-29",
           "end_date_raw": "2026-10-31T00:00:00Z",
           "end_date": "Oct 31",
-          "status": "open",
+          "status": "closed",
           "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "exit_date": "2026-11-19",
+          "pnl": 0.0
         },
         {
           "trade_id": "9925f9bc",
@@ -14008,7 +14010,9 @@
           "exit_date": "2026-11-04",
           "pnl": 24.22
         }
-      ]
+      ],
+      "experiment": 2,
+      "end_date": "2026-10-31"
     },
     "e": {
       "name": "The Momentum Crowd",
@@ -14019,9 +14023,9 @@
       "ytd_return_pct": -27.7,
       "win_count": 41,
       "loss_count": 11,
-      "open_count": 33,
+      "open_count": 0,
       "start_date": "2026-10-01",
-      "last_updated": "2026-11-14",
+      "last_updated": "2026-11-19",
       "trades": [
         {
           "trade_id": "49f5c75f",
@@ -14072,10 +14076,10 @@
           "entry_date": "2026-10-01",
           "end_date_raw": "2026-10-02T01:20:00Z",
           "end_date": "Oct 2",
-          "status": "open",
+          "status": "closed",
           "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "exit_date": "2026-11-19",
+          "pnl": 0.0
         },
         {
           "trade_id": "10ae9590",
@@ -14216,10 +14220,10 @@
           "entry_date": "2026-10-04",
           "end_date_raw": "2026-10-16T03:59:00Z",
           "end_date": "Oct 16",
-          "status": "open",
+          "status": "closed",
           "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "exit_date": "2026-11-19",
+          "pnl": 0.0
         },
         {
           "trade_id": "0889b9c4",
@@ -14252,10 +14256,10 @@
           "entry_date": "2026-10-05",
           "end_date_raw": "2026-10-16T03:59:00Z",
           "end_date": "Oct 16",
-          "status": "open",
+          "status": "closed",
           "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "exit_date": "2026-11-19",
+          "pnl": 0.0
         },
         {
           "trade_id": "153a820f",
@@ -14324,10 +14328,10 @@
           "entry_date": "2026-10-07",
           "end_date_raw": "2026-10-10T01:30:00Z",
           "end_date": "Oct 10",
-          "status": "open",
+          "status": "closed",
           "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "exit_date": "2026-11-19",
+          "pnl": 0.0
         },
         {
           "trade_id": "e1107005",
@@ -14360,10 +14364,10 @@
           "entry_date": "2026-10-08",
           "end_date_raw": "2026-10-11T02:00:00Z",
           "end_date": "Oct 11",
-          "status": "open",
+          "status": "closed",
           "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "exit_date": "2026-11-19",
+          "pnl": 0.0
         },
         {
           "trade_id": "5f8caa03",
@@ -14378,10 +14382,10 @@
           "entry_date": "2026-10-09",
           "end_date_raw": "2026-10-11T02:30:00Z",
           "end_date": "Oct 11",
-          "status": "open",
+          "status": "closed",
           "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "exit_date": "2026-11-19",
+          "pnl": 0.0
         },
         {
           "trade_id": "880190bc",
@@ -14396,10 +14400,10 @@
           "entry_date": "2026-10-09",
           "end_date_raw": "2026-10-17T02:00:00Z",
           "end_date": "Oct 17",
-          "status": "open",
+          "status": "closed",
           "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "exit_date": "2026-11-19",
+          "pnl": 0.0
         },
         {
           "trade_id": "03bc0350",
@@ -14414,10 +14418,10 @@
           "entry_date": "2026-10-11",
           "end_date_raw": "2026-10-16T03:59:00Z",
           "end_date": "Oct 16",
-          "status": "open",
+          "status": "closed",
           "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "exit_date": "2026-11-19",
+          "pnl": 0.0
         },
         {
           "trade_id": "1c731720",
@@ -14450,10 +14454,10 @@
           "entry_date": "2026-10-12",
           "end_date_raw": "2026-10-15T00:00:00Z",
           "end_date": "Oct 15",
-          "status": "open",
+          "status": "closed",
           "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "exit_date": "2026-11-19",
+          "pnl": 0.0
         },
         {
           "trade_id": "ca98cdea",
@@ -14468,10 +14472,10 @@
           "entry_date": "2026-10-13",
           "end_date_raw": "2026-10-16T00:00:00Z",
           "end_date": "Oct 16",
-          "status": "open",
+          "status": "closed",
           "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "exit_date": "2026-11-19",
+          "pnl": 0.0
         },
         {
           "trade_id": "2d982d93",
@@ -14504,10 +14508,10 @@
           "entry_date": "2026-10-13",
           "end_date_raw": "2026-10-27T03:59:00Z",
           "end_date": "Oct 27",
-          "status": "open",
+          "status": "closed",
           "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "exit_date": "2026-11-19",
+          "pnl": 0.0
         },
         {
           "trade_id": "cb99358e",
@@ -14522,10 +14526,10 @@
           "entry_date": "2026-10-13",
           "end_date_raw": "2026-10-27T03:59:00Z",
           "end_date": "Oct 27",
-          "status": "open",
+          "status": "closed",
           "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "exit_date": "2026-11-19",
+          "pnl": 0.0
         },
         {
           "trade_id": "3a957073",
@@ -14540,10 +14544,10 @@
           "entry_date": "2026-10-14",
           "end_date_raw": "2026-10-17T00:00:00Z",
           "end_date": "Oct 17",
-          "status": "open",
+          "status": "closed",
           "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "exit_date": "2026-11-19",
+          "pnl": 0.0
         },
         {
           "trade_id": "60e66c5c",
@@ -14612,10 +14616,10 @@
           "entry_date": "2026-10-15",
           "end_date_raw": "2026-10-18T22:00:00Z",
           "end_date": "Oct 18",
-          "status": "open",
+          "status": "closed",
           "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "exit_date": "2026-11-19",
+          "pnl": 0.0
         },
         {
           "trade_id": "2881f458",
@@ -14648,10 +14652,10 @@
           "entry_date": "2026-10-16",
           "end_date_raw": "2026-10-23T02:00:00Z",
           "end_date": "Oct 23",
-          "status": "open",
+          "status": "closed",
           "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "exit_date": "2026-11-19",
+          "pnl": 0.0
         },
         {
           "trade_id": "c443e64f",
@@ -14684,10 +14688,10 @@
           "entry_date": "2026-10-17",
           "end_date_raw": "2026-10-18T23:00:00Z",
           "end_date": "Oct 18",
-          "status": "open",
+          "status": "closed",
           "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "exit_date": "2026-11-19",
+          "pnl": 0.0
         },
         {
           "trade_id": "9265db60",
@@ -14882,10 +14886,10 @@
           "entry_date": "2026-10-20",
           "end_date_raw": "2026-10-22T01:00:00Z",
           "end_date": "Oct 22",
-          "status": "open",
+          "status": "closed",
           "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "exit_date": "2026-11-19",
+          "pnl": 0.0
         },
         {
           "trade_id": "469a3a2c",
@@ -14936,10 +14940,10 @@
           "entry_date": "2026-10-21",
           "end_date_raw": "2026-10-22T23:00:00Z",
           "end_date": "Oct 22",
-          "status": "open",
+          "status": "closed",
           "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "exit_date": "2026-11-19",
+          "pnl": 0.0
         },
         {
           "trade_id": "5cb8e810",
@@ -14990,10 +14994,10 @@
           "entry_date": "2026-10-22",
           "end_date_raw": "2026-10-24T00:00:00Z",
           "end_date": "Oct 24",
-          "status": "open",
+          "status": "closed",
           "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "exit_date": "2026-11-19",
+          "pnl": 0.0
         },
         {
           "trade_id": "1170d2b4",
@@ -15044,10 +15048,10 @@
           "entry_date": "2026-10-23",
           "end_date_raw": "2026-11-04T04:59:00Z",
           "end_date": "Nov 4",
-          "status": "open",
+          "status": "closed",
           "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "exit_date": "2026-11-19",
+          "pnl": 0.0
         },
         {
           "trade_id": "56139b61",
@@ -15062,10 +15066,10 @@
           "entry_date": "2026-10-23",
           "end_date_raw": "2026-10-25T20:00:00Z",
           "end_date": "Oct 25",
-          "status": "open",
+          "status": "closed",
           "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "exit_date": "2026-11-19",
+          "pnl": 0.0
         },
         {
           "trade_id": "407d6830",
@@ -15080,10 +15084,10 @@
           "entry_date": "2026-10-24",
           "end_date_raw": "2026-10-25T23:00:00Z",
           "end_date": "Oct 25",
-          "status": "open",
+          "status": "closed",
           "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "exit_date": "2026-11-19",
+          "pnl": 0.0
         },
         {
           "trade_id": "5e29dbfc",
@@ -15116,10 +15120,10 @@
           "entry_date": "2026-10-24",
           "end_date_raw": "2026-10-25T03:59:59.999Z",
           "end_date": "Oct 25",
-          "status": "open",
+          "status": "closed",
           "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "exit_date": "2026-11-19",
+          "pnl": 0.0
         },
         {
           "trade_id": "6cf92303",
@@ -15134,10 +15138,10 @@
           "entry_date": "2026-10-25",
           "end_date_raw": "2026-10-28T00:00:00Z",
           "end_date": "Oct 28",
-          "status": "open",
+          "status": "closed",
           "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "exit_date": "2026-11-19",
+          "pnl": 0.0
         },
         {
           "trade_id": "7ea782c7",
@@ -15206,10 +15210,10 @@
           "entry_date": "2026-10-25",
           "end_date_raw": "2026-10-27T23:00:00Z",
           "end_date": "Oct 27",
-          "status": "open",
+          "status": "closed",
           "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "exit_date": "2026-11-19",
+          "pnl": 0.0
         },
         {
           "trade_id": "bb6653b4",
@@ -15224,10 +15228,10 @@
           "entry_date": "2026-10-26",
           "end_date_raw": "2026-10-27T03:00:00Z",
           "end_date": "Oct 27",
-          "status": "open",
+          "status": "closed",
           "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "exit_date": "2026-11-19",
+          "pnl": 0.0
         },
         {
           "trade_id": "0085f2a0",
@@ -15242,10 +15246,10 @@
           "entry_date": "2026-10-27",
           "end_date_raw": "2026-10-30T00:00:00Z",
           "end_date": "Oct 30",
-          "status": "open",
+          "status": "closed",
           "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "exit_date": "2026-11-19",
+          "pnl": 0.0
         },
         {
           "trade_id": "74dfbb8f",
@@ -15278,10 +15282,10 @@
           "entry_date": "2026-10-27",
           "end_date_raw": "2026-10-31T20:59:00Z",
           "end_date": "Oct 31",
-          "status": "open",
+          "status": "closed",
           "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "exit_date": "2026-11-19",
+          "pnl": 0.0
         },
         {
           "trade_id": "78c1e852",
@@ -15314,10 +15318,10 @@
           "entry_date": "2026-10-28",
           "end_date_raw": "2026-10-31T00:00:00Z",
           "end_date": "Oct 31",
-          "status": "open",
+          "status": "closed",
           "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "exit_date": "2026-11-19",
+          "pnl": 0.0
         },
         {
           "trade_id": "826cdf08",
@@ -15350,10 +15354,10 @@
           "entry_date": "2026-10-28",
           "end_date_raw": "2026-11-05T04:59:00Z",
           "end_date": "Nov 5",
-          "status": "open",
+          "status": "closed",
           "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "exit_date": "2026-11-19",
+          "pnl": 0.0
         },
         {
           "trade_id": "2b39f9e7",
@@ -15386,10 +15390,10 @@
           "entry_date": "2026-10-29",
           "end_date_raw": "2026-10-31T00:00:00Z",
           "end_date": "Oct 31",
-          "status": "open",
+          "status": "closed",
           "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "exit_date": "2026-11-19",
+          "pnl": 0.0
         },
         {
           "trade_id": "3629574f",
@@ -15440,10 +15444,10 @@
           "entry_date": "2026-10-29",
           "end_date_raw": "2026-10-30T02:05:00Z",
           "end_date": "Oct 30",
-          "status": "open",
+          "status": "closed",
           "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "exit_date": "2026-11-19",
+          "pnl": 0.0
         },
         {
           "trade_id": "7b83132b",
@@ -15458,10 +15462,10 @@
           "entry_date": "2026-10-30",
           "end_date_raw": "2026-10-31T23:00:00Z",
           "end_date": "Oct 31",
-          "status": "open",
+          "status": "closed",
           "exit_prob": null,
-          "exit_date": null,
-          "pnl": null
+          "exit_date": "2026-11-19",
+          "pnl": 0.0
         },
         {
           "trade_id": "af2cc81b",
@@ -15553,7 +15557,60 @@
           "exit_date": "2026-11-01",
           "pnl": 48.15
         }
-      ]
+      ],
+      "experiment": 2,
+      "end_date": "2026-10-31"
+    },
+    "exp3_a": {
+      "name": "The Crowd",
+      "strategy": "Follow consensus: YES when prob >= 65%, NO when prob <= 35%",
+      "thesis": "Smart money is already priced in. Ride the conviction.",
+      "experiment": 3,
+      "start_date": "2026-12-01",
+      "end_date": "2026-12-31",
+      "starting_balance": 1000.0,
+      "current_balance": 1000.0,
+      "total_pnl": 0.0,
+      "ytd_return_pct": 0.0,
+      "win_count": 0,
+      "loss_count": 0,
+      "open_count": 0,
+      "last_updated": null,
+      "trades": []
+    },
+    "exp3_b": {
+      "name": "The Contrarian",
+      "strategy": "Fade consensus: YES when crowd says NO (prob <= 35%), NO when crowd says YES (prob >= 65%)",
+      "thesis": "The crowd overcorrects. Bet against high conviction.",
+      "experiment": 3,
+      "start_date": "2026-12-01",
+      "end_date": "2026-12-31",
+      "starting_balance": 1000.0,
+      "current_balance": 1000.0,
+      "total_pnl": 0.0,
+      "ytd_return_pct": 0.0,
+      "win_count": 0,
+      "loss_count": 0,
+      "open_count": 0,
+      "last_updated": null,
+      "trades": []
+    },
+    "exp3_c": {
+      "name": "The Sharp Crowd",
+      "strategy": "Follow consensus only on high-volume markets (volume > K)",
+      "thesis": "More money means smarter signals. Only trust markets the crowd has actually read.",
+      "experiment": 3,
+      "start_date": "2026-12-01",
+      "end_date": "2026-12-31",
+      "starting_balance": 1000.0,
+      "current_balance": 1000.0,
+      "total_pnl": 0.0,
+      "ytd_return_pct": 0.0,
+      "win_count": 0,
+      "loss_count": 0,
+      "open_count": 0,
+      "last_updated": null,
+      "trades": []
     }
   },
   "legacy_test_1": {
@@ -15810,5 +15867,7 @@
       "trades": []
     },
     "winner": null
-  }
+  },
+  "active_experiment": 3,
+  "next_experiment_start": "2026-12-01"
 }

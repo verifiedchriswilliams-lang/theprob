@@ -2824,7 +2824,24 @@ def update_portfolio_variant(variant: dict, trade_market: dict | None, trade_dir
             continue
         mid          = trade.get("market_id", "")
         current_prob = market_lookup.get(mid)
+
+        # Market dropped off the feed -- check if end_date has passed
         if current_prob is None:
+            end_raw = trade.get("end_date_raw", "")
+            if end_raw:
+                try:
+                    end_dt = datetime.fromisoformat(str(end_raw).replace("Z", "+00:00"))
+                    if end_dt < datetime.now(timezone.utc):
+                        # Market resolved but we missed the outcome.
+                        # Close at neutral ($0 PnL) to clear the position honestly.
+                        trade["status"]    = "closed"
+                        trade["exit_prob"] = None
+                        trade["exit_date"] = today_str
+                        trade["pnl"]       = 0.0
+                        variant["current_balance"] = round(variant["current_balance"], 2)
+                        print(f"  [{label}] EXPIRED (missed outcome) '{trade['question'][:40]}' $0.00")
+                except Exception:
+                    pass
             continue
 
         resolved = False

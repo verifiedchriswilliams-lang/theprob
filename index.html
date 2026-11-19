@@ -1248,62 +1248,88 @@
   <!-- PORTFOLIO WIDGET — EXPERIMENT 1 CONCLUDED -->
   <section class="section" id="portfolio-widget" style="padding-top:32px;padding-bottom:32px;">
     <div class="section-header" style="margin-bottom:16px;">
-      <div class="section-title">The Prob Portfolio <span>Experiment 1 Concluded</span></div>
-      <a href="portfolio.html" style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.1em;color:var(--ink-3);text-transform:uppercase;">Full Post-Mortem &#8599;</a>
+      <div class="section-title">The Prob Portfolio <span>Paper Trading Simulation</span></div>
+      <a href="portfolio.html" style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.1em;color:var(--ink-3);text-transform:uppercase;">Full Results &#8599;</a>
     </div>
 
     <div style="background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow);">
 
-      <!-- Winner banner — intentional dark feature panel -->
-      <div class="pw-feature-panel" style="border-bottom:1px solid rgba(58,43,212,.2);padding:20px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+      <!-- Experiment 3 Upcoming banner -->
+      <div style="background:linear-gradient(135deg,rgba(0,119,182,.08) 0%,rgba(0,119,182,.03) 100%);border-bottom:1px solid rgba(0,119,182,.15);padding:16px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
         <div>
-          <div class="pw-eyebrow" style="font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:6px;">&#9654; Experiment 1 &middot; 83 Days &middot; 591 Trades &middot; Winner</div>
-          <div class="pw-title" style="font-size:22px;font-weight:700;line-height:1.2;">Model A. The Crowd</div>
-          <div class="pw-sub" style="font-size:13px;margin-top:4px;">Followed crowd conviction. Turned $1,000 into $1,996 in 83 days.</div>
+          <div style="font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--brand);margin-bottom:5px;">&#9654; Experiment 3 &middot; Dec 1&ndash;31 2026 &middot; Upcoming</div>
+          <div style="font-size:18px;font-weight:700;line-height:1.2;">Three models. Fresh $1,000 each. Who wins December?</div>
+          <div style="font-size:13px;color:var(--ink-2);margin-top:4px;">Model A (The Crowd) vs. Model B (The Contrarian) vs. Model C (The Sharp Crowd)</div>
         </div>
-        <div style="text-align:right;">
-          <div class="pw-number" style="font-family:var(--font-mono);font-size:38px;font-weight:700;line-height:1;">+99.6%</div>
-          <div class="pw-footnote" style="font-family:var(--font-mono);font-size:12px;margin-top:2px;">$1,995.94 final balance</div>
+        <div id="exp3-countdown" style="text-align:right;">
+          <div style="font-family:var(--font-mono);font-size:28px;font-weight:700;line-height:1;color:var(--brand);">--</div>
+          <div style="font-family:var(--font-mono);font-size:11px;color:var(--ink-3);margin-top:2px;">days until launch</div>
         </div>
       </div>
 
-      <!-- Final standings -->
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);border-bottom:1px solid var(--line);">
+      <!-- Experiment 2 Results -->
+      <div style="padding:14px 20px 10px;border-bottom:1px solid var(--line);">
+        <div style="font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--ink-3);margin-bottom:10px;">Experiment 2 &middot; Oct 2026 &middot; Concluded</div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0;">
 
-        <div style="padding:14px 20px;border-right:1px solid var(--line);">
-          <div style="display:flex;align-items:center;gap:7px;margin-bottom:8px;">
-            <div style="font-family:var(--font-mono);font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:var(--brand);">Model A</div>
-            <div style="font-family:var(--font-mono);font-size:8px;font-weight:700;letter-spacing:0.1em;background:var(--brand);color:#fff;padding:1px 5px;border-radius:2px;">WIN</div>
+          <div style="padding:0 16px 10px 0;border-right:1px solid var(--line);">
+            <div style="font-family:var(--font-mono);font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:4px;">Model D &middot; Sharp Crowd</div>
+            <div style="font-family:var(--font-mono);font-size:16px;font-weight:700;color:var(--ink);">$865.00</div>
+            <div style="font-family:var(--font-mono);font-size:11px;color:var(--no);margin-top:1px;">-13.5%</div>
           </div>
-          <div style="font-family:var(--font-mono);font-size:18px;font-weight:700;color:var(--brand);font-feature-settings:'tnum';" id="pw-a-bal">$1,995.94</div>
-          <div style="font-family:var(--font-mono);font-size:11px;color:var(--yes);margin-top:2px;" id="pw-a-ytd">+99.6%</div>
-          <div style="font-size:11px;color:var(--ink-3);margin-top:3px;" id="pw-a-rec">383&ndash;65 &middot; 448 trades</div>
-        </div>
 
-        <div style="padding:14px 20px;border-right:1px solid var(--line);opacity:0.85;">
-          <div style="font-family:var(--font-mono);font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:var(--no);margin-bottom:8px;">Model B</div>
-          <div style="font-family:var(--font-mono);font-size:18px;font-weight:700;color:var(--ink);font-feature-settings:'tnum';" id="pw-b-bal">$1,931.37</div>
-          <div style="font-family:var(--font-mono);font-size:11px;color:var(--yes);margin-top:2px;" id="pw-b-ytd">+93.1%</div>
-          <div style="font-size:11px;color:var(--ink-3);margin-top:3px;" id="pw-b-rec">69&ndash;2 &middot; 71 trades</div>
-        </div>
+          <div style="padding:0 16px 10px;border-right:1px solid var(--line);">
+            <div style="font-family:var(--font-mono);font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:4px;">Model E &middot; Momentum</div>
+            <div style="font-family:var(--font-mono);font-size:16px;font-weight:700;color:var(--ink);">$722.66</div>
+            <div style="font-family:var(--font-mono);font-size:11px;color:var(--no);margin-top:1px;">-27.7%</div>
+          </div>
 
-        <div style="padding:14px 20px;opacity:0.5;">
-          <div style="font-family:var(--font-mono);font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:var(--ink-3);margin-bottom:8px;">Model C &middot; Inconclusive</div>
-          <div style="font-family:var(--font-mono);font-size:18px;font-weight:700;color:var(--ink-3);font-feature-settings:'tnum';" id="pw-c-bal">$1,000.00</div>
-          <div style="font-family:var(--font-mono);font-size:11px;color:var(--ink-3);margin-top:2px;" id="pw-c-ytd">0.0%</div>
-          <div style="font-size:11px;color:var(--ink-3);margin-top:3px;" id="pw-c-rec">Not enough data</div>
-        </div>
+          <div style="padding:0 0 10px 16px;">
+            <div style="font-family:var(--font-mono);font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:4px;">Model A2 &middot; Crowd</div>
+            <div style="font-family:var(--font-mono);font-size:16px;font-weight:700;color:var(--ink);">$336.21</div>
+            <div style="font-family:var(--font-mono);font-size:11px;color:var(--no);margin-top:1px;">-66.4%</div>
+          </div>
 
+        </div>
+      </div>
+
+      <!-- Experiment 1 Winner -->
+      <div class="pw-feature-panel" style="padding:16px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;border-bottom:1px solid rgba(58,43,212,.15);">
+        <div>
+          <div class="pw-eyebrow" style="font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:5px;">&#127942; Experiment 1 &middot; 83 Days &middot; Winner</div>
+          <div class="pw-title" style="font-size:17px;font-weight:700;line-height:1.2;">Model A. The Crowd &mdash; +99.6%</div>
+          <div class="pw-sub" style="font-size:12px;margin-top:3px;">$1,000 &#8594; $1,995.94 &middot; 448 trades &middot; 383&ndash;65</div>
+        </div>
+        <a href="portfolio.html" style="font-family:var(--font-mono);font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:inherit;text-decoration:none;white-space:nowrap;opacity:0.7;">Post-Mortem &#8599;</a>
       </div>
 
       <!-- CTA row -->
-      <div style="padding:14px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;">
-        <div style="font-size:13px;color:var(--ink-2);">Experiment 2 launches Dec 1 &middot; Model A defends its title.</div>
-        <a href="portfolio.html" style="font-family:var(--font-mono);font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--brand);text-decoration:none;white-space:nowrap;">See the full breakdown &#8599;</a>
+      <div style="padding:12px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;">
+        <div style="font-size:12px;color:var(--ink-3);">Simulated paper trades only. No real money.</div>
+        <a href="portfolio.html" style="font-family:var(--font-mono);font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--brand);text-decoration:none;white-space:nowrap;">Full methodology &#8599;</a>
       </div>
 
     </div>
   </section>
+
+  <script>
+    // Dec 1 countdown for portfolio widget
+    (function() {
+      var launch = new Date('2026-12-01T06:00:00-06:00');
+      var el = document.getElementById('exp3-countdown');
+      if (!el) return;
+      var diff = Math.ceil((launch - Date.now()) / 86400000);
+      if (diff > 0) {
+        el.querySelector('div').textContent = diff;
+      } else if (diff === 0) {
+        el.querySelector('div').textContent = 'TODAY';
+        el.querySelectorAll('div')[1].textContent = 'experiment live';
+      } else {
+        el.querySelector('div').textContent = 'LIVE';
+        el.querySelectorAll('div')[1].textContent = 'experiment running';
+      }
+    })();
+  </script>
 
   <div class="divider"></div>
 
