@@ -535,18 +535,31 @@ def build_html(markets, news, subject, with_footer=True):
         col = "#059669" if ytd >= 0 else "#E11D48"
         sgn = "+" if ytd >= 0 else ""
         return '<span style="color:' + col + ';font-weight:700;">' + sgn + f"{ytd:.1f}%" + '</span>'
-    any_trades = any((_v(k).get("win_count",0)+_v(k).get("loss_count",0))>0 for k in "abc")
-    if any_trades:
+    from datetime import date as _date
+    _launch = _date(2026, 12, 1)
+    _days   = (_launch - now_et.date()).days
+    if _days > 0:
         port_line = (
-            "A:" + _ret("a") + " &nbsp; B:" + _ret("b") + " &nbsp; C:" + _ret("c")
+            "Experiment 3 in " + str(_days) + " days"
             + " &nbsp;&middot;&nbsp; <a href='" + SITE_URL + "/portfolio.html'"
-            + " style='color:#0077B6;text-decoration:none;'>portfolio &#8599;</a>"
+            + " style='color:#0077B6;text-decoration:none;'>Dec 1 &#8599;</a>"
         )
     else:
-        port_line = (
-            "<a href='" + SITE_URL + "/portfolio.html'"
-            + " style='color:#0077B6;text-decoration:none;'>3 models running &#8599;</a>"
-        )
+        exp3_a = _v("exp3_a")
+        exp3_b = _v("exp3_b")
+        exp3_c = _v("exp3_c")
+        any_exp3 = any((_v(k).get("win_count",0)+_v(k).get("loss_count",0))>0 for k in ("exp3_a","exp3_b","exp3_c"))
+        if any_exp3:
+            port_line = (
+                "A:" + _ret("exp3_a") + " &nbsp; B:" + _ret("exp3_b") + " &nbsp; C:" + _ret("exp3_c")
+                + " &nbsp;&middot;&nbsp; <a href='" + SITE_URL + "/portfolio.html'"
+                + " style='color:#0077B6;text-decoration:none;'>Exp 3 &#8599;</a>"
+            )
+        else:
+            port_line = (
+                "<a href='" + SITE_URL + "/portfolio.html'"
+                + " style='color:#0077B6;text-decoration:none;'>Experiment 3 live &#8599;</a>"
+            )
 
     # ── HEADER ──
     header = (
@@ -811,7 +824,7 @@ def build_html(markets, news, subject, with_footer=True):
             + '    </td></tr>\n'
         )
 
-    news_eyebrow = _eyebrow("What People Are Writing About")
+    news_eyebrow = _eyebrow("Prediction Market News")
     news_section = (
         '  <tr><td style="padding:20px 24px;background:#F8F9FA;border-bottom:1px solid rgba(11,14,20,.08);">\n'
         '    ' + news_eyebrow + '\n'
@@ -914,8 +927,8 @@ def build_html(markets, news, subject, with_footer=True):
     )
 
     sections = [
-        header, hero_section, game5_html, trade_section, movers_section,
-        spread_html, news_section, take_section,
+        header, hero_section, game5_html, movers_section,
+        news_section, spread_html, take_section,
         builder_html, countdown_section, cta_section,
     ]
     if with_footer:
