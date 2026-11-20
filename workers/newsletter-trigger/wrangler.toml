@@ -1,0 +1,9 @@
+name = "theprob-newsletter-trigger"
+main = "index.js"
+compatibility_date = "2024-01-01"
+
+[triggers]
+crons = ["0 12 * * *"]
+# Fires at exactly 12:00 UTC (6:00 AM CT) every day
+# Worker routes Mon-Sat to send-newsletter.yml, Sun to send-sunday5.yml
+# Secrets: wrangler secret put GITHUB_TOKEN

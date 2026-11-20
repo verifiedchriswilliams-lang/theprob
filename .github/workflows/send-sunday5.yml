@@ -1,8 +1,6 @@
 name: Build and Send Sunday 5 Newsletter
 
 on:
-  schedule:
-    - cron: '0 12 * * 0'  # 6:00 AM CT (UTC-6) Sundays
   workflow_dispatch:
 
 jobs:
