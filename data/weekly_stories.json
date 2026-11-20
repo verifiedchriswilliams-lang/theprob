@@ -1,13 +1,5 @@
 [
   {
-    "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxOdlpHQlR6Ulh0Y1NwUlctcEpEb0RZM2Nrc3FGV255M0NYTWFCOEprWkxJRUNNNmlXSEotaFRHMW5NYk5NVElSRVNVRENhd3NtWkFIdTRhV0lXdzBmUEs1cG5hTWpLSmtSQ2JkNVhvTGpnbDljdXFXbUVfbVhkSFM0QnlwVE9saTJzcXNjVXNqTXJmWXRqYXg4?oc=5",
-    "title": "NBA adds Novig as its fourth prediction market partner - The Athletic",
-    "source": "The New York Times",
-    "summary": "The NBA just brought Novig on as its fourth official prediction market partner, expanding the league's betting infrastructure beyond traditional sportsbooks. This signals serious mainstream acceptance of prediction markets and probably means more sports leagues will follow suit once they see the data flow and engagement these platforms generate.",
-    "pub_iso": "2026-11-18T19:23:57+00:00",
-    "pub_display": "Nov 18"
-  },
-  {
     "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxOZUZVZ3QwcWs1OFJWSURoWkdrSlAxVEdPY28yVlVTZ1p1OHFpMzBlMzhzOU1sZnROWDFuaWp0S3FXTVdqTnFoQmNDX1B6VHUyelphajZvWXFuTkZUWkNZZU1YVndkT1hySVRNZTRPM1hJLW1ZdjYzOW5EUHZpX2ZvMHVfNDdTMzNmdzNsYUE2ZUNlX3lfTDJYNmE0dFA4WHpJVHNZN0JvZ25IU05QejRxNUZjWFc?oc=5",
     "title": "Trump admin orders Kalshi to halt wagers on what words Trump will say",
     "source": "Ars Technica",
@@ -365,6 +357,46 @@
     "source": "The Block",
     "summary": "Coinbase is throwing its weight behind a CFTC proposal that would legally separate prediction market contracts from gambling, clearing a regulatory path that's been muddier than a politician's tax returns. If this passes, prediction markets finally get their own lane instead of getting lumped in with slot machines, which means they can actually scale without regulators playing whack-a-mole with enforcement.",
     "pub_iso": "2026-11-20T04:24:00+00:00",
+    "pub_display": "Nov 20"
+  },
+  {
+    "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxPTGFOZkRpUlpxc2x1OHZhZFJiYmlESGZ0c2Q5MVhMckNwbGpLQVVLMERyUjJibTBGeUVoSzk4UkVjRlRPeHRDblFyWm1YdWxseVVhcjBoWkd3UlFMcTRPY2pQNFlsMFpZVnJTdXFNbVlQWXUtdjRBaWMwWGpuM2hidXV6dzlyLVJNdjVCVTJUNlRYaC03dkZmalRqMDU0X1JUUGNOZlhqZVhSeFlMel9VWmZRcUx0Ni0xVjhV?oc=5",
+    "title": "Kalshi pushes nationwide self-exclusion program as states challenge its prediction markets",
+    "source": "CDC Gaming",
+    "summary": "Kalshi is launching a self-exclusion registry to let people ban themselves from prediction markets, a move that could soften state regulators' resistance to the company's expansion. If it works, the program becomes a template for how prediction markets normalize themselves as financial products rather than gambling, which is basically the whole game for getting to $100B+ market size.",
+    "pub_iso": "2026-11-20T22:47:24+00:00",
+    "pub_display": "Nov 20"
+  },
+  {
+    "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE5WNjdwVmQxY1lOMmVid0RiWm13ZEtab1k2Y3NybnRYcW5Ya1V3UVpncHlCNGNNRTE4S1liaGRUT29KZ3J4TDU3UDU3c3p0b0tSLTdvcWxNQlRBeGszSVhZRldxczc4Zi1pZDhHcXVlU244cWo5bDNXeDB3?oc=5",
+    "title": "Inside tribal leaders\u2019 fight to ban Kalshi",
+    "source": "CDC Gaming",
+    "summary": "Tribal nations are pushing to block Kalshi, the CFTC-approved prediction market platform, from operating on their lands or serving their members. If they succeed, it carves out a major regulatory loophole that could either cripple Kalshi's growth or force other platforms to exploit the same tribal sovereignty angle.",
+    "pub_iso": "2026-11-20T22:41:28+00:00",
+    "pub_display": "Nov 20"
+  },
+  {
+    "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxOMVM3TUc5M08zeEJZRHRoNkpHTlJiSm10MmJrNzcwR0pral9OeEtjVWszTkpZb295dU03U0ppWndvSTlRbEl1VGR4ZjhqZktZYTJ6dGxYV2FMX1dwUmpVclAwNnNiRzY2Y3JxaG95U3Rkd3NzVndYaHpsVS05OXktdVZjWDJpSzdodkZrN1dVT1Y?oc=5",
+    "title": "Did the AI Bubble Pop? Polymarket Says It Could Soon, but There's a Catch",
+    "source": "Benzinga",
+    "summary": "Polymarket traders are betting that the AI hype cycle is about to deflate, with market odds suggesting a correction could happen sooner rather than later. If they're right, it'll reshape how people price everything from tech stocks to startup valuations, which means your existing positions on AI winners and losers just got riskier.",
+    "pub_iso": "2026-11-20T20:33:06+00:00",
+    "pub_display": "Nov 20"
+  },
+  {
+    "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxNNU1kSHNRRTJ0NEZfTjNuXy1rOGRoMExfeDRUYTFzOTM4eFhlVDl0dmMzN3RLLWNvUXZUd1M1T29BeUVYbV9UbFRrck93RmxNSE84enFZSmZQNk8wZGp6NWEtVW5VblVOcUFZNlZTS2lNYVJNSF9SX3hRZlBTdlczV2VOZWNVN0Z0YUthd2tZVHAyMG9HaVU1WlktTTRCRmQ5TmpEUWRsY1pvNkhWV2dWLWlLSExUVXczbWc?oc=5",
+    "title": "When Do Prediction Markets Improve Election Forecasts? Evidence from Matched U.S. Races",
+    "source": "Political Science Now",
+    "summary": "Researchers matched up identical U.S. races to figure out when prediction markets actually beat traditional polls, and spoiler alert: they don't always. The finding matters because it tells you which elections are worth trading on and which ones you're just gambling on faith.",
+    "pub_iso": "2026-11-20T19:03:06+00:00",
+    "pub_display": "Nov 20"
+  },
+  {
+    "url": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxNNEE2NTFOeUNxNm4wTmN2MFo0MVFqOVB4Tlh0bWZMV29BUlFpdzIwX202Mm5TeDNOSTRpQ1ViazhhOG5MT2EtLVI3RE9RRTZnbmtfak9GbUhicjdWSlRFbmtOWTNrNWI4T1VJVFg4YmpxNXZ6Q2k4aHVPblJJb2FvS3JZRFV5WGpNWEhnZFh4WVd1TlU4U1FwX3d1SjNnajd1b2x0RmRKZlY4RHN5UHpfSjBFblZRYkVUdWVzclJvYWNEUjdWT1gybi1UVDN2X29aMThzR2JEWQ?oc=5",
+    "title": "BTC Price Today Predictions | Will Current Bitcoin Price USD \u2191 or \u2193 Today? Daily, Hourly & 15min Markets on Polymarket",
+    "source": "Action Network",
+    "summary": "Polymarket is now offering granular Bitcoin price prediction markets down to 15-minute intervals, letting degenerates bet on whether BTC goes up or down with the precision of a day trader on espresso. Hypershort timeframes like this attract volume from retail speculators and arbitrageurs who can't resist the dopamine hit of instant resolution events.",
+    "pub_iso": "2026-11-20T15:41:00+00:00",
     "pub_display": "Nov 20"
   }
 ]
