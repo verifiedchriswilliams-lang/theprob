@@ -1,61 +1,5 @@
 [
   {
-    "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxOZUZVZ3QwcWs1OFJWSURoWkdrSlAxVEdPY28yVlVTZ1p1OHFpMzBlMzhzOU1sZnROWDFuaWp0S3FXTVdqTnFoQmNDX1B6VHUyelphajZvWXFuTkZUWkNZZU1YVndkT1hySVRNZTRPM1hJLW1ZdjYzOW5EUHZpX2ZvMHVfNDdTMzNmdzNsYUE2ZUNlX3lfTDJYNmE0dFA4WHpJVHNZN0JvZ25IU05QejRxNUZjWFc?oc=5",
-    "title": "Trump admin orders Kalshi to halt wagers on what words Trump will say",
-    "source": "Ars Technica",
-    "summary": "The Trump administration ordered Kalshi, a leading prediction market platform, to stop offering contracts that bet on specific words or phrases the president will use in speeches or statements. It's the most direct regulatory attack yet on prediction markets and signals the administration views certain types of political wagering as off-limits.",
-    "pub_iso": "2026-11-18T18:46:08+00:00",
-    "pub_display": "Nov 18"
-  },
-  {
-    "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxOUlpta2dGMVNUOFRsZGJpVU83Tkg5WFg2WFdFX1lZQldnamdnSVZSa05LVjcyS3d5STRHZV95c2JtclRycUEzR09YS3YxVzlfVnFLV0pQU3BNTTlwWjBUZWpIQllEYWNUeEFYclJuVlRtMFFxNElPcXFMamRYZmJSdk92aXdOU1VwNm9IbFNRUVNQcXV3VE1JMFNTTk9JSXhQVGhfaF9hRUlPV2xDZll3UQ?oc=5",
-    "title": "Kalshi Turns to Compute Desk in Renewed Push for GPU Futures",
-    "source": "Bloomberg.com",
-    "summary": "Kalshi, the regulated futures exchange, is partnering with Compute Desk to launch GPU futures contracts that let traders bet on graphics processor prices and availability. This fills a gap in the prediction market ecosystem since GPU costs directly move crypto mining profitability, AI infrastructure spend, and semiconductor supply chain bets.",
-    "pub_iso": "2026-11-18T17:58:19+00:00",
-    "pub_display": "Nov 18"
-  },
-  {
-    "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTFBBWVdVSHhhTUVhcVotSmdqQUVjTlZTY1p1T3lYSTFHN1ljdDJLbnJMZF9QVnBmYmI5MEtXbkdXOWZ1eGttUlhJRExZeVFyX24wLVUtZVhXak9rQ21CeUUtckJoNmtwRDUtRE1zQ21JX1lobmE0aDZoMWR4ZGN2S1U?oc=5",
-    "title": "How much will Anthropic be worth at IPO? New platforms like Polymarket offer early clues",
-    "source": "Fortune",
-    "summary": "Prediction markets are pricing Anthropic's eventual IPO valuation, giving us real-time crowd estimates on what the AI darling might be worth when it goes public. For bettors, these prices reveal where smart money actually sits versus the hype cycle, and they tend to be eerily accurate when it matters.",
-    "pub_iso": "2026-11-18T17:29:00+00:00",
-    "pub_display": "Nov 18"
-  },
-  {
-    "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxNTHROTHVlb1Z2SmhGMmpEeEVtSTZ0VUF2bUp3RU93U1hveHF6WF9Id1RpU3k0cUhSYTExMWFBcG9VZnlkU3BNRDN5UVdRRVlKX3pCX2pWQklwbzBiYWdtTGRLbjVndjhSd0NVY2Q0c1AyNkhKZTVmTGFULXhVN1k1SkZkcUlzandIZmFFXzZkZWFrY2ZhaW1QcnY1My1aR0lOYTdwU3FsX2t5dw?oc=5",
-    "title": "Kyle Kuzma: \u2018It\u2019s BS\u2019 NFL Won\u2019t Let Players Invest in Prediction Markets",
-    "source": "Front Office Sports",
-    "summary": "Kyle Kuzma is calling out the NFL's ban on players investing in prediction markets, arguing the league's restrictions are outdated and nonsensical. If the association's loudest star players keep pushing back, the NFL could eventually crack under pressure and open up another $500M+ addressable market of high-net-worth degenerates looking to park money somewhere.",
-    "pub_iso": "2026-11-18T17:27:24+00:00",
-    "pub_display": "Nov 18"
-  },
-  {
-    "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTE9JbUhjNFZCZnphVXFYS3RfY0QzOHhLT2lhSVI0MmI3RV9HcFRBYUNqRThoZkdzUG9udTBYc0Vpc3JuMVJ3UExlVjJsZ25ramY5Q1dUYnc2U1hINTlPT2diUW1JRWhTZFlhVndha2VQRkM4RFNOaUF1SHNEQTA?oc=5",
-    "title": "Polymarket US brings 15-minute trading to oil and natural gas",
-    "source": "Crypto Briefing",
-    "summary": "Polymarket is launching a US version with 15-minute expiration contracts on energy commodities, letting traders bet on oil and gas price movements with the kind of speed you'd normally find in crypto or stock options. Speed-based trading creates the conditions for more sophisticated players to arbitrage inefficiencies and volatility, which probably means tighter spreads and deeper liquidity for everyone else willing to place a bet.",
-    "pub_iso": "2026-11-18T17:11:19+00:00",
-    "pub_display": "Nov 18"
-  },
-  {
-    "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxQY1pIcENNWE1fdjdWTzhuUzdkTUVra21hbzZLbjNFa1ptTm4wSXQ0UTNpUno2bzdueHg4WllFY1BiS09lTEVkMHVJVFl5Q0I4MllsUFJfWFlkM3d5N1BRdUZGRWo1VDdHT2E4RXBIc3dDSThOVDZqQmJyS2I1RUs4ckF5SGc2TUthQVoyUnY0TGV0MUt5eWNaUlVza0NTbDZuMlJCdEg1MUZPVWJRZWg2T25aekNacWNIWS1Z?oc=5",
-    "title": "How to Play META Stock as Meta Platforms Tests a New Prediction Markets App",
-    "source": "Barchart.com",
-    "summary": "Meta is building its own prediction markets app, which means the company that owns Facebook and Instagram is finally getting serious about monetizing amateur forecasters. If they nail the execution, they're about to become the dominant player in a space that's been fragmented between Polymarket, PredictIt, and a bunch of sketchy offshore sites.",
-    "pub_iso": "2026-11-18T16:26:59+00:00",
-    "pub_display": "Nov 18"
-  },
-  {
-    "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxOak5XTHZ1OFlvbDJrWjFoUnRGME5HY1BlaUZLNmFtaWY2NWJZblhyaDBOS0dLUEtwYTF2QzdCd1NJU2tiLUJ3ZThGY3QzbDVMejBMQ0RzVXY4REZUSXlOQ2lSN0h3Y0xDY3ozTDJrZ2tQSTkwZl9zVHJMVVpCbHZOQU5mR29YZXU5TDZrZ3NST1VsTnFVSUFDMw?oc=5",
-    "title": "Prediction market versus poll performance in the 2026 midterms",
-    "source": "Reason Foundation",
-    "summary": "Prediction markets are already diverging from traditional polls on 2026 midterm outcomes, with bettors pricing in scenarios that pollsters haven't caught up to yet. If markets keep outperforming polls like they did in recent cycles, that's a giant middle finger to the entire polling industry and a validation that real money beats random samples every time.",
-    "pub_iso": "2026-11-18T11:00:00+00:00",
-    "pub_display": "Nov 18"
-  },
-  {
     "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxORjdxOFRSNTd0LVVOektaaXIwR2phbzltVGZkX29sMDkxdjlHUXBsUWI1bnVqVXVlTGdhcGFxWWNBcUxIaG04MjA0SzN1VWlTNUxESGxsZnRJaFYtQjVUYTRnLTBnc3g5QXROU1lESXE0TVNkOUtFa1FjZXFrRHhmTmZGZmhaZEhnZlBtblB5U2k?oc=5",
     "title": "Kalshi bets on Martha Stewart to clean up its image",
     "source": "Morning Brew",
@@ -397,6 +341,62 @@
     "source": "Action Network",
     "summary": "Polymarket is now offering granular Bitcoin price prediction markets down to 15-minute intervals, letting degenerates bet on whether BTC goes up or down with the precision of a day trader on espresso. Hypershort timeframes like this attract volume from retail speculators and arbitrageurs who can't resist the dopamine hit of instant resolution events.",
     "pub_iso": "2026-11-20T15:41:00+00:00",
+    "pub_display": "Nov 20"
+  },
+  {
+    "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxNTFA1dURQNDVBUndhbkFuSzVGakZtWTd3TzdiV1Bpa3FDQWI0SzZ0OUp4cjl5OE1KY2YtSlNxTEN1RUJMemFrTkMwUV9xQzRpeW1iazZRV0VfNHhiOVBabXpEZUFTZEpWRUFjR292TmVxckpIZDRNTHloMkVuSEdsTFhaRU83S3VSVjdES1lXM2lZdlRZVlVyOUVMRjZrenZhZ2c2bDRqcW9vd9IBrwFBVV95cUxQblo1aTZZTWJ4TFpXaEVEYUFfa29CVTdZY2FoaVdENjRaRk83bUdPUVlfb0V2NmVSc2ZLQ0l5RVBpbzB5WU9leFczc2Y0RGxUQktWQWZVT0o0UUY0UWdaNVRhT3h0X01xYk1kc0dwOFM3T0otcmduX3ZueXFpVzdEbWJMczFTempLcVZ4dWhzVkZHRHpEMGU3ZFdUZElhZ0dXaEtRR1BiT25KZ1pRdnpZ?oc=5",
+    "title": "Administration tries to intervene after Kalshi is threatened with restraining order - ABC News",
+    "source": "Breaking News, Latest News and Videos",
+    "summary": "Kalshi, the CFTC-approved prediction market platform, is facing legal threats from someone (likely a regulator or competitor) while the Biden administration reportedly tries to block the restraining order. If a restraining order sticks, it could hobble the fastest-growing prediction market in the US right when political betting is about to explode.",
+    "pub_iso": "2026-11-21T01:52:08+00:00",
+    "pub_display": "Nov 21"
+  },
+  {
+    "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxPTWJPZi1MLURSUnVEZzBZMW0zaXNTT2lJZGpvZEVpZGNKOW81THN4cVppbmpQbHNQZXVyRlhJS0NReFNYZkpyT0dadU15Z2Y0WFpiaHEwajFJdTU4azJEUDdjQTJMSHNJNC1QT0xxZDZjbGtIYzhBeDVyQThLVXBuR091aWYySl9Hb1hmOGVDYi0zQTBUb3FkQi14RlBpWnpHQl8tVkd5ZTYyRm1LbzBSbC1wWQ?oc=5",
+    "title": "Polymarket code \u201cSILIVE\u201d updates $25 referral promo for Friday night NBA",
+    "source": "SILive.com",
+    "summary": "Polymarket is running a $25 referral bonus using code \"SILIVE\" that's active through Friday night's NBA slate. The move signals they're aggressively competing for new users during high-volume sports betting windows when casual bettors are most likely to sign up.",
+    "pub_iso": "2026-11-21T00:45:00+00:00",
+    "pub_display": "Nov 21"
+  },
+  {
+    "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxOMk1mWXNDcHIyWHROb2RNYkE4dmp2TGNrRFlaRzhkQ25EbjhpY3lieVZXMmFIRllyN0lTUmtlWnJKbDJQQTc2ZTRvUzJHOGVlUE5jWDlrVXhPR2l5eUVwbHZsbHNsUU1rMVdiMm10Q0pCWmpiMUNpR3B5Q1JjY0ZaNTZSTi3SAYoBQVVfeXFMT0xRLVBPNTUxY00yZ3Jsa0duNk9EQXRsakJIbkk3YmY2a1NfV2NZODdydjNfTkxHT0hhSVBaQWxqMmVTa2piZUFsSkladG1aUHM0OXo1X1VldnVIeEoxWFZpMGJXbEEtbVNZSlBiN0RPUHJHYzA1MjBQLUZmbnFYLTBNRkpxVXp2bEVB?oc=5",
+    "title": "Casten, Lieu propose whistleblower program for prediction market insider trading",
+    "source": "The Hill",
+    "summary": "Two congressmen want to create a whistleblower bounty system to catch people trading on non-public info in prediction markets, basically copying the SEC playbook for crypto and stocks. If it passes, you're looking at an enforcement layer that could actually make these markets safer for retail players and potentially legit in the eyes of regulators who've been skeptical all along.",
+    "pub_iso": "2026-11-20T23:58:00+00:00",
+    "pub_display": "Nov 20"
+  },
+  {
+    "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxNM1FJRklOUmRGTEUzbkZHUnNuY1NGZFE5SVdVcU9FVnRSYXYwWFd3TTBTVm44WEVFU25FU3dqNDVqRl80eDctRHRlOVZsN2o3M2JNVDRoUlJrZXpMbU5EdGJLMmxiUEVpVnVrRW0xUkRkdnZac0dZOHVyWXE3d2RaaEtR?oc=5",
+    "title": "CDC Gaming: Inside the latest prediction market news",
+    "source": "CDC Gaming",
+    "summary": "The CDC is apparently getting in on prediction markets, either through official channels or as a case study in how government agencies might use them for forecasting public health threats. If feds start legitimizing prediction markets as a policy tool, it could unlock serious institutional money and regulatory clarity that retail bettors have been waiting for.",
+    "pub_iso": "2026-11-20T23:04:11+00:00",
+    "pub_display": "Nov 20"
+  },
+  {
+    "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNdVhIbjJ2azZZdFUyc2lRcWMwLU1uSlZmTVhlQVo4Mm1EME5TbWpoZjZhYS1VZ29PNDBYeFk1MEl5bTQ5Y0FTeWJ4Tk5saVBmTUhGUTZyVHh4OVZtWTNvc2hIelp4bjdZNWgtamlDUVJIa1FFZ19ISk5vNVQydEZUaHRZTll0blUxRkFjSHpOXzlQaEtubjVyTXlCYWh0TzhOc2VxS0dBTGdVZXYzemt4c1UwMDczM0E?oc=5",
+    "title": "Kalshi races to get ahead of New York order that could shut down exchange",
+    "source": "CoinDesk",
+    "summary": "Kalshi, one of the few US-regulated prediction market exchanges, is scrambling to comply with or challenge a New York state order that threatens to shut down its operations. If regulators succeed in booting them out of New York, the entire US prediction market industry loses its most aggressive player and potential mainstream credibility.",
+    "pub_iso": "2026-11-20T22:51:14+00:00",
+    "pub_display": "Nov 20"
+  },
+  {
+    "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxQR011TXB4UG5nYy1VYS1UZ1J4N3BfcGFKSFR6ek5lY1JFV3VwUmVFOF9ZdDk3Qi1lbFVVT3hVWTVmeUE4aHhuX185cGYxU01nZE96N0hlSFZfQ3NqczY1YTBva0J5LWlLcV9KTTA2dWowSEdZUm9mUjVZZ1BuSHZ4ZUI4Q21GZlZJeldBMUFQVmY4UQ?oc=5",
+    "title": "NWSL, PWHL Holding Off on Prediction-Market Deals",
+    "source": "Front Office Sports",
+    "summary": "Two major women's sports leagues, NWSL and PWHL, are pumping the brakes on prediction market partnerships despite the explosive growth of sports betting. The hold-up matters because these leagues control massive audiences and legitimacy that could either legitimize prediction markets as serious financial instruments or keep them cordoned off as gambling sideshows.",
+    "pub_iso": "2026-11-20T20:33:52+00:00",
+    "pub_display": "Nov 20"
+  },
+  {
+    "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxOS2MzSjY1VVhWTnR1SWh1OUJYbkd1LURiYjVDYXNQU3RfNmo5eTdzeXJrTFExQ0VyTWNtZGl1ZnplZE15YTVLcTRjbFVGYkFrWFdrMjRPdndudmNUQXRQM2hPeVJ2SkNoaFVSR21mZ1JnV1JCLWkwYndLbk9rU3kySzVnOTYzVTZEdjh2Y3VtM1Bab0QtSEdob2tuTEpQUQ?oc=5",
+    "title": "States Begin Taxing Prediction Markets, but Revenue Is Uncertain",
+    "source": "Governing",
+    "summary": "States are slapping taxes on prediction market winnings, turning what was once a legal gray zone into actual revenue for state coffers. If the tax burden gets too heavy, bettors migrate to untaxed offshore platforms, which defeats the whole purpose of legalization.",
+    "pub_iso": "2026-11-20T19:50:50+00:00",
     "pub_display": "Nov 20"
   }
 ]
