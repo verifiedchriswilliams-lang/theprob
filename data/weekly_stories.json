@@ -1,29 +1,5 @@
 [
   {
-    "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxNS1hKcFc4OFNtTmVZQTZSUnhkN0xLRl9Dckg5emZqRy1UeWhyNUxGSzJqOUhVMm1udEVQYjVfcVk5Y2Y3NHFScWZzSkRLVDdIeWZXRFplbWN6dmRLU0xNcFB4SjV1bmE4SEJPc1F5eVZYYnJSZ0ZndkVXN2txeFFrX3Y5YTNTcW13UjNDb0JERy00dw?oc=5",
-    "title": "How to Read Prediction-Market Odds in a News Headline",
-    "source": "The Defiant",
-    "summary": "Prediction markets are becoming mainstream enough that financial media now needs a translation guide for how to actually interpret the odds being quoted. If you're trying to arbitrage headlines against real market prices, you're already losing money to people who know what a 35% implied probability actually means.",
-    "pub_iso": "2026-11-19T18:20:03+00:00",
-    "pub_display": "Nov 19"
-  },
-  {
-    "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxOZTQ4TDZReXRLdDJvUVB3LW9GdFpFcVBJVjhDaFg4NTllVm1MQTVXa1JJMzYxMnRxelFVZ2tNMkNkMjg5U2NwNEtCV2NDTDRqNDdrMG5FS0ZtWllnWDdIX1QzSnRLc0xOU0RSWHFaQzVpNW9jSmN2aHYzM0JtNExHSVV6eWJQbERKZmV1TVVvdi0xWHlxU2V2STc1R01tTFQ2NW9uWVNmU2p3NDNwMnk2TQ?oc=5",
-    "title": "Coinbase Eyes In-House Prediction Markets in First Half 2027",
-    "source": "Bloomberg.com",
-    "summary": "Coinbase is building its own prediction markets platform and plans to launch it in the first half of 2027. If they actually ship it, we're looking at a major liquidity inflow to onchain prediction markets from one of crypto's largest retail gateways.",
-    "pub_iso": "2026-11-19T17:28:24+00:00",
-    "pub_display": "Nov 19"
-  },
-  {
-    "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxQbFA5WUprV1hMOVMwcHoxMmhFQWo1M0s2dTF2dldyQk9aMnNxM3VtdE9kaFhrbG5hT2hncG1Jb1l2TWtYQU1TMkhjSDJWSmpFdWRDVy02OC1tWERyY0piVTZYVktkNzZmbmFlQ2Nyc3A3akFvY2VYZnFUUi1KYzl1SDNZcTRsblNqY09maFNDOGczSkVhLXVtZzF3QlFjTmF3endFSjVLRWI3Wl9fUmhyNE9HZTVMWC16NDEzWTdB?oc=5",
-    "title": "Michigan Forced Polymarket to Retreat. Did the State Expose Prediction Markets' Weak Spot?",
-    "source": "Inc.com",
-    "summary": "Michigan's regulators forced Polymarket to block residents from using their platform, testing whether states can weaponize gambling laws to crush prediction markets before they go mainstream. If other states follow suit, we're looking at a patchwork of regional bans that could balkanize the entire industry before it ever gets legitimacy.",
-    "pub_iso": "2026-11-19T15:06:29+00:00",
-    "pub_display": "Nov 19"
-  },
-  {
     "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxOSEpNcnZ5Rlc4N1Zfd0VzMW4tZW5faDd1ZXZvVDFnY3ZDM2tWbHNfNW9Hc0F2RlZfU0liU2stWEpNb1ZEakJteHVyWVRPaUFYMGNLX0NyTHJYZG9IenRjS0dTV1NXYkNrS1JzX0lja3EyNmlGbE1lbzloSlJsak8wTDlsOER2VXpxWHFadjFHR3NjdDM5Vk9tdXVHQnFTZGQxMkE?oc=5",
     "title": "Kalshi Asks States for Help in Restricting Problem Gamblers",
     "source": "Yahoo Finance",
@@ -397,6 +373,30 @@
     "source": "FOX 13 News Utah",
     "summary": "A federal judge is about to rule on whether Utah can ban Kalshi's election and event prediction markets within the state. If Utah wins, it sets a precedent for other states to do the same and potentially tanks the entire retail prediction market business before it gets off the ground.",
     "pub_iso": "2026-11-21T02:17:44+00:00",
+    "pub_display": "Nov 21"
+  },
+  {
+    "url": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxPTndTcnBzM1RXeXFpNTNzcl9pajdWeU9GaEtxc3NScXZvaDlxOG1XRkROOGhlY3dvV1dueDdlN2FGVUxVMl9BZ0QwM0RtbUhia0JwcFRoMENYVGE1N0wtVVdZQTFIRGVRS01WMnE2UURDOGN6NGNQdzlxdTIyNWVha1RWZGpKNzdjNDQ4Z0Nwek53ejJLY1JkVTF2QkhMTXo1SWJ5MzhsVnNRb25OcTdQODJoVWRvUE1COTJfbnI0VVE1SllwdU1zaU9lamlSWWVRUUgwNE5KZw?oc=5",
+    "title": "Polymarket upgrades new $25 referral code \u201cOREGON\u201d for Utah State-Oregon State college football",
+    "source": "OregonLive.com",
+    "summary": "Polymarket dropped a fresh referral code called \"OREGON\" offering $25 bonuses ahead of the Utah State-Oregon State college football matchup. The timing suggests they're aggressively courting new users during high-volume sports betting windows, which typically precedes spikes in prediction market activity and trading volume.",
+    "pub_iso": "2026-11-22T03:54:00+00:00",
+    "pub_display": "Nov 22"
+  },
+  {
+    "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNMGZsQnc3LUtFajhmd3YwYmNoTTFjQU91aFFTakFkZzJncW1yb3g0Vlh0RXFITWRMTFV1Yk5IYTNHTW5OaUs2ZmFkS3BVdHVxWjNwaWR5NlRybWo4WnphWllyWHN1ZTF4YXhCVnNKMTByQ2p5R2JzNTh3LUx4VXpVcG9FeHVjVmxyMXBKbEcyZmVhblY4TGMtaFRwcmhUNW9UNk93TUt6M0RtcGZVM3R5QVltTUgwUm8?oc=5",
+    "title": "College Football Prediction Market Promos: Claim Over $250 in Bonus Offers This Weekend",
+    "source": "WTOP News",
+    "summary": "Prediction market platforms are throwing around $250+ in bonuses this weekend to lure college football bettors into their ecosystems. Free money only works if the platforms convert casual promos-chasers into sticky users who actually trade week after week.",
+    "pub_iso": "2026-11-21T23:05:59+00:00",
+    "pub_display": "Nov 21"
+  },
+  {
+    "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxPWkItNTQ3WEtpNXl2X2JudnRtSEkyek8yN2U4VWRUMVFiVTFRQzRfRWpNYjhqVUw0YjRDQWNkSVJnbDNyWGFhUmd3MmZXODVhUlJfTHVwcVdWVkNmTnptSk9FaVBOU1c1TmNVa1plbHR3bTBMQ1RhSkQwV3VmWUNoM0hrNzJtT1cwV3N5bWdoWjdhTXVEeW9OYmFaeU10OG9qM2JnS0xZb1ZMOHNSREl6bA?oc=5",
+    "title": "Mention Market Volume Plunges As CFTC Halts Trump Contracts On Kalshi",
+    "source": "Legal Sports Report",
+    "summary": "The CFTC shut down Kalshi's Trump-related contracts, tanking volume on the platform overnight. That's a pretty direct signal that regulators are serious about policing political betting, which could reshape how prediction markets operate for the 2024 cycle and beyond.",
+    "pub_iso": "2026-11-21T10:00:00+00:00",
     "pub_display": "Nov 21"
   }
 ]
