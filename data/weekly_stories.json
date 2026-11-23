@@ -1,85 +1,5 @@
 [
   {
-    "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTFBCODBxU1BOWDlQazNIZ0E1Zy03ajAxMG53RVVWRC1HVUpGeVVMWWFRd2hyUGZPb1R6UGg2V0ZGRUZkTEdubmxsMU92bnR3VFpGSmlTU3VzS2hkdl96NVlyX3lSYWxUZ2ZhemJsdUpUM1dtMUZ3MjFnTFdtMNIBgAFBVV95cUxNTURqUmZMVXJpQXpJejVMY2N6NldfZjlwUFhVMWtPSDRhYkRoQTY3NXIwVkZZMmFLcllLc2ZKSVRvTFh2VERyd0J5N3pyRHMxQ0ZLMzFsUXB3U3Ftamo3UlQ0bkFSXzdSOUtGUl9XUmxya01hNDlwdlEwcnNSY1JMVQ?oc=5",
-    "title": "Prediction markets outlook for stocks in 2026 dims amid AI sell-off",
-    "source": "CNBC",
-    "summary": "The AI boom is finally hitting a reality check, and traders are repricing 2026 stock expectations downward as the sell-off gains momentum. This matters because prediction markets move faster than headlines, so if you're still holding bullish bets on mega-cap tech, you're probably already late to the pivot.",
-    "pub_iso": "2026-11-20T18:05:29+00:00",
-    "pub_display": "Nov 20"
-  },
-  {
-    "url": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxQODNzUDdNb0ZkcEhlYmVoQ1FLZm9GUXNOQzZFZndVal9zbDZZbm1lMTdfXzZyNGxFMkR6RU1GS0E2dzFyVjJsRjVGdTFsckRLRVJnRWxHZHM4RTNxQzdtanRsVi1Qc2txVy1Dcm5yZWhIWjUzRXY1LUZrWl94ZUlOTzZHNFZadU43ZTFzdVJkYUcyUEYxT1NFRTFyWDlBeEJOOUZvQ3RvVTJ2MVEzMEdSN0p4MGgxc2JOcjFiVGlaR0FyNE1RUGhHLU85VEFJT2dSNk9QN0dBVlI4dXJocUEzc1h4eXljYU1j?oc=5",
-    "title": "2028 Presidential Race Already Has $3 Million in Kalshi and Polymarket Bets",
-    "source": "Forbes",
-    "summary": "Folks are already dropping real money on 2028's presidential race across Kalshi and Polymarket, with $3M in total bets flying around despite the election being four years away. That's the kind of early liquidity that transforms these platforms from novelty betting sites into actual price-discovery mechanisms that serious political handicappers have to pay attention to.",
-    "pub_iso": "2026-11-20T18:04:07+00:00",
-    "pub_display": "Nov 20"
-  },
-  {
-    "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxPMmNURFMtWFk1MU0wQWtxN25kRVpLOUJxWEluanQyM0F3N3ppa3VISm14WUpOTEc4OUVtTGNpNmdVbThScEVoX0E2VWRKam9od0w1YWM2UTBpNnItQVRZQjdOUTNETHZtb2t2dUNtc2VvNXViTmtDR3VfajlpT2tmeXAzaVk1TDFiaU0w0gGLAUFVX3lxTE5ZcGZtallOb1VWWkVtTXFIcUJlcVhrM3pzWl9tSXVKRGlFcTlnaFdQM2tTeWZSTEk1Tzd0MlJKY294ZE5RWmVHTHJrYVBGMjFrU3d1a2ZvdEFMcE9qTXFxcUJJYldFUC1McFBsWDVWczNXSXgtVmJ6TWp0MlpoUXY2Ulgtc0E2TlA5SzQ?oc=5",
-    "title": "Kalshi pours money into California politics as its state, federal critics multiply",
-    "source": "Sacramento Bee",
-    "summary": "Kalshi, the regulated prediction market platform, is spending big on California politics while facing mounting scrutiny from both state and federal regulators. For bettors, this signals either confidence that Kalshi survives the regulatory gauntlet or desperation to influence the outcome before they don't.",
-    "pub_iso": "2026-11-20T16:49:04+00:00",
-    "pub_display": "Nov 20"
-  },
-  {
-    "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE4wejhSLWIzdVZzOVIxR1ZQS1NfT3dQbDhCTy02UXdhSVB5Sm5rV1g1VG5iVzBQek1SaUM1LXlNOWMyWU90Y3A4cmpYVFFRNEVSR3J0bElVN20wcTNHcnREaHBKUTh4ZlpBdDVvRVVCUzJUQVR2b1dNXw?oc=5",
-    "title": "Inside Tribal Leaders\u2019 Fight to Ban Kalshi",
-    "source": "The New York Times",
-    "summary": "Tribal nations are pushing to block Kalshi from operating on their lands, citing gambling regulation concerns and sovereignty issues. If they succeed, it carves out a major regulatory wildcard that could inspire other jurisdictions to challenge the CFTC's prediction market framework.",
-    "pub_iso": "2026-11-20T16:41:29+00:00",
-    "pub_display": "Nov 20"
-  },
-  {
-    "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxQcnA0Z3loUWtHNHJUR1o1a3N0MGk3ZG5QZ25BSDd3bEgyaGc0ZllZMlp1SDRBRjVxNkU0LVRJQUtLY3NrUXpLaHlvaWc2YlozNVI4R09KRGlfWjg4QWlMc0Y2b1NidE05bVdGT01vVHlIVG1xN0I5ZzBadDdXM1ZkUl85TXBRd1R6eV9uUmhyNGx3dmliWl9rQ2hBQjIyUlJfd05ObmdpMFJOeUVUeFE?oc=5",
-    "title": "How the 2026 Midterms Played Out on Kalshi and Polymarket",
-    "source": "Pew Research Center",
-    "summary": "The 2026 midterms proved predictive markets aren't just toys for political junkies anymore, with Kalshi and Polymarket generating serious trading volume and accurate forecasts months before election day. When political betting platforms outpace traditional polling, money managers and campaigns start paying attention, which means the next cycle will see even bigger stakes and deeper pockets flowing into these markets.",
-    "pub_iso": "2026-11-20T16:10:27+00:00",
-    "pub_display": "Nov 20"
-  },
-  {
-    "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxPNmZvdDdtbk90YVpaT0xySWlKbUpzaGNRekN5NV9XLWpYOFFIVEdGZ2llR1czaEh1YW5pMGdzTHdkckZ4czE4VlRSa21nOXlyVWhCRlNHMmdsYnEySTZVZFBzSk5HUWhBMEQzTG9qT2k4R0NfQmZpUjJ0Wk0yTjZFb0UtWkxKNW1MbGpJZWJNcE45SU9DRkVaVU1lc01paWhLV0lGN0l6ZWZuZjFpTGtEZnRnTQ?oc=5",
-    "title": "U.S. Senate passes bill to ban prediction market bets on war and death",
-    "source": "CoinDesk",
-    "summary": "The Senate just passed a bill that would prohibit betting on wars and deaths in U.S. prediction markets, effectively nuking two of the most liquid contract categories. If it becomes law, it's the first real regulatory sledgehammer aimed at the entire prediction market ecosystem, and it signals Congress thinks some market activity is too morbid to allow.",
-    "pub_iso": "2026-11-20T14:25:57+00:00",
-    "pub_display": "Nov 20"
-  },
-  {
-    "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxOc1NpSWl0VFBBLVQwdDlBRkVVbjVVc0tKWmdmUWd5Y0xCNE9SanBuMU1XTkE4ajFReHF0M0VjTjdTMHN3a2MydW8yYWJrWW9EM3EwcV9LRnFlX1lXZlJBNEx3US1VakhrdmNNeFVESGNCREpYRGg5Y0JzWDNnYUdxOFktaHhwdEVONEtQNVZDeXZBRVpMbzlHWF9yaXgzWVhQYWFNZno0ek9RQzR1bkdDbGVLQzh4MG90aUN3azk0Mlgtbl9zMVFPZzdmVE5Odw?oc=5",
-    "title": "College Football Playoff Prediction Market on Kalshi: Wake Forest, Tennessee Surging",
-    "source": "Sports Illustrated",
-    "summary": "Two mid-tier college football programs are gaining real money on Kalshi's playoff odds, suggesting sharp bettors see something the casual crowd doesn't. If the prediction market is pricing these teams ahead of the broader betting market, there's either inefficiency to exploit or early signal that Vegas got it wrong.",
-    "pub_iso": "2026-11-20T14:00:01+00:00",
-    "pub_display": "Nov 20"
-  },
-  {
-    "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxNOXhUZkNGeXA1Y2VBLW8xNTRKdkgyNEJjdTVsS0RoV3lod0dPQzg0OGt1aHk3QlA4aF9KQmRhQThGekV2djIwMWpFTE9POHNvdUVQR0tQQXZNdFFXVU5GRDQyYWdNdzk2SV95N2Y3b1dDVVBiM0pQdXRNdVpnX1Nlc3BteEVVcEdDeWl5SWF4RHFNYWJMd0dlRXFB?oc=5",
-    "title": "Coinbase backs CFTC proposal to distinguish prediction market contracts from gambling",
-    "source": "The Block",
-    "summary": "Coinbase is throwing its weight behind a CFTC proposal that would legally separate prediction market contracts from gambling, clearing a regulatory path that's been muddier than a politician's tax returns. If this passes, prediction markets finally get their own lane instead of getting lumped in with slot machines, which means they can actually scale without regulators playing whack-a-mole with enforcement.",
-    "pub_iso": "2026-11-20T04:24:00+00:00",
-    "pub_display": "Nov 20"
-  },
-  {
-    "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxPTGFOZkRpUlpxc2x1OHZhZFJiYmlESGZ0c2Q5MVhMckNwbGpLQVVLMERyUjJibTBGeUVoSzk4UkVjRlRPeHRDblFyWm1YdWxseVVhcjBoWkd3UlFMcTRPY2pQNFlsMFpZVnJTdXFNbVlQWXUtdjRBaWMwWGpuM2hidXV6dzlyLVJNdjVCVTJUNlRYaC03dkZmalRqMDU0X1JUUGNOZlhqZVhSeFlMel9VWmZRcUx0Ni0xVjhV?oc=5",
-    "title": "Kalshi pushes nationwide self-exclusion program as states challenge its prediction markets",
-    "source": "CDC Gaming",
-    "summary": "Kalshi is launching a self-exclusion registry to let people ban themselves from prediction markets, a move that could soften state regulators' resistance to the company's expansion. If it works, the program becomes a template for how prediction markets normalize themselves as financial products rather than gambling, which is basically the whole game for getting to $100B+ market size.",
-    "pub_iso": "2026-11-20T22:47:24+00:00",
-    "pub_display": "Nov 20"
-  },
-  {
-    "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE5WNjdwVmQxY1lOMmVid0RiWm13ZEtab1k2Y3NybnRYcW5Ya1V3UVpncHlCNGNNRTE4S1liaGRUT29KZ3J4TDU3UDU3c3p0b0tSLTdvcWxNQlRBeGszSVhZRldxczc4Zi1pZDhHcXVlU244cWo5bDNXeDB3?oc=5",
-    "title": "Inside tribal leaders\u2019 fight to ban Kalshi",
-    "source": "CDC Gaming",
-    "summary": "Tribal nations are pushing to block Kalshi, the CFTC-approved prediction market platform, from operating on their lands or serving their members. If they succeed, it carves out a major regulatory loophole that could either cripple Kalshi's growth or force other platforms to exploit the same tribal sovereignty angle.",
-    "pub_iso": "2026-11-20T22:41:28+00:00",
-    "pub_display": "Nov 20"
-  },
-  {
     "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxOMVM3TUc5M08zeEJZRHRoNkpHTlJiSm10MmJrNzcwR0pral9OeEtjVWszTkpZb295dU03U0ppWndvSTlRbEl1VGR4ZjhqZktZYTJ6dGxYV2FMX1dwUmpVclAwNnNiRzY2Y3JxaG95U3Rkd3NzVndYaHpsVS05OXktdVZjWDJpSzdodkZrN1dVT1Y?oc=5",
     "title": "Did the AI Bubble Pop? Polymarket Says It Could Soon, but There's a Catch",
     "source": "Benzinga",
@@ -398,5 +318,85 @@
     "summary": "Oregon lawmakers want to tax prediction market operators, a move that would make the state the first to claim a direct cut of fees from the nascent industry. If it passes, expect a flood of copycat legislation in other states that suddenly realize prediction markets generate real revenue worth fighting over.",
     "pub_iso": "2026-11-20T14:02:22+00:00",
     "pub_display": "Nov 20"
+  },
+  {
+    "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxPenRVTHpNeUdUNERXZGQ0azNGVXpnSkhnMDRzOTVudGpQOTBwVUJic3RPX3Q4RmFScWlneTJvdi16WDdCdEVyQjlvdFh5eUE3V0JJLVJldjBqZkpyYVFWSGU0Mll2Rk5iU0pRdDdPd3hfR3hhamdyMVA4U3MySC13a19OZmZ2NG9sTlVQRURVWFh3YTQycnJpdnpULUhqQQ?oc=5",
+    "title": "Polymarket Odds Today: Netanyahu, Sweden PM, Super Bowl",
+    "source": "RG.org",
+    "summary": "Three wildly different events are trading on Polymarket today: Netanyahu's political survival, Sweden's PM drama, and Super Bowl outcomes, which tells you something about how fragmented prediction markets have become. If you're allocating capital across these bets, you're basically running a geopolitical hedge fund meets sportsbook, which either sounds genius or completely unhinged depending on your risk tolerance.",
+    "pub_iso": "2026-11-23T13:51:29+00:00",
+    "pub_display": "Nov 23"
+  },
+  {
+    "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE92VUlsUDJGNVdvRGNFS1hIRDI5WlpqbnkybnFXSDlDNGltOWJxYWlDWGRPWGthUEpLVXMya1FnaWY5WEczcW5hdG1ab2dyNFJkRkpBd2RDQldCcVdybmVyMW05LTVvUnMwOW5PNGpTUGFodkJ6UVE?oc=5",
+    "title": "Polymarket Buzzes With Jensen Huang Comeback Talk as Former Nvidia CEO Tops Next-CEO Odds at 19%",
+    "source": "BigGo Finance",
+    "summary": "Polymarket traders are betting Jensen Huang makes a comeback as Nvidia CEO at 19% odds, suggesting serious appetite for a dramatic leadership reversal at the chip giant. The odds reveal how prediction markets price unconventional scenarios that traditional media dismisses, and whether Huang's return momentum holds will tell us something real about insider sentiment versus public narrative.",
+    "pub_iso": "2026-11-23T13:35:00+00:00",
+    "pub_display": "Nov 23"
+  },
+  {
+    "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxPR2plTmc0SGlYTTVnOU5iYmhPWlgxZ1FGSXE2SHNMYURtYjJrTEJwZEZuOXRxNGtFeEpmMWs5a1lRdkl3NVc5N3dtbTEzckhhUjZfNzJuSE5USi1ENWxBUU54ZFAtSXYzMkV2MVZ5SW9sSG5Xc083ejFKaGdjWHFrNG5aMFI3M1l1WWFXVUQyU1F1Z1E?oc=5",
+    "title": "Indiana Bears Market Continues to Fade",
+    "source": "Sports Illustrated",
+    "summary": "The Indiana sports betting market is losing steam as handle and participation rates drop off after an initial surge. When state markets cool, it signals whether legalization hype translates to sustained interest, which matters for every operator betting on market expansion in new jurisdictions.",
+    "pub_iso": "2026-11-23T12:00:01+00:00",
+    "pub_display": "Nov 23"
+  },
+  {
+    "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxQNi1pSHJKbkhrMkN3LWFva0ZrSXpSYWw1TWhKUTR1NUh2N0NHcE9DaUh6UGxPUExqNHJZTjQ0bU1pejY1QUduNWJ1M1BRS0lVSHBYcGpqdlhid3phNC1DUy1RbVJFdWtsWVhtRGdueklUSENubXVrelM0MTYzQXZ4LVkyQQ?oc=5",
+    "title": "Iran Blockade Odds: Is Polymarket Mispricing a December Deal?",
+    "source": "Action Network",
+    "summary": "Polymarket traders are pricing in a low probability of an Iran blockade deal closing by December, but the market might be underestimating diplomatic momentum or overweighting geopolitical friction. If negotiations accelerate, early contrarians who bought the dip could print massive returns while the consensus crowd sleeps.",
+    "pub_iso": "2026-11-23T11:41:00+00:00",
+    "pub_display": "Nov 23"
+  },
+  {
+    "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxObjc3MVhUdnFWREx5Rnp1VWlBT3BYQkhPcm16RVQ3eEJ2YkdZbGkwM3F2dHAwWENVZVV1UjVSRmtPVlZabEtfNzIyR1djR2pYY0lZOGdpT0RmWUEwdWNXTFFjMTJWYjhzNG5OY1NUa1daSndObktYV2x6ZEtlX1BfcGVQaXBOV21BU1Zta0dtLXBoZFpSVXUtdUdlQU5pdGZnVWpac2xnRFROS1lxN21PalA0UQ?oc=5",
+    "title": "Most winnings on Polymarket midterm bets went to top 1% of bettors, report says",
+    "source": "Reuters",
+    "summary": "The top 1% of Polymarket bettors captured the majority of winnings from the 2022 midterm elections, suggesting prediction markets concentrate wealth among sophisticated traders rather than distributing it evenly. This matters because it raises questions about whether Polymarket actually functions as a diverse information-aggregation engine or just another casino rigged for professionals.",
+    "pub_iso": "2026-11-23T11:05:46+00:00",
+    "pub_display": "Nov 23"
+  },
+  {
+    "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxPSlZ0NDRlOG1teFlRSWliM1hPVHFxS1VvTW1COTcxZ0FXLU9QSUZnOEJtYnk4VlJYZ0RjVG1Ud2tRWmlEYi13S2lDUGp0b1ctXzRWOWxjc0lmLVBnU21WbEJvVDZGcS15NFp3MUk4VzduYlpLbk82cEVnSUZFZjVOeG9ob0lla0NuanlVT1FPQ0xHUzVfNmE4?oc=5",
+    "title": "Democrats put campus gambling in the crosshairs",
+    "source": "The Hill",
+    "summary": "Democrats are moving to restrict or ban gambling operations on college campuses, targeting everything from sportsbooks to daily fantasy sports apps marketed to students. This matters because regulatory crackdowns on campus betting could reshape the entire college sports betting ecosystem and potentially crater some operators' growth projections if restrictions gain real traction.",
+    "pub_iso": "2026-11-23T11:00:00+00:00",
+    "pub_display": "Nov 23"
+  },
+  {
+    "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE55NEs2cWlUUUp1ZnZ4Um9mNmZqZlNSSlR3TU43RS1VNW9RMkZzeGVCZEJobl9iWEhKTFRyS0xxTF9WT2NpTVQ1YWVBYzVIMVF2cGVKNGpUTFlKVk53?oc=5",
+    "title": "Eisenkot leads Netanyahu 60% to 27% in Polymarket betting on Israel's next prime minister",
+    "source": "The Jerusalem Post",
+    "summary": "Gadi Eisenkot, the former Israeli military chief, is crushing Benjamin Netanyahu in Polymarket odds for Israel's next prime minister, commanding 60% to Netanyahu's 27%. The massive gap signals either serious political instability ahead or traders betting hard that Netanyahu's legal troubles finally catch up with him before the next election cycle.",
+    "pub_iso": "2026-11-23T10:25:42+00:00",
+    "pub_display": "Nov 23"
+  },
+  {
+    "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxOQlZLa2cwVVBteGFDXzhFNy0zSHd2UFJjbnZyaWQyV1BHcGRCTlBEWDRqWjBaSFdESk96T094U0Y0NFN5OC00ZWY4WlBxb0pHSVV0QmRhMExVWHVmekgxRGdYWlE0MnBuX0lnWGJ5VnY1aXc0RHdzR291RkpKUUg0cFhFRXRPY0x1WFlkV3hScEVsOGw0R0tHUmFzTDZGc2dFWFhPTkkzR0pKU0l3WlNz?oc=5",
+    "title": "How Luana Lopes Lara built Kalshi into a $40 billion prediction market giant that overtook Polymarket",
+    "source": "Fortune",
+    "summary": "Luana Lopes Lara scaled Kalshi from obscurity to a $40B valuation and market dominance over the previously untouchable Polymarket, proving that founder execution and regulatory navigation beat first-mover advantage in prediction markets. If Kalshi can dethrone the category leader, it signals that the prediction market wars are still wide open and retail adoption is reaching escape velocity.",
+    "pub_iso": "2026-11-23T07:21:00+00:00",
+    "pub_display": "Nov 23"
+  },
+  {
+    "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxOamRLeERxUmpZQ0hNSlRfSHZQc0NHWHJ0WTRUUEFkc01HVkxoSlVvM2JobVcwYXNiTllCTlktVTJyUUZGVU8xd052cFNnb0FyZVJpSzN3VWJkVU1yTml1eTN2VHp6RFNHTGE3b0YtS0ZpQThhUHo1elFRWHM1aHJ3RXdsSmxaVmR3dGx0MkpoWUROV2tSMV9fbmNsX1E0T3pYMFpGeTdZOV9mbXg0dk40c0ZrUTBLZw?oc=5",
+    "title": "Polymarket renews new $25 referral code \u201cOREGON\u201d for Vikings-49ers NFL",
+    "source": "OregonLive.com",
+    "summary": "Polymarket is pushing a fresh $25 referral bonus using the code \"OREGON\" ahead of Sunday's Vikings-49ers matchup, suggesting the platform is treating major NFL games as prime customer acquisition moments. The aggressive promotion signals Polymarket's betting that high-stakes sports events drive volume spikes worth subsidizing new users, which could mean tighter odds and faster liquidity on the big matchups.",
+    "pub_iso": "2026-11-23T03:54:00+00:00",
+    "pub_display": "Nov 23"
+  },
+  {
+    "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxPV1FPYmZMWGV3MF9LLXhRVjBzM081aE1nYldMLVlPbDZLS0pWSWdlbkhpVWFMcW1oNTJLM1h0NWx2QmVHaHZaVl9BVnpjN3AwemxZOXEyeW5XYUE4MFA4ZlRuMElad1NEc0ZITXdHbHpDYks4NVFZd1BHUHU5LVRjOTljakI1YUJPQS1VVGhvalVjRk5xTzNZSkpNS0dxQUlkcGFsYV9KR241NHVMb1VWZDBiQW0?oc=5",
+    "title": "Kalshi Warns New York Lawsuit Could Force It to Shut Down Across the U.S.",
+    "source": "Inc.com",
+    "summary": "Kalshi, the leading U.S. prediction market platform, is facing a New York lawsuit that could shut down its entire national operations. If the platform gets forced offline, it would effectively kill the only legal way most Americans can trade on real-world events right now.",
+    "pub_iso": "2026-11-22T19:36:20+00:00",
+    "pub_display": "Nov 22"
   }
 ]
