@@ -1,45 +1,5 @@
 [
   {
-    "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxOS2MzSjY1VVhWTnR1SWh1OUJYbkd1LURiYjVDYXNQU3RfNmo5eTdzeXJrTFExQ0VyTWNtZGl1ZnplZE15YTVLcTRjbFVGYkFrWFdrMjRPdndudmNUQXRQM2hPeVJ2SkNoaFVSR21mZ1JnV1JCLWkwYndLbk9rU3kySzVnOTYzVTZEdjh2Y3VtM1Bab0QtSEdob2tuTEpQUQ?oc=5",
-    "title": "States Begin Taxing Prediction Markets, but Revenue Is Uncertain",
-    "source": "Governing",
-    "summary": "States are slapping taxes on prediction market winnings, turning what was once a legal gray zone into actual revenue for state coffers. If the tax burden gets too heavy, bettors migrate to untaxed offshore platforms, which defeats the whole purpose of legalization.",
-    "pub_iso": "2026-11-20T19:50:50+00:00",
-    "pub_display": "Nov 20"
-  },
-  {
-    "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNRE5wbWV3N3VGRUpSNms5QjBwUGdXR2VkUVVtdFZRcjJLQ1J4WjVhOFJCWGNsLVpCWjg4Q1JwQlNQMUZQaVpkamdjZkNZckp2LUtvQUdHbXBJMkpMWGRBZHFqWHRpUHF4ODAtZTBrWjVCMWlsRnBBbjMzZF9UcHRXc1hWZm9zV3N1dWZycUxwV1lvZ3Z5ZmJ6R0dpOGgzUzU0M0EtcEIyNl9uZ2gzWXZN?oc=5",
-    "title": "Judge Coordinates Kalshi, Novig, Polymarket, Robinhood Suits",
-    "source": "RG.org",
-    "summary": "A federal judge has consolidated lawsuits against four major players in the prediction markets space, potentially forcing them to hash out regulatory liability in a single proceeding rather than separate courtrooms. If the cases move together, it could either clarify the legal landscape for the entire industry or create a chilling effect that sends crypto betting platforms scrambling for cover.",
-    "pub_iso": "2026-11-21T06:02:44+00:00",
-    "pub_display": "Nov 21"
-  },
-  {
-    "url": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxPdkFueFZVXzFFT0lSb01rcm15MWlVNFFvY3Q3Mm9iN3hIM2pQR0ZyWW44bjJ2SWRmdWtqYXI3bzlwTE5aWDkzWlBES2RWQmptQTZFeHhOWGItSnBoRHZSV3BPazlzdW5naVhfek1EYlc1UG12YlRwYWgzUXJMZE56OG1nVHlsckNwSk9JOHBhdWE3VS1lTGd5TUthM3pjVi0tYUsyZ1EwYmpTR2tfeUFrZGQ5WU9KYnZveUx1cTlvam41TURpbjFqNTRWXzRrenZLemc?oc=5",
-    "title": "Polymarket renews new $25 referral code \u201cOREGON\u201d for Oregon-Michigan State college football",
-    "source": "OregonLive.com",
-    "summary": "Polymarket rolled out a fresh $25 referral code called \"OREGON\" timed to the Oregon-Michigan State college football matchup, dangling easy money to pull in new users during peak betting season. College football drives massive trading volume on prediction markets, so seasonal promo sprints like this are how platforms lock in fresh money before the action moves elsewhere.",
-    "pub_iso": "2026-11-21T02:59:00+00:00",
-    "pub_display": "Nov 21"
-  },
-  {
-    "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxQajBxSkttaGVhNzhWcHlfbnpncUdQSmhTYndVV2ZXb3llYXZLbXZTZ2pZeU1xLWtJb05uQ0ZmNUFwXzVYNDl4UVdGLVB6VEpNbXNoQkY2QnVYV1MxVWljNE9jeUZ6d25CVzk0QWRnSlNLT25JRVNubXpnbEdUOEkwc3BtbGpweG9HcGcwbndoUnR3Z9IBlwFBVV95cUxNUThzczZwTW1mMmxUaEo2bk1rdE51bGtuUzFPRzA3bFNjUXFfNzByU1pIQ0VqbTBFell1bmtHb0REWF8ybVAzZ3p0T0FleW84Q201ZzNhUnQ5VWoxRkJacnhIdllYMlpEUjV0WmIxQWx0bFA2M2o4ZjNoV1l1T3RKNXFXS1lIR0hjMS01Ump1cXVzdE1TR2Uw?oc=5",
-    "title": "Kalshi says New York AG\u2019s lawsuit could shutter company",
-    "source": "NewsNation",
-    "summary": "Kalshi, the CFTC-approved prediction market platform, faces an existential threat from New York's attorney general, who apparently thinks predicting elections and events is bad actually. If the AG wins, it nukes a key player in the US prediction market ecosystem and signals regulators are ready to weaponize legal ambiguity against platforms they don't like.",
-    "pub_iso": "2026-11-21T01:13:40+00:00",
-    "pub_display": "Nov 21"
-  },
-  {
-    "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxNdGViVlpJX2tCS0xqeHo1T2laWnh6Ui1fa21zQ3g5NXJCSG1lQXl0Z1ZyTld3SHVlWkR6RW5xQVdfU0RHdUFWUFN0UmdPek50LXlmeFoxNl80VzRGZWZPWDR0V3E1Rjd2MUNIakV3dU42czk1OW1jaF9YWk43UlJkUHFFaUVoRGZNbDlYVDZRLWRfd0pBU3B6cV9MNkktZWMwS2Nmc2Zwd2YzVjNIcDhJVEZ3NzRUekhRcC1vTGVR?oc=5",
-    "title": "Should Oregon get a cut of prediction market fees? Some lawmakers say yes",
-    "source": "NPR for Oregonians",
-    "summary": "Oregon lawmakers want a slice of the prediction market pie, arguing the state deserves a cut of fees since these markets operate within its borders. If they succeed, it could set a precedent for other states to tax prediction market platforms, potentially raising costs for users and complicating the already messy regulatory landscape.",
-    "pub_iso": "2026-11-20T20:31:00+00:00",
-    "pub_display": "Nov 20"
-  },
-  {
     "url": "https://news.google.com/rss/articles/CBMizwFBVV95cUxQYVhZaEZKbFhicDVUZmpVWWtuaDd1NEFPa3RhZTdBaEdIV25sNkxqWDdmYWNVU2tCV0ZkWHU2M2tSc216RnZSTHV6SmRlVi1iOWNWb2FibDhnb0piRUd6WlVJYXBhQWRsWEpDTFBqcWtZUDIwa1FSLWZYa2paMDNmVUZhTTBGdGNUWkphNzI4Q29VNE55b3hDbTVySmhWWURjYjNfRDhUb2RRTXJ5VU9STlFvcHZZMTJRU19WNkc0ZTBFdEQ2aTBEQU1FRUVxeFU?oc=5",
     "title": "Best prediction market promos supply $590 in bonuses for today\u2019s college football Week 12 action",
     "source": "AL.com",
@@ -398,5 +358,45 @@
     "summary": "Kalshi is facing a New York lawsuit that the exchange claims could force it to shut down operations nationwide, not just in the state. If New York wins, it could set a precedent that lets other states challenge prediction market platforms, potentially fragmenting the entire industry into a patchwork of regulatory battles.",
     "pub_iso": "2026-11-21T02:40:12+00:00",
     "pub_display": "Nov 21"
+  },
+  {
+    "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxQMlpiTjhaNXo5ZTEzc1h6RmxuNUprSTdkRTExcTdocVZabG1OcGxwUDRPMDZKYlgzaTdSS3Aya2Q2NTViUTY1dVktbXN4bFFkbWtmOFpRQ2lpQlF0Y2NaZ0luSm53OUNacHdSVWVHXy1JOXQwU1dxZTIycmRjcGEwZkViQTF2Nm9aMTZ4T1lobUFHUFB5SzJVM2RyNEhHcDJ3MUtVdkRIOHh1di1QRXdYU19VcWJxS1R3RUdaWHlOUC15QQ?oc=5",
+    "title": "'Suspicious' Polymarket accounts net $340K on well-timed trades upon Jensen Huang's return",
+    "source": "New York Post",
+    "summary": "Someone made $340K on Polymarket betting that Jensen Huang would return to Nvidia, timing their bets suspiciously well and triggering insider-trading allegations. If prediction markets can't police information asymmetries, regulators will do it for them, and that's how you get the whole operation shut down.",
+    "pub_iso": "2026-11-23T21:49:00+00:00",
+    "pub_display": "Nov 23"
+  },
+  {
+    "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxNaS02bjJBMnpLb3RZQTBvdlpxZVY1ZTNHcWVzZFVKMTNwMTdpLW1UVWZzOGdrREd2bFZrMkFvRThDb0hqYWNxQkhaU2NIRDd6NzEyNktRU1dIVWJHdkkzbERwMHJRd2d4cHZoVzE5WXNhbGxIRkM0Wnl0RUNXNlBpUTE1bExhZllnNkRN0gGQAUFVX3lxTE1iZV9jWGNXMGs5TU5oSHJ5NVJwLUFmX1p0dTU3djB6bngzaFVraldZLUV5ZnVsMDRNdk5QYUk3TTI2NkdVX2dScmZxYVo5MjhqWGdLN2d1N09wNTZGM0dFc1k2VlNWRHlld0NqWFVETXpwYXBtbW5WZy0xeGl4cUdxd0pNVEJxV3RVdThpZFk5aw?oc=5",
+    "title": "Polymarket, Kalshi didn\u2019t outperform mainstream forecasts in midterms: Report",
+    "source": "The Hill",
+    "summary": "Polymarket and Kalshi, two major prediction markets that gained mainstream attention, didn't actually beat traditional polling and forecasts during the 2016 midterms. The finding undermines the core pitch that real-money skin-in-the-game produces superior predictions compared to aggregated expert opinion.",
+    "pub_iso": "2026-11-23T21:07:00+00:00",
+    "pub_display": "Nov 23"
+  },
+  {
+    "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxOY1BkbFh2bHMxZFBzeG45cGVxUmJXS2s5RllXTC1fa29SYTJMYUpZOGNhQ3RNLWRtR2toSFJjR1Fwa1VOaFdDSDZ3alVFS0JXSXNubGFpLTVGTVcwSk9nR0lseF9WMW5JcERpTko4Q0RERUp5d05jbUhFdk43NVVUaWNiRDhZSDFtZ3ZxVkt1Yk5jYVhnSmJEYkFhaENlWjk2dlZ1MlZLdmxRcjlkUXc?oc=5",
+    "title": "Kalshi pauses operations in Utah after adverse federal court ruling",
+    "source": "Reuters",
+    "summary": "Kalshi, one of the few legal prediction markets in the US, hit pause on Utah operations following a federal court decision that went against the platform. The ruling signals that regulators and courts still view prediction markets as gambling rather than legitimate forecasting tools, which is bad news for anyone betting the industry's legal status improves anytime soon.",
+    "pub_iso": "2026-11-23T19:47:09+00:00",
+    "pub_display": "Nov 23"
+  },
+  {
+    "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxPSVZfckhQQUhTQ2YxYTI3NHZnTkZGY25hSkV6Ri1jWmxWNS1fMjBQenk5UDQ2WGNHMTJyaGFmaWluWHA0d3V1cmRwbWNiUFQ5YjNPdjVLczhBOUg4SmVVdlhkcW1IRUd1aUdlSW9OT3hkQnpkR1BpLVotOHMxS3YtUUxhS2tYWVpGbXlOekYxWUxESUl1NWdyenZQN3BjcUNTSE43QTU2ekk5SS1famZsREI3clY2dEhCdmNoWQ?oc=5",
+    "title": "New York lawmaker proposes bill to regulate and tax prediction markets",
+    "source": "Politico",
+    "summary": "A New York lawmaker wants to slap regulation and taxes on prediction markets, the latest attempt by legislators to bring America's fastest-growing betting category under government control. If it passes, expect the playbook to spread to other states like a bad rash, potentially killing the margins that make these platforms worth running in the first place.",
+    "pub_iso": "2026-11-23T15:05:00+00:00",
+    "pub_display": "Nov 23"
+  },
+  {
+    "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxPUGZsQTJ3VW4tMEsxRjA1c25mNUxYb3VLSm1DdTg5dmptYXc3b1lsckNiYlE0WGhhVlRodmZDemNVdHA3ZEt0bkF0TkNRNkF3cEx0ZllFQ29yYlZUb1hyOXdmbk9OOGRpVm5wcHFPZzlVQmVHeTA4M3ptQVk3YW5LYUl5MUJyNEx6S2I1QVNB?oc=5",
+    "title": "Meta AI Chief Alexandr Wang Says \u2018Superintelligence Is Arriving\u2019 \u2014 Prediction Market Bets on the Date",
+    "source": "Yahoo Tech",
+    "summary": "Meta's AI chief is making the bold claim that superintelligence is on the horizon, and prediction market bettors are already lining up to wager on when it actually arrives. The timeline question matters because it's worth real money, and Wang's credibility as an AI insider just moved the needle on when the smart money thinks we're actually getting there.",
+    "pub_iso": "2026-11-23T04:30:00+00:00",
+    "pub_display": "Nov 23"
   }
 ]
