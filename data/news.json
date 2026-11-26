@@ -1,8 +1,35 @@
 {
-  "updated": "Nov 25, 2026 \u00b7 7:50 PM ET",
-  "updated_iso": "2026-11-26T00:50:45.536355+00:00",
+  "updated": "Nov 25, 2026 \u00b7 11:49 PM ET",
+  "updated_iso": "2026-11-26T04:49:45.595318+00:00",
   "homepage_count": 3,
   "articles": [
+    {
+      "title": "Polymarket code \u201cSILIVE\u201d unlocks $25 referral promo for Packers-Rams on Thanksgiving Eve",
+      "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxNc2NYWGo0cXZEWlEzNWNSYjBlc09jQWZYUmYzLWNLQnMyRC1kS3JPU2ZTZWVtV2JtZWRzeG9NWV9uYktDZzdBcGxWSFZqMHpObGFlbUVNbVZFdW5YaDY0V0ZHWVBka3VWbWJ6SThROGlycWhhbm8zbjlxd1ZpdUdtLWVsbjdXel81dDV6aGliQ2cwTlV5NnREaEZxaV9UeFBQQ1BEdW1wMnRlMDVBZmZmd0lMYXNqZFdjVXNlejUyRXBidzhYdng1Rg?oc=5",
+      "source": "SILive.com",
+      "pub_iso": "2026-11-26T00:45:00+00:00",
+      "description": "",
+      "summary": "Polymarket's running a $25 referral promo tied to the Packers-Rams matchup on Thanksgiving Eve, and they're using the code SILIVE to gate access. It's a straightforward play to juice volume on a high-profile NFL game when casual bettors are already in a holiday gambling mood.",
+      "pub_display": "Nov 26"
+    },
+    {
+      "title": "Most Polymarket users lost money betting on the U.S. midterms, report finds",
+      "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNeEFSRzg3TDVWM3ZLa2J0bmlKSVFmc2VFaUZqSl9mTmpIcEdqMnJxT3F4ODd1WldwVXVzWS0yd3lkRlNGTS13LTNZSHB3eFcwV0tuRWV5N1BTQW5XdHE4eTlQcXlLT1hDT0VyYUFSa1pudUcxYjhfdUJtRGE1dTg1TkJka3F1bDA?oc=5",
+      "source": "CBS News",
+      "pub_iso": "2026-11-25T21:17:00+00:00",
+      "description": "",
+      "summary": "Most Polymarket traders got their midterms forecast spectacularly wrong, with the majority walking away net negative on their wagers. It's a stark reminder that prediction markets attract plenty of confident amateurs who mistake conviction for accuracy.",
+      "pub_display": "Nov 25"
+    },
+    {
+      "title": "Polymarket Turns GPU Price Bets into a Compute Forward Curve",
+      "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxNSXFBUmI1SlV2NTVNMTBTaFdWSVQxT1VCRWl1MnV0T2tuRE1ZU29PblJIWlNmS1B3ODFYaENYZDZSRllCaFNaYWZKaUJIcnoxVnppOTlud0M0Wkg4elVoYW44TDF2QkxvVmVNUFhGSENqeGpmQlFUWGZTU2ZuQ3dkZFRmMElRQ0EwWUJPVjhDT2hYSTdqLWo3cWtGTWo5UjFnM1ZJ?oc=5",
+      "source": "Finance Magnates",
+      "pub_iso": "2026-11-25T20:37:00+00:00",
+      "description": "",
+      "summary": "Polymarket is letting traders bet on GPU prices in a way that essentially creates a forward curve for compute costs, turning sporadic price movements into a structured market signal. That's actually useful because it gives AI labs and crypto miners real-time price discovery for their biggest operational expense instead of relying on vendor quotes and spot market noise.",
+      "pub_display": "Nov 25"
+    },
     {
       "title": "Polymarket expands AI compute markets as US rivals face delays",
       "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxOeDdVTGd3ZUZmekZ2dExRR2REYXFhRENWenJHYmp0emtXM184dGlKaHQ3RHVRMGhuanRvWUdqTF9fYk11QWh1T2stbU5XNE5KM3JjZElia0xqX3NiNXh3WHZHNG1BM0lNNnl5b1Zrd0o2ZHdlZVZpanF3Y1VBcWhMTzlZOA?oc=5",
@@ -19,6 +46,15 @@
       "pub_iso": "2026-11-25T18:51:34+00:00",
       "description": "",
       "summary": "Sports leagues are finally taking public stances on whether they'll allow Kalshi and Polymarket to operate prediction markets on their games. If major leagues crack down, it chops off a significant revenue stream and user base for platforms that have built their entire pitch around real-money sports betting.",
+      "pub_display": "Nov 25"
+    },
+    {
+      "title": "Young New Yorkers are losing money on prediction markets. That's not a reason to ban them.",
+      "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxQRjR6Q3ZjX0RxLUFnTTZZMHQ5R1N3OGM1ZmszcElqSnVSY01Qd3BSUDhEM0dIWTVrVk1OZ2Y1dVJyZTlGOEpPcGxZRTZqNzNYeEtFbl9sOUFVbUFkWlZ3eW85bkhVTjkyV3pNTUE4NG5YaW5yWGpvVnNPejZCdEM4Yjl2dWxHd01DV2FSWjRJSjA3eWFodjRLaDYzM28wbVU5QXU2UExJUW5TZzZySU16WFYzUmlVMWtaOUE?oc=5",
+      "source": "Reason Magazine",
+      "pub_iso": "2026-11-25T18:24:21+00:00",
+      "description": "",
+      "summary": "Young New Yorkers are dumping money into prediction markets and predictably getting wrecked, sparking the usual regulatory hand-wringing from people who think banning things solves problems. The real story is whether regulators actually listen to the \"let people lose their own money\" argument, or if we're headed for another round of restrictions that'll just push the action offshore.",
       "pub_display": "Nov 25"
     },
     {
@@ -40,12 +76,21 @@
       "pub_display": "Nov 25"
     },
     {
-      "title": "Gold drops below $3,500; prediction markets price moderate year-end targets",
-      "url": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxPc3dJbC1IMnF5SVdDUFRDOXAxLVZpWmxfV00wREhMYzcyRVRGODFRVGZhUm1oZS1CYl9oY2hiOGtvSzVRdERfejZwSDNtN0l5V0d3X3ZQYmIydU9yTU5vZlJXOE9jdG55M2FIdlZTVGVRelhMd0tXdS1XbFNFSUZkdXhBem93alBWMFBfVjZ5MkNmTXpEZ251VVlRaG5JdkJwZS1xYU1iSm1WZ3g5T2hrSjJLU0VzMTNoTllva25LUGhndDZHR2FyckdlTnZGTFJvZHc?oc=5",
-      "source": "TradingView",
+      "title": "CME Group Eyes Growth as Prediction Markets Gain Strong Momentum",
+      "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxOTVBjZjR3cTlFSTVEcE9XR3dEclRNZjZTNGJ4MkJiSEtEMGF6cDZJYXJseXcwaUJ2SXh5VTdsSHpEcFhLemVTNHpvenluNFBwRFU1VExtcHhxM20ycG5YUER2SmpFS3BuSHg1bndTeVZRYnBtcFJRMHNUQkw2SmwzbEpjQngwZHRoc291WUR5c1hXOUM0SEdWaUZER3kyZkk?oc=5",
+      "source": "Yahoo Finance",
+      "pub_iso": "2026-11-25T16:47:00+00:00",
+      "description": "",
+      "summary": "CME Group is positioning itself to capitalize on prediction markets as they transition from niche curiosity to mainstream financial infrastructure. If the largest derivatives exchange in the world is moving aggressively into this space, regulatory legitimacy and institutional liquidity are coming whether the purists like it or not.",
+      "pub_display": "Nov 25"
+    },
+    {
+      "title": "Gold drops below $3,500; prediction markets price moderate year-end targets (XAUUSD:CUR:Commodity)",
+      "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxPWjFtWGJ0TlhlN3FCQzlFRkxUeURkNUE5OGNOdHBZT21aNGVpS2lscFVONFJWUDFYU3BjWm1ITjNNNV9yYXg5bUtWMDBJai1ibFZqaHV0eXlPRnVDSVEzRm1FRDU4SEY2eldMNnd6WjFiTGUxbDlWM3pGMlg3aVFvZ21mRlVDUmJaaEllTFpndnBPbFdkWDd4ZDRnQm4ycTBBYXBPZk05R3lrOTR1TlJZ?oc=5",
+      "source": "Seeking Alpha",
       "pub_iso": "2026-11-25T14:59:13+00:00",
       "description": "",
-      "summary": "Gold's plunge below $3,500 is forcing traders to recalibrate their expectations for where the precious metal finishes 2024. The disconnect between spot price and year-end predictions signals either that markets think gold bounces back hard or that the consensus has gotten too bearish too fast, creating real arbitrage opportunities for those willing to take a contrarian stance.",
+      "summary": "Gold just took a tumble below $3,500 an ounce, forcing traders to recalibrate their year-end price expectations downward. For prediction market players, this matters because a commodity this volatile tends to reshape near-term settlement odds faster than most assets, which means the sharp movers among you probably just got an edge on slow-reacting crowd positions.",
       "pub_display": "Nov 25"
     },
     {
@@ -58,57 +103,12 @@
       "pub_display": "Nov 25"
     },
     {
-      "title": "Los Angeles Lakers Announce Partnership with Kalshi",
-      "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxPT2hscFprVnVKdG9pX05wNDBKWDQyUmNXZ3NROFRvWW15YTBkZEhFSkdTOHlFbTJYUlVzZTRKdGV0b0xwanVnYnc4SUt3QUFHcy02cmpIMG12UkZXQzNTV0QyVXQ2LTltNG40WU1IR1RmYUtCUkxFOWhuRlhtbWpBUg?oc=5",
-      "source": "NBA.com",
-      "pub_iso": "2026-11-24T21:00:00+00:00",
+      "title": "Simon Denny on Prediction Markets, Speculation, and the Future of Truth",
+      "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxQV2lMaXhwRVBwSWZTXzc3VVNUTDRPZHRfLWNXUUx6dWtxOVVqYkNFQzU4ZWZpbEhBTkNWSTQtaGJSMkt0NjYxc3N6NlRqRTR6QVVkNHdqRGJhVGs2aTlMTlhtVTNIX2dyUVJSZGllSlM0cjhWY25NNmpTUFZweUUyNUlNXzItOTBaYkZF?oc=5",
+      "source": "Artforum",
+      "pub_iso": "2026-11-24T19:53:17+00:00",
       "description": "",
-      "summary": "The Lakers just inked a deal with Kalshi, the CFTC-regulated prediction market platform, likely for sponsorship or official betting integration. This matters because it signals major sports leagues are finally comfortable going all-in on prediction markets instead of just tolerating them from the sidelines.",
-      "pub_display": "Nov 24"
-    },
-    {
-      "title": "Kalshi daily volume of \u2018perps\u2019 trading begins to top its prediction markets",
-      "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxNRlJiOW8wTlQtSnZFaUdDc3VoM0trbXVleENGelNDOElNZDNoWnV0SV8xSTVaeGNWNk1yNHhVRmtYbUR0TDZNbEdnV0preDdyeThYX0dzV1FZNTZhdkVyb0x0Q0ZOb1djNWtwZldyTlc4OFJsUXhWVU1YQl9WM2RsMtIBhgFBVV95cUxPWnh2aDRBQmhGcmdCZU1FNkJBN21zYXJXRzJrb0FQRkFIS3RDSXFUb0tPaGpBdXJ1Q2FRTlRXZUhGakNqQWg1cGpVNmZQa0lJZlB0d0UwVHpiLVdLeEJ5M1JZVllYUU9icG5uZDFmV1lUVXpyd3N3RWdyNy1LU3ExcUdWcS1Ddw?oc=5",
-      "source": "CNBC",
-      "pub_iso": "2026-11-24T18:34:55+00:00",
-      "description": "",
-      "summary": "Kalshi's perpetual futures contracts are now trading more volume than its core prediction market offerings, signaling a shift in what customers actually want from the platform. If derivatives outpace event betting long term, it suggests the real money is in leveraged speculation rather than forecasting accuracy.",
-      "pub_display": "Nov 24"
-    },
-    {
-      "title": "Utah drops criminal charges against Kalshi founders after company suspended operations in state",
-      "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxPb2c2MzFtdWdPUTBwbnpzdXhvblIwMlJOM2lrY2JNMDh2UGtiUXljT2FaYzkwSHVoYVVNc3FqWWV4NmdCQ3dUYjlFaW1iTmZDaDhxc2piRTdtTXdTV0hjNnVISmFsTVlGZTNvNm5qSnBMcm5rTGM0U0xjS3VZZzFCMUhvRjMwVjRUb2UwYlFHd0RXdEZISVZOa1FodWlRcUpmWFMxMDJZT3Q5QdIBrwFBVV95cUxOMmZ4NlVlWkZoNTFWaTN4NlhnZ2JiOUVEeFRwaVNpZXVlZWJpUk1Uc0VEMHdwOTJ4WXN3d082dzBBS09tSEdxaERkZUxHNllkZUdJYzgxRVZieXRMa2MxeTlxbVNWbUdLUk1BeFJiTUtMVG9DR0lRbWtwWTVvalFFTFMxUkZGRGMyRURBYVEyaVYzQ1FSZGFVYTQtSnhqYm1lSllEcnlSVk0wVVR0eV9J?oc=5",
-      "source": "CNBC",
-      "pub_iso": "2026-11-24T18:28:33+00:00",
-      "description": "",
-      "summary": "Utah's crackdown on Kalshi, the prediction markets platform, is officially dead after the state dropped criminal charges against the company's founders now that Kalshi pulled out of the state. This matters because it signals regulatory bodies will back off if you simply leave, which could embolden other prediction market platforms to operate selectively rather than fight legal battles.",
-      "pub_display": "Nov 24"
-    },
-    {
-      "title": "Kalshi Users Under 21 Lost $8.9 Million in NYC, Probe Finds",
-      "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxNY19Va0JuWHdNYjR1S1puOGFaTmZBZkR6ckxfVTR2aUJHUkNYZnZkNHF0XzlkdThldVJ2ZHpKbnoya3hDdmxTRHFmUFJHcUlpa0ZzcE54NDBrZWkyeTFQbHRCTVVCQlg5bjk4WGd3akczX1R2c0RUWGFRcFhBSjdXb2xuUHdPcHF4V256anZQNDIzVFZVUlE2LThNakZLUVktcGwyc3cyZGtoLTFCblFOYXFRMHE?oc=5",
-      "source": "Bloomberg",
-      "pub_iso": "2026-11-24T17:55:50+00:00",
-      "description": "",
-      "summary": "Regulators found that Kalshi's underage users in New York City lost $8.9 million, raising questions about the platform's age verification and risk controls. It's the kind of regulatory hammer that could force prediction market operators to overhaul their compliance infrastructure or face actual restrictions instead of the current wink-and-nod regulatory environment.",
-      "pub_display": "Nov 24"
-    },
-    {
-      "title": "Young New Yorkers Are Losing on Kalshi, City Council Says",
-      "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE9fOUY1Ny1oWVZVSzlEcXJqZGwyQzkzOFdXNDRRVmV6eXVHMUNHVklUa3NVSGlzMkZQS3pJZkxpWml1X0dvb0tiTTlfdUlyOUZLbkJHeHJydU9yU1BTbFBLTmt6VzdEYWZfVGxaQ1NFS1hYOWs0c1E?oc=5",
-      "source": "The New York Times",
-      "pub_iso": "2026-11-24T10:04:07+00:00",
-      "description": "",
-      "summary": "New York City Council is claiming young residents are getting cleaned out on Kalshi, the prediction market platform that's been operating legally in the city since 2023. If regulators start clamping down on retail participation or user protections, it could signal the beginning of the end for prediction markets' mainstream credibility just as they're finally going legit.",
-      "pub_display": "Nov 24"
-    },
-    {
-      "title": "Capitol Hill trading is about to be verboten, House Democrats say as they debate how",
-      "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxOd0VzaHJNS2E2NDBVRThCWDNLOUNqTDNFYVRRNTE2NVhLX0pfZnJqMTRyWU5pS3NoYndmYWtnWmY1MTl6MnpoX295NHJpYjRSeHVVcE1DRFJRQnB6QzVYRUVpSXJxUGpUSVBOVlhGQXc5aU41eGFkMVREd2lfUjc3dUctVWRvak9BX0t0SHE2Wi1GakJYSkhjeEdiQjFvSFU?oc=5",
-      "source": "Politico",
-      "pub_iso": "2026-11-24T09:45:00+00:00",
-      "description": "",
-      "summary": "House Democrats are pushing to ban members of Congress from trading individual stocks, closing a loophole that's let them profit off non-public information for decades. If it passes, it removes a reliable signal that political insiders once used to telegraph their conviction on upcoming policy moves.",
+      "summary": "Simon Denny is making a case that prediction markets aren't just gambling tools, they're infrastructure for how we establish what's actually true in a world drowning in noise and incentive misalignment. If he's right, that reframes the entire industry from \"betting app\" to \"epistemic utility,\" which changes how regulators, institutions, and smart money should be thinking about market design and participation.",
       "pub_display": "Nov 24"
     }
   ]
