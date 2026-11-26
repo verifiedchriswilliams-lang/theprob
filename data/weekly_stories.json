@@ -1,29 +1,5 @@
 [
   {
-    "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxPTzBTM0VIay12RnJ1ZGNFc0RCQ2laUlhsRk9rb3M3Z1pnNllhN0VOOEZ1ZFB6X3pzYWdNMjl5dmktakZrRDB6RzBIalhoRzJfU0hXV2ZLeVdmb1BxTHc2d205dU0yRjZac3R5WjlWbHRtOGxDMFZHVktQY2dfdG1qVFhtWWVUSTVSQkpSams5UVNrUGFTVFdYNmFsMzVCeEYyMDRnTTdoRFBjcENxOHN2VUZjUUZ4cXMtQUVWSA?oc=5",
-    "title": "New York Authors A Useful, Information Rich Prediction Market Standard",
-    "source": "Forbes",
-    "summary": "New York regulators just blessed a standardized framework for prediction markets that actually makes sense, which means other states will probably copy it instead of reinventing the wheel. Having shared rules across jurisdictions kills the regulatory arbitrage game and lets prediction market platforms scale without hiring a compliance team per state.",
-    "pub_iso": "2026-11-23T16:30:48+00:00",
-    "pub_display": "Nov 23"
-  },
-  {
-    "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxPaHVBYmRicERvUm1yRVgwU2pVUk9ma08xWTBrVDd6eXFlamYzdFRmNDl6c2tWb3N1TVJySV9DekNrQjhudTZnazQzV19maGFGZ1NqWWk5aGZJWU5ERGU0Nk0zYURDQ1F6ZV90UFlwTmI3WmZXdzZtZFppbXFYS1VGcFY1VnR4dzRTb1NCYV9MX1dVbldzUnI0?oc=5",
-    "title": "Kalshi Claims New York\u2019s Lawsuit Could Shut It Down Everywhere",
-    "source": "Gizmodo",
-    "summary": "Kalshi is facing a New York lawsuit that the exchange claims could force it to shut down operations nationwide, not just in the state. If New York wins, it could set a precedent that lets other states challenge prediction market platforms, potentially fragmenting the entire industry into a patchwork of regulatory battles.",
-    "pub_iso": "2026-11-21T02:40:12+00:00",
-    "pub_display": "Nov 21"
-  },
-  {
-    "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxQMlpiTjhaNXo5ZTEzc1h6RmxuNUprSTdkRTExcTdocVZabG1OcGxwUDRPMDZKYlgzaTdSS3Aya2Q2NTViUTY1dVktbXN4bFFkbWtmOFpRQ2lpQlF0Y2NaZ0luSm53OUNacHdSVWVHXy1JOXQwU1dxZTIycmRjcGEwZkViQTF2Nm9aMTZ4T1lobUFHUFB5SzJVM2RyNEhHcDJ3MUtVdkRIOHh1di1QRXdYU19VcWJxS1R3RUdaWHlOUC15QQ?oc=5",
-    "title": "'Suspicious' Polymarket accounts net $340K on well-timed trades upon Jensen Huang's return",
-    "source": "New York Post",
-    "summary": "Someone made $340K on Polymarket betting that Jensen Huang would return to Nvidia, timing their bets suspiciously well and triggering insider-trading allegations. If prediction markets can't police information asymmetries, regulators will do it for them, and that's how you get the whole operation shut down.",
-    "pub_iso": "2026-11-23T21:49:00+00:00",
-    "pub_display": "Nov 23"
-  },
-  {
     "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxNaS02bjJBMnpLb3RZQTBvdlpxZVY1ZTNHcWVzZFVKMTNwMTdpLW1UVWZzOGdrREd2bFZrMkFvRThDb0hqYWNxQkhaU2NIRDd6NzEyNktRU1dIVWJHdkkzbERwMHJRd2d4cHZoVzE5WXNhbGxIRkM0Wnl0RUNXNlBpUTE1bExhZllnNkRN0gGQAUFVX3lxTE1iZV9jWGNXMGs5TU5oSHJ5NVJwLUFmX1p0dTU3djB6bngzaFVraldZLUV5ZnVsMDRNdk5QYUk3TTI2NkdVX2dScmZxYVo5MjhqWGdLN2d1N09wNTZGM0dFc1k2VlNWRHlld0NqWFVETXpwYXBtbW5WZy0xeGl4cUdxd0pNVEJxV3RVdThpZFk5aw?oc=5",
     "title": "Polymarket, Kalshi didn\u2019t outperform mainstream forecasts in midterms: Report",
     "source": "The Hill",
@@ -398,5 +374,29 @@
     "summary": "Gold just cracked below $3,500 an ounce, breaking through what looked like a pretty solid floor for the yellow metal. That matters because prediction markets are now pricing in a year-end target that's notably more pessimistic than the current spot price, which either means sophisticated traders expect further downside or they're being too cautious.",
     "pub_iso": "2026-11-25T14:59:13+00:00",
     "pub_display": "Nov 25"
+  },
+  {
+    "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxOeDdVTGd3ZUZmekZ2dExRR2REYXFhRENWenJHYmp0emtXM184dGlKaHQ3RHVRMGhuanRvWUdqTF9fYk11QWh1T2stbU5XNE5KM3JjZElia0xqX3NiNXh3WHZHNG1BM0lNNnl5b1Zrd0o2ZHdlZVZpanF3Y1VBcWhMTzlZOA?oc=5",
+    "title": "Polymarket expands AI compute markets as US rivals face delays",
+    "source": "NEXTPredict",
+    "summary": "Polymarket is launching prediction markets for AI compute pricing and availability, betting that traders want to speculate on GPU scarcity and cloud infrastructure costs while US competitors drag their feet. This matters because compute costs directly drive AI company valuations and capex spending, so markets that price these inputs give traders a real edge on predicting everything from Nvidia's earnings to which labs actually have the juice to train frontier models.",
+    "pub_iso": "2026-11-25T20:29:58+00:00",
+    "pub_display": "Nov 25"
+  },
+  {
+    "url": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxPc3dJbC1IMnF5SVdDUFRDOXAxLVZpWmxfV00wREhMYzcyRVRGODFRVGZhUm1oZS1CYl9oY2hiOGtvSzVRdERfejZwSDNtN0l5V0d3X3ZQYmIydU9yTU5vZlJXOE9jdG55M2FIdlZTVGVRelhMd0tXdS1XbFNFSUZkdXhBem93alBWMFBfVjZ5MkNmTXpEZ251VVlRaG5JdkJwZS1xYU1iSm1WZ3g5T2hrSjJLU0VzMTNoTllva25LUGhndDZHR2FyckdlTnZGTFJvZHc?oc=5",
+    "title": "Gold drops below $3,500; prediction markets price moderate year-end targets",
+    "source": "TradingView",
+    "summary": "Gold's plunge below $3,500 is forcing traders to recalibrate their expectations for where the precious metal finishes 2024. The disconnect between spot price and year-end predictions signals either that markets think gold bounces back hard or that the consensus has gotten too bearish too fast, creating real arbitrage opportunities for those willing to take a contrarian stance.",
+    "pub_iso": "2026-11-25T14:59:13+00:00",
+    "pub_display": "Nov 25"
+  },
+  {
+    "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxOd0VzaHJNS2E2NDBVRThCWDNLOUNqTDNFYVRRNTE2NVhLX0pfZnJqMTRyWU5pS3NoYndmYWtnWmY1MTl6MnpoX295NHJpYjRSeHVVcE1DRFJRQnB6QzVYRUVpSXJxUGpUSVBOVlhGQXc5aU41eGFkMVREd2lfUjc3dUctVWRvak9BX0t0SHE2Wi1GakJYSkhjeEdiQjFvSFU?oc=5",
+    "title": "Capitol Hill trading is about to be verboten, House Democrats say as they debate how",
+    "source": "Politico",
+    "summary": "House Democrats are pushing to ban members of Congress from trading individual stocks, closing a loophole that's let them profit off non-public information for decades. If it passes, it removes a reliable signal that political insiders once used to telegraph their conviction on upcoming policy moves.",
+    "pub_iso": "2026-11-24T09:45:00+00:00",
+    "pub_display": "Nov 24"
   }
 ]
