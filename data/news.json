@@ -1,15 +1,51 @@
 {
-  "updated": "Nov 27, 2026 \u00b7 7:19 PM ET",
-  "updated_iso": "2026-11-28T00:19:41.617070+00:00",
+  "updated": "Nov 27, 2026 \u00b7 11:38 PM ET",
+  "updated_iso": "2026-11-28T04:38:19.814150+00:00",
   "homepage_count": 3,
   "articles": [
     {
-      "title": "Robinhood Expands Prediction Markets: A New Revenue Stream Ahead?",
-      "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNRERFRzhDTDY4bDdrc3lQR1Q4WDlGTmxkUVhGNzRCUE1SQzRkb0Z5Rm5RdlNjTzFIQmR5bU9QQkpVWXJiT3JFakhkTlI5aTJwUkswbkphOU5PRDVKT0NwNmNzdDJNck1KVE5mQUJzUE44LWQzaWRqTTNDNDQwYklhU2pUd3FMenhqd0RMUFFQQzVjVHlqNjl3V2NZakZwcElYWWxhYmM4QWdmWEViY25r?oc=5",
-      "source": "Yahoo Finance",
-      "pub_iso": "2026-11-27T15:01:00+00:00",
+      "title": "Polymarket updates new $25 referral code \u201cOREGON\u201d for Warriors-Trail Blazers NBA",
+      "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxPYWliNGU2cHltX1Y0ckE0bjB3b1VyR3JkTzBFSUdxVWhuMnh2LXRac0p0dmtLelRFUVMybGNYOGo2eVZ1SVZlMkRuVXRjSlBHS1pSbnlvMXBDWEctcXFVelZhN3h1ZGhJLTlPbGl0aDRzOThDclNlRlVDNXRUVDNnTTNPVVpPbTJwS2lvSUxESXFaSmRiV2Y4QVdJanBGMWRJSkRYcWtKSlQ1Y04wMmVGNTA0OVB2SkpaS0lEYVQyTnNXaXM?oc=5",
+      "source": "OregonLive.com",
+      "pub_iso": "2026-11-28T02:59:00+00:00",
       "description": "",
-      "summary": "Robinhood is launching prediction markets, adding yet another betting product to its retail trading arsenal. If they can convert their 23M users even partially, this becomes the most consequential distribution play for prediction markets since the category's inception.",
+      "summary": "Polymarket dropped a $25 referral code called \"OREGON\" timed to the Warriors-Trail Blazers game, signaling the platform's continued push to convert casual NBA fans into prediction market users. The move shows Polymarket is willing to spend real money during high-volume sports moments to grab market share before regulatory scrutiny potentially tightens.",
+      "pub_display": "Nov 28"
+    },
+    {
+      "title": "Blockchain Prediction Markets and AI Agents Redefine Information Finance Amid Election Scrutiny + Video",
+      "url": "https://news.google.com/rss/articles/CBMiO0FVX3lxTE9WMjJiUFNHUGFQX0tpVV9uaU5HYTFDclBpdlpSUUE3YW5OMTRwZWVETExTd2ZQbUxGMzRV?oc=5",
+      "source": "Howl.Link",
+      "pub_iso": "2026-11-28T01:50:31+00:00",
+      "description": "",
+      "summary": "Blockchain-based prediction markets are increasingly powered by AI agents that can process and trade on information at inhuman speeds, all while regulators squint nervously at election betting. If these systems work as advertised, they'll either democratize price discovery in political events or become the next flash-crash waiting to happen.",
+      "pub_display": "Nov 28"
+    },
+    {
+      "title": "Did Prediction Market Push Just Shift Cboe Stock's Investment Narrative?",
+      "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxQekd5QVZveG1FU2pJeFNESVhlZzVjYjQ4MjR5c2NZRWdHNDhSaHFaRERpM1dadDVHMlg1YXJKUGY3YzZhMTFhb2lVZW9jQ0VJcUhXaUhZYXlNT09NQTFnZ3R1TWFWd1p5Vi1PeVgxbE9PZDR4el9HclhkeUVQSUF0Vm9vazNuM0EyOC1CYk51akFkS3NjMllXeUVRY25rZw?oc=5",
+      "source": "Yahoo Finance",
+      "pub_iso": "2026-11-28T00:12:00+00:00",
+      "description": "",
+      "summary": "Cboe's stock narrative just got hijacked by prediction market hype, suggesting retail money and media attention are reshaping how traditional financial infrastructure plays get valued. If a speculative surge can move legacy exchange stocks, that's a tell that prediction markets themselves are graduating from niche betting to real portfolio rotators.",
+      "pub_display": "Nov 28"
+    },
+    {
+      "title": "Kalshi Promotes Prediction Market as Hedging Solution for Small Businesses",
+      "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxNTWo2aFBxcVpGYWJzTEJSR0F0bG5keTlOVXJTRFU1TnQxV2RRb1dNd1MycFRjRXNnZTlhdFZOMTIweDlMcV9MTW5Pc09LRjN1MUJMMzQzWFZ3d1ZOT1gyM3hncGMwdVNEY0FBTHJVQVVCb3I1V1hNYUxwNUk4SEhsWWRQOUlPdi1yU1JMZHIzNG1rZTBDYlpmWjdhb1NmV3VEcjY5eDZmRTlfdGowazRnQV9BYjcxVnV6OUQw?oc=5",
+      "source": "PYMNTS.com",
+      "pub_iso": "2026-11-27T22:07:11+00:00",
+      "description": "",
+      "summary": "Kalshi is pitching prediction markets as a legit way for small business owners to hedge their operational risks instead of relying solely on insurance and traditional financial instruments. If it sticks, this could dramatically expand the total addressable market for prediction markets beyond the degenerate bettor demographic that currently dominates.",
+      "pub_display": "Nov 27"
+    },
+    {
+      "title": "CoreWeave Eyes $4.5B Loan, but Bankruptcy Odds Rise to 21% on Prediction Markets",
+      "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxPRHBXeVVkVVREb3pVVEdubnZuRjZxYU4teVFwT0J3RUF2TXFfZlRidUtlU1hzeERDNTluSDhienFJVy1qMmtPZG56TlEydGREdXB5SGhWVEFtbE1oME9JeTRnODRnOENVSkhlc1lCM203U3J0dnNMWEJzVC10YnljZ2FxTUZ2YUphalA1eTJtd0hUYW1xcW9zY000TjN6Z1A0S0RkUTlOQQ?oc=5",
+      "source": "Benzinga",
+      "pub_iso": "2026-11-27T18:30:08+00:00",
+      "description": "",
+      "summary": "CoreWeave, a GPU infrastructure startup, is trying to raise $4.5B while traders are betting 21% odds the company goes bankrupt. That tension between mega-funding rounds and genuine insolvency risk is exactly the kind of mispricing that makes for interesting market opportunities.",
       "pub_display": "Nov 27"
     },
     {
@@ -22,30 +58,21 @@
       "pub_display": "Nov 27"
     },
     {
+      "title": "Kalshi traders bet on how many presidential actions Trump will sign this week",
+      "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE15WW4xc0ZGLVFjSEVkUXJneUVMelJDa0FzU0txNWNnanRTdHc3TVp0RHhma2Zwcm1Ka2dWZGZfTkpmQ2tjZFFXdjVYWnc3aTE2LUd5WWpYcnZOUUQ1UFRMSVNLdXRsMFhQTjl5a2lwclFNY0RMWUtsRTlRWTFyX2M?oc=5",
+      "source": "Crypto Briefing",
+      "pub_iso": "2026-11-27T12:25:01+00:00",
+      "description": "",
+      "summary": "Kalshi's Trump action market is testing whether prediction markets can keep pace with executive velocity, with traders now betting on sub-weekly granularity for presidential orders. If this resolves cleanly, it validates the appetite for hyper-specific policy futures and sets a template for other high-frequency political events.",
+      "pub_display": "Nov 27"
+    },
+    {
       "title": "How Louisiana became a battleground in the national fight over prediction markets",
       "url": "https://news.google.com/rss/articles/CBMi6gFBVV95cUxPMk9sX3dES1dpWTQzckdvdnkxa3pYNUhUUzZNWVY0anhvOVhqc21RZG92VjhQLVljbTE4TmhlbGtNVlRrWkhaaTN4TEpnOUZKT0plWFJwZnRyRVVuNld0ZUxhSmhqQnJELWs4TW0ySUxXa2dtcHh4QktFYUVVOF9Td1gwbEh0NXJGcVVnUEhWR0o1Zk8wRGZYTXNUZ3BEelZVTXZYWk9lNHgwS2xJOVo4NDVBZXlwNTZ3cFVnMVpFbG9Kb1JSMldZZURwNk04cXRCcHpHRGc0VHJia3c1Ri10NzU0U0pDT2JjU0HSAe8BQVVfeXFMTlluQno3UlFKTGJKa3RPaWFGUldjNHNfUm5wb05OQkNNUzBPdVptRGFoOWQycXdBQTdYZXdJSGw1UzBDQWJUN0g3NGNQdWRwZGFneWRvcVRDdmZsb0pUSVJtbG0tei1ONGNfOVpIRGNfd2FfVmRHTHlwTm53UWpsUk5tbTFDVmVBLVZacGlHaHJ6NGR5U1BZaXFWd1Jad2ZUODRZdDh0Ykd3QWxBamxGM1N6VVdGTTgxYVBlZlRhU3pKNnFudXhDVW9iVC1wRzEybzdvelRJVVJHbDFOWVlYeXlXRjF0cklma1VRZG82b0E?oc=5",
       "source": "NOLA.com",
       "pub_iso": "2026-11-27T10:00:00+00:00",
       "description": "",
       "summary": "Louisiana's regulatory crackdown on prediction markets is forcing the industry to fight on unfamiliar legal ground, turning a single state into a test case for broader restrictions. If Louisiana succeeds in boxing out the platforms, it'll give other states a roadmap to follow, and suddenly your favorite markets could vanish overnight.",
-      "pub_display": "Nov 27"
-    },
-    {
-      "title": "In defense of prediction markets",
-      "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxQYW9xVl91SmRodG01MkNiYUlKYk1Bak9VUjFDQTlDczR0d095S0plUU1ZdVMwb3daSFhJTXVmYUJxSGRrdzRfOTVSa0Q4UDlEcThFWF9VWkxqLWNkNTR2UUN3Q2ZDQWR5VS1wSUZKZGhZWTdLT1lyd0NzVldPU0hpdlp2dG5LTk1GRnpIYzI0cThUSjRKcXJzVDBjN1E5MXl2ZTFNcmZpalV6NE9LeXhoWURfSXZxVklKTXhyTFgyc3ZIZzYy?oc=5",
-      "source": "Northeast Mississippi Daily Journal",
-      "pub_iso": "2026-11-27T09:30:00+00:00",
-      "description": "",
-      "summary": "Prediction markets are catching heat from critics, and someone's finally making the case that they're actually useful tools for forecasting reality. If this defense sticks, it could shift how regulators and the public view these markets as legitimate information aggregators instead of glorified gambling dens.",
-      "pub_display": "Nov 27"
-    },
-    {
-      "title": "'Survival is at stake': Inside prediction markets' race to curb inside trading - ABC News",
-      "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxOZDhHX2pQVHdiYm9vSENYTkVVWkZUXzBjcHZHc2pGYWpjVGFEZ01MUVRncjRwUW9CeU5qbzV5cG5jUk1IU0hkNlFpWG1qWmEzemZ4dU42RWNuX2NhcGdVemVnN0cycXp6aGZYOV95ZTFZcktaNEdQT3ZadlItRlVkRWdnckJVUEFpSEZOWHREOXRpRkpfR3lSZUlBdHE5VXpE?oc=5",
-      "source": "Breaking News, Latest News and Videos",
-      "pub_iso": "2026-11-27T07:29:17+00:00",
-      "description": "",
-      "summary": "Regulators and market operators are cracking down on insider trading in prediction markets, where people with non-public information can easily profit before major announcements. If they don't fix this, the whole industry tanks, because no one's betting real money on markets they know are rigged.",
       "pub_display": "Nov 27"
     },
     {
@@ -58,6 +85,24 @@
       "pub_display": "Nov 26"
     },
     {
+      "title": "Tickmill Is Launching Prediction Markets",
+      "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxNa01MQWxFSW1xa3lKZDJMeFhzMF9aMmNQeEZEOHdBbjVPTUphdmlnZWdSUVE4eC1PWmhYb1RVOGlONjhlcDRxWm1ZVlRoaTYtZVFqbC1fYTEzWS16b1B3d0pOTVE1T3FQT1NLSWJwSU9lekFIcmU4NFJKa0RrTF9uaXk5UjBaQQ?oc=5",
+      "source": "Finance Magnates",
+      "pub_iso": "2026-11-26T08:22:38+00:00",
+      "description": "",
+      "summary": "Tickmill, a forex and CFD broker, is building its own prediction markets platform to let traders bet on real-world events alongside traditional financial instruments. Another major financial player entering the space means deeper liquidity, better odds, and more competition for the existing prediction market heavyweights like Polymarket.",
+      "pub_display": "Nov 26"
+    },
+    {
+      "title": "Most Polymarket users lost money betting on the U.S. midterms, report finds",
+      "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNeEFSRzg3TDVWM3ZLa2J0bmlKSVFmc2VFaUZqSl9mTmpIcEdqMnJxT3F4ODd1WldwVXVzWS0yd3lkRlNGTS13LTNZSHB3eFcwV0tuRWV5N1BTQW5XdHE4eTlQcXlLT1hDT0VyYUFSa1pudUcxYjhfdUJtRGE1dTg1TkJka3F1bDA?oc=5",
+      "source": "CBS News",
+      "pub_iso": "2026-11-25T21:17:00+00:00",
+      "description": "",
+      "summary": "A majority of Polymarket traders got rekt betting on the 2022 midterms, suggesting that retail prediction market participants are roughly as skilled at forecasting as a coin flip. This matters because it validates the criticism that prediction markets only work when serious money shows up to correct amateur mistakes, which isn't exactly a ringing endorsement for crowd wisdom.",
+      "pub_display": "Nov 25"
+    },
+    {
       "title": "LA Lakers announce deal with Kalshi, signaling sports leagues\u2019 growing embrace of prediction markets",
       "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxPQ3hLSUZtRDRRRkd1VFhBRkVaTjk0UVRNb2VUaTh5X2FacDlIdHpfaXMyRWp2aFkzZDRhblNDZmFkVndKU2FZMVIxS2hNTjhJZlY3a3NGYjlzODlPWmM1QjRKc1ZXOVJQTWpGUzlfcHRnTE5SdExsVlhZSC1vSjBDcExkM05XTVpRTGxXX0pZem9FMnZMTzN1UjlQVHh2d1JzS1lGUWNpSUVmS29kWUNYcEVhRGdvNTh3c0l0NmdoYVNGX0ZmYmpwYmhB?oc=5",
       "source": "Fortune",
@@ -65,51 +110,6 @@
       "description": "",
       "summary": "The LA Lakers just inked a deal with Kalshi, the CFTC-regulated prediction market platform, marking the first major U.S. sports league partnership with a legal prediction market operator. This blows open the mainstream credibility door for prediction markets, suggesting the regulatory and cultural gatekeepers are finally accepting that these platforms aren't just crypto gambling dens.",
       "pub_display": "Nov 25"
-    },
-    {
-      "title": "Prediction markets push OpenAI IPO expectations later into 2027",
-      "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxOY1QtdE95dUdaZ2Y1R1hLV3FidmtBRmdPWnlUdEU0MVRDSFNjU0xZa20wczZMVU16eVBqOEhjbG1pMHJaN0ZvMUJ3WV9EQXJMYU1aaFZPYlZ2T21SemMzNm9XRl9RVElEVTNKNmRJXzktRUs2ZTNaN2lNcU5OcERrelhR0gGHAUFVX3lxTE9tbWZXOWQ5Z2ttSGpUcWx0Nm5mNlY3R3NPczRRVEpEYk1WMjBOM2MtNzV2SE54a3VHbUtlaHNkVzJ3eURRT20yOHRmdmVkRC1vekhqSFJMZkRuSlE5aExRQzEtYzRDSU0xTEtPWmlPMHV5Y2xMRlRQcGxpUXBVdm1RNE80WVZBWQ?oc=5",
-      "source": "CNBC",
-      "pub_iso": "2026-11-25T17:08:03+00:00",
-      "description": "",
-      "summary": "OpenAI's path to going public just got pushed further down the calendar, with prediction markets now pricing the IPO for late 2027 instead of earlier in the year. That matters because it extends the runway for every bettor holding positions on the timing, and it signals the market thinks the company needs more time to prove its AI moat is defensible at IPO valuations.",
-      "pub_display": "Nov 25"
-    },
-    {
-      "title": "Danny McBride Stars in Another Kalshi Ad as Annoying Uncle at Thanksgiving (EXCLUSIVE)",
-      "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxQQmVuYnd3MFNUaGU4MWhudXZkWDNjeElDR2FwSkZtb1N1b0NrbFFFZ3JCYkJRcFRhRmFfM29YWjZDc1g5Q0hXRU1QUGtfaWRXaGJhdmZyVnlpNjZoMzV0RU1vWXNmRjBIVnJ6YVhhRkdfRUtjc3h2dm5BLUVIbmtDaHdLVlNYb0ZR?oc=5",
-      "source": "Variety",
-      "pub_iso": "2026-11-25T15:00:00+00:00",
-      "description": "",
-      "summary": "Kalshi grabbed another celebrity endorsement by casting Danny McBride as the obnoxious uncle spouting unsolicited opinions at the Thanksgiving table, presumably to sell their prediction market platform as the antidote to family arguments about what's actually going to happen. The repeated star power plays signal Kalshi's doubling down on mainstream consumer acquisition right when prediction market adoption is hitting an inflection point, which matters because brand spending correlates hard with user growth expectations that traders are already pricing into regulated futures platforms.",
-      "pub_display": "Nov 25"
-    },
-    {
-      "title": "Kalshi NFL Market for Every Thanksgiving Game: Bills vs. Chiefs Should Be Tight",
-      "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxNQkFVQkFUVUV4SjJoeThiZG5vSmRjaEdwM1Q0ZmJpUFZCU2RqLWhDZFNYUVdtcmNQY3VQdm91eFRwUnpldk0zQW1SWHhBcUxCRmhRWndBbG5BUzF0UEs2NDEtZ0VrLWVVNW04dzNKQVhCOGx0NnM1X0dtZG9DSWlQdmh6NmdWb3liRE5FblloaGhWX3UyV1lnZmNmUUhPaUxMck9wc1N1MktyMTlkV0pVLVFOWURNdS1zcF9nU1dQS2FuQjloUTFzYTZR?oc=5",
-      "source": "Sports Illustrated",
-      "pub_iso": "2026-11-25T14:00:01+00:00",
-      "description": "",
-      "summary": "Kalshi just launched prediction markets for every Thanksgiving NFL game, giving bettors granular odds on what's traditionally one of the year's most-watched sports days. Bills-Chiefs being tagged as tight means smart money's split on a matchup everyone and their uncle will be betting, which creates juice opportunities for people willing to dig into team-specific metrics.",
-      "pub_display": "Nov 25"
-    },
-    {
-      "title": "Utah moves to drop criminal charges after Kalshi blocks Utah users",
-      "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxOVVlFOU1ndWJxc0k1U0l4aWFXa3RLRmFDRmpjX1pfQjdyNElzUDB4V1RQSks4bXVjT202WjdYVm1VOThmNXFta1NncUx4MzJ3ckhkVU9RUWNsb0ZaY3JsS0RzS29kS0JnakxoVGEya0tSdVktNndDczRlSWhJTXZIQlNJZGEtVk8xeTlTQjhiTTdWYS1ob0M3bUJQSjlnaUZxYy1XUmhOYmxLLXRxem5qS0hDOA?oc=5",
-      "source": "KUER",
-      "pub_iso": "2026-11-24T21:02:00+00:00",
-      "description": "",
-      "summary": "Utah's attorney general backed off criminal charges against prediction market platform Kalshi after a court blocked the state from barring its residents from trading on political and economic contracts. The reversal signals that crypto-adjacent betting platforms are starting to win legal battles against state regulators, which could accelerate the normalization of prediction markets as legitimate financial instruments.",
-      "pub_display": "Nov 24"
-    },
-    {
-      "title": "Utah scores win against Kalshi as company halts operations in state",
-      "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxQalIzYTZxN3ZBSmNheFVXYUtiaUlRREZKb1BKN0xkM01NSWNOaERsaHdYa1pMQXJOSzV2UFRRZmxjOTZmamZhSUFvN3JZV0phYk9GTjgyWlRRNWtFY29VYjFBdjhSdTlfMktRalczME5vQXZDdkw3QmllTVo1VEpuaVVR?oc=5",
-      "source": "CNN",
-      "pub_iso": "2026-11-24T19:06:36+00:00",
-      "description": "",
-      "summary": "Utah just blocked Kalshi from operating in the state, forcing the prediction market platform to pull out. This is a test case for whether states can unilaterally shut down federally-approved prediction markets, and the answer matters a lot for anyone betting on elections or events.",
-      "pub_display": "Nov 24"
     }
   ]
 }
